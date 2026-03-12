@@ -9392,13 +9392,16 @@ scroll-seamless.border-gradient-alpha:after {
 }
 
 /* Product Catalog Custom Grid - Reconciled */
-.template-page-product-catalog .main-page__wrapper {
+.template-page-product-catalog .main-page__wrapper,
+.page-product-catalog .main-page__wrapper {
   max-width: 100% !important;
   padding-inline: 4rem; /* Aligns with breadcrumbs */
 }
 
 .template-page-product-catalog .main-page-title,
-.template-page-product-catalog .page-title {
+.template-page-product-catalog .page-title,
+.page-product-catalog .main-page-title,
+.page-product-catalog .page-title {
   display: none !important;
 }
 
