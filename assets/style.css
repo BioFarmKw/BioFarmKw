@@ -9110,9 +9110,7 @@ scroll-seamless.border-gradient-alpha:after {
 
 .header-menu-nav .menu-list .header-menu-first-level:hover .first-level-link,
 .header-menu-nav .menu-list .header-menu-first-level:hover .first-level-summary a {
-  background: #A3D3E4;
   color: #000;
-  border-radius: 4px;
 }
 
 .header-menu-nav .menu-list .header-menu-first-level .first-level-link .media,
