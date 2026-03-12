@@ -1,0 +1,108 @@
+<div class="shopify-block custom-input-filed-block field" {{ block.shopify_attributes }}>
+  <input
+    id="Custom-Input-Field-{{ section.id }}-{{ block.id }}"
+    type="{{ block.settings.type | default: 'text' }}"
+    class="field-input"
+    name="contact[{{ block.settings.name | escape }}]"
+    {% if block.settings.type == 'email' %}
+      autocomplete="email"
+      spellcheck="false"
+      autocapitalize="off"
+      pattern=".+@.+\.[a-zA-Z]{2,}$"
+      title="{{ 'newsletter.valid_email' | t }}"
+    {% elsif block.settings.type == 'tel' %}
+      autocomplete="tel"
+      inputmode="tel"
+      pattern="[0-9\-]*"
+    {% elsif block.settings.type == 'url' %}
+      autocomplete="url"
+      spellcheck="false"
+      autocapitalize="off"
+    {% endif %}
+    {% if block.settings.if_required %}
+      aria-required="true"
+      required
+    {% endif %}
+    placeholder="{{ block.settings.placeholder | escape }}"
+    {% if block.settings.default != blank %}
+      value="{{ block.settings.default }}"
+    {% endif %}
+  >
+  <label class="field-label" for="Custom-Input-Field-{{ section.id }}-{{ block.id }}">
+    {{ block.settings.placeholder | escape -}}
+    {%- if block.settings.if_required %}*{% endif %}
+  </label>
+  {%- if block.settings.type == 'date' -%}
+    <span class="calendar-button field-button">
+      {% render 'icon-sets', icon: 'calendar' %}
+    </span>
+  {%- endif -%}
+</div>
+{% schema %}
+{
+  "name": "t:blocks._custom-input-field.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "type",
+      "label": "t:blocks._custom-input-field.settings.type.label",
+      "options": [
+        {
+          "value": "text",
+          "label": "t:blocks._custom-input-field.settings.type.options__1.label"
+        },
+        {
+          "value": "email",
+          "label": "t:blocks._custom-input-field.settings.type.options__2.label"
+        },
+        {
+          "value": "number",
+          "label": "t:blocks._custom-input-field.settings.type.options__3.label"
+        },
+        {
+          "value": "tel",
+          "label": "t:blocks._custom-input-field.settings.type.options__4.label"
+        },
+        {
+          "value": "url",
+          "label": "t:blocks._custom-input-field.settings.type.options__5.label"
+        },
+        {
+          "value": "date",
+          "label": "t:blocks._custom-input-field.settings.type.options__6.label"
+        }
+      ],
+      "default": "text"
+    },
+    {
+      "type": "text",
+      "id": "name",
+      "label": "t:blocks._custom-input-field.settings.name.label",
+      "default": "Field name"
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "t:blocks._custom-input-field.settings.placeholder.label",
+      "info": "t:blocks._custom-input-field.settings.placeholder.info",
+      "default": "Placeholder text"
+    },
+    {
+      "type": "text",
+      "id": "default",
+      "label": "t:blocks._custom-input-field.settings.default.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "if_required",
+      "label": "t:blocks._custom-input-field.settings.if_required.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._custom-input-field.presets.name"
+    }
+  ]
+}
+{% endschema %}

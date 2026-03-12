@@ -1,0 +1,42 @@
+<div class="shopify-block collection-block" {{ block.shopify_attributes }}>
+  {% render 'card-collection',
+    card_collection: block.settings.collection,
+    title: block.settings.title,
+    image: block.settings.image,
+    color_scheme: section.settings.color_scheme,
+    image_ratio: section.settings.image_ratio,
+    show_product_count: section.settings.show_product_count,
+    show_wrapper: section.settings.show_card_wrapper,
+    text_alignment: section.settings.card_text_alignment
+  %}
+</div>
+
+{% schema %}
+{
+  "name": "t:blocks._collection.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:sections.all.collection.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.all.image.image_picker.label",
+      "info": "t:blocks._collection.settings.image.info"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "t:sections.all.title.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._collection.presets.name"
+    }
+  ]
+}
+{% endschema %}

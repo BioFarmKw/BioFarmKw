@@ -1,0 +1,26 @@
+.reading-text__wrapper reading-text {
+  font-size: 1.25rem;
+}
+.reading-text__wrapper reading-text.font-size-medium {
+  font-size: 2.5rem;
+}
+.reading-text__wrapper reading-text.font-size-large {
+  font-size: 4rem;
+}
+.reading-text__wrapper reading-text.font-size-s-large {
+  font-size: 6rem;
+}
+@media screen and (max-width: 749px) {
+  .reading-text__wrapper reading-text {
+    font-size: 1rem;
+  }
+  .reading-text__wrapper reading-text.font-size-medium {
+    font-size: 2rem;
+  }
+  .reading-text__wrapper reading-text.font-size-large {
+    font-size: 3rem;
+  }
+  .reading-text__wrapper reading-text.font-size-s-large {
+    font-size: 4rem;
+  }
+}

@@ -1,0 +1,177 @@
+{% liquid
+  assign image = block.settings.image | default: block.settings.video.preview_image
+  assign image_mobile = block.settings.image_mobile | default: block.settings.video_mobile.preview_image
+
+  assign ratio_percent = 1
+  if block.settings.image_ratio == 'adapt' and image != blank
+    assign ratio_percent = image.aspect_ratio
+  endif
+
+  assign ratio_percent_mobile = 1
+  if block.settings.image_ratio_mobile == 'adapt'
+    if image_mobile != blank
+      assign ratio_percent_mobile = image_mobile.aspect_ratio
+    elsif image != blank
+      assign ratio_percent_mobile = image.aspect_ratio
+    endif
+  endif
+%}
+
+<div class="shopify-block video-block" {{ block.shopify_attributes }}>
+  <deferred-media
+    class="video-model-media deferred-media media-fit--cover{% if block.settings.video_mobile != blank %} small-hide{% endif %}"
+    data-load-when-visible
+  >
+    <div
+      class="media-poster media media--{{ block.settings.image_ratio }} media-mobile--{{ block.settings.image_ratio_mobile }}"
+      style="--ratio-percent: {{ 1 | divided_by: ratio_percent | times: 100 | round }}%; --ratio-percent-mobile: {{ 1 | divided_by: ratio_percent_mobile | times: 100 | round }}%"
+    >
+      {% assign alt = 'sections.video.load_video' | t: description: block.settings.video.alt %}
+      {% render 'lazy-image',
+        image_object: image,
+        has_mobile: image_mobile,
+        sizes: '50vw',
+        alt: alt,
+        placeholder: 'image'
+      %}
+
+      {% render 'lazy-image', image_object: image_mobile, is_mobile: true, sizes: '50vw', alt: alt %}
+    </div>
+    {%- if block.settings.video != blank -%}
+      <template>
+        {{
+          block.settings.video
+          | video_tag: image_size: '900x', autoplay: true, loop: true, controls: false, muted: true
+        }}
+      </template>
+      <button
+        type="button"
+        class="mute-button button button--icon button--small button--pill"
+        aria-label="{{ 'accessibility.muted' | t }}"
+        aria-pressed="true"
+      >
+        {% render 'icon-sets-basic', icon: 'volume-off' %}
+        {% render 'icon-sets-basic', icon: 'volume-on' %}
+      </button>
+    {%- endif -%}
+  </deferred-media>
+
+  {%- if block.settings.video_mobile != blank -%}
+    <deferred-media
+      class="video-model-media deferred-media media-fit--cover medium-hide large-up-hide"
+      data-load-when-visible
+    >
+      <div
+        class="media-poster media media-mobile--{{ block.settings.image_ratio_mobile }}"
+        style="--ratio-percent-mobile: {{ 1 | divided_by: ratio_percent_mobile | times: 100 | round }}%"
+      >
+        {% assign alt = 'sections.video.load_video' | t: description: block.settings.video_mobile.alt %}
+        {% render 'lazy-image', image_object: image_mobile, sizes: '50vw', alt: alt, placeholder: 'image' %}
+      </div>
+      {%- if block.settings.video_mobile != blank -%}
+        <template>
+          {{
+            block.settings.video_mobile
+            | video_tag: image_size: '900x', autoplay: true, loop: true, controls: false, muted: true
+          }}
+        </template>
+        <button
+          type="button"
+          class="mute-button button button--icon button--small button--pill"
+          aria-label="{{ 'accessibility.muted' | t }}"
+          aria-pressed="true"
+        >
+          {% render 'icon-sets-basic', icon: 'volume-off' %}
+          {% render 'icon-sets-basic', icon: 'volume-on' %}
+        </button>
+      {%- endif -%}
+    </deferred-media>
+  {%- endif -%}
+</div>
+{% schema %}
+{
+  "name": "t:blocks._video.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.all.image.image_picker.label",
+      "info": "t:blocks._video.settings.image.info"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "t:sections.all.video.video.label"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "t:sections.all.image.image_ratio.label",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.all.image.image_height.options__4.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.all.image.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.all.image.image_ratio.options__2.label"
+        },
+        {
+          "value": "landscape",
+          "label": "t:sections.all.image.image_ratio.options__3.label"
+        }
+      ],
+      "default": "square"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.mobile.header_content"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "t:sections.all.image.image_picker.label",
+      "info": "t:blocks._video.settings.image_mobile.info"
+    },
+    {
+      "type": "video",
+      "id": "video_mobile",
+      "label": "t:sections.all.video.video.label"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio_mobile",
+      "label": "t:sections.all.image.image_ratio.label",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.all.image.image_height.options__4.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.all.image.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.all.image.image_ratio.options__2.label"
+        },
+        {
+          "value": "landscape",
+          "label": "t:sections.all.image.image_ratio.options__3.label"
+        }
+      ],
+      "default": "square"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._video.presets.name"
+    }
+  ]
+}
+{% endschema %}

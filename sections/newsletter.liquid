@@ -1,0 +1,299 @@
+{{ 'section-newsletter.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  .section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
+    margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    .section-{{ section.id }}-margin {
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- if section.settings.side_image != blank -%}
+  {% capture side_image %}
+      {% render 'lazy-image',
+        image_object: section.settings.side_image,
+        sizes: '(min-width: 750px) 50vw, 100vw',
+        class: 'newsletter-image'
+      %}
+  {% endcapture %}
+{%- endif -%}
+
+<div class="section-newsletter isolate color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-margin">
+  {%- if section.settings.background_image or section.settings.background_image_mobile -%}
+    <div
+      class="background-image{% if section.settings.image_behavior != 'none' %} image--has-behavior behavior--{{ section.settings.image_behavior }}{% if section.settings.image_behavior == 'zoom-in' or section.settings.image_behavior == 'parallax' %} scroll-synergy{% endif %}{% endif %}"
+      style="opacity: {{ section.settings.background_image_opacity }}%;"
+    >
+      {% render 'lazy-image',
+        has_mobile: section.settings.background_image_mobile,
+        image_object: section.settings.background_image
+      %}
+      {% render 'lazy-image', is_mobile: true, image_object: section.settings.background_image_mobile %}
+    </div>
+  {%- endif -%}
+  <div class="section__wrapper newsletter__wrapper image-width--{{ section.settings.side_image_width | default: 'small' }}">
+    {%- if side_image != blank and section.settings.side_image_position == 'left' -%}
+      {{ side_image }}
+    {%- endif -%}
+    <div class="newsletter-main section-{{ section.id }}-padding">
+      <div class="content-group width--{{ section.settings.content_width }} text-align--{{ section.settings.text_alignment }} text-align-mobile--{{ section.settings.text_alignment_mobile }}">
+        {% content_for 'blocks' %}
+      </div>
+    </div>
+    {%- if side_image != blank and section.settings.side_image_position == 'right' -%}
+      {{ side_image }}
+    {%- endif -%}
+  </div>
+
+  {% render 'section-id-tip', section_id: section.id %}
+</div>
+{% schema %}
+{
+  "name": "t:sections.newsletter.name",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.drawer", "custom.popup"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.scheme.label",
+      "default": "scheme-2"
+    },
+    {
+      "type": "select",
+      "id": "content_width",
+      "label": "t:sections.all.content.content_width.label",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:sections.all.content.content_width.options__1.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.all.content.content_width.options__2.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.all.content.content_width.options__3.label"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "text_alignment",
+      "id": "text_alignment",
+      "label": "t:sections.all.text-alignment.label",
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.image.background_image_picker.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "t:sections.all.image.background_image_picker.label"
+    },
+    {
+      "type": "range",
+      "id": "background_image_opacity",
+      "label": "t:sections.all.image.image_opacity.label",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 90
+    },
+    {
+      "type": "select",
+      "id": "image_behavior",
+      "label": "t:sections.all.animation.image_behavior.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.all.animation.image_behavior.options__1.label"
+        },
+        {
+          "value": "fixed",
+          "label": "t:sections.all.animation.image_behavior.options__3.label"
+        },
+        {
+          "value": "zoom-in",
+          "label": "t:sections.all.animation.image_behavior.options__4.label"
+        },
+        {
+          "value": "parallax",
+          "label": "t:sections.all.animation.image_behavior.options__5.label"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.newsletter.settings.header_content"
+    },
+    {
+      "type": "select",
+      "id": "side_image_position",
+      "label": "t:sections.newsletter.settings.side_image_position.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.newsletter.settings.side_image_position.options__1.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.newsletter.settings.side_image_position.options__2.label"
+        }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "image_picker",
+      "id": "side_image",
+      "label": "t:sections.all.image.image_picker.label",
+      "info": "t:sections.newsletter.settings.image.info"
+    },
+    {
+      "type": "select",
+      "id": "side_image_width",
+      "label": "t:sections.all.image.image_width.label",
+      "info": "t:sections.all.desktop.effect.info",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:sections.all.image.image_width.options__1.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.all.image.image_width.options__2.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.all.image.image_width.options__3.label"
+        }
+      ],
+      "default": "small"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.mobile.header_content"
+    },
+    {
+      "type": "text_alignment",
+      "id": "text_alignment_mobile",
+      "label": "t:sections.all.text-alignment.label",
+      "default": "center"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "t:sections.all.image.background_image_picker.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.header_content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top.label",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom.label",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.margin.header_content"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.margin.margin_top.label",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.margin.margin_bottom.label",
+      "default": 88
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "_newsletter"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.newsletter.presets.name",
+      "category": "t:sections.all.categories.forms_interaction",
+      "blocks": [
+        {
+          "type": "heading",
+          "settings": {
+            "content": "Subscribe to our newsletter",
+            "size": "large"
+          }
+        },
+        {
+          "type": "description",
+          "settings": {
+            "content": "<p>Get the latest deals and product updates</p>"
+          }
+        },
+        {
+          "type": "social-list"
+        },
+        {
+          "type": "spacer",
+          "settings": {
+            "height": 16
+          }
+        },
+        {
+          "type": "_newsletter"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

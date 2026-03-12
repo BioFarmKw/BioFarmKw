@@ -1,0 +1,101 @@
+<div class="follow-inner">
+  <div class="follow-account">
+    <span class="follow-account-avatar media media--square media--circle">
+      {% if block.settings.avatar != blank %}
+        {{ block.settings.avatar | image_url: width: 200 | image_tag }}
+      {% else %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </span>
+    <div class="follow-account-info">
+      <div class="follow-account-nickname">{{ block.settings.nickname | escape }}</div>
+      <small class="follow-account-name light">@{{ block.settings.name | escape }}</small>
+    </div>
+  </div>
+  <a
+    class="follow-button button button--small"
+    {% if block.settings.link != blank %}
+      href="{{ block.settings.link }}"
+      target="_blank"
+    {% else %}
+      role="link"
+      aria-disabled="true"
+    {% endif %}
+  >
+    {% render 'icon-sets-basic', icon: block.settings.type %}
+    {{ 'general.social.follow' | t }}
+  </a>
+</div>
+
+{% schema %}
+{
+  "name": "t:blocks.follow.name",
+  "class": "follow-block",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "avatar",
+      "label": "t:sections.all.social.avatar.label",
+      "info": "t:blocks.follow.settings.image.info"
+    },
+    {
+      "type": "text",
+      "id": "nickname",
+      "label": "t:sections.all.social.nickname.label",
+      "default": "Nickname"
+    },
+    {
+      "type": "text",
+      "id": "name",
+      "label": "t:sections.all.social.username.label",
+      "default": "username"
+    },
+    {
+      "type": "select",
+      "id": "type",
+      "label": "t:sections.all.social-list.social_type.label",
+      "options": [
+        {
+          "value": "meta",
+          "label": "Facebook"
+        },
+        {
+          "value": "instagram",
+          "label": "Instagram"
+        },
+        {
+          "value": "twitter",
+          "label": "Twitter"
+        },
+        {
+          "value": "tiktok",
+          "label": "Tiktok"
+        },
+        {
+          "value": "youtube",
+          "label": "Youtube"
+        },
+        {
+          "value": "pinterest",
+          "label": "Pinterest"
+        },
+        {
+          "value": "linkedin",
+          "label": "Linkedin"
+        }
+      ],
+      "default": "pinterest"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:sections.all.social.link.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks.follow.presets.name"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,94 @@
+{% doc %}
+  Card Collection
+
+  @description
+  Displays a collection card with optional image, title, and product count. Supports customizable layout, color scheme, and alignment.
+
+  @param {object} card_collection - Collection object
+  @param {object} [image] - Custom image
+  @param {string} [image_ratio] - Image ratio: square|portrait|landscape
+  @param {string} [image_width] - Optimal width for desktop, used for speed optimization
+  @param {string} [image_width_mobile] - Optimal width for mobile
+  @param {string} [color_scheme] - Content container color scheme
+  @param {string} [title] - Custom title
+  @param {boolean} [truncate_title] - Truncate title
+  @param {boolean} [show_wrapper] - Whether to show container wrapper
+  @param {boolean} [show_product_count] - Whether to show product count
+  @param {string} [text_alignment] - Text alignment: left|center|right
+  @param {string} [placeholder_image] - Placeholder image
+  @param {boolean} [show_horizontal] - Whether to use horizontal layout
+
+  @example
+  {% render 'card-collection', card_collection: collection, image: collection.featured_image, image_ratio: 'square', color_scheme: 'scheme-1', title: collection.title, image_width: '500px', image_width_mobile: '400px', show_wrapper: true, show_product_count: true, text_alignment: 'center', placeholder_image: 'collection-1', show_horizontal: false %}
+{% enddoc %}
+{% liquid
+  assign image_width = image_width | default: '500px'
+  assign image_width_mobile = image_width_mobile | default: '400px'
+
+  assign title = title | default: card_collection.title
+  assign image = image | default: card_collection.featured_image
+
+  assign product_count = card_collection.products_count | default: 0
+
+  assign placeholder_image = placeholder_image | default: 'collection-1'
+  
+  assign is_text_only = false
+  if title contains 'Aromatic Medicinal Leaf Extracts' or card_collection.title contains 'Aromatic Medicinal Leaf Extracts'
+    assign is_text_only = true
+  endif
+%}
+{% capture sizes %}(min-width: 750px) calc({{ image_width }} * 1.5), {{ image_width_mobile | default: '100vw' }}{% endcapture %}
+
+<div class="collection-card card{% if is_text_only %} card--text-only{% endif %}{% if show_horizontal %} card--horizontal{% endif %}{% if show_wrapper %} card--wrapped{% if color_scheme != blank %} color-{{ color_scheme }} gradient{% endif %}{% endif %}">
+  {%- unless is_text_only -%}
+  <div class="card-media">
+    <a
+      class="media media--{{ image_ratio | default: 'square' }} link"
+      {% if card_collection != blank %}
+        href="{{ card_collection.url }}"
+      {% else %}
+        role="link"
+        aria-disabled="true"
+      {% endif %}
+    >
+      {% render 'lazy-image',
+        image_object: image,
+        sizes: sizes,
+        widths: '165, 360, 533, 720, 940, 1066',
+        placeholder: placeholder_image
+      %}
+    </a>
+  </div>
+  {%- endunless -%}
+  <div class="card-content text-align--{{ text_alignment | default: 'center' }}">
+    <div class="card-heading">
+      <a
+        class="link link-underline"
+        {% if card_collection.url != null %}
+          href="{{ card_collection.url }}"
+        {% else %}
+          role="link"
+          aria-disabled="true"
+        {% endif %}
+        aria-label="{{ title }}"
+      >
+        {%- if title != blank -%}
+          {%- if truncate_title -%}
+            <span class="title-more">{{ title | truncate: 30 }}</span>
+            <span class="title-less">{{ title | truncate: 18 }}</span>
+          {%- else -%}
+            {{ title }}
+          {%- endif -%}
+        {%- else -%}
+          {{ 'onboarding.collection_title' | t }}
+        {%- endif -%}
+      </a>
+      {% render 'icon-sets-basic', icon: 'caret-right', class: 'caret-icon' %}
+    </div>
+    {%- if show_product_count -%}
+      <div class="collection-product-count">
+        <small class="light">{{ 'collection.product_count' | t: count: product_count }}</small>
+      </div>
+    {%- endif -%}
+  </div>
+</div>

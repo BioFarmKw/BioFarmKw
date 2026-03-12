@@ -1,0 +1,36 @@
+@media screen and (max-width: 749px) {
+  .bottom-nav-bar {
+    position: fixed;
+    inset-inline-start: 0;
+    inset-block-end: 0;
+    width: 100%;
+    padding-block: 0.5rem;
+    padding-inline: 0;
+    box-shadow: 0 0 0.25rem rgba(var(--color-shadow), 0.2);
+    animation: pushInFromBottom 300ms cubic-bezier(0, 0, 0.3, 1) forwards;
+  }
+  .bottom-nav-bar .nav-item {
+    text-align: center;
+    line-height: 1;
+  }
+  .bottom-nav-bar .nav-item .icon {
+    width: 2rem;
+  }
+  .bottom-nav-bar .nav-item .nav-item-title {
+    font-size: 0.75rem;
+    margin-block-start: 0.25rem;
+  }
+  .bottom-nav-bar .nav-item.nav-item-link .media {
+    display: inline-block;
+    width: 2rem;
+  }
+  .bottom-nav-bar .nav-item.nav-item-cart .cart-count {
+    position: absolute;
+    inset-block-start: 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  html[data-scroll-direction=down] .bottom-nav-bar {
+    animation: pushOutToBottom 300ms cubic-bezier(0, 0, 0.3, 1) forwards;
+  }
+}

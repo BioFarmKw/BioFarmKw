@@ -1,0 +1,17 @@
+{% doc %}
+  Slider Seek Bar
+
+  @description
+  This code snippet is used to create a seek bar for a slider component, allowing users to visually navigate through the slides.
+
+  @param {string} section_id - The unique identifier for the slider, used to control the seek bar.
+  @param {string} [class] - Optional custom class name for style customization.
+
+  @example
+  {% render 'slider-seek-bar', section_id: section.id %}
+{% enddoc %}
+<div
+  class="{% if class != blank %}{{ class }} {% endif %}slider-seek-bar"
+  aria-label="{{ 'general.slider.slide_seek_bar' | t }}"
+  aria-controls="Slider-{{ section_id }}"
+></div>

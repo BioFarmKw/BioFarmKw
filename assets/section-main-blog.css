@@ -1,0 +1,23 @@
+.main-blog__wrapper .main-blog-header {
+  margin-block-end: 3rem;
+}
+.main-blog__wrapper .main-blog-header .blog-tags {
+  display: flex;
+  gap: 1rem;
+}
+.main-blog__wrapper .main-blog-header .blog-tags .blog-tag {
+  flex: 0 0 auto;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+  --alpha-background: 0.02;
+  background: rgba(var(--color-foreground), var(--alpha-background));
+}
+.main-blog__wrapper .main-blog-header .blog-tags .blog-tag:hover {
+  --alpha-background: 0.1;
+}
+.main-blog__wrapper .main-blog-header .blog-tags .blog-tag[aria-current=page] {
+  --alpha-background: 1;
+  color: rgb(var(--color-background));
+}

@@ -1,0 +1,250 @@
+.customer {
+  padding-block-end: 10rem;
+}
+.customer .customer-account-header {
+  padding-block-start: 5rem;
+  padding-block-end: 2rem;
+  margin-block-end: 2rem;
+  border-block-end: 1px solid rgba(var(--color-foreground), 0.1);
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: space-between;
+}
+.customer .customer-account-header .account-heading {
+  font-size: 3.5rem;
+}
+.customer .customer-account-header .account-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-block-end: 0.75rem;
+}
+.customer .customer-account-header .account-badges .badge {
+  background: rgba(var(--color-foreground), 0.02);
+  border: 1px solid rgba(var(--color-foreground), 0.1);
+}
+.customer .customer-account-header .account-subtext p {
+  margin-block-end: 0;
+}
+.customer .customer-account-header .account-subtext p + p {
+  margin-block-start: 0.5rem;
+}
+.customer .account-card {
+  position: relative;
+  border-radius: 0;
+  padding: 2rem;
+}
+.customer .account-card:after {
+  content: "";
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  inset-block-end: 0;
+  inset-inline-start: 0;
+  box-shadow: inset 0 0 0 1px rgba(var(--color-foreground), 0.2);
+  border-radius: 0;
+  pointer-events: none;
+}
+.customer .order-card .card-row {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  --alpha-background: 0;
+  background: rgba(var(--color-foreground), var(--alpha-background));
+}
+.customer .order-card .card-row .card-th {
+  font-size: 0.875rem;
+}
+.customer .order-card .card-row:nth-of-type(odd) {
+  --alpha-background: 0.02;
+}
+.customer .order-card .card-row:hover {
+  --alpha-background: 0.05;
+}
+.customer .address-card {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 1rem;
+}
+.customer .address-card .address-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 1;
+}
+.customer .address-card .address-name .badge {
+  background: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
+}
+.customer .address-card .address-buttons {
+  gap: 0.5rem;
+}
+.customer .customer-order-main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 4rem;
+}
+.customer .customer-order-main .order-content {
+  flex: 1 1 auto;
+}
+.customer .customer-order-main .order-content .order-list .order-item {
+  padding: 1.5rem;
+  border: 1px solid rgba(var(--color-foreground), 0.1);
+}
+.customer .customer-order-main .order-content .order-list .order-item .order-fulfill {
+  margin-block-end: 1.5rem;
+}
+.customer .customer-order-main .order-content .order-list .order-item .order-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+.customer .customer-order-main .order-content .order-list .order-item .order-info .item-image {
+  flex: 0 0 auto;
+  width: 8rem;
+}
+.customer .customer-order-main .order-content .order-list .order-item .order-info .item-info {
+  flex: 1 1 auto;
+}
+.customer .customer-order-main .order-content .order-list .order-item .order-info .item-info > *:not(:last-child) {
+  margin-block-end: 0.5rem;
+}
+.customer .customer-order-main .order-content .order-list .order-item .order-info .item-info .product-price {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.customer .customer-order-main .order-content .order-list .order-item .order-info .item-info .product-price .item-price {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.customer .customer-order-main .order-content .order-list .order-item .order-info .item-info .product-options {
+  font-size: 0.875rem;
+}
+.customer .customer-order-main .order-content .order-list .order-item .order-info .item-info .product-total-price {
+  margin-block-start: 2rem;
+  text-align: end;
+}
+.customer .customer-order-main .order-content .order-list .order-item .order-info .item-info .product-total-price .price {
+  font-size: 1.25rem;
+}
+.customer .customer-order-main .order-content .order-list .order-item .order-info .item-info .plan-item {
+  padding: 0.5rem;
+  background: rgba(var(--color-foreground), 0.02);
+  border: 1px solid rgba(var(--color-foreground), 0.1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.customer .customer-order-main .order-content .order-list .order-item .order-info .item-info .plan-item .icon {
+  width: 1rem;
+  flex: 0 0 auto;
+}
+.customer .customer-order-main .order-content .order-list .order-item .order-info .item-info .discount-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.customer .customer-order-main .order-content .order-list .order-item:not(:last-child) {
+  margin-block-end: 1rem;
+}
+.customer .customer-order-main .order-content .order-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 1rem;
+  margin-block-start: 2rem;
+}
+.customer .customer-order-main .order-content .order-summary > * {
+  width: 100%;
+  max-width: 35rem;
+}
+.customer .customer-order-main .order-content .order-summary .order-subtotal,
+.customer .customer-order-main .order-content .order-summary .order-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.customer .customer-order-main .order-content .order-summary .order-total b:last-child {
+  font-size: 1.5rem;
+}
+.customer .customer-order-main .order-addresses {
+  width: 20rem;
+  flex: 0 0 auto;
+}
+.customer .customer-order-main .order-addresses .billing-address + .shipping-address {
+  padding-block-start: 1rem;
+  margin-block-start: 1rem;
+  border-block-start: 1px solid rgba(var(--color-foreground), 0.1);
+}
+.customer .customer-order-main .order-addresses .address-heading {
+  font-size: 1.25rem;
+}
+.customer .customer-order-main .order-addresses .address-info {
+  margin-block-start: 0.75rem;
+}
+@media screen and (max-width: 749px) {
+  .customer .customer-order-main {
+    flex-direction: column;
+  }
+  .customer .customer-order-main .order-info {
+    width: 100%;
+  }
+  .customer .customer-order-main .order-info .item-image {
+    width: 4rem !important;
+  }
+  .customer .customer-order-main .order-info .order-summary > * {
+    width: 100%;
+  }
+  .customer .customer-order-main .order-addresses {
+    width: 100%;
+    padding-block-start: 2rem;
+    border-block-start: 1px solid rgba(var(--color-foreground), 0.1);
+  }
+}
+
+.address-drawer .drawer-content form {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 1rem;
+}
+.address-drawer .drawer-content form .form-fields {
+  overflow: auto;
+}
+.address-drawer .drawer-content .address-buttons {
+  width: 100%;
+}
+.address-drawer .drawer-content .address-buttons .submit-button {
+  flex: 1 1 auto;
+}
+
+.confirm-modal .modal-close-button {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-end: 0;
+}
+.confirm-modal .modal-inner {
+  padding: 2rem;
+  width: 24rem;
+  min-height: auto;
+}
+.confirm-modal .modal-content {
+  text-align: center;
+}
+.confirm-modal .modal-content .confirm-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-block-start: 2rem;
+}

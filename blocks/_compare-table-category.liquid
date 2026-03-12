@@ -1,0 +1,85 @@
+{%- if block.settings.key != blank -%}
+  {% liquid
+    assign metafield_space_key = block.settings.key | replace: ' ', '' | split: '.'
+    assign key = metafield_space_key.last
+    if key != blank
+      assign translation_key = 'metafields.shopify.' | append: key
+    endif
+
+    assign product_list = section.settings.product_list
+    if product_list != blank
+      assign product_count = product_list.count
+    else
+      assign product_count = 5
+    endif
+  %}
+  {%- if key != blank -%}
+    <tr class="field-name-tr medium-hide large-up-hide" aria-hidden="true">
+      <td colspan="{{ product_count }}">
+        <div>
+          <b>
+            {%- if block.settings.label == blank -%}
+              {{ translation_key | t }}
+            {%- else -%}
+              {{ block.settings.label | escape }}
+            {%- endif -%}
+          </b>
+        </div>
+      </td>
+    </tr>
+    <tr class="shopify-block compare-table-category-block table-row" {{ block.shopify_attributes }}>
+      <td class="field-name-td small-hide">
+        <b>
+          {%- if block.settings.label == blank -%}
+            {{ translation_key | t }}
+          {%- else -%}
+            {{ block.settings.label | escape }}
+          {%- endif -%}
+        </b>
+      </td>
+      {%- for product in product_list -%}
+        <td class="field-value-td">
+          {%- for value in product.metafields.shopify[key].value -%}
+            {{- value.label -}}
+            {% unless forloop.last %}, {% endunless %}
+          {%- endfor -%}
+        </td>
+      {%- else -%}
+        {%- for i in (1..5) -%}
+          <td class="field-value-td">
+            -
+            <span class="visually-hidden">no</span>
+          </td>
+        {%- endfor -%}
+      {%- endfor -%}
+    </tr>
+  {%- endif -%}
+{%- endif -%}
+{% schema %}
+{
+  "name": "t:blocks._compare-table-category.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:blocks._compare-table-category.settings.paragraph.content"
+    },
+    {
+      "type": "text",
+      "id": "key",
+      "label": "t:blocks._compare-table-category.settings.key.label"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "t:blocks._compare-table-category.settings.label.label",
+      "info": "t:blocks._compare-table-category.settings.label.info"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._compare-table-category.presets.name"
+    }
+  ]
+}
+{% endschema %}

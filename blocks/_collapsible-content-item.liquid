@@ -1,0 +1,47 @@
+<details-disclosure>
+  <details
+    class="details-disclosure"
+    {% if block.settings.default_expand %}
+      open
+    {% endif %}
+  >
+    <summary>
+      {{ block.settings.heading | escape }}
+      {% render 'icon-sets-basic', icon: 'caret-down', class: 'caret-icon' %}
+    </summary>
+    <div class="collapsible-content details-disclosure-content rte light">
+      {{ block.settings.content }}
+    </div>
+  </details>
+</details-disclosure>
+{% schema %}
+{
+  "name": "t:blocks._collapsible-content-item.name",
+  "class": "collapsible-content-item-block",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.all.text-content.heading.label",
+      "default": "Collapsible tab heading"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "t:sections.all.text-content.content.label",
+      "default": "<p>Fill in the text content of the collapsible item here. Provide detailed information and explanations for the question.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "default_expand",
+      "label": "t:sections.all.collapse.default_expand.label",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._collapsible-content-item.presets.name"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,21 @@
+<div
+  class="shopify-block collapsible-content-list-block"
+  {{ block.shopify_attributes }}
+>
+  {% content_for 'blocks' %}
+</div>
+
+{% schema %}
+{
+  "name": "t:blocks._collapsible-content-list.name",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "_collapsible-content-title"
+    },
+    {
+      "type": "_collapsible-content-item"
+    }
+  ]
+}
+{% endschema %}

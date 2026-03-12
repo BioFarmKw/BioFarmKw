@@ -1,0 +1,35 @@
+<div class="shopify-block product-block" {{ block.shopify_attributes }}>
+  {% render 'card-product',
+    card_product: block.settings.product,
+    image_width: '200px',
+    image_width_mobile: '200px',
+    show_horizontal: true,
+    truncate_title: block.settings.enable_truncate_title
+  %}
+</div>
+
+{% schema %}
+{
+  "name": "t:blocks._product.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "t:sections.all.product.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_truncate_title",
+      "label": "t:sections.all.title.truncate.label",
+      "info": "t:sections.all.title.truncate.info",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._product.presets.name"
+    }
+  ]
+}
+{% endschema %}

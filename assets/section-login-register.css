@@ -1,0 +1,47 @@
+.login-register__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}
+.login-register__wrapper .main-content {
+  width: 32rem;
+  height: 30rem;
+  padding-block: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(var(--color-background));
+  margin-inline: auto;
+}
+.login-register__wrapper .main-content .content-wrapper {
+  flex: 1 1 auto;
+  scroll-margin-block-start: 30rem;
+}
+.login-register__wrapper .main-content .recover-wrapper {
+  display: none;
+}
+.login-register__wrapper .main-content .recover-wrapper:target {
+  display: block;
+}
+.login-register__wrapper .main-content .recover-wrapper:target ~ .login-wrapper {
+  display: none;
+}
+.login-register__wrapper .main-content .content-title {
+  margin-block-end: 1.5rem;
+}
+.login-register__wrapper .main-content .form-fields .field-input {
+  height: 3.5rem;
+}
+.login-register__wrapper .main-content .button-group {
+  width: 100%;
+}
+.login-register__wrapper .main-content .button-group .button {
+  flex: 1 1 auto;
+}
+.login-register__wrapper .main-content .other-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}

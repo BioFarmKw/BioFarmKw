@@ -1,0 +1,36 @@
+<div class="button-list auto-inline-flex gap-2">
+  {% content_for 'blocks' %}
+</div>
+{% schema %}
+{
+  "name": "t:blocks.buttons.name",
+  "class": "buttons-block",
+  "blocks": [
+    {
+      "type": "button"
+    },
+    {
+      "type": "button-video"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks.buttons.name",
+      "blocks": [
+        {
+          "type": "button",
+          "settings": {
+            "style": "primary"
+          }
+        },
+        {
+          "type": "button",
+          "settings": {
+            "style": "secondary"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

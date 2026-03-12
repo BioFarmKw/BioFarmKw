@@ -1,0 +1,30 @@
+{% render 'subcollection-item',
+  collection: block.settings.collection,
+  title: block.settings.custom_title,
+  class: 'shopify-block collection-subcollection-block',
+  block: block
+%}
+{% schema %}
+{
+  "name": "t:blocks._collection-subcollection.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:sections.all.collection.label"
+    },
+    {
+      "type": "text",
+      "id": "custom_title",
+      "label": "t:blocks._collection-subcollection.settings.custom_title.label",
+      "default": "Subcollections"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._collection-subcollection.presets.name"
+    }
+  ]
+}
+{% endschema %}

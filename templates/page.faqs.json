@@ -1,0 +1,232 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "settings": {
+        "color_scheme": "",
+        "alignment": "left",
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "color_scheme": "",
+        "content_width": "medium",
+        "text_alignment": "center",
+        "background_image_opacity": 90,
+        "image_behavior": "none",
+        "text_alignment_mobile": "center",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "faq_Ja7t8q": {
+      "type": "faq",
+      "blocks": {
+        "section-header": {
+          "type": "_section-header",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "heading_eqwVPE": {
+              "type": "heading",
+              "settings": {
+                "content": "FAQs",
+                "type": "2",
+                "size": "small",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "color",
+                "highlight_color": "#ff0000"
+              },
+              "blocks": {}
+            },
+            "description_dzqN3H": {
+              "type": "description",
+              "settings": {
+                "content": "<p>Everything you need to know</p>",
+                "color_light": false,
+                "limit_description_height": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_eqwVPE",
+            "description_dzqN3H"
+          ]
+        },
+        "collapsible-content-list": {
+          "type": "_collapsible-content-list",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "collapsible_content_title_RQWWqr": {
+              "type": "_collapsible-content-title",
+              "settings": {
+                "icon": "none",
+                "text": "Order & Shipping"
+              },
+              "blocks": {}
+            },
+            "collapsible_content_item_hed9jL": {
+              "type": "_collapsible-content-item",
+              "settings": {
+                "heading": "1. How can I track my order?",
+                "content": "<p>You’ll receive a tracking number by email once your order is shipped. Use it on our website or the carrier’s site to check your delivery status.</p>",
+                "default_expand": false
+              },
+              "blocks": {}
+            },
+            "collapsible_content_item_RrGbK4": {
+              "type": "_collapsible-content-item",
+              "settings": {
+                "heading": "2. How long does shipping take?",
+                "content": "<p>Most orders are delivered within 3–7 business days. International shipping may take longer, depending on location.</p>",
+                "default_expand": false
+              },
+              "blocks": {}
+            },
+            "collapsible_content_item_CFQcMA": {
+              "type": "_collapsible-content-item",
+              "settings": {
+                "heading": "3. Do you offer international shipping?",
+                "content": "<p>Yes, we ship to many countries worldwide. Shipping costs and delivery times will be shown at checkout.</p>",
+                "default_expand": false
+              },
+              "blocks": {}
+            },
+            "collapsible_content_item_iGXXKT": {
+              "type": "_collapsible-content-item",
+              "settings": {
+                "heading": "4. Can I change or cancel my order?",
+                "content": "<p>If your order hasn’t shipped yet, please contact us as soon as possible to request changes or cancellation.</p>",
+                "default_expand": false
+              },
+              "blocks": {}
+            },
+            "collapsible_content_item_cb9zEn": {
+              "type": "_collapsible-content-item",
+              "settings": {
+                "heading": "5. What payment methods do you accept?",
+                "content": "<p>We accept all major credit cards, PayPal, and other secure payment options at checkout.</p>",
+                "default_expand": false
+              },
+              "blocks": {}
+            },
+            "collapsible_content_title_cVWHLY": {
+              "type": "_collapsible-content-title",
+              "settings": {
+                "icon": "none",
+                "text": "Product & Returns"
+              },
+              "blocks": {}
+            },
+            "collapsible_content_item_CFtF4B": {
+              "type": "_collapsible-content-item",
+              "settings": {
+                "heading": "1. What is your return policy?",
+                "content": "<p>Returns are accepted within 30 days of purchase if products are unused and in original packaging. Contact our support for assistance.</p>",
+                "default_expand": false
+              },
+              "blocks": {}
+            },
+            "collapsible_content_item_mAHhJq": {
+              "type": "_collapsible-content-item",
+              "settings": {
+                "heading": "2. Are your products covered by warranty?",
+                "content": "<p>Yes, all our products include a limited warranty. Check the product page or contact us for details.</p>",
+                "default_expand": false
+              },
+              "blocks": {}
+            },
+            "collapsible_content_item_YAzdbq": {
+              "type": "_collapsible-content-item",
+              "settings": {
+                "heading": "3. Do you offer discounts for bulk purchases?",
+                "content": "<p>Yes, special pricing is available for large or business orders. Reach out to us for more information.</p>",
+                "default_expand": false
+              },
+              "blocks": {}
+            },
+            "collapsible_content_item_YBFwBh": {
+              "type": "_collapsible-content-item",
+              "name": "t:blocks._collapsible-content-item.presets.name",
+              "settings": {
+                "heading": "4. Is my personal information secure?",
+                "content": "<p>We take privacy seriously and use advanced security measures to protect your data.</p>",
+                "default_expand": false
+              },
+              "blocks": {}
+            },
+            "collapsible_content_item_dwUVfn": {
+              "type": "_collapsible-content-item",
+              "name": "t:blocks._collapsible-content-item.presets.name",
+              "settings": {
+                "heading": "5. How can I contact customer support?",
+                "content": "<p>You can reach us via email or through our Contact Us page. We aim to reply within 24 hours.</p>",
+                "default_expand": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "collapsible_content_title_RQWWqr",
+            "collapsible_content_item_hed9jL",
+            "collapsible_content_item_RrGbK4",
+            "collapsible_content_item_CFQcMA",
+            "collapsible_content_item_iGXXKT",
+            "collapsible_content_item_cb9zEn",
+            "collapsible_content_title_cVWHLY",
+            "collapsible_content_item_CFtF4B",
+            "collapsible_content_item_mAHhJq",
+            "collapsible_content_item_YAzdbq",
+            "collapsible_content_item_YBFwBh",
+            "collapsible_content_item_dwUVfn"
+          ]
+        },
+        "contact-form": {
+          "type": "_contact-form",
+          "static": true,
+          "settings": {
+            "heading": "Can’t find your answer?",
+            "heading_type": "3",
+            "heading_size": "small",
+            "description": "<p>Feel free to reach out to us!</p>",
+            "alignment": "left",
+            "show_form_phone": true
+          },
+          "blocks": {}
+        }
+      },
+      "name": "FAQs",
+      "settings": {
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "main",
+    "faq_Ja7t8q"
+  ]
+}

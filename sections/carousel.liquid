@@ -1,0 +1,299 @@
+{{ 'component-image-banner.css' | asset_url | stylesheet_tag }}
+{{ 'section-carousel.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
+    margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-margin {
+        margin-top: {{ section.settings.margin_top }}px;
+        margin-bottom: {{ section.settings.margin_bottom }}px;
+      }
+  }
+{%- endstyle -%}
+
+{% liquid
+  assign slide_interval = section.settings.change_slides_speed | times: 1000.00
+%}
+<div id="Carousel-{{ section.id }}" class="carousel isolate section-{{ section.id }}-margin">
+  <div class="section__wrapper carousel__wrapper{% unless section.settings.enable_full_width %} page-width{% endunless %}">
+    <slider-component
+      id="Carousel-{{ section.id }}"
+      class="slider"
+      data-slide-desktop
+      data-slide-mobile
+      data-transition-during="3000"
+      data-draggable
+      {% if section.settings.slide_type == 'slide' %}
+        data-slide-smooth
+      {% endif %}
+      data-looping
+      {% if section.settings.auto_rotate %}
+        data-autoplay
+        data-interval="{{ slide_interval }}"
+      {% endif %}
+      aria-live="polite"
+      aria-atomic="true"
+      aria-label="{{ 'sections.slideshow.carousel' | t }}"
+    >
+      <div class="slider-container">
+        <ul
+          id="Slider-{{ section.id }}"
+          class="slider-wrapper slider-change--{{ section.settings.slide_type }}"
+        >
+          {%- for block in section.blocks -%}
+            <li
+              id="Slide-{{ section.id }}-{{ block.id }}"
+              class="slider-slide{% if forloop.first %} active{% endif %}"
+            >
+              {% render block %}
+            </li>
+          {%- endfor -%}
+        </ul>
+        {%- if section.settings.show_nav_buttons -%}
+          {% assign nav_buttons_position = 'nav-buttons-position--' | append: section.settings.nav_buttons_position %}
+          {% render 'slider-nav-buttons', section_id: section.id, class: nav_buttons_position %}
+        {%- endif -%}
+        {%- if section.settings.show_page_dots -%}
+          {% render 'slider-page-dots',
+            section_id: section.id,
+            auto_rotate: section.settings.auto_rotate,
+            slide_interval: slide_interval
+          %}
+        {%- endif -%}
+      </div>
+    </slider-component>
+  </div>
+
+  {% render 'section-id-tip', section_id: section.id %}
+</div>
+{% schema %}
+{
+  "name": "t:sections.carousel.name",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.drawer", "custom.popup"]
+  },
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_full_width",
+      "label": "t:sections.all.layout.enable_full_width.label",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "image_height",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.all.height.options__1.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.all.height.options__2.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.all.height.options__3.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.all.height.options__4.label"
+        }
+      ],
+      "default": "medium",
+      "label": "t:sections.all.height.label",
+      "info": "t:sections.carousel.settings.image_height.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.layout.header_slider.content"
+    },
+    {
+      "type": "select",
+      "id": "slide_type",
+      "label": "t:sections.all.slider.slide_type.label",
+      "options": [
+        {
+          "value": "slide",
+          "label": "t:sections.all.slider.slide_type.options__1.label"
+        },
+        {
+          "value": "fade",
+          "label": "t:sections.all.slider.slide_type.options__2.label"
+        },
+        {
+          "value": "zoom",
+          "label": "t:sections.all.slider.slide_type.options__3.label"
+        }
+      ],
+      "default": "slide"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_nav_buttons",
+      "label": "t:sections.all.slider.show_nav_buttons.label",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "nav_buttons_position",
+      "label": "t:sections.carousel.settings.nav_buttons_position.label",
+      "options": [
+        {
+          "label": "t:sections.carousel.settings.nav_buttons_position.options__1.label",
+          "value": "sides"
+        },
+        {
+          "label": "t:sections.carousel.settings.nav_buttons_position.options__2.label",
+          "value": "bottom-right"
+        }
+      ],
+      "default": "sides"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_page_dots",
+      "label": "t:sections.all.slider.show_page_dots.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_rotate",
+      "label": "t:sections.all.slider.auto_rotate.label",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "change_slides_speed",
+      "min": 3,
+      "max": 15,
+      "step": 1,
+      "unit": "s",
+      "label": "t:sections.all.slider.change_slides_speed.label",
+      "default": 10,
+      "visible_if": "{{ section.settings.auto_rotate }}"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.margin.header_content"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.margin.margin_top.label",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.margin.margin_bottom.label",
+      "default": 88
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_carousel-image-slide"
+    },
+    {
+      "type": "_carousel-video-slide"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.carousel.presets.name",
+      "category": "t:sections.all.categories.media_layout",
+      "blocks": [
+        {
+          "type": "_carousel-image-slide",
+          "blocks": [
+            {
+              "type": "subheading"
+            },
+            {
+              "type": "heading",
+              "settings": {
+                "size": "large"
+              }
+            },
+            {
+              "type": "description"
+            },
+            {
+              "type": "buttons",
+              "blocks": [
+                {
+                  "type": "button"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "_carousel-video-slide",
+          "blocks": [
+            {
+              "type": "subheading"
+            },
+            {
+              "type": "heading",
+              "settings": {
+                "size": "large"
+              }
+            },
+            {
+              "type": "description"
+            },
+            {
+              "type": "buttons",
+              "blocks": [
+                {
+                  "type": "button"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "_carousel-image-slide",
+          "blocks": [
+            {
+              "type": "subheading"
+            },
+            {
+              "type": "heading",
+              "settings": {
+                "size": "large"
+              }
+            },
+            {
+              "type": "description"
+            },
+            {
+              "type": "buttons",
+              "blocks": [
+                {
+                  "type": "button"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

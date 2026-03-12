@@ -1,0 +1,72 @@
+{% doc %}
+  Star Rating
+
+  @description
+  Renders a 5-star rating display with optional score and review count.
+
+  @param {number} rating_value - The rating value.
+  @param {number} max_value - The maximum rating value.
+  @param {number} [total_count] - Number of reviews.
+  @param {string} [color] - Star color in hex format.
+  @param {string} [size] - Star size: small, medium, or large.
+  @param {boolean} [show_score] - Whether to display the numeric rating.
+  @param {boolean} [show_count] - Whether to display the review count.
+
+  @example
+  {% render 'star-rating', rating_value: 4.5, max_value: 5, total_count: 12, color: '#FFD700', size: 'medium', show_score: true, show_count: true %}
+{% enddoc %}
+
+{% liquid
+  assign rating_value = rating_value | default: 0
+  assign max_value = max_value | floor | default: 5
+
+  if max_value <= 0
+    assign max_value = 5
+  endif
+
+  assign rating_decimal = rating_value | modulo: 1
+  assign rating_int = rating_value | floor
+  if rating_decimal <= 0.3
+    assign rating_decimal = 0
+  elsif rating_decimal >= 0.7
+    assign rating_decimal = 1
+  endif
+%}
+<div class="star-rating star-size--{{ size | default: 'small' }}">
+  <span
+    class="rating"
+    role="img"
+    aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: rating_value, rating_max: max_value }}"
+    {% if color != blank %}
+      style="color: {{ color }};"
+    {% endif %}
+  >
+    {%- for i in (1..rating_int) -%}
+      {%- render 'icon-sets-basic', icon: 'star' -%}
+    {%- endfor -%}
+
+    {%- if rating_decimal > 0 -%}
+      {% if rating_decimal < 1 %}
+        {%- render 'icon-sets-basic', icon: 'half-star' -%}
+      {% else %}
+        {%- render 'icon-sets-basic', icon: 'star' -%}
+      {% endif %}
+      {%- assign rating_res = max_value | minus: rating_int | minus: 1 -%}
+    {%- else -%}
+      {%- assign rating_res = max_value | minus: rating_int -%}
+    {%- endif -%}
+
+    {%- for i in (1..rating_res) -%}
+      {% render 'icon-sets-basic', icon: 'empty-star' %}
+    {%- endfor -%}
+  </span>
+  {%- if show_score -%}
+    <b>
+      {{- rating_value | round: 1 -}}
+      '
+    </b>
+  {%- endif -%}
+  {%- if show_count -%}
+    <span class="light">({{ 'accessibility.star_reviews_total' | t: total: total_count | default: 0 }})</span>
+  {%- endif -%}
+</div>

@@ -1,0 +1,18 @@
+<div
+  class="shopify-block section-header-block content-group group--center text-align--center width--medium"
+  {{ block.shopify_attributes }}
+>
+  {% content_for 'blocks' %}
+</div>
+
+{% schema %}
+{
+  "name": "t:blocks._section-header.name",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "@theme"
+    }
+  ]
+}
+{% endschema %}

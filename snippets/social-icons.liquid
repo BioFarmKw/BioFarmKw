@@ -1,0 +1,199 @@
+{% doc %}
+  Social Icons
+
+  @description
+  Renders a list of social media icons with optional tooltip, style, and size customization.
+
+  @param {string} [class] - CSS class to add to the <ul> element (optional).
+  @param {boolean} [show_tooltip] - Whether to show tooltip on hover (optional, default true).
+  @param {string} [style] - Icon style: 'icon' | 'border' | 'wrapper' | 'solid' (optional, default 'icon').
+  @param {string} [size] - Icon size: 'small' | 'medium' | 'large' (optional, default 'small').
+
+  @example
+  {% render 'social-icons', class: 'my-class', show_tooltip: true, style: 'icon', size: 'small' %}
+{% enddoc %}
+
+<ul class="social-icons social-list list-unstyled{% if class %} {{ class }}{% endif %} social-style--{{ style | default: 'icon' }} social-size--{{ size | default: 'small' }}">
+  {%- if settings.social_facebook_link != blank -%}
+    <li
+      class="social-item hover-trigger"
+      {% if show_tooltip == true %}
+        data-toggle="tooltip"
+        data-title="Facebook"
+      {% endif %}
+    >
+      <a href="{{ settings.social_facebook_link }}" class="link focus-inset" target="_blank">
+        {%- render 'icon-sets-basic', icon: 'meta', class: 'animate--shake' -%}
+        <span class="visually-hidden">Facebook</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_instagram_link != blank -%}
+    <li
+      class="social-item hover-trigger"
+      {% if show_tooltip == true %}
+        data-toggle="tooltip"
+        data-title="Instagram"
+      {% endif %}
+    >
+      <a href="{{ settings.social_instagram_link }}" class="link focus-inset" target="_blank">
+        {%- render 'icon-sets-basic', icon: 'instagram', class: 'animate--shake' -%}
+        <span class="visually-hidden">Instagram</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_youtube_link != blank -%}
+    <li
+      class="social-item hover-trigger"
+      {% if show_tooltip == true %}
+        data-toggle="tooltip"
+        data-title="YouTube"
+      {% endif %}
+    >
+      <a href="{{ settings.social_youtube_link }}" class="link focus-inset" target="_blank">
+        {%- render 'icon-sets-basic', icon: 'youTube', class: 'animate--shake' -%}
+        <span class="visually-hidden">YouTube</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_tiktok_link != blank -%}
+    <li
+      class="social-item hover-trigger"
+      {% if show_tooltip == true %}
+        data-toggle="tooltip"
+        data-title="TikTok"
+      {% endif %}
+    >
+      <a href="{{ settings.social_tiktok_link }}" class="link focus-inset" target="_blank">
+        {%- render 'icon-sets-basic', icon: 'tiktok', class: 'animate--shake' -%}
+        <span class="visually-hidden">TikTok</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_twitter_link != blank -%}
+    <li
+      class="social-item hover-trigger"
+      {% if show_tooltip == true %}
+        data-toggle="tooltip"
+        data-title="Twitter"
+      {% endif %}
+    >
+      <a href="{{ settings.social_twitter_link }}" class="link focus-inset" target="_blank">
+        {%- render 'icon-sets-basic', icon: 'twitter', class: 'animate--shake' -%}
+        <span class="visually-hidden">Twitter</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_snapchat_link != blank -%}
+    <li
+      class="social-item hover-trigger"
+      {% if show_tooltip == true %}
+        data-toggle="tooltip"
+        data-title="Snapchat"
+      {% endif %}
+    >
+      <a href="{{ settings.social_snapchat_link }}" class="link focus-inset" target="_blank">
+        {%- render 'icon-sets-basic', icon: 'snapchat', class: 'animate--shake' -%}
+        <span class="visually-hidden">Snapchat</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_pinterest_link != blank -%}
+    <li
+      class="social-item hover-trigger"
+      {% if show_tooltip == true %}
+        data-toggle="tooltip"
+        data-title="Pinterest"
+      {% endif %}
+    >
+      <a href="{{ settings.social_pinterest_link }}" class="link focus-inset" target="_blank">
+        {%- render 'icon-sets-basic', icon: 'pinterest', class: 'animate--shake' -%}
+        <span class="visually-hidden">Pinterest</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_tumblr_link != blank -%}
+    <li
+      class="social-item hover-trigger"
+      {% if show_tooltip == true %}
+        data-toggle="tooltip"
+        data-title="Tumblr"
+      {% endif %}
+    >
+      <a href="{{ settings.social_tumblr_link }}" class="link focus-inset" target="_blank">
+        {%- render 'icon-sets-basic', icon: 'tumblr', class: 'animate--shake' -%}
+        <span class="visually-hidden">Tumblr</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_vimeo_link != blank -%}
+    <li
+      class="social-item hover-trigger"
+      {% if show_tooltip == true %}
+        data-toggle="tooltip"
+        data-title="Vimeo"
+      {% endif %}
+    >
+      <a href="{{ settings.social_vimeo_link }}" class="link focus-inset" target="_blank">
+        {%- render 'icon-sets-basic', icon: 'vimeo', class: 'animate--shake' -%}
+        <span class="visually-hidden">Vimeo</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_linkedin_link != blank -%}
+    <li
+      class="social-item hover-trigger"
+      {% if show_tooltip == true %}
+        data-toggle="tooltip"
+        data-title="linkedIn"
+      {% endif %}
+    >
+      <a href="{{ settings.social_linkedin_link }}" class="link focus-inset" target="_blank">
+        {%- render 'icon-sets-basic', icon: 'linkedIn', class: 'animate--shake' -%}
+        <span class="visually-hidden">linkedIn</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_whatsapp_link != blank -%}
+    <li
+      class="social-item hover-trigger"
+      {% if show_tooltip == true %}
+        data-toggle="tooltip"
+        data-title="whatsApp"
+      {% endif %}
+    >
+      <a href="{{ settings.social_whatsapp_link }}" class="link focus-inset" target="_blank">
+        {%- render 'icon-sets-basic', icon: 'whatsApp', class: 'animate--shake' -%}
+        <span class="visually-hidden">whatsApp</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_reddit_link != blank -%}
+    <li
+      class="social-item hover-trigger"
+      {% if show_tooltip == true %}
+        data-toggle="tooltip"
+        data-title="Reddit"
+      {% endif %}
+    >
+      <a href="{{ settings.social_reddit_link }}" class="link focus-inset" target="_blank">
+        {%- render 'icon-sets-basic', icon: 'reddit', class: 'animate--shake' -%}
+        <span class="visually-hidden">Reddit</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_discord_link != blank -%}
+    <li
+      class="social-item hover-trigger"
+      {% if show_tooltip == true %}
+        data-toggle="tooltip"
+        data-title="Discord"
+      {% endif %}
+    >
+      <a href="{{ settings.social_discord_link }}" class="link focus-inset" target="_blank">
+        {%- render 'icon-sets-basic', icon: 'discord', class: 'animate--shake' -%}
+        <span class="visually-hidden">Discord</span>
+      </a>
+    </li>
+  {%- endif -%}
+</ul>

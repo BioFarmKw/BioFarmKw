@@ -1,0 +1,196 @@
+{{ 'section-flexible-images.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
+    margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-margin {
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div class="flexible-images isolate section-{{ section.id }}-margin">
+  <flexible-images class="section__wrapper flexible-images__wrapper{% unless section.settings.enable_full_width %} page-width{% endunless %}">
+    {% content_for 'blocks' %}
+  </flexible-images>
+
+  {% render 'section-id-tip', section_id: section.id %}
+</div>
+<script src="{{ 'flexible-images.js' | asset_url }}" defer></script>
+{% schema %}
+{
+  "name": "t:sections.flexible-images.name",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.drawer", "custom.popup"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_full_width",
+      "label": "t:sections.all.layout.enable_full_width.label",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.margin.header_content"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.margin.margin_top.label",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.margin.margin_bottom.label",
+      "default": 88
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_flexible-image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.flexible-images.presets.name",
+      "category": "t:sections.all.categories.media_layout",
+      "blocks": [
+        {
+          "type": "_flexible-image",
+          "settings": {
+            "color_scheme": "scheme-2",
+            "desktop_content_position": "middle-center",
+            "text_alignment": "center"
+          },
+          "blocks": [
+            {
+              "type": "subheading"
+            },
+            {
+              "type": "heading",
+              "settings": {
+                "size": "medium"
+              }
+            },
+            {
+              "type": "description"
+            },
+            {
+              "type": "button"
+            }
+          ]
+        },
+        {
+          "type": "_flexible-image",
+          "blocks": [
+            {
+              "type": "subheading"
+            },
+            {
+              "type": "heading"
+            },
+            {
+              "type": "description"
+            },
+            {
+              "type": "button"
+            }
+          ]
+        },
+        {
+          "type": "_flexible-image",
+          "settings": {
+            "color_scheme": "scheme-2",
+            "desktop_content_position": "bottom-left",
+            "text_alignment": "left"
+          },
+          "blocks": [
+            {
+              "type": "subheading"
+            },
+            {
+              "type": "heading"
+            },
+            {
+              "type": "description"
+            },
+            {
+              "type": "button"
+            }
+          ]
+        },
+        {
+          "type": "_flexible-image",
+          "blocks": [
+            {
+              "type": "subheading"
+            },
+            {
+              "type": "heading"
+            },
+            {
+              "type": "description"
+            },
+            {
+              "type": "button"
+            }
+          ]
+        },
+        {
+          "type": "_flexible-image",
+          "settings": {
+            "color_scheme": "scheme-2",
+            "desktop_content_position": "bottom-left",
+            "text_alignment": "left"
+          },
+          "blocks": [
+            {
+              "type": "subheading"
+            },
+            {
+              "type": "heading"
+            },
+            {
+              "type": "description"
+            },
+            {
+              "type": "button"
+            }
+          ]
+        },
+        {
+          "type": "_flexible-image",
+          "blocks": [
+            {
+              "type": "subheading"
+            },
+            {
+              "type": "heading"
+            },
+            {
+              "type": "description"
+            },
+            {
+              "type": "button"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

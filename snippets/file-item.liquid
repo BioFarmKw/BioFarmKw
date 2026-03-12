@@ -1,0 +1,32 @@
+{% doc %}
+  File Item
+
+  @description
+  Displays a file item with a download button.
+
+  @param {string} [type] - The type of file (e.g., 'pdf', 'image', 'file'), default of 'file'.
+  @param {string} name - The name of the file.
+  @param {string} link - The URL to download the file.
+  @param {object} [block] - Optional block object for additional attributes.
+  @param {string} [class] - Optional
+
+  @example
+  {% render 'file-item', name: 'Example File', link: 'https://example.com/file.pdf' %}
+{% enddoc %}
+
+{% assign type = type | default: 'file' %}
+<div
+  class="{% if class != blank %}{{ class }} {% endif %}file-item"
+  {% if block != blank %}
+    {{ block.shopify_attributes -}}
+  {% endif %}
+>
+  <span class="file-name">
+    {% render 'icon-sets', icon: type %}
+    {{ name | escape }}
+  </span>
+  <a href="{{ link }}" class="download-button button button--mini" target="_blank">
+    {% render 'icon-sets', icon: 'download' %}
+    {{ 'general.download' | t }}
+  </a>
+</div>

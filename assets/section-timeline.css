@@ -1,0 +1,77 @@
+.timeline-list-block .event-block {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.timeline-list-block .event-block .event-content {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.timeline-list-block .event-block .event-content .content-group {
+  padding-inline: 2rem;
+  padding-block: 4rem;
+  text-align: center;
+}
+.timeline-list-block .event-block:before, .timeline-list-block .event-block:after {
+  content: "";
+  position: absolute;
+  inset-inline-start: 50%;
+  transform: translateX(calc(-50% * var(--translate-x-direction)));
+  inset-block-start: 0;
+}
+.timeline-list-block .event-block:before {
+  width: 0.875rem;
+  height: 0.875rem;
+  border-radius: 9999px;
+  --alpha-background: 1;
+  background: rgba(var(--color-foreground), var(--alpha-background));
+}
+.timeline-list-block .event-block:after {
+  width: 1px;
+  height: 100%;
+  background: rgba(var(--color-foreground), 0.1);
+}
+.timeline-list-block .event-block:nth-child(odd) {
+  justify-content: flex-end;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .timeline-list-block .event-block .event-content {
+    visibility: hidden;
+    opacity: 0;
+  }
+  .timeline-list-block .event-block:before {
+    width: 0;
+    height: 0;
+    transition: all 300ms cubic-bezier(0, 0, 0.3, 1);
+  }
+  .timeline-list-block .event-block.synergy-position--2 .event-content {
+    visibility: visible;
+    animation-name: slideInFromLeft;
+    animation-duration: 300ms;
+    animation-timing-function: cubic-bezier(0, 0, 0.3, 1);
+    animation-fill-mode: forwards;
+  }
+  .timeline-list-block .event-block.synergy-position--2:nth-child(odd) .event-content {
+    animation-name: slideInFromRight;
+  }
+  .timeline-list-block .event-block.synergy-position--2:before {
+    width: 0.875rem;
+    height: 0.875rem;
+    --color-pulse: var(--color-foreground);
+    animation: pulse 1200ms cubic-bezier(0, 0, 0.3, 1) infinite;
+  }
+}
+@media screen and (max-width: 749px) {
+  .timeline-list-block .event-block {
+    justify-content: flex-start;
+  }
+  .timeline-list-block .event-block .event-content {
+    width: 100%;
+  }
+  .timeline-list-block .event-block:before, .timeline-list-block .event-block:after {
+    inset-inline-start: 0;
+    inset-block-start: 0;
+  }
+}

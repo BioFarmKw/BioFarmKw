@@ -1,0 +1,64 @@
+<div
+  class="shopify-block countdown-block{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--scale-in{% endif %}"
+  {{ block.shopify_attributes }}
+>
+  {% render 'countdown',
+    simple: block.settings.simple,
+    end_time: block.settings.end_time,
+    end_text: block.settings.end_text,
+    hide_when_end: block.settings.hide_when_end,
+    timer_background: block.settings.timer_background_color,
+    timer_foreground: block.settings.timer_foreground_color
+  %}
+</div>
+
+{% schema %}
+{
+  "name": "t:blocks.countdown.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "simple",
+      "label": "t:blocks.countdown.settings.simple.label",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "end_time",
+      "label": "t:blocks.countdown.settings.end_time.label",
+      "info": "t:blocks.countdown.settings.end_time.info",
+      "default": "2025-12-31 15:23"
+    },
+    {
+      "type": "text",
+      "id": "end_text",
+      "label": "t:blocks.countdown.settings.end_text.label",
+      "default": "Timer complete message"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_when_end",
+      "label": "t:blocks.countdown.settings.hide_when_end.label",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "timer_background_color",
+      "label": "t:blocks.countdown.settings.timer_background_color.label",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "timer_foreground_color",
+      "label": "t:blocks.countdown.settings.timer_foreground_color.label",
+      "default": "#FFFFFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks.countdown.presets.name"
+    }
+  ]
+}
+{% endschema %}

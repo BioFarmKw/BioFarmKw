@@ -1,0 +1,325 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-list-collection-banner": {
+      "type": "main-list-collection-banner",
+      "blocks": {
+        "subheading_4exiNX": {
+          "type": "subheading",
+          "name": "t:blocks.subheading.presets.name",
+          "settings": {
+            "content": "BioFarm"
+          },
+          "blocks": {}
+        },
+        "heading_mAmELC": {
+          "type": "heading",
+          "name": "t:blocks.heading.presets.name",
+          "settings": {
+            "content": "All Categories",
+            "type": "1",
+            "size": "large",
+            "uppercase": false,
+            "enable_highlight_text": true,
+            "highlight_type": "hand-drawn-circle",
+            "highlight_color": "#ffd600"
+          },
+          "blocks": {}
+        },
+        "description_aJD9qR": {
+          "type": "description",
+          "name": "t:blocks.description.presets.name",
+          "disabled": true,
+          "settings": {
+            "content": "<h5><em><strong>Browse the complete categories.</strong></em></h5>",
+            "color_light": false,
+            "limit_description_height": false
+          },
+          "blocks": {}
+        },
+        "social_list_pNzgQH": {
+          "type": "social-list",
+          "name": "t:blocks.social-list.presets.name",
+          "settings": {
+            "style": "border",
+            "size": "small",
+            "show_tooltip": false
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "subheading_4exiNX",
+        "heading_mAmELC",
+        "description_aJD9qR",
+        "social_list_pNzgQH"
+      ],
+      "disabled": true,
+      "settings": {
+        "enable_full_width": true,
+        "height": "small",
+        "color_scheme": "scheme-3",
+        "background_image": "shopify://shop_images/AllproductImages.png",
+        "background_image_opacity": 60,
+        "image_behavior": "none",
+        "content_position": "middle-center",
+        "content_width": "medium",
+        "text_alignment": "center",
+        "text_alignment_mobile": "center",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "settings": {
+        "color_scheme": "",
+        "alignment": "left",
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-list-collections",
+      "name": "Category List Section",
+      "settings": {
+        "pagination_style": "paginator",
+        "limit": 16,
+        "sort": "alphabetical",
+        "card_size": "medium",
+        "image_ratio": "portrait",
+        "show_card_wrapper": true,
+        "color_scheme": "scheme-1",
+        "show_product_count": true,
+        "text_alignment": "center",
+        "margin_top": 0,
+        "margin_bottom": 24
+      }
+    },
+    "featured_collection_XA6zwg": {
+      "type": "featured-collection",
+      "blocks": {
+        "section-header": {
+          "type": "_section-header",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "heading_WnPQXc": {
+              "type": "heading",
+              "settings": {
+                "content": "Our Best Sellers",
+                "type": "2",
+                "size": "small",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "underline",
+                "highlight_color": "#676432"
+              },
+              "blocks": {}
+            },
+            "description_BtDYWH": {
+              "type": "description",
+              "settings": {
+                "content": "<p>Discover what everyone loves most</p>",
+                "color_light": false,
+                "limit_description_height": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_WnPQXc",
+            "description_BtDYWH"
+          ]
+        },
+        "product-list": {
+          "type": "_product-list",
+          "static": true,
+          "settings": {
+            "collection": "leafy-vegetables",
+            "limit": 5,
+            "show_collection_image": false,
+            "collection_color_scheme": "",
+            "image_opacity": 90,
+            "slider_on_desktop": true,
+            "show_nav_buttons": true,
+            "show_seek_bar": true,
+            "card_size": "small",
+            "image_ratio": "portrait",
+            "text_alignment": "center",
+            "show_card_wrapper": false,
+            "color_scheme": "",
+            "slider_on_mobile": true
+          },
+          "blocks": {
+            "heading_wTPeh8": {
+              "type": "heading",
+              "settings": {
+                "content": "Add Heading here",
+                "type": "3",
+                "size": "small",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "hand-drawn-circle",
+                "highlight_color": "#ffd600"
+              },
+              "blocks": {}
+            },
+            "description_hxTBAk": {
+              "type": "description",
+              "settings": {
+                "content": "<p>Add some description here</p>",
+                "color_light": false,
+                "limit_description_height": false
+              },
+              "blocks": {}
+            },
+            "button_DJn473": {
+              "type": "button",
+              "settings": {
+                "style": "primary",
+                "size": "small",
+                "icon": "none",
+                "button_label": "Button label",
+                "button_link": "",
+                "open_in_new_tab": false,
+                "show_arrow": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_wTPeh8",
+            "description_hxTBAk",
+            "button_DJn473"
+          ]
+        }
+      },
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "trust_promises_DN6MEP": {
+      "type": "trust-promises",
+      "blocks": {
+        "section-header": {
+          "type": "_section-header",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "heading_fnha9Y": {
+              "type": "heading",
+              "settings": {
+                "content": "<em>Why</em> Choose Us",
+                "type": "2",
+                "size": "small",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "underline",
+                "highlight_color": "#676432"
+              },
+              "blocks": {}
+            },
+            "description_DDpMNi": {
+              "type": "description",
+              "settings": {
+                "content": "<p>Quality and care you can always trust</p>",
+                "color_light": false,
+                "limit_description_height": true
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_fnha9Y",
+            "description_DDpMNi"
+          ]
+        },
+        "promise-list": {
+          "type": "_promise-list",
+          "static": true,
+          "settings": {
+            "columns": 4,
+            "icon_size": "s-large",
+            "show_wrapper": false,
+            "slider_on_mobile": true
+          },
+          "blocks": {
+            "promise_item_gHaWgB": {
+              "type": "_promise-item",
+              "settings": {
+                "icon": "truck",
+                "heading": "Free Shipping",
+                "description": "<p>Free Delivery Over 5KD</p>"
+              },
+              "blocks": {}
+            },
+            "promise_item_nCcMfw": {
+              "type": "_promise-item",
+              "settings": {
+                "icon": "return",
+                "heading": "Easy Returns",
+                "description": "<p>2-Day Free Returns</p>"
+              },
+              "blocks": {}
+            },
+            "promise_item_af8GCL": {
+              "type": "_promise-item",
+              "settings": {
+                "icon": "security",
+                "heading": "Secure Payment",
+                "description": "<p>100% Secure Checkout</p>"
+              },
+              "blocks": {}
+            },
+            "promise_item_GArxiC": {
+              "type": "_promise-item",
+              "settings": {
+                "icon": "guarantee",
+                "heading": "Quality Guarantee",
+                "description": "<p>Fresh Vegetables & Fruits Guaranteed</p>"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "promise_item_gHaWgB",
+            "promise_item_nCcMfw",
+            "promise_item_af8GCL",
+            "promise_item_GArxiC"
+          ]
+        }
+      },
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    }
+  },
+  "order": [
+    "main-list-collection-banner",
+    "breadcrumb",
+    "main",
+    "featured_collection_XA6zwg",
+    "trust_promises_DN6MEP"
+  ]
+}

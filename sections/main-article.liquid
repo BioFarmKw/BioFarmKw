@@ -1,0 +1,695 @@
+{{ 'section-main-article.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  .section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
+    margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    .section-{{ section.id }}-margin {
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<article
+  class="main-article isolate color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-margin"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div class="section__wrapper main-article__wrapper page-width section-{{ section.id }}-padding{% if section.blocks.size > 0 %} width--medium has-aside{% else %} width--narrow{% endif %}">
+    <header class="main-article-header content-group width--large group--{{ section.settings.text_alignment }} text-align--{{ section.settings.text_alignment }}">
+      {%- if article.tags.size > 0 -%}
+        <div class="article-tags">
+          {% for tag in article.tags %}
+            <a href="{{ blog.url }}/tagged/{{ tag | handleize }}" class="article-tag link link-text">
+              {{- tag -}}
+            </a>
+            {%- unless forloop.last -%},{%- endunless -%}
+          {% endfor %}
+        </div>
+      {%- endif -%}
+      <h1 class="article-title text-content-heading heading-size--{{ section.settings.heading_size }}">
+        {{ article.title }}
+      </h1>
+      <div class="article-author light">
+        <span class="publish-date">
+          {% render 'icon-sets', icon: 'clock' %}
+          {{ article.published_at | date: '%b %d, %Y' }}
+        </span>
+        /
+        <span class="author-name">
+          {% render 'icon-sets', icon: 'author' %}
+          {{ article.author -}}
+        </span>
+        {%- if article.comments_count > 0 and blog.comments_enabled? -%}
+          /
+          <span class="comments-count">
+            {% render 'icon-sets', icon: 'chat' %}
+            {{- 'blogs.article.comments' | t: count: article.comments_count -}}
+          </span>
+        {%- endif -%}
+      </div>
+    </header>
+    <div class="main-article-content">
+      <div class="article-main-details">
+        {% if article.image != blank %}
+          <div class="article-image">
+            {% render 'lazy-image', image_object: article.image %}
+          </div>
+        {% endif %}
+        <div class="article-content rte">
+          {{ article.content }}
+        </div>
+        <div class="article-meta">
+          <div class="article-blog">
+            <small class="light">Blog:</small>
+            <a href="{{  blog.url }}" class="link link-text show-underline">{{ blog.title }}</a>
+          </div>
+          {%- if section.settings.enable_share -%}
+            {% assign share_url = request.origin | append: article.url %}
+            <div class="article-share">
+              <small class="light">{{ 'general.share.to' | t }}:</small>
+              {% render 'share-links',
+                link: share_url,
+                title: article.title,
+                media: article.image,
+                icon_style: 'border'
+              %}
+            </div>
+          {%- endif -%}
+        </div>
+
+        <div class="article-navs">
+          {%- if blog.next_article != blank -%}
+            <a class="nav-button nav-button--prev link" href="{{ blog.next_article }}">
+              <div class="nav-title">
+                {% render 'icon-sets-basic', icon: 'caret-left', class: 'caret-icon' %}
+                <b>{{ 'blogs.article.previous' | t }}</b>
+              </div>
+              <div class="nav-article light">{{ blog.next_article.title | truncate: 50 }}</div>
+            </a>
+          {%- endif -%}
+          {%- if blog.previous_article != blank -%}
+            <a class="nav-button nav-button--next link" href="{{ blog.previous_article }}">
+              <div class="nav-title">
+                <b>{{ 'blogs.article.next' | t }}</b>
+                {% render 'icon-sets-basic', icon: 'caret-right', class: 'caret-icon' %}
+              </div>
+              <div class="nav-article light">{{ blog.previous_article.title | truncate: 50 }}</div>
+            </a>
+          {%- endif -%}
+        </div>
+
+        {% comment %} Article comments {% endcomment %}
+        {%- if blog.comments_enabled? -%}
+          <div class="article-comments">
+            {%- form 'new_comment', article -%}
+              {%- liquid
+                assign post_message = 'blogs.article.success'
+                if blog.moderated? and comment.status == 'unapproved'
+                  assign post_message = 'blogs.article.success_moderated'
+                endif
+              -%}
+              {%- if form.errors -%}
+                <div class="alert-message alert-error" role="alert" autofocus tabindex="-1">
+                  <div class="message-title">{{ 'templates.contact.form.error_heading' | t }}</div>
+                  <ul class="message-list">
+                    {%- for field in form.errors -%}
+                      <li id="Comment-Form-{{ field | capitalize }}-Error">
+                        {%- if field == 'form' -%}
+                          {{ form.errors.messages[field] }}
+                        {%- else -%}
+                          {{ form.errors.translated_fields[field] }} - {{ form.errors.messages[field] }}
+                        {%- endif -%}
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              {%- elsif form.posted_successfully? -%}
+                <div class="alert-message alert-success" role="alert" autofocus tabindex="-1">
+                  {{ post_message | t }}
+                </div>
+              {%- endif -%}
+
+              <div class="comment-header content-group group--compact">
+                <h2 class="text-content-heading h3">{{ 'blogs.article.comment_form_title' | t }}</h2>
+                <div class="text-content-description light">{{ 'blogs.article.comment_form_description' | t }}</div>
+              </div>
+
+              <div class="comment-form form-fields">
+                <div class="field-line-group">
+                  <div class="field{% if form.errors contains 'author' %} field-error{% endif %}">
+                    <input
+                      id="Comment-Form-Author"
+                      class="field-input"
+                      type="text"
+                      name="comment[author]"
+                      autocomplete="name"
+                      value="{{ form.author }}"
+                      aria-required="true"
+                      required
+                      {% if form.errors contains 'author' %}
+                        aria-invalid="true"
+                        aria-describedby="Comment-Form-Author-Error"
+                      {% endif %}
+                      placeholder="{{ 'blogs.article.name' | t }}"
+                    >
+                    <label class="field-label" for="Comment-Form-Author">
+                      {{- 'blogs.article.name' | t }}
+                      <span aria-hidden="true">*</span>
+                    </label>
+                  </div>
+                  <div class="field{% if form.errors contains 'email' %} field-error{% endif %}">
+                    <input
+                      id="Comment-Form-Email"
+                      class="field-input"
+                      type="email"
+                      name="comment[email]"
+                      autocomplete="email"
+                      value="{{ form.email }}"
+                      autocorrect="off"
+                      autocapitalize="off"
+                      pattern=".+@.+\.[a-zA-Z]{2,}$"
+                      title="{{ 'newsletter.valid_email' | t }}"
+                      required
+                      {% if form.errors contains 'email' %}
+                        aria-invalid="true"
+                        aria-describedby="Comment-Form-Email-Error"
+                      {% endif %}
+                      placeholder="{{ 'blogs.article.email' | t }}"
+                    >
+                    <label class="field-label" for="Comment-Form-Email">
+                      {{- 'blogs.article.email' | t }}
+                      <span aria-hidden="true">*</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="field{% if form.errors contains 'body' %} field-error{% endif %}">
+                  <textarea
+                    id="Comment-Form-Body"
+                    class="text-area field-input"
+                    rows="12"
+                    name="comment[body]"
+                    aria-required="true"
+                    required
+                    {% if form.errors contains 'body' %}
+                      aria-invalid="true"
+                      aria-describedby="Comment-Form-Body-Error"
+                    {% endif %}
+                    placeholder="{{ 'blogs.article.message' | t }}"
+                  >{{- form.body -}}</textarea>
+                  <label class="field-label" for="Comment-Form-Body">
+                    {{- 'blogs.article.message' | t }}
+                    <span aria-hidden="true">*</span>
+                  </label>
+                </div>
+              </div>
+
+              {%- if blog.moderated? -%}
+                <p class="comment-notice light">{{ 'blogs.article.moderated' | t }}</p>
+              {%- endif -%}
+
+              <button class="comment-submit-button button" type="submit">
+                {{ 'blogs.article.post' | t }}
+                {% render 'icon-sets-basic', icon: 'right' %}
+              </button>
+            {%- endform -%}
+            {%- paginate article.comments by 8 -%}
+              <div id="Paginate-Content" class="comments-list" data-section="{{ section.id }}">
+                <ul class="content-list list-unstyled">
+                  {%- if comment.status == 'pending' and comment.content -%}
+                    <li class="comment-item">
+                      <span class="comment-avatar">
+                        {{- comment.author | slice: 0 -}}
+                      </span>
+                      <div class="comment-info">
+                        <div class="comment-header">
+                          <h3 class="mb-0 h5 font-body">{{ comment.author }}</h3>
+                          <span class="light">{{ comment.created_at | time_tag: format: 'date' }}</span>
+                        </div>
+                        <div class="comment-content light">
+                          {{- comment.content -}}
+                        </div>
+                      </div>
+                    </li>
+                  {%- endif -%}
+                  {%- for comment in article.comments -%}
+                    <li class="comment-item">
+                      <span class="comment-avatar">
+                        {{- comment.author | slice: 0 -}}
+                      </span>
+                      <div class="comment-info">
+                        <div class="comment-header">
+                          <b class="comment-author">{{ comment.author }}</b>
+                          <small class="comment-date light">{{ comment.created_at | time_tag: format: 'date' }}</small>
+                        </div>
+                        <div class="comment-content light">
+                          {{- comment.content -}}
+                        </div>
+                      </div>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+              {% comment %} 显示分页器 {% endcomment %}
+              {% render 'pagination', paginate: paginate %}
+            {%- endpaginate -%}
+          </div>
+        {%- endif -%}
+      </div>
+      {%- if section.blocks.size > 0 -%}
+        <aside class="article-asides">
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'related_products' -%}
+                {%- if block.settings.related_type == 'auto' -%}
+                  <keyword-related-results
+                    id="Keyword-Related-Products-{{ section.id }}"
+                    class="related-results{% if block.settings.mobile_hide %} small-hide{% endif %}"
+                    data-section="{{ section.id }}"
+                    data-search-url="{{ routes.search_url }}"
+                    data-keyword="{{ article.tags | join: ' OR ' }}"
+                    {{ block.shopify_attributes }}
+                  >
+                    <div class="related-title font-heading">{{ block.settings.title | escape }}</div>
+                    <ul class="related-list list-unstyled">
+                      {%- for i in (1..block.settings.limit) -%}
+                        <li class="related-item">
+                          {% render 'card-placeholder', show_horizontal: true %}
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                    {%- if search.performed and search.results.size > 0 -%}
+                      <template>
+                        <ul class="related-list list-unstyled">
+                          {%- for item in search.results limit: block.settings.limit -%}
+                            <li class="related-item">
+                              {% render 'card-product',
+                                card_product: item,
+                                image_width: '200px',
+                                image_width_mobile: '200px',
+                                truncate_title: block.settings.enable_truncate_title,
+                                show_horizontal: true,
+                                show_quick_add: true
+                              %}
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      </template>
+                    {%- endif -%}
+                  </keyword-related-results>
+                {%- else -%}
+                  {% liquid
+                    if block.settings.related_type == 'metafield' and block.settings.metefield != blank
+                      assign metefield_space_key = block.settings.metefield | replace: ' ', '' | split: '.'
+                      assign products = article.metafields[metefield_space_key.first][metefield_space_key.last].value
+                    else
+                      assign products = block.settings.products
+                    endif
+                  %}
+                  {%- if products.size > 0 -%}
+                    <div
+                      class="related-results{% if block.settings.mobile_hide %} small-hide{% endif %}"
+                      {{ block.shopify_attributes }}
+                    >
+                      <div class="related-title font-heading">{{ block.settings.title | escape }}</div>
+                      <ul class="related-list list-unstyled">
+                        {%- for item in products -%}
+                          <li class="related-item">
+                            {% render 'card-product',
+                              card_product: item,
+                              image_width: '200px',
+                              image_width_mobile: '200px',
+                              truncate_title: block.settings.enable_truncate_title,
+                              show_horizontal: true,
+                              show_quick_add: true
+                            %}
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    </div>
+                  {%- endif -%}
+                {%- endif -%}
+              {%- when 'related_articles' -%}
+                <keyword-related-results
+                  id="Keyword-Related-Articles-{{ section.id }}"
+                  class="related-results{% if block.settings.mobile_hide %} small-hide{% endif %}"
+                  data-section="{{ section.id }}"
+                  data-search-url="{{ routes.search_url }}"
+                  data-keyword="{{ article.tags | join: ' OR ' }}"
+                  data-type="article"
+                  {{ block.shopify_attributes }}
+                >
+                  <div class="related-title font-heading">{{ block.settings.title | escape }}</div>
+                  <ul class="related-list list-unstyled">
+                    {%- for i in (1..block.settings.limit) -%}
+                      <li class="related-item">
+                        {% render 'card-placeholder', show_horizontal: true %}
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                  {%- if search.performed and search.results.size > 0 -%}
+                    <template>
+                      <ul class="related-list list-unstyled">
+                        {%- for item in search.results limit: block.settings.limit -%}
+                          <li class="related-item">
+                            {%- render 'card-article',
+                              card_article: item,
+                              image_width: '200px',
+                              image_width_mobile: '200px',
+                              truncate_title: block.settings.enable_truncate_title,
+                              show_date: block.settings.show_date,
+                              show_author: block.settings.show_author,
+                              show_horizontal: true
+                            -%}
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    </template>
+                  {%- endif -%}
+                </keyword-related-results>
+              {%- when 'image_text' -%}
+                <div class="article-image-text" {{ block.shopify_attributes }}>
+                  <div class="image-text-image{% unless block.settings.image_ratio == 'adapt' %} media media--{{ block.settings.image_ratio }}{% endunless %}">
+                    {% render 'lazy-image',
+                      image_object: block.settings.image,
+                      sizes: '400px',
+                      widths: '450, 660, 900',
+                      placeholder: 'image'
+                    %}
+                  </div>
+                  <div class="image-text-heading font-heading">
+                    {{ block.settings.heading | escape }}
+                  </div>
+                  {%- if block.settings.description != blank -%}
+                    <div class="image-text-description rte light">{{ block.settings.description }}</div>
+                  {%- endif -%}
+                  {%- if block.settings.button_label != blank -%}
+                    <a
+                      class="button button--small"
+                      {% if block.settings.button_link != blank %}
+                        href="{{ block.settings.button_link }}"
+                        {% if block.settings.open_in_new_tab %}
+                          target="_blank"
+                          rel="noopener nofollow"
+                        {% endif %}
+                      {% else %}
+                        role="link"
+                        aria-disabled="true"
+                      {% endif %}
+                    >
+                      {{ block.settings.button_label | escape }}
+                      {%- if block.settings.show_arrow -%}
+                        {% render 'icon-sets-basic', icon: 'right', class: 'caret-icon' %}
+                      {%- endif -%}
+                    </a>
+                  {%- endif -%}
+                </div>
+            {%- endcase -%}
+          {%- endfor -%}
+        </aside>
+        <script src="{{ 'keyword-related-results.js' | asset_url }}" defer></script>
+      {%- endif -%}
+    </div>
+  </div>
+</article>
+
+<script type="application/ld+json">
+  {{ article | structured_data }}
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.main-article.name",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.scheme.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text_alignment",
+      "id": "text_alignment",
+      "label": "t:sections.all.text-alignment.label",
+      "default": "center"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_share",
+      "label": "t:sections.main-article.settings.enable_share.label",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.header_content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top.label",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom.label",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.margin.header_content"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.margin.margin_top.label",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.margin.margin_bottom.label",
+      "default": 88
+    }
+  ],
+  "blocks": [
+    {
+      "type": "related_products",
+      "name": "t:sections.main-article.blocks.related_products.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.all.title.label",
+          "default": "Related Products"
+        },
+        {
+          "type": "select",
+          "id": "related_type",
+          "label": "t:sections.main-article.blocks.related_products.settings.related_type.label",
+          "options": [
+            {
+              "value": "auto",
+              "label": "t:sections.main-article.blocks.related_products.settings.related_type.options__1.label"
+            },
+            {
+              "value": "manual",
+              "label": "t:sections.main-article.blocks.related_products.settings.related_type.options__2.label"
+            },
+            {
+              "value": "metafield",
+              "label": "t:sections.main-article.blocks.related_products.settings.related_type.options__3.label"
+            }
+          ],
+          "default": "auto"
+        },
+        {
+          "type": "product_list",
+          "id": "products",
+          "label": "t:sections.all.product-list.label",
+          "limit": 5
+        },
+        {
+          "type": "text",
+          "id": "metafield",
+          "label": "t:sections.all.metafield.custom.label",
+          "info": "t:sections.all.metafield.custom.info",
+          "visible_if": "{{ block.settings.related_type == 'metafield' }}"
+        },
+        {
+          "type": "range",
+          "id": "limit",
+          "label": "t:sections.all.limit.label",
+          "min": 1,
+          "max": 10,
+          "step": 1,
+          "default": 5,
+          "visible_if": "{{ block.settings.related_type == 'auto' or block.settings.related_type == 'metafield' }}"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_truncate_title",
+          "label": "t:sections.all.title.truncate.label",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "mobile_hide",
+          "label": "t:sections.all.mobile.hide.label",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "related_articles",
+      "name": "t:sections.main-article.blocks.related_articles.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "t:sections.main-article.blocks.related_articles.settings.paragraph_content.content"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.all.title.label",
+          "default": "Related Articles"
+        },
+        {
+          "type": "range",
+          "id": "limit",
+          "label": "t:sections.all.limit.label",
+          "min": 1,
+          "max": 10,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "checkbox",
+          "id": "show_date",
+          "label": "t:sections.all.article.show_date.label",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_author",
+          "label": "t:sections.all.article.show_author.label",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_truncate_title",
+          "label": "t:sections.all.title.truncate.label",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "mobile_hide",
+          "label": "t:sections.all.mobile.hide.label",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "image_text",
+      "name": "t:sections.main-article.blocks.image_text.name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.all.image.image_picker.label",
+          "info": "t:sections.main-article.blocks.image_text.settings.image.info"
+        },
+        {
+          "type": "select",
+          "id": "image_ratio",
+          "label": "t:sections.all.image.image_ratio.label",
+          "options": [
+            {
+              "value": "adapt",
+              "label": "t:sections.all.image.image_height.options__4.label"
+            },
+            {
+              "value": "square",
+              "label": "t:sections.all.image.image_ratio.options__1.label"
+            },
+            {
+              "value": "portrait",
+              "label": "t:sections.all.image.image_ratio.options__2.label"
+            },
+            {
+              "value": "landscape",
+              "label": "t:sections.all.image.image_ratio.options__3.label"
+            }
+          ],
+          "default": "landscape"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "t:sections.all.text-content.heading.label",
+          "default": "Image text heading"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "t:sections.all.text-content.description.label",
+          "default": "<p>Image text description</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "default": "Button label",
+          "label": "t:sections.all.button.button_label.label",
+          "info": "t:sections.all.button.button_label.info"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.all.button.button_link.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_in_new_tab",
+          "label": "t:sections.all.link.open_in_new_tab.label",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "show_arrow",
+          "label": "t:sections.all.button.show_arrow.label",
+          "default": false
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

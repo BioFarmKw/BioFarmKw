@@ -1,0 +1,29 @@
+@media screen and (max-width: 749px) {
+  .section-faq__wrapper .section-faq-main > *:not(:last-child) {
+    margin-block-end: 2rem;
+  }
+}
+@media screen and (min-width: 750px) {
+  .section-faq__wrapper .section-faq-main {
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
+  }
+  .section-faq__wrapper .section-faq-main .contact-form-block {
+    position: sticky;
+    inset-block-start: calc(var(--header-height, 5rem) + 1rem);
+    width: 40%;
+    flex: 0 0 auto;
+  }
+  .section-faq__wrapper .section-faq-main .collapsible-content-list-block {
+    flex: 1 1 auto;
+  }
+  .section-faq__wrapper .section-faq-main:not(:has(.contact-form-block)) .collapsible-content-list-block {
+    max-width: 65rem;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+  }
+  .section-faq__wrapper .section-faq-main:has(.collapsible-content-list-block) .contact-form-block {
+    padding-inline-start: 3rem;
+  }
+}

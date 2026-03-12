@@ -1,0 +1,82 @@
+{% doc %}
+  Localization Country
+
+  @description
+  Renders a country selector for localization purposes, allowing users to choose their country.
+
+  @param {string} section_id - Section Id
+
+  @example
+  {% render 'localization-country', section_id: section.id %}
+{% enddoc %}
+
+<drop-menu>
+  <details class="localization-country-details localization-details details-disclosure">
+    <summary
+      aria-haspopup="true"
+      aria-expanded="false"
+      aria-controls="Localization-Country-List-{{ section_id }}"
+    >
+      {{ localization.country | image_url: width: 60 | image_tag: loading: 'lazy', class: 'country-flag' }}
+      <span class="small-hide medium-hide">{{- localization.country.name }}</span>
+      {{ localization.country.currency.iso_code }}
+      {{ localization.country.currency.symbol -}}
+      {% render 'icon-sets-basic', icon: 'caret-down', class: 'caret-icon' %}
+    </summary>
+    <div class="details-disclosure-content color-{{ settings.main_color_scheme }} gradient" tabindex="-1">
+      <link-form class="link-form d-block">
+        <div class="filter-search field">
+          <input
+            id="Country-Search-{{ section_id }}"
+            class="filter-input field-input"
+            type="search"
+            name="keyword"
+            placeholder="{{ 'localization.search' | t }}"
+            autocorrect="off"
+            autocomplete="off"
+            autocapitalize="off"
+            spellcheck="false"
+          >
+          <label class="field-label" for="Country-Search-{{ section_id }}">
+            {{ 'localization.search' | t }}
+          </label>
+          <button type="reset" class="field-button reset-button light hidden focus-inset">
+            {{ 'templates.search.clear' | t }}
+          </button>
+        </div>
+        {%- form 'localization', id: 'Country-Localization-Form', class: 'localization-form' -%}
+          <ul
+            id="Localization-Country-List-{{ section_id }}"
+            class="list-unstyled mt-1"
+          >
+            {%- for country in localization.available_countries -%}
+              <li class="list-item">
+                <a
+                  class="form-link link"
+                  href="#"
+                  {% if country.iso_code == localization.country.iso_code %}
+                    aria-current="true"
+                  {% endif %}
+                  data-value="{{ country.iso_code }}"
+                >
+                  {{ country | image_url: width: 60 | image_tag: loading: 'lazy', class: 'country-flag' }}
+                  <span class="name">{{ country.name }}</span>
+                  {%- if country.iso_code == localization.country.iso_code -%}
+                    {% render 'icon-sets-basic', icon: 'check' %}
+                    <span class="visually-hidden">{{ 'accessibility.selected' | t }}</span>
+                  {%- endif -%}
+
+                  <small class="ms-auto light">
+                    {{ country.currency.iso_code }}
+                    {{ country.currency.symbol }}
+                  </small>
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+          <input class="link-value" type="hidden" name="country_code" value="{{ localization.country.iso_code }}">
+        {% endform %}
+      </link-form>
+    </div>
+  </details>
+</drop-menu>

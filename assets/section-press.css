@@ -1,0 +1,27 @@
+.section-press__wrapper .tab-panel-tabs .tab {
+  opacity: 0.2;
+  transition: opacity 300ms cubic-bezier(0, 0, 0.3, 1);
+}
+.section-press__wrapper .tab-panel-tabs .tab .placeholder-svg,
+.section-press__wrapper .tab-panel-tabs .tab img {
+  width: var(--image-width, 5rem);
+}
+.section-press__wrapper .tab-panel-tabs .tab[aria-selected=true], .section-press__wrapper .tab-panel-tabs .tab:hover {
+  opacity: 1;
+}
+.section-press__wrapper .panel {
+  text-align: center;
+  font-size: 1.25rem;
+}
+.section-press__wrapper .panel:before {
+  content: '"';
+  font-size: 4rem;
+  opacity: 0.5;
+  line-height: 1;
+}
+@media screen and (max-width: 749px) {
+  .section-press__wrapper .tab-panel-tabs .tab .placeholder-svg,
+  .section-press__wrapper .tab-panel-tabs .tab img {
+    width: var(--image-width-mobile, 5rem);
+  }
+}

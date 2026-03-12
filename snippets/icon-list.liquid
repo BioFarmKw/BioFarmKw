@@ -1,0 +1,82 @@
+{% doc %}
+  Icon List
+
+  @description
+  Renders a list of icons with optional images. Supports up to 5 icons/images.
+
+  @param {string} [icon1] - Icon name or class for first item
+  @param {object} [image1] - Image object for first item
+  @param {string} [icon2] - Icon name or class for second item
+  @param {object} [image2] - Image object for second item
+  @param {string} [icon3] - Icon name or class for third item
+  @param {object} [image3] - Image object for third item
+  @param {string} [icon4] - Icon name or class for fourth item
+  @param {object} [image4] - Image object for fourth item
+  @param {string} [icon5] - Icon name or class for fifth item
+  @param {object} [image5] - Image object for fifth item
+
+  @example
+  {% render 'icon-list' %}
+{% enddoc %}
+
+<ul class="icon-list list-unstyled">
+  {%- unless image1 == blank and icon1 == 'none' -%}
+    <li>
+      {%- if image1 != blank -%}
+        <div class="media media--square">
+          {{ image1 | image_url: width: 60 | image_tag }}
+        </div>
+      {%- elsif icon1 != 'none' -%}
+        {% render 'icon-sets', icon: icon1 %}
+      {%- endif -%}
+    </li>
+  {%- endunless -%}
+
+  {%- unless image2 == blank and icon2 == 'none' -%}
+    <li>
+      {%- if image2 != blank -%}
+        <div class="media media--square">
+          {{ image2 | image_url: width: 60 | image_tag }}
+        </div>
+      {%- elsif icon2 != 'none' -%}
+        {% render 'icon-sets', icon: icon2 %}
+      {%- endif -%}
+    </li>
+  {%- endunless -%}
+
+  {%- unless image3 == blank and icon3 == 'none' -%}
+    <li>
+      {%- if image3 != blank -%}
+        <div class="media media--square">
+          {{ image3 | image_url: width: 60 | image_tag }}
+        </div>
+      {%- elsif icon3 != 'none' -%}
+        {% render 'icon-sets', icon: icon3 %}
+      {%- endif -%}
+    </li>
+  {%- endunless -%}
+
+  {%- unless image4 == blank and icon4 == 'none' -%}
+    <li>
+      {%- if image4 != blank -%}
+        <div class="media media--square">
+          {{ image4 | image_url: width: 60 | image_tag }}
+        </div>
+      {%- elsif icon4 != 'none' -%}
+        {% render 'icon-sets', icon: icon4 %}
+      {%- endif -%}
+    </li>
+  {%- endunless -%}
+
+  {%- unless image5 == blank and icon5 == 'none' -%}
+    <li>
+      {%- if image5 != blank -%}
+        <div class="media media--square">
+          {{ image5 | image_url: width: 60 | image_tag }}
+        </div>
+      {%- elsif icon5 != 'none' -%}
+        {% render 'icon-sets', icon: icon5 %}
+      {%- endif -%}
+    </li>
+  {%- endunless -%}
+</ul>

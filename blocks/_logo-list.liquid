@@ -1,0 +1,158 @@
+<scroll-seamless
+  class="shopify-block logo-list-block{% if block.settings.layout == 'grid' %} page-width{% endif %}{% if block.settings.display_border_blur and block.settings.layout == 'scroll' %} border-gradient-alpha{% endif %}"
+  {% if block.settings.layout == 'scroll' %}
+    data-direction="{{ block.settings.direction }}"
+    data-speed="{{ block.settings.speed }}"
+    role="marquee"
+    aria-label="scrolling marquee"
+  {% else %}
+    data-disable-scroll="true"
+  {% endif %}
+  {{ block.shopify_attributes }}
+>
+  <div class="scroll-container{% if block.settings.enable_scroll_synergy %} scroll-synergy behavior--crab-{{ block.settings.direction }}{% endif %}">
+    <div
+      class="logo-list scroll-list logo-list-{{ block.settings.layout }}{% if block.settings.enable_gray %} gray-effect{% endif %}"
+      style="--horizontal-gap: {{ block.settings.horizontal_gap }}px; --horizontal-gap-mobile: {{ block.settings.horizontal_gap_mobile }}px; --vertical-gap: {{ block.settings.vertical_gap }}px; --vertical-gap-mobile: {{ block.settings.vertical_gap_mobile }}px;"
+    >
+      {% content_for 'blocks' %}
+    </div>
+  </div>
+</scroll-seamless>
+<script src="{{ "seamless-scroll.js" | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "t:blocks._logo-list.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "t:sections.all.layout.label",
+      "options": [
+        {
+          "value": "grid",
+          "label": "t:sections.all.layout.grid.label"
+        },
+        {
+          "value": "scroll",
+          "label": "t:sections.all.layout.scroll.label"
+        }
+      ],
+      "default": "grid"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_gray",
+      "label": "t:blocks._logo-list.settings.enable_gray.label",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.layout.header_grid.content",
+      "visible_if": "{{ block.settings.layout == 'grid' }}"
+    },
+    {
+      "type": "range",
+      "id": "horizontal_gap",
+      "label": "t:sections.all.gap.horizontal_gap.label",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 32,
+      "visible_if": "{{ block.settings.layout == 'grid' }}"
+    },
+    {
+      "type": "range",
+      "id": "vertical_gap",
+      "label": "t:sections.all.gap.vertical_gap.label",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 32,
+      "visible_if": "{{ block.settings.layout == 'grid' }}"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.layout.header_scroll.content",
+      "visible_if": "{{ block.settings.layout == 'scroll' }}"
+    },
+    {
+      "type": "select",
+      "label": "t:sections.seamless-scroll.settings.direction.label",
+      "id": "direction",
+      "options": [
+        {
+          "label": "t:sections.seamless-scroll.settings.direction.options__1.label",
+          "value": "left"
+        },
+        {
+          "label": "t:sections.seamless-scroll.settings.direction.options__2.label",
+          "value": "right"
+        }
+      ],
+      "default": "left",
+      "visible_if": "{{ block.settings.layout == 'scroll' }}"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "t:sections.seamless-scroll.settings.speed.label",
+      "info": "t:sections.seamless-scroll.settings.speed.info",
+      "min": 5,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40,
+      "visible_if": "{{ block.settings.layout == 'scroll' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "display_border_blur",
+      "label": "t:sections.seamless-scroll.settings.display_border_blur.label",
+      "default": true,
+      "visible_if": "{{ block.settings.layout == 'scroll' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_scroll_synergy",
+      "label": "t:sections.seamless-scroll.settings.enable_scroll_synergy.label",
+      "info": "t:sections.all.desktop.effect.info",
+      "default": false,
+      "visible_if": "{{ block.settings.layout == 'scroll' }}"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.mobile.header_content"
+    },
+    {
+      "type": "range",
+      "id": "horizontal_gap_mobile",
+      "label": "t:sections.all.gap.horizontal_gap.label",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "vertical_gap_mobile",
+      "label": "t:sections.all.gap.vertical_gap.label",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_logo"
+    }
+  ]
+}
+{% endschema %}

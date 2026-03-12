@@ -1,0 +1,368 @@
+{% liquid
+  assign current_product = product
+
+  assign product_list = section.settings.product_list
+  if product_list != blank
+    assign product_count = product_list.count
+  else
+    assign product_count = 5
+  endif
+
+  if product_list != blank
+    assign options = blank
+    for product in product_list
+      if product.has_only_default_variant
+        continue
+      endif
+
+      if options == blank
+        assign options = product.options
+      else
+        assign options = options | concat: product.options | uniq
+      endif
+    endfor
+  endif
+
+  assign first_swatches_found = false
+%}
+<compare-table class="shopify-block compare-table-block" {{ block.shopify_attributes }}>
+  <table class="main-table">
+    <caption class="visually-hidden">
+      {{ 'sections.product_compare_table.table' | t }}
+    </caption>
+    <thead>
+      <tr>
+        <th class="field-name-th small-hide">
+          <span class="visually-hidden">Field name</span>
+        </th>
+        {%- for product in product_list -%}
+          {% assign column_id = forloop.index %}
+          <th class="field-item-th{% if current_product == product and current_product != blank %} current{% endif %}">
+            <div
+              class="product-image media media--{{ section.settings.image_ratio | default: 'square' }} media-fit--{{ section.settings.image_fit | default: 'cover' }}"
+              {% if section.settings.image_ratio == 'adapt' %}
+                {% liquid
+                  assign ratio = product.featured_image.aspect_ratio | default: 1
+                  assign height = 1 | divided_by: ratio | times: 100 | append: '%'
+                %}
+                style="--ratio-percent: {{ height }};"
+              {% endif %}
+            >
+              {% render 'lazy-image',
+                image_object: product.featured_image,
+                class: 'product-featured-image',
+                sizes: '400px',
+                widths: '450, 660, 900',
+                placeholder: 'product-1'
+              %}
+              {% liquid
+                assign first_swatches = blank
+
+                unless product.has_only_default_variant
+                  for option_with_values in product.options_with_values
+                    assign first_value = option_with_values.values | first
+                    if first_value.swatch != blank
+                      assign first_swatches = option_with_values
+                      break
+                    endif
+                  endfor
+                endunless
+              %}
+
+              {%- if first_swatches != blank -%}
+                {%- for value in first_swatches.values -%}
+                  {% assign column_index = column_id | append: '-' | append: forloop.index0 %}
+                  {% render 'lazy-image',
+                    image_object: value.variant.image,
+                    class: 'product-variant-image animate--scale-up hidden',
+                    sizes: '400px',
+                    widths: '450, 660, 900',
+                    data-index: column_index
+                  %}
+                {%- endfor -%}
+              {%- endif -%}
+
+              {%- if current_product == product and current_product != blank -%}
+                <div class="media-content">
+                  {% render 'icon-sets-basic', icon: 'success' %}
+                </div>
+              {%- endif -%}
+            </div>
+            <b class="product-title">
+              <a href="{{ product.url }}" class="link link-underline">
+                {{ product.title }}
+              </a>
+            </b>
+            {%- if product.metafields.reviews.rating.value != blank -%}
+              <div class="product-rating">
+                {% render 'star-rating',
+                  rating_value: product.metafields.reviews.rating.value.rating,
+                  max_value: product.metafields.reviews.rating.value.scale_max,
+                  size: 'small',
+                  show_score: true
+                %}
+              </div>
+            {%- endif -%}
+            {%- render 'price',
+              product_object: product,
+              use_variant: true,
+              show_compare_at_price: true,
+              class: 'product-price'
+            -%}
+          </th>
+        {%- else -%}
+          {% for i in (1..5) %}
+            <th class="field-item-th">
+              <div class="product-image media media--square">
+                {% assign index = forloop.index0 | modulo: 6 | plus: 1 %}
+                {{ 'product-' | append: index | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+              <b class="product-title">{{ 'onboarding.product_title' | t }}</b>
+              {%- render 'price', class: 'product-price', show_compare_at_price: true -%}
+            </th>
+          {% endfor %}
+        {%- endfor -%}
+      </tr>
+      <tr>
+        <td class="field-name-th small-hide"></td>
+        {%- for product in product_list -%}
+          <td>
+            <modal-opener
+              class="quick-view-button button button--small has-loading"
+              data-product-handle="{{ product.handle }}"
+              data-product-url="{{ product.url }}"
+              role="button"
+              aria-haspopup="dialog"
+              aria-expanded="false"
+              aria-controls="Product-Quick-View-Drawer"
+              tabindex="0"
+            >
+              <span class="button-text loading-hidden">
+                {% render 'icon-sets-basic', icon: 'buy' %}
+                {{ 'products.card.quick_view' | t }}
+              </span>
+              <span class="loading-overlay"></span>
+            </modal-opener>
+          </td>
+        {%- else -%}
+          {%- for i in (1..5) -%}
+            <td class="field-item-td">
+              <button class="button button--small">
+                {% render 'icon-sets-basic', icon: 'buy' %}
+                {{ 'products.card.quick_view' | t }}
+              </button>
+            </td>
+          {%- endfor -%}
+        {%- endfor -%}
+      </tr>
+    </thead>
+    <tbody>
+      {%- if block.settings.show_variant_options and options != blank -%}
+        {%- for option in options -%}
+          <tr class="field-name-tr medium-hide large-up-hide" aria-hidden="true">
+            <td colspan="{{ product_count }}">
+              <div>
+                <b>{{ option }}</b>
+              </div>
+            </td>
+          </tr>
+          <tr
+            class="table-row"
+            {% unless first_swatches_found %}
+              data-swatch-synergy
+            {% endunless %}
+          >
+            <td class="field-name-td small-hide">
+              <b>{{ option }}</b>
+            </td>
+            {%- for product in product_list -%}
+              <td class="field-value-td" data-id="{{ forloop.index }}">
+                {% liquid
+                  assign option_with_values = product.options_with_values | find: 'name', option
+                  assign first_value = option_with_values.values | first
+
+                  if first_value.swatch != blank and first_swatches_found == blank
+                    assign first_swatches_found = true
+                  endif
+                %}
+                {%- if first_value.swatch != blank -%}
+                  {% comment %} 显示 Swatches, 只有第一个 swatch 属性可联动变体图片切换 {% endcomment %}
+                  {% render 'color-swatches',
+                    swatch_type: 'color',
+                    swatch_values: option_with_values,
+                    max_to_show: 10,
+                    show_tooltip: true
+                  %}
+                {%- else -%}
+                  {%- for value in option_with_values.values -%}
+                    {{ value }}
+                    {% unless forloop.last %}, {% endunless %}
+                  {%- else -%}
+                    -
+                    <span class="visually-hidden">no</span>
+                  {%- endfor -%}
+                {%- endif -%}
+              </td>
+            {%- endfor -%}
+          </tr>
+        {%- endfor -%}
+      {%- endif -%}
+
+      {%- if block.settings.show_vendor -%}
+        <tr class="field-name-tr medium-hide large-up-hide" aria-hidden="true">
+          <td colspan="{{ product_count }}">
+            <div>
+              <b>{{ 'products.product.vendor' | t }}</b>
+            </div>
+          </td>
+        </tr>
+        <tr class="table-row">
+          <td class="field-name-td small-hide">
+            <b>{{ 'products.product.vendor' | t }}</b>
+          </td>
+          {%- for product in product_list -%}
+            <td class="field-value-td">
+              {%- if product.vendor != blank -%}
+                <span class="visually-hidden">{{ 'products.product.vendor' | t }}</span>
+                {{ product.vendor }}
+              {%- else -%}
+                -
+                <span class="visually-hidden">no</span>
+              {%- endif -%}
+            </td>
+          {%- endfor -%}
+        </tr>
+      {%- endif -%}
+
+      {%- if block.settings.show_type -%}
+        <tr class="field-name-tr medium-hide large-up-hide" aria-hidden="true">
+          <td colspan="{{ product_count }}">
+            <div>
+              <b>{{ 'products.product.type' | t }}</b>
+            </div>
+          </td>
+        </tr>
+        <tr class="table-row">
+          <td class="field-name-td small-hide">
+            <b>{{ 'products.product.type' | t }}</b>
+          </td>
+          {%- for product in product_list -%}
+            <td class="field-value-td">
+              {%- if product.type != blank -%}
+                <span class="visually-hidden">{{ 'products.product.type' | t }}</span>
+                {{ product.type }}
+              {%- else -%}
+                -
+                <span class="visually-hidden">no</span>
+              {%- endif -%}
+            </td>
+          {%- endfor -%}
+        </tr>
+      {%- endif -%}
+
+      {%- if block.settings.show_category -%}
+        <tr class="field-name-tr medium-hide large-up-hide" aria-hidden="true">
+          <td colspan="{{ product_count }}">
+            <div>
+              <b>{{ 'products.product.category' | t }}</b>
+            </div>
+          </td>
+        </tr>
+        <tr class="table-row">
+          <td class="field-name-td small-hide">
+            <b>{{ 'products.product.category' | t }}</b>
+          </td>
+          {%- for product in product_list -%}
+            <td class="field-value-td">
+              {%- if product.category != blank -%}
+                <span class="visually-hidden">{{ 'products.product.category' | t }}</span>
+                {{ product.category.name }}
+              {%- else -%}
+                -
+                <span class="visually-hidden">no</span>
+              {%- endif -%}
+            </td>
+          {%- endfor -%}
+        </tr>
+      {%- endif -%}
+
+      {%- if block.settings.show_weight -%}
+        <tr class="field-name-tr medium-hide large-up-hide" aria-hidden="true">
+          <td colspan="{{ product_count }}">
+            <div>
+              <b>{{ 'products.product.weight' | t }}</b>
+            </div>
+          </td>
+        </tr>
+        <tr class="table-row">
+          <td class="field-name-td small-hide">
+            <b>{{ 'products.product.weight' | t }}</b>
+          </td>
+          {%- for product in product_list -%}
+            <td class="field-value-td">
+              {%- if product.selected_or_first_available_variant.weight_in_unit != blank -%}
+                <span class="visually-hidden">{{ 'products.product.weight' | t }}</span>
+                {{ product.selected_or_first_available_variant.weight_in_unit }}
+                {{ product.selected_or_first_available_variant.weight_unit }}
+              {%- else -%}
+                -
+                <span class="visually-hidden">no</span>
+              {%- endif -%}
+            </td>
+          {%- endfor -%}
+        </tr>
+      {%- endif -%}
+      {% content_for 'blocks' %}
+    </tbody>
+  </table>
+</compare-table>
+<script src="{{ 'compare-table.js' | asset_url }}" defer></script>
+{% schema %}
+{
+  "name": "t:blocks._compare-table.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_variant_options",
+      "label": "t:blocks._compare-table.settings.show_variant_options.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "t:blocks._compare-table.settings.show_vendor.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_type",
+      "label": "t:blocks._compare-table.settings.show_type.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_category",
+      "label": "t:blocks._compare-table.settings.show_category.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_weight",
+      "label": "t:blocks._compare-table.settings.show_weight.label",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_compare-table-category"
+    },
+    {
+      "type": "_compare-table-metafield"
+    },
+    {
+      "type": "_compare-table-custom"
+    }
+  ]
+}
+{% endschema %}

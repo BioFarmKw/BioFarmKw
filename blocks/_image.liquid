@@ -1,0 +1,107 @@
+{% liquid
+  assign ratio_percent = 1
+  if block.settings.image_ratio == 'adapt' and block.settings.image != blank
+    assign ratio_percent = block.settings.image.aspect_ratio
+  endif
+
+  assign ratio_percent_mobile = 1
+  if block.settings.image_ratio_mobile == 'adapt'
+    if block.settings.image_mobile != blank
+      assign ratio_percent_mobile = block.settings.image_mobile.aspect_ratio
+    elsif block.settings.image != blank
+      assign ratio_percent_mobile = block.settings.image.aspect_ratio
+    endif
+  endif
+%}
+
+<div
+  class="shopify-block image-block media media--{{ block.settings.image_ratio }} media-mobile--{{ block.settings.image_ratio_mobile }}"
+  style="--ratio-percent: {{ 1 | divided_by: ratio_percent | times: 100 | round }}%; --ratio-percent-mobile: {{ 1 | divided_by: ratio_percent_mobile | times: 100 | round }}%"
+  {{ block.shopify_attributes }}
+>
+  {% render 'lazy-image',
+    has_mobile: block.settings.image_mobile,
+    image_object: block.settings.image,
+    sizes: '(min-width: 750px) 50vw, 100vw',
+    placeholder: 'image'
+  %}
+
+  {% render 'lazy-image', is_mobile: true, image_object: block.settings.image_mobile, sizes: '100vw' %}
+</div>
+{% schema %}
+{
+  "name": "t:blocks._image.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.all.image.image_picker.label",
+      "info": "t:blocks._image.settings.image.info"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "t:sections.all.image.image_ratio.label",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.all.image.image_height.options__4.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.all.image.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.all.image.image_ratio.options__2.label"
+        },
+        {
+          "value": "landscape",
+          "label": "t:sections.all.image.image_ratio.options__3.label"
+        }
+      ],
+      "default": "square"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.mobile.header_content"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "t:sections.all.image.image_picker.label",
+      "info": "t:blocks._image.settings.image_mobile.info"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio_mobile",
+      "label": "t:sections.all.image.image_ratio.label",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.all.image.image_height.options__4.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.all.image.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.all.image.image_ratio.options__2.label"
+        },
+        {
+          "value": "landscape",
+          "label": "t:sections.all.image.image_ratio.options__3.label"
+        }
+      ],
+      "default": "square"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._image.presets.name"
+    }
+  ]
+}
+{% endschema %}

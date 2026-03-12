@@ -1,0 +1,123 @@
+{{ 'section-main-gift-card.css' | asset_url | stylesheet_tag }}
+<div class="main-gift-card">
+  <div class="section__wrapper main-gift-card__wrapper page-width text-align--center">
+    <div class="gift-print text-align--right">
+      <button id="Print-Page" class="button button--small button--link no-print">
+        {% render 'icon-sets', icon: 'print' %}
+        {{ 'gift_cards.print' | t }}
+      </button>
+    </div>
+
+    <div class="gift-card color-{{ section.settings.color_scheme }} gradient">
+      <div class="background-texture">
+        {% render 'icon-sets-basic', icon: 'knot' %}
+      </div>
+      <div class="card-header">
+        <h1 class="font-decorative">{{ 'gift_cards.subtext' | t }}</h1>
+        <div class="card-shop-info">
+          <a class="link link-text font-size-s" href="{{ shop.url }}">{{ shop.name }}</a>
+          {%- if gift_card.expires_on -%}
+            {% render 'icon-sets-basic', icon: 'dot' %}
+            {%- assign gift_card_expiration_date = gift_card.expires_on | date: '%B %e, %Y' -%}
+            <small class="uppercase">
+              {{ 'gift_cards.expiration_date' | t: expires_on: gift_card_expiration_date -}}
+            </small>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div class="card-price{% if gift_card.expired %} has-expired{% endif %}">
+        {%- if gift_card.expired -%}
+          <small class="light uppercase">{{ 'gift_cards.expired' | t }}</small>
+        {%- endif -%}
+        <div class="amount">
+          {{- gift_card.balance | money -}}
+        </div>
+      </div>
+      <div class="card-code">
+        {{ gift_card.code | format_code }}
+      </div>
+    </div>
+
+    <div class="gift-qrcode">
+      <span class="media media--square" data-identifier="{{ gift_card.qr_identifier }}"></span>
+    </div>
+
+    <div class="gift-introduce">{{ 'gift_cards.how_to_use_gift_card' | t }}</div>
+    <div class="button-group no-print">
+      <button id="Copy-Code" class="button-copy button" data-text="{{ gift_card.code | format_code }}">
+        {{ 'gift_cards.copy_code' | t }}
+      </button>
+      <a
+        class="button-shop button button--border"
+        href="{{ shop.url }}"
+        target="_blank"
+        rel="noopener"
+        aria-describedby="{{ 'accessibility.link_messages.new_window' | t }}"
+      >
+        {{ 'gift_cards.shop_link' | t }}
+      </a>
+    </div>
+
+    {%- if gift_card.pass_url -%}
+      <div class="gift-add-to-wallet no-print">
+        <a href="{{ gift_card.pass_url }}" class="no-print">
+          <img
+            src="{{ 'gift-card/add-to-apple-wallet.svg' | shopify_asset_url }}"
+            width="120"
+            height="40"
+            alt="{{ 'gift_cards.add_to_apple_wallet' | t }}"
+            loading="lazy"
+          >
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const qrcodeWrapper = document.querySelector('.gift-qrcode .media');
+    if(qrcodeWrapper) {
+      new QRCode(qrcodeWrapper, {
+        text: qrcodeWrapper.dataset.identifier,
+        width: 72,
+        height: 72,
+        imageAltText: `{{ 'gift_cards.qr_image_alt' | t | json }}`
+      });
+    }
+
+    const printBtn = document.getElementById('Print-Page');
+    if(printBtn) printBtn.addEventListener('click', ()=>{
+      window.print();
+    });
+
+    const copyBtn = document.getElementById('Copy-Code');
+    if(copyBtn) {
+      copyBtn.addEventListener('click', ()=>{
+        {%- if request.design_mode -%}
+        alert(`{{ 'general.copy_disabled' | t }}`);
+        {%- else -%}
+        navigator.clipboard.writeText(copyBtn.getAttribute('data-text')).then(() => {
+          alert(`{{ 'general.has_copied' | t }}`);
+        }).catch(err => {
+          alert(`{{ 'general.copy_failed' | t }}`);
+        });
+        {%- endif -%}
+      });
+    }
+  });
+</script>
+{% schema %}
+{
+  "name": "t:sections.main-gift-card.name",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.scheme.label",
+      "default": "scheme-3"
+    }
+  ]
+}
+{% endschema %}

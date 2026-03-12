@@ -1,0 +1,236 @@
+{{ 'section-media-content-list.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  .section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
+    margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+      .section-{{ section.id }}-margin {
+        margin-top: {{ section.settings.margin_top }}px;
+        margin-bottom: {{ section.settings.margin_bottom }}px;
+      }
+  }
+{%- endstyle -%}
+<div class="media-content-list isolate color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-margin">
+  <div class="seciton__wrapper media-content-list__wrapper page-width section-{{ section.id }}-padding">
+    {% content_for 'block', type: '_section-header', id: 'section-header' %}
+    {% content_for 'block', type: '_media-content-list', id: 'media-content-list' %}
+  </div>
+
+  {% render 'section-id-tip', section_id: section.id %}
+</div>
+{% schema %}
+{
+  "name": "t:sections.media-content-list.name",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.drawer", "custom.popup"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.scheme.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.header_content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top.label",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom.label",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.margin.header_content"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.margin.margin_top.label",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.margin.margin_bottom.label",
+      "default": 88
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_section-header"
+    },
+    {
+      "type": "_media-content-list"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.media-content-list.presets.name",
+      "category": "t:sections.all.categories.media_layout",
+      "blocks": [
+        {
+          "type": "_section-header",
+          "static": true,
+          "id": "section-header",
+          "blocks": [
+            {
+              "type": "heading",
+              "settings": {
+                "content": "Media content list",
+                "size": "medium",
+                "uppercase": true
+              }
+            },
+            {
+              "type": "description"
+            }
+          ]
+        },
+        {
+          "type": "_media-content-list",
+          "static": true,
+          "id": "media-content-list",
+          "blocks": [
+            {
+              "type": "_image-content",
+              "blocks": [
+                {
+                  "type": "heading",
+                  "settings": {
+                    "type": "3"
+                  }
+                },
+                {
+                  "type": "description"
+                },
+                {
+                  "type": "button",
+                  "settings": {
+                    "size": "small"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "_image-content",
+              "blocks": [
+                {
+                  "type": "heading",
+                  "settings": {
+                    "type": "3"
+                  }
+                },
+                {
+                  "type": "description"
+                },
+                {
+                  "type": "button",
+                  "settings": {
+                    "size": "small"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "_video-content",
+              "blocks": [
+                {
+                  "type": "heading",
+                  "settings": {
+                    "type": "3"
+                  }
+                },
+                {
+                  "type": "description"
+                },
+                {
+                  "type": "button",
+                  "settings": {
+                    "size": "small"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "_image-content",
+              "blocks": [
+                {
+                  "type": "heading",
+                  "settings": {
+                    "type": "3"
+                  }
+                },
+                {
+                  "type": "description"
+                },
+                {
+                  "type": "button",
+                  "settings": {
+                    "size": "small"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "_image-content",
+              "blocks": [
+                {
+                  "type": "heading",
+                  "settings": {
+                    "type": "3"
+                  }
+                },
+                {
+                  "type": "description"
+                },
+                {
+                  "type": "button",
+                  "settings": {
+                    "size": "small"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

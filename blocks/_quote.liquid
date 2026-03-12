@@ -1,0 +1,43 @@
+<li
+  id="Slide-{{ section.id }}-{{ block.id }}"
+  class="shopify-block quote-block slider-slide"
+  tabindex="0"
+  {{ block.shopify_attributes }}
+>
+  <div class="content-group group--center text-align--{{ section.settings.text_alignment }} text-align-mobile--{{ section.settings.text_alignment_mobile }} width--{{ section.settings.content_width }}">
+    {% content_for 'blocks' %}
+  </div>
+</li>
+{% schema %}
+{
+  "name": "t:blocks._quote.name",
+  "tag": null,
+  "blocks": [{ "type": "_author" }, { "type": "description" }, { "type": "icon" }, { "type": "spacer" }],
+  "presets": [
+    {
+      "name": "Quote",
+      "blocks": [
+        {
+          "type": "_author",
+          "settings": {
+            "image_size": "medium"
+          }
+        },
+        {
+          "type": "icon",
+          "settings": {
+            "icon": "quote",
+            "size": "large"
+          }
+        },
+        {
+          "type": "description",
+          "settings": {
+            "content": "<p>Your motivational and thought-provoking quote will be displayed here, capturing the essence of your brand or message in a way that resonates with your audience.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,149 @@
+{% doc %}
+  Product Variant Picker
+
+  @description
+  Renders a product variant selector, allowing customers to choose different product options.
+
+  @param {string} section_id - Unique identifier for the variant selector.
+  @param {object} product - The product object.
+  @param {object} block - The block object containing relevant settings.
+  @param {object} [size_popup_block] - Optional block object for a linked size popup.
+  @param {string} product_form_id - The ID of the product form associated with this selector.
+  @param {boolean} [update_url] - Whether to update the URL when the variant changes. Default is true (optional).
+
+  @example
+  {% render 'product-variant-picker', product: product, block: block, size_popup_block: size_popup_block, product_form_id: product_form_id %}
+{% enddoc %}
+
+{% assign size_string = 'size, 尺码, 尺碼, Größe, taille, tamaño, misura, размер, tamanho, サイズ, 크기, storlek, velikost, størrelsen, rozmiar, μέγεθος, ukuran, mărime, величина, kích thước, วัด, ölçü, suurus, dydis, izmērs, μεγέθος, размеры' %}
+
+{%- unless product.has_only_default_variant or product == blank -%}
+  <high-variant-selects
+    id="Variant-Selects-{{ section_id }}"
+    class="product-variant-selects product-info-block no-js-hidden"
+    data-section="{{ section_id }}"
+    data-url="{{ product.url }}"
+    {% if update_url == false %}
+      data-update-url="false"
+    {% endif %}
+    {% if block.settings.auto_scroll_to_top %}
+      data-auto-scroll-to-top
+    {% endif %}
+    {{ block.shopify_attributes }}
+  >
+    {%- for option_with_values in product.options_with_values -%}
+      {% liquid
+        assign swatch_type = blank
+        assign first_value = option_with_values.values | first
+
+        if forloop.first and block.settings.enable_first_swatch_image
+          assign swatch_type = 'image'
+        elsif first_value.swatch != blank
+          assign swatch_type = 'color'
+        endif
+
+        assign auto_dropdown = false
+        if option_with_values.values.size > block.settings.dropdown_threshold and block.settings.auto_dropdown and block.settings.picker_type != 'dropdown'
+          assign auto_dropdown = true
+        endif
+
+        assign option_name_downcase = option_with_values.name | downcase
+      %}
+
+      {% capture size_popup %}
+          {%- if size_string contains option_name_downcase and size_popup_block != blank -%}
+              <modal-opener
+                  class="size-chart-popup"
+                  role="button"
+                  aria-haspopup="dialog"
+                  aria-expanded="false"
+                  aria-controls="Popup-Modal-{{ section_id }}-{{ size_popup_block.id }}"
+                  tabindex="0"
+                  {{ size_popup_block.shopify_attributes }}
+              >
+                  {%- if size_popup_block.settings.icon != 'none' -%}
+                      {% render 'icon-sets-basic', icon: size_popup_block.settings.icon %}
+                  {%- endif -%}
+                  <span class="link link-text show-underline">{{ size_popup_block.settings.heading | escape }}</span>
+              </modal-opener>
+          {%- endif -%}
+      {% endcapture %}
+
+      {%- if swatch_type != blank -%}
+        <fieldset class="product-form-input">
+          <div class="form-label-wrapper">
+            <legend class="form-label">
+              <b>{{ option_with_values.name }}:</b>
+              <small class="selected-value light">{{ option_with_values.selected_value }}</small>
+            </legend>
+
+            {{ size_popup }}
+          </div>
+          <div class="form-options-wrapper color-swatches swatch-type--{{ swatch_type }} swatch-size--{{ block.settings.swatch_size }}{% if block.settings.round_swatches %} swatch-shape--round{% endif %}">
+            {%- render 'product-variant-options',
+              section_id: section_id,
+              product_form_id: product_form_id,
+              option_with_values: option_with_values,
+              type: swatch_type
+            -%}
+          </div>
+        </fieldset>
+      {%- elsif auto_dropdown != true and block.settings.picker_type == 'button' -%}
+        {% comment %} Button 选择器 {% endcomment %}
+        <fieldset class="product-form-input">
+          <div class="form-label-wrapper">
+            <legend class="form-label">
+              <b>{{ option_with_values.name }}:</b>
+              <small class="selected-value light">{{ option_with_values.selected_value }}</small>
+            </legend>
+
+            {{ size_popup }}
+          </div>
+          <div class="form-options-wrapper button-options">
+            {% render 'product-variant-options',
+              section_id: section_id,
+              product_form_id: product_form_id,
+              option_with_values: option_with_values,
+              type: 'button'
+            %}
+          </div>
+        </fieldset>
+      {%- else -%}
+        {% comment %} 下拉选择器  {% endcomment %}
+        <div class="product-form-input">
+          <div class="form-label-wrapper">
+            <label class="form-label" for="Option-{{ section_id }}-{{ forloop.index0 }}">
+              <b>{{ option_with_values.name }}:</b>
+              <small class="selected-value light">{{ option_with_values.selected_value }}</small>
+            </label>
+
+            {{ size_popup }}
+          </div>
+
+          <div class="form-options-wrapper select">
+            <select
+              id="Option-{{ section_id }}-{{ forloop.index0 }}"
+              class="select-select"
+              name="options[{{ option_with_values.name | escape }}]"
+              form="{{ product_form_id }}"
+            >
+              {% render 'product-variant-options',
+                section_id: section_id,
+                product_form_id: product_form_id,
+                option_with_values: option_with_values,
+                type: 'dropdown'
+              %}
+            </select>
+            <span class="field-button">
+              {% render 'icon-sets-basic', icon: 'caret-down', class: 'caret-icon' %}
+            </span>
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+
+    <script type="application/json" data-selected-variant>
+      {{ product.selected_or_first_available_variant | json }}
+    </script>
+  </high-variant-selects>
+{%- endunless -%}

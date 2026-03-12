@@ -1,0 +1,65 @@
+{% doc %}
+  Inventory Status
+
+  @description
+  Renders the stock status for a product or variant, with optional stock threshold, alert messages, and a visual stock bar.
+
+  @param {object} [variant] - The product variant object
+  @param {number} [threshold] - The stock threshold value
+  @param {string} [low_alert_message] - Message to display when stock is low
+  @param {string} [full_alert_message] - Message to display when stock is sufficient
+  @param {color} [low_bar_color] - The color of the stock bar when low
+  @param {color} [full_bar_color] - The color of the stock bar when sufficient
+  @param {boolean} [show_bar] - Whether to display the stock status bar
+
+  @example
+  {% render 'inventory-status', show_bar: true %}
+{% enddoc %}
+
+<p class="inventory-text" role="status">
+  <b>
+    {%- if variant.inventory_quantity > 0 -%}
+      {% comment %} 低库存 {% endcomment %}
+      {%- if variant.inventory_quantity < threshold -%}
+        {{ low_alert_message | escape | replace: '[stock]', variant.inventory_quantity }}
+      {%- else -%}
+        {% comment %} 正常库存 {% endcomment %}
+        {{ full_alert_message | escape | replace: '[stock]', variant.inventory_quantity }}
+      {%- endif -%}
+    {%- else -%}
+      {%- if variant.inventory_policy == 'continue' -%}
+        {{ full_alert_message | escape | replace: '[stock]', variant.inventory_quantity }}
+      {%- else -%}
+        {{- 'products.product.inventory_out_of_stock' | t -}}
+      {%- endif -%}
+    {%- endif -%}
+  </b>
+</p>
+
+{%- if show_bar -%}
+  {% liquid
+    if variant.inventory_quantity > 0
+      if variant.inventory_quantity >= threshold
+        assign percentage = 100
+      else
+        assign percentage = variant.inventory_quantity | times: 100 | divided_by: threshold
+      endif
+    else
+      if variant.inventory_policy == 'continue'
+        assign percentage = 100
+      else
+        assign percentage = 0
+      endif
+    endif
+
+    if percentage < 100
+      assign bar_color = low_bar_color
+    else
+      assign bar_color = full_bar_color
+    endif
+  %}
+  <div
+    class="inventory-bar"
+    style="--inventory-percentage: {{ percentage }}%; --color-bar: {{ bar_color.red }}, {{ bar_color.green }}, {{ bar_color.blue }};"
+  ></div>
+{%- endif -%}

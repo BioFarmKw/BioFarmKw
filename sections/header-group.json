@@ -1,0 +1,689 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement_bar_NFgAmB": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_GmGtDk": {
+          "type": "announcement",
+          "settings": {
+            "text": "🎉  Free shipping on orders over 5KD",
+            "link": ""
+          }
+        },
+        "announcement_ThxBEQ": {
+          "type": "announcement",
+          "settings": {
+            "text": "👏 Welcome to BioFarm",
+            "link": ""
+          }
+        },
+        "announcement_BF9yMe": {
+          "type": "announcement",
+          "settings": {
+            "text": "Built to perform. ⭐️ Trusted by pros.",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "announcement_GmGtDk",
+        "announcement_ThxBEQ",
+        "announcement_BF9yMe"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-6",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "show_social": true,
+        "show_country": true,
+        "show_language": true,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "mega_collection_9meaij": {
+          "type": "mega_collection",
+          "disabled": true,
+          "settings": {
+            "target_id": 2,
+            "collection_list": [
+              "permanent-papers",
+              "aromatic-medicinal-herbs",
+              "kale",
+              "mustards",
+              "cabbage",
+              "celery",
+              "spinach",
+              "lettuce",
+              "lettuce-leaves",
+              "tomato",
+              "pepper",
+              "radish",
+              "beetroot",
+              "carrot",
+              "salad-mix",
+              "dried-leafy-greens"
+            ],
+            "limit": 20,
+            "show_collection_image": true,
+            "image_ratio": "square",
+            "show_card_wrapper": false,
+            "color_scheme": "scheme-2",
+            "text_alignment": "center",
+            "hide_on_mobile": false
+          }
+        },
+        "mega_links_XfXJiY": {
+          "type": "mega_links",
+          "settings": {
+            "target_id": 2,
+            "image_ratio": "square",
+            "heading": "Permanent Papers",
+            "link": "shopify://collections/permanent-papers",
+            "open_in_new_tab": false,
+            "menu": "",
+            "alignment": "left",
+            "hide_on_mobile": false
+          }
+        },
+        "mega_links_t74NMy": {
+          "type": "mega_links",
+          "settings": {
+            "target_id": 2,
+            "image_ratio": "square",
+            "heading": "Kale Leaves",
+            "link": "shopify://collections/kale",
+            "open_in_new_tab": false,
+            "menu": "",
+            "alignment": "left",
+            "hide_on_mobile": false
+          }
+        },
+        "mega_links_8ewBU6": {
+          "type": "mega_links",
+          "settings": {
+            "target_id": 2,
+            "image_ratio": "square",
+            "heading": "Mustard Leaves",
+            "link": "shopify://collections/mustards",
+            "open_in_new_tab": false,
+            "menu": "",
+            "alignment": "left",
+            "hide_on_mobile": false
+          }
+        },
+        "mega_links_NY97qf": {
+          "type": "mega_links",
+          "settings": {
+            "target_id": 2,
+            "image_ratio": "square",
+            "heading": "Cabbage",
+            "link": "shopify://collections/cabbage",
+            "open_in_new_tab": false,
+            "menu": "",
+            "alignment": "left",
+            "hide_on_mobile": false
+          }
+        },
+        "mega_links_VAyykV": {
+          "type": "mega_links",
+          "settings": {
+            "target_id": 2,
+            "image_ratio": "square",
+            "heading": "Celery",
+            "link": "shopify://collections/celery",
+            "open_in_new_tab": false,
+            "menu": "",
+            "alignment": "left",
+            "hide_on_mobile": false
+          }
+        },
+        "mega_links_KW79jn": {
+          "type": "mega_links",
+          "settings": {
+            "target_id": 2,
+            "image_ratio": "square",
+            "heading": "Salad Mix",
+            "link": "shopify://collections/salad-mix",
+            "open_in_new_tab": false,
+            "menu": "",
+            "alignment": "left",
+            "hide_on_mobile": false
+          }
+        },
+        "mega_links_xWkPyx": {
+          "type": "mega_links",
+          "settings": {
+            "target_id": 2,
+            "image_ratio": "square",
+            "heading": "Carrot",
+            "link": "shopify://collections/carrot",
+            "open_in_new_tab": false,
+            "menu": "",
+            "alignment": "left",
+            "hide_on_mobile": false
+          }
+        },
+        "mega_links_gCjCdB": {
+          "type": "mega_links",
+          "settings": {
+            "target_id": 2,
+            "image_ratio": "square",
+            "heading": "Lettuce Leaves",
+            "link": "shopify://collections/lettuce-leaves",
+            "open_in_new_tab": false,
+            "menu": "",
+            "alignment": "left",
+            "hide_on_mobile": false
+          }
+        },
+        "mega_links_83BJaH": {
+          "type": "mega_links",
+          "settings": {
+            "target_id": 2,
+            "image_ratio": "square",
+            "heading": "Tomato",
+            "link": "shopify://collections/tomato",
+            "open_in_new_tab": false,
+            "menu": "",
+            "alignment": "left",
+            "hide_on_mobile": false
+          }
+        },
+        "mega_links_KhGBPh": {
+          "type": "mega_links",
+          "settings": {
+            "target_id": 2,
+            "image_ratio": "square",
+            "heading": "Beetroot",
+            "link": "shopify://collections/beetroot",
+            "open_in_new_tab": false,
+            "menu": "",
+            "alignment": "left",
+            "hide_on_mobile": false
+          }
+        },
+        "mega_links_c4KUGw": {
+          "type": "mega_links",
+          "settings": {
+            "target_id": 2,
+            "image_ratio": "square",
+            "heading": "Radish",
+            "link": "shopify://collections/radish",
+            "open_in_new_tab": false,
+            "menu": "",
+            "alignment": "left",
+            "hide_on_mobile": false
+          }
+        },
+        "mega_links_DpgkPf": {
+          "type": "mega_links",
+          "settings": {
+            "target_id": 2,
+            "image_ratio": "square",
+            "heading": "Pepper",
+            "link": "shopify://collections/pepper",
+            "open_in_new_tab": false,
+            "menu": "",
+            "alignment": "left",
+            "hide_on_mobile": false
+          }
+        },
+        "mega_links_a9kHgK": {
+          "type": "mega_links",
+          "settings": {
+            "target_id": 2,
+            "image_ratio": "square",
+            "heading": "Dried Leafy Greens",
+            "link": "shopify://collections/dried-leafy-greens",
+            "open_in_new_tab": false,
+            "menu": "",
+            "alignment": "left",
+            "hide_on_mobile": false
+          }
+        },
+        "mega_links_8AcfCz": {
+          "type": "mega_links",
+          "settings": {
+            "target_id": 2,
+            "image_ratio": "square",
+            "heading": "Lettuce",
+            "link": "shopify://collections/lettuce",
+            "open_in_new_tab": false,
+            "menu": "",
+            "alignment": "left",
+            "hide_on_mobile": false
+          }
+        },
+        "mega_links_7bAQDY": {
+          "type": "mega_links",
+          "settings": {
+            "target_id": 2,
+            "image_ratio": "square",
+            "heading": "Spinach Leaves",
+            "link": "shopify://collections/spinach",
+            "open_in_new_tab": false,
+            "menu": "",
+            "alignment": "left",
+            "hide_on_mobile": false
+          }
+        },
+        "mega_links_A4qcMw": {
+          "type": "mega_links",
+          "settings": {
+            "target_id": 2,
+            "image_ratio": "adapt",
+            "heading": "Aromatic Medicinal Leaf Extracts",
+            "link": "shopify://collections/aromatic-medicinal-herbs",
+            "open_in_new_tab": false,
+            "menu": "",
+            "alignment": "left",
+            "hide_on_mobile": false
+          }
+        },
+        "mega_links_UE4a7F": {
+          "type": "mega_links",
+          "disabled": true,
+          "settings": {
+            "target_id": 2,
+            "image_ratio": "square",
+            "heading": "All Categories",
+            "link": "shopify://collections",
+            "open_in_new_tab": false,
+            "menu": "",
+            "alignment": "left",
+            "hide_on_mobile": false
+          }
+        },
+        "mega_image_T3FmTk": {
+          "type": "mega_image",
+          "disabled": true,
+          "settings": {
+            "target_id": 2,
+            "image": "shopify://shop_images/kale-leaves.png",
+            "width": "1",
+            "image_ratio": "adapt",
+            "link": "shopify://collections/kale",
+            "open_in_new_tab": false,
+            "heading": "Kale Leaves",
+            "description": "",
+            "alignment": "center",
+            "badge_icon": "none",
+            "badge_label": "",
+            "badge_background": "#334fb4",
+            "badge_foreground": "#ffffff",
+            "alignment_mobile": "center",
+            "hide_on_mobile": false
+          }
+        },
+        "mega_image_4AptLT": {
+          "type": "mega_image",
+          "disabled": true,
+          "settings": {
+            "target_id": 2,
+            "image": "shopify://shop_images/tomato.png",
+            "width": "1",
+            "image_ratio": "square",
+            "link": "shopify://collections/tomato",
+            "open_in_new_tab": false,
+            "heading": "Tomato",
+            "description": "",
+            "alignment": "center",
+            "badge_icon": "none",
+            "badge_label": "",
+            "badge_background": "#334fb4",
+            "badge_foreground": "#ffffff",
+            "alignment_mobile": "center",
+            "hide_on_mobile": false
+          }
+        },
+        "mega_image_BPerbJ": {
+          "type": "mega_image",
+          "disabled": true,
+          "settings": {
+            "target_id": 2,
+            "image": "shopify://shop_images/lettuce.png",
+            "width": "1",
+            "image_ratio": "square",
+            "link": "shopify://collections/lettuce",
+            "open_in_new_tab": false,
+            "heading": "Lettuce",
+            "description": "",
+            "alignment": "center",
+            "badge_icon": "none",
+            "badge_label": "",
+            "badge_background": "#334fb4",
+            "badge_foreground": "#ffffff",
+            "alignment_mobile": "center",
+            "hide_on_mobile": false
+          }
+        },
+        "mega_image_RNBgVA": {
+          "type": "mega_image",
+          "disabled": true,
+          "settings": {
+            "target_id": 2,
+            "image": "shopify://shop_images/Permanent_Papers.png",
+            "width": "1",
+            "image_ratio": "square",
+            "link": "shopify://collections/permanent-papers",
+            "open_in_new_tab": false,
+            "heading": "Permanent Papers",
+            "description": "",
+            "alignment": "center",
+            "badge_icon": "none",
+            "badge_label": "",
+            "badge_background": "#334fb4",
+            "badge_foreground": "#ffffff",
+            "alignment_mobile": "center",
+            "hide_on_mobile": false
+          }
+        },
+        "mega_image_XhgzLr": {
+          "type": "mega_image",
+          "disabled": true,
+          "settings": {
+            "target_id": 2,
+            "image": "shopify://shop_images/cabbage.png",
+            "width": "1",
+            "image_ratio": "square",
+            "link": "shopify://collections/cabbage",
+            "open_in_new_tab": false,
+            "heading": "Cabbage",
+            "description": "",
+            "alignment": "center",
+            "badge_icon": "none",
+            "badge_label": "",
+            "badge_background": "#334fb4",
+            "badge_foreground": "#ffffff",
+            "alignment_mobile": "center",
+            "hide_on_mobile": false
+          }
+        },
+        "mega_image_grqBKh": {
+          "type": "mega_image",
+          "disabled": true,
+          "settings": {
+            "target_id": 2,
+            "image": "shopify://shop_images/mustard-leaves.png",
+            "width": "1",
+            "image_ratio": "square",
+            "link": "shopify://collections/mustards",
+            "open_in_new_tab": false,
+            "heading": "Mustard Leaves",
+            "description": "",
+            "alignment": "center",
+            "badge_icon": "none",
+            "badge_label": "",
+            "badge_background": "#334fb4",
+            "badge_foreground": "#ffffff",
+            "alignment_mobile": "center",
+            "hide_on_mobile": false
+          }
+        },
+        "mega_image_fVTdXM": {
+          "type": "mega_image",
+          "disabled": true,
+          "settings": {
+            "target_id": 2,
+            "image": "shopify://shop_images/lettuce-leaves.png",
+            "width": "1",
+            "image_ratio": "square",
+            "link": "shopify://collections/lettuce-leaves",
+            "open_in_new_tab": false,
+            "heading": "Lettuce Leaves",
+            "description": "",
+            "alignment": "center",
+            "badge_icon": "none",
+            "badge_label": "",
+            "badge_background": "#334fb4",
+            "badge_foreground": "#ffffff",
+            "alignment_mobile": "center",
+            "hide_on_mobile": false
+          }
+        },
+        "mega_image_yJjCG9": {
+          "type": "mega_image",
+          "disabled": true,
+          "settings": {
+            "target_id": 2,
+            "image": "shopify://shop_images/generate-mixed-celery-images.png",
+            "width": "1",
+            "image_ratio": "square",
+            "link": "shopify://collections/celery",
+            "open_in_new_tab": false,
+            "heading": "Celery",
+            "description": "",
+            "alignment": "center",
+            "badge_icon": "none",
+            "badge_label": "",
+            "badge_background": "#334fb4",
+            "badge_foreground": "#ffffff",
+            "alignment_mobile": "center",
+            "hide_on_mobile": false
+          }
+        },
+        "mega_image_EAiy6r": {
+          "type": "mega_image",
+          "disabled": true,
+          "settings": {
+            "target_id": 2,
+            "image": "shopify://shop_images/aromatic-medicinal-leaf-extracts-only-leaves-and-vegetables.png",
+            "width": "1",
+            "image_ratio": "square",
+            "link": "shopify://collections/aromatic-medicinal-herbs",
+            "open_in_new_tab": false,
+            "heading": "Aromatic Medicinal Leaf Extracts",
+            "description": "",
+            "alignment": "center",
+            "badge_icon": "none",
+            "badge_label": "",
+            "badge_background": "#334fb4",
+            "badge_foreground": "#ffffff",
+            "alignment_mobile": "center",
+            "hide_on_mobile": false
+          }
+        },
+        "mega_image_V4Mxm7": {
+          "type": "mega_image",
+          "disabled": true,
+          "settings": {
+            "target_id": 2,
+            "image": "shopify://shop_images/generate-mixed-spinach-images-for-categories.png",
+            "width": "1",
+            "image_ratio": "square",
+            "link": "shopify://collections/spinach",
+            "open_in_new_tab": false,
+            "heading": "Spinach Leaves",
+            "description": "",
+            "alignment": "center",
+            "badge_icon": "none",
+            "badge_label": "",
+            "badge_background": "#334fb4",
+            "badge_foreground": "#ffffff",
+            "alignment_mobile": "center",
+            "hide_on_mobile": false
+          }
+        }
+      },
+      "block_order": [
+        "mega_collection_9meaij",
+        "mega_links_XfXJiY",
+        "mega_links_t74NMy",
+        "mega_links_8ewBU6",
+        "mega_links_NY97qf",
+        "mega_links_VAyykV",
+        "mega_links_KW79jn",
+        "mega_links_xWkPyx",
+        "mega_links_gCjCdB",
+        "mega_links_83BJaH",
+        "mega_links_KhGBPh",
+        "mega_links_c4KUGw",
+        "mega_links_DpgkPf",
+        "mega_links_a9kHgK",
+        "mega_links_8AcfCz",
+        "mega_links_7bAQDY",
+        "mega_links_A4qcMw",
+        "mega_links_UE4a7F",
+        "mega_image_T3FmTk",
+        "mega_image_4AptLT",
+        "mega_image_BPerbJ",
+        "mega_image_RNBgVA",
+        "mega_image_XhgzLr",
+        "mega_image_grqBKh",
+        "mega_image_fVTdXM",
+        "mega_image_yJjCG9",
+        "mega_image_EAiy6r",
+        "mega_image_V4Mxm7"
+      ],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "menu": "main-menu",
+        "menu_position": "logo-line",
+        "show_country": false,
+        "show_language": true,
+        "logo": "shopify://shop_images/White_logo-removebg-preview.png",
+        "logo_width": 200,
+        "logo_position": "left",
+        "show_info_block": false,
+        "info_icon": "service",
+        "info_heading": "(000) 123 456 7890",
+        "info_sub_heading": "24/7 Service",
+        "info_link": "",
+        "category_menu": "",
+        "default_open_in_index": true,
+        "show_collection_image": true,
+        "color_scheme_search": "scheme-1",
+        "show_product_types": true,
+        "sticky_header_type": "on-scroll-up",
+        "enable_hover_open": true,
+        "show_store_button": true,
+        "show_quick_button": true,
+        "button_label": "Help Center",
+        "button_link": "",
+        "logo_width_mobile": 100,
+        "default_expand_category": false,
+        "show_social_mobile": true,
+        "social_style_mobile": "border"
+      }
+    },
+    "blocks_ajJYd8": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_df479f9_zCibW9": {
+          "type": "ai_gen_block_df479f9",
+          "settings": {
+            "display_format": "code",
+            "show_icon": true,
+            "font_size": 14,
+            "icon_size": 18,
+            "text_color": "#1a1a1a",
+            "dropdown_alignment": "left",
+            "dropdown_min_width": 150,
+            "dropdown_border_radius": 8,
+            "dropdown_font_size": 14,
+            "dropdown_background": "#ffffff",
+            "dropdown_border_color": "#e5e5e5",
+            "dropdown_text_color": "#1a1a1a",
+            "dropdown_hover_background": "#f5f5f5",
+            "dropdown_active_background": "#f0f0f0"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_df479f9_zCibW9"
+      ],
+      "disabled": true,
+      "name": "Language switcher",
+      "settings": {
+        "enable_full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "seamless_scroll_wcajbx": {
+      "type": "seamless-scroll",
+      "blocks": {
+        "text_9kUNmC": {
+          "type": "text",
+          "settings": {
+            "content": "Enter your text here",
+            "font_size": 24,
+            "font_weight": "400",
+            "font_decorative": false,
+            "font_hollow": false,
+            "enable_custom_color": false,
+            "custom_color": "#000000"
+          }
+        },
+        "text_nLwYgp": {
+          "type": "text",
+          "settings": {
+            "content": "Enter your text here",
+            "font_size": 24,
+            "font_weight": "400",
+            "font_decorative": false,
+            "font_hollow": false,
+            "enable_custom_color": false,
+            "custom_color": "#000000"
+          }
+        },
+        "text_7Eqz9V": {
+          "type": "text",
+          "settings": {
+            "content": "Enter your text here",
+            "font_size": 24,
+            "font_weight": "400",
+            "font_decorative": false,
+            "font_hollow": false,
+            "enable_custom_color": false,
+            "custom_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "text_9kUNmC",
+        "text_nLwYgp",
+        "text_7Eqz9V"
+      ],
+      "disabled": true,
+      "name": "t:sections.seamless-scroll.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "direction": "left",
+        "gap": 32,
+        "speed": 40,
+        "display_border_blur": true,
+        "enable_scroll_synergy": false,
+        "padding_top": 8,
+        "padding_bottom": 8,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "announcement_bar_NFgAmB",
+    "header",
+    "blocks_ajJYd8",
+    "seamless_scroll_wcajbx"
+  ]
+}

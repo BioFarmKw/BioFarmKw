@@ -1,0 +1,81 @@
+<div
+  class="shopify-block media-grid-list-block"
+  {{ block.shopify_attributes }}
+>
+  <slider-component
+    class="slider"
+    data-slide-mobile
+    data-slide-smooth
+    data-draggable
+  >
+    <div class="slider-container">
+      <ul
+        id="Slider-{{ section.id }}"
+        class="media-grid slider-wrapper mobile-media-height--{{ block.settings.image_height_mobile }}"
+        style="--gap: {{ block.settings.gap }}px;"
+      >
+        {% content_for 'blocks' %}
+      </ul>
+    </div>
+    <div
+      class="slider-seek-bar"
+      aria-label="{{ 'general.slider.slide_seek_bar' | t }}"
+      aria-controls="Slider-{{ section.id }}"
+    ></div>
+  </slider-component>
+</div>
+{% schema %}
+{
+  "name": "t:blocks._media-grid-list.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "t:sections.all.gap.label",
+      "info": "t:sections.all.desktop.effect.info",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.mobile.header_content"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:blocks._media-grid-list.settings.paragraph_mobile.content"
+    },
+    {
+      "type": "select",
+      "id": "image_height_mobile",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:sections.all.height.options__2.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.all.height.options__3.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.all.height.options__4.label"
+        }
+      ],
+      "default": "medium",
+      "label": "t:sections.all.height.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_image-grid-item"
+    },
+    {
+      "type": "_video-grid-item"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,70 @@
+{% liquid
+  assign product_list = section.settings.product_list
+  if product_list != blank
+    assign product_count = product_list.count
+  else
+    assign product_count = 5
+  endif
+%}
+<tr class="field-name-tr medium-hide large-up-hide" aria-hidden="true">
+  <td colspan="{{ product_count }}">
+    <div>
+      <b>
+        {{ block.settings.label | escape }}
+      </b>
+    </div>
+  </td>
+</tr>
+<tr
+  class="shopify-block compare-table-custom-block table-row image-size--{{ block.settings.image_size | default: 'small' }}"
+  {{ block.shopify_attributes }}
+>
+  <td class="field-name-td small-hide">
+    <b> {{ block.settings.label | escape }}</b>
+  </td>
+  {% content_for 'blocks' %}
+</tr>
+{% schema %}
+{
+  "name": "t:blocks._compare-table-custom.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "t:blocks._compare-table-category.settings.label.label",
+      "default": "Attribute label"
+    },
+    {
+      "type": "select",
+      "id": "image_size",
+      "label": "t:sections.all.image.image_width.label",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:sections.all.image.image_width.options__1.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.all.image.image_width.options__2.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.all.image.image_width.options__3.label"
+        }
+      ],
+      "default": "medium"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_compare-table-custom-column"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._compare-table-custom.presets.name"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,324 @@
+{{ 'section-quotes.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  .section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
+    margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    .section-{{ section.id }}-margin {
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{% assign slide_interval = section.settings.change_slides_speed | times: 1000.00 %}
+<div class="section-quotes isolate color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-margin">
+  {%- if section.settings.background_image or section.settings.background_image_mobile -%}
+    <div
+      class="background-image{% if section.settings.image_behavior != 'none' %} image--has-behavior behavior--{{ section.settings.image_behavior }}{% if section.settings.image_behavior == 'zoom-in' or section.settings.image_behavior == 'parallax' %} scroll-synergy{% endif %}{% endif %}"
+      style="opacity: {{ section.settings.background_image_opacity }}%;"
+    >
+      {% render 'lazy-image',
+        has_mobile: section.settings.background_image_mobile,
+        image_object: section.settings.background_image
+      %}
+      {% render 'lazy-image', is_mobile: true, image_object: section.settings.background_image_mobile %}
+    </div>
+  {%- endif -%}
+  <div class="section__wrapper section-quotes__wrapper page-width section-{{ section.id }}-padding">
+    <slider-component
+      class="quotes-slider slider"
+      data-slide-desktop
+      data-slide-mobile
+      data-slide-smooth
+      data-draggable
+      {% if section.settings.auto_rotate %}
+        data-autoplay
+        data-interval="{{ slide_interval }}"
+      {% endif %}
+    >
+      <div class="slider-container">
+        <ul id="Slider-{{ section.id }}" class="slider-wrapper">
+          {% content_for 'blocks' %}
+        </ul>
+        {%- if section.settings.show_nav_buttons -%}
+          {% render 'slider-nav-buttons', section_id: section.id %}
+        {%- endif -%}
+      </div>
+      {%- if section.settings.show_page_dots -%}
+        {% render 'slider-page-dots',
+          section_id: section.id,
+          auto_rotate: section.settings.auto_rotate,
+          slide_interval: slide_interval,
+          is_small: true
+        %}
+      {%- endif -%}
+    </slider-component>
+  </div>
+
+  {% render 'section-id-tip', section_id: section.id %}
+</div>
+{% schema %}
+{
+  "name": "t:sections.quotes.name",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.drawer", "custom.popup"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.scheme.label",
+      "default": "scheme-2"
+    },
+    {
+      "type": "text_alignment",
+      "id": "text_alignment",
+      "label": "t:sections.all.text-alignment.label",
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "content_width",
+      "label": "t:sections.all.content.content_width.label",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:sections.all.content.content_width.options__1.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.all.content.content_width.options__2.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.all.content.content_width.options__3.label"
+        }
+      ],
+      "default": "large"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.image.background_image_picker.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "t:sections.all.image.background_image_picker.label"
+    },
+    {
+      "type": "range",
+      "id": "background_image_opacity",
+      "label": "t:sections.all.image.image_opacity.label",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 90
+    },
+    {
+      "type": "select",
+      "id": "image_behavior",
+      "label": "t:sections.all.animation.image_behavior.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.all.animation.image_behavior.options__1.label"
+        },
+        {
+          "value": "fixed",
+          "label": "t:sections.all.animation.image_behavior.options__3.label"
+        },
+        {
+          "value": "zoom-in",
+          "label": "t:sections.all.animation.image_behavior.options__4.label"
+        },
+        {
+          "value": "parallax",
+          "label": "t:sections.all.animation.image_behavior.options__5.label"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.layout.header_slider.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_nav_buttons",
+      "label": "t:sections.all.slider.show_nav_buttons.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_page_dots",
+      "label": "t:sections.all.slider.show_page_dots.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_rotate",
+      "label": "t:sections.all.slider.auto_rotate.label",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "change_slides_speed",
+      "min": 3,
+      "max": 15,
+      "step": 1,
+      "unit": "s",
+      "label": "t:sections.all.slider.change_slides_speed.label",
+      "default": 10,
+      "visible_if": "{{ section.settings.auto_rotate }}"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.mobile.header_content"
+    },
+    {
+      "type": "text_alignment",
+      "id": "text_alignment_mobile",
+      "default": "center",
+      "label": "t:sections.all.text-alignment.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "t:sections.all.image.background_image_picker.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.header_content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top.label",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom.label",
+      "default": 64
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.margin.header_content"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.margin.margin_top.label",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.margin.margin_bottom.label",
+      "default": 88
+    }
+  ],
+  "blocks": [{ "type": "_quote" }],
+  "presets": [
+    {
+      "name": "t:sections.quotes.presets.name",
+      "category": "t:sections.all.categories.team_social_proof",
+      "blocks": [
+        {
+          "type": "_quote",
+          "blocks": [
+            {
+              "type": "_author"
+            },
+            {
+              "type": "icon",
+              "settings": {
+                "icon": "quote",
+                "size": "large"
+              }
+            },
+            {
+              "type": "description",
+              "settings": {
+                "content": "<p>Your motivational and thought-provoking quote will be displayed here, capturing the essence of your brand or message in a way that resonates with your audience.</p>"
+              }
+            }
+          ]
+        },
+        {
+          "type": "_quote",
+          "blocks": [
+            {
+              "type": "_author"
+            },
+            {
+              "type": "icon",
+              "settings": {
+                "icon": "quote",
+                "size": "large"
+              }
+            },
+            {
+              "type": "description",
+              "settings": {
+                "content": "<p>Your motivational and thought-provoking quote will be displayed here, capturing the essence of your brand or message in a way that resonates with your audience.</p>"
+              }
+            }
+          ]
+        },
+        {
+          "type": "_quote",
+          "blocks": [
+            {
+              "type": "_author"
+            },
+            {
+              "type": "icon",
+              "settings": {
+                "icon": "quote",
+                "size": "large"
+              }
+            },
+            {
+              "type": "description",
+              "settings": {
+                "content": "<p>Your motivational and thought-provoking quote will be displayed here, capturing the essence of your brand or message in a way that resonates with your audience.</p>"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,116 @@
+{% assign products = block.settings.products | default: block.settings.collection.products %}
+{% render 'list-products',
+  products: products,
+  section_id: section.id,
+  products_limit: block.settings.limit,
+  slider_on_desktop: false,
+  slider_on_mobile: block.settings.slider_on_mobile,
+  show_seek_bar: true,
+  show_nav_buttons: true,
+  color_scheme: block.settings.color_scheme,
+  image_ratio: block.settings.image_ratio,
+  card_size: block.settings.card_size,
+  text_alignment: block.settings.text_alignment,
+  show_wrapper: block.settings.show_card_wrapper
+%}
+{% schema %}
+{
+  "name": "t:blocks._products-grid.name",
+  "class": "products-grid-block",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:sections.all.collection.label"
+    },
+    {
+      "type": "product_list",
+      "id": "products",
+      "label": "t:sections.all.product-list.label",
+      "info": "t:blocks._products-grid.settings.products.info"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "label": "t:sections.all.limit.label",
+      "min": 5,
+      "max": 20,
+      "step": 1,
+      "default": 6
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.card.header_content"
+    },
+    {
+      "type": "select",
+      "id": "card_size",
+      "label": "t:sections.all.card.card_size.label",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:sections.all.card.card_size.options_1.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.all.card.card_size.options_2.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.all.card.card_size.options_3.label"
+        }
+      ],
+      "default": "small"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "t:sections.all.image.image_ratio.label",
+      "options": [
+        {
+          "value": "square",
+          "label": "t:sections.all.image.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.all.image.image_ratio.options__2.label"
+        },
+        {
+          "value": "landscape",
+          "label": "t:sections.all.image.image_ratio.options__3.label"
+        }
+      ],
+      "default": "square"
+    },
+    {
+      "type": "text_alignment",
+      "id": "text_alignment",
+      "label": "t:sections.all.text-alignment.label",
+      "default": "center"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_card_wrapper",
+      "label": "t:sections.all.card.show_card_wrapper.label",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.card.wrapper_color_scheme.label",
+      "default": "scheme-2",
+      "visible_if": "{{ block.settings.show_card_wrapper }}"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.mobile.header_content"
+    },
+    {
+      "type": "checkbox",
+      "id": "slider_on_mobile",
+      "label": "t:sections.all.slider.enable_mobile_slider.label",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

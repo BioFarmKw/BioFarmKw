@@ -1,0 +1,277 @@
+{% doc %}
+  Header Menu Categories
+
+  @description
+  Renders a product categories menu with optional settings for default open, title, links, images, hover behavior, and section blocks.
+
+  @param {boolean} [default_open_in_index] - Whether the menu is open by default on the index page
+  @param {string} [category_menu] - Category menu
+  @param {object} [blocks] - Section blocks
+  @param {boolean} [show_collection_image] - Show collection images in the menu
+  @param {boolean} [enable_hover_open] - Enable hover to open menu
+
+  @example
+  {% render 'header-menu-categories' %}
+{% enddoc %}
+
+<details-disclosure
+  id="Header-Menu-Categories"
+  class="header-menu-categories"
+  {% if request.page_type == 'index' and default_open_in_index %}
+    data-reveal-open
+  {% endif %}
+>
+  <details
+    class="details-menu details-disclosure"
+    {% if request.page_type == 'index' and default_open_in_index %}
+      open
+    {% endif %}
+  >
+    <summary
+      class="categories-menu-button"
+      aria-haspopup="true"
+      aria-expanded="false"
+      aria-controls="Category-Menu"
+    >
+      {% render 'icon-sets', icon: 'menu' %}
+      <b>{{ category_menu.title }}</b>
+      {% render 'icon-sets-basic', icon: 'caret-down', class: 'caret-icon' %}
+
+      {%- if settings.enable_festival_effect
+        and settings.festival == 'christmas'
+        and settings.enable_category_menu_overlay
+      -%}
+        {% render 'festival-christmas-svgs', svg: 'category-snow-covered-bar' %}
+      {%- endif -%}
+    </summary>
+    {%- if category_menu.links != blank -%}
+      <div id="Category-Menu" class="menu-first-level-wrapper details-disclosure-content">
+        <ul
+          class="menu-list list-unstyled color-{{ settings.main_color_scheme }} gradient"
+          tabindex="-1"
+        >
+          {%- for link in category_menu.links limit: 12 -%}
+            {% liquid
+              assign icon_setting = blocks | where: 'type', 'icon' | map: 'settings' | where: 'menu_type', 'category' | where: 'target_id', forloop.index | last
+              assign bubble_setting = blocks | where: 'type', 'bubble' | map: 'settings' | where: 'menu_type', 'category' | where: 'target_id', forloop.index | last
+              assign image_settings = blocks | where: 'type', 'category_image' | map: 'settings' | where: 'target_id', forloop.index
+            %}
+
+            <li class="menu-item first-level-item">
+              {%- if link.links == blank and image_settings.size <= 0 -%}
+                <a
+                  class="first-level-link menu-link link"
+                  href="{{ link.url }}"
+                  {% if link.current %}
+                    aria-current="page"
+                  {% endif %}
+                >
+                  {%- if icon_setting.image != blank and icon_setting != blank -%}
+                    <span class="media media--square">
+                      {{- icon_setting.image | image_url: width: 200 | image_tag -}}
+                    </span>
+                  {%- elsif icon_setting.icon != 'none' and icon_setting != blank -%}
+                    {% render 'icon-sets', icon: icon_setting.icon %}
+                  {%- elsif link.type == 'collection_link' and show_collection_image -%}
+                    {% assign first_product = link.object.products | first %}
+                    {%- if first_product != blank -%}
+                      <span class="media media--square">
+                        {{- first_product.featured_image | image_url: width: 200 | image_tag -}}
+                      </span>
+                    {%- endif -%}
+                  {%- endif -%}
+
+                  {{- link.title | escape -}}
+                  {%- if bubble_setting != blank -%}
+                    <span
+                      class="menu-bubble"
+                      style="background: {{ bubble_setting.background_color }}; color: {{ bubble_setting.foreground_color }};"
+                    >
+                      {%- if bubble_setting.icon != 'none' -%}
+                        {% render 'icon-sets', icon: bubble_setting.icon %}
+                      {%- endif -%}
+                      {{ bubble_setting.text }}
+                    </span>
+                  {%- endif -%}
+                </a>
+              {%- else -%}
+                <drop-menu
+                  class="first-level-drop"
+                  {% if enable_hover_open %}
+                    data-hover-open
+                  {% endif %}
+                >
+                  <details class="details-submenu details-disclosure">
+                    <summary
+                      class="first-level-summary"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      aria-controls="Menu-{{ link.handle | capitalize }}"
+                    >
+                      <a
+                        class="menu-link link"
+                        {% if link.url != blank and link.url != '/' %}
+                          href="{{ link.url }}"
+                          {% if link.current %}
+                            aria-current="page"
+                          {% endif %}
+                        {% else %}
+                          role="link"
+                          aria-disabled="true"
+                        {% endif %}
+                      >
+                        {%- if icon_setting.image != blank and icon_setting != blank -%}
+                          <span class="media media--square">
+                            {{- icon_setting.image | image_url: width: 200 | image_tag -}}
+                          </span>
+                        {%- elsif icon_setting.icon != 'none' and icon_setting != blank -%}
+                          {% render 'icon-sets', icon: icon_setting.icon %}
+                        {%- elsif link.type == 'collection_link' and show_collection_image -%}
+                          {% assign first_product = link.object.products | first %}
+                          {%- if first_product != blank -%}
+                            <span class="media media--square">
+                              {{- first_product.featured_image | image_url: width: 200 | image_tag -}}
+                            </span>
+                          {%- endif -%}
+                        {%- endif -%}
+                        {{ link.title | escape }}
+                        {%- if bubble_setting != blank -%}
+                          <span
+                            class="menu-bubble"
+                            style="background: {{ bubble_setting.background_color }}; color: {{ bubble_setting.foreground_color }};"
+                          >
+                            {%- if bubble_setting.icon != 'none' -%}
+                              {% render 'icon-sets', icon: bubble_setting.icon %}
+                            {%- endif -%}
+                            {{ bubble_setting.text }}
+                          </span>
+                        {%- endif -%}
+                      </a>
+                      {% render 'icon-sets-basic', icon: 'caret-right', class: 'caret-icon' %}
+                    </summary>
+                    <div
+                      class="menu-secondary-level-wrapper details-disclosure-content color-{{ settings.main_color_scheme }} gradient{% if image_settings.size > 0 %} has-images{% endif %}"
+                      tabindex="-1"
+                    >
+                      {%- if link.links.size > 0 and link.links != blank -%}
+                        <ul class="submenu-list list-unstyled" data-auto-strench>
+                          {% for childlink in link.links %}
+                            <li class="menu-item second-level-item">
+                              <a
+                                class="menu-title menu-link second-level-link link font-heading"
+                                {% if childlink.url != blank and childlink.url != '/' %}
+                                  href="{{ childlink.url }}"
+                                  {% if childlink.current %}
+                                    aria-current="page"
+                                  {% endif %}
+                                {% else %}
+                                  role="link"
+                                  aria-disabled="true"
+                                {% endif %}
+                              >
+                                {{ childlink.title | escape }}
+                              </a>
+                              {% if childlink.links != blank %}
+                                <ul class="second-level-menu list-unstyled">
+                                  {% for grandchildlink in childlink.links %}
+                                    <li class="menu-item third-level-item">
+                                      <a
+                                        href="{{ grandchildlink.url }}"
+                                        class="menu-link link third-level-link link-text"
+                                        {% if grandchildlink.current %}
+                                          aria-current="page"
+                                        {% endif %}
+                                      >
+                                        {{ grandchildlink.title | escape }}
+                                      </a>
+                                    </li>
+                                  {% endfor %}
+                                </ul>
+                              {% endif %}
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      {%- endif -%}
+                      {%- if image_settings.size > 0 -%}
+                        {% liquid
+                          assign first_image_setting = image_settings | first
+                          assign rows = 100 | divided_by: first_image_setting.height | round
+                          assign columns = 100 | divided_by: first_image_setting.width | round
+                          assign max_image_number = rows | times: columns
+                          assign image_sizes = settings.page_width | divided_by: 2 | divided_by: columns | append: 'px'
+                        %}
+                        <div
+                          class="image-list"
+                          style="--rows: {{ rows }}; --columns: {{ columns }};"
+                        >
+                          {%- for image_setting in image_settings -%}
+                            {% liquid
+                              if forloop.index > max_image_number
+                                break
+                              endif
+                            %}
+                            <a
+                              class="image-item text-align--{{ image_setting.alignment }} link"
+                              {% if image_setting.link != blank %}
+                                href="{{ image_setting.link }}"
+                                {% if image_setting.open_in_new_tab %}
+                                  target="_blank"
+                                  rel="noopener nofollow"
+                                {% endif %}
+                              {% else %}
+                                aria-disabled="true"
+                                role="link"
+                              {% endif %}
+                            >
+                              <div class="image-item-media media">
+                                {% render 'lazy-image',
+                                  image_object: image_setting.image,
+                                  widths: '165, 360, 450, 660, 900, 1320',
+                                  sizes: image_sizes,
+                                  placeholder: 'image'
+                                %}
+                                {%- if image_setting.badge_label != blank -%}
+                                  <div class="media-content position-container position--{{ image_setting.badge_position }}">
+                                    <span
+                                      class="badge"
+                                      style="color: {{ image_setting.badge_foreground_color }}; background: {{ image_setting.badge_background_color }};"
+                                    >
+                                      {%- if image_setting.badge_icon != 'none' -%}
+                                        {% render 'icon-sets', icon: image_setting.badge_icon %}
+                                      {%- endif -%}
+                                      {{- image_setting.badge_label | escape -}}
+                                    </span>
+                                  </div>
+                                {%- endif -%}
+                              </div>
+                              {%- if image_setting.heading != empty -%}
+                                <div class="image-item-title">
+                                  <b class="link link-text">{{ image_setting.heading | escape }}</b>
+                                </div>
+                              {%- endif -%}
+                            </a>
+                          {%- endfor -%}
+                        </div>
+                      {%- endif -%}
+                    </div>
+                  </details>
+                </drop-menu>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+
+          {%- if category_menu.links.size > 12 -%}
+            <li class="menu-item show-more-item">
+              <a
+                class="button button--small button--full button--link"
+                href="{{ routes.collections_url }}"
+              >
+                {{ 'general.view_all' | t }}
+              </a>
+            </li>
+          {%- endif -%}
+        </ul>
+      </div>
+    {%- endif -%}
+  </details>
+</details-disclosure>

@@ -1,0 +1,64 @@
+{% doc %}
+  Product Color Swatches
+
+  @description
+  Displays color swatches for a product, supporting image or color types, with optional tooltip and selection behavior.
+
+  @param {string} swatch_type - Type of swatch. Options: 'image' or 'color'
+  @param {object} swatch_values - Product swatch items (pass as an array)
+  @param {number} [max_to_show] - Limit the number of displayed swatches
+  @param {boolean} [show_tooltip] - Show tooltip on hover
+  @param {boolean} [active_first] - Activate the first swatch by default
+  @param {boolean} [round_swatches] - Display swatches with round shape
+
+  @example
+  {% render 'color-swatches' %}
+{% enddoc %}
+
+{% liquid
+  assign max_to_show = max_to_show | default: 5
+  assign swatch_count = 0
+%}
+<ul class="color-swatches swatch-type--{{ swatch_type | default: 'color' }}{% if round_swatches %} swatch-shape--round{% endif %}">
+  {%- for value in swatch_values.values -%}
+    {% liquid
+      if swatch_count >= max_to_show
+        break
+      endif
+
+      # Determine whether there is content to display
+      assign show_swatch = false
+      if swatch_type == 'image' and value.variant != blank and value.variant.image != blank
+        assign show_swatch = true
+      elsif swatch_type == 'color' and value.swatch != blank
+        assign show_swatch = true
+      endif
+    %}
+    {%- if show_swatch -%}
+      {% assign swatch_count = swatch_count | plus: 1 %}
+      <li
+        class="color-swatch{% unless value.available %} disabled{% endunless %}{% if forloop.first and active_first %} active{% endif %}"
+        data-index="{{ forloop.index0 }}"
+      >
+        <a
+          class="button--clear color color-{{ value | strip | downcase | replace: ' ', '-' }}"
+          href="{{ value.variant.url }}"
+          aria-label="{{ 'color.value' | t: color: value }}"
+          {% if value.swatch != blank and swatch_type == 'color' %}
+            style="background: {{ value.swatch.color }};"
+          {% endif %}
+          {% if show_tooltip == true %}
+            data-toggle="tooltip"
+            data-title="{{ value }}"
+          {% endif %}
+        >
+          {%- if swatch_type == 'image' -%}
+            {{ value.variant.image | image_url: width: 60 | image_tag: loading: 'lazy' }}
+          {%- elsif swatch_type == 'color' and value.swatch.image != blank -%}
+            {{ value.swatch.image | image_url: width: 60 | image_tag: loading: 'lazy' }}
+          {%- endif -%}
+        </a>
+      </li>
+    {%- endif -%}
+  {%- endfor -%}
+</ul>

@@ -1,0 +1,21 @@
+@media screen and (max-width: 749px) {
+  .featured-products-grid__wrapper .rich-text-block {
+    margin-block-end: 2rem;
+  }
+}
+@media screen and (min-width: 750px) {
+  .featured-products-grid__wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
+  }
+  .featured-products-grid__wrapper .rich-text-block {
+    position: sticky;
+    inset-block-start: calc(var(--header-height, 5rem) + 1rem);
+    width: 40%;
+    flex: 0 0 auto;
+  }
+  .featured-products-grid__wrapper .products-grid-block {
+    flex: 1 1 auto;
+  }
+}

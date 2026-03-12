@@ -1,0 +1,20 @@
+<style type="text/css">
+  .main-404 {
+    padding-block: 8rem;
+  }
+
+  .main-404 > *:not(:first-child) {
+    margin-block-start: 1rem;
+  }
+</style>
+
+<div class="main-404 page-width text-align--center">
+  <h1 class="h2">
+    {{ 'templates.404.title' | t }}
+  </h1>
+  <p>{{ 'templates.404.subtext' | t }}</p>
+  <a href="{{ routes.all_products_collection_url }}" class="button">
+    {{ 'general.continue_shopping' | t }}
+    {% render 'icon-sets-basic', icon: 'right', class: 'caret-icon' %}
+  </a>
+</div>

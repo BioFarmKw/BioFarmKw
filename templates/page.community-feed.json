@@ -1,0 +1,425 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "content_width": "medium",
+        "text_alignment": "center",
+        "background_image_opacity": 90,
+        "image_behavior": "none",
+        "text_alignment_mobile": "center",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "video_banner_BGLkaE": {
+      "type": "video-banner",
+      "name": "t:sections.video-banner.name",
+      "settings": {
+        "enable_full_width": true,
+        "video_height": "large",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_opacity": 100,
+        "enable_controls": true,
+        "color_scheme": "",
+        "content_width": "medium",
+        "content_position": "middle-center",
+        "text_alignment": "center",
+        "show_text_content_box": true,
+        "text_content_box_opacity": 100,
+        "enabled_blur_effect": false,
+        "video_url_mobile": "",
+        "content_position_mobile": "middle-center",
+        "text_alignment_mobile": "center",
+        "if_as_main_area": false,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "settings": {
+        "color_scheme": "",
+        "alignment": "left",
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "embedded_image_heading_zJXWML": {
+      "type": "embedded-image-heading",
+      "blocks": {
+        "heading_Vw4RBq": {
+          "type": "heading",
+          "settings": {
+            "text": "Real inspiration"
+          }
+        },
+        "image_n6pAXa": {
+          "type": "image",
+          "settings": {
+            "image_width": 100,
+            "image_width_mobile": 50
+          }
+        },
+        "heading_gBMpm3": {
+          "type": "heading",
+          "settings": {
+            "text": "Everyday spaces,"
+          }
+        },
+        "image_JjHFQq": {
+          "type": "image",
+          "settings": {
+            "image_width": 100,
+            "image_width_mobile": 50
+          }
+        },
+        "heading_QbGqUy": {
+          "type": "heading",
+          "settings": {
+            "text": "made beautiful..."
+          }
+        },
+        "image_97WdBP": {
+          "type": "image",
+          "settings": {
+            "image_width": 100,
+            "image_width_mobile": 50
+          }
+        },
+        "heading_m8VJRU": {
+          "type": "heading",
+          "settings": {
+            "text": "Share your own moment."
+          }
+        }
+      },
+      "block_order": [
+        "heading_Vw4RBq",
+        "image_n6pAXa",
+        "heading_gBMpm3",
+        "image_JjHFQq",
+        "heading_QbGqUy",
+        "image_97WdBP",
+        "heading_m8VJRU"
+      ],
+      "name": "t:sections.embedded-image-heading.presets.name",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "font_size": 72,
+        "font_size_mobile": 24,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "gallery_with_text_npmznC": {
+      "type": "gallery-with-text",
+      "blocks": {
+        "image-gallery": {
+          "type": "_image-gallery",
+          "static": true,
+          "settings": {
+            "direction": "normal",
+            "speed": 40,
+            "enable_staggered": true
+          },
+          "blocks": {
+            "image_gJiJGm": {
+              "type": "_image",
+              "settings": {
+                "image_ratio": "adapt",
+                "image_ratio_mobile": "square"
+              },
+              "blocks": {}
+            },
+            "image_fXqxpD": {
+              "type": "_image",
+              "settings": {
+                "image_ratio": "adapt",
+                "image_ratio_mobile": "square"
+              },
+              "blocks": {}
+            },
+            "image_pjdyJH": {
+              "type": "_image",
+              "settings": {
+                "image_ratio": "square",
+                "image_ratio_mobile": "square"
+              },
+              "blocks": {}
+            },
+            "image_YNmDEW": {
+              "type": "_image",
+              "settings": {
+                "image_ratio": "adapt",
+                "image_ratio_mobile": "square"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "image_gJiJGm",
+            "image_fXqxpD",
+            "image_pjdyJH",
+            "image_YNmDEW"
+          ]
+        },
+        "rich-text": {
+          "type": "_rich-text",
+          "static": true,
+          "settings": {
+            "content_width": "medium",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center"
+          },
+          "blocks": {
+            "subheading_zq6RCY": {
+              "type": "subheading",
+              "settings": {
+                "content": "#Florona"
+              },
+              "blocks": {}
+            },
+            "heading_iWiVm3": {
+              "type": "heading",
+              "settings": {
+                "content": "Community Feed",
+                "type": "2",
+                "size": "medium",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "color",
+                "highlight_color": "#ff0000"
+              },
+              "blocks": {}
+            },
+            "description_nzDC8b": {
+              "type": "description",
+              "settings": {
+                "content": "<p>Real stories from our community</p>",
+                "color_light": false,
+                "limit_description_height": false
+              },
+              "blocks": {}
+            },
+            "social_list_WdUerh": {
+              "type": "social-list",
+              "name": "t:blocks.social-list.presets.name",
+              "settings": {
+                "style": "border",
+                "size": "small",
+                "show_tooltip": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "subheading_zq6RCY",
+            "heading_iWiVm3",
+            "description_nzDC8b",
+            "social_list_WdUerh"
+          ]
+        }
+      },
+      "name": "t:sections.gallery-with-text.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "image_position": "right",
+        "image_position_mobile": "top",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "rich_text_QnpHq9": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_M4APCc": {
+          "type": "heading",
+          "settings": {
+            "content": "About <em>Flonora</em>",
+            "type": "2",
+            "size": "small",
+            "uppercase": false,
+            "enable_highlight_text": true,
+            "highlight_type": "underline",
+            "highlight_color": "#676432"
+          },
+          "blocks": {}
+        },
+        "description_TArrpP": {
+          "type": "description",
+          "settings": {
+            "content": "<p>Flonora began with a simple vision: to bring the quiet beauty of nature into everyday living. What started as a small collection of indoor plants and handcrafted ceramics has grown into a thoughtful curation of home décor and lifestyle pieces.</p><p>We believe that the spaces we live in shape the way we feel. Every planter, every vessel, every detail we design carries the intention of creating balance, calm, and connection. By blending natural elements with timeless craftsmanship, our products are meant to be more than objects — they are companions for a mindful life.</p><p>Our journey is rooted in collaboration. We partner with artisans, growers, and designers who share our values of sustainability, artistry, and care. Together, we craft pieces that honor tradition while embracing modern living.</p><p>At Flonora, we invite you to slow down, to celebrate simplicity, and to create spaces that reflect not only beauty, but also meaning.</p>",
+            "color_light": false,
+            "limit_description_height": true
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading_M4APCc",
+        "description_TArrpP"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "enable_full_width": false,
+        "color_scheme": "scheme-2",
+        "content_width": "large",
+        "text_alignment": "center",
+        "background_image_opacity": 90,
+        "image_behavior": "none",
+        "text_alignment_mobile": "center",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "custom_section_header_kaHiGa": {
+      "type": "custom-section-header",
+      "blocks": {
+        "heading_GCrqPr": {
+          "type": "heading",
+          "settings": {
+            "content": "Fan Highlights",
+            "type": "2",
+            "size": "small",
+            "uppercase": false,
+            "enable_highlight_text": true,
+            "highlight_type": "color",
+            "highlight_color": "#ff0000"
+          },
+          "blocks": {}
+        },
+        "description_WXC6ri": {
+          "type": "description",
+          "settings": {
+            "content": "<p>Real moments from our users—tag <em>#Florona</em> to join in.</p>",
+            "color_light": false,
+            "limit_description_height": false
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading_GCrqPr",
+        "description_WXC6ri"
+      ],
+      "name": "t:sections.custom-section-header.presets.name",
+      "settings": {}
+    },
+    "shop_the_feed_dQnU7Q": {
+      "type": "shop-the-feed",
+      "blocks": {
+        "image_feed_pTRhXM": {
+          "type": "image-feed",
+          "settings": {
+            "description": "<p>Effortless style, rooted in nature.<br/>Florona plants are the upgrade your space has been waiting for. 🌿💎<br/><br/>#FloronaPlants #GreenUpgrade #IndoorElegance #GrowWithFlorona</p>",
+            "product": "peace-lily"
+          }
+        },
+        "video_feed_hYV8fK": {
+          "type": "video-feed",
+          "settings": {
+            "description": "<p>More green, more glow.<br/>Florona makes every day brighter with easy-care plants. 🌱☀️<br/><br/>#FloronaPlants #DailyFreshness #HappyPlants #FloronaVibes</p>",
+            "product": "rubber-plant"
+          }
+        },
+        "image_feed_KfJUMd": {
+          "type": "image-feed",
+          "settings": {
+            "description": "<p>Your home, your garden.<br/>Florona brings comfort and nature together, one plant at a time. 🌿🏡<br/><br/>#FloronaPlants #HomeGardenFeel #CozyWithFlorona #NatureInside</p>",
+            "product": "snake-plant"
+          }
+        },
+        "video_feed_E6GEUN": {
+          "type": "video-feed",
+          "settings": {
+            "description": "<p>Clean design, green energy.<br/>Florona plants keep your space fresh, stylish, and alive. ✨🍃<br/><br/>#FloronaPlants #MinimalGreen #FreshSpaces #NaturallyFlorona</p>",
+            "product": "triostar-calathea"
+          }
+        },
+        "image_feed_m89YxU": {
+          "type": "image-feed",
+          "settings": {
+            "description": "<p>Bring nature home, stress stays out.<br/>Florona plants keep it green, simple, and serene. 🍃✨<br/><br/>#FloronaPlants #GreenSerenity #SimpleLiving #NatureVibes</p>",
+            "product": "zz-plant"
+          }
+        },
+        "video_feed_AggAJM": {
+          "type": "video-feed",
+          "settings": {
+            "description": "<p>Little pots, big joy.<br/>Florona plants brighten your day, one leaf at a time. 🌱💚<br/><br/>#FloronaPlants #LeafJoy #IndoorHappiness #FloronaTouch</p>",
+            "product": "ceramic-empty-pot"
+          }
+        },
+        "image_feed_pQnyzz": {
+          "type": "image-feed",
+          "settings": {
+            "description": "<p>Grow calm, breathe easy.<br/>Florona plants turn everyday spaces into wellness zones. 🌿🕊️<br/><br/>#FloronaPlants #BreatheBetter #GreenWellness #PlantCareMadeEasy</p>",
+            "product": "snake-plant"
+          }
+        },
+        "image_feed_hnPaV4": {
+          "type": "image-feed",
+          "settings": {
+            "description": "<p>Cool rooms grow green.<br/>With Florona, plants are the new must-have vibe. ✨🌱<br/><br/>#FloronaPlants #GreenTrend #StayFresh #PlantGoals</p>",
+            "product": "plant-mister"
+          }
+        }
+      },
+      "block_order": [
+        "image_feed_pTRhXM",
+        "video_feed_hYV8fK",
+        "image_feed_KfJUMd",
+        "video_feed_E6GEUN",
+        "image_feed_m89YxU",
+        "video_feed_AggAJM",
+        "image_feed_pQnyzz",
+        "image_feed_hnPaV4"
+      ],
+      "name": "t:sections.shop-the-feed.presets.name",
+      "settings": {
+        "enable_full_width": false,
+        "color_scheme": "",
+        "layout": "grid",
+        "columns": 4,
+        "horizontal_gap": 8,
+        "vertical_gap": 8,
+        "direction": "left",
+        "speed": 40,
+        "display_border_blur": false,
+        "enable_scroll_synergy": false,
+        "social_type": "pinterest",
+        "social_nickname": "Florona",
+        "social_username": "Florona",
+        "social_link": "",
+        "columns_mobile": "2",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    }
+  },
+  "order": [
+    "main",
+    "video_banner_BGLkaE",
+    "breadcrumb",
+    "embedded_image_heading_zJXWML",
+    "gallery_with_text_npmznC",
+    "rich_text_QnpHq9",
+    "custom_section_header_kaHiGa",
+    "shop_the_feed_dQnU7Q"
+  ]
+}

@@ -1,0 +1,435 @@
+{% doc %}
+  @prompt
+    Create a language switcher block for the header section that displays on desktop view only (hidden on mobile). The language switcher should:
+    - Be positioned to the left of the search icon in the header menu
+    - Match the styling of the existing language switcher in the announcement bar
+    - Show a dropdown or selector for available store languages
+    - Be responsive and only visible on desktop (since mobile already has it in the responsive menu)
+    - Include proper Liquid code to detect and display available languages
+    - Have clean, minimal styling that fits naturally in the header navigation area
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-header-language-switcher-{{ ai_gen_id }} {
+    display: block;
+    position: relative;
+  }
+
+  .ai-header-language-switcher-wrapper-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ai-header-language-switcher-button-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px 12px;
+    font-size: {{ block.settings.font_size }}px;
+    color: {{ block.settings.text_color }};
+    transition: opacity 0.2s ease;
+    font-family: inherit;
+  }
+
+  .ai-header-language-switcher-button-{{ ai_gen_id }}:hover {
+    opacity: 0.7;
+  }
+
+  .ai-header-language-switcher-icon-{{ ai_gen_id }} {
+    width: {{ block.settings.icon_size }}px;
+    height: {{ block.settings.icon_size }}px;
+    flex-shrink: 0;
+  }
+
+  .ai-header-language-switcher-icon-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+  }
+
+  .ai-header-language-switcher-chevron-{{ ai_gen_id }} {
+    width: 12px;
+    height: 12px;
+    transition: transform 0.2s ease;
+  }
+
+  .ai-header-language-switcher-chevron-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+  }
+
+  .ai-header-language-switcher-button-{{ ai_gen_id }}[aria-expanded="true"] .ai-header-language-switcher-chevron-{{ ai_gen_id }} {
+    transform: rotate(180deg);
+  }
+
+  .ai-header-language-switcher-dropdown-{{ ai_gen_id }} {
+    position: absolute;
+    top: calc(100% + 8px);
+    {{ block.settings.dropdown_alignment }}: 0;
+    background-color: {{ block.settings.dropdown_background }};
+    border: 1px solid {{ block.settings.dropdown_border_color }};
+    border-radius: {{ block.settings.dropdown_border_radius }}px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-width: {{ block.settings.dropdown_min_width }}px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+    z-index: 100;
+  }
+
+  .ai-header-language-switcher-dropdown-{{ ai_gen_id }}.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .ai-header-language-switcher-list-{{ ai_gen_id }} {
+    list-style: none;
+    margin: 0;
+    padding: 8px 0;
+  }
+
+  .ai-header-language-switcher-item-{{ ai_gen_id }} {
+    margin: 0;
+  }
+
+  .ai-header-language-switcher-link-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    color: {{ block.settings.dropdown_text_color }};
+    text-decoration: none;
+    font-size: {{ block.settings.dropdown_font_size }}px;
+    transition: background-color 0.2s ease;
+  }
+
+  .ai-header-language-switcher-link-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.dropdown_hover_background }};
+  }
+
+  .ai-header-language-switcher-link-{{ ai_gen_id }}.active {
+    background-color: {{ block.settings.dropdown_active_background }};
+    font-weight: 600;
+  }
+
+  .ai-header-language-switcher-flag-{{ ai_gen_id }} {
+    width: 20px;
+    height: 15px;
+    border-radius: 2px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-header-language-switcher-{{ ai_gen_id }} {
+      display: none;
+    }
+  }
+{% endstyle %}
+
+{% if localization.available_languages.size > 1 %}
+  <language-switcher-{{ ai_gen_id }}
+    class="ai-header-language-switcher-{{ ai_gen_id }}"
+    {{ block.shopify_attributes }}
+  >
+    <div class="ai-header-language-switcher-wrapper-{{ ai_gen_id }}">
+      <button
+        class="ai-header-language-switcher-button-{{ ai_gen_id }}"
+        aria-expanded="false"
+        aria-label="Select language"
+      >
+        {% if block.settings.show_icon %}
+          <span class="ai-header-language-switcher-icon-{{ ai_gen_id }}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+          </span>
+        {% endif %}
+        
+        {% if block.settings.display_format == 'code' %}
+          <span>{{ localization.language.iso_code | upcase }}</span>
+        {% elsif block.settings.display_format == 'name' %}
+          <span>{{ localization.language.endonym_name }}</span>
+        {% else %}
+          <span>{{ localization.language.iso_code | upcase }}</span>
+        {% endif %}
+
+        <span class="ai-header-language-switcher-chevron-{{ ai_gen_id }}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </button>
+
+      <div class="ai-header-language-switcher-dropdown-{{ ai_gen_id }}">
+        <ul class="ai-header-language-switcher-list-{{ ai_gen_id }}">
+          {% for language in localization.available_languages %}
+            <li class="ai-header-language-switcher-item-{{ ai_gen_id }}">
+              <a
+                href="#"
+                class="ai-header-language-switcher-link-{{ ai_gen_id }} {% if language.iso_code == localization.language.iso_code %}active{% endif %}"
+                hreflang="{{ language.iso_code }}"
+                lang="{{ language.iso_code }}"
+                data-language-code="{{ language.iso_code }}"
+              >
+                {% if block.settings.display_format == 'code' %}
+                  {{ language.iso_code | upcase }}
+                {% elsif block.settings.display_format == 'name' %}
+                  {{ language.endonym_name }}
+                {% else %}
+                  {{ language.iso_code | upcase }}
+                {% endif %}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </language-switcher-{{ ai_gen_id }}>
+
+  <script>
+    (function() {
+      class LanguageSwitcher{{ ai_gen_id }} extends HTMLElement {
+        constructor() {
+          super();
+          this.button = this.querySelector('.ai-header-language-switcher-button-{{ ai_gen_id }}');
+          this.dropdown = this.querySelector('.ai-header-language-switcher-dropdown-{{ ai_gen_id }}');
+          this.links = this.querySelectorAll('.ai-header-language-switcher-link-{{ ai_gen_id }}');
+        }
+
+        connectedCallback() {
+          this.setupEventListeners();
+        }
+
+        setupEventListeners() {
+          this.button.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.toggleDropdown();
+          });
+
+          this.links.forEach((link) => {
+            link.addEventListener('click', (e) => {
+              e.preventDefault();
+              const languageCode = link.dataset.languageCode;
+              this.switchLanguage(languageCode);
+            });
+          });
+
+          document.addEventListener('click', (e) => {
+            if (!this.contains(e.target)) {
+              this.closeDropdown();
+            }
+          });
+
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+              this.closeDropdown();
+            }
+          });
+        }
+
+        toggleDropdown() {
+          const isExpanded = this.button.getAttribute('aria-expanded') === 'true';
+          if (isExpanded) {
+            this.closeDropdown();
+          } else {
+            this.openDropdown();
+          }
+        }
+
+        openDropdown() {
+          this.button.setAttribute('aria-expanded', 'true');
+          this.dropdown.classList.add('active');
+        }
+
+        closeDropdown() {
+          this.button.setAttribute('aria-expanded', 'false');
+          this.dropdown.classList.remove('active');
+        }
+
+        switchLanguage(languageCode) {
+          const form = document.createElement('form');
+          form.method = 'POST';
+          form.action = '/localization';
+
+          const languageInput = document.createElement('input');
+          languageInput.type = 'hidden';
+          languageInput.name = 'language_code';
+          languageInput.value = languageCode;
+
+          const returnToInput = document.createElement('input');
+          returnToInput.type = 'hidden';
+          returnToInput.name = 'return_to';
+          returnToInput.value = window.location.pathname;
+
+          form.appendChild(languageInput);
+          form.appendChild(returnToInput);
+          document.body.appendChild(form);
+          form.submit();
+        }
+      }
+
+      customElements.define('language-switcher-{{ ai_gen_id }}', LanguageSwitcher{{ ai_gen_id }});
+    })();
+  </script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Language switcher",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Display"
+    },
+    {
+      "type": "paragraph",
+      "content": "This block is hidden on mobile devices. Configure your store languages in Settings > Languages."
+    },
+    {
+      "type": "select",
+      "id": "display_format",
+      "label": "Display format",
+      "options": [
+        {
+          "value": "code",
+          "label": "Language code (EN, AR)"
+        },
+        {
+          "value": "name",
+          "label": "Language name (English, العربية)"
+        }
+      ],
+      "default": "code"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icon",
+      "label": "Show globe icon",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "header",
+      "content": "Dropdown"
+    },
+    {
+      "type": "select",
+      "id": "dropdown_alignment",
+      "label": "Dropdown alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "dropdown_min_width",
+      "label": "Minimum width",
+      "min": 120,
+      "max": 250,
+      "step": 10,
+      "unit": "px",
+      "default": 150
+    },
+    {
+      "type": "range",
+      "id": "dropdown_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "dropdown_font_size",
+      "label": "Font size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "dropdown_background",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "dropdown_border_color",
+      "label": "Border color",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "color",
+      "id": "dropdown_text_color",
+      "label": "Text color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "dropdown_hover_background",
+      "label": "Hover background",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "dropdown_active_background",
+      "label": "Active background",
+      "default": "#f0f0f0"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Language switcher"
+    }
+  ]
+}
+{% endschema %}

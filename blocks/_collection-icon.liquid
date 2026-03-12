@@ -1,0 +1,81 @@
+{% liquid
+  assign image = block.settings.image | default: block.settings.collection.featured_image
+  assign title = block.settings.title | default: block.settings.collection.title
+%}
+
+<li
+  id="Slide-{{ section.id }}-{{ block.id }}"
+  class="shopify-block collection-icon-block slider-slide grid-item focus-inset hover-trigger"
+  tabindex="0"
+  {{ block.shopify_attributes }}
+>
+  <a
+    class="collection-link link"
+    {% if block.settings.collection != blank %}
+      href="{{ block.settings.collection.url }}"
+    {% else %}
+      role="link"
+      aria-disabled="true"
+    {% endif %}
+  >
+    <span class="collection-image{% unless block.settings.image_shape == 'adapt' %} media media--square{% if block.settings.image_shape == 'round' %} media--circle{% endif %}{% endunless %} animate--scale-up">
+      {% render 'lazy-image', image_object: image, sizes: '300px', placeholder: 'collection-1' %}
+    </span>
+    <h3 class="collection-title h6 mb-0">
+      {%- if title != blank -%}
+        {{ title }}
+      {%- else -%}
+        {{ 'onboarding.collection_title' | t }}
+      {%- endif -%}
+    </h3>
+  </a>
+</li>
+{% schema %}
+{
+  "name": "t:blocks._collection-icon.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:sections.all.collection.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.all.image.image_picker.label",
+      "info": "t:blocks._collection-icon.settings.image.info"
+    },
+    {
+      "type": "select",
+      "id": "image_shape",
+      "label": "t:sections.all.image.image_shape.label",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.all.image.image_shape.options__1.label"
+        },
+        {
+          "value": "round",
+          "label": "t:sections.all.image.image_shape.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.all.image.image_shape.options__3.label"
+        }
+      ],
+      "default": "round"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "t:sections.all.title.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._collection-icon.presets.name"
+    }
+  ]
+}
+{% endschema %}

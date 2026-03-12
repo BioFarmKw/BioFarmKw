@@ -1,0 +1,4566 @@
+{
+  "settings_schema": {
+    "layout": {
+      "name": "Layout",
+      "settings": {
+        "enable_rtl": {
+          "label": "RTL inschakelen",
+          "info": "Schakel de lay-outrichting om naar rechts-naar-links voor talen zoals Arabisch of Hebreeuws."
+        },
+        "rtl_languages": {
+          "label": "Talen met RTL-ondersteuning",
+          "info": "Voer [ISO-taalcodes](https://www.loc.gov/standards/iso639-2/php/code_list.php) in, gescheiden door komma's. Laat leeg om op alle talen toe te passen."
+        },
+        "page_width": {
+          "label": "Pagina breedte"
+        }
+      }
+    },
+    "transparent_header": {
+      "name": "Transparante header",
+      "transparent_logo": {
+        "info": "Effectief wanneer transparante pagina is ingeschakeld"
+      },
+      "transparent_foreground_color": {
+        "label": "Voorgrondkleur"
+      },
+      "header_pages": {
+        "content": "Ingeschakelde pagina's"
+      },
+      "enable_transparent_header_index": {
+        "label": "Startpagina"
+      },
+      "enable_transparent_header_collections": {
+        "label": "Collecties"
+      },
+      "transparent_collections_templates": {
+        "label": "Collectie templates",
+        "info": "Meerdere templates gescheiden door komma's. Laat leeg om op alle collectie templates toe te passen."
+      },
+      "enable_transparent_header_collections_list": {
+        "label": "Collectielijst"
+      },
+      "enable_transparent_header_search": {
+        "label": "Zoeken"
+      },
+      "enable_transparent_header_pages": {
+        "label": "Pagina's"
+      },
+      "transparent_pages_templates": {
+        "label": "Paginasjablonen",
+        "info": "Meerdere sjablonen gescheiden door komma's. Laat leeg om op alle paginasjablonen toe te passen."
+      }
+    },
+    "colors": {
+      "name": "Kleuren",
+      "settings": {
+        "header_background": {
+          "content": "Achtergrondkleuren"
+        },
+        "background": {
+          "label": "Achtergrond"
+        },
+        "background_gradient": {
+          "label": "Gradient achtergrond",
+          "info": "Stel een verloopkleur in voor een dynamischer uiterlijk."
+        },
+        "header_text": {
+          "content": "Tekstkleur"
+        },
+        "text": {
+          "label": "Tekst"
+        },
+        "sale_price": {
+          "label": "Aanbiedingsprijs"
+        },
+        "header_button": {
+          "content": "Knopkleuren"
+        },
+        "button": {
+          "label": "Primaire knop achtergrond"
+        },
+        "button_label": {
+          "label": "Primaire knop tekst"
+        },
+        "secondary_button": {
+          "label": "Secundaire knop achtergrond"
+        },
+        "secondary_button_label": {
+          "label": "Secundaire knop tekst"
+        },
+        "header_rating": {
+          "content": "Andere kleuren"
+        },
+        "rating_star": {
+          "label": "Beoordelingsster"
+        },
+        "header_page_scheme": {
+          "content": "Pagina kleurenschema"
+        },
+        "paragraph_page_scheme": {
+          "content": "Configureer het globale kleurenschema van de websitepagina's"
+        },
+        "header_other_colors": {
+          "content": "Andere kleurspecificaties"
+        },
+        "color_success": {
+          "label": "Succes kleur",
+          "info": "Geeft succesvolle bewerking of normale status aan"
+        },
+        "color_error": {
+          "label": "Foutkleur",
+          "info": "Geeft mislukte bewerking of foutmelding aan"
+        },
+        "color_warning": {
+          "label": "Waarschuwingskleur",
+          "info": "Waarschuwt de gebruiker voor iets dat aandacht of actie vereist"
+        }
+      }
+    },
+    "typography": {
+      "name": "Typografie",
+      "settings": {
+        "font_spacing": {
+          "label": "Letterafstand",
+          "options__1": {
+            "label": "Smalle"
+          },
+          "options__2": {
+            "label": "Standaard"
+          },
+          "options__3": {
+            "label": "Ruime"
+          },
+          "options__4": {
+            "label": "Zeer ruim"
+          }
+        },
+        "header_heading": {
+          "content": "Koptekst lettertype"
+        },
+        "type_heading_font": {
+          "label": "Lettertype",
+          "info": "Een ander lettertype kan de snelheid van je winkel beïnvloeden. [Meer over systeemlettertypen](https://help.shopify.com/manual/online-store/os/store-speed/improving-speed#fonts)"
+        },
+        "header_body": {
+          "content": "Hoofdtekst lettertype"
+        },
+        "type_body_font": {
+          "label": "Lettertype",
+          "info": "Een ander lettertype kan de snelheid van je winkel beïnvloeden. [Meer over systeemlettertypen](https://help.shopify.com/manual/online-store/os/store-speed/improving-speed#fonts)"
+        },
+        "header_decorative": {
+          "content": "Decoratief lettertype"
+        },
+        "type_decorative_font": {
+          "label": "Lettertype",
+          "info": "Artistieke lettertypen zijn het beste in script- of niet-traditionele stijlen om creativiteit en uniciteit te benadrukken."
+        }
+      }
+    },
+    "icons": {
+      "name": "Pictogrammen",
+      "settings": {
+        "icon_style": {
+          "label": "Pictogramstijl",
+          "options__1": {
+            "label": "Omtrek"
+          },
+          "options__2": {
+            "label": "Solide"
+          },
+          "options__3": {
+            "label": "Verschoven"
+          }
+        }
+      }
+    },
+    "animations": {
+      "name": "Animaties",
+      "settings": {
+        "animations_reveal_on_scroll": {
+          "label": "Secties tonen bij scrollen"
+        },
+        "animations_enable_image_lazy_loading": {
+          "label": "Afbeeldingen lui laden inschakelen"
+        }
+      }
+    },
+    "cards": {
+      "name": "Productkaarten",
+      "settings": {
+        "header_media": {
+          "content": "Afbeeldingsinstellingen"
+        },
+        "card_hover_show_secondary_image": {
+          "label": "Hover om tweede afbeelding te tonen"
+        },
+        "card_hover_effect": {
+          "label": "Afbeeldingstransitie",
+          "options__1": {
+            "label": "Schuiven"
+          },
+          "options__2": {
+            "label": "Vervagen"
+          }
+        },
+        "card_show_vendor": {
+          "label": "Toon leverancier"
+        },
+        "card_truncate_title": {
+          "label": "Titel inkorten"
+        },
+        "card_enable_quick_buy": {
+          "label": "Snelle aankoop inschakelen"
+        },
+        "card_show_low_stock": {
+          "label": "Toon lage voorraad"
+        },
+        "card_low_stock_threshold": {
+          "label": "Drempel lage voorraad",
+          "info": "Stel het voorraadniveau in waaronder het lage voorraad label wordt weergegeven"
+        },
+        "header_color_swatch": {
+          "content": "Staleninstellingen"
+        },
+        "card_enable_color_swatch": {
+          "label": "Stalen inschakelen"
+        },
+        "card_color_swatch_type": {
+          "label": "Staalkleur",
+          "options__1": {
+            "label": "Afbeelding"
+          },
+          "options__2": {
+            "label": "Kleur"
+          }
+        },
+        "card_round_swatches": {
+          "label": "Ronde stalen"
+        },
+        "card_active_first_swatch": {
+          "label": "Standaard eerste staal",
+          "info": "Hover-animatie wordt uitgeschakeld"
+        },
+        "header_card_rating": {
+          "content": "Beoordelingsinstellingen"
+        },
+        "card_show_rating": {
+          "label": "Toon beoordeling"
+        },
+        "enable_rating_preview": {
+          "label": "Voorbeeldmodus inschakelen",
+          "info": "Simuleer beoordelingsgegevens tonen"
+        }
+      }
+    },
+    "badge": {
+      "name": "Kaart badges",
+      "settings": {
+        "header_sale_badge": {
+          "content": "Instellingen verkoopbadge"
+        },
+        "enable_sale_badge": {
+          "label": "Verkoopbadge inschakelen"
+        },
+        "sale_badge_style": {
+          "label": "Stijl verkoopbadge",
+          "options__1": {
+            "label": "Hoeklint"
+          },
+          "options__2": {
+            "label": "Badge"
+          }
+        },
+        "sale_badge_type": {
+          "label": "Type verkoopbadge",
+          "options__1": {
+            "label": "Tekst"
+          },
+          "options__2": {
+            "label": "Bedrag"
+          },
+          "options__3": {
+            "label": "Percentage"
+          }
+        },
+        "header_new_badge": {
+          "content": "Instellingen nieuwe badge"
+        },
+        "enable_new_badge": {
+          "label": "Nieuwe badge inschakelen"
+        },
+        "new_label_basis": {
+          "label": "Basis nieuwe badge",
+          "options__1": {
+            "label": "Gepubliceerde dagen"
+          },
+          "options__2": {
+            "label": "Tag"
+          }
+        },
+        "new_badge_tag": {
+          "label": "Nieuwe badge tag",
+          "info": "Effectief als de basis op 'Tag' is ingesteld"
+        },
+        "new_product_days": {
+          "label": "Nieuwe product dagen",
+          "info": "Stel het aantal dagen in dat een product als nieuw wordt beschouwd. Effectief als basis 'Gepubliceerde dagen' is. Producten die binnen deze periode zijn gepubliceerd, worden als 'Nieuw' gemarkeerd.",
+          "options__1": {
+            "label": "7 dagen"
+          },
+          "options__2": {
+            "label": "14 dagen"
+          },
+          "options__3": {
+            "label": "30 dagen"
+          }
+        },
+        "header_preorder_badge": {
+          "content": "Instellingen pre-order badge"
+        },
+        "enable_preorder_badge": {
+          "label": "Pre-order badge inschakelen",
+          "info": "Als de pre-order badge is ingeschakeld, wordt ook de pre-order knop op de productpagina weergegeven (indien van toepassing)"
+        },
+        "header_custom_badge": {
+          "content": "Instellingen aangepaste badge"
+        },
+        "paragraph_custom_badge": {
+          "content": "Voeg tags toe aan producten in het formaat _Custom Badge"
+        },
+        "enable_custom_badge": {
+          "label": "Aangepaste badge inschakelen"
+        }
+      }
+    },
+    "social-media": {
+      "name": "Sociale media",
+      "settings": {
+        "header_share": {
+          "content": "Instellingen delen"
+        },
+        "enable_share_facebook": {
+          "label": "Delen op Facebook inschakelen"
+        },
+        "enable_share_twitter": {
+          "label": "Delen op Twitter inschakelen"
+        },
+        "enable_share_pinterest": {
+          "label": "Delen op Pinterest inschakelen"
+        },
+        "enable_share_linkedin": {
+          "label": "Delen op LinkedIn inschakelen"
+        },
+        "header_socials": {
+          "content": "Mijn sociale accounts"
+        },
+        "social_twitter_link": {
+          "label": "Twitter",
+          "info": "https://twitter.com/shopify"
+        },
+        "social_facebook_link": {
+          "label": "Facebook",
+          "info": "https://facebook.com/shopify"
+        },
+        "social_pinterest_link": {
+          "label": "Pinterest",
+          "info": "https://pinterest.com/shopify"
+        },
+        "social_instagram_link": {
+          "label": "Instagram",
+          "info": "https://instagram.com/shopify"
+        },
+        "social_tiktok_link": {
+          "label": "TikTok",
+          "info": "https://tiktok.com/@shopify"
+        },
+        "social_tumblr_link": {
+          "label": "Tumblr",
+          "info": "https://shopify.tumblr.com"
+        },
+        "social_snapchat_link": {
+          "label": "Snapchat",
+          "info": "https://www.snapchat.com/add/shopify"
+        },
+        "social_youtube_link": {
+          "label": "YouTube",
+          "info": "https://www.youtube.com/shopify"
+        },
+        "social_vimeo_link": {
+          "label": "Vimeo",
+          "info": "https://vimeo.com/shopify"
+        },
+        "social_linkedin_link": {
+          "label": "LinkedIn",
+          "info": "https://linkedin.com/shopify"
+        },
+        "social_whatsapp_link": {
+          "label": "WhatsApp",
+          "info": "https://whatsapp.com/shopify"
+        },
+        "social_reddit_link": {
+          "label": "Reddit",
+          "info": "https://reddit.com/shopify"
+        },
+        "social_discord_link": {
+          "label": "Discord",
+          "info": "https://discord.gg/shopify"
+        }
+      }
+    },
+    "search-input": {
+      "name": "Zoekgedrag",
+      "settings": {
+        "predictive_search_enabled": {
+          "label": "Zoeksuggesties inschakelen"
+        },
+        "search_popular_keywords": {
+          "label": "Populaire zoekwoorden",
+          "info": "Meerdere zoekwoorden scheiden met een komma"
+        }
+      }
+    },
+    "currency-format": {
+      "name": "Valutaformaat",
+      "settings": {
+        "content": "Valutacodes",
+        "paragraph": "Winkelwagen- en betaalprijzen tonen altijd valutacodes. Bijvoorbeeld: $1,00 USD.",
+        "currency_code_enabled": {
+          "label": "Valutacode tonen"
+        }
+      }
+    },
+    "cart": {
+      "name": "Winkelwagen instellingen",
+      "settings": {
+        "cart_icon": {
+          "label": "Winkelwagen pictogram",
+          "options__1": {
+            "label": "Winkelwagen"
+          },
+          "options__2": {
+            "label": "Tas"
+          },
+          "options__3": {
+            "label": "Mand"
+          }
+        },
+        "cart_type": {
+          "label": "Winkelwagen type",
+          "drawer": {
+            "label": "Lade"
+          },
+          "page": {
+            "label": "Pagina"
+          }
+        },
+        "show_vendor": {
+          "label": "Toon verkoper"
+        },
+        "enable_cart_note": {
+          "label": "Toon winkelwagentje notitie"
+        },
+        "enable_cart_shipping_estimate": {
+          "label": "Toon verzendingsschatting"
+        },
+        "enable_cart_coupon": {
+          "label": "Toon winkelwagenbon"
+        },
+        "header_free_shipping_progress_bar": {
+          "content": "Voortgangsbalk gratis verzending"
+        },
+        "enable_free_shipping_progress_bar": {
+          "label": "Schakel voortgangsbalk gratis verzending in"
+        },
+        "paragraph_no_free": {
+          "content": "+ Gratis verzending niet behaald"
+        },
+        "paragraph_free": {
+          "content": "+ Gratis verzending behaald"
+        },
+        "shipping_text_color": {
+          "label": "Tekstkleur balk"
+        },
+        "shipping_bar_color": {
+          "label": "Achtergrondkleur balk"
+        },
+        "free_shipping_threshold": {
+          "label": "Drempel gratis verzending",
+          "info": "Voer een geheel getal in in de standaardvaluta van de winkel; wordt automatisch omgerekend voor andere valuta's."
+        },
+        "enable_free_shipping_confetti": {
+          "label": "Schakel confetti-effect in",
+          "info": "Confetti-effect wordt geactiveerd wanneer de winkelwagen het bedrag voor gratis verzending bereikt"
+        }
+      }
+    },
+    "favicon": {
+      "name": "Favicon",
+      "settings": {
+        "favicon": {
+          "label": "Favicon afbeelding",
+          "info": "Wordt geschaald naar 32 x 32 px"
+        }
+      }
+    },
+    "others": {
+      "name": "Overige",
+      "settings": {
+        "enable_browser_tab_flash": {
+          "label": "Schakel browser tab knipperen in",
+          "info": "Verander de browser tab titel om aandacht te trekken als de pagina inactief is"
+        },
+        "show_section_id": {
+          "label": "Toon sectie ID",
+          "info": "Alleen zichtbaar in bewerk modus"
+        },
+        "enable_festival_effect": {
+          "label": "Festivaleffect inschakelen"
+        },
+        "festival": {
+          "label": "Festival",
+          "options__1": {
+            "label": "Kerstmis"
+          }
+        },
+        "enable_logo_overlay": {
+          "label": "Logo-overlay inschakelen"
+        },
+        "enable_christmas_snow": {
+          "label": "Kerstsneeuw inschakelen"
+        },
+        "christmas_snow_duration": {
+          "label": "Duur van de sneeuw"
+        },
+        "enable_footer_overlay": {
+          "label": "Footer-overlay inschakelen"
+        },
+        "cursor_style": {
+          "label": "Cursorstijl",
+          "options__1": {
+            "label": "Standaard"
+          },
+          "options__2": {
+            "label": "Kerstkous"
+          },
+          "options__3": {
+            "label": "Kerstmanmuts"
+          },
+          "options__4": {
+            "label": "Sneeuwvlok"
+          }
+        },
+        "enable_category_menu_overlay": {
+          "label": "Categorie-menu overlay inschakelen"
+        }
+      }
+    }
+  },
+  "blocks": {
+    "_author": {
+      "name": "Auteur",
+      "settings": {
+        "profile_picture": {
+          "label": "Avatar",
+          "info": "70 x 70px .jpg aanbevolen"
+        },
+        "avatar_size": {
+          "label": "Avatar grootte",
+          "options__1": {
+            "label": "Klein"
+          },
+          "options__2": {
+            "label": "Medium"
+          },
+          "options__3": {
+            "label": "Groot"
+          }
+        },
+        "name": {
+          "label": "Naam"
+        },
+        "role": {
+          "label": "Rol"
+        }
+      },
+      "presets": {
+        "name": "Auteur"
+      }
+    },
+    "_icon-text-content": {
+      "name": "Icoon tekst",
+      "settings": {
+        "image": {
+          "info": "30 x 30px .jpg aanbevolen"
+        }
+      },
+      "presets": {
+        "name": "Icoon tekst"
+      }
+    },
+    "_product-list": {
+      "name": "Productlijst",
+      "settings": {
+        "show_view_more": {
+          "label": "Toon 'Bekijk meer'"
+        },
+        "header_image": {
+          "content": "Collectie afbeelding instellingen"
+        },
+        "image": {
+          "info": "300 x 400px .jpg aanbevolen"
+        }
+      }
+    },
+    "_collection": {
+      "name": "Collectie",
+      "settings": {
+        "image": {
+          "info": "300 x 300px .jpg aanbevolen"
+        }
+      },
+      "presets": {
+        "name": "Collectie"
+      }
+    },
+    "_collection-list": {
+      "name": "Collectielijst"
+    },
+    "_collection-icons": {
+      "name": "Collectie-icoonlijst"
+    },
+    "_collection-icon": {
+      "name": "Collectie-icoon",
+      "settings": {
+        "image": {
+          "info": "150 x 150px .jpg aanbevolen"
+        }
+      },
+      "presets": {
+        "name": "Collectie-icoon"
+      }
+    },
+    "_collection-recommend": {
+      "name": "Collectie aanbevelen",
+      "settings": {
+        "show_view_more": {
+          "label": "Toon 'Bekijk meer'",
+          "info": "Als de productlijst de limiet overschrijdt, wordt deze link getoond"
+        }
+      }
+    },
+    "_collection-title": {
+      "name": "Collectietitel",
+      "presets": {
+        "name": "Collectietitel"
+      }
+    },
+    "_collection-description": {
+      "name": "Collectiebeschrijving",
+      "presets": {
+        "name": "Collectiebeschrijving"
+      }
+    },
+    "_collection-subcollections": {
+      "name": "Collectie subcollecties",
+      "presets": {
+        "name": "Collectie subcollecties"
+      }
+    },
+    "_collection-subcollection": {
+      "name": "Collectie subcollectie",
+      "settings": {
+        "custom_title": {
+          "label": "Aangepaste titel"
+        }
+      },
+      "presets": {
+        "name": "Collectie subcollectie"
+      }
+    },
+    "_rich-text": {
+      "name": "Inhoud",
+      "presets": {
+        "name": "Inhoud"
+      }
+    },
+    "_text-group": {
+      "name": "Tekstgroep",
+      "presets": {
+        "name": "Tekstgroep"
+      }
+    },
+    "_statistic": {
+      "name": "Statistiek",
+      "settings": {
+        "title": {
+          "label": "Titel"
+        },
+        "description": {
+          "label": "Beschrijving"
+        },
+        "image": {
+          "info": "30 x 30px .jpg aanbevolen"
+        }
+      },
+      "presets": {
+        "name": "Statistiek"
+      }
+    },
+    "_image": {
+      "name": "Afbeelding",
+      "settings": {
+        "image": {
+          "info": "400 x 300px .jpg aanbevolen"
+        },
+        "image_mobile": {
+          "info": "300 x 200px .jpg aanbevolen"
+        }
+      },
+      "presets": {
+        "name": "Afbeelding"
+      }
+    },
+    "_images": {
+      "name": "Afbeeldingengroep",
+      "settings": {
+        "paragraph_content": {
+          "content": "Tot 5 afbeeldingen kunnen worden weergegeven"
+        },
+        "angle_style": {
+          "label": "Hoekstijl",
+          "options__1": {
+            "label": "Schoon"
+          },
+          "options__2": {
+            "label": "Verspreid"
+          },
+          "options__3": {
+            "label": "Naar links kantelen"
+          },
+          "options__4": {
+            "label": "Naar rechts kantelen"
+          }
+        },
+        "show_image_frame": {
+          "label": "Toon afbeeldingskader"
+        }
+      },
+      "presets": {
+        "name": "Afbeeldingen"
+      }
+    },
+    "_video": {
+      "name": "Video",
+      "settings": {
+        "image": {
+          "info": "400 x 400px .jpg aanbevolen"
+        },
+        "image_mobile": {
+          "info": "250 x 250px .jpg aanbevolen"
+        }
+      },
+      "presets": {
+        "name": "Video"
+      }
+    },
+    "_link": {
+      "name": "Link",
+      "presets": {
+        "name": "Link"
+      }
+    },
+    "_section-header": {
+      "name": "Sectiekop",
+      "presets": {
+        "name": "Sectiekop"
+      }
+    },
+    "_page-title": {
+      "name": "Paginatitel",
+      "presets": {
+        "name": "Paginatitel"
+      }
+    },
+    "_page-description": {
+      "name": "Paginabeschrijving",
+      "presets": {
+        "name": "Paginabeschrijving"
+      }
+    },
+    "_promise-list": {
+      "name": "Belofte lijst"
+    },
+    "_promise-item": {
+      "name": "Belofte item",
+      "settings": {
+        "image": {
+          "info": "40 x 40px .jpg aanbevolen"
+        }
+      },
+      "presets": {
+        "name": "Belofte item"
+      }
+    },
+    "_quote": {
+      "name": "Citaat",
+      "presets": {
+        "name": "Citaat"
+      }
+    },
+    "_carousel-image-slide": {
+      "name": "Afbeeldingscarrousel-item",
+      "presets": {
+        "name": "Afbeeldingscarrousel-item"
+      }
+    },
+    "_carousel-video-slide": {
+      "name": "Videocarrousel-item",
+      "presets": {
+        "name": "Videocarrousel-item"
+      }
+    },
+    "_featured-blog": {
+      "name": "Blogpostlijst",
+      "settings": {
+        "show_view_more": {
+          "label": "Toon meer weergeven"
+        },
+        "paragraph_content": {
+          "content": "+ Slider item instellingen"
+        },
+        "header_article_setting": {
+          "content": "Artikelinstellingen"
+        }
+      },
+      "presets": {
+        "name": "Blogpostlijst"
+      }
+    },
+    "_testimonial": {
+      "name": "Getuigenis",
+      "settings": {
+        "show_rating": {
+          "label": "Toon beoordeling"
+        },
+        "rating": {
+          "label": "Beoordeling"
+        },
+        "content": {
+          "label": "Getuigenisinhoud"
+        },
+        "header_author": {
+          "content": "Klantinfo"
+        },
+        "author_name": {
+          "label": "Klantnaam"
+        },
+        "author_avatar": {
+          "label": "Klantavatar",
+          "info": "30 x 30px .jpg aanbevolen"
+        },
+        "show_verified": {
+          "label": "Toon geverifieerd"
+        },
+        "header_product": {
+          "content": "Gerelateerd product"
+        },
+        "image": {
+          "info": "300 x 300px .jpg aanbevolen"
+        }
+      },
+      "presets": {
+        "name": "Getuigenis"
+      }
+    },
+    "_testimonial-list": {
+      "name": "Getuigenislijst"
+    },
+    "_collapsible-content-list": {
+      "name": "Inklapbare tablijst"
+    },
+    "_collapsible-content-item": {
+      "name": "Inklapbare tab",
+      "presets": {
+        "name": "Inklapbare tab"
+      }
+    },
+    "_contact-form": {
+      "name": "Formulier",
+      "settings": {
+        "image": {
+          "info": "500 x 300px .jpg aanbevolen"
+        },
+        "show_form_phone": {
+          "label": "Toon telefoonveld"
+        }
+      },
+      "presets": {
+        "name": "Formulier"
+      }
+    },
+    "_custom-input-field": {
+      "name": "Aangepast invoerveld",
+      "settings": {
+        "type": {
+          "label": "Invoertype",
+          "options__1": {
+            "label": "Tekst"
+          },
+          "options__2": {
+            "label": "E-mail"
+          },
+          "options__3": {
+            "label": "Nummer"
+          },
+          "options__4": {
+            "label": "Tel"
+          },
+          "options__5": {
+            "label": "URL"
+          },
+          "options__6": {
+            "label": "Datum"
+          }
+        },
+        "name": {
+          "label": "Veldnaam"
+        },
+        "placeholder": {
+          "label": "Placeholdertekst",
+          "info": "Wordt weergegeven als het veld leeg is"
+        },
+        "default": {
+          "label": "Standaardwaarde"
+        },
+        "if_required": {
+          "label": "Verplicht veld"
+        }
+      },
+      "presets": {
+        "name": "Aangepast invoerveld"
+      }
+    },
+    "_custom-select-field": {
+      "name": "Aangepast selectievak",
+      "settings": {
+        "options": {
+          "label": "Opties",
+          "info": "Voer opties in gescheiden door komma's, bv. Optie 1, Optie 2, Optie 3"
+        }
+      },
+      "presets": {
+        "name": "Aangepast selectievak"
+      }
+    },
+    "_custom-checkbox-field": {
+      "name": "Aangepast selectievak",
+      "settings": {
+        "default_checked": {
+          "label": "Standaard aangevinkt"
+        }
+      },
+      "presets": {
+        "name": "Aangepast selectievak"
+      }
+    },
+    "_custom-radio-field": {
+      "name": "Aangepast keuzerondje",
+      "presets": {
+        "name": "Aangepast keuzerondje"
+      }
+    },
+    "_contact-info": {
+      "name": "Contactgegevens",
+      "presets": {
+        "name": "Contactgegevens"
+      }
+    },
+    "_before-after": {
+      "name": "Voor- en na-banner",
+      "settings": {
+        "direction": {
+          "label": "Vergelijkingsrichting",
+          "options__1": {
+            "label": "Horizontaal"
+          },
+          "options__2": {
+            "label": "Verticaal"
+          }
+        },
+        "header_before": {
+          "content": "Instellingen voor voor-afbeelding"
+        },
+        "header_after": {
+          "content": "Instellingen voor na-afbeelding"
+        },
+        "image": {
+          "info": "800 x 600px .jpg aanbevolen"
+        },
+        "image_mobile": {
+          "info": "300 x 300px .jpg aanbevolen"
+        },
+        "image_before_mobile": {
+          "label": "Voor-afbeelding"
+        },
+        "image_after_mobile": {
+          "label": "Na-afbeelding"
+        }
+      }
+    },
+    "_logo": {
+      "name": "Logo",
+      "settings": {
+        "image": {
+          "info": "140 x 140px .jpg aanbevolen"
+        }
+      },
+      "presets": {
+        "name": "Logo"
+      }
+    },
+    "_logo-list": {
+      "name": "Logolijst",
+      "settings": {
+        "enable_gray": {
+          "label": "Grijs inschakelen"
+        }
+      }
+    },
+    "_media-grid-list": {
+      "name": "Media rasterlijst",
+      "settings": {
+        "paragraph_mobile": {
+          "content": "Carrousel automatisch ingeschakeld op mobiel"
+        }
+      }
+    },
+    "_image-grid-item": {
+      "name": "Afbeelding item",
+      "settings": {
+        "image_mobile": {
+          "info": "300 x 400px .jpg aanbevolen"
+        }
+      },
+      "presets": {
+        "name": "Afbeelding item"
+      }
+    },
+    "_video-grid-item": {
+      "name": "Video item",
+      "presets": {
+        "name": "Video item"
+      }
+    },
+    "_compare-table": {
+      "name": "Vergelijkingstabel",
+      "settings": {
+        "show_variant_options": {
+          "label": "Variantopties tonen"
+        },
+        "show_weight": {
+          "label": "Productgewicht tonen"
+        },
+        "show_type": {
+          "label": "Producttype tonen"
+        },
+        "show_category": {
+          "label": "Productcategorie tonen"
+        },
+        "show_vendor": {
+          "label": "Productleverancier tonen"
+        }
+      }
+    },
+    "_compare-table-category": {
+      "name": "Categorie metafield rij",
+      "settings": {
+        "paragraph": {
+          "content": "Categorie metafields zijn Shopify ingebouwde metafields onder de 'shopify' namespace. Voor meer details, zie [Categorie metafields](https://help.shopify.com/en/manual/custom-data/metafields/category-metafields)."
+        },
+        "key": {
+          "label": "Eigenschap sleutel"
+        },
+        "label": {
+          "label": "Eigenschapsnaam",
+          "info": "Aanpasbare eigenschapsnaam"
+        }
+      },
+      "presets": {
+        "name": "Categorie metafield rij"
+      }
+    },
+    "_compare-table-metafield": {
+      "name": "Aangepaste metafield rij",
+      "settings": {
+        "paragraph": {
+          "content": "De sleutelwaarde van metafields kan worden ingesteld en bekeken via 'Instellingen' > 'Metafields' in de Shopify beheeromgeving. Voor meer details, zie [Aangepaste Metafields](https://help.shopify.com/en/manual/custom-data/metafields)."
+        }
+      },
+      "presets": {
+        "name": "Aangepaste metafield rij"
+      }
+    },
+    "_compare-table-custom": {
+      "name": "Aangepaste rij",
+      "presets": {
+        "name": "Aangepaste rij"
+      }
+    },
+    "_newsletter": {
+      "name": "Abonnementsformulier",
+      "presets": {
+        "name": "Abonnementsformulier"
+      }
+    },
+    "_recently-viewed": {
+      "name": "Laatst bekeken lijst"
+    },
+    "_related-products": {
+      "name": "Gerelateerde productlijst"
+    },
+    "_event-list": {
+      "name": "Evenementenlijst"
+    },
+    "_event": {
+      "name": "Evenement",
+      "presets": {
+        "name": "Evenement"
+      }
+    },
+    "_member-list": {
+      "name": "Ledenlijst"
+    },
+    "_flexible-image": {
+      "name": "Flexibele afbeelding",
+      "settings": {
+        "image": {
+          "info": "800 x 700px .jpg aanbevolen"
+        }
+      },
+      "presets": {
+        "name": "Flexibele afbeelding"
+      }
+    },
+    "_member": {
+      "name": "Lid",
+      "settings": {
+        "name": {
+          "label": "Naam"
+        },
+        "role": {
+          "label": "Rol"
+        },
+        "bio": {
+          "label": "Bio"
+        },
+        "image": {
+          "info": "200 x 200px .jpg aanbevolen"
+        }
+      },
+      "presets": {
+        "name": "Lid"
+      }
+    },
+    "_products-grid": {
+      "name": "Productraster",
+      "settings": {
+        "products": {
+          "info": "Selecteer handmatig producten om weer te geven"
+        }
+      }
+    },
+    "_reading-text": {
+      "name": "Leestekst",
+      "settings": {
+        "animation": {
+          "label": "Animatie-effect",
+          "options__1": {
+            "label": "Inzweven"
+          },
+          "options__2": {
+            "label": "Verdiepen"
+          },
+          "options__3": {
+            "label": "Kleurverandering"
+          },
+          "options__4": {
+            "label": "Uitsnede"
+          }
+        },
+        "paragraph_color_setting": {
+          "content": "+ Instellingen kleurverandering"
+        },
+        "color_before": {
+          "label": "Originele kleur"
+        },
+        "color_after": {
+          "label": "Effectkleur"
+        }
+      },
+      "presets": {
+        "name": "Leestekst"
+      }
+    },
+    "_image-with-text-list": {
+      "name": "Afbeelding met tekstlijst"
+    },
+    "_image-with-text": {
+      "name": "Afbeelding met tekst",
+      "settings": {
+        "image": {
+          "info": "400 x 400px .jpg aanbevolen"
+        }
+      },
+      "presets": {
+        "name": "Afbeelding met tekst"
+      }
+    },
+    "_collapsible-content-title": {
+      "name": "Inklapbare titel",
+      "presets": {
+        "name": "Inklapbare titel"
+      }
+    },
+    "_collection-advertise": {
+      "name": "Advertentie",
+      "settings": {
+        "image": {
+          "info": "300 x 500px .jpg aanbevolen"
+        }
+      }
+    },
+    "_compare-table-custom-column": {
+      "name": "Aangepaste kolom",
+      "settings": {
+        "image": {
+          "info": "60 x 60px .jpg aanbevolen"
+        }
+      },
+      "presets": {
+        "name": "Aangepaste kolom"
+      }
+    },
+    "_custom_liquid": {
+      "name": "Aangepaste liquid",
+      "presets": {
+        "name": "Aangepaste liquid"
+      }
+    },
+    "_product": {
+      "name": "Product",
+      "presets": {
+        "name": "Product"
+      }
+    },
+    "_product-attributes": {
+      "name": "Productkenmerken",
+      "settings": {
+        "show_category_attributes": {
+          "label": "Categoriekenmerken tonen"
+        },
+        "image": {
+          "info": "30 x 30px .jpg aanbevolen"
+        }
+      },
+      "presets": {
+        "name": "Productkenmerken"
+      }
+    },
+    "_product-custom-attribute": {
+      "name": "Aangepast kenmerk",
+      "settings": {
+        "attribute_name": {
+          "label": "Kenmerknaam"
+        },
+        "attribute_value": {
+          "label": "Kenmerkwaarde"
+        }
+      },
+      "presets": {
+        "name": "Aangepast kenmerk"
+      }
+    },
+    "_product-highlights": {
+      "name": "Lijst met producthoogtepunten",
+      "settings": {
+        "image": {
+          "info": "30 x 30px .jpg aanbevolen"
+        }
+      },
+      "presets": {
+        "name": "Lijst met producthoogtepunten"
+      }
+    },
+    "_product-highlight": {
+      "name": "Producthoogtepunt",
+      "settings": {
+        "image": {
+          "info": "80 x 80px .jpg aanbevolen"
+        }
+      },
+      "presets": {
+        "name": "Producthoogtepunt"
+      }
+    },
+    "_product-documents": {
+      "name": "Lijst met productdocumenten",
+      "settings": {
+        "image": {
+          "info": "30 x 30px .jpg aanbevolen"
+        }
+      },
+      "presets": {
+        "name": "Lijst met productdocumenten"
+      }
+    },
+    "_product-document": {
+      "name": "Productdocument",
+      "presets": {
+        "name": "Productdocument"
+      }
+    },
+    "_product-includes": {
+      "name": "Inhoud van de doos",
+      "settings": {
+        "image": {
+          "info": "30 x 30px .jpg aanbevolen"
+        }
+      },
+      "presets": {
+        "name": "Inhoud van de doos"
+      }
+    },
+    "_product-include": {
+      "name": "Doos item",
+      "settings": {
+        "name": {
+          "label": "Naam"
+        },
+        "price": {
+          "label": "Prijs"
+        },
+        "image": {
+          "info": "150 x 150px .jpg aanbevolen"
+        }
+      },
+      "presets": {
+        "name": "Doos item"
+      }
+    },
+    "_product-richtext": {
+      "name": "Productbeschrijving",
+      "settings": {
+        "image": {
+          "info": "30 x 30px .jpg aanbevolen"
+        },
+        "content_image": {
+          "info": "600 x 600px .jpg aanbevolen"
+        }
+      },
+      "presets": {
+        "name": "Productbeschrijving"
+      }
+    },
+    "_media-content-list": {
+      "name": "Lijst met mediacontent"
+    },
+    "_image-content": {
+      "name": "Afbeeldingsinhoud",
+      "settings": {
+        "image": {
+          "info": "350 x 500px .jpg aanbevolen"
+        },
+        "image_mobile": {
+          "info": "300 x 300px .jpg aanbevolen"
+        }
+      },
+      "presets": {
+        "name": "Afbeeldingsinhoud"
+      }
+    },
+    "_video-content": {
+      "name": "Video-inhoud",
+      "presets": {
+        "name": "Video-inhoud"
+      }
+    },
+    "_badge": {
+      "name": "Badge",
+      "presets": {
+        "name": "Badge"
+      }
+    },
+    "_image-gallery": {
+      "name": "Afbeeldingsgalerij",
+      "settings": {
+        "direction": {
+          "label": "Scrollrichting",
+          "options__1": {
+            "label": "Vooruit"
+          },
+          "options__2": {
+            "label": "Achteruit"
+          }
+        },
+        "enable_staggered": {
+          "label": "Staggered effect inschakelen"
+        }
+      },
+      "presets": {
+        "name": "Afbeeldingsgalerij"
+      }
+    },
+    "_store-list": {
+      "name": "Winkel lijst",
+      "settings": {
+        "paragraph": {
+          "content": "Weergegeven in het verticale filter in de zijbalk"
+        }
+      }
+    },
+    "_store": {
+      "name": "Winkel",
+      "settings": {
+        "image_store": {
+          "label": "Winkelafbeelding"
+        },
+        "image_map": {
+          "label": "Kaartafbeelding",
+          "info": "1300 x 700px .jpg aanbevolen"
+        },
+        "image": {
+          "info": "350 x 200px .jpg aanbevolen"
+        }
+      },
+      "presets": {
+        "name": "Winkel"
+      }
+    },
+    "heading": {
+      "name": "Koptekst",
+      "settings": {
+        "header_highlight": {
+          "content": "Instellingen voor markeringstekst"
+        },
+        "paragraph_highlight": {
+          "content": "Om tekst in *cursief* te zetten voor geanimeerde markering"
+        },
+        "enable_highlight_text": {
+          "label": "Markeringstekst inschakelen"
+        },
+        "highlight_type": {
+          "label": "Markeringstype",
+          "options__1": {
+            "label": "Tekstkleur"
+          },
+          "options__2": {
+            "label": "Achtergrondkleur"
+          },
+          "options__3": {
+            "label": "Onderstreping"
+          },
+          "options__4": {
+            "label": "Uitknip"
+          },
+          "options__5": {
+            "label": "Met de hand getekend - Vinkje"
+          },
+          "options__6": {
+            "label": "Met de hand getekend - Golvend"
+          },
+          "options__7": {
+            "label": "Met de hand getekend - Cirkel"
+          },
+          "options__8": {
+            "label": "Met de hand getekend - Onderstreping"
+          },
+          "options__9": {
+            "label": "Cursief"
+          }
+        },
+        "highlight_color": {
+          "label": "Markeerkleur"
+        }
+      },
+      "presets": {
+        "name": "Koptekst"
+      }
+    },
+    "subheading": {
+      "name": "Subkop",
+      "presets": {
+        "name": "Subkop"
+      }
+    },
+    "description": {
+      "name": "Beschrijving",
+      "presets": {
+        "name": "Beschrijving"
+      }
+    },
+    "buttons": {
+      "name": "Knopgroep",
+      "presets": {
+        "name": "Knopgroep"
+      }
+    },
+    "button": {
+      "name": "Knop",
+      "presets": {
+        "name": "Knop"
+      }
+    },
+    "button-video": {
+      "name": "Videoknop",
+      "presets": {
+        "name": "Videoknop"
+      }
+    },
+    "icon": {
+      "name": "Pictogram",
+      "settings": {
+        "image": {
+          "info": "30 x 30px .jpg aanbevolen"
+        }
+      },
+      "presets": {
+        "name": "Pictogram"
+      }
+    },
+    "countdown": {
+      "name": "Aftellen",
+      "settings": {
+        "simple": {
+          "label": "Vereenvoudigde stijl"
+        },
+        "end_time": {
+          "label": "Eindtijd",
+          "info": "Eindtijd formaat: jjjj-mm-dd uu:mm, bv. 2024-05-01 12:25, gebruikt winkel tijdzone instellingen, [Wijzig winkel tijdzone](/admin/settings/general)"
+        },
+        "end_text": {
+          "label": "Bericht na einde"
+        },
+        "hide_when_end": {
+          "label": "Verberg aftelling na einde"
+        },
+        "timer_background_color": {
+          "label": "Achtergrondkleur timer"
+        },
+        "timer_foreground_color": {
+          "label": "Tekstkleur timer"
+        }
+      },
+      "presets": {
+        "name": "Aftellen"
+      }
+    },
+    "discount-code": {
+      "name": "Kortingscode",
+      "presets": {
+        "name": "Kortingscode"
+      }
+    },
+    "spacer": {
+      "name": "Ruimtehouder",
+      "settings": {
+        "show_line": {
+          "label": "Toon scheidingslijn"
+        },
+        "line_width": {
+          "label": "Breedte scheidingslijn",
+          "options__1": {
+            "label": "Volledig"
+          },
+          "options__2": {
+            "label": "Half"
+          },
+          "options__3": {
+            "label": "Een derde"
+          }
+        }
+      },
+      "presets": {
+        "name": "Ruimtehouder"
+      }
+    },
+    "social-list": {
+      "name": "Social media lijst",
+      "settings": {
+        "show_tooltip": {
+          "label": "Toon tooltip"
+        }
+      },
+      "presets": {
+        "name": "Social media lijst"
+      }
+    },
+    "statistics": {
+      "name": "Highlight statistieken",
+      "settings": {
+        "label": "Toon rand"
+      },
+      "presets": {
+        "name": "Highlight statistieken"
+      }
+    },
+    "badges": {
+      "name": "Badge groep",
+      "settings": {
+        "shape": {
+          "label": "Vorm",
+          "options__1": {
+            "label": "Pil"
+          },
+          "options__2": {
+            "label": "Rechthoek"
+          },
+          "options__3": {
+            "label": "Pijl"
+          },
+          "options__4": {
+            "label": "Scheef"
+          },
+          "options__5": {
+            "label": "Rand"
+          }
+        },
+        "size": {
+          "label": "Grootte",
+          "options__1": {
+            "label": "Klein"
+          },
+          "options__2": {
+            "label": "Middel"
+          },
+          "options__3": {
+            "label": "Groot"
+          }
+        }
+      },
+      "presets": {
+        "name": "Badge groep"
+      }
+    },
+    "icon-text": {
+      "name": "Pictogram met tekst",
+      "settings": {
+        "image": {
+          "info": "30 x 30px .jpg aanbevolen"
+        }
+      },
+      "presets": {
+        "name": "Pictogram met tekst"
+      }
+    },
+    "follow": {
+      "name": "Volg ons",
+      "settings": {
+        "image": {
+          "info": "60 x 60px .jpg aanbevolen"
+        }
+      },
+      "presets": {
+        "name": "Volg ons"
+      }
+    },
+    "links": {
+      "name": "Linkgroep",
+      "presets": {
+        "name": "Linkgroep"
+      }
+    },
+    "keywords": {
+      "name": "Trefwoorden",
+      "presets": {
+        "name": "Trefwoorden"
+      }
+    },
+    "spin_text": {
+      "name": "Draaiende tekst",
+      "presets": {
+        "name": "Draaiende tekst"
+      }
+    }
+  },
+  "sections": {
+    "all": {
+      "categories": {
+        "product_collection": "Product & collectie",
+        "media_layout": "Media & lay-out",
+        "content_info": "Inhoud & informatie",
+        "forms_interaction": "Formulieren & interactie",
+        "functional_widgets": "Functionele widgets",
+        "team_social_proof": "Team & sociale bewijzen",
+        "custom_advanced": "Aangepast en geavanceerd"
+      },
+      "layout": {
+        "label": "Lay-out",
+        "horizontal": {
+          "label": "Horizontaal"
+        },
+        "vertical": {
+          "label": "Verticaal"
+        },
+        "grid": {
+          "label": "Raster"
+        },
+        "scroll": {
+          "label": "Scrollen"
+        },
+        "slider": {
+          "label": "Slider"
+        },
+        "header_grid": {
+          "content": "Rasterinstellingen"
+        },
+        "header_scroll": {
+          "content": "Scrollinstellingen"
+        },
+        "header_slider": {
+          "content": "Sliderinstellingen"
+        },
+        "enable_full_width": {
+          "label": "Volledige breedte inschakelen"
+        }
+      },
+      "desktop": {
+        "effect": {
+          "info": "Effectief op desktopapparaten"
+        }
+      },
+      "mobile": {
+        "header_content": "Mobiele instellingen",
+        "hide": {
+          "label": "Verbergen op mobiel"
+        },
+        "effect": {
+          "info": "Effectief op mobiele apparaten"
+        }
+      },
+      "animation": {
+        "content": "Animatie",
+        "image_behavior": {
+          "label": "Afbeeldingsgedrag",
+          "options__1": {
+            "label": "Geen"
+          },
+          "options__2": {
+            "label": "Omgeving"
+          },
+          "options__3": {
+            "label": "Vast"
+          },
+          "options__4": {
+            "label": "Inzoomen"
+          },
+          "options__5": {
+            "label": "Parallax"
+          }
+        },
+        "animation_during": {
+          "label": "Animatieduur"
+        }
+      },
+      "padding": {
+        "header_content": "Sectie padding",
+        "padding_top": {
+          "label": "Bovenste padding"
+        },
+        "padding_bottom": {
+          "label": "Onderste padding"
+        },
+        "padding_left": {
+          "label": "Linker padding"
+        },
+        "padding_right": {
+          "label": "Rechter padding"
+        }
+      },
+      "margin": {
+        "header_content": "Sectiemarge",
+        "margin_top": {
+          "label": "Bovenzijde marge"
+        },
+        "margin_bottom": {
+          "label": "Onderzijde marge"
+        }
+      },
+      "gap": {
+        "label": "Spatie",
+        "horizontal_gap": {
+          "label": "Horizontale spatie"
+        },
+        "vertical_gap": {
+          "label": "Verticale spatie"
+        }
+      },
+      "width": {
+        "label": "Breedte"
+      },
+      "height": {
+        "label": "Hoogte",
+        "options__1": {
+          "label": "Adaptief"
+        },
+        "options__2": {
+          "label": "Klein"
+        },
+        "options__3": {
+          "label": "Middel"
+        },
+        "options__4": {
+          "label": "Groot"
+        }
+      },
+      "colors": {
+        "enable_scheme": {
+          "label": "Kleurenschema inschakelen"
+        },
+        "scheme": {
+          "label": "Kleurschema"
+        },
+        "foreground": {
+          "label": "Voorgrondkleur"
+        },
+        "background": {
+          "label": "Achtergrondkleur"
+        },
+        "enable_custom_color": {
+          "label": "Aangepaste kleur inschakelen"
+        },
+        "custom_color": {
+          "label": "Aangepaste kleur"
+        }
+      },
+      "position": {
+        "label": "Positie",
+        "options__1": {
+          "label": "Boven links"
+        },
+        "options__2": {
+          "label": "Boven midden"
+        },
+        "options__3": {
+          "label": "Boven rechts"
+        },
+        "options__4": {
+          "label": "Midden links"
+        },
+        "options__5": {
+          "label": "Midden"
+        },
+        "options__6": {
+          "label": "Midden rechts"
+        },
+        "options__7": {
+          "label": "Onder links"
+        },
+        "options__8": {
+          "label": "Onder midden"
+        },
+        "options__9": {
+          "label": "Onder rechts"
+        }
+      },
+      "page": {
+        "label": "Pagina"
+      },
+      "custom_liquid": {
+        "label": "Aangepaste liquid",
+        "info": "Voeg app-snippets of andere code toe om geavanceerde aanpassingen te maken. [Meer informatie](https://shopify.dev/docs/api/liquid)"
+      },
+      "file": {
+        "type": {
+          "label": "Bestandstype",
+          "options__1": {
+            "label": "PDF"
+          },
+          "options__2": {
+            "label": "Afbeelding"
+          },
+          "options__3": {
+            "label": "Overige"
+          }
+        },
+        "name": {
+          "label": "Bestandsnaam"
+        },
+        "link": {
+          "label": "Bestandslink",
+          "info": "Upload eerst het bestand om de link te verkrijgen"
+        }
+      },
+      "metafield": {
+        "custom": {
+          "label": "Aangepast metafield",
+          "info": "Voer de namespace en sleutel in van het metafield met de waarde (bijv. custom.in_box_items)."
+        }
+      },
+      "text-alignment": {
+        "label": "Uitlijning",
+        "options__1": {
+          "label": "Links uitlijnen"
+        },
+        "options__2": {
+          "label": "Midden uitlijnen"
+        },
+        "options__3": {
+          "label": "Rechts uitlijnen"
+        }
+      },
+      "title": {
+        "label": "Titel",
+        "truncate": {
+          "label": "Titel afkappen",
+          "info": "Kap de titel af als deze de maximale lengte overschrijdt"
+        }
+      },
+      "text-content": {
+        "header_content": "Kop en beschrijving",
+        "heading": {
+          "label": "Kop",
+          "type": {
+            "label": "Koptype"
+          },
+          "size": {
+            "label": "Kopgrootte",
+            "options__1": {
+              "label": "Klein"
+            },
+            "options__2": {
+              "label": "Middel"
+            },
+            "options__3": {
+              "label": "Groot"
+            },
+            "options__4": {
+              "label": "Extra groot"
+            },
+            "options__5": {
+              "label": "Mini"
+            }
+          },
+          "uppercase": {
+            "label": "Kop in hoofdletters"
+          },
+          "color": {
+            "label": "Kopkleur"
+          },
+          "show_heading": {
+            "label": "Toon kop"
+          }
+        },
+        "content": {
+          "label": "Inhoud"
+        },
+        "text": {
+          "label": "Tekst",
+          "size": {
+            "label": "Tekstgrootte"
+          },
+          "uppercase": {
+            "label": "Tekst in hoofdletters"
+          },
+          "light": {
+            "label": "Toon lichte tekst"
+          }
+        },
+        "sub_heading": {
+          "label": "Subkop"
+        },
+        "description": {
+          "label": "Beschrijving",
+          "limit_height": {
+            "label": "Beperk hoogte van beschrijving"
+          }
+        },
+        "decorative": {
+          "label": "Decoratief lettertype"
+        },
+        "hollow": {
+          "label": "Uitgesneden lettertype"
+        },
+        "show_box": {
+          "label": "Toon container"
+        },
+        "box_background_opacity": {
+          "label": "Achtergronddekking container"
+        },
+        "box_background_blur": {
+          "label": "Achtergrondvervaging container"
+        }
+      },
+      "content": {
+        "header_content": "Inhoudsinstellingen",
+        "paragraph_content": "+ Inhoudsinstellingen",
+        "content_width": {
+          "label": "Inhoudsbredte",
+          "options__1": {
+            "label": "Smalle"
+          },
+          "options__2": {
+            "label": "Normale"
+          },
+          "options__3": {
+            "label": "Brede"
+          },
+          "options__4": {
+            "label": "Volledige"
+          }
+        }
+      },
+      "card": {
+        "header_content": "Kaartinstellingen",
+        "card_size": {
+          "label": "Kaartgrootte",
+          "options_1": {
+            "label": "Klein"
+          },
+          "options_2": {
+            "label": "Middel"
+          },
+          "options_3": {
+            "label": "Groot"
+          },
+          "options_4": {
+            "label": "Mini"
+          }
+        },
+        "show_card_wrapper": {
+          "label": "Toon container"
+        },
+        "wrapper_color_scheme": {
+          "label": "Kleurenschema container"
+        }
+      },
+      "columns": {
+        "label": "Kolommen",
+        "options__1": {
+          "label": "1 kolom"
+        },
+        "options__2": {
+          "label": "2 kolommen"
+        },
+        "options__3": {
+          "label": "3 kolommen"
+        },
+        "options__4": {
+          "label": "4 kolommen"
+        },
+        "options__5": {
+          "label": "5 kolommen"
+        },
+        "options__6": {
+          "label": "6 kolommen"
+        }
+      },
+      "rows": {
+        "label": "Rijen",
+        "options__1": {
+          "label": "1 rij"
+        },
+        "options__2": {
+          "label": "2 rijen"
+        },
+        "options__3": {
+          "label": "3 rijen"
+        },
+        "options__4": {
+          "label": "4 rijen"
+        }
+      },
+      "banner": {
+        "height": {
+          "label": "Bannerhoogte",
+          "options__1": {
+            "label": "Klein",
+            "info": "1800 x 600px .jpg aanbevolen"
+          },
+          "options__2": {
+            "label": "Middel",
+            "info": "1800 x 800px .jpg aanbevolen"
+          },
+          "options__3": {
+            "label": "Groot",
+            "info": "1800 x 1000px .jpg aanbevolen"
+          },
+          "options__4": {
+            "label": "Adaptief"
+          },
+          "options__5": {
+            "label": "Smalle",
+            "info": "1800 x 300px .jpg aanbevolen"
+          }
+        },
+        "height_mobile": {
+          "info": "640 x 960px .jpg aanbevolen"
+        }
+      },
+      "icon": {
+        "label": "Pictogram",
+        "groups": {
+          "shop": "Winkel",
+          "shipping": "Verzending",
+          "order": "Bestelling",
+          "communication": "Communicatie",
+          "tech": "Techniek",
+          "food_drink": "Eten & Drinken",
+          "clothing": "Kleding",
+          "others": "Overig"
+        },
+        "none": {
+          "label": "Geen"
+        },
+        "cart": {
+          "label": "Winkelwagen"
+        },
+        "wish": {
+          "label": "Wens"
+        },
+        "sale": {
+          "label": "Uitverkoop"
+        },
+        "new": {
+          "label": "Nieuw"
+        },
+        "hot": {
+          "label": "Populair"
+        },
+        "gift": {
+          "label": "Cadeau"
+        },
+        "truck": {
+          "label": "Vrachtwagen"
+        },
+        "plane": {
+          "label": "Vliegtuig"
+        },
+        "steamer": {
+          "label": "Stomer"
+        },
+        "track": {
+          "label": "Volgen"
+        },
+        "return": {
+          "label": "Retour"
+        },
+        "refund": {
+          "label": "Terugbetaling"
+        },
+        "security": {
+          "label": "Beveiliging"
+        },
+        "guarantee": {
+          "label": "Garantie"
+        },
+        "card": {
+          "label": "Kaart"
+        },
+        "money": {
+          "label": "Geld"
+        },
+        "phone": {
+          "label": "Telefoon"
+        },
+        "email": {
+          "label": "E-mail"
+        },
+        "chat": {
+          "label": "Chat"
+        },
+        "24h": {
+          "label": "24 uur"
+        },
+        "service": {
+          "label": "Service"
+        },
+        "question": {
+          "label": "Vraag"
+        },
+        "send": {
+          "label": "Verzenden"
+        },
+        "wifi": {
+          "label": "WIFI"
+        },
+        "bluetooth": {
+          "label": "Bluetooth"
+        },
+        "camera": {
+          "label": "Camera"
+        },
+        "mouse": {
+          "label": "Muis"
+        },
+        "ar": {
+          "label": "Augmented reality"
+        },
+        "vr": {
+          "label": "Virtuele realiteit"
+        },
+        "print": {
+          "label": "Afdrukken"
+        },
+        "scan": {
+          "label": "Scannen"
+        },
+        "3d": {
+          "label": "3D"
+        },
+        "apple": {
+          "label": "Appel"
+        },
+        "carrot": {
+          "label": "Wortel"
+        },
+        "lemon": {
+          "label": "Citroen"
+        },
+        "burger": {
+          "label": "Hamburger"
+        },
+        "cake": {
+          "label": "Taart"
+        },
+        "coffee": {
+          "label": "Koffie"
+        },
+        "milk": {
+          "label": "Melk"
+        },
+        "beer": {
+          "label": "Bier"
+        },
+        "icecream": {
+          "label": "IJsje"
+        },
+        "fork-spoon": {
+          "label": "Vork en lepel"
+        },
+        "diamond": {
+          "label": "Diamant"
+        },
+        "eco-friendly": {
+          "label": "Milieuvriendelijk"
+        },
+        "clock": {
+          "label": "Klok"
+        },
+        "ruler": {
+          "label": "Liniaal"
+        },
+        "eye": {
+          "label": "Oog"
+        },
+        "bell": {
+          "label": "Bel"
+        },
+        "light": {
+          "label": "Licht"
+        },
+        "battery": {
+          "label": "Batterij"
+        },
+        "star": {
+          "label": "Ster"
+        },
+        "book": {
+          "label": "Boek"
+        },
+        "dress": {
+          "label": "Jurk"
+        },
+        "pants": {
+          "label": "Broek"
+        },
+        "shoe": {
+          "label": "Schoen"
+        },
+        "hat": {
+          "label": "Hoed"
+        },
+        "skirt": {
+          "label": "Rok"
+        },
+        "tops": {
+          "label": "Topjes"
+        },
+        "shorts": {
+          "label": "Korte broek"
+        },
+        "socks": {
+          "label": "Sokken"
+        },
+        "bag": {
+          "label": "Tas"
+        },
+        "address": {
+          "label": "Adres"
+        },
+        "record": {
+          "label": "Opname"
+        },
+        "quote": {
+          "label": "Citaat"
+        },
+        "global": {
+          "label": "Globaal"
+        },
+        "thumb": {
+          "label": "Duim"
+        },
+        "author": {
+          "label": "Auteur"
+        },
+        "yes": {
+          "label": "Ja"
+        },
+        "no": {
+          "label": "Nee"
+        },
+        "preorder": {
+          "label": "Pre-order"
+        },
+        "calendar": {
+          "label": "Kalender"
+        }
+      },
+      "icon-size": {
+        "label": "Pictogramgrootte",
+        "options__1": {
+          "label": "Klein"
+        },
+        "options__2": {
+          "label": "Middel"
+        },
+        "options__3": {
+          "label": "Groot"
+        },
+        "options__4": {
+          "label": "Extra groot"
+        }
+      },
+      "keywords": {
+        "list": {
+          "label": "Trefwoorden",
+          "info": "Meerdere trefwoorden scheiden met komma's"
+        },
+        "show_icon": {
+          "label": "Pictogram tonen"
+        },
+        "icon_type": {
+          "label": "Pictogramtype",
+          "options__1": {
+            "label": "Vinkje"
+          },
+          "options__2": {
+            "label": "Plus"
+          },
+          "options__3": {
+            "label": "Index"
+          }
+        }
+      },
+      "media": {
+        "header_content": "Media-instellingen",
+        "info": "Configureer media-indeling en uiterlijk.",
+        "media_fit": {
+          "label": "Media aanpassen",
+          "options__1": {
+            "label": "Bedekken"
+          },
+          "options__2": {
+            "label": "Bevatten"
+          }
+        },
+        "media_width": {
+          "label": "Media breedte",
+          "options__1": {
+            "label": "Klein"
+          },
+          "options__2": {
+            "label": "Middel"
+          },
+          "options__3": {
+            "label": "Groot"
+          }
+        },
+        "media_position": {
+          "label": "Media positie",
+          "options__1": {
+            "label": "Links"
+          },
+          "options__2": {
+            "label": "Rechts"
+          },
+          "options__3": {
+            "label": "Boven"
+          },
+          "options__4": {
+            "label": "Onder"
+          }
+        },
+        "media_size": {
+          "label": "Media grootte",
+          "options__1": {
+            "label": "Klein"
+          },
+          "options__2": {
+            "label": "Middel"
+          },
+          "options__3": {
+            "label": "Groot"
+          }
+        },
+        "thumbnail_size": {
+          "label": "Miniatuurformaat"
+        }
+      },
+      "image": {
+        "header_content": "Afbeeldingsinstellingen",
+        "image_picker": {
+          "label": "Afbeelding"
+        },
+        "show_image": {
+          "label": "Toon afbeelding"
+        },
+        "header_background_image": "Achtergrondafbeelding instellingen",
+        "background_image_picker": {
+          "label": "Achtergrondafbeelding"
+        },
+        "enable_parallax": {
+          "label": "Parallax inschakelen"
+        },
+        "image_opacity": {
+          "label": "Afbeeldingsdoorzichtigheid"
+        },
+        "image_overlay_opacity": {
+          "label": "Overlay doorzichtigheid"
+        },
+        "image_width": {
+          "label": "Afbeeldingsbreedte",
+          "options__1": {
+            "label": "Klein"
+          },
+          "options__2": {
+            "label": "Middel"
+          },
+          "options__3": {
+            "label": "Groot"
+          }
+        },
+        "image_height": {
+          "label": "Afbeeldingshoogte",
+          "options__1": {
+            "label": "Klein"
+          },
+          "options__2": {
+            "label": "Middel"
+          },
+          "options__3": {
+            "label": "Groot"
+          },
+          "options__4": {
+            "label": "Adaptief"
+          }
+        },
+        "image_ratio": {
+          "label": "Beeldverhouding",
+          "options__1": {
+            "label": "Vierkant (1:1)"
+          },
+          "options__2": {
+            "label": "Portret (4:5)"
+          },
+          "options__3": {
+            "label": "Landschap (8:5)"
+          },
+          "options__4": {
+            "label": "Panorama (16:9)"
+          },
+          "options__5": {
+            "label": "Smalle (20:9)"
+          },
+          "options__6": {
+            "label": "Adaptief"
+          }
+        },
+        "image_position": {
+          "label": "Afbeeldingspositie",
+          "options__1": {
+            "label": "Links"
+          },
+          "options__2": {
+            "label": "Rechts"
+          },
+          "options__3": {
+            "label": "Boven"
+          },
+          "options__4": {
+            "label": "Onder"
+          }
+        },
+        "image_shape": {
+          "label": "Afbeeldingsvorm",
+          "options__1": {
+            "label": "Adaptief"
+          },
+          "options__2": {
+            "label": "Cirkel"
+          },
+          "options__3": {
+            "label": "Vierkant"
+          }
+        },
+        "image_rotate": {
+          "label": "Afbeeldingsrotatie"
+        },
+        "enable_scale_image": {
+          "label": "Beeldzoom inschakelen"
+        },
+        "enable_image_lightbox": {
+          "label": "Lightbox voor afbeeldingen inschakelen"
+        },
+        "enable_image_magnifier": {
+          "label": "Beeldvergrootglas inschakelen"
+        },
+        "image_lightbox_type": {
+          "label": "Lightbox-type",
+          "options__1": {
+            "label": "Zoom en sleep"
+          },
+          "options__2": {
+            "label": "Vast houden en bewegen"
+          }
+        },
+        "image_zoom_ratio": {
+          "label": "Zoomratio afbeelding"
+        },
+        "icon_image": {
+          "label": "Pictogramafbeelding",
+          "info": "20 x 20px .jpg aanbevolen"
+        }
+      },
+      "video": {
+        "header_content": "Video-instellingen",
+        "video": {
+          "label": "Video",
+          "info": "Het wordt aanbevolen om korte video's van 10-15 seconden te uploaden om laadsnelheid en ervaring te optimaliseren."
+        },
+        "video_url": {
+          "label": "Video-URL insluiten",
+          "info": "Gebruik een YouTube- of Vimeo-URL"
+        },
+        "enable_controls": {
+          "label": "Videobediening inschakelen"
+        },
+        "enable_looping": {
+          "label": "Videoloop inschakelen"
+        },
+        "cover_image": {
+          "label": "Omslagafbeelding"
+        },
+        "video_opacity": {
+          "label": "Video doorzichtigheid"
+        },
+        "video_position": {
+          "label": "Videopositie",
+          "options__1": {
+            "label": "Links boven"
+          },
+          "options__2": {
+            "label": "Rechts boven"
+          },
+          "options__3": {
+            "label": "Rechts onder"
+          },
+          "options__4": {
+            "label": "Links onder"
+          }
+        }
+      },
+      "seo": {
+        "header_content": "SEO-optimalisatie",
+        "if_as_main_area": {
+          "label": "Als hoofdgebied eerste scherm",
+          "info": "Als ingesteld als hoofdgebied eerste scherm, wordt het geoptimaliseerd om de SEO-score te verbeteren. Meer over [LCP](https://web.dev/articles/lcp)"
+        }
+      },
+      "collection": {
+        "label": "Collectie"
+      },
+      "collection-list": {
+        "label": "Collectielijst"
+      },
+      "link": {
+        "url": {
+          "label": "Link"
+        },
+        "open_in_new_tab": {
+          "label": "Openen in nieuw tabblad"
+        }
+      },
+      "link-list": {
+        "label": "Menu"
+      },
+      "social": {
+        "header_content": "Sociale instellingen",
+        "avatar": {
+          "label": "Profielfoto"
+        },
+        "nickname": {
+          "label": "Bijnaam"
+        },
+        "username": {
+          "label": "Gebruikersnaam"
+        },
+        "link": {
+          "label": "Sociale link"
+        }
+      },
+      "social-list": {
+        "header_content": "Sociale instellingen",
+        "show_social": {
+          "label": "Toon sociaal"
+        },
+        "social_style": {
+          "label": "Sociale stijl",
+          "options__1": {
+            "label": "Icoon"
+          },
+          "options__2": {
+            "label": "Rand"
+          },
+          "options__3": {
+            "label": "Omhuld"
+          }
+        },
+        "social_type": {
+          "label": "Sociaal type"
+        },
+        "icon_size": {
+          "label": "Icoongrootte",
+          "options__1": {
+            "label": "Klein"
+          },
+          "options__2": {
+            "label": "Medium"
+          },
+          "options__3": {
+            "label": "Groot"
+          }
+        }
+      },
+      "product-list": {
+        "label": "Selecteer producten"
+      },
+      "product": {
+        "label": "Selecteer product",
+        "header_product": {
+          "content": "Gerelateerd product"
+        }
+      },
+      "article": {
+        "show_tags": {
+          "label": "Toon tags"
+        },
+        "show_date": {
+          "label": "Toon datum"
+        },
+        "show_author": {
+          "label": "Toon auteur"
+        },
+        "show_excerpt": {
+          "label": "Toon samenvatting"
+        },
+        "show_index": {
+          "label": "Toon index"
+        }
+      },
+      "blog": {
+        "label": "Selecteer blog"
+      },
+      "price": {
+        "show_compare_at_price": {
+          "label": "Toon vergelijkingsprijs"
+        }
+      },
+      "slider": {
+        "enable_desktop_slider": {
+          "label": "Schakel slider op desktop in"
+        },
+        "enable_mobile_slider": {
+          "label": "Schakel slider op mobiel in"
+        },
+        "auto_rotate": {
+          "label": "Autoplay inschakelen"
+        },
+        "slide_type": {
+          "label": "Type dia",
+          "options__1": {
+            "label": "Dia"
+          },
+          "options__2": {
+            "label": "Vervagen"
+          },
+          "options__3": {
+            "label": "Zoomen"
+          }
+        },
+        "change_slides_speed": {
+          "label": "Autoplay-interval"
+        },
+        "show_nav_buttons": {
+          "label": "Toon navigatieknoppen"
+        },
+        "show_page_dots": {
+          "label": "Toon paginapunten"
+        },
+        "show_seek_bar": {
+          "label": "Toon voortgangsbalk"
+        },
+        "enable_slide_smooth": {
+          "label": "Schakel vloeiende overgang in"
+        }
+      },
+      "pagination": {
+        "style": {
+          "label": "Paginatiestijl",
+          "options__1": {
+            "label": "Paginaknoppen"
+          },
+          "options__2": {
+            "label": "Meer laden"
+          },
+          "options__3": {
+            "label": "Oneindig laden"
+          }
+        }
+      },
+      "tab-panel": {
+        "header": {
+          "content": "Tab-instellingen"
+        },
+        "tab_style": {
+          "label": "Tabstijl",
+          "options__1": {
+            "label": "Onderstrepen"
+          },
+          "options__2": {
+            "label": "Pill"
+          },
+          "options__3": {
+            "label": "Schuin"
+          }
+        },
+        "tab_alignment": {
+          "label": "Tab-uitlijning"
+        },
+        "header_switch": {
+          "content": "Schakelinstellingen"
+        },
+        "enable_auto_switch": {
+          "label": "Automatisch schakelen inschakelen"
+        },
+        "switch_interval": {
+          "label": "Schakelinterval"
+        }
+      },
+      "button": {
+        "header_content": "Knopinstellingen",
+        "button_size": {
+          "label": "Knopgrootte",
+          "options__1": {
+            "label": "Mini"
+          },
+          "options__2": {
+            "label": "Klein"
+          },
+          "options__3": {
+            "label": "Middel"
+          },
+          "options__4": {
+            "label": "Groot"
+          }
+        },
+        "button_label": {
+          "label": "Knoplabel",
+          "info": "Laat leeg om de knop te verbergen"
+        },
+        "button_link": {
+          "label": "Knoplink"
+        },
+        "button_style": {
+          "label": "Knopstijl",
+          "options__1": {
+            "label": "Primair"
+          },
+          "options__2": {
+            "label": "Secundair"
+          },
+          "options__3": {
+            "label": "Omlijnd"
+          },
+          "options__4": {
+            "label": "Transparant"
+          },
+          "options__5": {
+            "label": "Link"
+          }
+        },
+        "show_arrow": {
+          "label": "Pijl weergeven"
+        }
+      },
+      "newsletter": {
+        "input_style": {
+          "label": "Invoerstijl",
+          "options__1": {
+            "label": "Normaal"
+          },
+          "options__2": {
+            "label": "Lijn"
+          },
+          "options__3": {
+            "label": "Gescheiden"
+          }
+        },
+        "show_consent_notice": {
+          "label": "Toestemmingsbericht weergeven"
+        }
+      },
+      "discount": {
+        "header": {
+          "content": "Kortinginstellingen"
+        },
+        "paragraph": {
+          "content": "Je moet kortingsinformatie configureren in de kortinginstellingen.[Meer info](https://webvista-studio.gitbook.io/krank/sections/product-and-collection/shop-the-look#discount-settings)"
+        },
+        "show_discount": {
+          "label": "Korting weergeven"
+        },
+        "discount_percentage": {
+          "label": "Kortingspercentage"
+        }
+      },
+      "collapse": {
+        "default_expand": {
+          "label": "Standaard uitklappen"
+        }
+      },
+      "limit": {
+        "label": "Hoeveelheid beperken"
+      },
+      "recommendation": {
+        "show": {
+          "label": "Aanbevelingen inschakelen"
+        },
+        "type": {
+          "label": "Type aanbeveling",
+          "info": "Slimme aanbevelingen suggereren automatisch gerelateerde producten op basis van recente browsegeschiedenis.",
+          "options__1": {
+            "label": "Slim"
+          },
+          "options__2": {
+            "label": "Handmatig"
+          }
+        }
+      },
+      "localization": {
+        "header_content": "Regio- en taalkeuze",
+        "show_country": {
+          "label": "Lands-/regiokiezer tonen"
+        },
+        "show_language": {
+          "label": "Taalkeuze tonen"
+        }
+      },
+      "hotspot": {
+        "show_hotspot": {
+          "label": "Hotspot tonen"
+        },
+        "vertical_position": {
+          "label": "Verticale positie"
+        },
+        "horizontal_position": {
+          "label": "Horizontale positie"
+        }
+      },
+      "store": {
+        "name": {
+          "label": "Naam"
+        },
+        "location": {
+          "label": "Locatie"
+        },
+        "phone": {
+          "label": "Telefoon"
+        },
+        "hours": {
+          "label": "Openingstijden"
+        },
+        "map": {
+          "label": "Google Maps inbeddingscode",
+          "info": "Gebruik het formaat <iframe></iframe>. Voor gedetailleerde instructies, zie [Hoe je de embedcode voor een kaart krijgt](https://help.shopify.com/zh-CN/manual/online-store/themes/theme-structure/pages#add-content)."
+        }
+      }
+    },
+    "apps": {
+      "name": "Apps",
+      "presets": {
+        "name": "Apps"
+      }
+    },
+    "custom-liquid": {
+      "name": "Aangepaste liquid",
+      "presets": {
+        "name": "Aangepaste liquid"
+      }
+    },
+    "header": {
+      "name": "Header",
+      "settings": {
+        "header_logo": {
+          "content": "Logo-instellingen"
+        },
+        "logo_width": {
+          "label": "Logobreedte"
+        },
+        "logo_position": {
+          "label": "Logopositie",
+          "options__1": {
+            "label": "Links"
+          },
+          "options__2": {
+            "label": "Midden"
+          }
+        },
+        "header_info_block": {
+          "content": "Info-blok instellingen"
+        },
+        "show_info_block": {
+          "label": "Info-blok tonen"
+        },
+        "sticky_header_type": {
+          "label": "Plakkerige header",
+          "options__1": {
+            "label": "Geen"
+          },
+          "options__2": {
+            "label": "Bij scroll omhoog"
+          },
+          "options__3": {
+            "label": "Altijd"
+          },
+          "options__4": {
+            "label": "Logo verkleinen"
+          }
+        },
+        "enable_hover_open": {
+          "label": "Menu openen bij hover toestaan"
+        },
+        "default_expand_category": {
+          "label": "Categorie menu standaard uitgevouwen"
+        },
+        "header_search": {
+          "content": "Zoekinstellingen"
+        },
+        "show_product_types": {
+          "label": "Producttypes tonen"
+        },
+        "menu": {
+          "label": "Hoofdmenu"
+        },
+        "menu_position": {
+          "label": "Menupositie",
+          "options__1": {
+            "label": "Logoregel"
+          },
+          "options__2": {
+            "label": "Onder"
+          }
+        },
+        "header_category": {
+          "content": "Categorie menu instellingen"
+        },
+        "category_menu": {
+          "label": "Categorie menu",
+          "info": "Toon maximaal 10 hoofdniveaus"
+        },
+        "show_collection_image": {
+          "label": "Categorieafbeelding tonen",
+          "info": "Toon de eerste productafbeelding van de categorie"
+        },
+        "show_store_button": {
+          "label": "Winkelknop tonen"
+        },
+        "show_quick_button": {
+          "label": "Snelle knop tonen"
+        },
+        "header_other_settings": {
+          "content": "Overige instellingen"
+        },
+        "default_open_in_index": {
+          "label": "Startpagina standaard open"
+        }
+      },
+      "blocks": {
+        "all": {
+          "menu_type": {
+            "label": "Gebonden menutype",
+            "options__1": {
+              "label": "Hoofdmenu"
+            },
+            "options__2": {
+              "label": "Categorie menu"
+            }
+          },
+          "target_id": {
+            "label": "Gebonden menu volgorde",
+            "info": "Gebruik deze index om een menu te koppelen. Begint bij 1, geeft de volgorde van links naar rechts aan."
+          },
+          "paragraph_main": {
+            "content": "Getoond in hoofdmenu"
+          },
+          "paragraph_category": {
+            "content": "Getoond in categorie menu"
+          }
+        },
+        "icon": {
+          "name": "Icoon"
+        },
+        "bubble": {
+          "name": "Badge"
+        },
+        "mega_image": {
+          "name": "Mega menu - afbeelding",
+          "settings": {
+            "header_badge_content": "Badge-instellingen",
+            "badge_label": {
+              "label": "Badge-tekst"
+            },
+            "width": {
+              "label": "Afbeeldingsbreedte",
+              "options__1": {
+                "label": "20%"
+              },
+              "options__2": {
+                "label": "40%"
+              },
+              "options__3": {
+                "label": "60%"
+              },
+              "options__4": {
+                "label": "80%"
+              },
+              "options__5": {
+                "label": "100%"
+              }
+            },
+            "image_mobile": {
+              "info": "300 x 200px .jpg aanbevolen"
+            }
+          }
+        },
+        "mega_links": {
+          "name": "Mega menu - aangepast menu",
+          "settings": {
+            "heading": {
+              "info": "Leeg laten om titel van gekozen menu te gebruiken"
+            },
+            "image": {
+              "info": "320 x 200px .jpg aanbevolen"
+            }
+          }
+        },
+        "mega_collection": {
+          "name": "Mega menu - collecties",
+          "settings": {
+            "limit": {
+              "info": "Beperk aantal producten per collectie"
+            },
+            "show_collection_image": {
+              "label": "Categorieafbeelding tonen"
+            }
+          }
+        },
+        "mega_spacer": {
+          "name": "Mega menu - ruimte"
+        },
+        "mega_image_text": {
+          "name": "Mega menu - afbeelding met tekst"
+        },
+        "category_image": {
+          "name": "Categorie menu - afbeelding",
+          "settings": {
+            "header_size_setting": {
+              "content": "Formaat instellingen"
+            },
+            "paragraph_content": {
+              "content": "Alle afbeeldingen in het menu volgen de formaatinstellingen van de eerste toegevoegde afbeelding"
+            },
+            "width_percentage": {
+              "info": "Afbeeldingsbreedte als percentage van resterende ruimte",
+              "options__1": {
+                "label": "25%"
+              },
+              "options__2": {
+                "label": "50%"
+              },
+              "options__3": {
+                "label": "100%"
+              }
+            },
+            "height_percentage": {
+              "info": "Afbeeldingshoogte als percentage van resterende ruimte",
+              "options__1": {
+                "label": "50%"
+              },
+              "options__2": {
+                "label": "100%"
+              }
+            },
+            "image": {
+              "info": "300 x 200px .jpg aanbevolen"
+            }
+          }
+        }
+      }
+    },
+    "footer": {
+      "name": "Voettekst",
+      "settings": {
+        "show_border_top": {
+          "label": "Bovenste rand tonen"
+        },
+        "header_background": {
+          "content": "Achtergrondinstellingen"
+        },
+        "background_image": {
+          "label": "Achtergrondafbeelding"
+        },
+        "header_follow_on_shop": {
+          "content": "Volg op Shop",
+          "info": "Om klanten je winkel via de Shop-app te laten volgen vanaf je storefront, moet Shop Pay ingeschakeld zijn. [Meer info](https://help.shopify.com/manual/online-store/themes/customizing-themes/follow-on-shop)"
+        },
+        "enable_follow_on_shop": {
+          "label": "Volg op Shop tonen"
+        },
+        "header_trust_badge": {
+          "content": "Shopify betrouwbaarheidsbadge"
+        },
+        "show_trust_badge": {
+          "label": "Betrouwbaarheidsbadge tonen"
+        },
+        "header_localization": {
+          "content": "Taal- en regiokeuze",
+          "info": "Voeg talen toe via je [Taalinstellingen](/admin/settings/languages)."
+        },
+        "header_payment": {
+          "content": "Betaalmethoden"
+        },
+        "payment_enable": {
+          "label": "Betaaliconen tonen"
+        },
+        "header_to_top": {
+          "content": "Terug naar boven knop"
+        },
+        "show_back_to_top_button": {
+          "label": "Terug naar boven knop tonen"
+        },
+        "back_to_top_position": {
+          "label": "Weergavepositie",
+          "options__1": {
+            "label": "Links"
+          },
+          "options__2": {
+            "label": "Rechts"
+          }
+        },
+        "show_progress_path": {
+          "label": "Voortgangspad tonen"
+        },
+        "adapt_mobile_navbar": {
+          "label": "Pas mobiele navigatiebalk aan",
+          "info": "Voeg onderruimte toe om overlap te voorkomen"
+        }
+      },
+      "blocks": {
+        "all": {
+          "header_width": {
+            "content": "Breedte-instellingen"
+          }
+        },
+        "link_list": {
+          "name": "Menu",
+          "settings": {
+            "menu": {
+              "label": "Menu",
+              "info": "Toont alleen topniveau menu-items."
+            }
+          }
+        },
+        "social": {
+          "name": "Social media",
+          "settings": {
+            "paragraph": {
+              "content": "Om je social media-accounts te tonen, voeg hun links toe in [Thema-instellingen](/editor?context=theme&category=social%20media)."
+            }
+          }
+        },
+        "brand": {
+          "name": "Merkinformatie",
+          "settings": {
+            "email": {
+              "label": "E-mail"
+            },
+            "phone": {
+              "label": "Telefoon"
+            },
+            "introduction": {
+              "label": "Merkintroductie"
+            },
+            "apple_download_link": {
+              "label": "Apple app downloadlink"
+            },
+            "android_download_link": {
+              "label": "Android app downloadlink"
+            },
+            "image": {
+              "info": "300 x 300px .jpg aanbevolen"
+            }
+          }
+        },
+        "text": {
+          "name": "Tekst"
+        },
+        "image": {
+          "name": "Afbeelding",
+          "settings": {
+            "image": {
+              "info": "100 x 100px .jpg aanbevolen"
+            }
+          }
+        },
+        "newsletter": {
+          "name": "Nieuwsbrief"
+        },
+        "spacer": {
+          "name": "Ruimtehouder",
+          "settings": {
+            "show_line": {
+              "label": "Scheiding tonen"
+            }
+          }
+        }
+      }
+    },
+    "drawer": {
+      "name": "Zijladen"
+    },
+    "popup": {
+      "name": "Pop-ups"
+    },
+    "image-banner": {
+      "name": "Afbeeldingsbanner",
+      "presets": {
+        "name": "Afbeeldingsbanner"
+      }
+    },
+    "video-banner": {
+      "name": "Videobanner",
+      "presets": {
+        "name": "Videobanner"
+      }
+    },
+    "before-after": {
+      "name": "Voor en na",
+      "presets": {
+        "name": "Voor en na"
+      }
+    },
+    "hotspots-banner": {
+      "name": "Hotspots-banner",
+      "blocks": {
+        "hotspot": {
+          "name": "Hotspot"
+        }
+      },
+      "presets": {
+        "name": "Hotspots-banner"
+      }
+    },
+    "feature-highlights": {
+      "name": "Feature highlights",
+      "settings": {
+        "image": {
+          "info": "800 x 800px .jpg aanbevolen"
+        }
+      },
+      "blocks": {
+        "highlight": {
+          "name": "Highlight"
+        }
+      },
+      "presets": {
+        "name": "Feature highlights"
+      }
+    },
+    "trust-promises": {
+      "name": "Vertrouwensbeloften",
+      "presets": {
+        "name": "Vertrouwensbeloften"
+      }
+    },
+    "announcement-bar": {
+      "name": "Aankondigingsbalk",
+      "blocks": {
+        "announcement": {
+          "name": "Aankondiging",
+          "settings": {
+            "text": {
+              "label": "Tekst"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Aankondigingsbalk"
+      }
+    },
+    "cart-drawer": {
+      "name": "Winkelwagenlade",
+      "settings": {
+        "paragraph": {
+          "content": "Om de winkelwagenlade weer te geven, ga naar [Template-instellingen](/editor?context=theme&category=cart) en selecteer \"Lade\" als het winkelwagetype in de winkelwageninstellingen."
+        },
+        "header_empty": {
+          "content": "Instellingen lege winkelwagen"
+        },
+        "header_not_empty": {
+          "content": "Instellingen niet-lege winkelwagen"
+        },
+        "show_complementary": {
+          "label": "Toon aanvullend",
+          "info": "Toon producten gerelateerd aan het meest recent toegevoegde winkelwagenartikel. Voeg eerst [Aanvullende producten](https://webvista-studio.gitbook.io/krank/pages/main-product/complementary-products) toe aan artikelen."
+        }
+      }
+    },
+    "featured-collection": {
+      "name": "Uitgelichte collectie",
+      "presets": {
+        "name": "Uitgelichte collectie"
+      }
+    },
+    "collection-tabs": {
+      "name": "Collectie-tabbladen",
+      "blocks": {
+        "collection_tab": {
+          "name": "Collectie-tabblad"
+        }
+      },
+      "presets": {
+        "name": "Collectie-tabbladen"
+      }
+    },
+    "featured-blog": {
+      "name": "Uitgelichte blog",
+      "presets": {
+        "name": "Uitgelichte blog"
+      }
+    },
+    "media-with-text": {
+      "name": "Media met tekst",
+      "presets": {
+        "name": "Media met tekst"
+      }
+    },
+    "image-text-tabs": {
+      "name": "Afbeelding-tekst tabbladen",
+      "blocks": {
+        "image_text": {
+          "name": "Afbeelding-tekst",
+          "settings": {
+            "image": {
+              "info": "900 x 600px .jpg aanbevolen"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Afbeelding-tekst tabbladen"
+      }
+    },
+    "quotes": {
+      "name": "Citaten",
+      "presets": {
+        "name": "Citaten"
+      }
+    },
+    "rich-text": {
+      "name": "Rijke tekst",
+      "presets": {
+        "name": "Rijke tekst"
+      }
+    },
+    "newsletter": {
+      "name": "Nieuwsbrief",
+      "settings": {
+        "header_content": "Zijafbeelding",
+        "side_image_position": {
+          "label": "Positie zijafbeelding",
+          "options__1": {
+            "label": "Links"
+          },
+          "options__2": {
+            "label": "Rechts"
+          }
+        },
+        "image": {
+          "info": "600 x 600px .jpg aanbevolen"
+        }
+      },
+      "presets": {
+        "name": "Nieuwsbrief"
+      }
+    },
+    "collection-list": {
+      "name": "Collectielijst",
+      "settings": {
+        "show_product_count": {
+          "label": "Toon aantal producten"
+        }
+      },
+      "presets": {
+        "name": "Collectielijst"
+      }
+    },
+    "collection-icons": {
+      "name": "Collectie-iconen",
+      "presets": {
+        "name": "Collectie-iconen"
+      }
+    },
+    "carousel": {
+      "name": "Carrousel",
+      "settings": {
+        "image_height": {
+          "info": "Adaptieve hoogte past zich aan de hoogste media aan."
+        },
+        "nav_buttons_position": {
+          "label": "Positie knoppen",
+          "options__1": {
+            "label": "Beide zijden"
+          },
+          "options__2": {
+            "label": "Onderaan rechts"
+          }
+        }
+      },
+      "presets": {
+        "name": "Carrousel"
+      }
+    },
+    "search-drawer": {
+      "name": "Zoeklade",
+      "settings": {
+        "header_recommendation": {
+          "content": "Aanbevelingsinstellingen"
+        }
+      }
+    },
+    "seamless-scroll": {
+      "name": "Naadloos scrollen",
+      "settings": {
+        "direction": {
+          "label": "Scrollrichting",
+          "options__1": {
+            "label": "Naar links"
+          },
+          "options__2": {
+            "label": "Naar rechts"
+          }
+        },
+        "speed": {
+          "label": "Snelheid",
+          "info": "Afstand per seconde, in px"
+        },
+        "display_border_blur": {
+          "label": "Toon randvervaging"
+        },
+        "enable_scroll_synergy": {
+          "label": "Scrollsynergie inschakelen"
+        }
+      },
+      "blocks": {
+        "text": {
+          "name": "Tekst",
+          "settings": {
+            "content": {
+              "label": "Inhoud"
+            },
+            "font_size": {
+              "label": "Lettergrootte"
+            },
+            "font_weight": {
+              "label": "Lettergewicht",
+              "options__1": {
+                "label": "Dun"
+              },
+              "options__2": {
+                "label": "Licht"
+              },
+              "options__3": {
+                "label": "Normaal"
+              },
+              "options__4": {
+                "label": "Vet"
+              },
+              "options__5": {
+                "label": "Zwart"
+              },
+              "info": "Lettergewicht-opties hangen af van het gekozen lettertype; sommige lettertypen ondersteunen minder gewichten"
+            },
+            "header_custom_color": {
+              "content": "Aangepaste kleurinstellingen"
+            }
+          }
+        },
+        "icon": {
+          "name": "Pictogram",
+          "settings": {
+            "icon_size": {
+              "label": "Pictogramgrootte"
+            },
+            "header_custom_color": {
+              "content": "Aangepaste kleurinstellingen"
+            }
+          }
+        },
+        "image": {
+          "name": "Afbeelding",
+          "settings": {
+            "image": {
+              "info": "100 x 100px .jpg aanbevolen"
+            }
+          }
+        },
+        "spacer": {
+          "name": "Spacer",
+          "settings": {
+            "width": {
+              "label": "Breedte spacer"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Naadloos scrollen"
+      }
+    },
+    "contact-form": {
+      "name": "Contactformulier",
+      "settings": {
+        "header-map": {
+          "content": "Kaartinstellingen"
+        },
+        "show_map": {
+          "label": "Toon kaart"
+        },
+        "map_image": {
+          "label": "Kaartafbeelding",
+          "info": "Als er geen kaartcode is toegevoegd, wordt deze afbeelding getoond, 800 x 600px .jpg aanbevolen"
+        },
+        "map_iframe": {
+          "label": "Google kaart insluitcode",
+          "info": "Gebruik het formaat <iframe></iframe>. Voor gedetailleerde instructies, zie [Hoe krijg je de insluitcode van de kaart](https://help.shopify.com/zh-CN/manual/online-store/themes/theme-structure/pages#add-content)."
+        }
+      },
+      "presets": {
+        "name": "Contactformulier"
+      }
+    },
+    "testimonial": {
+      "name": "Testimonials",
+      "presets": {
+        "name": "Testimonials"
+      }
+    },
+    "collapsible-content": {
+      "name": "Inklapbare inhoud",
+      "presets": {
+        "name": "Inklapbare inhoud"
+      }
+    },
+    "shop-the-look": {
+      "name": "Shop de look",
+      "settings": {
+        "show_quantity_selector": {
+          "label": "Toon hoeveelheidsselector"
+        },
+        "default_selected": {
+          "label": "Standaard geselecteerd"
+        },
+        "image": {
+          "info": "1000 x 600px .jpg aanbevolen"
+        }
+      },
+      "blocks": {
+        "look-spot": {
+          "name": "Look spot"
+        }
+      },
+      "presets": {
+        "name": "Shop de look"
+      }
+    },
+    "logo-list": {
+      "name": "Logo lijst",
+      "presets": {
+        "name": "Logo lijst"
+      }
+    },
+    "media-grid": {
+      "name": "Mediaraster",
+      "presets": {
+        "name": "Mediaraster"
+      }
+    },
+    "campaign-popup": {
+      "name": "Campagne-popup",
+      "settings": {
+        "disable_for_holder": {
+          "label": "Uitschakelen voor ingelogde gebruikers",
+          "info": "Niet van toepassing in bewerkingsmodus"
+        },
+        "delay": {
+          "label": "Vertragingstijd",
+          "info": "Vertraging niet van toepassing in bewerkingsmodus"
+        },
+        "frequency": {
+          "label": "Weergavefrequentie"
+        },
+        "image": {
+          "info": "360 x 480px .jpg aanbevolen. Om te voldoen aan Google's richtlijnen voor tussenliggende advertenties en SEO te verbeteren, wordt niet weergegeven op mobiel."
+        },
+        "header_float_button": {
+          "content": "Instellingen voor zwevende knop"
+        },
+        "show_button": {
+          "label": "Knop tonen"
+        },
+        "button_position": {
+          "label": "Knoppositie",
+          "options__1": {
+            "label": "Links"
+          },
+          "options__2": {
+            "label": "Rechts"
+          }
+        }
+      },
+      "presets": {
+        "name": "Campagne-popup"
+      }
+    },
+    "age-verifier-popup": {
+      "name": "Leeftijdsverificatie-popup",
+      "settings": {
+        "debug_mode": {
+          "label": "Schakel debugmodus in",
+          "info": "Dwingt leeftijdsverificatie-popup te tonen bij elke vernieuwingsactie, alleen voor bewerkingsdoeleinden. Zorg dat [Debugmodus](https://webvista-studio.gitbook.io/krank/popups/age-verification-popup) is uitgeschakeld bij publicatie."
+        },
+        "paragraph_background": {
+          "content": "Achtergrondinstellingen"
+        },
+        "paragraph_message": {
+          "content": "+ Bericht voor minderjarigen"
+        },
+        "declined_heading": {
+          "label": "Weigering kop"
+        },
+        "declined_description": {
+          "label": "Weigering beschrijving"
+        }
+      }
+    },
+    "bottom-nav-bar": {
+      "name": "Mobiele navigatiebalk",
+      "blocks": {
+        "home": {
+          "name": "Home"
+        },
+        "account": {
+          "name": "Gebruikerscentrum"
+        },
+        "cart": {
+          "name": "Winkelwagen"
+        },
+        "store": {
+          "name": "Winkel"
+        },
+        "search": {
+          "name": "Zoeken"
+        },
+        "link": {
+          "name": "Link",
+          "settings": {
+            "image": {
+              "info": "30 x 30px .jpg aanbevolen"
+            }
+          }
+        }
+      }
+    },
+    "product-compare-table": {
+      "name": "Productvergelijkingstabel",
+      "settings": {
+        "header_product": {
+          "content": "Productinstellingen"
+        }
+      },
+      "presets": {
+        "name": "Productvergelijkingstabel"
+      }
+    },
+    "custom-section-header": {
+      "name": "Aangepaste sectiekop",
+      "presets": {
+        "name": "Aangepaste sectiekop"
+      }
+    },
+    "stores-drawer": {
+      "name": "Winkellade",
+      "blocks": {
+        "store": {
+          "name": "Winkel",
+          "settings": {
+            "image": {
+              "info": "400 x 250px .jpg aanbevolen"
+            }
+          }
+        }
+      }
+    },
+    "store-list": {
+      "name": "Winkellijst",
+      "presets": {
+        "name": "Winkellijst"
+      }
+    },
+    "product-quick-view-drawer": {
+      "name": "Snelzicht lade",
+      "settings": {
+        "product": {
+          "label": "Voorbeeldproduct",
+          "info": "Let op: voorbeeldproduct is alleen voor het testen van lay-out en stijlen"
+        }
+      }
+    },
+    "recently-viewed": {
+      "name": "Onlangs bekeken",
+      "presets": {
+        "name": "Onlangs bekeken"
+      }
+    },
+    "related-products": {
+      "name": "Gerelateerde producten"
+    },
+    "visual-tabs": {
+      "name": "Visuele tabbladen",
+      "blocks": {
+        "image": {
+          "name": "Afbeelding",
+          "settings": {
+            "image": {
+              "info": "1600 x 600px .jpg aanbevolen"
+            },
+            "image_mobile": {
+              "info": "300 x 400px .jpg aanbevolen"
+            }
+          }
+        },
+        "video": {
+          "name": "Video"
+        }
+      },
+      "presets": {
+        "name": "Visuele tabbladen"
+      }
+    },
+    "embedded-image-heading": {
+      "name": "Ingesloten afbeelding kop",
+      "presets": {
+        "name": "Ingesloten afbeelding kop"
+      }
+    },
+    "shop-the-feed": {
+      "name": "Shop de feed",
+      "settings": {
+        "image": {
+          "info": "60 x 60px .jpg aanbevolen"
+        }
+      },
+      "blocks": {
+        "image-feed": {
+          "name": "Afbeeldingenfeed",
+          "settings": {
+            "image": {
+              "info": "300 x 400px .jpg aanbevolen"
+            }
+          }
+        },
+        "video-feed": {
+          "name": "Videofeed"
+        }
+      },
+      "presets": {
+        "name": "Shop de feed"
+      }
+    },
+    "timeline": {
+      "name": "Tijdlijn",
+      "presets": {
+        "name": "Tijdlijn"
+      }
+    },
+    "team": {
+      "name": "Team",
+      "presets": {
+        "name": "Team"
+      }
+    },
+    "promotion-bar": {
+      "name": "Promotiebalk",
+      "presets": {
+        "name": "Promotiebalk"
+      }
+    },
+    "flexible-images": {
+      "name": "Flexibele afbeeldingen",
+      "presets": {
+        "name": "Flexibele afbeeldingen"
+      }
+    },
+    "featured-products-grid": {
+      "name": "Uitgelichte productraster",
+      "presets": {
+        "name": "Uitgelichte productraster"
+      }
+    },
+    "featured-product": {
+      "name": "Uitgelicht product",
+      "presets": {
+        "name": "Uitgelicht product"
+      }
+    },
+    "reading-text": {
+      "name": "Leesbare tekst",
+      "presets": {
+        "name": "Leesbare tekst"
+      }
+    },
+    "press": {
+      "name": "Pers",
+      "blocks": {
+        "review": {
+          "name": "Recensie"
+        }
+      },
+      "presets": {
+        "name": "Pers"
+      }
+    },
+    "multicolumn": {
+      "name": "Multicolumn",
+      "presets": {
+        "name": "Multicolumn"
+      }
+    },
+    "breadcrumb": {
+      "name": "Breadcrumb"
+    },
+    "product-anchor-navigation": {
+      "label": "Anchor navigation bar",
+      "blocks": {
+        "item": {
+          "name": "Ankerelement",
+          "settings": {
+            "anchor_name": {
+              "label": "Anchor name"
+            },
+            "anchor_id": {
+              "label": "Anchor id",
+              "info": "Enter an in-page anchor id (e.g. product-details)"
+            },
+            "image": {
+              "info": "30 x 30px .jpg recommended"
+            }
+          }
+        }
+      }
+    },
+    "product-description": {
+      "name": "Product description"
+    },
+    "media-content-list": {
+      "name": "Media content list",
+      "presets": {
+        "name": "Media content list"
+      }
+    },
+    "gallery-with-text": {
+      "name": "Gallery with text",
+      "presets": {
+        "name": "Gallery with text"
+      }
+    },
+    "collage-with-text": {
+      "name": "Collage met tekst",
+      "presets": {
+        "name": "Collage met tekst"
+      }
+    },
+    "main-list-collection-banner": {
+      "name": "Banner collectie lijst"
+    },
+    "main-product": {
+      "name": "Productinformatie",
+      "blocks": {
+        "title": {
+          "name": "Titel",
+          "settings": {
+            "size": {
+              "label": "Lettergrootte",
+              "options__1": {
+                "label": "Klein"
+              },
+              "options__2": {
+                "label": "Middel"
+              },
+              "options__3": {
+                "label": "Groot"
+              }
+            },
+            "header_vendor": {
+              "content": "Product leverancier"
+            },
+            "show_vendor": {
+              "label": "Toon leverancier"
+            },
+            "show_type": {
+              "label": "Toon type"
+            },
+            "header_rating": {
+              "content": "Productbeoordeling"
+            },
+            "enable_rating_preview": {
+              "label": "Voorbeeldmodus inschakelen",
+              "info": "Toon gesimuleerde beoordelingsdata"
+            },
+            "show_rating": {
+              "label": "Toon productbeoordeling"
+            },
+            "star_size": {
+              "label": "Ster grootte",
+              "options__1": {
+                "label": "Klein"
+              },
+              "options__2": {
+                "label": "Middel"
+              },
+              "options__3": {
+                "label": "Groot"
+              }
+            },
+            "star_color": {
+              "label": "Ster kleur"
+            },
+            "target_anchor": {
+              "label": "Anker doeld-id",
+              "info": "Voeg anker-id toe, bijv. #Reviews"
+            }
+          }
+        },
+        "price": {
+          "name": "Prijs",
+          "settings": {
+            "show_tax": {
+              "label": "Toon belasting- en verzendmelding"
+            },
+            "show_sale_badge": {
+              "label": "Toon verkoop-/uitverkocht-badge"
+            },
+            "sale_badge_type": {
+              "label": "Type verkoopbadge",
+              "options__1": {
+                "label": "Bedrag"
+              },
+              "options__2": {
+                "label": "Percentage"
+              },
+              "options__3": {
+                "label": "Gratis"
+              }
+            }
+          }
+        },
+        "sku": {
+          "name": "SKU"
+        },
+        "description": {
+          "name": "Productbeschrijving",
+          "settings": {
+            "enable_brief": {
+              "label": "Toon korte beschrijving"
+            },
+            "limit": {
+              "label": "Limiet korte beschrijving tekens"
+            }
+          }
+        },
+        "info_card": {
+          "name": "Info kaart",
+          "settings": {
+            "enable_close": {
+              "label": "Sluitknop inschakelen",
+              "info": "Gebruikers toestaan info kaart te sluiten"
+            }
+          }
+        },
+        "variant_picker": {
+          "name": "Variantkiezer",
+          "settings": {
+            "header_default_picker": {
+              "content": "Basis kiezer"
+            },
+            "picker_type": {
+              "label": "Type kiezer",
+              "options__1": {
+                "label": "Dropdown"
+              },
+              "options__2": {
+                "label": "Knop"
+              }
+            },
+            "auto_dropdown": {
+              "label": "Automatisch stijl wisselen",
+              "info": "Schakelt automatisch naar dropdown als opties boven drempel komen, voor overzichtelijkheid"
+            },
+            "dropdown_threshold": {
+              "label": "Dropdown drempel"
+            },
+            "header_swatch_picker": {
+              "content": "Stalen kiezer"
+            },
+            "enable_first_swatch_image": {
+              "label": "Variantafbeelding tonen",
+              "info": "Toon variantafbeelding voor eerste staaloptie"
+            },
+            "swatch_size": {
+              "label": "Kiezer grootte",
+              "options__1": {
+                "label": "Klein"
+              },
+              "options__2": {
+                "label": "Middel"
+              },
+              "options__3": {
+                "label": "Groot"
+              }
+            },
+            "round_swatches": {
+              "label": "Ronde stalen"
+            },
+            "auto_scroll_to_top": {
+              "label": "Automatisch naar boven scrollen",
+              "info": "Scrollt automatisch naar boven bij variant afbeelding wissel"
+            }
+          }
+        },
+        "buy_buttons": {
+          "name": "Koop knoppen",
+          "settings": {
+            "show_quantity_selector": {
+              "label": "Toon hoeveelheidkiezer"
+            },
+            "is_selector_standalone": {
+              "label": "Hoeveelheidkiezer eigen regel",
+              "info": "Wikkelt automatisch bij smalle schermen"
+            },
+            "show_dynamic_checkout": {
+              "label": "Toon dynamische afrekenknop",
+              "info": "Toont afrekenknop naast winkelwagenknop"
+            },
+            "show_notify_form": {
+              "label": "Toon voorraadmelding",
+              "info": "Toont als product uitverkocht en niet in pre-order"
+            },
+            "show_gift_card_recipient": {
+              "label": "Toon cadeaukaart ontvanger veld",
+              "info": "Laat koper cadeaukaart direct naar ontvanger sturen"
+            }
+          }
+        },
+        "separator": {
+          "name": "Scheiding",
+          "settings": {
+            "show_line": {
+              "label": "Toon lijn"
+            },
+            "margin_top": {
+              "label": "Bovenmarge"
+            },
+            "margin_bottom": {
+              "label": "Ondermarge"
+            }
+          }
+        },
+        "inventory": {
+          "name": "Voorraadstatus",
+          "settings": {
+            "inventory_threshold": {
+              "label": "Voorraaddrempel",
+              "info": "Stel drempel in voor lage voorraad waarschuwing"
+            },
+            "low_stock_alert": {
+              "label": "Waarschuwing lage voorraad",
+              "info": "Gebruik [stock] voor huidige voorraad"
+            },
+            "full_stock_alert": {
+              "label": "Volledige voorraad melding",
+              "info": "Gebruik [stock] voor huidige voorraad"
+            },
+            "show_percentage_bar": {
+              "label": "Toon procentbalk"
+            },
+            "low_stock_bar_color": {
+              "label": "Kleur lage voorraad balk"
+            },
+            "full_stock_bar_color": {
+              "label": "Kleur volle voorraad balk"
+            }
+          }
+        },
+        "collapsible_tab": {
+          "name": "Inklapbare tab",
+          "settings": {
+            "heading": {
+              "label": "Kop"
+            },
+            "richtext_content": {
+              "label": "Inhoud"
+            },
+            "image": {
+              "info": "30 x 30px .jpg aanbevolen"
+            },
+            "content_image": {
+              "info": "700 x 700px .jpg aanbevolen"
+            }
+          }
+        },
+        "icon_text": {
+          "name": "Icoon met tekst",
+          "settings": {
+            "image": {
+              "info": "30 x 30px .jpg aanbevolen"
+            }
+          }
+        },
+        "sibling_product": {
+          "name": "Gelinkt product",
+          "settings": {
+            "paragraph": {
+              "content": "Koppel producten uit dezelfde serie voor weergave, zie [Hoe gelinkte producten maken](https://webvista-studio.gitbook.io/krank/pages/main-product/sibling-products)"
+            },
+            "title": {
+              "label": "Optienaam",
+              "info": "bijv. Rood, XXL"
+            },
+            "show_price": {
+              "label": "Toon prijs"
+            }
+          }
+        },
+        "pickup_availability": {
+          "name": "Ophalen beschikbaarheid"
+        },
+        "sharing": {
+          "name": "Delen"
+        },
+        "mini_checkout": {
+          "name": "Mini afrekenen"
+        },
+        "countdown": {
+          "name": "Promotie aftellen",
+          "settings": {
+            "header_countdown": {
+              "content": "Aftelinstellingen"
+            }
+          }
+        },
+        "text": {
+          "name": "Tekst",
+          "settings": {
+            "text": {
+              "label": "Tekstbeschrijving"
+            }
+          }
+        },
+        "popup": {
+          "name": "Popup",
+          "settings": {
+            "image": {
+              "info": "30 x 30px .jpg aanbevolen"
+            },
+            "content_image": {
+              "info": "600 x 600px .jpg aanbevolen"
+            },
+            "bind_size_picker": {
+              "label": "Koppel maatkiezer"
+            }
+          }
+        },
+        "complementary_products": {
+          "name": "Aanvullende producten",
+          "settings": {
+            "paragraph": {
+              "content": "Toon producten die goed passen bij dit product."
+            },
+            "show_separator_line": {
+              "label": "Toon bovenste scheidingslijn"
+            },
+            "items_per_slide": {
+              "label": "Items per slide"
+            }
+          }
+        },
+        "delivery_eta": {
+          "name": "Geschatte levertijd",
+          "settings": {
+            "processing_time": {
+              "label": "Verwerkingstijd"
+            },
+            "time_variance": {
+              "label": "Tijdvariantie"
+            }
+          }
+        },
+        "keyword_list": {
+          "name": "Trefwoordenlijst"
+        },
+        "add_on": {
+          "name": "Extra product",
+          "settings": {
+            "image": {
+              "info": "30 x 30px .jpg aanbevolen"
+            },
+            "default_selected": {
+              "label": "Standaard geselecteerd"
+            },
+            "quantity_sync": {
+              "label": "Aantal synchronisatie",
+              "info": "Wanneer ingeschakeld, wordt het aantal gebundelde producten gesynchroniseerd met het aantal van het hoofdproduct."
+            }
+          }
+        },
+        "payment_security": {
+          "name": "Betalingsbeveiliging"
+        },
+        "badge_list": {
+          "name": "Badge lijst"
+        },
+        "care": {
+          "name": "Verzorging",
+          "settings": {
+            "product": {
+              "info": "Je moet eerst het bijbehorende garantieproduct toevoegen"
+            }
+          }
+        }
+      },
+      "settings": {
+        "enable_sticky_media": {
+          "label": "Sticky media inschakelen op desktop"
+        },
+        "media_layout": {
+          "label": "Media-indeling",
+          "options__1": {
+            "label": "Stapelen"
+          },
+          "options__2": {
+            "label": "Carrousel met miniaturen onder"
+          },
+          "options__3": {
+            "label": "Carrousel met miniaturen links"
+          },
+          "options__4": {
+            "label": "Carrousel met miniaturen rechts"
+          }
+        },
+        "paragraph_amplifier": {
+          "content": "+ Instellingen beeldvergroter"
+        },
+        "paragraph_rotation": {
+          "content": "+ Instellingen media-carrousel"
+        },
+        "paragraph_other": {
+          "content": "+ Overige media-instellingen"
+        },
+        "hide_variants": {
+          "label": "Andere variantafbeeldingen verbergen",
+          "info": "Gebruik alt attribuut om afbeeldingen per variant te groeperen zodat alleen relevante afbeeldingen getoond worden. Zie [Productpagina](https://webvista-studio.gitbook.io/krank/pages/main-product/variant-images-group) voor details."
+        },
+        "enable_video_autoplay": {
+          "label": "Video automatisch afspelen inschakelen"
+        },
+        "enable_video_looping": {
+          "label": "Video herhalen inschakelen"
+        },
+        "hide_thumbnail_mobile": {
+          "label": "Miniaturen verbergen op mobiel",
+          "info": "Effectief bij carrousel media-indeling"
+        }
+      }
+    },
+    "main-article": {
+      "name": "Blogpost",
+      "settings": {
+        "enable_share": {
+          "label": "Delen inschakelen"
+        }
+      },
+      "blocks": {
+        "related_products": {
+          "name": "Gerelateerde producten",
+          "settings": {
+            "related_type": {
+              "label": "Type gerelateerd",
+              "options__1": {
+                "label": "Automatisch"
+              },
+              "options__2": {
+                "label": "Handmatig"
+              },
+              "options__3": {
+                "label": "Metavelden"
+              }
+            }
+          }
+        },
+        "related_articles": {
+          "name": "Gerelateerde artikelen",
+          "settings": {
+            "paragraph_content": {
+              "content": "Gerelateerde artikelen tonen andere artikelen met dezelfde tags."
+            }
+          }
+        },
+        "image_text": {
+          "name": "Afbeeldingstekst",
+          "settings": {
+            "image": {
+              "info": "400 x 250px .jpg aanbevolen"
+            }
+          }
+        }
+      }
+    },
+    "main-blog": {
+      "name": "Blogposts",
+      "settings": {
+        "show_article_count": {
+          "label": "Toon aantal artikelen"
+        },
+        "show_tags_filter": {
+          "label": "Toon tagfilter"
+        }
+      }
+    },
+    "main-cart": {
+      "name": "Hoofd winkelwagen"
+    },
+    "main-search-banner": {
+      "name": "Zoekbanner"
+    },
+    "main-search": {
+      "name": "Zoekresultaten",
+      "settings": {
+        "paragraph_card_article": {
+          "content": "+ Artikelkaart instellingen"
+        }
+      }
+    },
+    "main-collection-banner": {
+      "name": "Collectiebanner",
+      "settings": {
+        "show_collection_image": {
+          "label": "Toon collectieafbeelding"
+        },
+        "default_collection_image": {
+          "label": "Standaardafbeelding",
+          "info": "Als de collectie geen afbeelding heeft, wordt deze afbeelding gebruikt. 1920 x 600px .jpg aanbevolen."
+        },
+        "custom_collection_image": {
+          "label": "Aangepaste afbeelding",
+          "info": "1920 x 600px .jpg aanbevolen."
+        }
+      }
+    },
+    "main-collection-text-image": {
+      "name": "Collectietekst afbeelding",
+      "settings": {
+        "show_collection_image": {
+          "label": "Toon collectieafbeelding"
+        },
+        "default_collection_image": {
+          "label": "Standaardafbeelding",
+          "info": "Als de collectie geen afbeelding heeft, wordt deze afbeelding gebruikt. 800 x 500px .jpg aanbevolen."
+        },
+        "custom_collection_image": {
+          "label": "Aangepaste afbeelding",
+          "info": "800 x 500px .jpg aanbevolen."
+        }
+      }
+    },
+    "main-collection": {
+      "name": "Collectie",
+      "settings": {
+        "header_filter": {
+          "content": "Filter en sorteer"
+        },
+        "enable_sorting": {
+          "label": "Schakelen sorteren in"
+        },
+        "enable_filtering": {
+          "label": "Schakelen filteren in",
+          "info": "Pas filters aan met de Search and Discovery-app. [Meer informatie](https://help.shopify.com/manual/online-store/search-and-discovery/filters)"
+        },
+        "filter_type": {
+          "label": "Filterindeling",
+          "options__1": {
+            "label": "Horizontaal"
+          },
+          "options__2": {
+            "label": "Verticaal"
+          },
+          "options__3": {
+            "label": "Lade"
+          }
+        },
+        "enable_sticky_filter": {
+          "label": "Schakelen vast filter in"
+        },
+        "default_expand_facets": {
+          "label": "Standaard uitvouwen",
+          "options__1": {
+            "label": "Geen"
+          },
+          "options__2": {
+            "label": "Eerste uitvouwen"
+          },
+          "options__3": {
+            "label": "Alles uitvouwen"
+          }
+        },
+        "limit": {
+          "info": "Aantal items per pagina instellen"
+        },
+        "header_layout": {
+          "content": "Productindeling"
+        },
+        "enable_layout_switch": {
+          "label": "Toon indelingsschakelaar"
+        },
+        "default_layout": {
+          "label": "Standaardindeling",
+          "options__1": {
+            "label": "Raster"
+          },
+          "options__2": {
+            "label": "Lijst"
+          }
+        },
+        "show_separate_line": {
+          "label": "Toon scheidingslijn"
+        }
+      }
+    },
+    "main-list-collections": {
+      "name": "Collectielijstpagina",
+      "settings": {
+        "sort": {
+          "label": "Collecties sorteren op:",
+          "options__1": {
+            "label": "Alfabetisch, A-Z"
+          },
+          "options__2": {
+            "label": "Alfabetisch, Z-A"
+          },
+          "options__3": {
+            "label": "Datum, nieuw naar oud"
+          },
+          "options__4": {
+            "label": "Datum, oud naar nieuw"
+          },
+          "options__5": {
+            "label": "Productaantal, hoog naar laag"
+          },
+          "options__6": {
+            "label": "Productaantal, laag naar hoog"
+          }
+        },
+        "show_product_count": {
+          "label": "Toon productaantal"
+        }
+      }
+    },
+    "main-page": {
+      "name": "Pagina"
+    },
+    "main-password": {
+      "name": "Hoofdwachtwoord"
+    },
+    "main-login": {
+      "name": "Hoofdlogin",
+      "settings": {
+        "shop_login_button": {
+          "label": "Inloggen met Shop inschakelen"
+        }
+      }
+    },
+    "main-order": {
+      "name": "Bestelling"
+    },
+    "main-account": {
+      "name": "Account",
+      "settings": {
+        "orders_per_page": {
+          "label": "Bestellingen per pagina"
+        }
+      }
+    },
+    "main-activate-account": {
+      "name": "Accountactivatie"
+    },
+    "main-addresses": {
+      "name": "Adressen",
+      "settings": {
+        "addresses_per_page": {
+          "label": "Adressen per pagina"
+        }
+      }
+    },
+    "main-register": {
+      "name": "Hoofd registratie"
+    },
+    "main-reset-password": {
+      "name": "Wachtwoord opnieuw instellen"
+    },
+    "main-gift-card": {
+      "name": "Cadeaubon"
+    }
+  }
+}

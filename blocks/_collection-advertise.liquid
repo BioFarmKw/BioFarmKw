@@ -1,0 +1,49 @@
+<li
+  class="shopify-block collection-advertise-block collection-advertise grid-item focus-inset color-{{ block.settings.color_scheme }} gradient"
+  tabindex="0"
+  {{ block.shopify_attributes }}
+>
+  <div class="advertise-image media" style="opacity: {{ block.settings.image_opacity | default: 90 }}%;">
+    {% render 'lazy-image', image_object: block.settings.image, sizes: '600px', placeholder: 'collection-1' %}
+  </div>
+  <div class="advertise-content">
+    <div class="content-group text-align--center">
+      {% content_for 'blocks' %}
+    </div>
+  </div>
+</li>
+{% schema %}
+{
+  "name": "t:blocks._collection-advertise.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.scheme.label",
+      "default": "scheme-2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.all.image.image_picker.label",
+      "info": "t:blocks._collection-advertise.settings.image.info"
+    },
+    {
+      "type": "range",
+      "id": "image_opacity",
+      "label": "t:sections.all.image.image_opacity.label",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 90
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@theme"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,61 @@
+<div class="shopify-block event-block scroll-synergy" {{ block.shopify_attributes }}>
+  <div class="event-content">
+    <div class="content-group width--small">
+      {% content_for 'blocks' %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "t:blocks._event.name",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "subheading"
+    },
+    {
+      "type": "heading"
+    },
+    {
+      "type": "description"
+    },
+    {
+      "type": "button"
+    },
+    {
+      "type": "spacer"
+    },
+    {
+      "type": "_image"
+    },
+    {
+      "type": "_video"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._event.presets.name",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "description"
+        },
+        {
+          "type": "button",
+          "settings": {
+            "size": "small"
+          }
+        },
+        {
+          "type": "_image",
+          "settings": {
+            "image_ratio": "adapt"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

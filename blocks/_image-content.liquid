@@ -1,0 +1,103 @@
+<li
+  id="Slide-{{ section.id }}-{{ block.id }}"
+  class="shopify-block image-content-block media-content-block slider-slide focus-inset"
+  tabindex="0"
+  {{ block.shopify_attributes }}
+>
+  <div class="content-image content-media media">
+    {% render 'lazy-image',
+      has_mobile: block.settings.image_mobile,
+      image_object: block.settings.image,
+      sizes: '(min-width: 750px), 800px, 50vw',
+      placeholder: 'image'
+    %}
+    {%- if block.settings.image_mobile -%}
+      {% render 'lazy-image', is_mobile: true, image_object: block.settings.image_mobile, sizes: '100vw' %}
+    {%- endif -%}
+  </div>
+  <div class="content-content{% if block.settings.show_box %} has-wrapper color-{{ block.settings.color_scheme }} gradient{% endif %}">
+    <div class="content-group text-align--{{ block.settings.alignment }} text-align-mobile--{{ block.settings.alignment_mobile }}">
+      {% content_for 'blocks' %}
+    </div>
+  </div>
+</li>
+{% schema %}
+{
+  "name": "t:blocks._image-content.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.all.image.image_picker.label",
+      "info": "t:blocks._image-content.settings.image.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.content.header_content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_box",
+      "label": "t:sections.all.text-content.show_box.label",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.scheme.label",
+      "default": "scheme-2",
+      "visible_if": "{{ block.settings.show_box }}"
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment",
+      "label": "t:sections.all.text-alignment.label",
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.mobile.header_content"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "t:sections.all.image.image_picker.label",
+      "info": "t:blocks._image-content.settings.image_mobile.info"
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment_mobile",
+      "label": "t:sections.all.text-alignment.label",
+      "default": "left"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@theme"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._image-content.presets.name",
+      "blocks": [
+        {
+          "type": "heading",
+          "settings": {
+            "type": "3"
+          }
+        },
+        {
+          "type": "description"
+        },
+        {
+          "type": "button",
+          "settings": {
+            "size": "small"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,22 @@
+{%- doc -%}
+  Product Card Badges
+
+  @description
+  Renders badges for a product card, such as promotional, new, limited edition, or pre-order labels.
+
+  @param {object} product - The product object
+  @param {string} [id] - Element ID (optional)
+  @param {string} [class] - Custom CSS class (optional)
+
+  @example
+  {% render 'product-card-badges', product: product, id: 'card-badges-1', class: 'custom-class' %}
+{%- enddoc -%}
+
+<div
+  {% if id != blank %}
+    id="{{ id }}"
+  {% endif %}
+  class="{% if class != blank %}{{ class }} {% endif %}card-badges"
+>
+  {%- render 'product-badges', product: product -%}
+</div>

@@ -1,0 +1,94 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+
+<div class="main-account customer page-width">
+  <div class="customer-account-header">
+    <div class="account-title">
+      <div class="account-heading h1">
+        {{ 'customer.account.welcome' | t: name: customer.last_name }}
+      </div>
+      <div class="account-subtext light">{{ 'customer.orders.orders_found' | t: count: customer.orders.size }}</div>
+    </div>
+    <div class="account-buttons button-group button--multiple">
+      <a class="button" href="{{ routes.account_addresses_url }}">
+        {{ 'customer.addresses.view_all' | t }}
+      </a>
+      <a class="button button--border" href="{{ routes.account_logout_url }}">
+        {%- render 'icon-sets-basic', icon: 'logout' -%}
+        {{ 'customer.log_out' | t }}
+      </a>
+    </div>
+  </div>
+
+  {%- if customer.orders.size > 0 -%}
+    <div
+      id="Paginate-Content"
+      class="customer-order-list paginate-content"
+      data-section="{{ section.id }}"
+    >
+      {%- paginate customer.orders by section.settings.orders_per_page -%}
+        <ul
+          class="content-list auto-grid list-unstyled"
+          style="--item-min-size: 24rem; --item-min-size-mobile: 20rem;"
+        >
+          {%- for order in customer.orders -%}
+            <li class="order-card account-card grid-item">
+              <a
+                class="order-number h3 link link-text"
+                href="{{ order.customer_url }}"
+                aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}"
+              >
+                {{ 'customer.order.title' | t: name: order.name }}
+              </a>
+              <div class="card-row">
+                <b class="card-th">{{ 'customer.orders.date' | t }}</b>
+                <span class="card-td light">{{ order.created_at | time_tag: format: 'date' }}</span>
+              </div>
+              <div class="card-row">
+                <b class="card-th">{{ 'customer.orders.payment_status' | t }}</b>
+                <span class="card-td light"> {{ order.financial_status_label }}</span>
+              </div>
+              <div class="card-row">
+                <b class="card-th">{{ 'customer.orders.fulfillment_status' | t }}</b>
+                <span class="card-td light"> {{ order.fulfillment_status_label }}</span>
+              </div>
+              <div class="card-row">
+                <b class="card-th">{{ 'customer.orders.total' | t }}</b>
+                <span class="card-td light"> {{ order.total_net_amount | money_with_currency }}</span>
+              </div>
+            </li>
+          {%- endfor -%}
+        </ul>
+
+        {% render 'pagination', type: 'paginator', paginate: paginate %}
+      {%- endpaginate -%}
+    </div>
+  {%- else -%}
+    <div
+      id="Paginate-Content"
+      class="paginate-content--empty"
+      data-section="{{ section.id }}"
+    >
+      {% render 'empty-results-svg' %}
+      <div class="empty-title">
+        {{ 'general.empty' | t -}}
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-account.name",
+  "settings": [
+    {
+      "type": "range",
+      "id": "orders_per_page",
+      "label": "t:sections.main-account.settings.orders_per_page.label",
+      "min": 3,
+      "max": 25,
+      "step": 1,
+      "default": 8
+    }
+  ]
+}
+{% endschema %}

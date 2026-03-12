@@ -1,0 +1,121 @@
+{% doc %}
+  Product Media Modal
+
+  @description
+  Renders a modal for displaying product media, including images and videos, with optional zoom and looping features.
+
+  @param {string} section_id - Section Id
+  @param {object} product - The product object to display media for.
+  @param {string} [image_lightbox_type] - The type of image zoom to apply, e.g., 'zoom-hold'.
+  @param {string} [image_zoom_ratio] - The zoom ratio for images, default is 1.5.
+  @param {boolean} [enable_video_looping] - Whether to enable looping for video media.
+
+  @example
+  {% render 'product-media-modal', section_id:section.id, product: product, variant_images: variant_images %}
+{% enddoc %}
+
+<product-gallery-modal id="ProductModal-{{ section_id }}" class="product-media-modal gradient">
+  <div
+    role="dialog"
+    data-trap
+    aria-label="{{ 'products.modal.label' | t }}"
+    aria-modal="true"
+    tabindex="-1"
+  >
+    <button
+      type="button"
+      class="modal-close-button button button--icon button--float button--pill focus-inset"
+      aria-label="{{ 'accessibility.close' | t }}"
+      onclick="this.closest('product-gallery-modal').hide()"
+    >
+      {% render 'icon-sets-basic', icon: 'close' %}
+    </button>
+    <div
+      class="modal-content"
+      role="document"
+      aria-label="{{ 'products.modal.label' | t }}"
+      tabindex="0"
+    >
+      <slider-component
+        class="slider"
+        data-slide-desktop
+        data-slide-mobile
+      >
+        <div class="slider-container">
+          <ul id="MediaModalSlider-{{ section_id }}" class="modal-media-wrapper slider-wrapper">
+            {%- if product.selected_or_first_available_variant.featured_media != null -%}
+              {%- assign media = product.selected_or_first_available_variant.featured_media -%}
+              <li
+                id="Slide-ProductModal-0"
+                class="slider-slide grid-item"
+                data-media-id="{{ media.id }}"
+                data-media-type="{{ media.media_type }}"
+              >
+                <div class="modal-media">
+                  {% render 'product-media',
+                    media: media,
+                    image_lightbox_type: image_lightbox_type,
+                    image_zoom_ratio: image_zoom_ratio,
+                    enable_video_looping: enable_video_looping
+                  %}
+                </div>
+              </li>
+            {%- endif -%}
+            {%- for media in product.media -%}
+              {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
+                <li
+                  id="Slide-ProductModal-{{ forloop.index }}"
+                  class="slider-slide grid-item"
+                  data-media-id="{{ media.id }}"
+                  data-media-type="{{ media.media_type }}"
+                >
+                  <div class="modal-media">
+                    {% render 'product-media',
+                      media: media,
+                      image_lightbox_type: image_lightbox_type,
+                      image_zoom_ratio: image_zoom_ratio,
+                      enable_video_looping: enable_video_looping
+                    %}
+                  </div>
+                </li>
+              {%- endunless -%}
+            {%- endfor -%}
+          </ul>
+        </div>
+        <div class="slider-controller">
+          <button
+            type="button"
+            class="nav-button nav-button--prev button button--icon button--float button--pill"
+            name="previous"
+            aria-label="{{ 'general.slider.previous_slide' | t }}"
+            aria-controls="Slider-{{ section_id }}"
+          >
+            {% render 'icon-sets-basic', icon: 'caret-left' %}
+          </button>
+          <div class="slider-counter"><span class="current-page">1</span> / <span class="total-page">1</span></div>
+          <button
+            type="button"
+            class="nav-button nav-button--next button button--icon button--float button--pill"
+            name="next"
+            aria-label="{{ 'general.slider.next_slide' | t }}"
+            aria-controls="Slider-{{ section_id }}"
+          >
+            {% render 'icon-sets-basic', icon: 'caret-right' %}
+          </button>
+        </div>
+      </slider-component>
+    </div>
+    {%- if image_lightbox_type == 'zoom-hold' -%}
+      <div class="modal-tip">
+        {% render 'icon-sets', icon: 'mouse' %}
+        {{ 'general.press_and_drag_to_view' | t }}
+      </div>
+    {%- endif -%}
+  </div>
+</product-gallery-modal>
+
+{%- if image_lightbox_type == 'zoom-hold' -%}
+  <script src="{{ 'image-zoom-hold.js' | asset_url }}" defer></script>
+{%- else -%}
+  <script src="{{ 'image-zoom-drag.js' | asset_url }}" defer></script>
+{%- endif -%}

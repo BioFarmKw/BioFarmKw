@@ -1,0 +1,39 @@
+.bundle-sale__wrapper .bundle-sale-block .bundle-sale-products .card:not(:last-child) {
+  margin-bottom: 1rem;
+}
+.bundle-sale__wrapper .bundle-sale-block .bundle-sale-products .bundle-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.bundle-sale__wrapper .bundle-sale-block .bundle-sale-products .bundle-total .price {
+  font-size: 1.5rem;
+}
+@media screen and (max-width: 749px) {
+  .bundle-sale__wrapper .bundle-sale-block .bundle-sale-image {
+    margin-bottom: 1rem;
+  }
+  .bundle-sale__wrapper .bundle-sale-block .add-cart-button {
+    margin-top: 1rem;
+  }
+}
+@media screen and (min-width: 750px) {
+  .bundle-sale__wrapper .bundle-sale-block {
+    display: flex;
+    align-items: stretch;
+    gap: 3rem;
+  }
+  .bundle-sale__wrapper .bundle-sale-block .bundle-sale-image {
+    flex: 1 1 auto;
+  }
+  .bundle-sale__wrapper .bundle-sale-block .bundle-sale-products {
+    width: 35rem;
+    flex: 0 0 auto;
+  }
+  .bundle-sale__wrapper .bundle-sale-block .bundle-sale-products form {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 1rem;
+  }
+}

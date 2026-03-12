@@ -1,0 +1,7 @@
+@media screen and (min-width: 750px) {
+  .collapsible-content__wrapper .collapsible-content-list-block {
+    max-width: 65rem;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+  }
+}

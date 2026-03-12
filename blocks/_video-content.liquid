@@ -1,0 +1,154 @@
+<li
+  id="Slide-{{ section.id }}-{{ block.id }}"
+  class="shopify-block video-content-block media-content-block slider-slide focus-inset"
+  tabindex="0"
+  {{ block.shopify_attributes }}
+>
+  <deferred-media
+    class="content-video content-media deferred-media video-model-media media-fit--cover{% if block.settings.video_mobile != blank %} small-hide{% endif %}"
+    data-load-when-visible
+  >
+    <div class="media-poster media">
+      {% liquid
+        assign alt = 'sections.video.load_video' | t: description: block.settings.video.alt
+        assign poster = block.settings.video.preview_image
+      %}
+      {% render 'lazy-image', image_object: poster, alt: alt, placeholder: 'image' %}
+    </div>
+    {%- if block.settings.video != blank -%}
+      <template>
+        {{
+          block.settings.video
+          | video_tag: image_size: '800x', autoplay: true, loop: true, controls: false, muted: true
+        }}
+      </template>
+    {%- endif -%}
+    <button
+      type="button"
+      class="mute-button button button--icon button--small button--pill"
+      aria-label="{{ 'accessibility.muted' | t }}"
+      aria-pressed="true"
+    >
+      {% render 'icon-sets-basic', icon: 'volume-off' %}
+      {% render 'icon-sets-basic', icon: 'volume-on' %}
+    </button>
+  </deferred-media>
+
+  {%- if block.settings.video_mobile != blank -%}
+    <deferred-media
+      class="content-video content-media video-model-media deferred-media media-fit--cover medium-hide large-up-hide"
+      data-load-when-visible
+    >
+      <div
+        class="media-poster media"
+      >
+        {% liquid
+          assign alt = 'sections.video.load_video' | t: description: block.settings.video_mobile.alt
+          assign poster = block.settings.video_mobile.preview_image
+        %}
+        {% render 'lazy-image', image_object: poster, sizes: '100vw', alt: alt, placeholder: 'image' %}
+      </div>
+      {%- if block.settings.video_mobile != blank -%}
+        <template>
+          {{
+            block.settings.video_mobile
+            | video_tag: image_size: '800x', autoplay: true, loop: true, controls: false, muted: true
+          }}
+        </template>
+      {%- endif -%}
+      <button
+        type="button"
+        class="mute-button button button--icon button--small button--pill"
+        aria-label="{{ 'accessibility.muted' | t }}"
+        aria-pressed="true"
+      >
+        {% render 'icon-sets-basic', icon: 'volume-off' %}
+        {% render 'icon-sets-basic', icon: 'volume-on' %}
+      </button>
+    </deferred-media>
+  {%- endif -%}
+  <div class="content-content{% if block.settings.show_box %} has-wrapper color-{{ block.settings.color_scheme }} gradient{% endif %}">
+    <div class="content-group text-align--{{ block.settings.alignment }} text-align-mobile--{{ block.settings.alignment_mobile }}">
+      {% content_for 'blocks' %}
+    </div>
+  </div>
+</li>
+{% schema %}
+{
+  "name": "t:blocks._video-content.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "video",
+      "id": "video",
+      "label": "t:sections.all.video.video.label",
+      "info": "t:sections.all.video.video.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.content.header_content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_box",
+      "label": "t:sections.all.text-content.show_box.label",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.scheme.label",
+      "default": "scheme-2",
+      "visible_if": "{{ block.settings.show_box }}"
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment",
+      "label": "t:sections.all.text-alignment.label",
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.mobile.header_content"
+    },
+    {
+      "type": "video",
+      "id": "video_mobile",
+      "label": "t:sections.all.video.video.label"
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment_mobile",
+      "label": "t:sections.all.text-alignment.label",
+      "default": "left"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@theme"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._video-content.presets.name",
+      "blocks": [
+        {
+          "type": "heading",
+          "settings": {
+            "type": "3"
+          }
+        },
+        {
+          "type": "description"
+        },
+        {
+          "type": "button",
+          "settings": {
+            "size": "small"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

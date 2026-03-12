@@ -1,0 +1,86 @@
+<div
+  class="shopify-block badges-block badge-shape--{{ block.settings.shape }} badge-size--{{ block.settings.size }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="badge-list auto-inline-flex{% if block.settings.shape == 'skewed' or block.settings.shape == 'arrow' %} column-gap-0{% else %} column-gap-2{% endif %} row-gap-2">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:blocks.badges.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "shape",
+      "label": "t:blocks.badges.settings.shape.label",
+      "options": [
+        {
+          "label": "t:blocks.badges.settings.shape.options__1.label",
+          "value": "pill"
+        },
+        {
+          "label": "t:blocks.badges.settings.shape.options__2.label",
+          "value": "rect"
+        },
+        {
+          "label": "t:blocks.badges.settings.shape.options__3.label",
+          "value": "arrow"
+        },
+        {
+          "label": "t:blocks.badges.settings.shape.options__4.label",
+          "value": "skewed"
+        },
+        {
+          "label": "t:blocks.badges.settings.shape.options__5.label",
+          "value": "edge"
+        }
+      ],
+      "default": "rect"
+    },
+    {
+      "type": "select",
+      "id": "size",
+      "label": "t:blocks.badges.settings.size.label",
+      "options": [
+        {
+          "label": "t:blocks.badges.settings.size.options__1.label",
+          "value": "small"
+        },
+        {
+          "label": "t:blocks.badges.settings.size.options__2.label",
+          "value": "medium"
+        },
+        {
+          "label": "t:blocks.badges.settings.size.options__3.label",
+          "value": "large"
+        }
+      ],
+      "default": "medium"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_badge"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks.badges.presets.name",
+      "blocks": [
+        {
+          "type": "_badge"
+        },
+        {
+          "type": "_badge"
+        },
+        {
+          "type": "_badge"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

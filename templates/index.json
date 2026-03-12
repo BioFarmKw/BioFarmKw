@@ -1,0 +1,2497 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "carousel_t7iURU": {
+      "type": "carousel",
+      "blocks": {
+        "carousel_image_slide_gDcPLG": {
+          "type": "_carousel-image-slide",
+          "settings": {
+            "image": "shopify://shop_images/SliderImage_5a631d4e-e26b-4e00-a847-a063de27844a.png",
+            "image_opacity": 100,
+            "color_scheme": "scheme-3",
+            "content_width": "small",
+            "desktop_content_position": "bottom-left",
+            "text_alignment": "left",
+            "show_text_content_box": false,
+            "text_content_box_opacity": 40,
+            "enabled_blur_effect": false,
+            "image_mobile": "shopify://shop_images/Slider1.png",
+            "mobile_content_position": "bottom-center",
+            "text_alignment_mobile": "center",
+            "if_as_main_area": true
+          },
+          "blocks": {
+            "subheading_pqTLHb": {
+              "type": "subheading",
+              "settings": {
+                "content": "BioFarm"
+              },
+              "blocks": {}
+            },
+            "heading_84rLPr": {
+              "type": "heading",
+              "settings": {
+                "content": "Breathe <em>Nature</em>",
+                "type": "2",
+                "size": "medium",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "script",
+                "highlight_color": "#ffd600"
+              },
+              "blocks": {}
+            },
+            "description_iFjYUa": {
+              "type": "description",
+              "settings": {
+                "content": "<p>Blending greenery with home décor for a more serene and cozy space.</p>",
+                "color_light": true,
+                "limit_description_height": false
+              },
+              "blocks": {}
+            },
+            "spacer_HxnWWP": {
+              "type": "spacer",
+              "name": "spacer",
+              "settings": {
+                "height": 8,
+                "show_line": false,
+                "line_width": "half"
+              },
+              "blocks": {}
+            },
+            "buttons_A7grUk": {
+              "type": "buttons",
+              "settings": {},
+              "blocks": {
+                "button_rfranD": {
+                  "type": "button",
+                  "settings": {
+                    "style": "primary",
+                    "size": "medium",
+                    "icon": "cart",
+                    "button_label": "Shop Now",
+                    "button_link": "shopify://pages/product-catalog",
+                    "open_in_new_tab": false,
+                    "show_arrow": false
+                  },
+                  "blocks": {}
+                },
+                "button_eNhfRh": {
+                  "type": "button",
+                  "name": "t:blocks.button.presets.name",
+                  "settings": {
+                    "style": "link",
+                    "size": "medium",
+                    "icon": "none",
+                    "button_label": "About Us",
+                    "button_link": "shopify://pages/about-us",
+                    "open_in_new_tab": false,
+                    "show_arrow": true
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "button_rfranD",
+                "button_eNhfRh"
+              ]
+            }
+          },
+          "block_order": [
+            "subheading_pqTLHb",
+            "heading_84rLPr",
+            "description_iFjYUa",
+            "spacer_HxnWWP",
+            "buttons_A7grUk"
+          ]
+        },
+        "carousel_image_slide_deym8K": {
+          "type": "_carousel-image-slide",
+          "settings": {
+            "image": "shopify://shop_images/image_1.png",
+            "image_opacity": 100,
+            "color_scheme": "scheme-3",
+            "content_width": "medium",
+            "desktop_content_position": "middle-center",
+            "text_alignment": "center",
+            "show_text_content_box": false,
+            "text_content_box_opacity": 100,
+            "enabled_blur_effect": false,
+            "image_mobile": "shopify://shop_images/slider2.png",
+            "mobile_content_position": "bottom-center",
+            "text_alignment_mobile": "center",
+            "if_as_main_area": false
+          },
+          "blocks": {
+            "heading_qwy3Me": {
+              "type": "heading",
+              "settings": {
+                "content": "Bring <em>Nature</em> Home",
+                "type": "2",
+                "size": "medium",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "script",
+                "highlight_color": "#ff0000"
+              },
+              "blocks": {}
+            },
+            "description_mr7ALD": {
+              "type": "description",
+              "settings": {
+                "content": "<p>Create a serene space with timeless greenery and design.</p>",
+                "color_light": true,
+                "limit_description_height": true
+              },
+              "blocks": {}
+            },
+            "button_MeK8E8": {
+              "type": "button",
+              "name": "t:blocks.button.presets.name",
+              "settings": {
+                "style": "primary",
+                "size": "medium",
+                "icon": "none",
+                "button_label": "Shop Now",
+                "button_link": "shopify://pages/product-catalog",
+                "open_in_new_tab": false,
+                "show_arrow": true
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_qwy3Me",
+            "description_mr7ALD",
+            "button_MeK8E8"
+          ]
+        },
+        "carousel_image_slide_H9KFqV": {
+          "type": "_carousel-image-slide",
+          "settings": {
+            "image": "shopify://shop_images/Merged_Image.jpg",
+            "image_opacity": 100,
+            "color_scheme": "scheme-3",
+            "content_width": "medium",
+            "desktop_content_position": "middle-center",
+            "text_alignment": "center",
+            "show_text_content_box": false,
+            "text_content_box_opacity": 100,
+            "enabled_blur_effect": false,
+            "image_mobile": "shopify://shop_images/slider3.png",
+            "mobile_content_position": "bottom-center",
+            "text_alignment_mobile": "center",
+            "if_as_main_area": true
+          },
+          "blocks": {
+            "heading_XMzE8y": {
+              "type": "heading",
+              "settings": {
+                "content": "Bring <em>Nature</em> Home",
+                "type": "2",
+                "size": "medium",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "script",
+                "highlight_color": "#ff0000"
+              },
+              "blocks": {}
+            },
+            "description_VaQ9hQ": {
+              "type": "description",
+              "settings": {
+                "content": "<p>Create a serene space with timeless greenery and design.</p>",
+                "color_light": true,
+                "limit_description_height": true
+              },
+              "blocks": {}
+            },
+            "button_JNP9N9": {
+              "type": "button",
+              "name": "t:blocks.button.presets.name",
+              "settings": {
+                "style": "primary",
+                "size": "medium",
+                "icon": "none",
+                "button_label": "Shop Now",
+                "button_link": "shopify://pages/product-catalog",
+                "open_in_new_tab": false,
+                "show_arrow": true
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_XMzE8y",
+            "description_VaQ9hQ",
+            "button_JNP9N9"
+          ]
+        },
+        "carousel_image_slide_dEga6c": {
+          "type": "_carousel-image-slide",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/shared_image.jpg",
+            "image_opacity": 100,
+            "color_scheme": "scheme-3",
+            "content_width": "small",
+            "desktop_content_position": "middle-center",
+            "text_alignment": "center",
+            "show_text_content_box": false,
+            "text_content_box_opacity": 100,
+            "enabled_blur_effect": false,
+            "mobile_content_position": "bottom-center",
+            "text_alignment_mobile": "center",
+            "if_as_main_area": true
+          },
+          "blocks": {
+            "heading_T3netG": {
+              "type": "heading",
+              "settings": {
+                "content": "Bring <em>Nature</em> Home",
+                "type": "2",
+                "size": "medium",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "script",
+                "highlight_color": "#ff0000"
+              },
+              "blocks": {}
+            },
+            "description_N3dDNc": {
+              "type": "description",
+              "settings": {
+                "content": "<p>Create a serene space with timeless greenery and design.</p>",
+                "color_light": true,
+                "limit_description_height": true
+              },
+              "blocks": {}
+            },
+            "button_rGGhjM": {
+              "type": "button",
+              "name": "t:blocks.button.presets.name",
+              "settings": {
+                "style": "primary",
+                "size": "medium",
+                "icon": "none",
+                "button_label": "Shop Now",
+                "button_link": "shopify://collections/leafy-vegetables",
+                "open_in_new_tab": false,
+                "show_arrow": true
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_T3netG",
+            "description_N3dDNc",
+            "button_rGGhjM"
+          ]
+        },
+        "carousel_video_slide_L6iC4U": {
+          "type": "_carousel-video-slide",
+          "name": "t:blocks._carousel-video-slide.presets.name",
+          "disabled": true,
+          "settings": {
+            "video": "shopify://files/videos/Bio Farm NewSlid.mp4",
+            "video_opacity": 90,
+            "color_scheme": "",
+            "content_width": "full",
+            "desktop_content_position": "middle-center",
+            "text_alignment": "center",
+            "show_text_content_box": false,
+            "text_content_box_opacity": 100,
+            "enabled_blur_effect": false,
+            "mobile_content_position": "middle-center",
+            "mobile_content_alignment": "center",
+            "if_as_main_area": false
+          },
+          "blocks": {
+            "subheading_R4XwtQ": {
+              "type": "subheading",
+              "settings": {
+                "content": ""
+              },
+              "blocks": {}
+            },
+            "heading_nL7H88": {
+              "type": "heading",
+              "settings": {
+                "content": "",
+                "type": "2",
+                "size": "large",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "color",
+                "highlight_color": "#ff0000"
+              },
+              "blocks": {}
+            },
+            "description_RkDQdJ": {
+              "type": "description",
+              "settings": {
+                "content": "",
+                "color_light": false,
+                "limit_description_height": false
+              },
+              "blocks": {}
+            },
+            "buttons_W7EYJ7": {
+              "type": "buttons",
+              "settings": {},
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "subheading_R4XwtQ",
+            "heading_nL7H88",
+            "description_RkDQdJ",
+            "buttons_W7EYJ7"
+          ]
+        }
+      },
+      "block_order": [
+        "carousel_image_slide_gDcPLG",
+        "carousel_image_slide_deym8K",
+        "carousel_image_slide_H9KFqV",
+        "carousel_image_slide_dEga6c",
+        "carousel_video_slide_L6iC4U"
+      ],
+      "settings": {
+        "enable_full_width": true,
+        "image_height": "medium",
+        "slide_type": "slide",
+        "show_nav_buttons": true,
+        "nav_buttons_position": "bottom-right",
+        "show_page_dots": true,
+        "auto_rotate": true,
+        "change_slides_speed": 10,
+        "margin_top": 0,
+        "margin_bottom": 16
+      }
+    },
+    "trust_promises_VAfttF": {
+      "type": "trust-promises",
+      "blocks": {
+        "section-header": {
+          "type": "_section-header",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "heading_LDrx8G": {
+              "type": "heading",
+              "settings": {
+                "content": "<em>Why</em> Choose Us",
+                "type": "2",
+                "size": "small",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "underline",
+                "highlight_color": "#676432"
+              },
+              "blocks": {}
+            },
+            "description_XWdymG": {
+              "type": "description",
+              "settings": {
+                "content": "<p>Quality and care you can always trust</p>",
+                "color_light": false,
+                "limit_description_height": true
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_LDrx8G",
+            "description_XWdymG"
+          ]
+        },
+        "promise-list": {
+          "type": "_promise-list",
+          "static": true,
+          "settings": {
+            "columns": 4,
+            "icon_size": "s-large",
+            "show_wrapper": false,
+            "slider_on_mobile": true
+          },
+          "blocks": {
+            "promise_item_8z9yVP": {
+              "type": "_promise-item",
+              "settings": {
+                "icon": "truck",
+                "heading": "Free Shipping",
+                "description": "<p>Free Delivery Over 10 KD</p>"
+              },
+              "blocks": {}
+            },
+            "promise_item_7QQBhG": {
+              "type": "_promise-item",
+              "settings": {
+                "icon": "return",
+                "heading": "Easy Returns",
+                "description": "<p>2-Day Free Returns</p>"
+              },
+              "blocks": {}
+            },
+            "promise_item_pWGnM3": {
+              "type": "_promise-item",
+              "settings": {
+                "icon": "security",
+                "heading": "Secure Payment",
+                "description": "<p>100% Secure Checkout</p>"
+              },
+              "blocks": {}
+            },
+            "promise_item_Hb7Lb8": {
+              "type": "_promise-item",
+              "settings": {
+                "icon": "guarantee",
+                "heading": "Quality Guarantee",
+                "description": "<p>Fresh Vegetables & Fruits  Guaranteed</p>"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "promise_item_8z9yVP",
+            "promise_item_7QQBhG",
+            "promise_item_pWGnM3",
+            "promise_item_Hb7Lb8"
+          ]
+        }
+      },
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "featured_collection_FTFzn3": {
+      "type": "featured-collection",
+      "blocks": {
+        "section-header": {
+          "type": "_section-header",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "heading_Ybyrhb": {
+              "type": "heading",
+              "settings": {
+                "content": "Top Picks",
+                "type": "2",
+                "size": "small",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "color",
+                "highlight_color": "#ff0000"
+              },
+              "blocks": {}
+            },
+            "description_YQyJTV": {
+              "type": "description",
+              "settings": {
+                "content": "<p>Handpicked for You</p>",
+                "color_light": false,
+                "limit_description_height": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_Ybyrhb",
+            "description_YQyJTV"
+          ]
+        },
+        "product-list": {
+          "type": "_product-list",
+          "static": true,
+          "settings": {
+            "collection": "toppicksprod",
+            "limit": 10,
+            "show_collection_image": false,
+            "collection_color_scheme": "",
+            "image_opacity": 90,
+            "slider_on_desktop": true,
+            "show_nav_buttons": true,
+            "show_seek_bar": true,
+            "card_size": "small",
+            "image_ratio": "square",
+            "text_alignment": "center",
+            "show_card_wrapper": false,
+            "color_scheme": "",
+            "slider_on_mobile": true
+          },
+          "blocks": {
+            "heading_piACMe": {
+              "type": "heading",
+              "settings": {
+                "content": "Add Heading here",
+                "type": "3",
+                "size": "small",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "color",
+                "highlight_color": "#ff0000"
+              },
+              "blocks": {}
+            },
+            "description_TnrjE3": {
+              "type": "description",
+              "settings": {
+                "content": "<p>Add some description here</p>",
+                "color_light": false,
+                "limit_description_height": false
+              },
+              "blocks": {}
+            },
+            "button_cDkz8y": {
+              "type": "button",
+              "settings": {
+                "style": "primary",
+                "size": "large",
+                "icon": "cart",
+                "button_label": "Add to Cart",
+                "button_link": "",
+                "open_in_new_tab": false,
+                "show_arrow": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_piACMe",
+            "description_TnrjE3",
+            "button_cDkz8y"
+          ]
+        }
+      },
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 24
+      }
+    },
+    "collage_with_text_yJwTDR": {
+      "type": "collage-with-text",
+      "blocks": {
+        "images": {
+          "type": "_images",
+          "static": true,
+          "settings": {
+            "angle_style": "scattered",
+            "show_image_frame": true
+          },
+          "blocks": {
+            "image_AAXHDB": {
+              "type": "_image",
+              "settings": {
+                "image": "shopify://shop_images/generate-aromatic-and-medicinal-plants-image-i-want-to-this-image-in-product-category.png",
+                "image_ratio": "square",
+                "image_ratio_mobile": "square"
+              },
+              "blocks": {}
+            },
+            "image_QdtwbT": {
+              "type": "_image",
+              "settings": {
+                "image": "shopify://shop_images/Aromatic_and_Medicinal_Plants.png",
+                "image_ratio": "portrait",
+                "image_ratio_mobile": "square"
+              },
+              "blocks": {}
+            },
+            "image_BnX4UU": {
+              "type": "_image",
+              "settings": {
+                "image": "shopify://shop_images/LaurelSpinach2026-02-10011945.png",
+                "image_ratio": "landscape",
+                "image_ratio_mobile": "square"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "image_AAXHDB",
+            "image_QdtwbT",
+            "image_BnX4UU"
+          ]
+        },
+        "rich-text": {
+          "type": "_rich-text",
+          "static": true,
+          "settings": {
+            "content_width": "small",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center"
+          },
+          "blocks": {
+            "icon_MVxDKJ": {
+              "type": "icon",
+              "name": "t:blocks.icon.presets.name",
+              "settings": {
+                "size": "small",
+                "icon": "gift"
+              },
+              "blocks": {}
+            },
+            "heading_ei9Egm": {
+              "type": "heading",
+              "settings": {
+                "content": "Bring Green Into Your Life",
+                "type": "2",
+                "size": "small",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "color",
+                "highlight_color": "#ff0000"
+              },
+              "blocks": {}
+            },
+            "description_GWnD7r": {
+              "type": "description",
+              "settings": {
+                "content": "<p>Your food is safe with us.Our system does not allow any chemical inputs such as pesticides, fertilizers, or enhancers. Any such inputs would cause the ecological system to collapse..</p>",
+                "color_light": false,
+                "limit_description_height": false
+              },
+              "blocks": {}
+            },
+            "buttons_kkMqdW": {
+              "type": "buttons",
+              "settings": {},
+              "blocks": {
+                "button_QkK73w": {
+                  "type": "button",
+                  "settings": {
+                    "style": "primary",
+                    "size": "medium",
+                    "icon": "none",
+                    "button_label": "Shop Now",
+                    "button_link": "shopify://collections",
+                    "open_in_new_tab": false,
+                    "show_arrow": true
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "button_QkK73w"
+              ]
+            }
+          },
+          "block_order": [
+            "icon_MVxDKJ",
+            "heading_ei9Egm",
+            "description_GWnD7r",
+            "buttons_kkMqdW"
+          ]
+        }
+      },
+      "name": "t:sections.collage-with-text.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "image_width": "small",
+        "image_position": "left",
+        "image_position_mobile": "top",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "featured_product_XQnDkc": {
+      "type": "featured-product",
+      "blocks": {
+        "title_RzTREU": {
+          "type": "title",
+          "settings": {
+            "size": "medium",
+            "show_vendor": true,
+            "show_type": true,
+            "show_rating": true,
+            "star_size": "small",
+            "target_anchor": "",
+            "enable_rating_preview": false
+          }
+        },
+        "price_Q7Peiz": {
+          "type": "price",
+          "settings": {
+            "show_tax": true,
+            "show_sale_badge": true,
+            "sale_badge_type": "percentage"
+          }
+        },
+        "separator_6UV7wX": {
+          "type": "separator",
+          "settings": {
+            "show_line": true,
+            "margin_top": 16,
+            "margin_bottom": 16
+          }
+        },
+        "inventory_TAem8t": {
+          "type": "inventory",
+          "settings": {
+            "inventory_threshold": 10,
+            "low_stock_alert": "💪 Hurry up! Only [stock] left",
+            "full_stock_alert": "🎉 Stock adequate! Ready to ship",
+            "show_percentage_bar": true,
+            "low_stock_bar_color": "#e3ba29",
+            "full_stock_bar_color": "#0cb771"
+          }
+        },
+        "description_HxidBB": {
+          "type": "description",
+          "settings": {
+            "enable_brief": true,
+            "limit": 30,
+            "limit_description_height": false
+          }
+        },
+        "keyword_list_hMDmk7": {
+          "type": "keyword_list",
+          "settings": {
+            "keywords": "Statement, Violin, Bright",
+            "show_icon": true,
+            "icon_type": "check",
+            "background_color": "#f7f4ec",
+            "foreground_color": "#000000"
+          }
+        },
+        "separator_WaPdA3": {
+          "type": "separator",
+          "settings": {
+            "show_line": true,
+            "margin_top": 16,
+            "margin_bottom": 16
+          }
+        },
+        "variant_picker_Hw486m": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "auto_dropdown": true,
+            "dropdown_threshold": 10,
+            "enable_first_swatch_image": false,
+            "swatch_size": "medium",
+            "round_swatches": false,
+            "auto_scroll_to_top": false
+          }
+        },
+        "buy_buttons_HjD3hW": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "is_selector_standalone": true,
+            "show_dynamic_checkout": true,
+            "show_notify_form": false,
+            "show_gift_card_recipient": true
+          }
+        },
+        "delivery_eta_qfTyix": {
+          "type": "delivery_eta",
+          "settings": {
+            "color_scheme": "scheme-7",
+            "processing_time": 7,
+            "time_variance": 2
+          }
+        }
+      },
+      "block_order": [
+        "title_RzTREU",
+        "price_Q7Peiz",
+        "separator_6UV7wX",
+        "inventory_TAem8t",
+        "description_HxidBB",
+        "keyword_list_hMDmk7",
+        "separator_WaPdA3",
+        "variant_picker_Hw486m",
+        "buy_buttons_HjD3hW",
+        "delivery_eta_qfTyix"
+      ],
+      "name": "t:sections.featured-product.presets.name",
+      "settings": {
+        "product": "colored-swiss-chard",
+        "color_scheme": "",
+        "enable_sticky_media": true,
+        "media_position": "left",
+        "media_layout": "thumbnail-right",
+        "media_size": "small",
+        "thumbnail_size": "medium",
+        "media_ratio": "portrait",
+        "media_fit": "cover",
+        "enable_scale_image": true,
+        "image_zoom_type": "zoom",
+        "enable_image_magnifier": true,
+        "image_zoom_ratio": 2,
+        "enable_slide_smooth": true,
+        "hide_variants": false,
+        "enable_video_autoplay": false,
+        "enable_video_looping": false,
+        "hide_thumbnail_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 80,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "media_grid_VcQrPc": {
+      "type": "media-grid",
+      "blocks": {
+        "section-header": {
+          "type": "_section-header",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "heading_PjKtN3": {
+              "type": "heading",
+              "settings": {
+                "content": "Nature in Every Frame",
+                "type": "2",
+                "size": "small",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "color",
+                "highlight_color": "#ff0000"
+              },
+              "blocks": {}
+            },
+            "description_jbiAnc": {
+              "type": "description",
+              "settings": {
+                "content": "<p>A curated grid of greenery, details, and serene living.</p>",
+                "color_light": false,
+                "limit_description_height": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_PjKtN3",
+            "description_jbiAnc"
+          ]
+        },
+        "media-grid-list": {
+          "type": "_media-grid-list",
+          "static": true,
+          "settings": {
+            "gap": 16,
+            "image_height_mobile": "medium"
+          },
+          "blocks": {
+            "image_grid_item_kV3PPC": {
+              "type": "_image-grid-item",
+              "settings": {
+                "color_scheme": "scheme-3",
+                "image": "shopify://shop_images/SliderImage_5a631d4e-e26b-4e00-a847-a063de27844a.png",
+                "image_opacity": 90,
+                "width": "2",
+                "height": "2",
+                "position": "bottom-left",
+                "text_alignment": "left",
+                "position_mobile": "bottom-center",
+                "alignment_mobile": "center"
+              },
+              "blocks": {
+                "heading_d79HHU": {
+                  "type": "heading",
+                  "settings": {
+                    "content": "Bring Nature Home",
+                    "type": "3",
+                    "size": "small",
+                    "uppercase": false,
+                    "enable_highlight_text": true,
+                    "highlight_type": "color",
+                    "highlight_color": "#ff0000"
+                  },
+                  "blocks": {}
+                },
+                "description_hQjbff": {
+                  "type": "description",
+                  "settings": {
+                    "content": "<p>Greenery for every corner.</p>",
+                    "color_light": false,
+                    "limit_description_height": false
+                  },
+                  "blocks": {}
+                },
+                "button_WRdNmQ": {
+                  "type": "button",
+                  "name": "t:blocks.button.presets.name",
+                  "settings": {
+                    "style": "primary",
+                    "size": "small",
+                    "icon": "none",
+                    "button_label": "Shop Now",
+                    "button_link": "shopify://collections/leafy-vegetables",
+                    "open_in_new_tab": false,
+                    "show_arrow": false
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "heading_d79HHU",
+                "description_hQjbff",
+                "button_WRdNmQ"
+              ]
+            },
+            "image_grid_item_Wn3LgT": {
+              "type": "_image-grid-item",
+              "settings": {
+                "color_scheme": "scheme-3",
+                "image": "shopify://shop_images/generate-mixed-celery-images.png",
+                "image_opacity": 90,
+                "width": "4",
+                "height": "1",
+                "position": "bottom-right",
+                "text_alignment": "center",
+                "position_mobile": "bottom-center",
+                "alignment_mobile": "center"
+              },
+              "blocks": {
+                "heading_W4pdnd": {
+                  "type": "heading",
+                  "settings": {
+                    "content": "Beautiful Details",
+                    "type": "3",
+                    "size": "small",
+                    "uppercase": false,
+                    "enable_highlight_text": true,
+                    "highlight_type": "color",
+                    "highlight_color": "#ff0000"
+                  },
+                  "blocks": {}
+                },
+                "description_XJFrzf": {
+                  "type": "description",
+                  "settings": {
+                    "content": "<p>Texture, color, life.</p>",
+                    "color_light": false,
+                    "limit_description_height": false
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "heading_W4pdnd",
+                "description_XJFrzf"
+              ]
+            },
+            "image_grid_item_rrqBbQ": {
+              "type": "_image-grid-item",
+              "name": "t:blocks._image-grid-item.presets.name",
+              "settings": {
+                "color_scheme": "scheme-3",
+                "image": "shopify://shop_images/MatadorSpinach2026-02-10011544.png",
+                "image_opacity": 90,
+                "width": "2",
+                "height": "1",
+                "position": "top-left",
+                "text_alignment": "left",
+                "position_mobile": "bottom-center",
+                "alignment_mobile": "center"
+              },
+              "blocks": {
+                "heading_YbacYe": {
+                  "type": "heading",
+                  "name": "t:blocks.heading.presets.name",
+                  "settings": {
+                    "content": "Everyday Serenity",
+                    "type": "2",
+                    "size": "small",
+                    "uppercase": false,
+                    "enable_highlight_text": true,
+                    "highlight_type": "color",
+                    "highlight_color": "#ff0000"
+                  },
+                  "blocks": {}
+                },
+                "description_6XgXb4": {
+                  "type": "description",
+                  "name": "t:blocks.description.presets.name",
+                  "settings": {
+                    "content": "<p>Find calm in simple, <br/>natural moments. here</p>",
+                    "color_light": false,
+                    "limit_description_height": false
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "heading_YbacYe",
+                "description_6XgXb4"
+              ]
+            },
+            "image_grid_item_xJ84bq": {
+              "type": "_image-grid-item",
+              "settings": {
+                "color_scheme": "scheme-3",
+                "image": "shopify://shop_images/SpinachandLettuceLeaves2026-02-10011805.png",
+                "image_opacity": 90,
+                "width": "2",
+                "height": "1",
+                "position": "top-right",
+                "text_alignment": "center",
+                "position_mobile": "bottom-center",
+                "alignment_mobile": "center"
+              },
+              "blocks": {
+                "heading_HNYQi6": {
+                  "type": "heading",
+                  "settings": {
+                    "content": "Slow Living",
+                    "type": "3",
+                    "size": "small",
+                    "uppercase": false,
+                    "enable_highlight_text": true,
+                    "highlight_type": "color",
+                    "highlight_color": "#ff0000"
+                  },
+                  "blocks": {}
+                },
+                "description_AHiG4W": {
+                  "type": "description",
+                  "settings": {
+                    "content": "<p>Tea, books, plants.</p>",
+                    "color_light": false,
+                    "limit_description_height": false
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "heading_HNYQi6",
+                "description_AHiG4W"
+              ]
+            }
+          },
+          "block_order": [
+            "image_grid_item_kV3PPC",
+            "image_grid_item_Wn3LgT",
+            "image_grid_item_rrqBbQ",
+            "image_grid_item_xJ84bq"
+          ]
+        }
+      },
+      "name": "t:sections.media-grid.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "reading_text_DMarFV": {
+      "type": "reading-text",
+      "blocks": {
+        "social_list_bCQem4": {
+          "type": "social-list",
+          "settings": {
+            "style": "icon",
+            "size": "small",
+            "show_tooltip": false
+          },
+          "blocks": {}
+        },
+        "reading_text_9QcTQc": {
+          "type": "_reading-text",
+          "settings": {
+            "text": "Your food is safe with us.\nOur system does not allow any chemical inputs such as pesticides, fertilizers, or enhancers. Any such inputs would cause the ecological system to collapse.",
+            "size": "medium",
+            "uppercase": false,
+            "animation": "darken",
+            "color_before": "#16bf00",
+            "color_after": "#ffffff"
+          },
+          "blocks": {}
+        },
+        "spacer_YAq4EP": {
+          "type": "spacer",
+          "settings": {
+            "height": 32,
+            "show_line": false,
+            "line_width": "half"
+          },
+          "blocks": {}
+        },
+        "buttons_PXXE8X": {
+          "type": "buttons",
+          "settings": {},
+          "blocks": {
+            "button_AM7ATm": {
+              "type": "button",
+              "settings": {
+                "style": "primary",
+                "size": "medium",
+                "icon": "none",
+                "button_label": "Learn More",
+                "button_link": "shopify://pages/about-us",
+                "open_in_new_tab": false,
+                "show_arrow": true
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "button_AM7ATm"
+          ]
+        }
+      },
+      "block_order": [
+        "social_list_bCQem4",
+        "reading_text_9QcTQc",
+        "spacer_YAq4EP",
+        "buttons_PXXE8X"
+      ],
+      "settings": {
+        "color_scheme": "scheme-4",
+        "background_image_opacity": 30,
+        "image_behavior": "parallax",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "featured_products_grid_4XT8Tr": {
+      "type": "featured-products-grid",
+      "blocks": {
+        "rich-text": {
+          "type": "_rich-text",
+          "static": true,
+          "settings": {
+            "content_width": "small",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center"
+          },
+          "blocks": {
+            "icon_DWpXTc": {
+              "type": "icon",
+              "name": "t:blocks.icon.presets.name",
+              "settings": {
+                "size": "medium",
+                "icon": "gift"
+              },
+              "blocks": {}
+            },
+            "heading_hCiB4V": {
+              "type": "heading",
+              "settings": {
+                "content": "Curated Picks",
+                "type": "2",
+                "size": "medium",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "color",
+                "highlight_color": "#ff0000"
+              },
+              "blocks": {}
+            },
+            "description_PjTiin": {
+              "type": "description",
+              "settings": {
+                "content": "<p>Hand-selected pieces for a life in balance</p>",
+                "color_light": false,
+                "limit_description_height": false
+              },
+              "blocks": {}
+            },
+            "spacer_NnUFDr": {
+              "type": "spacer",
+              "name": "t:blocks.spacer.name",
+              "settings": {
+                "height": 4,
+                "show_line": false,
+                "line_width": "half"
+              },
+              "blocks": {}
+            },
+            "buttons_zhfVHA": {
+              "type": "buttons",
+              "settings": {},
+              "blocks": {
+                "button_7xcjBg": {
+                  "type": "button",
+                  "settings": {
+                    "style": "primary",
+                    "size": "medium",
+                    "icon": "none",
+                    "button_label": "Discover More",
+                    "button_link": "shopify://collections",
+                    "open_in_new_tab": false,
+                    "show_arrow": false
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "button_7xcjBg"
+              ]
+            }
+          },
+          "block_order": [
+            "icon_DWpXTc",
+            "heading_hCiB4V",
+            "description_PjTiin",
+            "spacer_NnUFDr",
+            "buttons_zhfVHA"
+          ]
+        },
+        "products-grid": {
+          "type": "_products-grid",
+          "static": true,
+          "settings": {
+            "collection": "celery",
+            "products": [],
+            "limit": 6,
+            "card_size": "small",
+            "image_ratio": "portrait",
+            "text_alignment": "center",
+            "show_card_wrapper": false,
+            "color_scheme": "",
+            "slider_on_mobile": true
+          },
+          "blocks": {}
+        }
+      },
+      "name": "t:sections.featured-products-grid.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "press_9EXkjY": {
+      "type": "press",
+      "blocks": {
+        "review_n3QG3h": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/mango-images-hanging-on-tree-like-a-real.png",
+            "image_width": 120,
+            "content": "Elevate Your Snacking with Nutrient-Rich Mango Goodies."
+          }
+        },
+        "review_jNbf9z": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2026-02-07_141758.png",
+            "image_width": 120,
+            "content": "Arabic dates are naturally sweet, nutrient-rich fruits prized for their soft texture, rich flavor, and energy-boosting benefits. Perfect for healthy snacking, traditional desserts, and adding natural sweetness to your daily diet."
+          }
+        },
+        "review_R9fW3V": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/brokile.png",
+            "image_width": 120,
+            "content": "Broccoli is a nutrient-rich green vegetable packed with vitamins, fiber, and antioxidants for a healthy lifestyle. Perfect for salads, stir-fries, and fresh organic meals."
+          }
+        },
+        "review_B9DaaL": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/cabbage.png",
+            "image_width": 120,
+            "content": "Cabbage is a nutrient-rich leafy vegetable known for its crisp texture, mild flavor, and excellent health benefits. Perfect for salads, cooking, and fresh harvests, it’s a staple choice for healthy and delicious meals.e."
+          }
+        },
+        "review_zgKPbR": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/RedVeinedSpinach2026-02-09233657.png",
+            "image_width": 120,
+            "content": "Red Vanished is a vibrant, nutrient-rich vegetable known for its striking color and fresh, crisp taste. It’s perfect for adding visual appeal and healthy flavor to salads, dishes, and home gardens"
+          }
+        }
+      },
+      "block_order": [
+        "review_n3QG3h",
+        "review_jNbf9z",
+        "review_R9fW3V",
+        "review_B9DaaL",
+        "review_zgKPbR"
+      ],
+      "settings": {
+        "color_scheme": "scheme-7",
+        "background_image_opacity": 50,
+        "image_behavior": "none",
+        "show_heading": true,
+        "heading": "As Seen In",
+        "heading_size": "small",
+        "heading_uppercase": false,
+        "description": "",
+        "enable_auto_switch": false,
+        "switch_interval": 3,
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "custom_section_header_B7cYXK": {
+      "type": "custom-section-header",
+      "blocks": {
+        "heading_pqgaLT": {
+          "type": "heading",
+          "settings": {
+            "content": "Bundle – <em>Save 15%</em>",
+            "type": "2",
+            "size": "small",
+            "uppercase": false,
+            "enable_highlight_text": true,
+            "highlight_type": "hand-drawn-underline",
+            "highlight_color": "#676432"
+          },
+          "blocks": {}
+        },
+        "description_GfW7rg": {
+          "type": "description",
+          "settings": {
+            "content": "<p>Buy Together & Save</p>",
+            "color_light": false,
+            "limit_description_height": false
+          },
+          "blocks": {}
+        },
+        "countdown_Yfx7bi": {
+          "type": "countdown",
+          "name": "t:blocks.countdown.presets.name",
+          "settings": {
+            "simple": true,
+            "end_time": "2026-02-20 15:23",
+            "end_text": "Timer complete message",
+            "hide_when_end": false,
+            "timer_background_color": "#242833",
+            "timer_foreground_color": "#ffffff"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading_pqgaLT",
+        "description_GfW7rg",
+        "countdown_Yfx7bi"
+      ],
+      "name": "t:sections.custom-section-header.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 24
+      }
+    },
+    "shop_the_look_Wg4Ntb": {
+      "type": "shop-the-look",
+      "blocks": {
+        "look_spot_Kpa6bT": {
+          "type": "look-spot",
+          "settings": {
+            "horizontal_position": 22,
+            "vertical_position": 70,
+            "product": "rectangular-purple-cabbage"
+          }
+        },
+        "look_spot_qCPiXi": {
+          "type": "look-spot",
+          "settings": {
+            "horizontal_position": 50,
+            "vertical_position": 50,
+            "product": "ice-emerald-cabbage"
+          }
+        },
+        "look_spot_wK8KTq": {
+          "type": "look-spot",
+          "settings": {
+            "horizontal_position": 61,
+            "vertical_position": 72,
+            "product": "chinese-cabbage-red-hybrid"
+          }
+        }
+      },
+      "block_order": [
+        "look_spot_Kpa6bT",
+        "look_spot_qCPiXi",
+        "look_spot_wK8KTq"
+      ],
+      "name": "t:sections.shop-the-look.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "image": "shopify://shop_images/cabbage.png",
+        "image_ratio": "adapt",
+        "image_position": "left",
+        "show_quantity_selector": true,
+        "default_selected": true,
+        "enable_truncate_title": false,
+        "show_discount": true,
+        "discount_percentage": 5,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "testimonial_qGxiwq": {
+      "type": "testimonial",
+      "blocks": {
+        "section-header": {
+          "type": "_section-header",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "icon_cWjKYz": {
+              "type": "icon",
+              "settings": {
+                "size": "medium",
+                "icon": "quote"
+              },
+              "blocks": {}
+            },
+            "heading_inNphF": {
+              "type": "heading",
+              "settings": {
+                "content": "Customer Reviews",
+                "type": "2",
+                "size": "small",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "hand-drawn-underline",
+                "highlight_color": "#676432"
+              },
+              "blocks": {}
+            },
+            "description_iVLNTP": {
+              "type": "description",
+              "settings": {
+                "content": "<p>Honest words from our buyers</p>",
+                "color_light": false,
+                "limit_description_height": true
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "icon_cWjKYz",
+            "heading_inNphF",
+            "description_iVLNTP"
+          ]
+        },
+        "testimonial-list": {
+          "type": "_testimonial-list",
+          "static": true,
+          "settings": {
+            "layout": "slider",
+            "columns": 5,
+            "show_nav_buttons": true,
+            "show_seek_bar": true,
+            "auto_rotate": false,
+            "change_slides_speed": 3,
+            "slider_on_mobile": true
+          },
+          "blocks": {
+            "testimonial_cFW9Xg": {
+              "type": "_testimonial",
+              "settings": {
+                "show_rating": true,
+                "rating": 4,
+                "content": "The Peace Lily arrived fresh and instantly brightened my living room.",
+                "author_name": "Sarah Thompson",
+                "show_verified": false,
+                "product": "peace-lily"
+              },
+              "blocks": {}
+            },
+            "testimonial_aMtf8H": {
+              "type": "_testimonial",
+              "settings": {
+                "show_rating": true,
+                "rating": 5,
+                "content": "The ceramic pot feels premium and matches my minimalist style.",
+                "author_name": "Daniel Wu",
+                "show_verified": false,
+                "product": "ceramic-empty-pot"
+              },
+              "blocks": {}
+            },
+            "testimonial_Mhh8jP": {
+              "type": "_testimonial",
+              "settings": {
+                "show_rating": true,
+                "rating": 5,
+                "content": "My Fiddle Leaf Fig came lush, healthy, and just like the photos.",
+                "author_name": "Emily Carter",
+                "show_verified": false,
+                "product": "fiddle-leaf-fig"
+              },
+              "blocks": {}
+            },
+            "testimonial_tFmBQT": {
+              "type": "_testimonial",
+              "settings": {
+                "show_rating": true,
+                "rating": 4,
+                "content": "Loved the eco-friendly packaging and thoughtful little details.",
+                "author_name": "Michael Rivera",
+                "show_verified": false,
+                "product": "money-tree"
+              },
+              "blocks": {}
+            },
+            "testimonial_8T6yhf": {
+              "type": "_testimonial",
+              "settings": {
+                "show_rating": true,
+                "rating": 5,
+                "content": "The Glass Plant Mister is both stylish and functional — perfect!",
+                "author_name": "Hannah Lee",
+                "show_verified": false,
+                "product": "plant-mister"
+              },
+              "blocks": {}
+            },
+            "testimonial_gwz4HB": {
+              "type": "_testimonial",
+              "settings": {
+                "show_rating": true,
+                "rating": 5,
+                "content": "The Snake Plant is super easy to care for and looks amazing.",
+                "author_name": "Olivia Chen",
+                "show_verified": false,
+                "product": "snake-plant"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "testimonial_cFW9Xg",
+            "testimonial_aMtf8H",
+            "testimonial_Mhh8jP",
+            "testimonial_tFmBQT",
+            "testimonial_8T6yhf",
+            "testimonial_gwz4HB"
+          ]
+        }
+      },
+      "name": "t:sections.testimonial.presets.name",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "media_grid_9PbGad": {
+      "type": "media-grid",
+      "blocks": {
+        "section-header": {
+          "type": "_section-header",
+          "disabled": true,
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "heading_Wzmph6": {
+              "type": "heading",
+              "settings": {
+                "content": "Media grid",
+                "type": "2",
+                "size": "medium",
+                "uppercase": true,
+                "enable_highlight_text": true,
+                "highlight_type": "hand-drawn-circle",
+                "highlight_color": "#ffd600"
+              },
+              "blocks": {}
+            },
+            "description_n8HF8D": {
+              "type": "description",
+              "settings": {
+                "content": "<p>Add some description here</p>",
+                "color_light": false,
+                "limit_description_height": true
+              },
+              "blocks": {}
+            },
+            "buttons_JYMiPh": {
+              "type": "buttons",
+              "settings": {},
+              "blocks": {
+                "button_Lfz9BM": {
+                  "type": "button",
+                  "settings": {
+                    "style": "primary",
+                    "size": "medium",
+                    "icon": "none",
+                    "button_label": "Button label",
+                    "button_link": "",
+                    "open_in_new_tab": false,
+                    "show_arrow": false
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "button_Lfz9BM"
+              ]
+            }
+          },
+          "block_order": [
+            "heading_Wzmph6",
+            "description_n8HF8D",
+            "buttons_JYMiPh"
+          ]
+        },
+        "media-grid-list": {
+          "type": "_media-grid-list",
+          "static": true,
+          "settings": {
+            "gap": 16,
+            "image_height_mobile": "medium"
+          },
+          "blocks": {
+            "image_grid_item_xLWr6Q": {
+              "type": "_image-grid-item",
+              "settings": {
+                "color_scheme": "scheme-3",
+                "image": "shopify://shop_images/kale.png",
+                "image_opacity": 90,
+                "width": "3",
+                "height": "1",
+                "position": "bottom-left",
+                "text_alignment": "left",
+                "position_mobile": "bottom-center",
+                "alignment_mobile": "center"
+              },
+              "blocks": {
+                "heading_qWzphV": {
+                  "type": "heading",
+                  "settings": {
+                    "content": "<em>Our Green Promise</em>",
+                    "type": "3",
+                    "size": "small",
+                    "uppercase": false,
+                    "enable_highlight_text": true,
+                    "highlight_type": "script",
+                    "highlight_color": "#005d01"
+                  },
+                  "blocks": {}
+                },
+                "description_dd8UUA": {
+                  "type": "description",
+                  "settings": {
+                    "content": "<p>Every plant is nurtured with care <br/>and delivered fresh to your home.</p>",
+                    "color_light": false,
+                    "limit_description_height": true
+                  },
+                  "blocks": {}
+                },
+                "button_q4mCqi": {
+                  "type": "button",
+                  "name": "t:blocks.button.presets.name",
+                  "settings": {
+                    "style": "primary",
+                    "size": "small",
+                    "icon": "none",
+                    "button_label": "Learn More",
+                    "button_link": "shopify://pages/about-us",
+                    "open_in_new_tab": false,
+                    "show_arrow": false
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "heading_qWzphV",
+                "description_dd8UUA",
+                "button_q4mCqi"
+              ]
+            },
+            "image_grid_item_ggC96P": {
+              "type": "_image-grid-item",
+              "settings": {
+                "color_scheme": "scheme-3",
+                "image": "shopify://shop_images/SpinachandLettuceLeaves2026-02-10011742.png",
+                "image_opacity": 90,
+                "width": "3",
+                "height": "1",
+                "position": "bottom-left",
+                "text_alignment": "left",
+                "position_mobile": "bottom-center",
+                "alignment_mobile": "center"
+              },
+              "blocks": {
+                "heading_pGwMQE": {
+                  "type": "heading",
+                  "settings": {
+                    "content": "<em>Bring Nature Home</em>",
+                    "type": "3",
+                    "size": "small",
+                    "uppercase": false,
+                    "enable_highlight_text": true,
+                    "highlight_type": "script",
+                    "highlight_color": "#ffd600"
+                  },
+                  "blocks": {}
+                },
+                "description_gVbEFP": {
+                  "type": "description",
+                  "settings": {
+                    "content": "<p>From lush greens to crafted décor, <br/>explore what makes every corner feel alive.</p>",
+                    "color_light": false,
+                    "limit_description_height": true
+                  },
+                  "blocks": {}
+                },
+                "button_TQhJgp": {
+                  "type": "button",
+                  "name": "t:blocks.button.presets.name",
+                  "settings": {
+                    "style": "primary",
+                    "size": "small",
+                    "icon": "none",
+                    "button_label": "Learn More",
+                    "button_link": "shopify://pages/about-us",
+                    "open_in_new_tab": false,
+                    "show_arrow": false
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "heading_pGwMQE",
+                "description_gVbEFP",
+                "button_TQhJgp"
+              ]
+            }
+          },
+          "block_order": [
+            "image_grid_item_xLWr6Q",
+            "image_grid_item_ggC96P"
+          ]
+        }
+      },
+      "name": "t:sections.media-grid.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "newsletter_bC7F96": {
+      "type": "newsletter",
+      "blocks": {
+        "spin_text_caKhnd": {
+          "type": "spin-text",
+          "name": "t:blocks.spin_text.presets.name",
+          "settings": {
+            "enable_color_scheme": false,
+            "color_scheme": "",
+            "size": "small",
+            "text": "Latest News · Special Offers",
+            "icon": "thumb"
+          },
+          "blocks": {}
+        },
+        "heading_F6Hthx": {
+          "type": "heading",
+          "settings": {
+            "content": "<em>Subscribe</em> to our newsletter",
+            "type": "2",
+            "size": "s-large",
+            "uppercase": false,
+            "enable_highlight_text": true,
+            "highlight_type": "hollow",
+            "highlight_color": "#ff0000"
+          },
+          "blocks": {}
+        },
+        "description_CPQ3YD": {
+          "type": "description",
+          "settings": {
+            "content": "<p>Get the latest deals and product updates</p>",
+            "color_light": true,
+            "limit_description_height": true
+          },
+          "blocks": {}
+        },
+        "spacer_FhaQPM": {
+          "type": "spacer",
+          "settings": {
+            "height": 16,
+            "show_line": false,
+            "line_width": "half"
+          },
+          "blocks": {}
+        },
+        "newsletter_tckwhc": {
+          "type": "_newsletter",
+          "settings": {
+            "input_style": "line",
+            "show_consent_notice": true
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "spin_text_caKhnd",
+        "heading_F6Hthx",
+        "description_CPQ3YD",
+        "spacer_FhaQPM",
+        "newsletter_tckwhc"
+      ],
+      "disabled": true,
+      "name": "t:sections.newsletter.presets.name",
+      "settings": {
+        "color_scheme": "scheme-4",
+        "content_width": "small",
+        "text_alignment": "left",
+        "background_image_opacity": 6,
+        "image_behavior": "none",
+        "side_image_position": "right",
+        "side_image_width": "medium",
+        "text_alignment_mobile": "center",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "seamless_scroll_efNa7N": {
+      "type": "seamless-scroll",
+      "blocks": {
+        "text_fGa4m8": {
+          "type": "text",
+          "settings": {
+            "content": "Bio Farm",
+            "font_size": 24,
+            "font_weight": "400",
+            "font_decorative": false,
+            "font_hollow": false,
+            "enable_custom_color": false,
+            "custom_color": "#000000"
+          }
+        },
+        "text_7n6fmE": {
+          "type": "text",
+          "settings": {
+            "content": "-",
+            "font_size": 24,
+            "font_weight": "400",
+            "font_decorative": false,
+            "font_hollow": false,
+            "enable_custom_color": false,
+            "custom_color": "#000000"
+          }
+        },
+        "text_iccy8R": {
+          "type": "text",
+          "settings": {
+            "content": "Nature, Styled for Home",
+            "font_size": 24,
+            "font_weight": "400",
+            "font_decorative": true,
+            "font_hollow": false,
+            "enable_custom_color": false,
+            "custom_color": "#000000"
+          }
+        },
+        "text_dTj7Yx": {
+          "type": "text",
+          "settings": {
+            "content": "-",
+            "font_size": 24,
+            "font_weight": "400",
+            "font_decorative": false,
+            "font_hollow": false,
+            "enable_custom_color": false,
+            "custom_color": "#000000"
+          }
+        },
+        "text_DkAx3V": {
+          "type": "text",
+          "settings": {
+            "content": "Every Corner, Alive",
+            "font_size": 24,
+            "font_weight": "400",
+            "font_decorative": false,
+            "font_hollow": false,
+            "enable_custom_color": false,
+            "custom_color": "#000000"
+          }
+        },
+        "text_AjJyDj": {
+          "type": "text",
+          "settings": {
+            "content": "-",
+            "font_size": 24,
+            "font_weight": "400",
+            "font_decorative": false,
+            "font_hollow": false,
+            "enable_custom_color": false,
+            "custom_color": "#000000"
+          }
+        },
+        "text_qUDgxi": {
+          "type": "text",
+          "settings": {
+            "content": "Design That Breathes",
+            "font_size": 24,
+            "font_weight": "400",
+            "font_decorative": true,
+            "font_hollow": false,
+            "enable_custom_color": false,
+            "custom_color": "#000000"
+          }
+        },
+        "text_iqeUFD": {
+          "type": "text",
+          "settings": {
+            "content": "-",
+            "font_size": 24,
+            "font_weight": "400",
+            "font_decorative": false,
+            "font_hollow": false,
+            "enable_custom_color": false,
+            "custom_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "text_fGa4m8",
+        "text_7n6fmE",
+        "text_iccy8R",
+        "text_dTj7Yx",
+        "text_DkAx3V",
+        "text_AjJyDj",
+        "text_qUDgxi",
+        "text_iqeUFD"
+      ],
+      "disabled": true,
+      "name": "t:sections.seamless-scroll.presets.name",
+      "settings": {
+        "color_scheme": "scheme-4",
+        "direction": "right",
+        "gap": 32,
+        "speed": 40,
+        "display_border_blur": false,
+        "enable_scroll_synergy": true,
+        "padding_top": 16,
+        "padding_bottom": 16,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "before_after_bHV6C8": {
+      "type": "before-after",
+      "blocks": {
+        "rich-text": {
+          "type": "_rich-text",
+          "static": true,
+          "settings": {
+            "content_width": "large",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center"
+          },
+          "blocks": {
+            "heading_tPnGqX": {
+              "type": "heading",
+              "settings": {
+                "content": "With or Without Green",
+                "type": "2",
+                "size": "small",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "color",
+                "highlight_color": "#ff0000"
+              },
+              "blocks": {}
+            },
+            "description_WzkwL7": {
+              "type": "description",
+              "settings": {
+                "content": "<p>See how greenery transforms a room—from calm minimalism to a living, breathing space full of warmth and character.</p>",
+                "color_light": false,
+                "limit_description_height": false
+              },
+              "blocks": {}
+            },
+            "button_k7mciJ": {
+              "type": "button",
+              "name": "t:blocks.button.presets.name",
+              "settings": {
+                "style": "primary",
+                "size": "medium",
+                "icon": "none",
+                "button_label": "Shop Now",
+                "button_link": "shopify://collections",
+                "open_in_new_tab": false,
+                "show_arrow": true
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_tPnGqX",
+            "description_WzkwL7",
+            "button_k7mciJ"
+          ]
+        },
+        "before-after": {
+          "type": "_before-after",
+          "static": true,
+          "settings": {
+            "image_height": "medium",
+            "direction": "horizontal",
+            "image_before": "shopify://shop_images/mango-and-dates-tree-with-fruit-hanging.png",
+            "heading_before": "Without",
+            "heading_before_color": "#ffffff",
+            "image_after": "shopify://shop_images/Spinach2026-02-10000011.png",
+            "heading_after": "With",
+            "heading_after_color": "#ffffff"
+          },
+          "blocks": {}
+        }
+      },
+      "name": "t:sections.before-after.presets.name",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "featured_blog_Yde8hU": {
+      "type": "featured-blog",
+      "blocks": {
+        "section-header": {
+          "type": "_section-header",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "heading_RCy4TN": {
+              "type": "heading",
+              "settings": {
+                "content": "The<strong> </strong>Journal",
+                "type": "2",
+                "size": "small",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "color",
+                "highlight_color": "#ff0000"
+              },
+              "blocks": {}
+            },
+            "description_bAGr46": {
+              "type": "description",
+              "settings": {
+                "content": "<p>Notes on Nature & Home</p>",
+                "color_light": true,
+                "limit_description_height": true
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_RCy4TN",
+            "description_bAGr46"
+          ]
+        },
+        "featured-blog": {
+          "type": "_featured-blog",
+          "static": true,
+          "settings": {
+            "blog": "journal",
+            "show_view_more": true,
+            "show_nav_buttons": true,
+            "show_page_dots": true,
+            "auto_rotate": true,
+            "change_slides_speed": 10,
+            "alignment": "left",
+            "overlay_opacity": 15,
+            "text_color": "#ffffff",
+            "show_tags": true,
+            "show_date": true,
+            "show_author": true,
+            "show_excerpt": false,
+            "show_index": true,
+            "alignment_mobile": "left"
+          },
+          "blocks": {}
+        }
+      },
+      "disabled": true,
+      "name": "t:sections.featured-blog.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "logo_list_i3kV86": {
+      "type": "logo-list",
+      "blocks": {
+        "section-header": {
+          "type": "_section-header",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "heading_VcVFYb": {
+              "type": "heading",
+              "settings": {
+                "content": "Kindred Brands",
+                "type": "2",
+                "size": "small",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "color",
+                "highlight_color": "#ff0000"
+              },
+              "blocks": {}
+            },
+            "description_4zpWjL": {
+              "type": "description",
+              "settings": {
+                "content": "<p>Together for mindful living</p>",
+                "color_light": false,
+                "limit_description_height": true
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_VcVFYb",
+            "description_4zpWjL"
+          ]
+        },
+        "logo-list": {
+          "type": "_logo-list",
+          "static": true,
+          "settings": {
+            "layout": "grid",
+            "enable_gray": true,
+            "horizontal_gap": 92,
+            "vertical_gap": 32,
+            "direction": "left",
+            "speed": 40,
+            "display_border_blur": true,
+            "enable_scroll_synergy": false,
+            "horizontal_gap_mobile": 32,
+            "vertical_gap_mobile": 32
+          },
+          "blocks": {
+            "logo_CyADBt": {
+              "type": "_logo",
+              "settings": {
+                "image": "shopify://shop_images/generate-cabbage-logo.png",
+                "image_width": 140,
+                "link": "shopify://collections/spinach",
+                "open_in_new_tab": true,
+                "image_width_mobile": 100
+              },
+              "blocks": {}
+            },
+            "logo_dGNEbj": {
+              "type": "_logo",
+              "settings": {
+                "image": "shopify://shop_images/Aromatic_and_Medicinal_Plants.png",
+                "image_width": 140,
+                "link": "shopify://collections/aromatic-medicinal-herbs",
+                "open_in_new_tab": true,
+                "image_width_mobile": 100
+              },
+              "blocks": {}
+            },
+            "logo_py3mBN": {
+              "type": "_logo",
+              "settings": {
+                "image": "shopify://shop_images/mango-and-dates-tree-with-fruit-hanging.png",
+                "image_width": 140,
+                "link": "shopify://products/dates",
+                "open_in_new_tab": true,
+                "image_width_mobile": 100
+              },
+              "blocks": {}
+            },
+            "logo_w9xWWA": {
+              "type": "_logo",
+              "settings": {
+                "image": "shopify://shop_images/Fish4.png",
+                "image_width": 140,
+                "link": "shopify://products/fish",
+                "open_in_new_tab": true,
+                "image_width_mobile": 100
+              },
+              "blocks": {}
+            },
+            "logo_Uxxmnt": {
+              "type": "_logo",
+              "settings": {
+                "image": "shopify://shop_images/generate-mixed-cabbage-image.png",
+                "image_width": 120,
+                "link": "shopify://collections/cabbage",
+                "open_in_new_tab": true,
+                "image_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "logo_CyADBt",
+            "logo_dGNEbj",
+            "logo_py3mBN",
+            "logo_w9xWWA",
+            "logo_Uxxmnt"
+          ]
+        }
+      },
+      "name": "t:sections.logo-list.presets.name",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 16
+      }
+    },
+    "custom_section_header_HBMtfF": {
+      "type": "custom-section-header",
+      "blocks": {
+        "heading_dPQ9PX": {
+          "type": "heading",
+          "settings": {
+            "content": "Community Feed",
+            "type": "2",
+            "size": "small",
+            "uppercase": false,
+            "enable_highlight_text": true,
+            "highlight_type": "color",
+            "highlight_color": "#ff0000"
+          },
+          "blocks": {}
+        },
+        "description_mAHkiJ": {
+          "type": "description",
+          "settings": {
+            "content": "<p>Moments and inspirations shared by you</p>",
+            "color_light": false,
+            "limit_description_height": true
+          },
+          "blocks": {}
+        },
+        "links_y4tmAW": {
+          "type": "links",
+          "name": "t:blocks.links.presets.name",
+          "settings": {},
+          "blocks": {
+            "link_JKTrDV": {
+              "type": "_link",
+              "settings": {
+                "text": "#BioFarm",
+                "link": "",
+                "open_in_new_tab": true
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "link_JKTrDV"
+          ]
+        }
+      },
+      "block_order": [
+        "heading_dPQ9PX",
+        "description_mAHkiJ",
+        "links_y4tmAW"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 12
+      }
+    },
+    "shop_the_feed_y4x4zc": {
+      "type": "shop-the-feed",
+      "blocks": {
+        "image_feed_WLeYNd": {
+          "type": "image-feed",
+          "settings": {
+            "image": "shopify://shop_images/kale.png",
+            "description": "<p>Green charm, zero stress.<br/>Florona plants bring effortless beauty and calm to every corner. 🌱✨<br/><br/>#FloronaPlants #EasyGreen #NatureIndoors #FreshSpaces</p>",
+            "product": "peace-lily"
+          }
+        },
+        "video_feed_ghYcAg": {
+          "type": "video-feed",
+          "settings": {
+            "video": "shopify://files/videos/Prod.mp4",
+            "description": "<p>More leaves, less worries.<br/>Florona makes greening your home as easy as a Sunday morning. 🍃💚<br/><br/>#FloronaPlants #HomeVibes #PlantLove #GrowWithFlorona</p>",
+            "product": "aloe-vera"
+          }
+        },
+        "image_feed_RRqkMW": {
+          "type": "image-feed",
+          "settings": {
+            "image": "shopify://shop_images/MatadorSpinach2026-02-10011601.png",
+            "description": "<p>Style meets nature.<br/>Florona plants refresh your space with elegance and ease. 🌿🏡<br/><br/>#FloronaPlants #GreenDesign #EasyCarePlants #NaturallyBetter</p>",
+            "product": "fern"
+          }
+        },
+        "video_feed_J9pPzg": {
+          "type": "video-feed",
+          "settings": {
+            "video": "shopify://files/videos/SecondProductVideo.mp4",
+            "description": "<p><br/>Fresh green leafy plant showcased with vibrant natural color and healthy growth, highlighting its purity and farm-fresh quality. Perfect for organic gardening, healthy meals, and adding natural freshness to your lifestyle.<br/><br/></p>",
+            "product": "bird-of-paradise"
+          }
+        },
+        "image_feed_6LxfXp": {
+          "type": "image-feed",
+          "settings": {
+            "image": "shopify://shop_images/LaurelSpinach2026-02-10011937.png",
+            "description": "<p>Calm spaces, happy places.<br/>Florona plants turn any room into your personal green retreat. 🌿💫<br/><br/>#FloronaPlants #GreenLifestyle #PeacefulLiving #FloronaTouch</p>",
+            "product": "philodendron"
+          }
+        },
+        "image_feed_h4Fj7L": {
+          "type": "image-feed",
+          "settings": {
+            "image": "shopify://shop_images/SliderImage_5a631d4e-e26b-4e00-a847-a063de27844a.png",
+            "description": "<p>Green bliss, zero fuss.<br/>Florona plants bring life, calm, and a touch of nature indoors. 🍃✨<br/><br/>#FloronaPlants #StressFreeGreen #NatureAtHome #LiveGreen</p>",
+            "product": "snake-plant"
+          }
+        }
+      },
+      "block_order": [
+        "image_feed_WLeYNd",
+        "video_feed_ghYcAg",
+        "image_feed_RRqkMW",
+        "video_feed_J9pPzg",
+        "image_feed_6LxfXp",
+        "image_feed_h4Fj7L"
+      ],
+      "settings": {
+        "enable_full_width": true,
+        "color_scheme": "",
+        "layout": "scroll",
+        "columns": 4,
+        "horizontal_gap": 16,
+        "vertical_gap": 8,
+        "direction": "left",
+        "speed": 40,
+        "display_border_blur": false,
+        "enable_scroll_synergy": false,
+        "social_type": "instagram",
+        "social_nickname": "Flôrona",
+        "social_username": "Flôrona",
+        "social_link": "",
+        "columns_mobile": "2",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "1771502565c5cd7324": {
+      "type": "_blocks",
+      "disabled": true,
+      "settings": {
+        "enable_full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "17715185884ca19471": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_df479f9_nhgLWG": {
+          "type": "ai_gen_block_df479f9",
+          "settings": {
+            "display_format": "code",
+            "show_icon": true,
+            "font_size": 14,
+            "icon_size": 18,
+            "text_color": "#1a1a1a",
+            "dropdown_alignment": "left",
+            "dropdown_min_width": 150,
+            "dropdown_border_radius": 8,
+            "dropdown_font_size": 14,
+            "dropdown_background": "#ffffff",
+            "dropdown_border_color": "#e5e5e5",
+            "dropdown_text_color": "#1a1a1a",
+            "dropdown_hover_background": "#f5f5f5",
+            "dropdown_active_background": "#f0f0f0"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_df479f9_nhgLWG"
+      ],
+      "disabled": true,
+      "settings": {
+        "enable_full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    }
+  },
+  "order": [
+    "carousel_t7iURU",
+    "trust_promises_VAfttF",
+    "featured_collection_FTFzn3",
+    "collage_with_text_yJwTDR",
+    "featured_product_XQnDkc",
+    "media_grid_VcQrPc",
+    "reading_text_DMarFV",
+    "featured_products_grid_4XT8Tr",
+    "press_9EXkjY",
+    "custom_section_header_B7cYXK",
+    "shop_the_look_Wg4Ntb",
+    "testimonial_qGxiwq",
+    "media_grid_9PbGad",
+    "newsletter_bC7F96",
+    "seamless_scroll_efNa7N",
+    "before_after_bHV6C8",
+    "featured_blog_Yde8hU",
+    "logo_list_i3kV86",
+    "custom_section_header_HBMtfF",
+    "shop_the_feed_y4x4zc",
+    "1771502565c5cd7324",
+    "17715185884ca19471"
+  ]
+}

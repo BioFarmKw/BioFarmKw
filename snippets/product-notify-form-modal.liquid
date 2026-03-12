@@ -1,0 +1,140 @@
+{% doc %}
+  Product Notify Form Modal
+
+  @description
+  Renders a modal form for customers to subscribe to back-in-stock notifications for a specific product.
+
+  @param {string} section_id - Section Id
+  @param {object} product - Product object
+
+  @example
+  {% render 'product-notify-form-modal', product: product, section_id: section_id %}
+{% enddoc %}
+
+<modal-dialog id="Notify-Email-{{ section_id }}" class="notify-email-modal modal">
+  <div class="modal-overlay"></div>
+  <div
+    class="modal-inner notify-email-inner gradient focus-none"
+    role="dialog"
+    data-trap
+    aria-modal="true"
+    aria-label="{{ 'products.product.notify_me' | t }}"
+    tabindex="-1"
+  >
+    <div class="modal-header">
+      <b class="modal-title font-heading">{{ 'products.product.notify_me' | t }}</b>
+      <button
+        class="modal-close-button button button--small button--icon button--pill button--ethereal focus-inset ms-auto"
+        type="button"
+        aria-label="{{ 'accessibility.close' | t }}"
+        onclick="this.closest('modal-dialog').hide()"
+      >
+        {% render 'icon-sets-basic', icon: 'close' %}
+      </button>
+    </div>
+    <div class="modal-content">
+      <div class="product-card">
+        <div class="product-image media media--square">
+          {% liquid
+            assign variant_image = product.selected_or_first_available_variant.image
+            if variant_image == blank
+              assign variant_image = product.featured_media
+            endif
+          %}
+          {%- if variant_image != blank -%}
+            {{ variant_image | image_url: width: 200 | image_tag }}
+          {%- else -%}
+            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+        </div>
+        <div class="product-info">
+          <div class="product-title">{{ product.title }}</div>
+          {%- unless product.has_only_default_variant -%}
+            <div class="product-options light">{{ product.selected_or_first_available_variant.title }}</div>
+          {%- endunless -%}
+          {% render 'price', product_object: product, use_variant: true %}
+        </div>
+      </div>
+
+      {% assign notify_form_id = 'Notify-Form-' | append: section_id %}
+      {%- form 'contact', id: notify_form_id -%}
+        {%- if form.errors -%}
+          <div
+            id="Notify-Form-Error-{{ section_id }}"
+            class="alert-message alert-error mb-2"
+            role="alert"
+            autofocus
+            tabindex="-1"
+          >
+            {{ form.errors.messages.email }}
+          </div>
+        {% endif %}
+        {%- if form.posted_successfully? -%}
+          <div class="alert-message alert-success mb-2" role="alert" autofocus tabindex="-1">
+            {{ 'products.product.notify_me_submit_success' | t }}
+          </div>
+        {%- endif -%}
+        <div class="form-fields">
+          <div class="field{% if form.errors %} field-error{% endif %}">
+            <input
+              id="Notify-Form-Email-{{ section_id }}"
+              type="email"
+              class="field-input"
+              name="contact[email]"
+              autocomplete="email"
+              spellcheck="false"
+              autocapitalize="off"
+              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+              pattern=".+@.+\.[a-zA-Z]{2,}$"
+              title="{{ 'newsletter.valid_email' | t }}"
+              {% if form.errors %}
+                aria-invalid="true"
+                aria-describedby="Notify-Form-Error-{{ section_id }}"
+              {% endif %}
+              placeholder="{{ 'templates.contact.form.email' | t }}"
+              required
+            >
+            <label class="field-label" for="Notify-Form-Email-{{ section_id }}">
+              {{- 'templates.contact.form.email' | t }}
+              <span aria-hidden="true">*</span>
+            </label>
+          </div>
+        </div>
+
+        {%- if customer and customer.name != blank -%}
+          <input type="hidden" name="contact[name]" value="{{ customer.name }}">
+        {%- endif -%}
+        <input type="hidden" name="contact[product handle]" value="{{ product.handle }}">
+        <input
+          type="hidden"
+          name="contact[product title]"
+          value="{{ product.title }}({{ product.selected_or_first_available_variant.title }})"
+        >
+        <input type="hidden" name="contact[from form]" value="Email me when available">
+
+        <div class="button-group">
+          <button type="submit" class="submit-button button">
+            {% render 'icon-sets', icon: 'email' %}
+            {{ 'products.product.notify_me' | t }}
+          </button>
+          <button
+            type="button"
+            class="cancel-button button button--link"
+            onclick="this.closest('modal-dialog').hide();"
+          >
+            {{ 'general.cancel' | t }}
+          </button>
+        </div>
+
+        {%- if form.errors or form.posted_successfully? -%}
+          <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function () {
+              const modal = document.getElementById('Notify-Email-{{ section_id }}');
+              if (modal) modal.show();
+            });
+          </script>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+</modal-dialog>

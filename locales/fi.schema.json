@@ -1,0 +1,4566 @@
+{
+  "settings_schema": {
+    "layout": {
+      "name": "Asettelu",
+      "settings": {
+        "enable_rtl": {
+          "label": "Ota RTL käyttöön",
+          "info": "Vaihda asettelun suunta oikealta vasemmalle kielille kuten arabia tai heprea."
+        },
+        "rtl_languages": {
+          "label": "RTL-tuetut kielet",
+          "info": "Kirjoita [ISO-kielikoodit](https://www.loc.gov/standards/iso639-2/php/code_list.php) pilkuilla erotettuna. Jätä tyhjäksi koskemaan kaikkia kieliä."
+        },
+        "page_width": {
+          "label": "Sivun leveys"
+        }
+      }
+    },
+    "transparent_header": {
+      "name": "Läpinäkyvä otsikko",
+      "transparent_logo": {
+        "info": "Toimii, kun läpinäkyvä sivu on käytössä"
+      },
+      "transparent_foreground_color": {
+        "label": "Etualan väri"
+      },
+      "header_pages": {
+        "content": "Käytössä olevat sivut"
+      },
+      "enable_transparent_header_index": {
+        "label": "Etusivu"
+      },
+      "enable_transparent_header_collections": {
+        "label": "Kokoelmat"
+      },
+      "transparent_collections_templates": {
+        "label": "Kokoelmapohjat",
+        "info": "Erota useat pohjat pilkuilla. Jätä tyhjäksi koskemaan kaikkia kokoelmapohjia."
+      },
+      "enable_transparent_header_collections_list": {
+        "label": "Kokoelmalista"
+      },
+      "enable_transparent_header_search": {
+        "label": "Haku"
+      },
+      "enable_transparent_header_pages": {
+        "label": "Sivut"
+      },
+      "transparent_pages_templates": {
+        "label": "Sivupohjat",
+        "info": "Erota useat pohjat pilkuilla. Jätä tyhjäksi koskemaan kaikkia sivupohjia."
+      }
+    },
+    "colors": {
+      "name": "Värit",
+      "settings": {
+        "header_background": {
+          "content": "Taustavärit"
+        },
+        "background": {
+          "label": "Tausta"
+        },
+        "background_gradient": {
+          "label": "Liukuväritausta",
+          "info": "Aseta liukuväri taustalle dynaamisemman ilmeen luomiseksi."
+        },
+        "header_text": {
+          "content": "Tekstivärit"
+        },
+        "text": {
+          "label": "Teksti"
+        },
+        "sale_price": {
+          "label": "Alennushinta"
+        },
+        "header_button": {
+          "content": "Painikevärit"
+        },
+        "button": {
+          "label": "Ensisijainen painike tausta"
+        },
+        "button_label": {
+          "label": "Ensisijainen painike teksti"
+        },
+        "secondary_button": {
+          "label": "Toissijainen painike tausta"
+        },
+        "secondary_button_label": {
+          "label": "Toissijainen painike teksti"
+        },
+        "header_rating": {
+          "content": "Muut värit"
+        },
+        "rating_star": {
+          "label": "Arvostelutähti"
+        },
+        "header_page_scheme": {
+          "content": "Sivun värimalli"
+        },
+        "paragraph_page_scheme": {
+          "content": "Määritä sivujen yleinen värimalli"
+        },
+        "header_other_colors": {
+          "content": "Muut värimääritykset"
+        },
+        "color_success": {
+          "label": "Onnistumisväri",
+          "info": "Ilmaisee onnistuneen toiminnon tai normaalin tilan"
+        },
+        "color_error": {
+          "label": "Virheväri",
+          "info": "Ilmaisee epäonnistuneen toiminnon tai virheen"
+        },
+        "color_warning": {
+          "label": "Varoitusväri",
+          "info": "Varoittaa käyttäjää huomiota vaativasta asiasta"
+        }
+      }
+    },
+    "typography": {
+      "name": "Typografia",
+      "settings": {
+        "font_spacing": {
+          "label": "Kirjainväli",
+          "options__1": {
+            "label": "Tiivis"
+          },
+          "options__2": {
+            "label": "Normaali"
+          },
+          "options__3": {
+            "label": "Väljä"
+          },
+          "options__4": {
+            "label": "Leveä"
+          }
+        },
+        "header_heading": {
+          "content": "Otsikkofontti"
+        },
+        "type_heading_font": {
+          "label": "Fontti",
+          "info": "Fontin vaihtaminen voi vaikuttaa kaupan nopeuteen. [Lue lisää järjestelmäfonteista.](https://help.shopify.com/manual/online-store/os/store-speed/improving-speed#fonts)"
+        },
+        "header_body": {
+          "content": "Leipätekstifontti"
+        },
+        "type_body_font": {
+          "label": "Fontti",
+          "info": "Fontin vaihtaminen voi vaikuttaa kaupan nopeuteen. [Lue lisää järjestelmäfonteista.](https://help.shopify.com/manual/online-store/os/store-speed/improving-speed#fonts)"
+        },
+        "header_decorative": {
+          "content": "Koristefontti"
+        },
+        "type_decorative_font": {
+          "label": "Fontti",
+          "info": "Koristefontit kannattaa valita käsinkirjoitetuista tai epätavallisista tyyleistä luovuuden ja ainutlaatuisuuden lisäämiseksi."
+        }
+      }
+    },
+    "icons": {
+      "name": "Kuvakkeet",
+      "settings": {
+        "icon_style": {
+          "label": "Kuvakkeen tyyli",
+          "options__1": {
+            "label": "Ääriviiva"
+          },
+          "options__2": {
+            "label": "Kiinteä"
+          },
+          "options__3": {
+            "label": "Siirretty"
+          }
+        }
+      }
+    },
+    "animations": {
+      "name": "Animaatiot",
+      "settings": {
+        "animations_reveal_on_scroll": {
+          "label": "Näytä osiot vierittäessä"
+        },
+        "animations_enable_image_lazy_loading": {
+          "label": "Ota kuvien laiska lataus käyttöön"
+        }
+      }
+    },
+    "cards": {
+      "name": "Tuotekortit",
+      "settings": {
+        "header_media": {
+          "content": "Kuva-asetukset"
+        },
+        "card_hover_show_secondary_image": {
+          "label": "Näytä toinen kuva hoverissa"
+        },
+        "card_hover_effect": {
+          "label": "Kuvasiirtymä",
+          "options__1": {
+            "label": "Siirrä"
+          },
+          "options__2": {
+            "label": "Häivytä"
+          }
+        },
+        "card_show_vendor": {
+          "label": "Näytä toimittaja"
+        },
+        "card_truncate_title": {
+          "label": "Lyhennä otsikko"
+        },
+        "card_enable_quick_buy": {
+          "label": "Ota pikamyynti käyttöön"
+        },
+        "card_show_low_stock": {
+          "label": "Näytä matala varasto"
+        },
+        "card_low_stock_threshold": {
+          "label": "Matala varastoraja",
+          "info": "Aseta raja, jolloin matala varasto näytetään"
+        },
+        "header_color_swatch": {
+          "content": "Värimalliasetukset"
+        },
+        "card_enable_color_swatch": {
+          "label": "Ota värimalli käyttöön"
+        },
+        "card_color_swatch_type": {
+          "label": "Värimallityyppi",
+          "options__1": {
+            "label": "Kuva"
+          },
+          "options__2": {
+            "label": "Väri"
+          }
+        },
+        "card_round_swatches": {
+          "label": "Pyöreät näytteet"
+        },
+        "card_active_first_swatch": {
+          "label": "Ensimmäinen värimalli oletuksena",
+          "info": "Hover-animaatio poistetaan käytöstä"
+        },
+        "header_card_rating": {
+          "content": "Arvosteluasetukset"
+        },
+        "card_show_rating": {
+          "label": "Näytä arvostelu"
+        },
+        "enable_rating_preview": {
+          "label": "Ota esikatselu käyttöön",
+          "info": "Näytä simuloidut arvostelutiedot"
+        }
+      }
+    },
+    "badge": {
+      "name": "Korttien merkit",
+      "settings": {
+        "header_sale_badge": {
+          "content": "Alennusmerkin asetukset"
+        },
+        "enable_sale_badge": {
+          "label": "Ota alennusmerkki käyttöön"
+        },
+        "sale_badge_style": {
+          "label": "Alennusmerkin tyyli",
+          "options__1": {
+            "label": "Kulmanauha"
+          },
+          "options__2": {
+            "label": "Tunnus"
+          }
+        },
+        "sale_badge_type": {
+          "label": "Alennusmerkin tyyppi",
+          "options__1": {
+            "label": "Teksti"
+          },
+          "options__2": {
+            "label": "Summa"
+          },
+          "options__3": {
+            "label": "Prosentti"
+          }
+        },
+        "header_new_badge": {
+          "content": "Uuden merkin asetukset"
+        },
+        "enable_new_badge": {
+          "label": "Ota uusi merkki käyttöön"
+        },
+        "new_label_basis": {
+          "label": "Uuden merkin peruste",
+          "options__1": {
+            "label": "Julkaisupäivien määrä"
+          },
+          "options__2": {
+            "label": "Tunniste"
+          }
+        },
+        "new_badge_tag": {
+          "label": "Uuden merkin tunniste",
+          "info": "Tehoaa, kun uuden merkin perusteena on 'Tunniste'"
+        },
+        "new_product_days": {
+          "label": "Uuden tuotteen päivien määrä",
+          "info": "Aseta päivien määrä, jonka jälkeen tuote on uusi. Tehoaa, kun uuden merkin perusteena on 'Julkaisupäivät'. Tänä aikana julkaistut tuotteet merkitään 'Uudeksi'.",
+          "options__1": {
+            "label": "7 päivää"
+          },
+          "options__2": {
+            "label": "14 päivää"
+          },
+          "options__3": {
+            "label": "30 päivää"
+          }
+        },
+        "header_preorder_badge": {
+          "content": "Ennakkomyyntimerkin asetukset"
+        },
+        "enable_preorder_badge": {
+          "label": "Ota ennakkomyyntimerkki käyttöön",
+          "info": "Kun ennakkomyyntimerkki on käytössä, tuotesivulla näkyy myös ennakkotilauspainike (jos tuote täyttää ennakkotilausvaatimukset)"
+        },
+        "header_custom_badge": {
+          "content": "Mukautetun merkin asetukset"
+        },
+        "paragraph_custom_badge": {
+          "content": "Lisää tuotteisiin tunnisteita muodossa _Custom Badge"
+        },
+        "enable_custom_badge": {
+          "label": "Ota mukautettu merkki käyttöön"
+        }
+      }
+    },
+    "social-media": {
+      "name": "Sosiaalinen media",
+      "settings": {
+        "header_share": {
+          "content": "Jakamisasetukset"
+        },
+        "enable_share_facebook": {
+          "label": "Ota Facebook-jako käyttöön"
+        },
+        "enable_share_twitter": {
+          "label": "Ota Twitter-jako käyttöön"
+        },
+        "enable_share_pinterest": {
+          "label": "Ota Pinterest-jako käyttöön"
+        },
+        "enable_share_linkedin": {
+          "label": "Ota LinkedIn-jako käyttöön"
+        },
+        "header_socials": {
+          "content": "Omat some-tilit"
+        },
+        "social_twitter_link": {
+          "label": "Twitter",
+          "info": "https://twitter.com/shopify"
+        },
+        "social_facebook_link": {
+          "label": "Facebook",
+          "info": "https://facebook.com/shopify"
+        },
+        "social_pinterest_link": {
+          "label": "Pinterest",
+          "info": "https://pinterest.com/shopify"
+        },
+        "social_instagram_link": {
+          "label": "Instagram",
+          "info": "https://instagram.com/shopify"
+        },
+        "social_tiktok_link": {
+          "label": "TikTok",
+          "info": "https://tiktok.com/@shopify"
+        },
+        "social_tumblr_link": {
+          "label": "Tumblr",
+          "info": "https://shopify.tumblr.com"
+        },
+        "social_snapchat_link": {
+          "label": "Snapchat",
+          "info": "https://www.snapchat.com/add/shopify"
+        },
+        "social_youtube_link": {
+          "label": "YouTube",
+          "info": "https://www.youtube.com/shopify"
+        },
+        "social_vimeo_link": {
+          "label": "Vimeo",
+          "info": "https://vimeo.com/shopify"
+        },
+        "social_linkedin_link": {
+          "label": "LinkedIn",
+          "info": "https://linkedin.com/shopify"
+        },
+        "social_whatsapp_link": {
+          "label": "WhatsApp",
+          "info": "https://whatsapp.com/shopify"
+        },
+        "social_reddit_link": {
+          "label": "Reddit",
+          "info": "https://reddit.com/shopify"
+        },
+        "social_discord_link": {
+          "label": "Discord",
+          "info": "https://discord.gg/shopify"
+        }
+      }
+    },
+    "search-input": {
+      "name": "Hakukäyttäytyminen",
+      "settings": {
+        "predictive_search_enabled": {
+          "label": "Ota hakuehdotukset käyttöön"
+        },
+        "search_popular_keywords": {
+          "label": "Suositut hakusanat",
+          "info": "Erota useat hakusanat pilkulla"
+        }
+      }
+    },
+    "currency-format": {
+      "name": "Valuuttamuoto",
+      "settings": {
+        "content": "Valuuttakoodit",
+        "paragraph": "Korin ja kassasummat näyttävät aina valuuttakoodit. Esimerkki: $1.00 USD.",
+        "currency_code_enabled": {
+          "label": "Näytä valuuttakoodi"
+        }
+      }
+    },
+    "cart": {
+      "name": "Ostoskorin asetukset",
+      "settings": {
+        "cart_icon": {
+          "label": "Ostoskorin kuvake",
+          "options__1": {
+            "label": "Kori"
+          },
+          "options__2": {
+            "label": "Laukku"
+          },
+          "options__3": {
+            "label": "Kori"
+          }
+        },
+        "cart_type": {
+          "label": "Korin tyyppi",
+          "drawer": {
+            "label": "Laatikko"
+          },
+          "page": {
+            "label": "Sivu"
+          }
+        },
+        "show_vendor": {
+          "label": "Näytä myyjä"
+        },
+        "enable_cart_note": {
+          "label": "Näytä ostoskorin viesti"
+        },
+        "enable_cart_shipping_estimate": {
+          "label": "Näytä toimitusarvio"
+        },
+        "enable_cart_coupon": {
+          "label": "Näytä alennuskoodi ostoskorissa"
+        },
+        "header_free_shipping_progress_bar": {
+          "content": "Ilmaisen toimituksen etenemispalkki"
+        },
+        "enable_free_shipping_progress_bar": {
+          "label": "Ota käyttöön ilmaisen toimituksen palkki"
+        },
+        "paragraph_no_free": {
+          "content": "+ Ilmainen toimitus ei täyty"
+        },
+        "paragraph_free": {
+          "content": "+ Ilmainen toimitus täyttyy"
+        },
+        "shipping_text_color": {
+          "label": "Palkin tekstin väri"
+        },
+        "shipping_bar_color": {
+          "label": "Palkin taustaväri"
+        },
+        "free_shipping_threshold": {
+          "label": "Ilmaisen toimituksen raja",
+          "info": "Anna kokonaisluku kaupan oletusvaluutassa; muunnetaan automaattisesti muihin valuuttoihin."
+        },
+        "enable_free_shipping_confetti": {
+          "label": "Ota käyttöön konfettiefekti",
+          "info": "Konfettiefekti aktivoituu, kun ilmainen toimitusraja täyttyy"
+        }
+      }
+    },
+    "favicon": {
+      "name": "Favicon",
+      "settings": {
+        "favicon": {
+          "label": "Favicon-kuva",
+          "info": "Pienennetään kokoon 32 × 32px"
+        }
+      }
+    },
+    "others": {
+      "name": "Muut",
+      "settings": {
+        "enable_browser_tab_flash": {
+          "label": "Ota käyttöön välilehden vilkkuminen",
+          "info": "Vaihtaa välilehden otsikon huomiota varten, kun sivu on passiivinen"
+        },
+        "show_section_id": {
+          "label": "Näytä osion tunnus",
+          "info": "Näkyy vain editoritilassa"
+        },
+        "enable_festival_effect": {
+          "label": "Ota juhlatehoste käyttöön"
+        },
+        "festival": {
+          "label": "Juhla",
+          "options__1": {
+            "label": "Joulu"
+          }
+        },
+        "enable_logo_overlay": {
+          "label": "Ota logo-peittokuva käyttöön"
+        },
+        "enable_christmas_snow": {
+          "label": "Ota joululumi käyttöön"
+        },
+        "christmas_snow_duration": {
+          "label": "Lumen kesto"
+        },
+        "enable_footer_overlay": {
+          "label": "Ota alatunnisteen peittokuva käyttöön"
+        },
+        "cursor_style": {
+          "label": "Kursorin tyyli",
+          "options__1": {
+            "label": "Oletus"
+          },
+          "options__2": {
+            "label": "Joulusukka"
+          },
+          "options__3": {
+            "label": "Joulupukin hattu"
+          },
+          "options__4": {
+            "label": "Lumihiutale"
+          }
+        },
+        "enable_category_menu_overlay": {
+          "label": "Ota kategoriamenun peittokuva käyttöön"
+        }
+      }
+    }
+  },
+  "blocks": {
+    "_author": {
+      "name": "Tekijä",
+      "settings": {
+        "profile_picture": {
+          "label": "Avatar",
+          "info": "Suositeltu 70 x 70px .jpg"
+        },
+        "avatar_size": {
+          "label": "Avatarin koko",
+          "options__1": {
+            "label": "Pieni"
+          },
+          "options__2": {
+            "label": "Keskikokoinen"
+          },
+          "options__3": {
+            "label": "Iso"
+          }
+        },
+        "name": {
+          "label": "Nimi"
+        },
+        "role": {
+          "label": "Rooli"
+        }
+      },
+      "presets": {
+        "name": "Tekijä"
+      }
+    },
+    "_icon-text-content": {
+      "name": "Ikoni teksti",
+      "settings": {
+        "image": {
+          "info": "Suositeltu 30 x 30px .jpg"
+        }
+      },
+      "presets": {
+        "name": "Ikoni teksti"
+      }
+    },
+    "_product-list": {
+      "name": "Tuotelista",
+      "settings": {
+        "show_view_more": {
+          "label": "Näytä lisää"
+        },
+        "header_image": {
+          "content": "Kokoelmakuvan asetukset"
+        },
+        "image": {
+          "info": "Suositeltu 300 x 400px .jpg"
+        }
+      }
+    },
+    "_collection": {
+      "name": "Kokoelma",
+      "settings": {
+        "image": {
+          "info": "Suositeltu 300 x 300px .jpg"
+        }
+      },
+      "presets": {
+        "name": "Kokoelma"
+      }
+    },
+    "_collection-list": {
+      "name": "Kokoelmalista"
+    },
+    "_collection-icons": {
+      "name": "Kokoelmaikoneiden lista"
+    },
+    "_collection-icon": {
+      "name": "Kokoelmaikoni",
+      "settings": {
+        "image": {
+          "info": "Suositeltu 150 x 150px .jpg"
+        }
+      },
+      "presets": {
+        "name": "Kokoelmaikoni"
+      }
+    },
+    "_collection-recommend": {
+      "name": "Kokoelmasuositus",
+      "settings": {
+        "show_view_more": {
+          "label": "Näytä lisää",
+          "info": "Jos tuotteita on enemmän kuin raja, tämä linkki näkyy"
+        }
+      }
+    },
+    "_collection-title": {
+      "name": "Kokoelman nimi",
+      "presets": {
+        "name": "Kokoelman nimi"
+      }
+    },
+    "_collection-description": {
+      "name": "Kokoelman kuvaus",
+      "presets": {
+        "name": "Kokoelman kuvaus"
+      }
+    },
+    "_collection-subcollections": {
+      "name": "Alakokoelmat",
+      "presets": {
+        "name": "Alakokoelmat"
+      }
+    },
+    "_collection-subcollection": {
+      "name": "Alakokoelma",
+      "settings": {
+        "custom_title": {
+          "label": "Mukautettu otsikko"
+        }
+      },
+      "presets": {
+        "name": "Alakokoelma"
+      }
+    },
+    "_rich-text": {
+      "name": "Sisältö",
+      "presets": {
+        "name": "Sisältö"
+      }
+    },
+    "_text-group": {
+      "name": "Tekstiryhmä",
+      "presets": {
+        "name": "Tekstiryhmä"
+      }
+    },
+    "_statistic": {
+      "name": "Tilasto",
+      "settings": {
+        "title": {
+          "label": "Otsikko"
+        },
+        "description": {
+          "label": "Kuvaus"
+        },
+        "image": {
+          "info": "Suositeltu 30 x 30px .jpg"
+        }
+      },
+      "presets": {
+        "name": "Tilasto"
+      }
+    },
+    "_image": {
+      "name": "Kuva",
+      "settings": {
+        "image": {
+          "info": "Suositeltu 400 x 300px .jpg"
+        },
+        "image_mobile": {
+          "info": "Suositeltu 300 x 200px .jpg"
+        }
+      },
+      "presets": {
+        "name": "Kuva"
+      }
+    },
+    "_images": {
+      "name": "Kuvaryhmä",
+      "settings": {
+        "paragraph_content": {
+          "content": "Enintään 5 kuvaa voidaan näyttää"
+        },
+        "angle_style": {
+          "label": "Kulmatyyli",
+          "options__1": {
+            "label": "Siisti"
+          },
+          "options__2": {
+            "label": "Hajanaiset"
+          },
+          "options__3": {
+            "label": "Kallista vasemmalle"
+          },
+          "options__4": {
+            "label": "Kallista oikealle"
+          }
+        },
+        "show_image_frame": {
+          "label": "Näytä kuvakehys"
+        }
+      },
+      "presets": {
+        "name": "Kuvat"
+      }
+    },
+    "_video": {
+      "name": "Video",
+      "settings": {
+        "image": {
+          "info": "Suositeltu 400 x 400px .jpg"
+        },
+        "image_mobile": {
+          "info": "Suositeltu 250 x 250px .jpg"
+        }
+      },
+      "presets": {
+        "name": "Video"
+      }
+    },
+    "_link": {
+      "name": "Linkki",
+      "presets": {
+        "name": "Linkki"
+      }
+    },
+    "_section-header": {
+      "name": "Osiootsikko",
+      "presets": {
+        "name": "Osiootsikko"
+      }
+    },
+    "_page-title": {
+      "name": "Sivun otsikko",
+      "presets": {
+        "name": "Sivun otsikko"
+      }
+    },
+    "_page-description": {
+      "name": "Sivun kuvaus",
+      "presets": {
+        "name": "Sivun kuvaus"
+      }
+    },
+    "_promise-list": {
+      "name": "Lupauslista"
+    },
+    "_promise-item": {
+      "name": "Lupauskohta",
+      "settings": {
+        "image": {
+          "info": "Suositeltu 40 x 40px .jpg"
+        }
+      },
+      "presets": {
+        "name": "Lupauskohta"
+      }
+    },
+    "_quote": {
+      "name": "Lainaus",
+      "presets": {
+        "name": "Lainaus"
+      }
+    },
+    "_carousel-image-slide": {
+      "name": "Kuvakarusellin kohde",
+      "presets": {
+        "name": "Kuvakarusellin kohde"
+      }
+    },
+    "_carousel-video-slide": {
+      "name": "Videokarusellin kohde",
+      "presets": {
+        "name": "Videokarusellin kohde"
+      }
+    },
+    "_featured-blog": {
+      "name": "Blogikirjoituslista",
+      "settings": {
+        "show_view_more": {
+          "label": "Näytä lisää"
+        },
+        "paragraph_content": {
+          "content": "+ Liukusäätimen kohteen asetukset"
+        },
+        "header_article_setting": {
+          "content": "Artikkelin asetukset"
+        }
+      },
+      "presets": {
+        "name": "Blogikirjoituslista"
+      }
+    },
+    "_testimonial": {
+      "name": "Suositus",
+      "settings": {
+        "show_rating": {
+          "label": "Näytä arvio"
+        },
+        "rating": {
+          "label": "Arvio"
+        },
+        "content": {
+          "label": "Suosituksen sisältö"
+        },
+        "header_author": {
+          "content": "Asiakastiedot"
+        },
+        "author_name": {
+          "label": "Asiakkaan nimi"
+        },
+        "author_avatar": {
+          "label": "Asiakkaan avatar",
+          "info": "Suositeltu 30 x 30px .jpg"
+        },
+        "show_verified": {
+          "label": "Näytä vahvistettu"
+        },
+        "header_product": {
+          "content": "Liittyvä tuote"
+        },
+        "image": {
+          "info": "Suositeltu 300 x 300px .jpg"
+        }
+      },
+      "presets": {
+        "name": "Suositus"
+      }
+    },
+    "_testimonial-list": {
+      "name": "Suosituslista"
+    },
+    "_collapsible-content-list": {
+      "name": "Taitettavien välilehtien lista"
+    },
+    "_collapsible-content-item": {
+      "name": "Taitettava välilehti",
+      "presets": {
+        "name": "Taitettava välilehti"
+      }
+    },
+    "_contact-form": {
+      "name": "Lomake",
+      "settings": {
+        "image": {
+          "info": "Suositeltu 500 x 300px .jpg"
+        },
+        "show_form_phone": {
+          "label": "Näytä puhelinkenttä"
+        }
+      },
+      "presets": {
+        "name": "Lomake"
+      }
+    },
+    "_custom-input-field": {
+      "name": "Mukautettu syöttökenttä",
+      "settings": {
+        "type": {
+          "label": "Syöttötyyppi",
+          "options__1": {
+            "label": "Teksti"
+          },
+          "options__2": {
+            "label": "Sähköposti"
+          },
+          "options__3": {
+            "label": "Numero"
+          },
+          "options__4": {
+            "label": "Puhelin"
+          },
+          "options__5": {
+            "label": "URL"
+          },
+          "options__6": {
+            "label": "Päivämäärä"
+          }
+        },
+        "name": {
+          "label": "Kentän nimi"
+        },
+        "placeholder": {
+          "label": "Paikkamerkkiteksti",
+          "info": "Näytetään, kun kenttä on tyhjä"
+        },
+        "default": {
+          "label": "Oletusarvo"
+        },
+        "if_required": {
+          "label": "Pakollinen kenttä"
+        }
+      },
+      "presets": {
+        "name": "Mukautettu syöttökenttä"
+      }
+    },
+    "_custom-select-field": {
+      "name": "Mukautettu valintakenttä",
+      "settings": {
+        "options": {
+          "label": "Vaihtoehdot",
+          "info": "Syötä vaihtoehdot pilkuilla erotettuna, esim. Vaihtoehto 1, Vaihtoehto 2, Vaihtoehto 3"
+        }
+      },
+      "presets": {
+        "name": "Mukautettu valintakenttä"
+      }
+    },
+    "_custom-checkbox-field": {
+      "name": "Mukautettu valintaruutukenttä",
+      "settings": {
+        "default_checked": {
+          "label": "Oletuksena valittu"
+        }
+      },
+      "presets": {
+        "name": "Mukautettu valintaruutukenttä"
+      }
+    },
+    "_custom-radio-field": {
+      "name": "Mukautettu radiopainikekenttä",
+      "presets": {
+        "name": "Mukautettu radiopainikekenttä"
+      }
+    },
+    "_contact-info": {
+      "name": "Yhteystiedot",
+      "presets": {
+        "name": "Yhteystiedot"
+      }
+    },
+    "_before-after": {
+      "name": "Ennen & jälkeen -banneri",
+      "settings": {
+        "direction": {
+          "label": "Vertailusuunta",
+          "options__1": {
+            "label": "Vaaka"
+          },
+          "options__2": {
+            "label": "Pysty"
+          }
+        },
+        "header_before": {
+          "content": "Ennen-kuvan asetukset"
+        },
+        "header_after": {
+          "content": "Jälkeen-kuvan asetukset"
+        },
+        "image": {
+          "info": "Suositeltu 800 x 600px .jpg"
+        },
+        "image_mobile": {
+          "info": "Suositeltu 300 x 300px .jpg"
+        },
+        "image_before_mobile": {
+          "label": "Ennen kuva"
+        },
+        "image_after_mobile": {
+          "label": "Jälkeen kuva"
+        }
+      }
+    },
+    "_logo": {
+      "name": "Logo",
+      "settings": {
+        "image": {
+          "info": "Suositeltu 140 x 140px .jpg"
+        }
+      },
+      "presets": {
+        "name": "Logo"
+      }
+    },
+    "_logo-list": {
+      "name": "Logoluettelo",
+      "settings": {
+        "enable_gray": {
+          "label": "Ota harmaa käyttöön"
+        }
+      }
+    },
+    "_media-grid-list": {
+      "name": "Mediaruudukon luettelo",
+      "settings": {
+        "paragraph_mobile": {
+          "content": "Karuselli aktivoituu automaattisesti mobiilissa"
+        }
+      }
+    },
+    "_image-grid-item": {
+      "name": "Kuvaobjekti",
+      "settings": {
+        "image_mobile": {
+          "info": "Suositeltu 300 x 400px .jpg"
+        }
+      },
+      "presets": {
+        "name": "Kuvaobjekti"
+      }
+    },
+    "_video-grid-item": {
+      "name": "Video-objekti",
+      "presets": {
+        "name": "Video-objekti"
+      }
+    },
+    "_compare-table": {
+      "name": "Vertailutaulukko",
+      "settings": {
+        "show_variant_options": {
+          "label": "Näytä varianttivaihtoehdot"
+        },
+        "show_weight": {
+          "label": "Näytä tuotteen paino"
+        },
+        "show_type": {
+          "label": "Näytä tuotetyyppi"
+        },
+        "show_category": {
+          "label": "Näytä tuoteluokka"
+        },
+        "show_vendor": {
+          "label": "Näytä tuotteen myyjä"
+        }
+      }
+    },
+    "_compare-table-category": {
+      "name": "Kategorian metafield-rivi",
+      "settings": {
+        "paragraph": {
+          "content": "Kategorian metafieldit ovat Shopify:n sisäänrakennettuja metafieldejä 'shopify'-nimialueella. Lisätietoja [Kategorian metafieldit](https://help.shopify.com/en/manual/custom-data/metafields/category-metafields)."
+        },
+        "key": {
+          "label": "Ominaisuuden avain"
+        },
+        "label": {
+          "label": "Ominaisuuden nimi",
+          "info": "Muokattavissa oleva ominaisuuden nimi"
+        }
+      },
+      "presets": {
+        "name": "Kategorian metafield-rivi"
+      }
+    },
+    "_compare-table-metafield": {
+      "name": "Mukautettu metafield-rivi",
+      "settings": {
+        "paragraph": {
+          "content": "Metafieldien avainarvo voidaan määrittää ja nähdä Shopify-hallinnassa kohdassa 'Asetukset' > 'Metafields'. Lisätietoja [Mukautetut Metafieldit](https://help.shopify.com/en/manual/custom-data/metafields)."
+        }
+      },
+      "presets": {
+        "name": "Mukautettu metafield-rivi"
+      }
+    },
+    "_compare-table-custom": {
+      "name": "Mukautettu rivi",
+      "presets": {
+        "name": "Mukautettu rivi"
+      }
+    },
+    "_newsletter": {
+      "name": "Tilauksen lomake",
+      "presets": {
+        "name": "Tilauksen lomake"
+      }
+    },
+    "_recently-viewed": {
+      "name": "Äskettäin katsotut"
+    },
+    "_related-products": {
+      "name": "Aiheeseen liittyvät tuotteet"
+    },
+    "_event-list": {
+      "name": "Tapahtumalista"
+    },
+    "_event": {
+      "name": "Tapahtuma",
+      "presets": {
+        "name": "Tapahtuma"
+      }
+    },
+    "_member-list": {
+      "name": "Jäsenlista"
+    },
+    "_flexible-image": {
+      "name": "Joustava kuva",
+      "settings": {
+        "image": {
+          "info": "Suositeltu 800 x 700px .jpg"
+        }
+      },
+      "presets": {
+        "name": "Joustava kuva"
+      }
+    },
+    "_member": {
+      "name": "Jäsen",
+      "settings": {
+        "name": {
+          "label": "Nimi"
+        },
+        "role": {
+          "label": "Rooli"
+        },
+        "bio": {
+          "label": "Esittely"
+        },
+        "image": {
+          "info": "Suositeltu 200 x 200px .jpg"
+        }
+      },
+      "presets": {
+        "name": "Jäsen"
+      }
+    },
+    "_products-grid": {
+      "name": "Tuoteverkko",
+      "settings": {
+        "products": {
+          "info": "Valitse tuotteet manuaalisesti näytettäväksi"
+        }
+      }
+    },
+    "_reading-text": {
+      "name": "Lukuteksti",
+      "settings": {
+        "animation": {
+          "label": "Animaatioefekti",
+          "options__1": {
+            "label": "Kelluva sisään"
+          },
+          "options__2": {
+            "label": "Syvennä"
+          },
+          "options__3": {
+            "label": "Värinvaihto"
+          },
+          "options__4": {
+            "label": "Leikkaus"
+          }
+        },
+        "paragraph_color_setting": {
+          "content": "+ Värinvaihtoeffectin asetukset"
+        },
+        "color_before": {
+          "label": "Alkuperäinen väri"
+        },
+        "color_after": {
+          "label": "Efektin väri"
+        }
+      },
+      "presets": {
+        "name": "Lukuteksti"
+      }
+    },
+    "_image-with-text-list": {
+      "name": "Kuvien ja tekstin lista"
+    },
+    "_image-with-text": {
+      "name": "Kuva ja teksti",
+      "settings": {
+        "image": {
+          "info": "Suositeltu 400 x 400px .jpg"
+        }
+      },
+      "presets": {
+        "name": "Kuva ja teksti"
+      }
+    },
+    "_collapsible-content-title": {
+      "name": "Taitettava otsikko",
+      "presets": {
+        "name": "Taitettava otsikko"
+      }
+    },
+    "_collection-advertise": {
+      "name": "Mainos",
+      "settings": {
+        "image": {
+          "info": "Suositeltu 300 x 500px .jpg"
+        }
+      }
+    },
+    "_compare-table-custom-column": {
+      "name": "Mukautettu sarake",
+      "settings": {
+        "image": {
+          "info": "Suositeltu 60 x 60px .jpg"
+        }
+      },
+      "presets": {
+        "name": "Mukautettu sarake"
+      }
+    },
+    "_custom_liquid": {
+      "name": "Mukautettu liquid",
+      "presets": {
+        "name": "Mukautettu liquid"
+      }
+    },
+    "_product": {
+      "name": "Tuote",
+      "presets": {
+        "name": "Tuote"
+      }
+    },
+    "_product-attributes": {
+      "name": "Tuoteominaisuudet",
+      "settings": {
+        "show_category_attributes": {
+          "label": "Näytä kategorian ominaisuudet"
+        },
+        "image": {
+          "info": "Suositeltu 30 x 30px .jpg"
+        }
+      },
+      "presets": {
+        "name": "Tuoteominaisuudet"
+      }
+    },
+    "_product-custom-attribute": {
+      "name": "Mukautettu ominaisuus",
+      "settings": {
+        "attribute_name": {
+          "label": "Ominaisuuden nimi"
+        },
+        "attribute_value": {
+          "label": "Ominaisuuden arvo"
+        }
+      },
+      "presets": {
+        "name": "Mukautettu ominaisuus"
+      }
+    },
+    "_product-highlights": {
+      "name": "Tuotteen kohokohdat",
+      "settings": {
+        "image": {
+          "info": "Suositeltu 30 x 30px .jpg"
+        }
+      },
+      "presets": {
+        "name": "Tuotteen kohokohdat"
+      }
+    },
+    "_product-highlight": {
+      "name": "Tuotteen kohokohta",
+      "settings": {
+        "image": {
+          "info": "Suositeltu 80 x 80px .jpg"
+        }
+      },
+      "presets": {
+        "name": "Tuotteen kohokohta"
+      }
+    },
+    "_product-documents": {
+      "name": "Tuotedokumenttilista",
+      "settings": {
+        "image": {
+          "info": "Suositeltu 30 x 30px .jpg"
+        }
+      },
+      "presets": {
+        "name": "Tuotedokumenttilista"
+      }
+    },
+    "_product-document": {
+      "name": "Tuotedokumentti",
+      "presets": {
+        "name": "Tuotedokumentti"
+      }
+    },
+    "_product-includes": {
+      "name": "Pakkauksen sisältö",
+      "settings": {
+        "image": {
+          "info": "Suositeltu 30 x 30px .jpg"
+        }
+      },
+      "presets": {
+        "name": "Pakkauksen sisältö"
+      }
+    },
+    "_product-include": {
+      "name": "Pakkausosa",
+      "settings": {
+        "name": {
+          "label": "Nimi"
+        },
+        "price": {
+          "label": "Hinta"
+        },
+        "image": {
+          "info": "Suositeltu 150 x 150px .jpg"
+        }
+      },
+      "presets": {
+        "name": "Pakkausosa"
+      }
+    },
+    "_product-richtext": {
+      "name": "Tuotekuvaus",
+      "settings": {
+        "image": {
+          "info": "Suositeltu 30 x 30px .jpg"
+        },
+        "content_image": {
+          "info": "Suositeltu 600 x 600px .jpg"
+        }
+      },
+      "presets": {
+        "name": "Tuotekuvaus"
+      }
+    },
+    "_media-content-list": {
+      "name": "Mediat sisältölista"
+    },
+    "_image-content": {
+      "name": "Kuvasisältö",
+      "settings": {
+        "image": {
+          "info": "Suositeltu 350 x 500px .jpg"
+        },
+        "image_mobile": {
+          "info": "Suositeltu 300 x 300px .jpg"
+        }
+      },
+      "presets": {
+        "name": "Kuvasisältö"
+      }
+    },
+    "_video-content": {
+      "name": "Videosisältö",
+      "presets": {
+        "name": "Videosisältö"
+      }
+    },
+    "_badge": {
+      "name": "Merkki",
+      "presets": {
+        "name": "Merkki"
+      }
+    },
+    "_image-gallery": {
+      "name": "Kuvagalleria",
+      "settings": {
+        "direction": {
+          "label": "Vierityssuunta",
+          "options__1": {
+            "label": "Eteenpäin"
+          },
+          "options__2": {
+            "label": "Taaksepäin"
+          }
+        },
+        "enable_staggered": {
+          "label": "Ota porrastusefekti käyttöön"
+        }
+      },
+      "presets": {
+        "name": "Kuvagalleria"
+      }
+    },
+    "_store-list": {
+      "name": "Myymälälista",
+      "settings": {
+        "paragraph": {
+          "content": "Näkyy pystysuorassa suodattimessa sivupalkissa"
+        }
+      }
+    },
+    "_store": {
+      "name": "Myymälä",
+      "settings": {
+        "image_store": {
+          "label": "Myymälän kuva"
+        },
+        "image_map": {
+          "label": "Karttakuva",
+          "info": "Suositeltu 1300 x 700px .jpg"
+        },
+        "image": {
+          "info": "Suositeltu 350 x 200px .jpg"
+        }
+      },
+      "presets": {
+        "name": "Myymälä"
+      }
+    },
+    "heading": {
+      "name": "Otsikko",
+      "settings": {
+        "header_highlight": {
+          "content": "Korostetekstin asetukset"
+        },
+        "paragraph_highlight": {
+          "content": "Aseta teksti *kursiivilla* animoidun korostuksen aktivoimiseksi"
+        },
+        "enable_highlight_text": {
+          "label": "Ota korosteteksti käyttöön"
+        },
+        "highlight_type": {
+          "label": "Korostustyyppi",
+          "options__1": {
+            "label": "Tekstin väri"
+          },
+          "options__2": {
+            "label": "Taustaväri"
+          },
+          "options__3": {
+            "label": "Alleviivaus"
+          },
+          "options__4": {
+            "label": "Leikkaus"
+          },
+          "options__5": {
+            "label": "Käsin piirretty – Rasti"
+          },
+          "options__6": {
+            "label": "Käsin piirretty – Aaltoileva"
+          },
+          "options__7": {
+            "label": "Käsin piirretty – Ympyrä"
+          },
+          "options__8": {
+            "label": "Käsin piirretty – Alleviivaus"
+          },
+          "options__9": {
+            "label": "Kursiivi"
+          }
+        },
+        "highlight_color": {
+          "label": "Korostusväri"
+        }
+      },
+      "presets": {
+        "name": "Otsikko"
+      }
+    },
+    "subheading": {
+      "name": "Alaotsikko",
+      "presets": {
+        "name": "Alaotsikko"
+      }
+    },
+    "description": {
+      "name": "Kuvaus",
+      "presets": {
+        "name": "Kuvaus"
+      }
+    },
+    "buttons": {
+      "name": "Painikeryhmä",
+      "presets": {
+        "name": "Painikeryhmä"
+      }
+    },
+    "button": {
+      "name": "Painike",
+      "presets": {
+        "name": "Painike"
+      }
+    },
+    "button-video": {
+      "name": "Videopainike",
+      "presets": {
+        "name": "Videopainike"
+      }
+    },
+    "icon": {
+      "name": "Ikoni",
+      "settings": {
+        "image": {
+          "info": "Suositeltu 30 x 30px .jpg"
+        }
+      },
+      "presets": {
+        "name": "Ikoni"
+      }
+    },
+    "countdown": {
+      "name": "Ajastin",
+      "settings": {
+        "simple": {
+          "label": "Yksinkertaistettu tyyli"
+        },
+        "end_time": {
+          "label": "Loppuaika",
+          "info": "Loppuaika muoto: vvvv-kk-pp hh:mm, esim. 2024-05-01 12:25, käyttää kaupan aikavyöhykettä, [Muokkaa aikavyöhykettä](/admin/settings/general)"
+        },
+        "end_text": {
+          "label": "Viesti lopun jälkeen"
+        },
+        "hide_when_end": {
+          "label": "Piilota ajastin lopun jälkeen"
+        },
+        "timer_background_color": {
+          "label": "Ajastimen taustaväri"
+        },
+        "timer_foreground_color": {
+          "label": "Ajastimen tekstiväri"
+        }
+      },
+      "presets": {
+        "name": "Ajastin"
+      }
+    },
+    "discount-code": {
+      "name": "Alennuskoodi",
+      "presets": {
+        "name": "Alennuskoodi"
+      }
+    },
+    "spacer": {
+      "name": "Väli",
+      "settings": {
+        "show_line": {
+          "label": "Näytä erotin"
+        },
+        "line_width": {
+          "label": "Erotin leveys",
+          "options__1": {
+            "label": "Täysi"
+          },
+          "options__2": {
+            "label": "Puolikas"
+          },
+          "options__3": {
+            "label": "Kolmasosa"
+          }
+        }
+      },
+      "presets": {
+        "name": "Väli"
+      }
+    },
+    "social-list": {
+      "name": "Sosiaalisen median lista",
+      "settings": {
+        "show_tooltip": {
+          "label": "Näytä työkaluvihje"
+        }
+      },
+      "presets": {
+        "name": "Sosiaalisen median lista"
+      }
+    },
+    "statistics": {
+      "name": "Korostetut tilastot",
+      "settings": {
+        "label": "Näytä reunus"
+      },
+      "presets": {
+        "name": "Korostetut tilastot"
+      }
+    },
+    "badges": {
+      "name": "Merkki-ryhmä",
+      "settings": {
+        "shape": {
+          "label": "Muoto",
+          "options__1": {
+            "label": "Pilleri"
+          },
+          "options__2": {
+            "label": "Suorakulmio"
+          },
+          "options__3": {
+            "label": "Nuoli"
+          },
+          "options__4": {
+            "label": "Vinossa"
+          },
+          "options__5": {
+            "label": "Reuna"
+          }
+        },
+        "size": {
+          "label": "Koko",
+          "options__1": {
+            "label": "Pieni"
+          },
+          "options__2": {
+            "label": "Keskikoko"
+          },
+          "options__3": {
+            "label": "Suuri"
+          }
+        }
+      },
+      "presets": {
+        "name": "Merkki-ryhmä"
+      }
+    },
+    "icon-text": {
+      "name": "Ikoni tekstillä",
+      "settings": {
+        "image": {
+          "info": "Suositeltu 30 x 30px .jpg"
+        }
+      },
+      "presets": {
+        "name": "Ikoni tekstillä"
+      }
+    },
+    "follow": {
+      "name": "Seuraa meitä",
+      "settings": {
+        "image": {
+          "info": "Suositeltu 60 x 60px .jpg"
+        }
+      },
+      "presets": {
+        "name": "Seuraa meitä"
+      }
+    },
+    "links": {
+      "name": "Linkkiryhmä",
+      "presets": {
+        "name": "Linkkiryhmä"
+      }
+    },
+    "keywords": {
+      "name": "Avainsanat",
+      "presets": {
+        "name": "Avainsanat"
+      }
+    },
+    "spin_text": {
+      "name": "Pyörivä teksti",
+      "presets": {
+        "name": "Pyörivä teksti"
+      }
+    }
+  },
+  "sections": {
+    "all": {
+      "categories": {
+        "product_collection": "Tuote & kokoelma",
+        "media_layout": "Media & asettelu",
+        "content_info": "Sisältö & tiedot",
+        "forms_interaction": "Lomakkeet & vuorovaikutus",
+        "functional_widgets": "Toiminnalliset widgetit",
+        "team_social_proof": "Tiimi & sosiaalinen todiste",
+        "custom_advanced": "Mukautettu ja edistynyt"
+      },
+      "layout": {
+        "label": "Asettelu",
+        "horizontal": {
+          "label": "Vaakasuora"
+        },
+        "vertical": {
+          "label": "Pystysuora"
+        },
+        "grid": {
+          "label": "Ruutu"
+        },
+        "scroll": {
+          "label": "Vieritys"
+        },
+        "slider": {
+          "label": "Liukusäädin"
+        },
+        "header_grid": {
+          "content": "Ruutuasetukset"
+        },
+        "header_scroll": {
+          "content": "Vieritysasetukset"
+        },
+        "header_slider": {
+          "content": "Liukusäädin asetukset"
+        },
+        "enable_full_width": {
+          "label": "Ota koko leveys käyttöön"
+        }
+      },
+      "desktop": {
+        "effect": {
+          "info": "Vaikuttaa pöytäkoneilla"
+        }
+      },
+      "mobile": {
+        "header_content": "Mobiiliasetukset",
+        "hide": {
+          "label": "Piilota mobiilissa"
+        },
+        "effect": {
+          "info": "Vaikuttaa mobiililaitteissa"
+        }
+      },
+      "animation": {
+        "content": "Animaatio",
+        "image_behavior": {
+          "label": "Kuvan käyttäytyminen",
+          "options__1": {
+            "label": "Ei mitään"
+          },
+          "options__2": {
+            "label": "Ympäristö"
+          },
+          "options__3": {
+            "label": "Kiinteä"
+          },
+          "options__4": {
+            "label": "Lähennä"
+          },
+          "options__5": {
+            "label": "Parallaksi"
+          }
+        },
+        "animation_during": {
+          "label": "Animaation kesto"
+        }
+      },
+      "padding": {
+        "header_content": "Osion täyttö",
+        "padding_top": {
+          "label": "Yläreunan täyttö"
+        },
+        "padding_bottom": {
+          "label": "Alareunan täyttö"
+        },
+        "padding_left": {
+          "label": "Vasen täyttö"
+        },
+        "padding_right": {
+          "label": "Oikea täyttö"
+        }
+      },
+      "margin": {
+        "header_content": "Osion marginaali",
+        "margin_top": {
+          "label": "Ylämarginaali"
+        },
+        "margin_bottom": {
+          "label": "Alamarginaali"
+        }
+      },
+      "gap": {
+        "label": "Väli",
+        "horizontal_gap": {
+          "label": "Vaakasuuntainen väli"
+        },
+        "vertical_gap": {
+          "label": "Pystysuuntainen väli"
+        }
+      },
+      "width": {
+        "label": "Leveys"
+      },
+      "height": {
+        "label": "Korkeus",
+        "options__1": {
+          "label": "Sovittuva"
+        },
+        "options__2": {
+          "label": "Pieni"
+        },
+        "options__3": {
+          "label": "Keskikokoinen"
+        },
+        "options__4": {
+          "label": "Suuri"
+        }
+      },
+      "colors": {
+        "enable_scheme": {
+          "label": "Ota väriteema käyttöön"
+        },
+        "scheme": {
+          "label": "Väriteema"
+        },
+        "foreground": {
+          "label": "Etualan väri"
+        },
+        "background": {
+          "label": "Taustan väri"
+        },
+        "enable_custom_color": {
+          "label": "Ota käyttöön oma väri"
+        },
+        "custom_color": {
+          "label": "Oma väri"
+        }
+      },
+      "position": {
+        "label": "Sijainti",
+        "options__1": {
+          "label": "Ylävasen"
+        },
+        "options__2": {
+          "label": "Yläkeskusta"
+        },
+        "options__3": {
+          "label": "Yläoikea"
+        },
+        "options__4": {
+          "label": "Keskivasen"
+        },
+        "options__5": {
+          "label": "Keskusta"
+        },
+        "options__6": {
+          "label": "Keskioikea"
+        },
+        "options__7": {
+          "label": "Alavasen"
+        },
+        "options__8": {
+          "label": "Alakeskusta"
+        },
+        "options__9": {
+          "label": "Alaoikea"
+        }
+      },
+      "page": {
+        "label": "Sivu"
+      },
+      "custom_liquid": {
+        "label": "Mukautettu liquid",
+        "info": "Lisää sovelluspaloja tai muuta koodia luodaksesi edistyneitä mukautuksia. [Lue lisää](https://shopify.dev/docs/api/liquid)"
+      },
+      "file": {
+        "type": {
+          "label": "Tiedostotyyppi",
+          "options__1": {
+            "label": "PDF"
+          },
+          "options__2": {
+            "label": "Kuva"
+          },
+          "options__3": {
+            "label": "Muut"
+          }
+        },
+        "name": {
+          "label": "Tiedoston nimi"
+        },
+        "link": {
+          "label": "Tiedostolinkki",
+          "info": "Lataa tiedosto ensin saadaksesi linkin"
+        }
+      },
+      "metafield": {
+        "custom": {
+          "label": "Oma metafield",
+          "info": "Syötä nimialue ja avain metafieldille, joka sisältää arvon (esim. custom.in_box_items)."
+        }
+      },
+      "text-alignment": {
+        "label": "Tasaus",
+        "options__1": {
+          "label": "Tasaa vasemmalle"
+        },
+        "options__2": {
+          "label": "Keskitä"
+        },
+        "options__3": {
+          "label": "Tasaa oikealle"
+        }
+      },
+      "title": {
+        "label": "Otsikko",
+        "truncate": {
+          "label": "Katkaise otsikko",
+          "info": "Katkaise otsikko, jos se ylittää enimmäispituuden"
+        }
+      },
+      "text-content": {
+        "header_content": "Otsikko ja kuvaus",
+        "heading": {
+          "label": "Otsikko",
+          "type": {
+            "label": "Otsikkotyyppi"
+          },
+          "size": {
+            "label": "Otsikon koko",
+            "options__1": {
+              "label": "Pieni"
+            },
+            "options__2": {
+              "label": "Keskikokoinen"
+            },
+            "options__3": {
+              "label": "Suuri"
+            },
+            "options__4": {
+              "label": "Erittäin suuri"
+            },
+            "options__5": {
+              "label": "Mini"
+            }
+          },
+          "uppercase": {
+            "label": "Otsikko isoilla kirjaimilla"
+          },
+          "color": {
+            "label": "Otsikon väri"
+          },
+          "show_heading": {
+            "label": "Näytä otsikko"
+          }
+        },
+        "content": {
+          "label": "Sisältö"
+        },
+        "text": {
+          "label": "Teksti",
+          "size": {
+            "label": "Tekstin koko"
+          },
+          "uppercase": {
+            "label": "Teksti isoilla kirjaimilla"
+          },
+          "light": {
+            "label": "Näytä kevyt"
+          }
+        },
+        "sub_heading": {
+          "label": "Alaotsikko"
+        },
+        "description": {
+          "label": "Kuvaus",
+          "limit_height": {
+            "label": "Rajoita kuvauksen korkeus"
+          }
+        },
+        "decorative": {
+          "label": "Koristeellinen fontti"
+        },
+        "hollow": {
+          "label": "Ontto fontti"
+        },
+        "show_box": {
+          "label": "Näytä säiliö"
+        },
+        "box_background_opacity": {
+          "label": "Säiliön taustan läpinäkyvyys"
+        },
+        "box_background_blur": {
+          "label": "Säiliön taustan sumentaminen"
+        }
+      },
+      "content": {
+        "header_content": "Sisällön asetukset",
+        "paragraph_content": "+ Sisällön asetukset",
+        "content_width": {
+          "label": "Sisällön leveys",
+          "options__1": {
+            "label": "Kapea"
+          },
+          "options__2": {
+            "label": "Normaali"
+          },
+          "options__3": {
+            "label": "Leveä"
+          },
+          "options__4": {
+            "label": "Täysi"
+          }
+        }
+      },
+      "card": {
+        "header_content": "Kortin asetukset",
+        "card_size": {
+          "label": "Kortin koko",
+          "options_1": {
+            "label": "Pieni"
+          },
+          "options_2": {
+            "label": "Keskikokoinen"
+          },
+          "options_3": {
+            "label": "Suuri"
+          },
+          "options_4": {
+            "label": "Mini"
+          }
+        },
+        "show_card_wrapper": {
+          "label": "Näytä säiliö"
+        },
+        "wrapper_color_scheme": {
+          "label": "Säiliön värimaailma"
+        }
+      },
+      "columns": {
+        "label": "Sarakkeet",
+        "options__1": {
+          "label": "1 sarake"
+        },
+        "options__2": {
+          "label": "2 saraketta"
+        },
+        "options__3": {
+          "label": "3 saraketta"
+        },
+        "options__4": {
+          "label": "4 saraketta"
+        },
+        "options__5": {
+          "label": "5 saraketta"
+        },
+        "options__6": {
+          "label": "6 saraketta"
+        }
+      },
+      "rows": {
+        "label": "Rivit",
+        "options__1": {
+          "label": "1 rivi"
+        },
+        "options__2": {
+          "label": "2 riviä"
+        },
+        "options__3": {
+          "label": "3 riviä"
+        },
+        "options__4": {
+          "label": "4 riviä"
+        }
+      },
+      "banner": {
+        "height": {
+          "label": "Bannerin korkeus",
+          "options__1": {
+            "label": "Pieni",
+            "info": "Suositeltu 1800 x 600px .jpg"
+          },
+          "options__2": {
+            "label": "Keskikokoinen",
+            "info": "Suositeltu 1800 x 800px .jpg"
+          },
+          "options__3": {
+            "label": "Suuri",
+            "info": "Suositeltu 1800 x 1000px .jpg"
+          },
+          "options__4": {
+            "label": "Soveltuva"
+          },
+          "options__5": {
+            "label": "Kapea",
+            "info": "Suositeltu 1800 x 300px .jpg"
+          }
+        },
+        "height_mobile": {
+          "info": "Suositeltu 640 x 960px .jpg"
+        }
+      },
+      "icon": {
+        "label": "Ikoni",
+        "groups": {
+          "shop": "Kauppa",
+          "shipping": "Toimitus",
+          "order": "Tilaus",
+          "communication": "Viestintä",
+          "tech": "Tekniikka",
+          "food_drink": "Ruoka & Juoma",
+          "clothing": "Vaatteet",
+          "others": "Muut"
+        },
+        "none": {
+          "label": "Ei mitään"
+        },
+        "cart": {
+          "label": "Ostoskori"
+        },
+        "wish": {
+          "label": "Toive"
+        },
+        "sale": {
+          "label": "Alennus"
+        },
+        "new": {
+          "label": "Uusi"
+        },
+        "hot": {
+          "label": "Suosittu"
+        },
+        "gift": {
+          "label": "Lahja"
+        },
+        "truck": {
+          "label": "Rekka"
+        },
+        "plane": {
+          "label": "Lentokone"
+        },
+        "steamer": {
+          "label": "Laiva"
+        },
+        "track": {
+          "label": "Seuranta"
+        },
+        "return": {
+          "label": "Palautus"
+        },
+        "refund": {
+          "label": "Hyvitys"
+        },
+        "security": {
+          "label": "Turvallisuus"
+        },
+        "guarantee": {
+          "label": "Takuu"
+        },
+        "card": {
+          "label": "Kortti"
+        },
+        "money": {
+          "label": "Raha"
+        },
+        "phone": {
+          "label": "Puhelin"
+        },
+        "email": {
+          "label": "Sähköposti"
+        },
+        "chat": {
+          "label": "Chat"
+        },
+        "24h": {
+          "label": "24h"
+        },
+        "service": {
+          "label": "Palvelu"
+        },
+        "question": {
+          "label": "Kysymys"
+        },
+        "send": {
+          "label": "Lähetä"
+        },
+        "wifi": {
+          "label": "WiFi"
+        },
+        "bluetooth": {
+          "label": "Bluetooth"
+        },
+        "camera": {
+          "label": "Kamera"
+        },
+        "mouse": {
+          "label": "Hiiri"
+        },
+        "ar": {
+          "label": "Lisätty todellisuus"
+        },
+        "vr": {
+          "label": "Virtuaalitodellisuus"
+        },
+        "print": {
+          "label": "Tulostus"
+        },
+        "scan": {
+          "label": "Skannaus"
+        },
+        "3d": {
+          "label": "3D"
+        },
+        "apple": {
+          "label": "Omena"
+        },
+        "carrot": {
+          "label": "Porkkana"
+        },
+        "lemon": {
+          "label": "Sitruuna"
+        },
+        "burger": {
+          "label": "Hampurilainen"
+        },
+        "cake": {
+          "label": "Kakku"
+        },
+        "coffee": {
+          "label": "Kahvi"
+        },
+        "milk": {
+          "label": "Maito"
+        },
+        "beer": {
+          "label": "Olut"
+        },
+        "icecream": {
+          "label": "Jäätelö"
+        },
+        "fork-spoon": {
+          "label": "Haarukka ja lusikka"
+        },
+        "diamond": {
+          "label": "Timantti"
+        },
+        "eco-friendly": {
+          "label": "Ympäristöystävällinen"
+        },
+        "clock": {
+          "label": "Kello"
+        },
+        "ruler": {
+          "label": "Viivoitin"
+        },
+        "eye": {
+          "label": "Silmät"
+        },
+        "bell": {
+          "label": "Kello"
+        },
+        "light": {
+          "label": "Valo"
+        },
+        "battery": {
+          "label": "Paristo"
+        },
+        "star": {
+          "label": "Tähti"
+        },
+        "book": {
+          "label": "Kirja"
+        },
+        "dress": {
+          "label": "Mekko"
+        },
+        "pants": {
+          "label": "Housut"
+        },
+        "shoe": {
+          "label": "Kenkä"
+        },
+        "hat": {
+          "label": "Hattu"
+        },
+        "skirt": {
+          "label": "Hame"
+        },
+        "tops": {
+          "label": "Topit"
+        },
+        "shorts": {
+          "label": "Shortsit"
+        },
+        "socks": {
+          "label": "Sukat"
+        },
+        "bag": {
+          "label": "Laukku"
+        },
+        "address": {
+          "label": "Osoite"
+        },
+        "record": {
+          "label": "Tallennus"
+        },
+        "quote": {
+          "label": "Lainaus"
+        },
+        "global": {
+          "label": "Globaali"
+        },
+        "thumb": {
+          "label": "Peukalo"
+        },
+        "author": {
+          "label": "Tekijä"
+        },
+        "yes": {
+          "label": "Kyllä"
+        },
+        "no": {
+          "label": "Ei"
+        },
+        "preorder": {
+          "label": "Ennakko-tilaus"
+        },
+        "calendar": {
+          "label": "Kalenteri"
+        }
+      },
+      "icon-size": {
+        "label": "Ikonin koko",
+        "options__1": {
+          "label": "Pieni"
+        },
+        "options__2": {
+          "label": "Keskikokoinen"
+        },
+        "options__3": {
+          "label": "Suuri"
+        },
+        "options__4": {
+          "label": "Erittäin suuri"
+        }
+      },
+      "keywords": {
+        "list": {
+          "label": "Avainsanat",
+          "info": "Erottele useat avainsanat pilkuilla"
+        },
+        "show_icon": {
+          "label": "Näytä kuvake"
+        },
+        "icon_type": {
+          "label": "Kuvaketyyppi",
+          "options__1": {
+            "label": "Valintamerkki"
+          },
+          "options__2": {
+            "label": "Plus"
+          },
+          "options__3": {
+            "label": "Indeksi"
+          }
+        }
+      },
+      "media": {
+        "header_content": "Median asetukset",
+        "info": "Määritä median asettelu ja ulkoasu.",
+        "media_fit": {
+          "label": "Median sovitus",
+          "options__1": {
+            "label": "Peitä"
+          },
+          "options__2": {
+            "label": "Sovita"
+          }
+        },
+        "media_width": {
+          "label": "Median leveys",
+          "options__1": {
+            "label": "Pieni"
+          },
+          "options__2": {
+            "label": "Keskikokoinen"
+          },
+          "options__3": {
+            "label": "Suuri"
+          }
+        },
+        "media_position": {
+          "label": "Median sijainti",
+          "options__1": {
+            "label": "Vasen"
+          },
+          "options__2": {
+            "label": "Oikea"
+          },
+          "options__3": {
+            "label": "Ylä"
+          },
+          "options__4": {
+            "label": "Ala"
+          }
+        },
+        "media_size": {
+          "label": "Median koko",
+          "options__1": {
+            "label": "Pieni"
+          },
+          "options__2": {
+            "label": "Keskikokoinen"
+          },
+          "options__3": {
+            "label": "Suuri"
+          }
+        },
+        "thumbnail_size": {
+          "label": "Pikkukuvan koko"
+        }
+      },
+      "image": {
+        "header_content": "Kuvan asetukset",
+        "image_picker": {
+          "label": "Kuva"
+        },
+        "show_image": {
+          "label": "Näytä kuva"
+        },
+        "header_background_image": "Taustakuvan asetukset",
+        "background_image_picker": {
+          "label": "Taustakuva"
+        },
+        "enable_parallax": {
+          "label": "Ota parallax käyttöön"
+        },
+        "image_opacity": {
+          "label": "Kuvan läpinäkyvyys"
+        },
+        "image_overlay_opacity": {
+          "label": "Kuvan peitteen läpinäkyvyys"
+        },
+        "image_width": {
+          "label": "Kuvan leveys",
+          "options__1": {
+            "label": "Pieni"
+          },
+          "options__2": {
+            "label": "Keskikokoinen"
+          },
+          "options__3": {
+            "label": "Suuri"
+          }
+        },
+        "image_height": {
+          "label": "Kuvan korkeus",
+          "options__1": {
+            "label": "Pieni"
+          },
+          "options__2": {
+            "label": "Keskikokoinen"
+          },
+          "options__3": {
+            "label": "Suuri"
+          },
+          "options__4": {
+            "label": "Mukautuva"
+          }
+        },
+        "image_ratio": {
+          "label": "Kuvan kuvasuhde",
+          "options__1": {
+            "label": "Neliö (1:1)"
+          },
+          "options__2": {
+            "label": "Muotokuva (4:5)"
+          },
+          "options__3": {
+            "label": "Maisema (8:5)"
+          },
+          "options__4": {
+            "label": "Panoraama (16:9)"
+          },
+          "options__5": {
+            "label": "Kapea (20:9)"
+          },
+          "options__6": {
+            "label": "Mukautuva"
+          }
+        },
+        "image_position": {
+          "label": "Kuvan sijainti",
+          "options__1": {
+            "label": "Vasen"
+          },
+          "options__2": {
+            "label": "Oikea"
+          },
+          "options__3": {
+            "label": "Ylä"
+          },
+          "options__4": {
+            "label": "Ala"
+          }
+        },
+        "image_shape": {
+          "label": "Kuvan muoto",
+          "options__1": {
+            "label": "Mukautuva"
+          },
+          "options__2": {
+            "label": "Ympyrä"
+          },
+          "options__3": {
+            "label": "Neliö"
+          }
+        },
+        "image_rotate": {
+          "label": "Kuvan kierto"
+        },
+        "enable_scale_image": {
+          "label": "Ota kuvan zoom käyttöön"
+        },
+        "enable_image_lightbox": {
+          "label": "Ota kuvien lightbox käyttöön"
+        },
+        "enable_image_magnifier": {
+          "label": "Ota kuvan suurennus käyttöön"
+        },
+        "image_lightbox_type": {
+          "label": "Lightbox-tyyppi",
+          "options__1": {
+            "label": "Zoomaa ja vedä"
+          },
+          "options__2": {
+            "label": "Pidä ja liikuta"
+          }
+        },
+        "image_zoom_ratio": {
+          "label": "Kuvan zoomauskerroin"
+        },
+        "icon_image": {
+          "label": "Kuvakekuva",
+          "info": "Suositeltu 20 x 20px .jpg"
+        }
+      },
+      "video": {
+        "header_content": "Videon asetukset",
+        "video": {
+          "label": "Video",
+          "info": "Suosittelemme lataamaan 10-15 sekunnin pituisia lyhyitä videoita latausnopeuden ja käyttökokemuksen optimoimiseksi."
+        },
+        "video_url": {
+          "label": "Upota videon URL",
+          "info": "Käytä YouTube- tai Vimeo-URL-osoitetta"
+        },
+        "enable_controls": {
+          "label": "Ota videon ohjaimet käyttöön"
+        },
+        "enable_looping": {
+          "label": "Ota videon toisto käyttöön"
+        },
+        "cover_image": {
+          "label": "Kansi kuva"
+        },
+        "video_opacity": {
+          "label": "Videon läpinäkyvyys"
+        },
+        "video_position": {
+          "label": "Videon sijainti",
+          "options__1": {
+            "label": "Ylhäällä vasemmalla"
+          },
+          "options__2": {
+            "label": "Ylhäällä oikealla"
+          },
+          "options__3": {
+            "label": "Alhaalla oikealla"
+          },
+          "options__4": {
+            "label": "Alhaalla vasemmalla"
+          }
+        }
+      },
+      "seo": {
+        "header_content": "SEO-optimointi",
+        "if_as_main_area": {
+          "label": "Pääalueena ensimmäisellä näytöllä",
+          "info": "Jos asetettu pääalueeksi ensimmäiselle näytölle, optimoi SEO-pisteitä. Lisätietoja [LCP](https://web.dev/articles/lcp)"
+        }
+      },
+      "collection": {
+        "label": "Kokoelma"
+      },
+      "collection-list": {
+        "label": "Kokoelmalista"
+      },
+      "link": {
+        "url": {
+          "label": "Linkki"
+        },
+        "open_in_new_tab": {
+          "label": "Avaa uuteen välilehteen"
+        }
+      },
+      "link-list": {
+        "label": "Valikko"
+      },
+      "social": {
+        "header_content": "Sosiaaliset asetukset",
+        "avatar": {
+          "label": "Profiilikuva"
+        },
+        "nickname": {
+          "label": "Lempinimi"
+        },
+        "username": {
+          "label": "Käyttäjänimi"
+        },
+        "link": {
+          "label": "Sosiaalinen linkki"
+        }
+      },
+      "social-list": {
+        "header_content": "Sosiale innstillinger",
+        "show_social": {
+          "label": "Vis sosiale"
+        },
+        "social_style": {
+          "label": "Sosial stil",
+          "options__1": {
+            "label": "Ikon"
+          },
+          "options__2": {
+            "label": "Kant"
+          },
+          "options__3": {
+            "label": "Innpakket"
+          }
+        },
+        "social_type": {
+          "label": "Sosial type"
+        },
+        "icon_size": {
+          "label": "Ikonstørrelse",
+          "options__1": {
+            "label": "Liten"
+          },
+          "options__2": {
+            "label": "Middels"
+          },
+          "options__3": {
+            "label": "Stor"
+          }
+        }
+      },
+      "product-list": {
+        "label": "Valitse tuotteet"
+      },
+      "product": {
+        "label": "Valitse tuote",
+        "header_product": {
+          "content": "Liittyvä tuote"
+        }
+      },
+      "article": {
+        "show_tags": {
+          "label": "Näytä tagit"
+        },
+        "show_date": {
+          "label": "Näytä päivämäärä"
+        },
+        "show_author": {
+          "label": "Näytä kirjoittaja"
+        },
+        "show_excerpt": {
+          "label": "Näytä yhteenveto"
+        },
+        "show_index": {
+          "label": "Näytä indeksi"
+        }
+      },
+      "blog": {
+        "label": "Valitse blogi"
+      },
+      "price": {
+        "show_compare_at_price": {
+          "label": "Näytä vertailuhinta"
+        }
+      },
+      "slider": {
+        "enable_desktop_slider": {
+          "label": "Ota liukusäädin käyttöön työpöydällä"
+        },
+        "enable_mobile_slider": {
+          "label": "Ota liukusäädin käyttöön mobiilissa"
+        },
+        "auto_rotate": {
+          "label": "Ota automaattinen toisto käyttöön"
+        },
+        "slide_type": {
+          "label": "Liukutyypi",
+          "options__1": {
+            "label": "Liuku"
+          },
+          "options__2": {
+            "label": "Haalistuminen"
+          },
+          "options__3": {
+            "label": "Zoomaus"
+          }
+        },
+        "change_slides_speed": {
+          "label": "Automaattisen toiston väli"
+        },
+        "show_nav_buttons": {
+          "label": "Näytä navigointipainikkeet"
+        },
+        "show_page_dots": {
+          "label": "Näytä sivun pisteet"
+        },
+        "show_seek_bar": {
+          "label": "Näytä etenemispalkki"
+        },
+        "enable_slide_smooth": {
+          "label": "Ota käyttöön sujuva liuku"
+        }
+      },
+      "pagination": {
+        "style": {
+          "label": "Sivutustyyli",
+          "options__1": {
+            "label": "Sivutus"
+          },
+          "options__2": {
+            "label": "Lataa lisää"
+          },
+          "options__3": {
+            "label": "Ääretön lataus"
+          }
+        }
+      },
+      "tab-panel": {
+        "header": {
+          "content": "Välilehtiasetukset"
+        },
+        "tab_style": {
+          "label": "Välilehden tyyli",
+          "options__1": {
+            "label": "Alleviivaus"
+          },
+          "options__2": {
+            "label": "Pilleri"
+          },
+          "options__3": {
+            "label": "Vinossa"
+          }
+        },
+        "tab_alignment": {
+          "label": "Välilehden tasaus"
+        },
+        "header_switch": {
+          "content": "Kytkimen asetukset"
+        },
+        "enable_auto_switch": {
+          "label": "Ota automaattinen vaihto käyttöön"
+        },
+        "switch_interval": {
+          "label": "Vaihto väli"
+        }
+      },
+      "button": {
+        "header_content": "Painikkeen asetukset",
+        "button_size": {
+          "label": "Painikkeen koko",
+          "options__1": {
+            "label": "Mini"
+          },
+          "options__2": {
+            "label": "Pieni"
+          },
+          "options__3": {
+            "label": "Keskikokoinen"
+          },
+          "options__4": {
+            "label": "Suuri"
+          }
+        },
+        "button_label": {
+          "label": "Painikkeen teksti",
+          "info": "Jätä tyhjäksi piilottaaksesi painikkeen"
+        },
+        "button_link": {
+          "label": "Painikkeen linkki"
+        },
+        "button_style": {
+          "label": "Painikkeen tyyli",
+          "options__1": {
+            "label": "Pääasiallinen"
+          },
+          "options__2": {
+            "label": "Toissijainen"
+          },
+          "options__3": {
+            "label": "Reunaviiva"
+          },
+          "options__4": {
+            "label": "Läpinäkyvä"
+          },
+          "options__5": {
+            "label": "Linkki"
+          }
+        },
+        "show_arrow": {
+          "label": "Näytä nuoli"
+        }
+      },
+      "newsletter": {
+        "input_style": {
+          "label": "Syöte-tyyli",
+          "options__1": {
+            "label": "Normaali"
+          },
+          "options__2": {
+            "label": "Viiva"
+          },
+          "options__3": {
+            "label": "Erillinen"
+          }
+        },
+        "show_consent_notice": {
+          "label": "Näytä suostumusilmoitus"
+        }
+      },
+      "discount": {
+        "header": {
+          "content": "Alennusasetukset"
+        },
+        "paragraph": {
+          "content": "Määritä alennustiedot alennusasetuksissa.[Lisätietoja](https://webvista-studio.gitbook.io/krank/sections/product-and-collection/shop-the-look#discount-settings)"
+        },
+        "show_discount": {
+          "label": "Näytä alennus"
+        },
+        "discount_percentage": {
+          "label": "Alennusprosentti"
+        }
+      },
+      "collapse": {
+        "default_expand": {
+          "label": "Oletusavaus"
+        }
+      },
+      "limit": {
+        "label": "Rajoita määrä"
+      },
+      "recommendation": {
+        "show": {
+          "label": "Ota suositukset käyttöön"
+        },
+        "type": {
+          "label": "Suositustyyppi",
+          "info": "Älykkäät suositukset ehdottavat automaattisesti liittyviä tuotteita viimeaikaisen selaushistorian perusteella.",
+          "options__1": {
+            "label": "Älykäs"
+          },
+          "options__2": {
+            "label": "Manuaalinen"
+          }
+        }
+      },
+      "localization": {
+        "header_content": "Alue- ja kielivalinta",
+        "show_country": {
+          "label": "Näytä maa-/aluevalitsin"
+        },
+        "show_language": {
+          "label": "Näytä kielivalitsin"
+        }
+      },
+      "hotspot": {
+        "show_hotspot": {
+          "label": "Näytä hotspot"
+        },
+        "vertical_position": {
+          "label": "Pystysuora sijainti"
+        },
+        "horizontal_position": {
+          "label": "Vaakasuora sijainti"
+        }
+      },
+      "store": {
+        "name": {
+          "label": "Nimi"
+        },
+        "location": {
+          "label": "Sijainti"
+        },
+        "phone": {
+          "label": "Puhelin"
+        },
+        "hours": {
+          "label": "Aukioloajat"
+        },
+        "map": {
+          "label": "Google-kartan upotuskoodi",
+          "info": "Käytä muotoa <iframe></iframe>. Tarkemmat ohjeet löydät kohdasta [Kuinka hankkia upotuskoodi kartalle](https://help.shopify.com/zh-CN/manual/online-store/themes/theme-structure/pages#add-content)."
+        }
+      }
+    },
+    "apps": {
+      "name": "Sovellukset",
+      "presets": {
+        "name": "Sovellukset"
+      }
+    },
+    "custom-liquid": {
+      "name": "Mukautettu liquid",
+      "presets": {
+        "name": "Mukautettu liquid"
+      }
+    },
+    "header": {
+      "name": "Otsikko",
+      "settings": {
+        "header_logo": {
+          "content": "Logon asetukset"
+        },
+        "logo_width": {
+          "label": "Logon leveys"
+        },
+        "logo_position": {
+          "label": "Logon sijainti",
+          "options__1": {
+            "label": "Vasen"
+          },
+          "options__2": {
+            "label": "Keskellä"
+          }
+        },
+        "header_info_block": {
+          "content": "Tietolohkon asetukset"
+        },
+        "show_info_block": {
+          "label": "Näytä tietolohko"
+        },
+        "sticky_header_type": {
+          "label": "Kiinnitetty otsikko",
+          "options__1": {
+            "label": "Ei mitään"
+          },
+          "options__2": {
+            "label": "Vieritä ylöspäin"
+          },
+          "options__3": {
+            "label": "Aina"
+          },
+          "options__4": {
+            "label": "Pienennä Logon kokoa"
+          }
+        },
+        "enable_hover_open": {
+          "label": "Salli valikon avaus hoverilla"
+        },
+        "default_expand_category": {
+          "label": "Oletuksena laajenna kategoriamenu"
+        },
+        "header_search": {
+          "content": "Hakuasetukset"
+        },
+        "show_product_types": {
+          "label": "Näytä tuotetyypit"
+        },
+        "menu": {
+          "label": "Päävalikko"
+        },
+        "menu_position": {
+          "label": "Valikon sijainti",
+          "options__1": {
+            "label": "Logorivillä"
+          },
+          "options__2": {
+            "label": "Alhaalla"
+          }
+        },
+        "header_category": {
+          "content": "Kategoriavalikon asetukset"
+        },
+        "category_menu": {
+          "label": "Kategoriavalikko",
+          "info": "Näytä enintään 10 ensimmäisen tason valikkoa"
+        },
+        "show_collection_image": {
+          "label": "Näytä kategoriakuva",
+          "info": "Näytä ensimmäisen tuotteen kuva kategoriassa"
+        },
+        "show_store_button": {
+          "label": "Näytä kaupan painike"
+        },
+        "show_quick_button": {
+          "label": "Näytä pikapainike"
+        },
+        "header_other_settings": {
+          "content": "Muut asetukset"
+        },
+        "default_open_in_index": {
+          "label": "Kotisivun oletusavauksena"
+        }
+      },
+      "blocks": {
+        "all": {
+          "menu_type": {
+            "label": "Sidottu valikkotyyppi",
+            "options__1": {
+              "label": "Päävalikko"
+            },
+            "options__2": {
+              "label": "Kategoriavalikko"
+            }
+          },
+          "target_id": {
+            "label": "Sidotun valikon järjestys",
+            "info": "Käytä tätä indeksiä valikon linkittämiseen. Aloittaa numerosta 1 ja tarkoittaa järjestystä vasemmalta oikealle."
+          },
+          "paragraph_main": {
+            "content": "Näytetään päävalikossa"
+          },
+          "paragraph_category": {
+            "content": "Näytetään kategoriavalikossa"
+          }
+        },
+        "icon": {
+          "name": "Ikoni"
+        },
+        "bubble": {
+          "name": "Merkki"
+        },
+        "mega_image": {
+          "name": "Mega-valikko - kuva",
+          "settings": {
+            "header_badge_content": "Merkin asetukset",
+            "badge_label": {
+              "label": "Merkin teksti"
+            },
+            "width": {
+              "label": "Kuvan leveys",
+              "options__1": {
+                "label": "20%"
+              },
+              "options__2": {
+                "label": "40%"
+              },
+              "options__3": {
+                "label": "60%"
+              },
+              "options__4": {
+                "label": "80%"
+              },
+              "options__5": {
+                "label": "100%"
+              }
+            },
+            "image_mobile": {
+              "info": "Suositeltu 300 x 200px .jpg"
+            }
+          }
+        },
+        "mega_links": {
+          "name": "Mega-valikko - mukautettu valikko",
+          "settings": {
+            "heading": {
+              "info": "Jätä tyhjäksi käyttääksesi valitun valikon otsikkoa"
+            },
+            "image": {
+              "info": "Suositeltu 320 x 200px .jpg"
+            }
+          }
+        },
+        "mega_collection": {
+          "name": "Mega-valikko - kokoelmat",
+          "settings": {
+            "limit": {
+              "info": "Rajoita kunkin kokoelman näytettävien tuotteiden määrä"
+            },
+            "show_collection_image": {
+              "label": "Näytä kategoriakuva"
+            }
+          }
+        },
+        "mega_spacer": {
+          "name": "Mega-valikko - väli"
+        },
+        "mega_image_text": {
+          "name": "Mega-valikko - kuva ja teksti"
+        },
+        "category_image": {
+          "name": "Kategoriavalikko - kuva",
+          "settings": {
+            "header_size_setting": {
+              "content": "Koon asetukset"
+            },
+            "paragraph_content": {
+              "content": "Kaikki valikossa sidotut kuvat noudattavat ensimmäisen lisätyn kuvan kokoa"
+            },
+            "width_percentage": {
+              "info": "Kuvan leveys jäljellä olevasta tilasta prosentteina",
+              "options__1": {
+                "label": "25%"
+              },
+              "options__2": {
+                "label": "50%"
+              },
+              "options__3": {
+                "label": "100%"
+              }
+            },
+            "height_percentage": {
+              "info": "Kuvan korkeus jäljellä olevasta tilasta prosentteina",
+              "options__1": {
+                "label": "50%"
+              },
+              "options__2": {
+                "label": "100%"
+              }
+            },
+            "image": {
+              "info": "Suositeltu 300 x 200px .jpg"
+            }
+          }
+        }
+      }
+    },
+    "footer": {
+      "name": "Alatunniste",
+      "settings": {
+        "show_border_top": {
+          "label": "Näytä yläreunan viiva"
+        },
+        "header_background": {
+          "content": "Taustasetukset"
+        },
+        "background_image": {
+          "label": "Taustakuva"
+        },
+        "header_follow_on_shop": {
+          "content": "Seuraa Shopissa",
+          "info": "Jotta asiakkaat voivat seurata kauppaasi Shop-sovelluksessa myymäläsi etusivulta, Shop Pay on oltava käytössä. [Lisätietoja](https://help.shopify.com/manual/online-store/themes/customizing-themes/follow-on-shop)"
+        },
+        "enable_follow_on_shop": {
+          "label": "Näytä seuraa Shopissa"
+        },
+        "header_trust_badge": {
+          "content": "Shopify:n luottomerkit"
+        },
+        "show_trust_badge": {
+          "label": "Näytä luottomerkki"
+        },
+        "header_localization": {
+          "content": "Kielen ja maan valitsin",
+          "info": "Lisätäksesi kieliä, siirry [Kieliasetuksiin](/admin/settings/languages)."
+        },
+        "header_payment": {
+          "content": "Maksutavat"
+        },
+        "payment_enable": {
+          "label": "Näytä maksukuvakkeet"
+        },
+        "header_to_top": {
+          "content": "Takaisin ylös -painike"
+        },
+        "show_back_to_top_button": {
+          "label": "Näytä takaisin ylös -painike"
+        },
+        "back_to_top_position": {
+          "label": "Näyttöpaikka",
+          "options__1": {
+            "label": "Vasen"
+          },
+          "options__2": {
+            "label": "Oikea"
+          }
+        },
+        "show_progress_path": {
+          "label": "Näytä etenemispolku"
+        },
+        "adapt_mobile_navbar": {
+          "label": "Mukauta mobiilinavigointipalkkia",
+          "info": "Lisää alareunaan tilaa, jotta päällekkäisyyksiä vältetään"
+        }
+      },
+      "blocks": {
+        "all": {
+          "header_width": {
+            "content": "Leveyden asetukset"
+          }
+        },
+        "link_list": {
+          "name": "Valikko",
+          "settings": {
+            "menu": {
+              "label": "Valikko",
+              "info": "Näyttää vain ylimmän tason valikkokohteet."
+            }
+          }
+        },
+        "social": {
+          "name": "Sosiaalinen media",
+          "settings": {
+            "paragraph": {
+              "content": "Näyttääksesi sosiaalisen median tilisi lisää niiden linkit [Teeman asetuksissa](/editor?context=theme&category=social%20media)."
+            }
+          }
+        },
+        "brand": {
+          "name": "Bränditiedot",
+          "settings": {
+            "email": {
+              "label": "Sähköposti"
+            },
+            "phone": {
+              "label": "Puhelin"
+            },
+            "introduction": {
+              "label": "Brändin esittely"
+            },
+            "apple_download_link": {
+              "label": "Apple-sovelluksen latauslinkki"
+            },
+            "android_download_link": {
+              "label": "Android-sovelluksen latauslinkki"
+            },
+            "image": {
+              "info": "Suositeltu 300 x 300px .jpg"
+            }
+          }
+        },
+        "text": {
+          "name": "Teksti"
+        },
+        "image": {
+          "name": "Kuva",
+          "settings": {
+            "image": {
+              "info": "Suositeltu 100 x 100px .jpg"
+            }
+          }
+        },
+        "newsletter": {
+          "name": "Uutiskirje"
+        },
+        "spacer": {
+          "name": "Väli",
+          "settings": {
+            "show_line": {
+              "label": "Näytä erotin"
+            }
+          }
+        }
+      }
+    },
+    "drawer": {
+      "name": "Sivulaatikot"
+    },
+    "popup": {
+      "name": "Ponnahdusikkunat"
+    },
+    "image-banner": {
+      "name": "Kuvabanneri",
+      "presets": {
+        "name": "Kuvabanneri"
+      }
+    },
+    "video-banner": {
+      "name": "Videobanneri",
+      "presets": {
+        "name": "Videobanneri"
+      }
+    },
+    "before-after": {
+      "name": "Ennen ja jälkeen",
+      "presets": {
+        "name": "Ennen ja jälkeen"
+      }
+    },
+    "hotspots-banner": {
+      "name": "Hotspot-banneri",
+      "blocks": {
+        "hotspot": {
+          "name": "Hotspot"
+        }
+      },
+      "presets": {
+        "name": "Hotspot-banneri"
+      }
+    },
+    "feature-highlights": {
+      "name": "Ominaisuudet",
+      "settings": {
+        "image": {
+          "info": "Suositeltu 800 x 800px .jpg"
+        }
+      },
+      "blocks": {
+        "highlight": {
+          "name": "Korostus"
+        }
+      },
+      "presets": {
+        "name": "Ominaisuudet"
+      }
+    },
+    "trust-promises": {
+      "name": "Luottamustakuut",
+      "presets": {
+        "name": "Luottamustakuut"
+      }
+    },
+    "announcement-bar": {
+      "name": "Ilmoituspalkki",
+      "blocks": {
+        "announcement": {
+          "name": "Ilmoitus",
+          "settings": {
+            "text": {
+              "label": "Teksti"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Ilmoituspalkki"
+      }
+    },
+    "cart-drawer": {
+      "name": "Ostoskorin laatikko",
+      "settings": {
+        "paragraph": {
+          "content": "Näyttääksesi ostoskorin laatikon, siirry [Malliasetuksiin](/editor?context=theme&category=cart) ja valitse ostoskorin asetuksista tyypiksi \"Laatikko\"."
+        },
+        "header_empty": {
+          "content": "Tyhjän ostoskorin asetukset"
+        },
+        "header_not_empty": {
+          "content": "Ei-tyhjän ostoskorin asetukset"
+        },
+        "show_complementary": {
+          "label": "Näytä lisätuotteet",
+          "info": "Näytä tuotteet, jotka liittyvät viimeksi lisättyyn ostoskoriin. Lisää ensin [Lisätuotteet](https://webvista-studio.gitbook.io/krank/pages/main-product/complementary-products) tuotteisiin"
+        }
+      }
+    },
+    "featured-collection": {
+      "name": "Esittelykokoelma",
+      "presets": {
+        "name": "Esittelykokoelma"
+      }
+    },
+    "collection-tabs": {
+      "name": "Kokoelmat välilehdet",
+      "blocks": {
+        "collection_tab": {
+          "name": "Kokoelman välilehti"
+        }
+      },
+      "presets": {
+        "name": "Kokoelmat välilehdet"
+      }
+    },
+    "featured-blog": {
+      "name": "Esittelyblogi",
+      "presets": {
+        "name": "Esittelyblogi"
+      }
+    },
+    "media-with-text": {
+      "name": "Media ja teksti",
+      "presets": {
+        "name": "Media ja teksti"
+      }
+    },
+    "image-text-tabs": {
+      "name": "Kuva-teksti-välilehdet",
+      "blocks": {
+        "image_text": {
+          "name": "Kuva-teksti",
+          "settings": {
+            "image": {
+              "info": "900 x 600px .jpg suositeltu"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Kuva-teksti-välilehdet"
+      }
+    },
+    "quotes": {
+      "name": "Lainaukset",
+      "presets": {
+        "name": "Lainaukset"
+      }
+    },
+    "rich-text": {
+      "name": "Rikas teksti",
+      "presets": {
+        "name": "Rikas teksti"
+      }
+    },
+    "newsletter": {
+      "name": "Uutiskirje",
+      "settings": {
+        "header_content": "Sivukuva",
+        "side_image_position": {
+          "label": "Sivukuvan sijainti",
+          "options__1": {
+            "label": "Vasen"
+          },
+          "options__2": {
+            "label": "Oikea"
+          }
+        },
+        "image": {
+          "info": "Suositeltu 600 x 600px .jpg"
+        }
+      },
+      "presets": {
+        "name": "Uutiskirje"
+      }
+    },
+    "collection-list": {
+      "name": "Kokoelman lista",
+      "settings": {
+        "show_product_count": {
+          "label": "Näytä tuotelukumäärä"
+        }
+      },
+      "presets": {
+        "name": "Kokoelman lista"
+      }
+    },
+    "collection-icons": {
+      "name": "Kokoelman kuvakkeet",
+      "presets": {
+        "name": "Kokoelman kuvakkeet"
+      }
+    },
+    "carousel": {
+      "name": "Karuselli",
+      "settings": {
+        "image_height": {
+          "info": "Mukautuva korkeus vastaa korkeinta mediaa."
+        },
+        "nav_buttons_position": {
+          "label": "Painikkeen sijainti",
+          "options__1": {
+            "label": "Molemmilla puolilla"
+          },
+          "options__2": {
+            "label": "Alhaalla oikealla"
+          }
+        }
+      },
+      "presets": {
+        "name": "Karuselli"
+      }
+    },
+    "search-drawer": {
+      "name": "Hakulaatikko",
+      "settings": {
+        "header_recommendation": {
+          "content": "Suositusasetukset"
+        }
+      }
+    },
+    "seamless-scroll": {
+      "name": "Saumaton vieritys",
+      "settings": {
+        "direction": {
+          "label": "Vierityssuunta",
+          "options__1": {
+            "label": "Vasemmalle"
+          },
+          "options__2": {
+            "label": "Oikealle"
+          }
+        },
+        "speed": {
+          "label": "Nopeus",
+          "info": "Siirtymänopeus pikseliä sekunnissa"
+        },
+        "display_border_blur": {
+          "label": "Näytä reunasumennus"
+        },
+        "enable_scroll_synergy": {
+          "label": "Ota vieritysyhteistoiminta käyttöön"
+        }
+      },
+      "blocks": {
+        "text": {
+          "name": "Teksti",
+          "settings": {
+            "content": {
+              "label": "Sisältö"
+            },
+            "font_size": {
+              "label": "Fonttikoko"
+            },
+            "font_weight": {
+              "label": "Fontin paksuus",
+              "options__1": {
+                "label": "Ohut"
+              },
+              "options__2": {
+                "label": "Kevyt"
+              },
+              "options__3": {
+                "label": "Normaali"
+              },
+              "options__4": {
+                "label": "Lihavoitu"
+              },
+              "options__5": {
+                "label": "Musta"
+              },
+              "info": "Fontin paksuusvaihtoehdot riippuvat valitusta fontista; osa fonteista tukee vähemmän painoarvoja"
+            },
+            "header_custom_color": {
+              "content": "Mukautetut värisäädöt"
+            }
+          }
+        },
+        "icon": {
+          "name": "Kuvake",
+          "settings": {
+            "icon_size": {
+              "label": "Kuvakkeen koko"
+            },
+            "header_custom_color": {
+              "content": "Mukautetut värisäädöt"
+            }
+          }
+        },
+        "image": {
+          "name": "Kuva",
+          "settings": {
+            "image": {
+              "info": "Suositeltu 100 x 100px .jpg"
+            }
+          }
+        },
+        "spacer": {
+          "name": "Tilaa",
+          "settings": {
+            "width": {
+              "label": "Tilankoko"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Saumaton vieritys"
+      }
+    },
+    "contact-form": {
+      "name": "Yhteydenottolomake",
+      "settings": {
+        "header-map": {
+          "content": "Kartta-asetukset"
+        },
+        "show_map": {
+          "label": "Näytä kartta"
+        },
+        "map_image": {
+          "label": "Karttakuva",
+          "info": "Jos karttakoodia ei ole lisätty, tätä kuvaa näytetään, 800 × 600px .jpg suositeltu"
+        },
+        "map_iframe": {
+          "label": "Google-karttan upotuskoodi",
+          "info": "Käytä muotoa <iframe></iframe>. Tarkemmat ohjeet: [Kuinka saada upotuskoodi kartalle](https://help.shopify.com/zh-CN/manual/online-store/themes/theme-structure/pages#add-content)."
+        }
+      },
+      "presets": {
+        "name": "Yhteydenottolomake"
+      }
+    },
+    "testimonial": {
+      "name": "Asiakaspalautteet",
+      "presets": {
+        "name": "Asiakaspalautteet"
+      }
+    },
+    "collapsible-content": {
+      "name": "Taitettava sisältö",
+      "presets": {
+        "name": "Taitettava sisältö"
+      }
+    },
+    "shop-the-look": {
+      "name": "Osta tyyli",
+      "settings": {
+        "show_quantity_selector": {
+          "label": "Näytä määrävalitsin"
+        },
+        "default_selected": {
+          "label": "Oletuksena valittu"
+        },
+        "image": {
+          "info": "Suositeltu 1000 x 600px .jpg"
+        }
+      },
+      "blocks": {
+        "look-spot": {
+          "name": "Tyylipiste"
+        }
+      },
+      "presets": {
+        "name": "Osta tyyli"
+      }
+    },
+    "logo-list": {
+      "name": "Logolista",
+      "presets": {
+        "name": "Logolista"
+      }
+    },
+    "media-grid": {
+      "name": "Mediaruudukko",
+      "presets": {
+        "name": "Mediaruudukko"
+      }
+    },
+    "campaign-popup": {
+      "name": "Kampanjaponnahdusikkuna",
+      "settings": {
+        "disable_for_holder": {
+          "label": "Poista käytöstä kirjautuneilta käyttäjiltä",
+          "info": "Ei koske muokkaustilassa"
+        },
+        "delay": {
+          "label": "Viiveaika",
+          "info": "Viive ei koske muokkaustilassa"
+        },
+        "frequency": {
+          "label": "Näyttötiheys"
+        },
+        "image": {
+          "info": "Suositeltu 360 x 480px .jpg. Googlen välimainosääntöjen noudattamiseksi ja SEO:n parantamiseksi ei näytetä mobiilissa."
+        },
+        "header_float_button": {
+          "content": "Kelluvan painikkeen asetukset"
+        },
+        "show_button": {
+          "label": "Näytä painike"
+        },
+        "button_position": {
+          "label": "Painikkeen sijainti",
+          "options__1": {
+            "label": "Vasen"
+          },
+          "options__2": {
+            "label": "Oikea"
+          }
+        }
+      },
+      "presets": {
+        "name": "Kampanjaponnahdusikkuna"
+      }
+    },
+    "age-verifier-popup": {
+      "name": "Ikävarmistusponnahdusikkuna",
+      "settings": {
+        "debug_mode": {
+          "label": "Ota vianetsintätila käyttöön",
+          "info": "Pakottaa ikävarmistusponnahdusikkunan näkymään jokaisessa päivityksessä, vain muokkaustarkoituksiin. Muista poistaa käytöstä [Vianetsintätila](https://webvista-studio.gitbook.io/krank/popups/age-verification-popup), kun julkaiset kaupan."
+        },
+        "paragraph_background": {
+          "content": "Tausta-asetukset"
+        },
+        "paragraph_message": {
+          "content": "+ Alaikäisille tarkoitettu viesti"
+        },
+        "declined_heading": {
+          "label": "Hylätty otsikko"
+        },
+        "declined_description": {
+          "label": "Hylätty kuvaus"
+        }
+      }
+    },
+    "bottom-nav-bar": {
+      "name": "Mobiilivalikkopalkki",
+      "blocks": {
+        "home": {
+          "name": "Etusivu"
+        },
+        "account": {
+          "name": "Käyttäjäkeskus"
+        },
+        "cart": {
+          "name": "Ostoskori"
+        },
+        "store": {
+          "name": "Kauppa"
+        },
+        "search": {
+          "name": "Haku"
+        },
+        "link": {
+          "name": "Linkki",
+          "settings": {
+            "image": {
+              "info": "Suositeltu 30 x 30px .jpg"
+            }
+          }
+        }
+      }
+    },
+    "product-compare-table": {
+      "name": "Tuotevertailutaulukko",
+      "settings": {
+        "header_product": {
+          "content": "Tuoteasetukset"
+        }
+      },
+      "presets": {
+        "name": "Tuotevertailutaulukko"
+      }
+    },
+    "custom-section-header": {
+      "name": "Mukautettu osion otsikko",
+      "presets": {
+        "name": "Mukautettu osion otsikko"
+      }
+    },
+    "stores-drawer": {
+      "name": "Myymälälaatikko",
+      "blocks": {
+        "store": {
+          "name": "Myymälä",
+          "settings": {
+            "image": {
+              "info": "Suositeltu 400 x 250px .jpg"
+            }
+          }
+        }
+      }
+    },
+    "store-list": {
+      "name": "Myymäläluettelo",
+      "presets": {
+        "name": "Myymäläluettelo"
+      }
+    },
+    "product-quick-view-drawer": {
+      "name": "Pikakatselulaatikko",
+      "settings": {
+        "product": {
+          "label": "Esikatsele tuotetta",
+          "info": "Huom: esikatselu on vain ulkoasun ja tyylin testaamiseen"
+        }
+      }
+    },
+    "recently-viewed": {
+      "name": "Viimeksi katsotut",
+      "presets": {
+        "name": "Viimeksi katsotut"
+      }
+    },
+    "related-products": {
+      "name": "Samankaltaiset tuotteet"
+    },
+    "visual-tabs": {
+      "name": "Visuaaliset välilehdet",
+      "blocks": {
+        "image": {
+          "name": "Kuva",
+          "settings": {
+            "image": {
+              "info": "Suositeltu 1600 x 600px .jpg"
+            },
+            "image_mobile": {
+              "info": "Suositeltu 300 x 400px .jpg"
+            }
+          }
+        },
+        "video": {
+          "name": "Video"
+        }
+      },
+      "presets": {
+        "name": "Visuaaliset välilehdet"
+      }
+    },
+    "embedded-image-heading": {
+      "name": "Upotettu kuvateksti",
+      "presets": {
+        "name": "Upotettu kuvateksti"
+      }
+    },
+    "shop-the-feed": {
+      "name": "Osta syötteestä",
+      "settings": {
+        "image": {
+          "info": "Suositeltu 60 x 60px .jpg"
+        }
+      },
+      "blocks": {
+        "image-feed": {
+          "name": "Kuvasyöte",
+          "settings": {
+            "image": {
+              "info": "Suositeltu 300 x 400px .jpg"
+            }
+          }
+        },
+        "video-feed": {
+          "name": "Videosyöte"
+        }
+      },
+      "presets": {
+        "name": "Osta syötteestä"
+      }
+    },
+    "timeline": {
+      "name": "Aikajana",
+      "presets": {
+        "name": "Aikajana"
+      }
+    },
+    "team": {
+      "name": "Tiimi",
+      "presets": {
+        "name": "Tiimi"
+      }
+    },
+    "promotion-bar": {
+      "name": "Mainospalkki",
+      "presets": {
+        "name": "Mainospalkki"
+      }
+    },
+    "flexible-images": {
+      "name": "Joustavat kuvat",
+      "presets": {
+        "name": "Joustavat kuvat"
+      }
+    },
+    "featured-products-grid": {
+      "name": "Esiteltyjen tuotteiden ruudukko",
+      "presets": {
+        "name": "Esiteltyjen tuotteiden ruudukko"
+      }
+    },
+    "featured-product": {
+      "name": "Esitelty tuote",
+      "presets": {
+        "name": "Esitelty tuote"
+      }
+    },
+    "reading-text": {
+      "name": "Lukuteksti",
+      "presets": {
+        "name": "Lukuteksti"
+      }
+    },
+    "press": {
+      "name": "Lehdistö",
+      "blocks": {
+        "review": {
+          "name": "Arvostelu"
+        }
+      },
+      "presets": {
+        "name": "Lehdistö"
+      }
+    },
+    "multicolumn": {
+      "name": "Monipalstainen",
+      "presets": {
+        "name": "Monipalstainen"
+      }
+    },
+    "breadcrumb": {
+      "name": "Leipäteksti"
+    },
+    "product-anchor-navigation": {
+      "label": "Ankkurinavigointipalkki",
+      "blocks": {
+        "item": {
+          "name": "Ankkurielementti",
+          "settings": {
+            "anchor_name": {
+              "label": "Ankkurin nimi"
+            },
+            "anchor_id": {
+              "label": "Ankkurin ID",
+              "info": "Syötä sivun ankkurin ID (esim. product-details)"
+            },
+            "image": {
+              "info": "Suositeltu 30 x 30px .jpg"
+            }
+          }
+        }
+      }
+    },
+    "product-description": {
+      "name": "Tuotekuvaus"
+    },
+    "media-content-list": {
+      "name": "Mediakontenttilista",
+      "presets": {
+        "name": "Mediakontenttilista"
+      }
+    },
+    "gallery-with-text": {
+      "name": "Galleria tekstillä",
+      "presets": {
+        "name": "Galleria tekstillä"
+      }
+    },
+    "collage-with-text": {
+      "name": "Kollaasi tekstillä",
+      "presets": {
+        "name": "Kollaasi tekstillä"
+      }
+    },
+    "main-list-collection-banner": {
+      "name": "Kokoelman listabanneri"
+    },
+    "main-product": {
+      "name": "Tuotetiedot",
+      "blocks": {
+        "title": {
+          "name": "Otsikko",
+          "settings": {
+            "size": {
+              "label": "Fonttikoko",
+              "options__1": {
+                "label": "Pieni"
+              },
+              "options__2": {
+                "label": "Keskikoko"
+              },
+              "options__3": {
+                "label": "Suuri"
+              }
+            },
+            "header_vendor": {
+              "content": "Tuotteen toimittaja"
+            },
+            "show_vendor": {
+              "label": "Näytä toimittaja"
+            },
+            "show_type": {
+              "label": "Näytä tyyppi"
+            },
+            "header_rating": {
+              "content": "Tuotearvostelu"
+            },
+            "enable_rating_preview": {
+              "label": "Ota esikatselutila käyttöön",
+              "info": "Näytä simuloitu arvostelutieto"
+            },
+            "show_rating": {
+              "label": "Näytä tuotearvostelu"
+            },
+            "star_size": {
+              "label": "Tähtien koko",
+              "options__1": {
+                "label": "Pieni"
+              },
+              "options__2": {
+                "label": "Keskikoko"
+              },
+              "options__3": {
+                "label": "Suuri"
+              }
+            },
+            "star_color": {
+              "label": "Tähtien väri"
+            },
+            "target_anchor": {
+              "label": "Ankkuritunnus",
+              "info": "Lisää ankkuritunnus, esim. #Arvostelut"
+            }
+          }
+        },
+        "price": {
+          "name": "Hinta",
+          "settings": {
+            "show_tax": {
+              "label": "Näytä vero- ja toimitustiedote"
+            },
+            "show_sale_badge": {
+              "label": "Näytä alennus-/loppuunmyyntimerkki"
+            },
+            "sale_badge_type": {
+              "label": "Alennusmerkin tyyppi",
+              "options__1": {
+                "label": "Summa"
+              },
+              "options__2": {
+                "label": "Prosentti"
+              },
+              "options__3": {
+                "label": "Ilmainen"
+              }
+            }
+          }
+        },
+        "sku": {
+          "name": "SKU"
+        },
+        "description": {
+          "name": "Tuotekuvaus",
+          "settings": {
+            "enable_brief": {
+              "label": "Näytä lyhyt kuvaus"
+            },
+            "limit": {
+              "label": "Lyhyen kuvauksen merkkiraja"
+            }
+          }
+        },
+        "info_card": {
+          "name": "Tietokortti",
+          "settings": {
+            "enable_close": {
+              "label": "Ota sulkupainike käyttöön",
+              "info": "Mahdollistaa käyttäjille tietokortin sulkemisen"
+            }
+          }
+        },
+        "variant_picker": {
+          "name": "Varianttivalitsin",
+          "settings": {
+            "header_default_picker": {
+              "content": "Perusvalitsin"
+            },
+            "picker_type": {
+              "label": "Valitsimen tyyppi",
+              "options__1": {
+                "label": "Pudotusvalikko"
+              },
+              "options__2": {
+                "label": "Nappi"
+              }
+            },
+            "auto_dropdown": {
+              "label": "Automaattinen tyylinvaihto",
+              "info": "Vaihdetaan automaattisesti pudotusvalikkoon, kun vaihtoehtojen määrä ylittää alarajan, jotta sivusta tulee siistimpi"
+            },
+            "dropdown_threshold": {
+              "label": "Pudotusvalikon kynnysarvo"
+            },
+            "header_swatch_picker": {
+              "content": "Värivalitsin"
+            },
+            "enable_first_swatch_image": {
+              "label": "Näytä varianttikuvake",
+              "info": "Näytä varianttikuvake ensimmäiselle värivaihtoehdolle"
+            },
+            "swatch_size": {
+              "label": "Valitsimen koko",
+              "options__1": {
+                "label": "Pieni"
+              },
+              "options__2": {
+                "label": "Keskikoko"
+              },
+              "options__3": {
+                "label": "Suuri"
+              }
+            },
+            "round_swatches": {
+              "label": "Pyöreät näytteet"
+            },
+            "auto_scroll_to_top": {
+              "label": "Automaattinen vieritys ylös",
+              "info": "Vierittää automaattisesti ylös varianttikuvan vaihtuessa."
+            }
+          }
+        },
+        "buy_buttons": {
+          "name": "Ostopainikkeet",
+          "settings": {
+            "show_quantity_selector": {
+              "label": "Näytä määränvalitsin"
+            },
+            "is_selector_standalone": {
+              "label": "Näytä määränvalitsin omalla rivillään",
+              "info": "Pakkaa automaattisesti, jos näyttö on kapea"
+            },
+            "show_dynamic_checkout": {
+              "label": "Näytä dynaaminen ostopainike",
+              "info": "Näyttää kassanapin ostoskoriin lisäämispainikkeen vieressä"
+            },
+            "show_notify_form": {
+              "label": "Näytä ilmoitus saatavuudesta",
+              "info": "Näkyy, kun tuote on loppu eikä ennakkotilattavissa"
+            },
+            "show_gift_card_recipient": {
+              "label": "Näytä lahjakortin vastaanottajakenttä",
+              "info": "Mahdollistaa ostajan lähettää lahjakortin suoraan vastaanottajalle"
+            }
+          }
+        },
+        "separator": {
+          "name": "Erotin",
+          "settings": {
+            "show_line": {
+              "label": "Näytä viiva"
+            },
+            "margin_top": {
+              "label": "Ylätasaus"
+            },
+            "margin_bottom": {
+              "label": "Alatasaus"
+            }
+          }
+        },
+        "inventory": {
+          "name": "Varaston tila",
+          "settings": {
+            "inventory_threshold": {
+              "label": "Varaston kynnysarvo",
+              "info": "Aseta kynnysarvo, joka laukaisee vähissä olevan varaston varoituksen"
+            },
+            "low_stock_alert": {
+              "label": "Vähissä olevan varaston varoitus",
+              "info": "Käytä [stock] näyttääksesi nykyisen varastomäärän"
+            },
+            "full_stock_alert": {
+              "label": "Täyden varaston ilmoitus",
+              "info": "Käytä [stock] näyttääksesi nykyisen varastomäärän"
+            },
+            "show_percentage_bar": {
+              "label": "Näytä prosenttipalkki"
+            },
+            "low_stock_bar_color": {
+              "label": "Vähissä olevan varaston palkin väri"
+            },
+            "full_stock_bar_color": {
+              "label": "Täyden varaston palkin väri"
+            }
+          }
+        },
+        "collapsible_tab": {
+          "name": "Taitettava välilehti",
+          "settings": {
+            "heading": {
+              "label": "Otsikko"
+            },
+            "richtext_content": {
+              "label": "Sisältö"
+            },
+            "image": {
+              "info": "Suositeltu 30 x 30px .jpg"
+            },
+            "content_image": {
+              "info": "Suositeltu 700 x 700px .jpg"
+            }
+          }
+        },
+        "icon_text": {
+          "name": "Kuvake tekstillä",
+          "settings": {
+            "image": {
+              "info": "Suositeltu 30 x 30px .jpg"
+            }
+          }
+        },
+        "sibling_product": {
+          "name": "Sisarustuote",
+          "settings": {
+            "paragraph": {
+              "content": "Yhdistä saman sarjan sisarustuotteet näytettäväksi yhdessä, katso [Kuinka luoda sisarustuotteita](https://webvista-studio.gitbook.io/krank/pages/main-product/sibling-products)"
+            },
+            "title": {
+              "label": "Valinnan nimi",
+              "info": "esim. Punainen, XXL"
+            },
+            "show_price": {
+              "label": "Näytä hinta"
+            }
+          }
+        },
+        "pickup_availability": {
+          "name": "Nouto saatavuus"
+        },
+        "sharing": {
+          "name": "Jakaminen"
+        },
+        "mini_checkout": {
+          "name": "Pikakassa"
+        },
+        "countdown": {
+          "name": "Kampanjan ajastin",
+          "settings": {
+            "header_countdown": {
+              "content": "Ajastinasetukset"
+            }
+          }
+        },
+        "text": {
+          "name": "Teksti",
+          "settings": {
+            "text": {
+              "label": "Tekstikuvaus"
+            }
+          }
+        },
+        "popup": {
+          "name": "Ponnahdusikkuna",
+          "settings": {
+            "image": {
+              "info": "Suositeltu 30 x 30px .jpg"
+            },
+            "content_image": {
+              "info": "Suositeltu 600 x 600px .jpg"
+            },
+            "bind_size_picker": {
+              "label": "Sidottu kokovalitsimeen"
+            }
+          }
+        },
+        "complementary_products": {
+          "name": "Täydentävät tuotteet",
+          "settings": {
+            "paragraph": {
+              "content": "Näytä tuotteita, jotka sopivat hyvin nykyisen tuotteen kanssa."
+            },
+            "show_separator_line": {
+              "label": "Näytä yläraja"
+            },
+            "items_per_slide": {
+              "label": "Kohteita per dia"
+            }
+          }
+        },
+        "delivery_eta": {
+          "name": "Arvioitu toimitusaika",
+          "settings": {
+            "processing_time": {
+              "label": "Käsittelyaika"
+            },
+            "time_variance": {
+              "label": "Aikavaihtelu"
+            }
+          }
+        },
+        "keyword_list": {
+          "name": "Avainsanalista"
+        },
+        "add_on": {
+          "name": "Lisätuote",
+          "settings": {
+            "image": {
+              "info": "Suositeltu 30 x 30px .jpg"
+            },
+            "default_selected": {
+              "label": "Oletusvalittu"
+            },
+            "quantity_sync": {
+              "label": "Määrän synkronointi",
+              "info": "Kun käytössä, pakattujen tuotteiden määrä synkronoidaan päätuotteen määrän kanssa."
+            }
+          }
+        },
+        "payment_security": {
+          "name": "Maksuturva"
+        },
+        "badge_list": {
+          "name": "Tunnistuslista"
+        },
+        "care": {
+          "name": "Huolto",
+          "settings": {
+            "product": {
+              "info": "Sinun on ensin lisättävä liittyvä takuutuote"
+            }
+          }
+        }
+      },
+      "settings": {
+        "enable_sticky_media": {
+          "label": "Ota kiinteä media käyttöön työpöydällä"
+        },
+        "media_layout": {
+          "label": "Mediatyyli",
+          "options__1": {
+            "label": "Pinottu"
+          },
+          "options__2": {
+            "label": "Karuselli pikkukuvilla alla"
+          },
+          "options__3": {
+            "label": "Karuselli pikkukuvilla vasemmalla"
+          },
+          "options__4": {
+            "label": "Karuselli pikkukuvilla oikealla"
+          }
+        },
+        "paragraph_amplifier": {
+          "content": "+ Kuvan suurennin asetukset"
+        },
+        "paragraph_rotation": {
+          "content": "+ Media karusellin asetukset"
+        },
+        "paragraph_other": {
+          "content": "+ Muut media-asetukset"
+        },
+        "hide_variants": {
+          "label": "Piilota muut varianttikuvat",
+          "info": "Käytä alt-attribuuttia ryhmittämään kuvia varianteittain, jotta valitun variantin kuvat näkyvät ja muut piilotetaan. Lisätietoja [Tuotesivu](https://webvista-studio.gitbook.io/krank/pages/main-product/variant-images-group)"
+        },
+        "enable_video_autoplay": {
+          "label": "Ota videoautomaattitoisto käyttöön"
+        },
+        "enable_video_looping": {
+          "label": "Ota video toistuvaksi"
+        },
+        "hide_thumbnail_mobile": {
+          "label": "Piilota pikkukuvat mobiilissa",
+          "info": "Toimii, kun mediatyyli on karuselli."
+        }
+      }
+    },
+    "main-article": {
+      "name": "Blogikirjoitus",
+      "settings": {
+        "enable_share": {
+          "label": "Ota jako käyttöön"
+        }
+      },
+      "blocks": {
+        "related_products": {
+          "name": "Liittyvät tuotteet",
+          "settings": {
+            "related_type": {
+              "label": "Liittyvä tyyppi",
+              "options__1": {
+                "label": "Automaattinen"
+              },
+              "options__2": {
+                "label": "Manuaalinen"
+              },
+              "options__3": {
+                "label": "Metakenttä"
+              }
+            }
+          }
+        },
+        "related_articles": {
+          "name": "Liittyvät artikkelit",
+          "settings": {
+            "paragraph_content": {
+              "content": "Liittyvät artikkelit näyttävät muut artikkelit, joilla on samat tunnisteet."
+            }
+          }
+        },
+        "image_text": {
+          "name": "Kuvateksti",
+          "settings": {
+            "image": {
+              "info": "Suositeltu 400 x 250px .jpg"
+            }
+          }
+        }
+      }
+    },
+    "main-blog": {
+      "name": "Blogikirjoitukset",
+      "settings": {
+        "show_article_count": {
+          "label": "Näytä artikkelien määrä"
+        },
+        "show_tags_filter": {
+          "label": "Näytä tunnisteiden suodatin"
+        }
+      }
+    },
+    "main-cart": {
+      "name": "Pääostoskärry"
+    },
+    "main-search-banner": {
+      "name": "Hakubanneri"
+    },
+    "main-search": {
+      "name": "Hakutulokset",
+      "settings": {
+        "paragraph_card_article": {
+          "content": "+ Artikkelikortin asetukset"
+        }
+      }
+    },
+    "main-collection-banner": {
+      "name": "Kokoelma-banneri",
+      "settings": {
+        "show_collection_image": {
+          "label": "Näytä kokoelman kuva"
+        },
+        "default_collection_image": {
+          "label": "Oletuskuva",
+          "info": "Jos kokoelmalla ei ole kuvaa, käytetään tätä. Suositeltu 1920 x 600px .jpg."
+        },
+        "custom_collection_image": {
+          "label": "Mukautettu kuva",
+          "info": "Suositeltu 1920 x 600px .jpg"
+        }
+      }
+    },
+    "main-collection-text-image": {
+      "name": "Kokoelman teksti ja kuva",
+      "settings": {
+        "show_collection_image": {
+          "label": "Näytä kokoelman kuva"
+        },
+        "default_collection_image": {
+          "label": "Oletuskuva",
+          "info": "Jos kokoelmalla ei ole kuvaa, tätä käytetään. Suositeltu 800 x 500px .jpg."
+        },
+        "custom_collection_image": {
+          "label": "Mukautettu kuva",
+          "info": "Suositeltu 800 x 500px .jpg"
+        }
+      }
+    },
+    "main-collection": {
+      "name": "Kokoelma",
+      "settings": {
+        "header_filter": {
+          "content": "Suodatus ja lajittelu"
+        },
+        "enable_sorting": {
+          "label": "Ota lajittelu käyttöön"
+        },
+        "enable_filtering": {
+          "label": "Ota suodatus käyttöön",
+          "info": "Mukauta suodattimia Search and Discovery -sovelluksella. [Lisätietoja](https://help.shopify.com/manual/online-store/search-and-discovery/filters)"
+        },
+        "filter_type": {
+          "label": "Suodattimen asettelu",
+          "options__1": {
+            "label": "Vaakasuora"
+          },
+          "options__2": {
+            "label": "Pystysuora"
+          },
+          "options__3": {
+            "label": "Laatikko"
+          }
+        },
+        "enable_sticky_filter": {
+          "label": "Ota kiinnitetty suodatin käyttöön"
+        },
+        "default_expand_facets": {
+          "label": "Oletuslaajennus",
+          "options__1": {
+            "label": "Ei mitään"
+          },
+          "options__2": {
+            "label": "Laajenna ensimmäinen"
+          },
+          "options__3": {
+            "label": "Laajenna kaikki"
+          }
+        },
+        "limit": {
+          "info": "Aseta näytettävien kohteiden määrä per sivu"
+        },
+        "header_layout": {
+          "content": "Tuotteen asettelu"
+        },
+        "enable_layout_switch": {
+          "label": "Näytä asettelun vaihdin"
+        },
+        "default_layout": {
+          "label": "Oletusasettelu",
+          "options__1": {
+            "label": "Ruutu"
+          },
+          "options__2": {
+            "label": "Lista"
+          }
+        },
+        "show_separate_line": {
+          "label": "Näytä erottelurivi"
+        }
+      }
+    },
+    "main-list-collections": {
+      "name": "Kokoelman listaus sivu",
+      "settings": {
+        "sort": {
+          "label": "Lajittele kokoelmat:",
+          "options__1": {
+            "label": "Aakkosjärjestys, A-Ö"
+          },
+          "options__2": {
+            "label": "Aakkosjärjestys, Ö-A"
+          },
+          "options__3": {
+            "label": "Päivämäärä, uusin ensin"
+          },
+          "options__4": {
+            "label": "Päivämäärä, vanhin ensin"
+          },
+          "options__5": {
+            "label": "Tuotemäärä, eniten ensin"
+          },
+          "options__6": {
+            "label": "Tuotemäärä, vähiten ensin"
+          }
+        },
+        "show_product_count": {
+          "label": "Näytä tuotemäärä"
+        }
+      }
+    },
+    "main-page": {
+      "name": "Sivu"
+    },
+    "main-password": {
+      "name": "Pääsalasana"
+    },
+    "main-login": {
+      "name": "Pääkirjautuminen",
+      "settings": {
+        "shop_login_button": {
+          "label": "Ota käyttöön Kirjaudu sisään Shopilla"
+        }
+      }
+    },
+    "main-order": {
+      "name": "Tilaus"
+    },
+    "main-account": {
+      "name": "Tili",
+      "settings": {
+        "orders_per_page": {
+          "label": "Tilaukset per sivu"
+        }
+      }
+    },
+    "main-activate-account": {
+      "name": "Tilin aktivointi"
+    },
+    "main-addresses": {
+      "name": "Osoitteet",
+      "settings": {
+        "addresses_per_page": {
+          "label": "Osoitteet per sivu"
+        }
+      }
+    },
+    "main-register": {
+      "name": "Päärekisteröinti"
+    },
+    "main-reset-password": {
+      "name": "Nollaa salasana"
+    },
+    "main-gift-card": {
+      "name": "Lahjakortti"
+    }
+  }
+}

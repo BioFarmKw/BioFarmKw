@@ -1,0 +1,441 @@
+{
+  "sections": {
+    "main-collection-banner": {
+      "type": "main-collection-banner",
+      "blocks": {
+        "collection_title_JRaFUX": {
+          "type": "_collection-title",
+          "name": "Collection title",
+          "settings": {
+            "type": "1",
+            "heading_size": "small",
+            "heading_uppercase": false
+          },
+          "blocks": {}
+        },
+        "collection_description_EBeURY": {
+          "type": "_collection-description",
+          "name": "Collection description",
+          "settings": {
+            "color_light": false,
+            "limit_description_height": true
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "collection_title_JRaFUX",
+        "collection_description_EBeURY"
+      ],
+      "disabled": true,
+      "settings": {
+        "enable_full_width": true,
+        "height": "small",
+        "color_scheme": "scheme-1",
+        "show_collection_image": true,
+        "background_image_opacity": 100,
+        "image_behavior": "zoom-in",
+        "content_position": "middle-center",
+        "content_width": "medium",
+        "text_alignment": "center",
+        "text_alignment_mobile": "center",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "alignment": "left",
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "main-collection-text-image": {
+      "type": "main-collection-text-image",
+      "blocks": {
+        "collection_title_ELBRqY": {
+          "type": "_collection-title",
+          "name": "Collection title",
+          "settings": {
+            "type": "1",
+            "heading_size": "small",
+            "heading_uppercase": false
+          },
+          "blocks": {}
+        },
+        "collection_description_pnA3ft": {
+          "type": "_collection-description",
+          "name": "Collection description",
+          "settings": {
+            "color_light": false,
+            "limit_description_height": true
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "collection_title_ELBRqY",
+        "collection_description_pnA3ft"
+      ],
+      "settings": {
+        "enable_full_width": false,
+        "color_scheme": "scheme-2",
+        "show_collection_image": false,
+        "image_width": "medium",
+        "image_height": "adapt",
+        "image_position": "left",
+        "image_behavior": "none",
+        "content_width": "medium",
+        "text_alignment": "center",
+        "text_alignment_mobile": "center",
+        "image_position_mobile": "top",
+        "padding_top": 96,
+        "padding_bottom": 96,
+        "margin_top": 0,
+        "margin_bottom": 32
+      }
+    },
+    "main-collection": {
+      "type": "main-collection",
+      "blocks": {
+        "collection-recommend": {
+          "type": "_collection-recommend",
+          "static": true,
+          "settings": {
+            "heading": "Top Picks",
+            "collection": "best-sellers",
+            "limit": 3,
+            "enable_truncate_title": true,
+            "show_compare_at_price": false,
+            "show_view_more": true
+          },
+          "blocks": {}
+        },
+        "collection-advertise": {
+          "type": "_collection-advertise",
+          "disabled": true,
+          "static": true,
+          "settings": {
+            "color_scheme": "scheme-3",
+            "image_opacity": 80
+          },
+          "blocks": {
+            "heading_MaWKJC": {
+              "type": "heading",
+              "name": "t:blocks.heading.presets.name",
+              "settings": {
+                "content": "Built for <em>Pros</em>",
+                "type": "2",
+                "size": "small",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "hand-drawn-circle",
+                "highlight_color": "#ff0000"
+              },
+              "blocks": {}
+            },
+            "description_fF9jif": {
+              "type": "description",
+              "name": "t:blocks.description.presets.name",
+              "settings": {
+                "content": "<p>Serious tools. Real results.</p>",
+                "color_light": false,
+                "limit_description_height": false
+              },
+              "blocks": {}
+            },
+            "button_LweK46": {
+              "type": "button",
+              "name": "t:blocks.button.presets.name",
+              "settings": {
+                "style": "primary",
+                "size": "small",
+                "icon": "none",
+                "button_label": "Shop Now",
+                "button_link": "",
+                "open_in_new_tab": false,
+                "show_arrow": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_MaWKJC",
+            "description_fF9jif",
+            "button_LweK46"
+          ]
+        }
+      },
+      "settings": {
+        "pagination_style": "paginator",
+        "limit": 15,
+        "enable_layout_switch": true,
+        "default_layout": "grid",
+        "show_separate_line": true,
+        "card_size": "small",
+        "image_ratio": "portrait",
+        "text_alignment": "center",
+        "show_card_wrapper": false,
+        "color_scheme": "",
+        "enable_sorting": true,
+        "enable_filtering": true,
+        "filter_type": "vertical",
+        "default_expand_facets": "all",
+        "enable_sticky_filter": true,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "rich_text_HREUNg": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_KHb4pj": {
+          "type": "heading",
+          "settings": {
+            "content": "About <em>Flonora</em>",
+            "type": "2",
+            "size": "small",
+            "uppercase": false,
+            "enable_highlight_text": true,
+            "highlight_type": "underline",
+            "highlight_color": "#676432"
+          },
+          "blocks": {}
+        },
+        "description_F8Thp6": {
+          "type": "description",
+          "settings": {
+            "content": "<p>Flonora began with a simple vision: to bring the quiet beauty of nature into everyday living. What started as a small collection of indoor plants and handcrafted ceramics has grown into a thoughtful curation of home décor and lifestyle pieces.</p><p>We believe that the spaces we live in shape the way we feel. Every planter, every vessel, every detail we design carries the intention of creating balance, calm, and connection. By blending natural elements with timeless craftsmanship, our products are meant to be more than objects — they are companions for a mindful life.</p><p>Our journey is rooted in collaboration. We partner with artisans, growers, and designers who share our values of sustainability, artistry, and care. Together, we craft pieces that honor tradition while embracing modern living.</p><p>At Flonora, we invite you to slow down, to celebrate simplicity, and to create spaces that reflect not only beauty, but also meaning.</p>",
+            "color_light": false,
+            "limit_description_height": true
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading_KHb4pj",
+        "description_F8Thp6"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "enable_full_width": false,
+        "color_scheme": "scheme-2",
+        "content_width": "large",
+        "text_alignment": "center",
+        "background_image_opacity": 90,
+        "image_behavior": "none",
+        "text_alignment_mobile": "center",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "media_grid_8KAR4K": {
+      "type": "media-grid",
+      "blocks": {
+        "section-header": {
+          "type": "_section-header",
+          "disabled": true,
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "heading_qnG9kF": {
+              "type": "heading",
+              "settings": {
+                "content": "Media grid",
+                "type": "2",
+                "size": "medium",
+                "uppercase": true,
+                "enable_highlight_text": true,
+                "highlight_type": "hand-drawn-circle",
+                "highlight_color": "#ffd600"
+              },
+              "blocks": {}
+            },
+            "description_XtDxc9": {
+              "type": "description",
+              "settings": {
+                "content": "<p>Add some description here</p>",
+                "color_light": false,
+                "limit_description_height": true
+              },
+              "blocks": {}
+            },
+            "buttons_c9hx7B": {
+              "type": "buttons",
+              "settings": {},
+              "blocks": {
+                "button_WwrV7Y": {
+                  "type": "button",
+                  "settings": {
+                    "style": "primary",
+                    "size": "medium",
+                    "icon": "none",
+                    "button_label": "Button label",
+                    "button_link": "",
+                    "open_in_new_tab": false,
+                    "show_arrow": false
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "button_WwrV7Y"
+              ]
+            }
+          },
+          "block_order": [
+            "heading_qnG9kF",
+            "description_XtDxc9",
+            "buttons_c9hx7B"
+          ]
+        },
+        "media-grid-list": {
+          "type": "_media-grid-list",
+          "static": true,
+          "settings": {
+            "gap": 16,
+            "image_height_mobile": "medium"
+          },
+          "blocks": {
+            "image_grid_item_BQ9rrf": {
+              "type": "_image-grid-item",
+              "settings": {
+                "color_scheme": "scheme-3",
+                "image_opacity": 90,
+                "width": "3",
+                "height": "1",
+                "position": "bottom-left",
+                "text_alignment": "left",
+                "position_mobile": "bottom-center",
+                "alignment_mobile": "center"
+              },
+              "blocks": {
+                "heading_9XqBtb": {
+                  "type": "heading",
+                  "settings": {
+                    "content": "<em>Our Green Promise</em>",
+                    "type": "3",
+                    "size": "small",
+                    "uppercase": false,
+                    "enable_highlight_text": true,
+                    "highlight_type": "script",
+                    "highlight_color": "#005d01"
+                  },
+                  "blocks": {}
+                },
+                "description_hzXTpC": {
+                  "type": "description",
+                  "settings": {
+                    "content": "<p>Every plant is nurtured with care <br/>and delivered fresh to your home.</p>",
+                    "color_light": false,
+                    "limit_description_height": true
+                  },
+                  "blocks": {}
+                },
+                "button_U4Enh4": {
+                  "type": "button",
+                  "name": "t:blocks.button.presets.name",
+                  "settings": {
+                    "style": "primary",
+                    "size": "small",
+                    "icon": "none",
+                    "button_label": "Learn More",
+                    "open_in_new_tab": false,
+                    "show_arrow": false
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "heading_9XqBtb",
+                "description_hzXTpC",
+                "button_U4Enh4"
+              ]
+            },
+            "image_grid_item_YGfqtT": {
+              "type": "_image-grid-item",
+              "settings": {
+                "color_scheme": "scheme-3",
+                "image_opacity": 90,
+                "width": "3",
+                "height": "1",
+                "position": "bottom-left",
+                "text_alignment": "left",
+                "position_mobile": "bottom-center",
+                "alignment_mobile": "center"
+              },
+              "blocks": {
+                "heading_4WxTrV": {
+                  "type": "heading",
+                  "settings": {
+                    "content": "<em>Bring Nature Home</em>",
+                    "type": "3",
+                    "size": "small",
+                    "uppercase": false,
+                    "enable_highlight_text": true,
+                    "highlight_type": "script",
+                    "highlight_color": "#ffd600"
+                  },
+                  "blocks": {}
+                },
+                "description_QtFcXT": {
+                  "type": "description",
+                  "settings": {
+                    "content": "<p>From lush greens to crafted décor, <br/>explore what makes every corner feel alive.</p>",
+                    "color_light": false,
+                    "limit_description_height": true
+                  },
+                  "blocks": {}
+                },
+                "button_c9Jfxp": {
+                  "type": "button",
+                  "name": "t:blocks.button.presets.name",
+                  "settings": {
+                    "style": "primary",
+                    "size": "small",
+                    "icon": "none",
+                    "button_label": "Learn More",
+                    "open_in_new_tab": false,
+                    "show_arrow": false
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "heading_4WxTrV",
+                "description_QtFcXT",
+                "button_c9Jfxp"
+              ]
+            }
+          },
+          "block_order": [
+            "image_grid_item_BQ9rrf",
+            "image_grid_item_YGfqtT"
+          ]
+        }
+      },
+      "name": "t:sections.media-grid.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    }
+  },
+  "order": [
+    "main-collection-banner",
+    "breadcrumb",
+    "main-collection-text-image",
+    "main-collection",
+    "rich_text_HREUNg",
+    "media_grid_8KAR4K"
+  ]
+}

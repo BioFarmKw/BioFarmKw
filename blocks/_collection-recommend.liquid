@@ -1,0 +1,78 @@
+{%- unless block.settings.collection == blank -%}
+  {% assign product_list = block.settings.collection.products %}
+  {%- if product_list != empty -%}
+    <div class="recommend-title font-heading">{{ block.settings.heading | escape }}</div>
+    <ul class="recommend-product-list list-unstyled">
+      {% for item in product_list limit: block.settings.limit %}
+        <li class="recommend-product-item">
+          {% render 'card-product',
+            card_product: item,
+            image_width: '200px',
+            image_width_mobile: '200px',
+            show_horizontal: true,
+            show_compare_at_price: block.settings.show_compare_at_price,
+            truncate_title: block.settings.enable_truncate_title,
+            show_quick_add: true
+          %}
+        </li>
+      {% endfor %}
+    </ul>
+    {%- if product_list.size > block.settings.limit and block.settings.show_view_more -%}
+      <a class="view-all-link link link-text show-underline" href="{{ block.settings.collection.url }}">
+        {{ 'general.view_all' | t }}
+      </a>
+    {%- endif -%}
+  {%- endif -%}
+{%- endunless -%}
+{% schema %}
+{
+  "name": "t:blocks._collection-recommend.name",
+  "class": "collection-recommend-block",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:blocks._store-list.settings.paragraph.content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.all.text-content.heading.label",
+      "default": "Recommended Products"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:sections.all.collection.label"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "label": "t:sections.all.limit.label",
+      "min": 3,
+      "max": 5,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_truncate_title",
+      "label": "t:sections.all.title.truncate.label",
+      "info": "t:sections.all.title.truncate.info",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_compare_at_price",
+      "label": "t:sections.all.price.show_compare_at_price.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_more",
+      "label": "t:blocks._collection-recommend.settings.show_view_more.label",
+      "info": "t:blocks._collection-recommend.settings.show_view_more.info",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

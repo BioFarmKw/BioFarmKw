@@ -1,0 +1,18 @@
+{% doc %}
+  Section ID Tip
+
+  @description
+  Displays the section ID as a helper tip in Shopify's design mode, useful for theme editing and identifying sections.
+
+  @param {string} section_id - Section Id
+
+  @example
+  {% render 'section-id-tip', section_id: section.id %}
+{% enddoc %}
+
+{%- if request.design_mode and settings.show_section_id -%}
+  <div class="design-mode-helper small-hide">
+    <b class="light">Section id:</b>
+    <span>{{ section_id }}</span>
+  </div>
+{%- endif -%}

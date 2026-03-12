@@ -1,0 +1,12 @@
+.collection-icons_wrapper .collection-icon-block {
+  padding: 1rem;
+  text-align: center;
+  background: rgba(var(--color-foreground), 0.02);
+  border: 1px solid rgba(var(--color-foreground), 0.1);
+}
+.collection-icons_wrapper .collection-icon-block .collection-link {
+  display: block;
+}
+.collection-icons_wrapper .collection-icon-block .collection-image {
+  margin-block-end: 1rem;
+}

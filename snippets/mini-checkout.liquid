@@ -1,0 +1,250 @@
+{% doc %}
+  Mini Checkout
+
+  @description
+  Renders a mini checkout form for a product, providing quick add-to-cart functionality.
+
+  @param {string} section_id - The section ID.
+  @param {object} block - The block object associated with this mini checkout.
+  @param {object} blocks - Optional collection of all blocks.
+  @param {string} product_form_id - The ID of the product form associated with this checkout.
+  @param {boolean} [cant_sell] - Whether the product cannot be sold. Default is false (optional).
+  @param {boolean} [is_pre_order] - Whether the product is a pre-order (optional).
+
+  @example
+  {% render 'mini-checkout', section_id: section.id, block: block, product_form_id: product_form_id, cant_sell: false %}
+{% enddoc %}
+{% liquid
+  assign variant_picker_block = blocks | find: 'type', 'variant_picker'
+  assign buy_buttons_block = blocks | find: 'type', 'buy_buttons'
+
+  # 显示数量选择器
+  assign show_quantity_selector = false
+  if buy_buttons_block.settings.show_quantity_selector and buy_buttons_block != blank
+    assign show_quantity_selector = true
+  endif
+
+  # 无变体且无数量选择器
+  assign no_variant_and_no_qty = false
+  if show_quantity_selector == false and product.has_only_default_variant or variant_picker_block == blank
+    assign no_variant_and_no_qty = true
+  endif
+%}
+<mini-checkout
+  id="Mini-Check-{{ section_id }}"
+  class="product-info-mini-checkout product-info-block position--bottom color-{{ block.settings.color_scheme }} gradient no-js-hidden quick-view-remove"
+  data-section="{{ section_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="mini-checkout-product">
+    <span class="product-image media media--square">
+      {% liquid
+        if product.has_only_default_variant
+          assign image = product.featured_image
+        else
+          if product.selected_or_first_available_variant.featured_image
+            assign image = product.selected_or_first_available_variant.featured_image
+          else
+            assign image = product.featured_image
+          endif
+        endif
+      %}
+      {{ image | image_url: width: 200 | image_tag }}
+    </span>
+    <div class="mini-product-info">
+      <div class="product-title">{{ product.title }}</div>
+      <b>{{ product.selected_or_first_available_variant.price | money }}</b>
+    </div>
+    {%- if no_variant_and_no_qty -%}
+      <button
+        id="Mini-Submit-Button-{{ section_id }}"
+        type="submit"
+        form="{{ product_form_id }}"
+        name="add"
+        class="mini-add-cart-button button button--mini button--icon button--pill ms-auto has-loading"
+        {% if cant_sell %}
+          disabled
+        {% endif %}
+        aria-label="{{ 'products.product.add_to_cart' | t }}"
+      >
+        <span class="button-text loading-hidden">
+          {% render 'icon-sets-basic', icon: 'buy' %}
+        </span>
+        <span class="loading-overlay"></span>
+      </button>
+    {%- else -%}
+      <button
+        type="button"
+        class="expand-button button button--mini button--icon button--pill ms-auto"
+        aria-controls="Mini-Product-Checkout-Form-{{ section_id }}"
+        aria-expanded="false"
+      >
+        {% render 'icon-sets-basic', icon: 'caret-down', class: 'caret-icon' %}
+      </button>
+    {%- endif -%}
+  </div>
+  {%- unless no_variant_and_no_qty -%}
+    <div id="Mini-Product-Checkout-Form-{{ section_id }}" class="mini-checkout-form">
+      {% comment %} 属性选择器 {% endcomment %}
+      {%- unless variant_picker_block == blank or product.has_only_default_variant -%}
+        <div id="Mini-Variant-Selects-{{ section_id }}" class="mini-variant-selects product-variant-selects">
+          {%- for option_with_values in product.options_with_values -%}
+            {% liquid
+              assign swatch_type = blank
+              assign first_value = option_with_values.values | first
+
+              if forloop.first and variant_picker_block.settings.enable_first_swatch_image
+                assign swatch_type = 'image'
+              elsif first_value.swatch != blank
+                assign swatch_type = 'color'
+              endif
+
+              assign auto_dropdown = false
+              if option_with_values.values.size > variant_picker_block.settings.dropdown_threshold and variant_picker_block.settings.auto_dropdown and variant_picker_block.settings.picker_type != 'dropdown'
+                assign auto_dropdown = true
+              endif
+            %}
+
+            {%- if swatch_type != blank -%}
+              <fieldset class="product-form-input">
+                <div class="form-label-wrapper">
+                  <legend class="form-label">
+                    <b>{{ option_with_values.name }}:</b>
+                    <small class="selected-value light">{{ option_with_values.selected_value }}</small>
+                  </legend>
+                </div>
+                <div class="form-options-wrapper color-swatches swatch-type--{{ swatch_type }} swatch-size--medium">
+                  {%- render 'product-variant-options',
+                    section_id: section_id,
+                    option_with_values: option_with_values,
+                    type: swatch_type,
+                    in_mini: true
+                  -%}
+                </div>
+              </fieldset>
+            {%- elsif auto_dropdown != true and variant_picker_block.settings.picker_type == 'button' -%}
+              <fieldset class="product-form-input">
+                <div class="form-label-wrapper">
+                  <legend class="form-label">
+                    <b>{{ option_with_values.name }}:</b>
+                    <small class="selected-value light">{{ option_with_values.selected_value }}</small>
+                  </legend>
+                </div>
+                <div class="form-options-wrapper button-options">
+                  {% render 'product-variant-options',
+                    section_id: section_id,
+                    option_with_values: option_with_values,
+                    type: 'button',
+                    in_mini: true
+                  %}
+                </div>
+              </fieldset>
+            {%- else -%}
+              <div class="product-form-input">
+                <div class="form-label-wrapper">
+                  <label class="form-label" for="Mini-Option-{{ section_id }}-{{ forloop.index0 }}">
+                    <b>{{ option_with_values.name }}:</b>
+                    <small class="selected-value light">{{ option_with_values.selected_value }}</small>
+                  </label>
+                </div>
+
+                <div class="form-options-wrapper select">
+                  <select
+                    id="Mini-Option-{{ section_id }}-{{ forloop.index0 }}"
+                    data-target="Option-{{ section_id }}-{{ forloop.index0 }}"
+                    class="select-select"
+                    name="_mini-options[{{ option_with_values.name | escape }}]"
+                  >
+                    {% render 'product-variant-options',
+                      option_with_values: option_with_values,
+                      section_id: section_id,
+                      type: 'dropdown',
+                      in_mini: true
+                    %}
+                  </select>
+                  <span class="field-button">
+                    {% render 'icon-sets-basic', icon: 'caret-down', class: 'caret-icon' %}
+                  </span>
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endunless -%}
+      {%- if show_quantity_selector -%}
+        <div id="Mini-Quantity-Selector-{{ section_id }}" class="mini-quantity-selector">
+          {%- assign cart_qty = cart | item_count_for_variant: product.selected_or_first_available_variant.id -%}
+          <label class="quantity-label" for="Mini-Quantity-{{ section_id }}">
+            <b>{{ 'products.product.quantity.label' | t }}:</b>
+            <span class="quantity-in-cart light{% if cart_qty == 0 %} hidden{% endif %}">
+              {{- 'products.product.quantity.in_cart_html' | t: quantity: cart_qty -}}
+            </span>
+          </label>
+          <quantity-input class="quantity" data-url="{{ product.url }}" data-section="{{ section_id }}">
+            <button
+              class="quantity-button button button--small button--ethereal button--icon button--pill no-js-hidden"
+              name="minus"
+              type="button"
+              aria-label="{{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}"
+            >
+              {% render 'icon-sets-basic', icon: 'minus' %}
+            </button>
+            <input
+              id="Mini-Quantity-{{ section_id }}"
+              data-target="Quantity-{{ section_id }}"
+              class="quantity-input"
+              type="number"
+              name="_mini-quantity"
+              data-cart-quantity="{{ cart_qty }}"
+              data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+              min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+              {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
+                data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+              {% endif %}
+              step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
+              value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+            >
+            <button
+              class="quantity-button button button--small button--ethereal button--icon button--pill no-js-hidden"
+              name="plus"
+              type="button"
+              aria-label="{{- 'products.product.quantity.increase' | t: product: product.title | escape -}}"
+            >
+              {% render 'icon-sets-basic', icon: 'plus' %}
+            </button>
+          </quantity-input>
+        </div>
+      {%- endif -%}
+      <div class="add-cart-button-wrapper">
+        <button
+          id="Mini-Submit-Button-{{ section_id }}"
+          type="submit"
+          form="{{ product_form_id }}"
+          name="add"
+          class="mini-add-cart-button button button--full has-loading"
+          {% if cant_sell %}
+            disabled
+          {% endif %}
+        >
+          <span class="button-text loading-hidden">
+            {%- if cant_sell -%}
+              {{ 'products.product.sold_out' | t }}
+            {%- elsif is_pre_order -%}
+              {%- if product.metafields.custom.show_backorder.value == true -%}
+                {{ 'products.product.backorder' | t }}
+              {%- else -%}
+                {{ 'products.product.preorder' | t }}
+              {%- endif -%}
+            {%- else -%}
+              {{ 'products.product.add_to_cart' | t }}
+            {%- endif -%}
+          </span>
+          <span class="loading-overlay"></span>
+        </button>
+      </div>
+    </div>
+  {%- endunless -%}
+</mini-checkout>
+
+<script src="{{ 'mini-checkout.js' | asset_url }}" defer></script>

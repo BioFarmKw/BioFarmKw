@@ -1,0 +1,169 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "settings": {
+        "color_scheme": "",
+        "alignment": "left",
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "featured_blog_qpf7mU": {
+      "type": "featured-blog",
+      "blocks": {
+        "section-header": {
+          "type": "_section-header",
+          "disabled": true,
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "heading_xAD6i7": {
+              "type": "heading",
+              "settings": {
+                "content": "From the Journal",
+                "type": "2",
+                "size": "small",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "color",
+                "highlight_color": "#ff0000"
+              },
+              "blocks": {}
+            },
+            "description_TqxWLK": {
+              "type": "description",
+              "settings": {
+                "content": "<p>Curated articles on plants, décor, and mindful living.</p>",
+                "color_light": false,
+                "limit_description_height": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_xAD6i7",
+            "description_TqxWLK"
+          ]
+        },
+        "featured-blog": {
+          "type": "_featured-blog",
+          "static": true,
+          "settings": {
+            "blog": "",
+            "show_view_more": false,
+            "show_nav_buttons": true,
+            "show_page_dots": true,
+            "auto_rotate": true,
+            "change_slides_speed": 10,
+            "alignment": "left",
+            "overlay_opacity": 30,
+            "text_color": "#ffffff",
+            "show_tags": true,
+            "show_date": true,
+            "show_author": true,
+            "show_excerpt": false,
+            "show_index": true,
+            "alignment_mobile": "left"
+          },
+          "blocks": {}
+        }
+      },
+      "name": "t:sections.featured-blog.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "rich_text_XhjJQG": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_hR9ziD": {
+          "type": "heading",
+          "settings": {
+            "content": "About <em>Flonora</em>",
+            "type": "2",
+            "size": "small",
+            "uppercase": false,
+            "enable_highlight_text": true,
+            "highlight_type": "underline",
+            "highlight_color": "#676432"
+          },
+          "blocks": {}
+        },
+        "description_AX4LtV": {
+          "type": "description",
+          "settings": {
+            "content": "<p>Flonora began with a simple vision: to bring the quiet beauty of nature into everyday living. What started as a small collection of indoor plants and handcrafted ceramics has grown into a thoughtful curation of home décor and lifestyle pieces.</p><p>We believe that the spaces we live in shape the way we feel. Every planter, every vessel, every detail we design carries the intention of creating balance, calm, and connection. By blending natural elements with timeless craftsmanship, our products are meant to be more than objects — they are companions for a mindful life.</p><p>Our journey is rooted in collaboration. We partner with artisans, growers, and designers who share our values of sustainability, artistry, and care. Together, we craft pieces that honor tradition while embracing modern living.</p><p>At Flonora, we invite you to slow down, to celebrate simplicity, and to create spaces that reflect not only beauty, but also meaning.</p>",
+            "color_light": false,
+            "limit_description_height": true
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading_hR9ziD",
+        "description_AX4LtV"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "enable_full_width": false,
+        "color_scheme": "scheme-2",
+        "content_width": "large",
+        "text_alignment": "center",
+        "background_image_opacity": 90,
+        "image_behavior": "none",
+        "text_alignment_mobile": "center",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "main-blog": {
+      "type": "main-blog",
+      "settings": {
+        "color_scheme": "",
+        "text_alignment": "center",
+        "heading_size": "medium",
+        "heading_uppercase": false,
+        "show_article_count": true,
+        "show_tags_filter": true,
+        "pagination_style": "paginator",
+        "limit": 12,
+        "card_size": "medium",
+        "image_ratio": "landscape",
+        "show_card_wrapper": false,
+        "card_color_scheme": "",
+        "show_tags": true,
+        "show_date": true,
+        "show_author": true,
+        "show_excerpt": false,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "featured_blog_qpf7mU",
+    "rich_text_XhjJQG",
+    "main-blog"
+  ]
+}

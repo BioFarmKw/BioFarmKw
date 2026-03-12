@@ -1,0 +1,108 @@
+{% doc %}
+  Render Share Link
+
+  @description
+  Accepts link, title, media, style, and show_tooltip parameters to generate a share link with social media icons.
+
+  @param {object} link - The URL to be shared.
+  @param {string} title - The title of the content being shared.
+  @param {object} media - The media object, typically an image.
+  @param {string} [icon_style] - The style of the share link, can be 'icon', 'border', 'wrapper', or 'solid'.
+  @param {boolean} [show_tooltip] - Whether to show a tooltip on hover. Defaults to true.
+
+  @example
+  {% render 'share-link', link: 'https://example.com', title: 'Example Title', media: article.image, icon_style: 'border', show_tooltip: true %}
+{% enddoc %}
+
+<ul class="social-icons social-list social-style--{{ icon_style | default: 'icon' }} list-unstyled">
+  <li
+    class="social-item hover-trigger"
+    {% if show_tooltip == true %}
+      data-toggle="tooltip"
+      data-title="{{ 'general.share.copy_to_clipboard' | t }}"
+    {% endif %}
+  >
+    <custom-copy-text
+      role="button"
+      data-text="{{ link }}"
+      data-message="{{ 'general.copy_success' | t }}"
+      tabindex="0"
+    >
+      {%- render 'icon-sets-basic', icon: 'link', class: 'animate--shake' -%}
+      <span class="visually-hidden">{{ 'general.share.copy_to_clipboard' | t }}</span>
+    </custom-copy-text>
+  </li>
+  {%- if settings.enable_share_facebook -%}
+    <li
+      class="social-item hover-trigger"
+      {% if show_tooltip == true %}
+        data-toggle="tooltip"
+        data-title="{{ 'general.share.to' | t }} Facebook"
+      {% endif %}
+    >
+      <a
+        href="{{ "https://www.facebook.com/sharer/sharer.php?u=" | append: link }}"
+        target="_blank"
+        class="list-social-link link"
+      >
+        {%- render 'icon-sets-basic', icon: 'meta', class: 'animate--shake' -%}
+        <span class="visually-hidden">Facebook</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.enable_share_twitter -%}
+    <li
+      class="social-item hover-trigger"
+      {% if show_tooltip == true %}
+        data-toggle="tooltip"
+        data-title="{{ 'general.share.to' | t }} Twitter"
+      {% endif %}
+    >
+      <a
+        href="{{ "https://twitter.com/intent/tweet?url=" | append: link | append: "&text=" | append: title }}"
+        target="_blank"
+        class="list-social-link link"
+      >
+        {%- render 'icon-sets-basic', icon: 'twitter', class: 'animate--shake' -%}
+        <span class="visually-hidden">Twitter</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.enable_share_pinterest -%}
+    <li
+      class="social-item hover-trigger"
+      {% if show_tooltip == true %}
+        data-toggle="tooltip"
+        data-title="{{ 'general.share.to' | t }} Pinterest"
+      {% endif %}
+    >
+      {% assign media_url = media | image_url: width: 300 %}
+      <a
+        href="{{ "https://pinterest.com/pin/create/button/?url=" | append: link | append: "&media=" | append: media_url | append: "&description=" | append: title }}"
+        target="_blank"
+        class="list-social-link link"
+      >
+        {%- render 'icon-sets-basic', icon: 'pinterest', class: 'animate--shake' -%}
+        <span class="visually-hidden">Pinterest</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.enable_share_linkedin -%}
+    <li
+      class="social-item hover-trigger"
+      {% if show_tooltip == true %}
+        data-toggle="tooltip"
+        data-title="{{ 'general.share.to' | t }} LinkedIn"
+      {% endif %}
+    >
+      <a
+        href="{{ "https://www.linkedin.com/sharing/share-offsite/?url=" | append: link | append: "&title=" | append: title | append: "&source=" | append: shop.name }}"
+        target="_blank"
+        class="list-social-link link"
+      >
+        {%- render 'icon-sets-basic', icon: 'linkedIn', class: 'animate--shake' -%}
+        <span class="visually-hidden">LinkedIn</span>
+      </a>
+    </li>
+  {%- endif -%}
+</ul>

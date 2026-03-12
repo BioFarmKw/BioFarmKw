@@ -1,0 +1,75 @@
+.shop-the-look__wrapper {
+  display: block;
+}
+.shop-the-look__wrapper .shop-the-look-image .media {
+  position: sticky;
+  inset-block-start: calc(var(--header-height, 5rem) + 1rem);
+}
+.shop-the-look__wrapper .shop-the-look-products .bundle-list .bundle-item {
+  transition: opacity 300ms cubic-bezier(0, 0, 0.3, 1);
+}
+.shop-the-look__wrapper .shop-the-look-products .bundle-list .bundle-item:not(:last-child) {
+  margin-block-end: 1rem;
+}
+.shop-the-look__wrapper .shop-the-look-products .bundle-product-card {
+  transition: opacity 300ms cubic-bezier(0, 0, 0.3, 1);
+}
+.shop-the-look__wrapper .shop-the-look-products .bundle-footer {
+  padding-block-start: 1rem;
+  margin-block-start: 2rem;
+  border-block-start: 1px solid rgba(var(--color-foreground), 0.1);
+}
+.shop-the-look__wrapper .shop-the-look-products .bundle-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.shop-the-look__wrapper .shop-the-look-products .bundle-total .total-price {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.shop-the-look__wrapper .shop-the-look-products .bundle-total .price,
+.shop-the-look__wrapper .shop-the-look-products .bundle-total .original {
+  font-size: 1.5rem;
+}
+.shop-the-look__wrapper .shop-the-look-products .bundle-discount-notice {
+  font-size: 0.875rem;
+  text-align: end;
+  margin-block-start: 0.5rem;
+}
+.shop-the-look__wrapper .shop-the-look-products .bundle-submit-button {
+  margin-block-start: 1rem;
+}
+.shop-the-look__wrapper.has-active .bundle-item:not(.active) {
+  opacity: 0.2;
+}
+@media screen and (max-width: 749px) {
+  .shop-the-look__wrapper .shop-the-look-image {
+    margin-block-end: 3rem;
+  }
+}
+@media screen and (min-width: 750px) {
+  .shop-the-look__wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 4rem;
+  }
+  .shop-the-look__wrapper .shop-the-look-image {
+    flex: 1 1 auto;
+  }
+  .shop-the-look__wrapper .shop-the-look-products {
+    position: sticky;
+    inset-block-start: calc(var(--header-height, 5rem) + 1rem);
+    flex: 0 0 auto;
+    width: 35rem;
+  }
+  .shop-the-look__wrapper .shop-the-look-products form {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr auto auto;
+  }
+  .shop-the-look__wrapper.image-position--right .shop-the-look-image {
+    order: 1;
+  }
+}

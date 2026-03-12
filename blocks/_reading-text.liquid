@@ -1,0 +1,103 @@
+<h2 class="shopify-block reading-text-block" {{ block.shopify_attributes }}>
+  <reading-text
+    class="font-size-{{ block.settings.size }}{% if block.settings.uppercase %} uppercase{% endif %}"
+    data-animation="{{ block.settings.animation | default: 'float-in' }}"
+    {% if block.settings.animation == 'color-change' %}
+      data-color-before="{{ block.settings.color_before }}"
+      data-color-after="{{ block.settings.color_after }}"
+    {% endif %}
+  >
+    {{- block.settings.text | escape -}}
+  </reading-text>
+</h2>
+{% schema %}
+{
+  "name": "t:blocks._reading-text.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "t:sections.all.text-content.text.label",
+      "default": "Please add a compelling slogan that captures the essence and values of your brand."
+    },
+    {
+      "type": "select",
+      "id": "size",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:sections.all.text-content.heading.size.options__1.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.all.text-content.heading.size.options__2.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.all.text-content.heading.size.options__3.label"
+        },
+        {
+          "value": "s-large",
+          "label": "t:sections.all.text-content.heading.size.options__4.label"
+        }
+      ],
+      "default": "large",
+      "label": "t:sections.all.text-content.text.size.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "uppercase",
+      "label": "t:sections.all.text-content.text.uppercase.label",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "animation",
+      "label": "t:blocks._reading-text.settings.animation.label",
+      "options": [
+        {
+          "value": "float-in",
+          "label": "t:blocks._reading-text.settings.animation.options__1.label"
+        },
+        {
+          "value": "darken",
+          "label": "t:blocks._reading-text.settings.animation.options__2.label"
+        },
+        {
+          "value": "color-change",
+          "label": "t:blocks._reading-text.settings.animation.options__3.label"
+        },
+        {
+          "value": "hollow",
+          "label": "t:blocks._reading-text.settings.animation.options__4.label"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": "t:blocks._reading-text.settings.paragraph_color_setting.content",
+      "visible_if": "{{ block.settings.animation == 'color-change' }}"
+    },
+    {
+      "type": "color",
+      "id": "color_before",
+      "label": "t:blocks._reading-text.settings.color_before.label",
+      "default": "#B500B5",
+      "visible_if": "{{ block.settings.animation == 'color-change' }}"
+    },
+    {
+      "type": "color",
+      "id": "color_after",
+      "label": "t:blocks._reading-text.settings.color_after.label",
+      "default": "#FFD600",
+      "visible_if": "{{ block.settings.animation == 'color-change' }}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._reading-text.presets.name"
+    }
+  ]
+}
+{% endschema %}

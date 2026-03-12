@@ -1,0 +1,539 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "page_title_WVphyN": {
+          "type": "_page-title",
+          "name": "t:blocks._page-title.presets.name",
+          "settings": {
+            "type": "1",
+            "heading_size": "small",
+            "heading_uppercase": false
+          },
+          "blocks": {}
+        },
+        "page_description_MM7mHe": {
+          "type": "_page-description",
+          "name": "t:blocks._page-description.presets.name",
+          "settings": {
+            "color_light": false,
+            "limit_description_height": false
+          },
+          "blocks": {}
+        },
+        "social_list_PmeATJ": {
+          "type": "social-list",
+          "name": "t:blocks.social-list.presets.name",
+          "settings": {
+            "style": "border",
+            "size": "small",
+            "show_tooltip": false
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "page_title_WVphyN",
+        "page_description_MM7mHe",
+        "social_list_PmeATJ"
+      ],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "content_width": "medium",
+        "text_alignment": "center",
+        "background_image_opacity": 90,
+        "image_behavior": "none",
+        "text_alignment_mobile": "center",
+        "padding_top": 140,
+        "padding_bottom": 140,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "settings": {
+        "color_scheme": "",
+        "alignment": "left",
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "trust_promises_xiEREk": {
+      "type": "trust-promises",
+      "blocks": {
+        "section-header": {
+          "type": "_section-header",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "heading_q9VyMx": {
+              "type": "heading",
+              "settings": {
+                "content": "<em>Why</em> Choose Us",
+                "type": "2",
+                "size": "small",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "underline",
+                "highlight_color": "#676432"
+              },
+              "blocks": {}
+            },
+            "description_WD76fj": {
+              "type": "description",
+              "settings": {
+                "content": "<p>Quality and care you can always trust</p>",
+                "color_light": false,
+                "limit_description_height": true
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_q9VyMx",
+            "description_WD76fj"
+          ]
+        },
+        "promise-list": {
+          "type": "_promise-list",
+          "static": true,
+          "settings": {
+            "columns": 4,
+            "icon_size": "s-large",
+            "show_wrapper": false,
+            "slider_on_mobile": true
+          },
+          "blocks": {
+            "promise_item_8Ymcpw": {
+              "type": "_promise-item",
+              "settings": {
+                "icon": "truck",
+                "heading": "Free Shipping",
+                "description": "<p>Free Delivery Over $50</p>"
+              },
+              "blocks": {}
+            },
+            "promise_item_ayaWEU": {
+              "type": "_promise-item",
+              "settings": {
+                "icon": "return",
+                "heading": "Easy Returns",
+                "description": "<p>30-Day Free Returns</p>"
+              },
+              "blocks": {}
+            },
+            "promise_item_8LEp7M": {
+              "type": "_promise-item",
+              "settings": {
+                "icon": "security",
+                "heading": "Secure Payment",
+                "description": "<p>100% Secure Checkout</p>"
+              },
+              "blocks": {}
+            },
+            "promise_item_w4QxYL": {
+              "type": "_promise-item",
+              "settings": {
+                "icon": "guarantee",
+                "heading": "Quality Guarantee",
+                "description": "<p>2-Year Warranty Included</p>"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "promise_item_8Ymcpw",
+            "promise_item_ayaWEU",
+            "promise_item_8LEp7M",
+            "promise_item_w4QxYL"
+          ]
+        }
+      },
+      "settings": {
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "multicolumn_zwRmYy": {
+      "type": "multicolumn",
+      "blocks": {
+        "section-header": {
+          "type": "_section-header",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "heading_8gETGJ": {
+              "type": "heading",
+              "settings": {
+                "content": "Essential Support",
+                "type": "2",
+                "size": "small",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "color",
+                "highlight_color": "#ff0000"
+              },
+              "blocks": {}
+            },
+            "description_qCPUQ9": {
+              "type": "description",
+              "settings": {
+                "content": "<p>All your support in one place.</p>",
+                "color_light": false,
+                "limit_description_height": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_8gETGJ",
+            "description_qCPUQ9"
+          ]
+        },
+        "image-with-text-list": {
+          "type": "_image-with-text-list",
+          "static": true,
+          "settings": {
+            "layout": "grid",
+            "columns": 3,
+            "show_nav_buttons": true,
+            "show_seek_bar": true,
+            "slider_on_mobile": true,
+            "columns_mobile": "2"
+          },
+          "blocks": {
+            "image_with_text_FjJDwp": {
+              "type": "_image-with-text",
+              "settings": {
+                "heading": "Track Your Order",
+                "description": "<p>Check the status and details of your recent orders</p>",
+                "button_label": "Track Now",
+                "button_link": ""
+              },
+              "blocks": {}
+            },
+            "image_with_text_yhC69z": {
+              "type": "_image-with-text",
+              "settings": {
+                "heading": "Returns & Refunds",
+                "description": "<p>Learn how to return products and request a refund quickly.</p>",
+                "button_label": "Start a Return",
+                "button_link": ""
+              },
+              "blocks": {}
+            },
+            "image_with_text_q346Hn": {
+              "type": "_image-with-text",
+              "settings": {
+                "heading": "Care & Tips",
+                "description": "<p>Tips to keep your items lasting longer.</p>",
+                "button_label": "View Manuals",
+                "button_link": ""
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "image_with_text_FjJDwp",
+            "image_with_text_yhC69z",
+            "image_with_text_q346Hn"
+          ]
+        }
+      },
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "image_ratio": "landscape",
+        "text_alignment": "center",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "faq_dqphMM": {
+      "type": "faq",
+      "blocks": {
+        "section-header": {
+          "type": "_section-header",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "heading_P3FHY7": {
+              "type": "heading",
+              "settings": {
+                "content": "FAQs",
+                "type": "2",
+                "size": "small",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "underline",
+                "highlight_color": "#ff0000"
+              },
+              "blocks": {}
+            },
+            "description_qm6gqd": {
+              "type": "description",
+              "settings": {
+                "content": "<p>Find quick answers to our most common questions.</p>",
+                "color_light": true,
+                "limit_description_height": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_P3FHY7",
+            "description_qm6gqd"
+          ]
+        },
+        "collapsible-content-list": {
+          "type": "_collapsible-content-list",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "collapsible_content_title_9Pj7jy": {
+              "type": "_collapsible-content-title",
+              "settings": {
+                "icon": "none",
+                "text": "Order & Shipping"
+              },
+              "blocks": {}
+            },
+            "collapsible_content_item_3ERK7j": {
+              "type": "_collapsible-content-item",
+              "settings": {
+                "heading": "1. How can I track my order?",
+                "content": "<p>You’ll receive a tracking number by email once your order is shipped. Use it on our website or the carrier’s site to check your delivery status.</p>",
+                "default_expand": false
+              },
+              "blocks": {}
+            },
+            "collapsible_content_item_khFgXD": {
+              "type": "_collapsible-content-item",
+              "settings": {
+                "heading": "2. How long does shipping take?",
+                "content": "<p>Most orders are delivered within 3–7 business days. International shipping may take longer, depending on location.</p>",
+                "default_expand": false
+              },
+              "blocks": {}
+            },
+            "collapsible_content_item_wnckna": {
+              "type": "_collapsible-content-item",
+              "settings": {
+                "heading": "3. Do you offer international shipping?",
+                "content": "<p>Yes, we ship to many countries worldwide. Shipping costs and delivery times will be shown at checkout.</p>",
+                "default_expand": false
+              },
+              "blocks": {}
+            },
+            "collapsible_content_item_yUrrgp": {
+              "type": "_collapsible-content-item",
+              "settings": {
+                "heading": "4. Can I change or cancel my order?",
+                "content": "<p>If your order hasn’t shipped yet, please contact us as soon as possible to request changes or cancellation.</p>",
+                "default_expand": false
+              },
+              "blocks": {}
+            },
+            "collapsible_content_item_PRPH7b": {
+              "type": "_collapsible-content-item",
+              "settings": {
+                "heading": "5. What payment methods do you accept?",
+                "content": "<p>We accept all major credit cards, PayPal, and other secure payment options at checkout.</p>",
+                "default_expand": false
+              },
+              "blocks": {}
+            },
+            "collapsible_content_title_zkVHM9": {
+              "type": "_collapsible-content-title",
+              "settings": {
+                "icon": "none",
+                "text": "Product & Returns"
+              },
+              "blocks": {}
+            },
+            "collapsible_content_item_DQjVeq": {
+              "type": "_collapsible-content-item",
+              "settings": {
+                "heading": "1. What is your return policy?",
+                "content": "<p>Returns are accepted within 30 days of purchase if products are unused and in original packaging. Contact our support for assistance.</p>",
+                "default_expand": false
+              },
+              "blocks": {}
+            },
+            "collapsible_content_item_cyaVKp": {
+              "type": "_collapsible-content-item",
+              "settings": {
+                "heading": "2. Are your products covered by warranty?",
+                "content": "<p>Yes, all our products include a limited warranty. Check the product page or contact us for details.</p>",
+                "default_expand": false
+              },
+              "blocks": {}
+            },
+            "collapsible_content_item_6dypkF": {
+              "type": "_collapsible-content-item",
+              "settings": {
+                "heading": "3. Do you offer discounts for bulk purchases?",
+                "content": "<p>Yes, special pricing is available for large or business orders. Reach out to us for more information.</p>",
+                "default_expand": false
+              },
+              "blocks": {}
+            },
+            "collapsible_content_item_PpAzbk": {
+              "type": "_collapsible-content-item",
+              "name": "t:blocks._collapsible-content-item.presets.name",
+              "settings": {
+                "heading": "4. Is my personal information secure?",
+                "content": "<p>We take privacy seriously and use advanced security measures to protect your data.</p><p></p>",
+                "default_expand": false
+              },
+              "blocks": {}
+            },
+            "collapsible_content_item_V3TWfd": {
+              "type": "_collapsible-content-item",
+              "name": "t:blocks._collapsible-content-item.presets.name",
+              "settings": {
+                "heading": "5. How can I contact customer support?",
+                "content": "<p>You can reach us via email or through our Contact Us page. We aim to reply within 24 hours.</p><p></p>",
+                "default_expand": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "collapsible_content_title_9Pj7jy",
+            "collapsible_content_item_3ERK7j",
+            "collapsible_content_item_khFgXD",
+            "collapsible_content_item_wnckna",
+            "collapsible_content_item_yUrrgp",
+            "collapsible_content_item_PRPH7b",
+            "collapsible_content_title_zkVHM9",
+            "collapsible_content_item_DQjVeq",
+            "collapsible_content_item_cyaVKp",
+            "collapsible_content_item_6dypkF",
+            "collapsible_content_item_PpAzbk",
+            "collapsible_content_item_V3TWfd"
+          ]
+        },
+        "contact-form": {
+          "type": "_contact-form",
+          "disabled": true,
+          "static": true,
+          "settings": {
+            "heading": "Can’t find your answer?",
+            "description": "<p>Feel free to reach out to us!</p>",
+            "alignment": "left",
+            "show_form_phone": true
+          },
+          "blocks": {}
+        }
+      },
+      "name": "FAQs",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "rich_text_EjaHXe": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_DT7Xna": {
+          "type": "heading",
+          "settings": {
+            "content": "Get in Touch",
+            "type": "2",
+            "size": "small",
+            "uppercase": false,
+            "enable_highlight_text": true,
+            "highlight_type": "color",
+            "highlight_color": "#ff0000"
+          },
+          "blocks": {}
+        },
+        "description_LeKadD": {
+          "type": "description",
+          "settings": {
+            "content": "<p>Have questions or need assistance? Our team is ready to help you anytime.</p>",
+            "color_light": false,
+            "limit_description_height": false
+          },
+          "blocks": {}
+        },
+        "buttons_mYyqV6": {
+          "type": "buttons",
+          "settings": {},
+          "blocks": {
+            "button_KraDGm": {
+              "type": "button",
+              "settings": {
+                "style": "primary",
+                "size": "medium",
+                "icon": "email",
+                "button_label": "Email Us",
+                "button_link": "",
+                "open_in_new_tab": false,
+                "show_arrow": false
+              },
+              "blocks": {}
+            },
+            "button_JPGdhk": {
+              "type": "button",
+              "settings": {
+                "style": "secondary",
+                "size": "medium",
+                "icon": "chat",
+                "button_label": "Live Chat",
+                "button_link": "",
+                "open_in_new_tab": false,
+                "show_arrow": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "button_KraDGm",
+            "button_JPGdhk"
+          ]
+        }
+      },
+      "block_order": [
+        "heading_DT7Xna",
+        "description_LeKadD",
+        "buttons_mYyqV6"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "enable_full_width": true,
+        "color_scheme": "scheme-2",
+        "content_width": "medium",
+        "text_alignment": "center",
+        "background_image_opacity": 90,
+        "image_behavior": "none",
+        "text_alignment_mobile": "center",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "breadcrumb",
+    "trust_promises_xiEREk",
+    "multicolumn_zwRmYy",
+    "faq_dqphMM",
+    "rich_text_EjaHXe"
+  ]
+}

@@ -1,0 +1,107 @@
+{{ 'search-drawer.css' | asset_url | stylesheet_tag }}
+
+<search-drawer
+  id="Search-Drawer"
+  class="search-drawer drawer modal"
+  data-section="{{ section.id }}"
+>
+  <div class="modal-overlay"></div>
+  <div
+    class="modal-inner color-{{ section.settings.color_scheme }} gradient focus-none"
+    role="dialog"
+    data-trap
+    aria-modal="true"
+    aria-label="{{ 'templates.search.drawer' | t }}"
+    tabindex="-1"
+  >
+    <div class="drawer-handle"></div>
+    <div class="drawer-header">
+      <button
+        class="drawer-close-button button button--small button--icon button--air small-hide"
+        onclick="this.closest('.modal').hide()"
+        aria-label="{{ 'accessibility.close' | t }}"
+      >
+        {% render 'icon-sets-basic', icon: 'close' %}
+      </button>
+      <b class="drawer-title font-heading">{{ 'templates.search.search' | t }}</b>
+    </div>
+    <div class="drawer-content">
+      {% render 'search-form',
+        input_id: 'Drawer-Search',
+        section_id: section.id,
+        in_header: false,
+        show_recommendations: section.settings.show_recommendations,
+        recommendation_title: section.settings.recommendation_title,
+        recommendation_type: section.settings.recommendation_type,
+        recommendation_products: section.settings.recommendation_products,
+        recommendation_limit: section.settings.recommendation_limit
+      %}
+    </div>
+  </div>
+</search-drawer>
+<script src="{{ 'search-drawer.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "t:sections.search-drawer.name",
+  "tag": "div",
+  "class": "section-drawer",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.scheme.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.search-drawer.settings.header_recommendation.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_recommendations",
+      "label": "t:sections.all.recommendation.show.label",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "recommendation_title",
+      "label": "t:sections.all.title.label",
+      "default": "You May Like"
+    },
+    {
+      "type": "select",
+      "id": "recommendation_type",
+      "label": "t:sections.all.recommendation.type.label",
+      "info": "t:sections.all.recommendation.type.info",
+      "options": [
+        {
+          "value": "auto",
+          "label": "t:sections.all.recommendation.type.options__1.label"
+        },
+        {
+          "value": "manual",
+          "label": "t:sections.all.recommendation.type.options__2.label"
+        }
+      ],
+      "default": "auto"
+    },
+    {
+      "type": "range",
+      "id": "recommendation_limit",
+      "label": "t:sections.all.limit.label",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 5,
+      "visible_if": "{{ section.settings.recommendation_type == 'auto' }}"
+    },
+    {
+      "type": "product_list",
+      "id": "recommendation_products",
+      "label": "t:sections.all.product-list.label",
+      "limit": 5
+    }
+  ]
+}
+{% endschema %}

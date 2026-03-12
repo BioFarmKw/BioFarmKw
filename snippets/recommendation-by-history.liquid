@@ -1,0 +1,111 @@
+{% doc %}
+  Recommendation By History
+
+  @description
+  This snippet renders a product recommendation list based on the user's browsing history. It supports different recommendation intents, limits, and optional quick add buttons.
+
+  @param {string} intent - Recommendation intent ('related'|'complementary'), default is 'complementary'
+  @param {object} [recommendations] - Recommendation products object (automatically passed, no need to input)
+  @param {string} section_id - Section ID
+  @param {string} title - Card title
+  @param {boolean} [show_quick_add] - Whether to show quick add
+  @param {number} [limit] - Limit the number of displayed products, default is 5
+
+  @example
+  {% render 'recommendation-by-history', intent: 'related', title: 'You May Like', show_quick_add: true, limit: 5 %}
+{% enddoc %}
+
+<recommendation-by-history
+  id="Recommendation-By-History-{{ section_id }}"
+  class="recommendation-by-history-card featured-card"
+  data-section="{{ section_id }}"
+  data-url="{{ routes.product_recommendations_url }}?section_id={{ section_id }}&limit={{ limit | default: 5 }}&intent={{ intent | default: 'complementary' }}"
+>
+  {%- if recommendations.performed and recommendations.products_count > 0 -%}
+    <slider-component
+      class="recommendation-slider slider"
+      data-slide-desktop
+      data-slide-mobile
+      data-draggable
+      data-slide-smooth
+    >
+      <div class="featured-header">
+        {%- if title != blank -%}
+          <b class="featured-title font-heading">{{ title | escape }}</b>
+        {%- endif -%}
+        <div class="nav-buttons button-group{% unless recommendations.products_count > 1 and recommendations.products != blank %} visibility-hidden{% endunless %}">
+          <button
+            type="button"
+            class="nav-button nav-button--prev button button--ethereal button--icon button--mini button--pill focus-inset"
+            name="previous"
+            aria-label="{{ 'general.slider.previous_slide' | t }}"
+            aria-controls="Slider-{{ section_id }}"
+          >
+            {% render 'icon-sets-basic', icon: 'caret-left' %}
+          </button>
+          <button
+            type="button"
+            class="nav-button nav-button--next button button--ethereal button--icon button--mini button--pill focus-inset"
+            name="next"
+            aria-label="{{ 'general.slider.next_slide' | t }}"
+            aria-controls="Slider-{{ section_id }}"
+          >
+            {% render 'icon-sets-basic', icon: 'caret-right' %}
+          </button>
+        </div>
+      </div>
+      <div class="featured-products slider-container">
+        <ul id="Slider-{{ section_id }}" class="slider-wrapper">
+          {%- for item in recommendations.products -%}
+            <li id="Slide-{{ section_id }}-{{ forloop.index }}" class="slider-slide focus-inset" tabindex="0">
+              {% render 'card-product',
+                card_product: item,
+                image_width: '200px',
+                image_width_mobile: '200px',
+                show_horizontal: true,
+                show_quick_add: show_quick_add
+              %}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </slider-component>
+  {%- endif -%}
+
+  <template id="Placeholder-Template-{{ section_id }}">
+    <div class="featured-header">
+      {%- if title != blank -%}
+        <b class="featured-title font-heading">{{ title | escape }}</b>
+      {%- endif -%}
+      <div class="nav-buttons button-group visibility-hidden">
+        <button
+          type="button"
+          class="nav-button nav-button--prev button button--icon button--mini button--ethereal button--pill focus-inset"
+          name="previous"
+          aria-label="{{ 'general.slider.previous_slide' | t }}"
+          aria-controls="Slider-{{ section_id }}"
+        >
+          {% render 'icon-sets-basic', icon: 'caret-left' %}
+        </button>
+        <button
+          type="button"
+          class="nav-button nav-button--next button button--icon button--mini button--ethereal button--pill focus-inset"
+          name="next"
+          aria-label="{{ 'general.slider.next_slide' | t }}"
+          aria-controls="Slider-{{ section_id }}"
+        >
+          {% render 'icon-sets-basic', icon: 'caret-right' %}
+        </button>
+      </div>
+    </div>
+    <div class="featured-products loading-placeholder">
+      <ul class="list-unstyled">
+        <li>
+          {% render 'card-placeholder', show_horizontal: true %}
+        </li>
+      </ul>
+    </div>
+  </template>
+</recommendation-by-history>
+
+<script src="{{ 'recommendation-by-history.js' | asset_url }}" defer></script>

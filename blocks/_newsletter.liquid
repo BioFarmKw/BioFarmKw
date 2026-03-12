@@ -1,0 +1,46 @@
+{% assign id = 'Newsletter' | append: '-' | append: block.id %}
+{%- render 'newsletter-form',
+  section_id: id,
+  class: 'newsletter-form',
+  style: block.settings.input_style,
+  show_consent_notice: block.settings.show_consent_notice
+-%}
+{% schema %}
+{
+  "name": "t:blocks._newsletter.name",
+  "class": "newsletter-block",
+  "settings": [
+    {
+      "type": "select",
+      "id": "input_style",
+      "label": "t:sections.all.newsletter.input_style.label",
+      "options": [
+        {
+          "value": "normal",
+          "label": "t:sections.all.newsletter.input_style.options__1.label"
+        },
+        {
+          "value": "line",
+          "label": "t:sections.all.newsletter.input_style.options__2.label"
+        },
+        {
+          "value": "separate",
+          "label": "t:sections.all.newsletter.input_style.options__3.label"
+        }
+      ],
+      "default": "separate"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_consent_notice",
+      "label": "t:sections.all.newsletter.show_consent_notice.label",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._newsletter.presets.name"
+    }
+  ]
+}
+{% endschema %}
