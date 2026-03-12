@@ -33,8 +33,8 @@
       {% render 'lazy-image', is_mobile: true, image_object: section.settings.background_image_mobile %}
     </div>
   {%- endif -%}
-  <div class="section__wrapper main-page__wrapper page-width section-{{ section.id }}-padding">
-    <div class="content-group width--{{ section.settings.content_width }} group--{{ section.settings.text_alignment }} text-align--{{ section.settings.text_alignment }} text-align-mobile--{{ section.settings.text_alignment_mobile }}">
+  <div class="section__wrapper main-page__wrapper {% if section.settings.content_width != 'full' %}page-width{% endif %} section-{{ section.id }}-padding">
+    <div class="content-group width--{{ section.settings.content_width }} group--{{ section.settings.text_alignment }} text-align--{{ section.settings.text_alignment }} text-align-mobile--{{ section.settings.text_alignment_mobile }}" {% if section.settings.content_width == 'full' %}style="max-width: 100%; width: 100%;"{% endif %}>
       {% content_for 'blocks' %}
     </div>
   </div>

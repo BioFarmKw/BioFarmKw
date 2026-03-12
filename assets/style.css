@@ -9390,3 +9390,43 @@ scroll-seamless.border-gradient-alpha:after {
     display: none;
   }
 }
+
+/* Product Catalog Custom Grid */
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 1199px) {
+  .catalog-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 989px) {
+  .catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .catalog-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.catalog-grid-item {
+  width: 100%;
+}
