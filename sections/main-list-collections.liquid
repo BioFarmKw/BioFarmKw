@@ -10,7 +10,80 @@
       margin-bottom: {{ section.settings.margin_bottom }}px;
     }
   }
+
+  /* Full Screen Styles */
+  .main-list-collection:fullscreen {
+    background: rgb(var(--color-background));
+    padding: 2rem;
+    overflow-y: auto;
+    width: 100vw;
+    height: 100vh;
+  }
+  .main-list-collection:-webkit-full-screen {
+    background: rgb(var(--color-background));
+    padding: 2rem;
+    overflow-y: auto;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .fullscreen-btn-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+    padding-inline: 1.5rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .fullscreen-btn-wrapper {
+      padding-inline: 2rem;
+    }
+  }
+
+  .fullscreen-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.8rem 1.5rem;
+    background: rgba(var(--color-button), 1);
+    color: rgb(var(--color-button-text));
+    border: none;
+    border-radius: var(--button-radius, 4px);
+    font-size: 1.4rem;
+    transition: opacity 0.3s;
+  }
+
+  .fullscreen-btn:hover {
+    opacity: 0.9;
+  }
+
+  .fullscreen-btn svg {
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: currentColor;
+  }
 {%- endstyle -%}
+
+<script>
+  function toggleFullScreen(sectionId) {
+    const elem = document.getElementById(`Main-List-Collection-${sectionId}`);
+    if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+    }
+  }
+</script>
+
 {% liquid
   assign perfect_size_mobile = '16rem'
   case section.settings.card_size
@@ -29,7 +102,15 @@
   endcase
 %}
 
-<div class="main-list-collection section-{{ section.id }}-margin">
+<div id="Main-List-Collection-{{ section.id }}" class="main-list-collection section-{{ section.id }}-margin">
+  <div class="fullscreen-btn-wrapper page-width">
+    <button class="fullscreen-btn" onclick="toggleFullScreen('{{ section.id }}')" aria-label="Toggle Full Screen">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+      </svg>
+      <span>Full Screen</span>
+    </button>
+  </div>
   <div id="Product-Grid-Container" class="section__wrapper main-list-collection__wrapper page-width isolate">
     {%- if collections.size > 0 or section.blocks.size > 0 -%}
       <div id="Paginate-Content" class="paginate-content" data-section="{{ section.id }}">
