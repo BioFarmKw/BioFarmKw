@@ -9396,6 +9396,12 @@ scroll-seamless.border-gradient-alpha:after {
 .page-product-catalog .main-page__wrapper {
   max-width: 100% !important;
   padding-inline: 4rem; /* Aligns with breadcrumbs */
+  padding-top: 0 !important; /* Remove top gap */
+}
+
+.template-page-product-catalog .section-breadcrumb .section__wrapper,
+.page-product-catalog .section-breadcrumb .section__wrapper {
+  padding-bottom: 0 !important; /* Remove bottom gap from breadcrumbs */
 }
 
 .template-page-product-catalog .main-page-title,
