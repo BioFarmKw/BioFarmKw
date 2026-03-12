@@ -20,6 +20,12 @@
         margin-bottom: {{ section.settings.margin_bottom }}px;
       }
   }
+
+  /* Full Width override for catalog page breadcrumbs */
+  .template-list-collections .section-breadcrumb .page-width {
+    max-width: 100% !important;
+    padding-inline: 4rem; /* Align with catalog section */
+  }
 {%- endstyle -%}
 <div class="section-breadcrumb isolate color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-margin">
   <div class="section__wrapper breadcrumb__wrapper text-align--{{ section.settings.alignment | default: 'left' }} page-width section-{{ section.id }}-padding">

@@ -101,7 +101,7 @@
         "show_card_wrapper": true,
         "color_scheme": "scheme-1",
         "show_product_count": true,
-        "text_alignment": "center",
+        "text_alignment": "left",
         "margin_top": 0,
         "margin_bottom": 24
       }
