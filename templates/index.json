@@ -1237,7 +1237,7 @@
                     "size": "medium",
                     "icon": "none",
                     "button_label": "Discover More",
-                    "button_link": "shopify://collections",
+                    "button_link": "shopify://pages/product-catalog",
                     "open_in_new_tab": false,
                     "show_arrow": false
                   },
