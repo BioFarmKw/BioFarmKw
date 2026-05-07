@@ -1,0 +1,146 @@
+{%- if request.design_mode or settings.cart_type == 'drawer' -%}
+  <link rel="stylesheet" href="{{ 'component-cart-details.css' | asset_url }}" media="print" onload="this.media='all';">
+
+  <cart-drawer
+    id="Cart-Drawer"
+    class="cart-drawer drawer modal"
+    data-section="{{ section.id }}"
+    {% if request.page_type == 'cart' or settings.cart_type == 'page' %}
+      data-status-silence
+    {% endif %}
+  >
+    <div class="modal-overlay"></div>
+    <div
+      class="modal-inner color-{{ section.settings.color_scheme }} gradient focus-none"
+      role="dialog"
+      data-trap
+      aria-modal="true"
+      aria-label="{{ 'templates.search.drawer' | t }}"
+      tabindex="-1"
+    >
+      <div class="drawer-handle"></div>
+      <div class="drawer-header">
+        <button
+          class="drawer-close-button button button--small button--icon button--air small-hide"
+          onclick="this.closest('.modal').hide()"
+          aria-label="{{ 'accessibility.close' | t }}"
+        >
+          {% render 'icon-sets-basic', icon: 'close' %}
+        </button>
+        <a class="drawer-title font-heading link link-text show-underline" href="{{ routes.cart_url }}">
+          {{ 'templates.cart.cart' | t }} (<span class="cart-count">{{ cart.item_count | default: 0 }}</span>)
+        </a>
+      </div>
+      <div id="Cart-Drawer-Details" class="drawer-content">
+        {% render 'cart-details',
+          section_id: section.id,
+          in_drawer: true,
+          show_recommendations: section.settings.show_recommendations,
+          recommendation_title: section.settings.recommendation_title,
+          recommendation_type: section.settings.recommendation_type,
+          recommendation_products: section.settings.product_list,
+          recommendation_limit: section.settings.recommendation_limit,
+          show_complementary: section.settings.show_complementary,
+          complementary_title: section.settings.complementary_title,
+          complementary_limit: section.settings.complementary_limit
+        %}
+      </div>
+    </div>
+  </cart-drawer>
+  <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+{% schema %}
+{
+  "name": "t:sections.cart-drawer.name",
+  "tag": "div",
+  "class": "section-drawer",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.cart-drawer.settings.paragraph.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.scheme.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.cart-drawer.settings.header_empty.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_recommendations",
+      "label": "t:sections.all.recommendation.show.label",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "recommendation_title",
+      "label": "t:sections.all.title.label",
+      "default": "You May Like"
+    },
+    {
+      "type": "select",
+      "id": "recommendation_type",
+      "label": "t:sections.all.recommendation.type.label",
+      "info": "t:sections.all.recommendation.type.info",
+      "options": [
+        {
+          "value": "auto",
+          "label": "t:sections.all.recommendation.type.options__1.label"
+        },
+        {
+          "value": "manual",
+          "label": "t:sections.all.recommendation.type.options__2.label"
+        }
+      ],
+      "default": "auto"
+    },
+    {
+      "type": "range",
+      "id": "recommendation_limit",
+      "label": "t:sections.all.limit.label",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 5,
+      "visible_if": "{{ section.settings.recommendation_type == 'auto' }}"
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "label": "t:sections.all.product-list.label",
+      "limit": 5
+    },
+    {
+      "type": "header",
+      "content": "t:sections.cart-drawer.settings.header_not_empty.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_complementary",
+      "label": "t:sections.cart-drawer.settings.show_complementary.label",
+      "info": "t:sections.cart-drawer.settings.show_complementary.info",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "complementary_title",
+      "label": "t:sections.all.title.label",
+      "default": "Pairs well with"
+    },
+    {
+      "type": "range",
+      "id": "complementary_limit",
+      "label": "t:sections.all.limit.label",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 5
+    }
+  ]
+}
+{% endschema %}

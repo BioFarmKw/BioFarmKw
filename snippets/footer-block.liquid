@@ -1,0 +1,171 @@
+{% doc %}
+  Footer Block Item
+
+  @description
+  Renders a footer block item, optionally showing social icons if enabled.
+
+  @param {string} section_id - Section Id
+  @param {object} block - Block object
+  @param {boolean} [has_social_icons] - Whether has added social icons
+
+  @example
+  {% render 'footer-block', section_id: section.id, block: block, has_social_icons: section.settings.show_social %}
+{% enddoc %}
+
+<div class="footer-block footer-block--{{ block.type }}">
+  {%- if block.type != 'menu' and block.settings.heading != blank -%}
+    <h3 class="footer-block-heading">
+      {{ block.settings.heading | escape }}
+    </h3>
+  {%- endif -%}
+
+  {%- case block.type -%}
+    {%- when '@app' -%}
+      {% render block %}
+    {%- when 'text' -%}
+      <div class="footer-block-content rte">
+        {{ block.settings.description }}
+      </div>
+    {%- when 'menu' -%}
+      {%- if block.settings.menu != blank -%}
+        {% comment %} 非手机端菜单 {% endcomment %}
+        <h3 class="footer-block-heading small-hide">
+          {{ block.settings.heading | escape }}
+        </h3>
+        <ul class="footer-block-content list-unstyled small-hide" role="menu">
+          {%- for link in block.settings.menu.links -%}
+            <li role="menuitem">
+              <a
+                class="link link-text"
+                href="{{ link.url }}"
+              >
+                {{ link.title }}
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+
+        {% comment %} 手机端菜单 {% endcomment %}
+        <details-disclosure>
+          <details
+            class="details-disclosure medium-hide large-up-hide"
+            {% if block.settings.default_expand %}
+              open
+            {% endif %}
+          >
+            <summary>
+              <h3 class="footer-block-heading mb-0">
+                {{ block.settings.heading | escape }}
+              </h3>
+              {% render 'icon-sets-basic', icon: 'caret-down', class: 'caret-icon' %}
+            </summary>
+            <div class="footer-block-content details-disclosure-content">
+              <ul class="list-unstyled" role="menu">
+                {%- for link in block.settings.menu.links -%}
+                  <li role="menuitem">
+                    <a
+                      href="{{ link.url }}"
+                      class="link link-text list-menu-item list-menu-item--link{% if link.active %} list-menu-item--active{% endif %}"
+                    >
+                      {{ link.title }}
+                    </a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          </details>
+        </details-disclosure>
+      {%- endif -%}
+    {%- when 'brand' -%}
+      <div class="footer-block-content image-width--{{ block.settings.image_width }}">
+        {%- if block.settings.image != blank -%}
+          {{ block.settings.image | image_url: width: 760 | image_tag: loading: 'lazy', class: 'brand-image' }}
+        {%- endif -%}
+        {%- if block.settings.email != blank -%}
+          <div class="brand-contact-item">
+            {% render 'icon-sets', icon: 'email' %}
+            <a
+              class="link link-text"
+              href="mailto:{{ block.settings.email }}"
+              aria-label="{{ 'accessibility.email_us' | t: email: block.settings.email }}"
+              dir="ltr"
+            >
+              {{ block.settings.email | escape }}
+            </a>
+          </div>
+        {%- endif -%}
+        {%- if block.settings.phone != blank -%}
+          <div class="brand-contact-item">
+            {% render 'icon-sets', icon: 'phone' %}
+            <a
+              class="link link-text"
+              href="tel:{{ block.settings.phone }}"
+              aria-label="{{ 'accessibility.call_us' | t: phone_number: block.settings.phone }}"
+              dir="ltr"
+            >
+              {{ block.settings.phone | escape }}
+            </a>
+          </div>
+        {%- endif -%}
+        {%- if block.settings.introduction != blank -%}
+          <div class="rte">{{ block.settings.introduction }}</div>
+        {%- endif -%}
+        {%- unless block.settings.apple_download_link == blank and block.settings.android_download_link == blank -%}
+          <div class="button-group{% if block.settings.apple_download_link != blank and block.settings.android_download_link != blank %} button--multiple{% endif %}">
+            {%- if block.settings.apple_download_link != blank -%}
+              <a
+                href="{{ block.settings.apple_download_link }}"
+                class="download-button button button--small"
+                target="_blank"
+              >
+                {% render 'icon-sets-basic', icon: 'apple-mobile' %}
+                AppStore
+              </a>
+            {%- endif -%}
+            {%- if block.settings.android_download_link != blank -%}
+              <a
+                href="{{ block.settings.android_download_link }}"
+                class="download-button button button--small button--secondary"
+                target="_blank"
+              >
+                {% render 'icon-sets-basic', icon: 'google-play' %}
+                Google Play
+              </a>
+            {%- endif -%}
+          </div>
+        {%- endunless -%}
+        {%- if block.settings.show_social and has_social_icons -%}
+          {%- render 'social-icons', style: block.settings.social_style -%}
+        {%- endif -%}
+      </div>
+    {%- when 'image' -%}
+      <div class="footer-block-content image-width--{{ block.settings.image_width }}">
+        {%- if block.settings.image != blank -%}
+          {{ block.settings.image | image_url: width: 760 | image_tag: loading: 'lazy', class: 'footer-block-image' }}
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag: 'footer-block-image placeholder-svg' }}
+        {%- endif -%}
+        {%- if block.settings.show_social and has_social_icons -%}
+          {%- render 'social-icons', style: block.settings.social_style -%}
+        {%- endif -%}
+      </div>
+    {%- when 'social' -%}
+      <div class="footer-block-content">
+        {%- render 'social-icons', style: block.settings.social_style, size: block.settings.icon_size -%}
+      </div>
+    {%- when 'newsletter' -%}
+      <div class="footer-block-content">
+        {%- if block.settings.description -%}
+          <div class="newsletter-subheading rte">{{ block.settings.description }}</div>
+        {%- endif -%}
+        {% render 'newsletter-form',
+          section_id: section_id,
+          class: 'footer__newsletter newsletter-form',
+          style: block.settings.input_style
+        %}
+        {%- if block.settings.show_social and has_social_icons -%}
+          {%- render 'social-icons', style: block.settings.social_style -%}
+        {%- endif -%}
+      </div>
+  {%- endcase -%}
+</div>

@@ -1,0 +1,122 @@
+<li
+  id="Slide-{{ section.id }}-{{ block.id }}"
+  class="shopify-block member-block slider-slide grid-item focus-inset"
+  tabindex="0"
+  {{ block.shopify_attributes }}
+>
+  <div class="member-image media media--square media--circle">
+    {% render 'lazy-image',
+      image_object: block.settings.image,
+      widths: '450, 660, 900',
+      sizes: '500px',
+      placeholder: 'image'
+    %}
+    <a
+      class="media-content link"
+      {% if block.settings.link != blank %}
+        href="{{ block.settings.link }}"
+        {% if block.settings.open_in_new_tab %}
+          target="_blank"
+          rel="noopener nofollow"
+        {% endif %}
+      {% else %}
+        role="link"
+        aria-disabled="true"
+      {% endif %}
+    >
+      {% render 'icon-sets-basic', icon: block.settings.social_type, class: 'social-icon' %}
+      <span class="visually-hidden">{{ block.settings.social_type }}</span>
+    </a>
+  </div>
+  <div class="member-role light">
+    <small>{{ block.settings.role | escape }}</small>
+  </div>
+  <div class="member-name">
+    <b>{{ block.settings.name | escape }}</b>
+  </div>
+  <div class="member-bio light">{{ block.settings.bio | escape }}</div>
+</li>
+{% schema %}
+{
+  "name": "t:blocks._member.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.all.image.image_picker.label",
+      "info": "t:blocks._member.settings.image.info"
+    },
+    {
+      "type": "text",
+      "id": "name",
+      "label": "t:blocks._member.settings.name.label",
+      "default": "Member name"
+    },
+    {
+      "type": "text",
+      "id": "role",
+      "label": "t:blocks._member.settings.role.label",
+      "default": "Member role"
+    },
+    {
+      "type": "text",
+      "id": "bio",
+      "label": "t:blocks._member.settings.bio.label",
+      "default": "Introducing this member"
+    },
+    {
+      "type": "select",
+      "id": "social_type",
+      "label": "t:sections.all.social-list.social_type.label",
+      "options": [
+        {
+          "value": "meta",
+          "label": "Facebook"
+        },
+        {
+          "value": "instagram",
+          "label": "Instagram"
+        },
+        {
+          "value": "twitter",
+          "label": "Twitter"
+        },
+        {
+          "value": "tiktok",
+          "label": "Tiktok"
+        },
+        {
+          "value": "youtube",
+          "label": "Youtube"
+        },
+        {
+          "value": "pinterest",
+          "label": "Pinterest"
+        },
+        {
+          "value": "linkedin",
+          "label": "Linkedin"
+        }
+      ],
+      "default": "pinterest"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:sections.all.link.url.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_in_new_tab",
+      "label": "t:sections.all.link.open_in_new_tab.label",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._member.presets.name"
+    }
+  ]
+}
+{% endschema %}

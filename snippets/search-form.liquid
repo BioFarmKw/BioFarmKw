@@ -1,0 +1,176 @@
+{% doc %}
+  Search Form
+
+  @description
+  This snippet renders a search form with predictive search support. It can optionally display product type filters, recommended products in a drawer, and support different recommendation modes (auto or manual).
+
+  @param {string} section_id - Section ID
+  @param {string} input_id - Input field ID
+  @param {boolean} [show_product_types] - Whether to show product type selection
+  @param {object} [color_scheme] - Color scheme object
+  @param {boolean} [in_header] - Whether in header
+  @param {boolean} [show_recommendations] - Whether to show recommended products (in drawer)
+  @param {string} [recommendation_title] - Title for recommended products
+  @param {string} [recommendation_type] - Recommendation type (auto|manual, in drawer), default: manual
+  @param {object} [recommendation_products] - List of recommended products (in drawer) for manual type
+  @param {number} [recommendation_limit] - Number of products to display (smart recommendation), default: 5
+
+  @example
+  {% render 'search-form', input_id: 'input-id', section_id: section.id, show_product_types: true, color_scheme: section.settings.color_scheme, in_header: true, show_recommendations: true, recommendation_type: 'auto', recommendation_products: section.settings.recommendation_products, recommendation_limit: 5 %}
+{% enddoc %}
+
+{% liquid
+  assign keywords = settings.search_popular_keywords | replace: '，', ',' | split: ','
+  assign recommendation_limit = recommendation_limit | default: 5
+%}
+
+{%- capture search_form -%}
+    <form
+        action="{{ routes.search_url }}"
+        method="get"
+        role="search"
+        class="search-form"
+    >
+        <input type="hidden" name="options[prefix]" value="last">
+
+        <div class="search-field-wrapper">
+            {%- if show_product_types -%}
+                <div class="type-select select field--without-border">
+                    <label class="visually-hidden" for="Header-Search-Product-Type-Select">{{ 'accessibility.product_type' | t }}</label>
+                    <select
+                        id="Header-Search-Product-Type-Select"
+                        class="select-select focus-inset"
+                        name="filter.p.product_type"
+                    >
+                        <option value="">{{ 'general.all' | t }}</option>
+                        {%- for type in shop.types -%}
+                            {%- if type != empty -%}
+                                <option value="{{ type }}">{{ type }}</option>
+                            {%- endif -%}
+                        {%- endfor -%}
+                    </select>
+                    <span class="field-button">{% render 'icon-sets-basic', icon: 'caret-down' %}</span>
+                </div>
+            {%- endif -%}
+            <div class="field field--without-border">
+                <input
+                    id="Header-Search-Input"
+                    class="field-input"
+                    type="search"
+                    name="q"
+                    value="{{ search.terms | escape }}"
+                    placeholder="{{ 'templates.search.placeholder' | t }}"
+                    aria-label="{{ 'templates.search.input' | t }}"
+                    {% if settings.predictive_search_enabled %}
+                        autocomplete="off"
+                        autocapitalize="off"
+                        spellcheck="false"
+                    {% endif %}
+                >
+                <label class="field-label" for="Header-Search-Input">
+                    <typing-words data-text="{{ 'templates.search.placeholder' | t }}" data-interval="10"></typing-words>
+                </label>
+                <div class="field-button-group">
+                    <button
+                        type="reset"
+                        class="field-button reset-button light{% if search.terms == blank %} hidden{% endif %} focus-inset"
+                    >
+                        {{ 'templates.search.clear' | t }}
+                    </button>
+                    <speech-recognition role="button" class="voice-button field-button focus-inset" tabindex="0">
+                        {% render 'icon-sets', icon: 'record' %}
+                        <span class="visually-hidden">{{ 'templates.search.search' | t }}</span>
+                    </speech-recognition>
+                </div>
+            </div>
+        </div>
+
+        <div id="Search-Pop-Panel-{{ input_id }}" class="search-pop-panel">
+            <div class="search-trending-main">
+                <div class="popular-searches">
+                    {%- if keywords.size > 0 -%}
+                        <div class="popular-title font-heading">{{ 'templates.search.popular_searches' | t }}</div>
+                        <ul class="popular-list list-unstyled">
+                            {%- for keyword in keywords -%}
+                                {% assign striped_keyword = keyword | strip %}
+                                {%- if striped_keyword != '' -%}
+                                    <li>
+                                        <a href="{{ routes.search_url }}?q={{ striped_keyword }}" class="link link-text show-underline focus-inset" data-keyword="{{ striped_keyword }}" aria-label="{{ 'templates.search.search_for' | t: keyword: striped_keyword }}">
+                                            <span aria-hidden="true">{{ striped_keyword }}</span>
+                                        </a>
+                                    </li>
+                                {%- endif -%}
+                            {%- endfor -%}
+                        </ul>
+                    {%- elsif in_header -%}
+                        <div class="search-tips">
+                            {{ 'templates.search.search_tip' | t }}
+                        </div>
+                    {%- endif -%}
+                </div>
+                
+                {%- if show_recommendations -%}
+                    {%- if recommendation_type == 'auto' -%}
+                        {% render 'recommendation-by-history', intent: 'related', section_id: section_id, title: recommendation_title,  show_quick_add: true, limit: recommendation_limit %}
+                    {%- else -%}
+                        {% render 'featured-products-card', products: recommendation_products, section_id: section_id, title: recommendation_title, show_quick_add: true %}
+                    {%- endif -%}
+                {%- endif -%}
+            </div>
+            {%- if settings.predictive_search_enabled -%}
+                <div class="predictive-search-main">
+                    <div class="search-results-wrapper"></div>
+                    <template id="Placeholder-Search-Form-{{ section_id }}">
+                        <div class="loading-placeholder">
+                            <ul class="tab-placeholder-list list-unstyled">
+                                <li class="placeholder"></li>
+                                <li class="placeholder"></li>
+                                <li class="placeholder"></li>
+                                <li class="placeholder"></li>
+                            </ul>
+                            <div class="panel-placeholder">
+                                <div class="placeholder"></div>
+                                <div class="placeholder"></div>
+                                <div class="placeholder"></div>
+                                <div class="placeholder"></div>
+                                <div class="placeholder"></div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+                <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+            {%- endif -%}
+            <button type="submit" class="search-button button button--full focus-inset">
+                {{ 'templates.search.open_page' | t }}
+                {% render 'icon-sets-basic', icon: 'right', class: 'caret-icon' %}
+            </button>
+        </div>
+    </form>
+{%- endcapture -%}
+
+{%- if settings.predictive_search_enabled -%}
+  <predictive-search
+    id="Predictive-Search-{{ input_id }}"
+    class="search-wrapper predictive-search-wrapper{% if color_scheme %} color-{{ color_scheme }}{% endif %} gradient"
+    data-loading-text="{{ 'accessibility.loading' | t }}"
+    data-section="{{ section_id }}"
+    {% if in_header %}
+      data-pop-panel="true"
+      tabindex="0"
+    {% endif %}
+  >
+    {{ search_form }}
+  </predictive-search>
+{%- else -%}
+  <search-form
+    class="search-wrapper{% if color_scheme %} color-{{ color_scheme }}{% endif %} gradient"
+    {% if in_header %}
+      data-pop-panel="true"
+      tabindex="0"
+    {% endif %}
+  >
+    {{ search_form }}
+  </search-form>
+{%- endif -%}
+
+<script src="{{ 'speech-recognition.js' | asset_url }}" defer></script>

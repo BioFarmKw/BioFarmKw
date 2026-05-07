@@ -1,0 +1,334 @@
+{% liquid
+  assign alt = 'sections.video.load_video' | t: description: block.settings.video.alt
+  assign alt_mobile = 'sections.video.load_video' | t: description: block.settings.video_mobile.alt
+  assign poster = block.settings.video.preview_image
+  assign poster_mobile = block.settings.video_mobile.preview_image
+
+  if section.settings.image_height == 'adapt'
+    assign aspect_ratio = poster.aspect_ratio | default: 1.6
+    assign height = 1 | divided_by: aspect_ratio | times: 100 | append: '%'
+
+    if poster_mobile != blank
+      assign aspect_ratio_mobile = poster_mobile.aspect_ratio | default: 1.6
+    else
+      assign aspect_ratio_mobile = aspect_ratio
+    endif
+    assign height_mobile = 1 | divided_by: aspect_ratio_mobile | times: 100 | append: '%'
+  elsif section.settings.image_height == 'small'
+    assign height = '35rem'
+    assign height_mobile = '30rem'
+  elsif section.settings.image_height == 'large'
+    assign height = '50rem'
+    assign height_mobile = '40rem'
+  else
+    assign height = '40rem'
+    assign height_mobile = '35rem'
+  endif
+%}
+
+<div
+  class="shopify-block carousel-slide-block image-banner__wrapper color-{{ block.settings.color_scheme }} gradient{% unless block.settings.show_text_content_box %} banner-box--transparent{% endunless %}"
+  {{ block.shopify_attributes }}
+>
+  <deferred-media
+    class="banner-media deferred-media video-model-media media-fit--cover{% if block.settings.video_mobile != blank %} small-hide{% endif %}"
+    data-load-when-visible
+    style="opacity: {{ block.settings.video_opacity }}%;"
+  >
+    <div
+      class="media-poster media media--adapt"
+      style="--ratio-percent: {{ height }}; --ratio-percent-mobile: {{ height_mobile }};"
+    >
+      {% render 'lazy-image',
+        image_object: poster,
+        class: 'banner-image',
+        alt: alt,
+        preload: block.settings.if_as_main_area,
+        placeholder: 'lifestyle-2'
+      %}
+    </div>
+    {%- if block.settings.video != blank -%}
+      <template>
+        {{
+          block.settings.video
+          | video_tag: image_size: '1600x', autoplay: true, loop: true, controls: false, muted: true
+        }}
+      </template>
+    {%- endif -%}
+  </deferred-media>
+  {% comment %} 手机端视频 {% endcomment %}
+  {%- if block.settings.video_mobile != blank -%}
+    <deferred-media
+      class="banner-media deferred-media video-model-media media-fit--cover medium-hide large-up-hide"
+      data-load-when-visible
+      style="opacity: {{ block.settings.video_opacity }}%;"
+    >
+      <div class="media-poster media media--adapt" style="--ratio-percent-mobile: {{ height_mobile }};">
+        {% render 'lazy-image',
+          image_object: poster_mobile,
+          class: 'banner-image',
+          widths: '450, 660, 900',
+          alt: alt_mobile,
+          preload: block.settings.if_as_main_area,
+          placeholder: 'lifestyle-2'
+        %}
+      </div>
+      <template>
+        {{
+          block.settings.video_mobile
+          | video_tag: image_size: '900x', autoplay: true, loop: true, controls: false, muted: true
+        }}
+      </template>
+    </deferred-media>
+  {%- endif -%}
+  {%- if block.blocks.size > 0 -%}
+    <div class="banner-content">
+      <div class="banner-content-wrapper{% if section.settings.enable_full_width %} page-width{% else %} ps-6 pe-6{% endif %} position-container position--{{ block.settings.desktop_content_position }} position-mobile--{{ block.settings.mobile_content_position }}">
+        <div
+          class="banner-box content-group width--{{ block.settings.content_width }} gradient text-align--{{ block.settings.text_alignment }} text-align-mobile--{{ block.settings.text_alignment_mobile }}{% if block.settings.show_text_content_box and block.settings.enabled_blur_effect %} background--blur{% endif %}"
+          {% if block.settings.show_text_content_box %}
+            style="--alpha-background: {{ block.settings.text_content_box_opacity | divided_by: 100.0 }}"
+          {% endif %}
+        >
+          {%- content_for 'blocks' -%}
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:blocks._carousel-video-slide.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "video",
+      "id": "video",
+      "label": "t:sections.all.video.video.label",
+      "info": "t:sections.all.video.video.info"
+    },
+    {
+      "type": "range",
+      "id": "video_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "%",
+      "label": "t:sections.all.video.video_opacity.label",
+      "default": 90
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.content.header_content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.scheme.label",
+      "default": "scheme-3"
+    },
+    {
+      "type": "select",
+      "id": "content_width",
+      "label": "t:sections.all.content.content_width.label",
+      "info": "t:sections.all.desktop.effect.info",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:sections.all.content.content_width.options__1.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.all.content.content_width.options__2.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.all.content.content_width.options__3.label"
+        },
+        {
+          "value": "full",
+          "label": "t:sections.all.content.content_width.options__4.label"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "select",
+      "id": "desktop_content_position",
+      "options": [
+        {
+          "value": "top-left",
+          "label": "t:sections.all.position.options__1.label"
+        },
+        {
+          "value": "top-center",
+          "label": "t:sections.all.position.options__2.label"
+        },
+        {
+          "value": "top-right",
+          "label": "t:sections.all.position.options__3.label"
+        },
+        {
+          "value": "middle-left",
+          "label": "t:sections.all.position.options__4.label"
+        },
+        {
+          "value": "middle-center",
+          "label": "t:sections.all.position.options__5.label"
+        },
+        {
+          "value": "middle-right",
+          "label": "t:sections.all.position.options__6.label"
+        },
+        {
+          "value": "bottom-left",
+          "label": "t:sections.all.position.options__7.label"
+        },
+        {
+          "value": "bottom-center",
+          "label": "t:sections.all.position.options__8.label"
+        },
+        {
+          "value": "bottom-right",
+          "label": "t:sections.all.position.options__9.label"
+        }
+      ],
+      "default": "middle-center",
+      "label": "t:sections.all.position.label"
+    },
+    {
+      "type": "text_alignment",
+      "id": "text_alignment",
+      "default": "center",
+      "label": "t:sections.all.text-alignment.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_text_content_box",
+      "default": false,
+      "label": "t:sections.all.text-content.show_box.label"
+    },
+    {
+      "type": "range",
+      "id": "text_content_box_opacity",
+      "label": "t:sections.all.text-content.box_background_opacity.label",
+      "default": 100,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "visible_if": "{{ block.settings.show_text_content_box }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enabled_blur_effect",
+      "label": "t:sections.all.text-content.box_background_blur.label",
+      "default": false,
+      "visible_if": "{{ block.settings.show_text_content_box }}"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.mobile.header_content"
+    },
+    {
+      "type": "video",
+      "id": "video_mobile",
+      "label": "t:sections.all.video.video.label",
+      "info": "t:sections.all.video.video.info"
+    },
+    {
+      "type": "select",
+      "id": "mobile_content_position",
+      "label": "t:sections.all.position.label",
+      "default": "middle-center",
+      "options": [
+        {
+          "value": "top-left",
+          "label": "t:sections.all.position.options__1.label"
+        },
+        {
+          "value": "top-center",
+          "label": "t:sections.all.position.options__2.label"
+        },
+        {
+          "value": "top-right",
+          "label": "t:sections.all.position.options__3.label"
+        },
+        {
+          "value": "middle-left",
+          "label": "t:sections.all.position.options__4.label"
+        },
+        {
+          "value": "middle-center",
+          "label": "t:sections.all.position.options__5.label"
+        },
+        {
+          "value": "middle-right",
+          "label": "t:sections.all.position.options__6.label"
+        },
+        {
+          "value": "bottom-left",
+          "label": "t:sections.all.position.options__7.label"
+        },
+        {
+          "value": "bottom-center",
+          "label": "t:sections.all.position.options__8.label"
+        },
+        {
+          "value": "bottom-right",
+          "label": "t:sections.all.position.options__9.label"
+        }
+      ]
+    },
+    {
+      "type": "text_alignment",
+      "id": "mobile_content_alignment",
+      "default": "center",
+      "label": "t:sections.all.text-alignment.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.seo.header_content"
+    },
+    {
+      "type": "checkbox",
+      "id": "if_as_main_area",
+      "label": "t:sections.all.seo.if_as_main_area.label",
+      "default": false,
+      "info": "t:sections.all.seo.if_as_main_area.info"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@theme"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._carousel-video-slide.presets.name",
+      "blocks": [
+        {
+          "type": "subheading"
+        },
+        {
+          "type": "heading",
+          "settings": {
+            "size": "large"
+          }
+        },
+        {
+          "type": "description"
+        },
+        {
+          "type": "buttons",
+          "blocks": [
+            {
+              "type": "button"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

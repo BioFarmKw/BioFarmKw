@@ -1,0 +1,55 @@
+.announcement-bar__wrapper {
+  display: grid;
+  grid-template-areas: "social-list announcement-list localization-group";
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding-block-start: 0.25rem;
+  padding-block-end: 0.25rem;
+  min-height: 2rem;
+  font-size: 0.875rem;
+}
+.announcement-bar__wrapper .announcement-list {
+  grid-area: announcement-list;
+  width: 100%;
+  max-width: 40rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.announcement-bar__wrapper .announcement-list .slider-container {
+  flex: 1 1 auto;
+}
+.announcement-bar__wrapper .announcement-list .slider-container .slider-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.announcement-bar__wrapper .announcement-list .nav-button {
+  flex: 0 0 auto;
+}
+.announcement-bar__wrapper .announcement-list .nav-button:not(:focus-visible) {
+  opacity: 0;
+}
+.announcement-bar__wrapper .announcement-list:hover .nav-button {
+  animation: fadeIn 300ms cubic-bezier(0, 0, 0.3, 1) forwards;
+}
+.announcement-bar__wrapper .social-list {
+  grid-area: social-list;
+}
+.announcement-bar__wrapper .localization-group {
+  grid-area: localization-group;
+  margin-inline-start: auto;
+}
+.announcement-bar__wrapper .localization-group drop-menu + drop-menu {
+  padding-inline-start: 1rem;
+  border-inline-start: 1px solid rgba(var(--color-foreground), 0.1);
+}
+@media screen and (max-width: 749px) {
+  .announcement-bar__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

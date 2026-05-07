@@ -1,0 +1,223 @@
+<div class="shopify-block contact-form-block text-align--{{ block.settings.alignment }}" {{ block.shopify_attributes }}>
+  <div class="contact-form-header content-group">
+    {%- if block.settings.image != blank -%}
+      <div class="text-content-image media media--landscape">
+        {% render 'lazy-image', image_object: block.settings.image, sizes: '(min-width: 750px) 800px, 100vw' %}
+      </div>
+    {%- endif -%}
+    <h{{ block.settings.heading_type }} class="text-content-heading heading-size--{{ block.settings.heading_size }}">
+      {{ block.settings.heading | escape }}
+    </h{{ block.settings.heading_type }}>
+    {%- if block.settings.description != blank -%}
+      <div class="text-content-description rte light">{{ block.settings.description }}</div>
+    {%- endif -%}
+  </div>
+
+  {%- form 'contact', id: 'Contact-Form' -%}
+    {%- if form.posted_successfully? -%}
+      <div class="alert-message alert-success" role="alert" tabindex="-1" autofocus>
+        {{ 'templates.contact.form.post_success' | t }}
+      </div>
+    {%- elsif form.errors -%}
+      <div class="alert-message alert-error" role="alert" tabindex="-1" autofocus>
+        {{ 'templates.contact.form.error_heading' | t }}
+        <ul class="message-list">
+          {%- for field in form.errors -%}
+            {%- if field == 'form' -%}
+              <li>
+                {{ form.errors.messages[field] }}
+              </li>
+            {%- else -%}
+              <li id="Contact-Form-{{ field | capitalize }}-Error">
+                {{ form.errors.translated_fields[field] }} - {{ form.errors.messages[field] }}
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+    {%- endif -%}
+
+    <div class="contact-form-form form-fields">
+      <div class="field-line-group">
+        <div class="field">
+          <input
+            id="Contact-Form-Name"
+            class="field-input"
+            autocomplete="name"
+            type="text"
+            name="contact[name]"
+            value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+            placeholder="{{ 'templates.contact.form.name' | t }}"
+          >
+          <label class="field-label" for="Contact-Form-Name">{{ 'templates.contact.form.name' | t }}</label>
+        </div>
+        <div class="field{% if form.errors contains 'email' %} field-error{% endif %}">
+          <input
+            id="Contact-Form-Email"
+            class="field-input"
+            autocomplete="email"
+            type="email"
+            name="contact[email]"
+            spellcheck="false"
+            autocapitalize="off"
+            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+            pattern=".+@.+\.[a-zA-Z]{2,}$"
+            title="{{ 'newsletter.valid_email' | t }}"
+            {% if form.errors contains 'email' %}
+              aria-invalid="true"
+              aria-describedby="Contact-Form-Email-Error"
+            {% endif %}
+            placeholder="{{ 'templates.contact.form.email' | t }}"
+            required
+          >
+          <label class="field-label" for="Contact-Form-Email">
+            {{- 'templates.contact.form.email' | t }}
+            <span aria-hidden="true">*</span>
+          </label>
+        </div>
+      </div>
+      {%- if block.settings.show_form_phone -%}
+        <div class="field">
+          <input
+            id="Contact-Form-Phone"
+            class="field-input"
+            type="tel"
+            autocomplete="tel"
+            name="contact[phone]"
+            pattern="[0-9\-]*"
+            inputmode="tel"
+            value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+            placeholder="{{ 'templates.contact.form.phone' | t }}"
+          >
+          <label class="field-label" for="Contact-Form-Phone">{{ 'templates.contact.form.phone' | t }}</label>
+        </div>
+      {%- endif -%}
+      {% content_for 'blocks' %}
+      <div class="field">
+        <textarea
+          id="Contact-Form-Body"
+          class="text-area field-input"
+          rows="10"
+          name="contact[body]"
+          placeholder="{{ 'templates.contact.form.comment' | t }}"
+        >
+              {{- form.body -}}
+            </textarea>
+        <label class="field-label" for="Contact-Form-Body">
+          {{- 'templates.contact.form.comment' | t -}}
+        </label>
+      </div>
+    </div>
+
+    <button type="submit" class="contact-form-button button">
+      {% render 'icon-sets', icon: 'email' %}
+      {{ 'templates.contact.form.send' | t }}
+    </button>
+  {%- endform -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:blocks._contact-form.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.all.image.image_picker.label",
+      "info": "t:blocks._contact-form.settings.image.info"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Get in Touch",
+      "label": "t:sections.all.text-content.heading.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_type",
+      "label": "t:sections.all.text-content.heading.type.label",
+      "options": [
+        {
+          "value": "1",
+          "label": "H1"
+        },
+        {
+          "value": "2",
+          "label": "H2"
+        },
+        {
+          "value": "3",
+          "label": "H3"
+        },
+        {
+          "value": "4",
+          "label": "H4"
+        },
+        {
+          "value": "5",
+          "label": "H5"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:sections.all.text-content.heading.size.options__1.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.all.text-content.heading.size.options__2.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.all.text-content.heading.size.options__3.label"
+        }
+      ],
+      "default": "small",
+      "label": "t:sections.all.text-content.heading.size.label"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "default": "<p>We're here to help. Fill out the form below to reach us<\/p>",
+      "label": "t:sections.all.text-content.description.label"
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment",
+      "label": "t:sections.all.text-alignment.label",
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_form_phone",
+      "label": "t:blocks._contact-form.settings.show_form_phone.label",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_custom-input-field"
+    },
+    {
+      "type": "_custom-select-field"
+    },
+    {
+      "type": "_custom-radio-field"
+    },
+    {
+      "type": "_custom-checkbox-field"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._contact-form.presets.name"
+    }
+  ]
+}
+{% endschema %}

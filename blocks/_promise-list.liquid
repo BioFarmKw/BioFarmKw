@@ -1,0 +1,90 @@
+<div
+  class="shopify-block promise-list-block{% if block.settings.show_wrapper %} show-item-wrapper{% endif %} icon-size--{{ block.settings.icon_size }}"
+  {{ block.shopify_attributes }}
+>
+  <slider-component
+    class="promise-list-slider slider"
+    {% if block.settings.slider_on_mobile %}
+      data-slide-mobile
+    {% endif %}
+    data-slide-smooth
+    data-draggable
+  >
+    <div class="slider-container">
+      <ul
+        id="Slider-{{ section.id }}"
+        class="slider-wrapper grid-desktop columns-desktop--{{ block.settings.columns }}"
+      >
+        {% content_for 'blocks' %}
+      </ul>
+    </div>
+    <div
+      class="slider-seek-bar"
+      aria-label="{{ 'general.slider.slide_seek_bar' | t }}"
+      aria-controls="Slider-{{ section.id }}"
+    ></div>
+  </slider-component>
+</div>
+{% schema %}
+{
+  "name": "t:blocks._promise-list.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "t:sections.all.columns.label",
+      "info": "t:sections.all.desktop.effect.info",
+      "min": 3,
+      "max": 5,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "icon_size",
+      "label": "t:sections.all.icon-size.label",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:sections.all.icon-size.options__1.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.all.icon-size.options__2.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.all.icon-size.options__3.label"
+        },
+        {
+          "value": "s-large",
+          "label": "t:sections.all.icon-size.options__4.label"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_wrapper",
+      "label": "t:sections.all.text-content.show_box.label",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.mobile.header_content"
+    },
+    {
+      "type": "checkbox",
+      "id": "slider_on_mobile",
+      "label": "t:sections.all.slider.enable_mobile_slider.label",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_promise-item"
+    }
+  ]
+}
+{% endschema %}

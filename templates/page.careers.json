@@ -1,0 +1,469 @@
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "settings": {
+        "color_scheme": "",
+        "alignment": "left",
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "page_title_E8JDeE": {
+          "type": "_page-title",
+          "name": "t:blocks._page-title.presets.name",
+          "settings": {
+            "type": "1",
+            "heading_size": "small",
+            "heading_uppercase": false
+          },
+          "blocks": {}
+        },
+        "page_description_37CJwU": {
+          "type": "_page-description",
+          "name": "t:blocks._page-description.presets.name",
+          "settings": {
+            "color_light": false,
+            "limit_description_height": false
+          },
+          "blocks": {}
+        },
+        "social_list_bxaQVd": {
+          "type": "social-list",
+          "name": "t:blocks.social-list.presets.name",
+          "settings": {
+            "style": "border",
+            "size": "small",
+            "show_tooltip": false
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "page_title_E8JDeE",
+        "page_description_37CJwU",
+        "social_list_bxaQVd"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "content_width": "medium",
+        "text_alignment": "center",
+        "background_image_opacity": 90,
+        "image_behavior": "none",
+        "text_alignment_mobile": "center",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "image_banner_ixXrRF": {
+      "type": "image-banner",
+      "blocks": {
+        "icon_Pdkky7": {
+          "type": "icon",
+          "name": "t:blocks.icon.presets.name",
+          "settings": {
+            "size": "small",
+            "icon": "gift"
+          },
+          "blocks": {}
+        },
+        "heading_CaVtL6": {
+          "type": "heading",
+          "name": "t:blocks.heading.presets.name",
+          "settings": {
+            "content": "Grow With Flonora",
+            "type": "2",
+            "size": "small",
+            "uppercase": false,
+            "enable_highlight_text": true,
+            "highlight_type": "color",
+            "highlight_color": "#ff0000"
+          },
+          "blocks": {}
+        },
+        "description_LLEzfq": {
+          "type": "description",
+          "name": "t:blocks.description.presets.name",
+          "settings": {
+            "content": "<p>Join us and build your future together.</p>",
+            "color_light": false,
+            "limit_description_height": false
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "icon_Pdkky7",
+        "heading_CaVtL6",
+        "description_LLEzfq"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "enable_full_width": false,
+        "image_height": "medium",
+        "image_opacity": 100,
+        "color_scheme": "scheme-2",
+        "content_width": "small",
+        "content_position": "bottom-left",
+        "text_alignment": "left",
+        "show_text_content_box": true,
+        "text_content_box_opacity": 100,
+        "enabled_blur_effect": false,
+        "image_behavior": "none",
+        "content_position_mobile": "middle-center",
+        "text_alignment_mobile": "center",
+        "if_as_main_area": false,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "reading_text_n8GrcB": {
+      "type": "reading-text",
+      "blocks": {
+        "reading_text_XeKNAB": {
+          "type": "_reading-text",
+          "settings": {
+            "text": "Join a team driven by creativity, purpose, and passion — together we craft meaningful experiences.",
+            "size": "large",
+            "uppercase": false,
+            "animation": "float-in",
+            "color_before": "#b500b5",
+            "color_after": "#ffd600"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "reading_text_XeKNAB"
+      ],
+      "name": "t:sections.reading-text.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "background_image_opacity": 90,
+        "image_behavior": "none",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "contact_form_z3Mgri": {
+      "type": "contact-form",
+      "blocks": {
+        "contact-form": {
+          "type": "_contact-form",
+          "static": true,
+          "settings": {
+            "heading": "Apply Now",
+            "heading_type": "2",
+            "heading_size": "small",
+            "description": "<p>Share your details and let’s start the conversation.</p>",
+            "alignment": "center",
+            "show_form_phone": true
+          },
+          "blocks": {
+            "custom_radio_field_U4DYLK": {
+              "type": "_custom-radio-field",
+              "name": "t:blocks._custom-radio-field.presets.name",
+              "settings": {
+                "name": "Job Type",
+                "options": "Full-time, Part-time",
+                "default": "Full-time"
+              },
+              "blocks": {}
+            },
+            "custom_select_field_hbGjCN": {
+              "type": "_custom-select-field",
+              "name": "t:blocks._custom-select-field.presets.name",
+              "settings": {
+                "name": "Position",
+                "options": "E-Commerce Marketing Specialist, Product Designer, Content & Community Manager",
+                "default": "E-Commerce Marketing Specialist",
+                "if_required": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "custom_radio_field_U4DYLK",
+            "custom_select_field_hbGjCN"
+          ]
+        },
+        "contact-info": {
+          "type": "_contact-info",
+          "static": true,
+          "settings": {
+            "color_scheme": ""
+          },
+          "blocks": {
+            "icon_text_content_tyjL6m": {
+              "type": "_icon-text-content",
+              "settings": {
+                "icon": "address",
+                "heading": "Address",
+                "description": "<p>1001 S Olive St STE 339, Los Angeles, CA 90015</p>"
+              },
+              "blocks": {}
+            },
+            "icon_text_content_6qtYej": {
+              "type": "_icon-text-content",
+              "settings": {
+                "icon": "phone",
+                "heading": "Phone",
+                "description": "<p>(000)1234-5678</p>"
+              },
+              "blocks": {}
+            },
+            "icon_text_content_girmgb": {
+              "type": "_icon-text-content",
+              "settings": {
+                "icon": "email",
+                "heading": "Email",
+                "description": "<p>support@example.com</p>"
+              },
+              "blocks": {}
+            },
+            "icon_text_content_pjNtTG": {
+              "type": "_icon-text-content",
+              "settings": {
+                "icon": "24h",
+                "heading": "Business hours",
+                "description": "<p>Monday to Friday<br/>From 9 AM to 6 PM</p>"
+              },
+              "blocks": {}
+            },
+            "social_list_jHDCaY": {
+              "type": "social-list",
+              "settings": {
+                "style": "icon",
+                "size": "small",
+                "show_tooltip": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "icon_text_content_tyjL6m",
+            "icon_text_content_6qtYej",
+            "icon_text_content_girmgb",
+            "icon_text_content_pjNtTG",
+            "social_list_jHDCaY"
+          ]
+        }
+      },
+      "name": "t:sections.contact-form.presets.name",
+      "settings": {
+        "color_scheme": "scheme-7",
+        "show_map": true,
+        "map_iframe": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.0655227428865!2d-118.26470770321045!3d34.0421903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c7dd26eebe95%3A0xf885a5788571b2ad!2sFlorist%20TheFlow!5e0!3m2!1szh-CN!2sus!4v1757217768105!5m2!1szh-CN!2sus\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "margin_top": 0,
+        "margin_bottom": 64
+      }
+    },
+    "collapsible_content_JNFH3Y": {
+      "type": "collapsible-content",
+      "blocks": {
+        "section-header": {
+          "type": "_section-header",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "heading_XVb8T9": {
+              "type": "heading",
+              "settings": {
+                "content": "FAQs",
+                "type": "2",
+                "size": "small",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "color",
+                "highlight_color": "#ff0000"
+              },
+              "blocks": {}
+            },
+            "description_qrA7YF": {
+              "type": "description",
+              "settings": {
+                "content": "<p>Get quick answers to your questions about working at Florona.</p>",
+                "color_light": false,
+                "limit_description_height": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_XVb8T9",
+            "description_qrA7YF"
+          ]
+        },
+        "collapsible-content-list": {
+          "type": "_collapsible-content-list",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "collapsible_content_item_mFVzFD": {
+              "type": "_collapsible-content-item",
+              "settings": {
+                "heading": "1. How can I apply for a position at Flonora?",
+                "content": "<p>You can apply directly through our Careers page by filling out the application form and uploading your resume.</p>",
+                "default_expand": false
+              },
+              "blocks": {}
+            },
+            "collapsible_content_item_DyAwVE": {
+              "type": "_collapsible-content-item",
+              "settings": {
+                "heading": "2. Do I need prior experience to apply?",
+                "content": "<p>Some roles require specific experience, but we also welcome passionate individuals who are eager to learn and grow.</p>",
+                "default_expand": false
+              },
+              "blocks": {}
+            },
+            "collapsible_content_item_NbcYcq": {
+              "type": "_collapsible-content-item",
+              "settings": {
+                "heading": "3. Can I apply for more than one position?",
+                "content": "<p>Yes, you’re welcome to apply for multiple roles that match your skills and interests.</p>",
+                "default_expand": false
+              },
+              "blocks": {}
+            },
+            "collapsible_content_item_JCqAa8": {
+              "type": "_collapsible-content-item",
+              "settings": {
+                "heading": "4. What is the recruitment process like?",
+                "content": "<p>Our process usually includes an application review, an interview, and in some cases a practical task or presentation.</p>",
+                "default_expand": false
+              },
+              "blocks": {}
+            },
+            "collapsible_content_item_XKBCxE": {
+              "type": "_collapsible-content-item",
+              "settings": {
+                "heading": "5. Does Flonora offer remote or flexible work options?",
+                "content": "<p>Depending on the role, we may offer remote or hybrid work opportunities.</p>",
+                "default_expand": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "collapsible_content_item_mFVzFD",
+            "collapsible_content_item_DyAwVE",
+            "collapsible_content_item_NbcYcq",
+            "collapsible_content_item_JCqAa8",
+            "collapsible_content_item_XKBCxE"
+          ]
+        }
+      },
+      "name": "t:sections.collapsible-content.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "rich_text_tmTz7H": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_hULbcq": {
+          "type": "heading",
+          "settings": {
+            "content": "Get in Touch",
+            "type": "2",
+            "size": "small",
+            "uppercase": false,
+            "enable_highlight_text": true,
+            "highlight_type": "color",
+            "highlight_color": "#ff0000"
+          },
+          "blocks": {}
+        },
+        "description_PJLF3c": {
+          "type": "description",
+          "settings": {
+            "content": "<p>Have questions or need assistance? Our team is ready to help you anytime.</p>",
+            "color_light": false,
+            "limit_description_height": false
+          },
+          "blocks": {}
+        },
+        "buttons_k38Acw": {
+          "type": "buttons",
+          "settings": {},
+          "blocks": {
+            "button_ftkFGP": {
+              "type": "button",
+              "settings": {
+                "style": "primary",
+                "size": "medium",
+                "icon": "email",
+                "button_label": "Email Us",
+                "button_link": "",
+                "open_in_new_tab": false,
+                "show_arrow": false
+              },
+              "blocks": {}
+            },
+            "button_YdAWnE": {
+              "type": "button",
+              "settings": {
+                "style": "secondary",
+                "size": "medium",
+                "icon": "chat",
+                "button_label": "Live Chat",
+                "button_link": "",
+                "open_in_new_tab": false,
+                "show_arrow": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "button_ftkFGP",
+            "button_YdAWnE"
+          ]
+        }
+      },
+      "block_order": [
+        "heading_hULbcq",
+        "description_PJLF3c",
+        "buttons_k38Acw"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "enable_full_width": true,
+        "color_scheme": "scheme-2",
+        "content_width": "medium",
+        "text_alignment": "center",
+        "background_image_opacity": 90,
+        "image_behavior": "none",
+        "text_alignment_mobile": "center",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "main",
+    "image_banner_ixXrRF",
+    "reading_text_n8GrcB",
+    "contact_form_z3Mgri",
+    "collapsible_content_JNFH3Y",
+    "rich_text_tmTz7H"
+  ]
+}

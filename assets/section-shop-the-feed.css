@@ -1,0 +1,162 @@
+.shop-the-feed .feed-list {
+  row-gap: var(--vertical-gap, 1.5rem);
+  column-gap: var(--horizontal-gap, 1.5rem);
+}
+.shop-the-feed .feed-list .feed-item .modal-opener {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(var(--color-foreground), 0.2);
+  color: rgb(var(--color-background));
+}
+.shop-the-feed .feed-list .feed-item .modal-opener .social-icon {
+  width: 1.5rem;
+}
+.shop-the-feed .feed-list .feed-item .modal-opener .quick-view-button {
+  position: absolute;
+  inset-block-end: 1rem;
+  inset-inline-end: 1rem;
+}
+.shop-the-feed .feed-list .feed-item.video-feed-item .media-content {
+  padding: 1rem;
+}
+.shop-the-feed .feed-list .feed-item.video-feed-item .media-content .icon-wrap {
+  width: 2.4rem;
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(var(--color-shadow));
+  color: rgb(var(--color-light));
+  border-radius: 9999px;
+}
+.shop-the-feed .feed-list.scroll-list .feed-media {
+  width: 18rem;
+}
+
+.shop-the-feed-modal .modal-inner {
+  padding: 0;
+}
+.shop-the-feed-modal .modal-close-button {
+  position: absolute;
+  inset-inline-end: 0.5rem;
+  inset-block-start: 0.5rem;
+  z-index: 1;
+}
+.shop-the-feed-modal .feed-media {
+  position: relative;
+}
+.shop-the-feed-modal .feed-media .nav-buttons {
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  pointer-events: none;
+}
+.shop-the-feed-modal .feed-media .nav-buttons .nav-button {
+  --color-button-text: var(--color-light);
+  pointer-events: auto;
+}
+.shop-the-feed-modal .feed-info {
+  flex: 1 1 auto;
+  padding: 1rem;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 0.5rem;
+}
+.shop-the-feed-modal .feed-info .feed-social-account {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-block-end: 0.5rem;
+  border-block-end: 1px solid rgba(var(--color-foreground), 0.1);
+}
+.shop-the-feed-modal .feed-info .feed-social-account .social-avatar {
+  width: 3.5rem;
+}
+.shop-the-feed-modal .feed-info .feed-social-account .social-nickname {
+  font-weight: 500;
+}
+.shop-the-feed-modal .feed-info .feed-social-account .social-button {
+  margin-inline-start: auto;
+}
+.shop-the-feed-modal .feed-info .product-card .card-media {
+  width: 4.5rem;
+}
+.shop-the-feed-modal .feed-info .product-card .card-heading .title-more {
+  display: none;
+}
+.shop-the-feed-modal .feed-info .product-card .card-heading .title-less {
+  display: block;
+}
+
+@media screen and (max-width: 749px) {
+  .shop-the-feed .feed-list {
+    row-gap: var(--vertical-gap-mobile, 1rem);
+    column-gap: var(--horizontal-gap-mobile, 1rem);
+  }
+  .shop-the-feed .feed-list.scroll-list .feed-media {
+    width: 14rem;
+  }
+  .shop-the-feed-modal .product-card {
+    margin-block-start: 2rem;
+  }
+}
+@media screen and (min-width: 750px) {
+  .shop-the-feed .feed-list .feed-item .modal-opener {
+    opacity: 0;
+  }
+  .shop-the-feed .feed-list .feed-item .modal-opener:focus-visible {
+    opacity: 1;
+  }
+  .shop-the-feed .feed-list .feed-item:hover .modal-opener {
+    opacity: 1;
+  }
+  .shop-the-feed .feed-list .feed-item:hover .modal-opener .social-icon {
+    animation: slideIn 300ms cubic-bezier(0, 0, 0.3, 1);
+  }
+  .shop-the-feed-modal .modal-inner {
+    width: 50rem;
+    display: flex;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  .shop-the-feed-modal .modal-inner .nav-buttons .nav-button {
+    opacity: 0;
+  }
+  .shop-the-feed-modal .modal-inner .nav-buttons .nav-button:focus-visible {
+    opacity: 1;
+  }
+  .shop-the-feed-modal .modal-inner:hover .nav-buttons .nav-button {
+    animation-duration: 300ms;
+    animation-timing-function: cubic-bezier(0, 0, 0.3, 1);
+    animation-fill-mode: forwards;
+  }
+}
+@media screen and (min-width: 750px) and (prefers-reduced-motion: reduce) {
+  .shop-the-feed-modal .modal-inner:hover .nav-buttons .nav-button {
+    opacity: 1;
+  }
+}
+@media screen and (min-width: 750px) {
+  .shop-the-feed-modal .modal-inner:hover .nav-buttons .nav-button.nav-button--prev {
+    animation-name: slideInFromLeft;
+  }
+  .shop-the-feed-modal .modal-inner:hover .nav-buttons .nav-button.nav-button--next {
+    animation-name: slideInFromRight;
+  }
+  .shop-the-feed-modal .feed-media {
+    flex: 0 0 auto;
+    width: 20rem;
+  }
+  .shop-the-feed-modal .feed-image,
+  .shop-the-feed-modal .media-poster {
+    --padding-bottom: 125%;
+  }
+}

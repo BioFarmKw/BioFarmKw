@@ -1,0 +1,290 @@
+{% doc %}
+  Mega Menu
+
+  @description
+  Renders the content of a mega menu for a given link, using specified mega menu block IDs.
+
+  @param {string} section_id - Section Id
+  @param {object} link - The link object
+  @param {object} blocks
+  @param {string} mega_ids - Comma-separated list of mega menu block IDs
+
+  @example
+  {% render 'mega-menu', section_id: section_id, blocks: blocks, link: link, mega_ids: mega_ids %}
+{% enddoc %}
+
+<div
+  id="Menu-{{ link.handle | capitalize }}"
+  class="header-mega-submenu color-{{ settings.main_color_scheme }} gradient details-disclosure-content hidden-scrollbar"
+  aria-label="Submenu for {{ link.title | escape }}"
+  tabindex="-1"
+  {% comment %} tabindex="-1" 是为了打开菜单后，防止菜单容器因为失去焦点而关闭 {% endcomment %}
+>
+  <div class="page-width">
+    <ul class="mega-menu-list list-unstyled">
+      {%- for childlink in link.links -%}
+        <li class="mega-menu-item header-menu-second-level">
+          <a
+            class="mega-links-title font-heading mb-2 link{% if childlink.url != blank and childlink.url != '/' %} link-text{% endif %}"
+            {% if childlink.url != blank and childlink.url != '/' %}
+              href="{{ childlink.url }}"
+            {% else %}
+              role="link"
+              aria-disabled="true"
+            {% endif %}
+            {% if childlink.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            {{- childlink.title | escape -}}
+          </a>
+
+          {%- if childlink.links != blank -%}
+            <ul
+              class="list-menu list-unstyled"
+              aria-label="Submenu for {{ childlink.title | escape }}"
+            >
+              {%- for grandchildlink in childlink.links -%}
+                <li class="list-menu-item header-menu-third-level">
+                  <a
+                    href="{{ grandchildlink.url }}"
+                    class="link link-text"
+                    {% if grandchildlink.current %}
+                      aria-current="page"
+                    {% endif %}
+                  >
+                    {{- grandchildlink.title | escape -}}
+                  </a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+
+      {%- for id in mega_ids -%}
+        {% liquid
+          assign id_int = id | plus: 0
+          for item in blocks
+            if forloop.index == id_int
+              assign mega = item
+              break
+            endif
+          endfor
+
+          if mega == blank
+            continue
+          endif
+        %}
+        <li
+          class="mega-menu-item item-type--{{ mega.type }} header-menu-second-level{% if mega.settings.width != blank %} column-{{ mega.settings.width }}{% endif %}{% if mega.settings.alignment != blank %} text-align--{{ mega.settings.alignment }}{% endif %}"
+          {{ mega.shopify_attributes }}
+        >
+          {%- if mega.type == 'mega_image' -%}
+            {% capture sizes %}(min-width: {{ settings.page_width }}px) {{ settings.page_width | divided_by: 5 | times: mega.settings.width }}, (min-width: 750px) {{ mega.settings.width | times: 20 }}vw, 100vw{% endcapture %}
+            <a
+              class="image-item link"
+              {% if mega.settings.link != blank %}
+                href="{{ mega.settings.link }}"
+                {% if mega.settings.open_in_new_tab %}
+                  target="_blank"
+                  rel="noopener nofollow"
+                {% endif %}
+              {% else %}
+                role="link"
+                aria-disabled="true"
+              {% endif %}
+            >
+              <div class="image-item-image{% unless mega.settings.image_ratio == 'adapt' %} media media--{{ mega.settings.image_ratio }}{% endunless %}">
+                {% render 'lazy-image',
+                  image_object: mega.settings.image,
+                  sizes: sizes,
+                  widths: '200, 400, 500, 600, 800, 1200, 1500',
+                  placeholder: 'image'
+                %}
+              </div>
+              {%- if mega.settings.heading != empty -%}
+                <div class="image-item-title">
+                  <b class="link link-text">{{ mega.settings.heading | escape }}</b>
+                  {%- if mega.settings.badge_label != blank -%}
+                    <span
+                      class="badge badge-size--small"
+                      style="background: {{ mega.settings.badge_background }}; color: {{ mega.settings.badge_foreground }};"
+                    >
+                      {%- if mega.settings.badge_icon != 'none' -%}
+                        {% render 'icon-sets', icon: mega.settings.badge_icon %}
+                      {%- endif -%}
+                      {{- mega.settings.badge_label | escape -}}
+                    </span>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+              {%- if mega.settings.description != empty -%}
+                <div class="image-item-description rte light">{{ mega.settings.description }}</div>
+              {%- endif -%}
+            </a>
+          {%- elsif mega.type == 'mega_image_text' -%}
+            {% capture sizes %}(min-width: {{ settings.page_width }}px) {{ settings.page_width | divided_by: 5 | times: mega.settings.width }}, (min-width: 750px) {{ mega.settings.width | times: 20 }}vw, 100vw{% endcapture %}
+            <div class="image-text-container color-{{ mega.settings.color_scheme }} gradient">
+              <div
+                class="image-text-image{% unless mega.settings.image_ratio == 'adapt' %} media media--{{ mega.settings.image_ratio }}{% else %} lh-0{% endunless %}"
+                style="opacity: {{ mega.settings.image_opacity }}%;"
+              >
+                {% render 'lazy-image',
+                  image_object: mega.settings.image,
+                  sizes: sizes,
+                  widths: '200, 400, 500, 600, 800, 1200, 1500',
+                  placeholder: 'image'
+                %}
+              </div>
+              <div
+                class="image-text-content position-container position--{{ mega.settings.position }}"
+              >
+                <div
+                  class="content-group group--compact width--small text-align--{{ mega.settings.text_alignment }}"
+                >
+                  {%- if mega.settings.heading != blank -%}
+                    <div class="text-content-heading font-heading heading-size--{{ mega.settings.heading_size }}">
+                      {{ mega.settings.heading | escape }}
+                    </div>
+                  {%- endif -%}
+                  {%- if mega.settings.description != blank -%}
+                    <div class="text-content-description rte light">{{ mega.settings.description }}</div>
+                  {%- endif -%}
+                  {%- if mega.settings.button_label != blank -%}
+                    <a
+                      class="button button--{{ mega.settings.button_style }} button--{{ mega.settings.button_size }}"
+                      {% if mega.settings.button_link != blank %}
+                        href="{{ mega.settings.button_link }}"
+                      {% else %}
+                        role="link"
+                        aria-disabled="true"
+                      {% endif %}
+                    >
+                      {{ mega.settings.button_label | escape }}
+                    </a>
+                  {%- endif -%}
+                </div>
+              </div>
+            </div>
+          {%- elsif mega.type == 'mega_links' -%}
+            {% assign menu_heading = mega.settings.heading | escape | default: mega.settings.menu.title %}
+            {%- if mega.settings.image != blank -%}
+              <div class="mega-links-image{% unless mega.settings.image_ratio == 'adapt' %} media media--{{ mega.settings.image_ratio }}{% endunless %}">
+                {% capture sizes %}(min-width: {{ settings.page_width }}px) {{ settings.page_width | divided_by: 4 }}, (min-width: 750px) 25vw, 100vw{% endcapture %}
+                {% render 'lazy-image',
+                  image_object: mega.settings.image,
+                  class: 'animate--scale-up',
+                  sizes: sizes,
+                  widths: '165, 360, 450, 660, 900, 1320, 1500'
+                %}
+                {% if mega.settings.link != blank -%}
+                  <a
+                    href="{{ mega.settings.link }}"
+                    {% if mega.settings.open_in_new_tab %}
+                      target="_blank"
+                      rel="noopener nofollow"
+                    {% endif %}
+                    aria-hidden="true"
+                  >
+                  </a>
+                {%- endif %}
+              </div>
+            {%- endif -%}
+            <a
+              class="mega-links-title font-heading mb-2 link{% if mega.settings.link != blank %} link-text{% endif %}"
+              {% if mega.settings.link != blank %}
+                href="{{ mega.settings.link }}"
+                {% if mega.settings.open_in_new_tab %}
+                  target="_blank"
+                  rel="noopener nofollow"
+                {% endif %}
+              {% else %}
+                role="link"
+                aria-disabled="true"
+              {% endif %}
+            >
+              {{ menu_heading }}
+            </a>
+            {%- unless mega.settings.menu == blank -%}
+              <ul
+                class="list-menu list-unstyled"
+                aria-label="Menu for {{ menu_heading }}"
+              >
+                {%- for child_link in mega.settings.menu.links -%}
+                  <li class="list-menu-item header-menu-third-level">
+                    <a
+                      class="link link-text"
+                      {% if child_link.url != blank %}
+                        href="{{ child_link.url }}"
+                      {% else %}
+                        aria-disabled="true"
+                      {% endif %}
+                      {% if child_link.current %}
+                        aria-current="page"
+                      {% endif %}
+                    >
+                      {{- child_link.title | escape -}}
+                    </a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endunless -%}
+          {%- elsif mega.type == 'mega_collection' -%}
+            <tab-panel class="tab-panel" data-hover-switch>
+              <ul class="tab-panel-tabs list-unstyled" role="tablist">
+                {%- for collection in mega.settings.collection_list -%}
+                  <li
+                    id="Mega-Collection-List-Tab-{{ mega.id }}-{{ link.handle | capitalize }}-{{ forloop.index }}"
+                    class="tab focus-inset"
+                    role="tab"
+                    tabindex="0"
+                    aria-controls="Mega-Collection-List-Panel-{{ mega.id }}-{{ link.handle | capitalize }}-{{ forloop.index }}"
+                  >
+                    {%- if mega.settings.show_collection_image and collection.featured_image != blank -%}
+                      <span class="media media--square">
+                        {{ collection.featured_image | image_url: width: 200 | image_tag }}
+                      </span>
+                    {%- endif -%}
+                    {{ collection.title }}
+                    {% render 'icon-sets-basic', icon: 'caret-right', class: 'caret-icon' %}
+                  </li>
+                {%- endfor -%}
+              </ul>
+              <div class="tab-panel-panels">
+                {%- for collection in mega.settings.collection_list -%}
+                  <div
+                    id="Mega-Collection-List-Panel-{{ mega.id }}-{{ link.handle | capitalize }}-{{ forloop.index }}"
+                    class="panel"
+                    role="tabpanel"
+                    aria-labelledby="Mega-Collection-List-Tab-{{ mega.id }}-{{ link.handle | capitalize }}-{{ forloop.index }}"
+                    aria-hidden="true"
+                  >
+                    <div class="panel-header">
+                      <b class="collection-title">{{ collection.title }}</b>
+                      <a class="view-all-link link link-text show-underline" href="{{ collection.url }}">
+                        {{- 'general.view_all' | t -}}
+                      </a>
+                    </div>
+                    {% render 'list-products',
+                      products: collection.products,
+                      section_id: section_id,
+                      products_limit: mega.settings.limit,
+                      card_size: 'mini',
+                      image_ratio: mega.settings.image_ratio,
+                      color_scheme: mega.settings.color_scheme,
+                      text_alignment: mega.settings.text_alignment,
+                      show_quick_add: settings.show_quick_add,
+                      show_wrapper: mega.settings.show_card_wrapper,
+                      show_swatch: false
+                    %}
+                  </div>
+                {%- endfor -%}
+              </div>
+            </tab-panel>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>

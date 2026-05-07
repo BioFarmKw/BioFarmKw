@@ -1,0 +1,14 @@
+<div class="shopify-block timeline-list-block" {{ block.shopify_attributes }}>
+  {% content_for 'blocks' %}
+</div>
+{% schema %}
+{
+  "name": "t:blocks._event-list.name",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "_event"
+    }
+  ]
+}
+{% endschema %}

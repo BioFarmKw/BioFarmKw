@@ -1,0 +1,71 @@
+<a
+  class="shopify-block logo-block scroll-item link"
+  {% if block.settings.link != blank %}
+    href="{{ block.settings.link }}"
+    {% if block.settings.open_in_new_tab %}
+      target="_blank"
+      rel="noopener nofollow"
+    {% endif %}
+  {% else %}
+    role="link"
+    aria-disabled="true"
+  {% endif %}
+  style="--image-width: {{ block.settings.image_width }}px; --image-width-mobile: {{ block.settings.image_width_mobile }}px;"
+  {{ block.shopify_attributes }}
+>
+  {% render 'lazy-image', image_object: block.settings.image, sizes: '300px', placeholder: 'image' %}
+</a>
+{% schema %}
+{
+  "name": "t:blocks._logo.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.all.image.image_picker.label",
+      "info": "t:blocks._logo.settings.image.info"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "label": "t:sections.all.image.image_width.label",
+      "min": 20,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "default": 140
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:sections.all.link.url.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_in_new_tab",
+      "label": "t:sections.all.link.open_in_new_tab.label",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.mobile.header_content"
+    },
+    {
+      "type": "range",
+      "id": "image_width_mobile",
+      "label": "t:sections.all.image.image_width.label",
+      "min": 20,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 100
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._logo.presets.name"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,32 @@
+.visual-tabs__wrapper {
+  display: block;
+}
+.visual-tabs__wrapper .visual-image {
+  width: 100%;
+}
+.visual-tabs__wrapper .visual-tab-panel {
+  margin-block-start: 2rem;
+}
+.visual-tabs__wrapper .visual-tab-panel .tab .icon {
+  width: 1.5rem;
+}
+.visual-tabs__wrapper.image-height--small .visual-image {
+  height: 25rem;
+}
+.visual-tabs__wrapper.image-height--medium .visual-image {
+  height: 35rem;
+}
+.visual-tabs__wrapper.image-height--large .visual-image {
+  height: 45rem;
+}
+@media screen and (max-width: 749px) {
+  .visual-tabs__wrapper.image-height--small .visual-image {
+    height: 15rem;
+  }
+  .visual-tabs__wrapper.image-height--medium .visual-image {
+    height: 25rem;
+  }
+  .visual-tabs__wrapper.image-height--large .visual-image {
+    height: 35rem;
+  }
+}

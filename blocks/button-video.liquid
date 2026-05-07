@@ -1,0 +1,180 @@
+<modal-opener
+  role="button"
+  class="shopify-block button-video-block button button--{{ block.settings.style | default: 'primary' }} button--{{ block.settings.size | default: 'medium' }}"
+  aria-haspopup="dialog"
+  aria-expanded="false"
+  aria-controls="Button-Video-Modal"
+  aria-label="{{ 'templates.search.drawer' | t }}"
+  {{ block.shopify_attributes }}
+>
+  {% render 'icon-sets-basic', icon: 'play' %}
+  {{ block.settings.button_label | escape }}
+
+  {%- if block.settings.video != blank or block.settings.video_url != blank -%}
+    <template>
+      <deferred-media class="video-model-media deferred-media media-fit--cover" data-load-when-visible>
+        <div class="media-poster media">
+          {% liquid
+            assign alt = 'sections.video.load_video' | t: description: block.settings.video.alt
+            assign poster = block.settings.cover_image | default: block.settings.video.preview_image
+          %}
+          {% render 'lazy-image', image_object: poster, sizes: '100vw', alt: alt, placeholder: 'image' %}
+          <div class="media-content">
+            <button class="media-play-button button button--large button--icon button--pill button--border">
+              {% render 'icon-sets-basic', icon: 'play' %}
+            </button>
+          </div>
+        </div>
+        <template>
+          {%- if block.settings.video != null -%}
+            {{
+              block.settings.video
+              | video_tag:
+                image_size: '1600x',
+                autoplay: true,
+                loop: block.settings.enable_looping,
+                controls: block.settings.enable_controls,
+                muted: true
+            }}
+          {%- elsif block.settings.video_url != null -%}
+            {% liquid
+              assign video_id = block.settings.video_url.id
+              assign parameters = ''
+              if block.settings.enable_looping
+                assign parameters = '&loop=1&playlist=' | append: video_id
+              endif
+
+              if block.settings.enable_controls
+                assign parameters = parameters | append: '&controls=1'
+              else
+                assign parameters = parameters | append: '&controls=0'
+              endif
+            %}
+
+            {%- if block.settings.video_url.type == 'youtube' -%}
+              <iframe
+                src="https://www.youtube.com/embed/{{ video_id }}?enablejsapi=1&autoplay=1&mute=1{{ parameters }}"
+                class="js-youtube"
+                allow="autoplay; encrypted-media"
+                allowfullscreen
+                title="{{ block.settings.heading | escape }}"
+              ></iframe>
+            {%- else -%}
+              <iframe
+                src="https://player.vimeo.com/video/{{ video_id }}?autoplay=1&muted=1{{ parameters }}"
+                class="js-vimeo"
+                allow="autoplay; encrypted-media"
+                allowfullscreen
+                title="{{ block.settings.heading | escape }}"
+              ></iframe>
+            {%- endif -%}
+          {%- endif -%}
+        </template>
+      </deferred-media>
+    </template>
+  {%- endif -%}
+</modal-opener>
+
+{% schema %}
+{
+  "name": "t:blocks.button-video.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "style",
+      "label": "t:sections.all.button.button_style.label",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:sections.all.button.button_style.options__1.label"
+        },
+        {
+          "value": "secondary",
+          "label": "t:sections.all.button.button_style.options__2.label"
+        },
+        {
+          "value": "border",
+          "label": "t:sections.all.button.button_style.options__3.label"
+        },
+        {
+          "value": "ethereal",
+          "label": "t:sections.all.button.button_style.options__4.label"
+        }
+      ],
+      "default": "primary"
+    },
+    {
+      "type": "select",
+      "id": "size",
+      "label": "t:sections.all.button.button_size.label",
+      "options": [
+        {
+          "value": "mini",
+          "label": "t:sections.all.button.button_size.options__1.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.all.button.button_size.options__2.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.all.button.button_size.options__3.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.all.button.button_size.options__4.label"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "Watch video",
+      "label": "t:sections.all.button.button_label.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.video.header_content"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "accept": ["youtube", "vimeo"],
+      "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+      "label": "t:sections.all.video.video_url.label",
+      "info": "t:sections.all.video.video_url.info"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "t:sections.all.video.video.label",
+      "info": "t:sections.all.video.video.info"
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image",
+      "label": "t:sections.all.video.cover_image.label",
+      "info": "t:sections.all.banner.height.options__2.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_controls",
+      "label": "t:sections.all.video.enable_controls.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_looping",
+      "label": "t:sections.all.video.enable_looping.label",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks.button-video.presets.name"
+    }
+  ]
+}
+{% endschema %}

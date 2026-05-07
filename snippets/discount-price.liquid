@@ -1,0 +1,80 @@
+{% doc %}
+  Discounted Price
+
+  @description
+  Displays the discounted price based on the original price of a product or variant, with optional discount display.
+
+  @param {object} [variant_object] - Product variant object (optional)
+  @param {boolean} [show_discount] - Show discount amount
+  @param {number} [discount_percentage] - Discount percentage (0-100)
+  @param {string} [class] - Add a custom CSS class to the price element
+
+  @example
+  {% render 'discount-price', product_object: product %}
+{% enddoc %}
+
+{%- unless variant_object == blank -%}
+  {% liquid
+    assign price = variant_object.price
+    assign money_price = price | money
+    if settings.currency_code_enabled
+      assign money_price = price | money_with_currency
+    endif
+
+    if show_discount and discount_percentage > 0
+      assign discount_percentage = discount_percentage | at_least: 0 | at_most: 100
+      assign discount_price = price | times: discount_percentage | divided_by: 100
+      assign discounted_price = price | minus: discount_price | round
+      assign discounted_money_price = discounted_price | money
+      if settings.currency_code_enabled
+        assign discounted_money_price = discounted_price | money_with_currency
+      endif
+    endif
+  %}
+
+  <div
+    class="price{% if show_discount and discount_percentage > 0 %} price--on-discount{% endif %}{% if class %} {{ class }}{% endif %}"
+    {% if show_discount and discount_percentage > 0 %}
+      data-value="{{ discounted_price }}"
+      data-original="{{ price }}"
+    {% else %}
+      data-value="{{ price }}"
+    {% endif %}
+  >
+    <div class="price-container">
+      {%- if show_discount and discount_percentage > 0 -%}
+        <span class="visually-hidden">{{ 'products.product.price.discount_price' | t }}</span>
+        <b class="price-item price-item--discount">
+          {%- if discounted_price <= 0 -%}
+            {{ 'products.product.free' | t }}
+          {%- else -%}
+            {{ discounted_money_price }}
+          {%- endif -%}
+        </b>
+
+        <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+        <s class="price-item price-item--regular">
+          {{ money_price }}
+        </s>
+      {%- else -%}
+        <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+        <b class="price-item price-item--regular">
+          {{ money_price }}
+        </b>
+      {%- endif -%}
+    </div>
+  </div>
+{%- else -%}
+  <div class="price{% if class %} {{ class }}{% endif %}">
+    <div class="price-container">
+      <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+      <b class="price-item price-item--regular">
+        {%- if settings.currency_code_enabled -%}
+          {{ '1999' | money_with_currency }}
+        {%- else -%}
+          {{ '1999' | money }}
+        {%- endif -%}
+      </b>
+    </div>
+  </div>
+{%- endunless -%}

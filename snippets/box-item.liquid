@@ -1,0 +1,36 @@
+{% doc %}
+  Box Item
+
+  @description
+  Displays a product unit with image, title, and price.
+
+  @param {object} [image] - Product image
+  @param {string} [title] - Product title
+  @param {string} [price] - Product price
+  @param {object} [block] - Optional block object for additional Shopify attributes
+  @param {string} [class] - Custom CSS class name
+
+  @example
+  {% render 'box-item', image: product.featured_image, title: product.title, price: product.price %}
+{% enddoc %}
+
+<div
+  class="{% if class != blank %}{{ class }} {% endif %}box-item"
+  {% if block != blank %}
+    {{ block.shopify_attributes -}}
+  {% endif %}
+>
+  <span class="box-item-image media media--square">
+    {%- if image != blank -%}
+      {{ image | image_url: width: 500 | image_tag }}
+    {%- else -%}
+      {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  </span>
+  <div class="box-item-name">{{ title | escape }}</div>
+  {%- if price != blank -%}
+    <small class="box-item-price light line-through">
+      {{ price | money }}
+    </small>
+  {%- endif -%}
+</div>

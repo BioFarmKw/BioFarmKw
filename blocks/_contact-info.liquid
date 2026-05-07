@@ -1,0 +1,40 @@
+<div class="contact-info-block gradient color-{{ block.settings.color_scheme }}" {{ block.shopify_attributes }}>
+  {% content_for 'blocks' %}
+</div>
+
+{% schema %}
+{
+  "name": "t:blocks._contact-info.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.scheme.label",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_icon-text-content"
+    },
+    {
+      "type": "social-list"
+    },
+    {
+      "type": "heading"
+    },
+    {
+      "type": "description"
+    },
+    {
+      "type": "spacer"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._contact-info.presets.name"
+    }
+  ]
+}
+{% endschema %}

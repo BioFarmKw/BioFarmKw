@@ -1,0 +1,29 @@
+<tr class="shopify-block product-custom-attribute-block attribute-row" {{ block.shopify_attributes }}>
+  <td class="attribute-name">{{ block.settings.attribute_name | escape }}</td>
+  <td class="attribute-value">{{ block.settings.attribute_value }}</td>
+</tr>
+{% schema %}
+{
+  "name": "t:blocks._product-custom-attribute.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "attribute_name",
+      "label": "t:blocks._product-custom-attribute.settings.attribute_name.label",
+      "default": "Attribute name"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "attribute_value",
+      "label": "t:blocks._product-custom-attribute.settings.attribute_value.label",
+      "default": "Attribute value"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._product-custom-attribute.presets.name"
+    }
+  ]
+}
+{% endschema %}

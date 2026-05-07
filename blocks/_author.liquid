@@ -1,0 +1,163 @@
+<div
+  class="shopify-block author-block layout--{{ block.settings.layout }}"
+  {{ block.shopify_attributes }}
+>
+  <span class="author-image media media--square media--circle image--{{ block.settings.image_size }}">
+    {%- if block.settings.image != blank -%}
+      {{ block.settings.image | image_url: width: 200 | image_tag }}
+    {%- else -%}
+      {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  </span>
+  <div class="author-content">
+    <div class="author-name">{{ block.settings.name }}</div>
+    <small class="author-role light">{{ block.settings.role }}</small>
+    {%- unless block.settings.facebook_link == blank
+      and block.settings.twitter_link == blank
+      and block.settings.instagram_link == blank
+      and block.settings.linkedin_link == blank
+    -%}
+      <div class="author-socials">
+        <ul class="social-icons social-style--wrapper list-unstyled">
+          {%- if block.settings.facebook_link != blank -%}
+            <li class="social-item hover-trigger">
+              <a
+                href="{{ block.settings.facebook_link }}"
+                class="link focus-inset"
+                target="_blank"
+              >
+                {%- render 'icon-sets-basic', icon: 'meta', class: 'animate--shake' -%}
+                <span class="visually-hidden">Facebook</span>
+              </a>
+            </li>
+          {%- endif -%}
+          {%- if block.settings.twitter_link != blank -%}
+            <li
+              class="social-item hover-trigger"
+              target="_blank"
+            >
+              <a href="{{ block.settings.twitter_link }}" class="link focus-inset">
+                {%- render 'icon-sets-basic', icon: 'twitter', class: 'animate--shake' -%}
+                <span class="visually-hidden">Twitter</span>
+              </a>
+            </li>
+          {%- endif -%}
+          {%- if block.settings.instagram_link != blank -%}
+            <li
+              class="social-item hover-trigger"
+              target="_blank"
+            >
+              <a href="{{ block.settings.instagram_link }}" class="link focus-inset">
+                {%- render 'icon-sets-basic', icon: 'instagram', class: 'animate--shake' -%}
+                <span class="visually-hidden">Instagram</span>
+              </a>
+            </li>
+          {%- endif -%}
+          {%- if block.settings.linkedin_link != blank -%}
+            <li class="social-item hover-trigger">
+              <a
+                href="{{ block.settings.linkedin_link }}"
+                class="link focus-inset"
+                target="_blank"
+              >
+                {%- render 'icon-sets-basic', icon: 'linkedin', class: 'animate--shake' -%}
+                <span class="visually-hidden">LinkedIn</span>
+              </a>
+            </li>
+          {%- endif -%}
+        </ul>
+      </div>
+    {%- endunless -%}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "t:blocks._author.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "t:sections.all.layout.label",
+      "options": [
+        {
+          "value": "horizontal",
+          "label": "t:sections.all.layout.horizontal.label"
+        },
+        {
+          "value": "vertical",
+          "label": "t:sections.all.layout.vertical.label"
+        }
+      ],
+      "default": "horizontal"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:blocks._author.settings.profile_picture.label",
+      "info": "t:blocks._author.settings.profile_picture.info"
+    },
+    {
+      "type": "select",
+      "id": "image_size",
+      "label": "t:blocks._author.settings.avatar_size.label",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:blocks._author.settings.avatar_size.options__1.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:blocks._author.settings.avatar_size.options__2.label"
+        },
+        {
+          "value": "large",
+          "label": "t:blocks._author.settings.avatar_size.options__3.label"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "text",
+      "id": "name",
+      "label": "t:blocks._author.settings.name.label",
+      "default": "Author Name"
+    },
+    {
+      "type": "text",
+      "id": "role",
+      "label": "t:blocks._author.settings.role.label",
+      "default": "Role Title"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.social-list.header_content"
+    },
+    {
+      "type": "text",
+      "id": "facebook_link",
+      "label": "t:settings_schema.social-media.settings.social_facebook_link.label"
+    },
+    {
+      "type": "text",
+      "id": "twitter_link",
+      "label": "t:settings_schema.social-media.settings.social_twitter_link.label"
+    },
+    {
+      "type": "text",
+      "id": "instagram_link",
+      "label": "t:settings_schema.social-media.settings.social_instagram_link.label"
+    },
+    {
+      "type": "text",
+      "id": "linkedin_link",
+      "label": "t:settings_schema.social-media.settings.social_linkedin_link.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._author.presets.name"
+    }
+  ]
+}
+{% endschema %}

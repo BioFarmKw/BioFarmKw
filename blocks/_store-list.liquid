@@ -1,0 +1,82 @@
+<slider-component
+  class="shopify-block store-list-block slider"
+  data-slide-desktop
+  data-slide-mobile
+  data-draggable
+  data-slide-smooth
+  {% if block.settings.auto_rotate %}
+    {% assign slide_interval = block.settings.change_slides_speed | times: 1000.00 %}
+    data-autoplay
+    data-interval="{{ slide_interval }}"
+  {% endif %}
+  {{ block.shopify_attributes }}
+>
+  <div class="slider-container">
+    <ul
+      id="Slider-{{ section.id }}"
+      class="slider-wrapper auto-grid"
+    >
+      {%- for block in block.blocks -%}
+        <li id="Slide-{{ section.id }}-{{ forloop.index }}" class="slider-slide">
+          {% render block %}
+        </li>
+      {%- endfor -%}
+    </ul>
+    {%- if block.settings.show_nav_buttons -%}
+      {% render 'slider-nav-buttons', section_id: section.id %}
+    {%- endif -%}
+    {%- if block.settings.show_page_dots -%}
+      {% render 'slider-page-dots',
+        section_id: '{{ section.id }}',
+        auto_rotate: block.settings.auto_rotate,
+        slide_interval: slide_interval
+      %}
+    {%- endif -%}
+  </div>
+</slider-component>
+{% schema %}
+{
+  "name": "t:blocks._store-list.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.layout.header_slider.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_nav_buttons",
+      "label": "t:sections.all.slider.show_nav_buttons.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_page_dots",
+      "label": "t:sections.all.slider.show_page_dots.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_rotate",
+      "label": "t:sections.all.slider.auto_rotate.label",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "change_slides_speed",
+      "min": 3,
+      "max": 15,
+      "step": 1,
+      "unit": "s",
+      "label": "t:sections.all.slider.change_slides_speed.label",
+      "default": 5,
+      "visible_if": "{{ block.settings.auto_rotate }}"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_store"
+    }
+  ]
+}
+{% endschema %}

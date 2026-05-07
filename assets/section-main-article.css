@@ -1,0 +1,188 @@
+.main-article__wrapper .main-article-header {
+  padding-block: 3rem;
+  margin-block-end: 3rem;
+}
+.main-article__wrapper .main-article-header .article-tags {
+  font-weight: 500;
+}
+.main-article__wrapper .main-article-header .article-title {
+  font-size: 3rem;
+  margin-block-end: 1rem;
+}
+.main-article__wrapper .main-article-header .article-author {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.main-article__wrapper .main-article-header .article-author .publish-date,
+.main-article__wrapper .main-article-header .article-author .author-name,
+.main-article__wrapper .main-article-header .article-author .comments-count {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+.main-article__wrapper .main-article-header .article-author .publish-date .icon,
+.main-article__wrapper .main-article-header .article-author .author-name .icon,
+.main-article__wrapper .main-article-header .article-author .comments-count .icon {
+  flex: 0 0 auto;
+  width: 1.25rem;
+}
+.main-article__wrapper .main-article-content .article-main-details .article-excerpt {
+  position: relative;
+  padding: 1.5rem;
+  margin-block-end: 2rem;
+  border: 1px solid rgba(var(--color-foreground), 0.1);
+}
+.main-article__wrapper .main-article-content .article-main-details .article-excerpt:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(var(--color-foreground), 0.02);
+  transform: translate(-1rem, -1rem);
+  pointer-events: none;
+}
+.main-article__wrapper .main-article-content .article-main-details .article-image {
+  margin-block-end: 2rem;
+}
+.main-article__wrapper .main-article-content .article-main-details .article-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-block: 1rem;
+  margin-block-start: 2rem;
+}
+.main-article__wrapper .main-article-content .article-main-details .article-meta .article-share,
+.main-article__wrapper .main-article-content .article-main-details .article-meta .article-blog {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.main-article__wrapper .main-article-content .article-main-details .article-navs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-block-start: 2rem;
+  padding-block-start: 2rem;
+  border-block-start: 1px solid rgba(var(--color-foreground), 0.1);
+}
+.main-article__wrapper .main-article-content .article-main-details .article-navs .nav-button .nav-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-block-end: 0.5rem;
+}
+.main-article__wrapper .main-article-content .article-main-details .article-navs .nav-button .nav-title .caret-icon {
+  transition: transform 300ms cubic-bezier(0, 0, 0.3, 1);
+}
+.main-article__wrapper .main-article-content .article-main-details .article-navs .nav-button .nav-article {
+  font-size: 0.875rem;
+}
+.main-article__wrapper .main-article-content .article-main-details .article-navs .nav-button.nav-button--next {
+  margin-inline-start: auto;
+  text-align: end;
+}
+.main-article__wrapper .main-article-content .article-main-details .article-navs .nav-button:hover .caret-icon {
+  transform: translateX(calc(-20% * var(--translate-x-direction)));
+}
+.main-article__wrapper .main-article-content .article-main-details .article-navs .nav-button:hover.nav-button--next .caret-icon {
+  transform: translateX(calc(20% * var(--translate-x-direction)));
+}
+.main-article__wrapper .main-article-content .article-main-details .article-comments {
+  margin-block-start: 2rem;
+  padding-block-start: 2rem;
+  border-block-start: 1px solid rgba(var(--color-foreground), 0.1);
+}
+.main-article__wrapper .main-article-content .article-main-details .article-comments .alert-message {
+  margin-block-end: 1rem;
+}
+.main-article__wrapper .main-article-content .article-main-details .article-comments .comment-header {
+  margin-block-end: 2rem;
+}
+.main-article__wrapper .main-article-content .article-main-details .article-comments .comment-notice {
+  margin-block-end: 1rem;
+}
+.main-article__wrapper .main-article-content .article-main-details .article-comments .comments-list {
+  margin-block-start: 3rem;
+}
+.main-article__wrapper .main-article-content .article-main-details .article-comments .comments-list .content-list .comment-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding-block-end: 0.75rem;
+  margin-block-end: 0.75rem;
+}
+.main-article__wrapper .main-article-content .article-main-details .article-comments .comments-list .content-list .comment-item .comment-avatar {
+  flex: 0 0 auto;
+  width: 4rem;
+  height: 4rem;
+  font-size: 2rem;
+  font-weight: 500;
+  background: rgba(var(--color-foreground), 0.05);
+  color: rgba(var(--color-foreground), 0.1);
+  text-transform: uppercase;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-article__wrapper .main-article-content .article-main-details .article-comments .comments-list .content-list .comment-item .comment-info {
+  flex: 1 1 auto;
+}
+.main-article__wrapper .main-article-content .article-main-details .article-comments .comments-list .content-list .comment-item .comment-info .comment-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  margin-block-end: 0.5rem;
+}
+.main-article__wrapper .main-article-content .article-main-details .article-comments .comments-list .content-list .comment-item:not(:last-child) {
+  border-block-end: 1px solid rgba(var(--color-foreground), 0.1);
+}
+.main-article__wrapper .article-asides > *:not(:last-child) {
+  padding-block-end: 1.25rem;
+  margin-block-end: 1.25rem;
+  border-bottom: 1px solid rgba(var(--color-foreground), 0.1);
+}
+.main-article__wrapper .article-asides .article-image-text > *:not(:last-child) {
+  margin-block-end: 0.5rem;
+}
+.main-article__wrapper .article-asides .article-image-text .image-text-image {
+  margin-block-end: 1rem;
+}
+.main-article__wrapper .article-asides .related-results {
+  display: block;
+}
+.main-article__wrapper .article-asides .related-results .related-title {
+  font-weight: 500;
+  margin-block-end: 1rem;
+}
+.main-article__wrapper .article-asides .related-results .related-item:not(:last-child) {
+  margin-block-end: 0.5rem;
+}
+@media screen and (max-width: 749px) {
+  .main-article__wrapper .article-asides {
+    margin-block-start: 2rem;
+    padding-block-start: 2rem;
+    border-block-start: 1px solid rgba(var(--color-foreground), 0.1);
+  }
+}
+@media screen and (min-width: 750px) {
+  .main-article__wrapper.has-aside .main-article-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
+  }
+  .main-article__wrapper.has-aside .article-main-details {
+    flex: 1 1 auto;
+  }
+  .main-article__wrapper.has-aside .article-asides {
+    width: 25rem;
+    flex: 0 0 auto;
+  }
+}

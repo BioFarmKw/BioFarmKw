@@ -1,0 +1,38 @@
+{% render 'box-item',
+  image: block.settings.image,
+  title: block.settings.name,
+  price: block.settings.price,
+  class: 'shopify-block product-include-block',
+  block: block
+%}
+{% schema %}
+{
+  "name": "t:blocks._product-include.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.all.image.image_picker.label",
+      "info": "t:blocks._product-include.settings.image.info"
+    },
+    {
+      "type": "text",
+      "id": "name",
+      "label": "t:blocks._product-include.settings.name.label",
+      "default": "item name"
+    },
+    {
+      "type": "text",
+      "id": "price",
+      "label": "t:blocks._product-include.settings.price.label",
+      "default": "1990"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._product-include.presets.name"
+    }
+  ]
+}
+{% endschema %}

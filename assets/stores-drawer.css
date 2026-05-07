@@ -1,0 +1,40 @@
+.stores-drawer .drawer-content {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 0.5rem;
+}
+.stores-drawer .store-list {
+  height: 100%;
+  overflow: auto;
+}
+.stores-drawer .store-list .store-item {
+  margin-block-end: 1rem;
+  padding: 1rem;
+  border: 1px solid rgba(var(--color-foreground), 0.1);
+}
+.stores-drawer .store-list .store-item .store-image {
+  margin-block-end: 1rem;
+}
+.stores-drawer .store-list .store-item .store-info > *:not(:last-child) {
+  margin-block-end: 0.5rem;
+}
+.stores-drawer .store-list .store-item .store-info .store-location {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.stores-drawer .store-list .store-item .store-info .store-location .navigate-button {
+  flex: 0 0 auto;
+  margin-inline-start: auto;
+}
+.stores-drawer .store-list .store-item .store-info .store-phone,
+.stores-drawer .store-list .store-item .store-info .store-hours {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.stores-drawer .store-list .store-item .store-info .store-phone .icon,
+.stores-drawer .store-list .store-item .store-info .store-hours .icon {
+  flex: 0 0 auto;
+  width: 1.25rem;
+}

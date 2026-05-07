@@ -1,0 +1,119 @@
+{% doc %}
+  Card Article
+
+  @description
+  Displays an article card, including article image, title, publish date, author, excerpt, and other information.
+
+  @param {object} [card_article] - Article object
+  @param {string} [image_ratio] - Image ratio, defaults to square. Options: square, portrait, landscape
+  @param {string} [image_width] - Optimal desktop width for speed optimization
+  @param {string} [image_width_mobile] - Optimal mobile width for speed optimization
+  @param {boolean} [truncate_title] - Whether to truncate the title
+  @param {boolean} [show_index] - Whether to show the index
+  @param {string} [index] - Index value
+  @param {boolean} [show_date] - Whether to show the publish date
+  @param {boolean} [show_author] - Whether to show the author
+  @param {boolean} [show_excerpt] - Whether to show the article excerpt
+  @param {boolean} [show_tags] - Whether to show tags
+  @param {boolean} [show_horizontal] - Whether to use horizontal layout
+  @param {boolean} [show_wrapper] - Whether to show wrapper container
+  @param {string} [text_alignment] - Text alignment
+  @param {string} [color_scheme] - Card color scheme
+
+  @example
+  {% render 'card-article' %}
+{% enddoc %}
+
+{% capture sizes %}(min-width: 750px) calc({{ image_width }} * 1.5), {{ image_width_mobile | default: '100vw' }}{% endcapture %}
+
+<div class="article-card card{% if show_horizontal %} card--horizontal{% endif %}{% if show_wrapper %} card--wrapped{% if color_scheme %} color-{{ color_scheme }} gradient{% endif %}{% endif %}">
+  <div class="card-media">
+    <a
+      class="media media--{{ image_ratio | default: 'square' }} link"
+      {% if card_article.url %}
+        href="{{ card_article.url }}"
+      {% else %}
+        role="link"
+        aria-disabled="true"
+      {% endif %}
+    >
+      {% render 'lazy-image',
+        image_object: card_article.image,
+        sizes: sizes,
+        widths: '165, 360, 533, 720, 940, 1066',
+        placeholder: 'image'
+      %}
+    </a>
+
+    {%- if show_index -%}
+      <span class="card-index">{{ index | default: 1 }}</span>
+    {%- endif -%}
+  </div>
+  <div class="card-content text-align--{{ text_alignment | default: 'center' }}">
+    {%- if show_tags and card_article.tags != blank -%}
+      <div class="card-article-tags">
+        {%- for tag in card_article.tags -%}
+          {{ tag | link_to_tag: tag }}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+    <div class="card-heading">
+      {%- if card_article != blank -%}
+        <a
+          href="{{ card_article.url }}"
+          class="link link-underline"
+          aria-label="{{ card_article.title }}"
+        >
+          {%- if truncate_title -%}
+            <span class="title-more">{{ card_article.title | truncate: 30 }}</span>
+            <span class="title-less">{{ card_article.title | truncate: 18 }}</span>
+          {%- else %}
+            {{ card_article.title }}
+          {%- endif -%}
+        </a>
+      {%- else -%}
+        <a class="link link-underline" role="link" aria-disabled="true">
+          {{- 'onboarding.article_title' | t -}}
+        </a>
+      {%- endif -%}
+    </div>
+    {%- if show_author or show_date -%}
+      <div class="card-article-meta light">
+        {%- if show_date -%}
+          <small>
+            {%- if card_article != blank -%}
+              {{ card_article.published_at | date: '%b %d, %Y' }}
+            {%- else -%}
+              {{ 'onboarding.article_date' | t }}
+            {%- endif -%}
+          </small>
+        {%- endif -%}
+        {%- if show_author and show_date -%}
+          {% render 'icon-sets-basic', icon: 'dot' %}
+        {%- endif -%}
+        {%- if show_author -%}
+          <small>
+            {%- if card_article != blank -%}
+              {{ card_article.author }}
+            {%- else -%}
+              {{ 'onboarding.article_author' | t }}
+            {%- endif -%}
+          </small>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+    {%- if show_excerpt -%}
+      <div class="card-article-excerpt">
+        {%- if card_article != blank -%}
+          {%- if show_horizontal -%}
+            {{ card_article.excerpt | truncatewords: 10 }}
+          {%- else -%}
+            {{ card_article.excerpt | truncatewords: 20 }}
+          {%- endif -%}
+        {%- else -%}
+          {{ 'onboarding.article_content' | t }}
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>

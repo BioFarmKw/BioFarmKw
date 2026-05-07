@@ -1,0 +1,55 @@
+<div
+  class="shopify-block spacer-block{% if block.settings.show_line %} show-line line-width--{{ block.settings.line_width | default: 'half' }}{% endif %}"
+  style="padding-top: {{ block.settings.height | divided_by: 2 }}px; padding-bottom: {{ block.settings.height | divided_by: 2 }}px;"
+  {{ block.shopify_attributes }}
+></div>
+{% schema %}
+{
+  "name": "t:blocks.spacer.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "range",
+      "id": "height",
+      "label": "t:sections.all.height.label",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "checkbox",
+      "id": "show_line",
+      "label": "t:blocks.spacer.settings.show_line.label",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "line_width",
+      "label": "t:blocks.spacer.settings.line_width.label",
+      "options": [
+        {
+          "value": "full",
+          "label": "t:blocks.spacer.settings.line_width.options__1.label"
+        },
+        {
+          "value": "half",
+          "label": "t:blocks.spacer.settings.line_width.options__2.label"
+        },
+        {
+          "value": "third",
+          "label": "t:blocks.spacer.settings.line_width.options__3.label"
+        }
+      ],
+      "default": "half",
+      "visible_if": "{{ block.settings.show_line }}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks.spacer.name"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,237 @@
+{% doc %}
+  Bundle Modal
+
+  @description
+  Displays a bundle card modal with optional quantity selector and discount.
+
+  @param {string} section_id - Section ID
+  @param {boolean} [show_quantity_selector] - Show quantity selector
+  @param {boolean} [show_discount] - Show discount
+  @param {boolean} [show_badge] - Show badge
+  @param {string} [discount_percentage] - Discount percentage
+  @param {string} [badge_id] - Badge ID
+
+  @example
+  {% render 'bundle-modal',
+    section_id: section.id,
+    show_quantity_selector: true,
+    show_discount: true,
+    discount_percentage: 5
+  %}
+{% enddoc %}
+
+<bundle-modal
+  id="Bundle-Modal-{{ section_id }}"
+  class="bundle-modal drawer modal"
+  data-section="{{ section_id }}"
+  data-disable-design-mode="true"
+>
+  <div class="modal-overlay"></div>
+  <div
+    class="modal-inner color-{{ settings.main_color_scheme }} gradient focus-none"
+    role="dialog"
+    data-trap
+    aria-modal="true"
+    aria-label="{{ 'bundle.modal' | t }}"
+    tabindex="-1"
+  >
+    <div class="drawer-handle"></div>
+    <div class="drawer-header small-hide">
+      <button
+        class="drawer-close-button button button--small button--icon button--air small-hide"
+        onclick="this.closest('.modal').hide()"
+        aria-label="{{ 'accessibility.close' | t }}"
+      >
+        {% render 'icon-sets-basic', icon: 'close' %}
+      </button>
+    </div>
+    <div class="drawer-content">
+      <div class="product-content-container"></div>
+      <button type="button" class="apply-button button button--full">
+        {{ 'bundle.apply_change' | t }}
+        {% render 'icon-sets-basic', icon: 'right', class: 'caret-icon' %}
+      </button>
+    </div>
+  </div>
+  <template class="template-placeholder">
+    <div class="product-placeholder">
+      <div class="product-image-placeholder placeholder"></div>
+      <div class="product-info-placeholder">
+        <div class="product-title-placeholder placeholder"></div>
+        <div class="product-price-placeholder placeholder"></div>
+      </div>
+    </div>
+    <div class="variant-picker-placeholder placeholder"></div>
+  </template>
+  <template class="template-product">
+    <div class="product-info-card">
+      <div class="info-media media media--square media-fit--{{ settings.card_image_fit }}">
+        {% render 'lazy-image',
+          image_object: product.selected_or_first_available_variant.featured_media,
+          class: 'product-card-featured-image',
+          sizes: '400px',
+          widths: '165, 360, 533, 720, 940, 1066',
+          placeholder: 'product-1'
+        %}
+      </div>
+      <div class="info-content">
+        <a
+          id="Product-Title-{{ section_id }}-{{ product.id }}"
+          class="info-heading link link-underline"
+          href="{{ product.url | within: collection }}"
+          aria-labelledby="Product-Title-{{ section_id }}-{{ product.id }}{% if show_badge %} {{ badge_id }}{% endif %}"
+        >
+          {{ product.title }}
+        </a>
+        {%- if product.selected_or_first_available_variant != blank and product.has_only_default_variant == false -%}
+          <div class="info-options light">
+            {{ product.selected_or_first_available_variant.title }}
+          </div>
+        {%- endif -%}
+        <div class="info-price">
+          {% render 'discount-price',
+            variant_object: product.selected_or_first_available_variant,
+            show_discount: show_discount,
+            discount_percentage: discount_percentage
+          %}
+          <div class="quantity-selector">
+            <label class="visually-hidden" for="Quantity-{{ section_id }}">
+              {{ 'products.product.quantity.label' | t }}:
+            </label>
+            {%- if show_quantity_selector -%}
+              <quantity-input class="quantity" data-url="{{ product.url }}" data-section="{{ section_id }}">
+                <button
+                  class="quantity-button button button--mini button--ethereal button--icon button--pill no-js-hidden"
+                  name="minus"
+                  type="button"
+                  aria-label="{{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}"
+                >
+                  {% render 'icon-sets-basic', icon: 'minus' %}
+                </button>
+                <input
+                  id="Quantity-{{ section_id }}"
+                  data-target="Quantity-{{ section_id }}"
+                  class="quantity-input"
+                  type="number"
+                  name="quantity"
+                  data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                  min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                  {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
+                    data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                    max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                  {% endif %}
+                  step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
+                  value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                >
+                <button
+                  class="quantity-button button button--mini button--ethereal button--icon button--pill no-js-hidden"
+                  name="plus"
+                  type="button"
+                  aria-label="{{- 'products.product.quantity.increase' | t: product: product.title | escape -}}"
+                >
+                  {% render 'icon-sets-basic', icon: 'plus' %}
+                </button>
+              </quantity-input>
+            {%- else -%}
+              <input
+                type="hidden"
+                name="quantity"
+                value="1"
+              >
+              <small class="light">x <span class="quantity-count">1</span></small>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="product-variant-selects">
+      {%- for option_with_values in product.options_with_values -%}
+        {% liquid
+          assign swatch_type = blank
+          assign first_value = option_with_values.values | first
+
+          if first_value.swatch != blank
+            assign swatch_type = 'color'
+          endif
+
+          assign auto_dropdown = false
+          if option_with_values.values.size > 10
+            assign auto_dropdown = true
+          endif
+        %}
+
+        {%- if swatch_type != blank -%}
+          <fieldset class="product-form-input">
+            <div class="form-label-wrapper">
+              <legend class="form-label">
+                <b>{{ option_with_values.name }}:</b>
+                <small class="selected-value light">{{ option_with_values.selected_value }}</small>
+              </legend>
+            </div>
+            <div class="form-options-wrapper color-swatches swatch-type--{{ swatch_type }} swatch-size--medium">
+              {%- render 'product-variant-options',
+                section_id: section_id,
+                option_with_values: option_with_values,
+                type: swatch_type,
+                in_bundle: true,
+                unselectable_when_unavailable: true
+              -%}
+            </div>
+          </fieldset>
+        {%- elsif auto_dropdown != true -%}
+          <fieldset class="product-form-input">
+            <div class="form-label-wrapper">
+              <legend class="form-label">
+                <b>{{ option_with_values.name }}:</b>
+                <small class="selected-value light">{{ option_with_values.selected_value }}</small>
+              </legend>
+            </div>
+            <div class="form-options-wrapper button-options">
+              {% render 'product-variant-options',
+                section_id: section_id,
+                option_with_values: option_with_values,
+                type: 'button',
+                in_bundle: true,
+                unselectable_when_unavailable: true
+              %}
+            </div>
+          </fieldset>
+        {%- else -%}
+          <div class="product-form-input">
+            <div class="form-label-wrapper">
+              <label class="form-label" for="Option-{{ section_id }}-{{ forloop.index0 }}">
+                <b>{{ option_with_values.name }}:</b>
+                <small class="selected-value light">{{ option_with_values.selected_value }}</small>
+              </label>
+            </div>
+
+            <div class="form-options-wrapper select">
+              <select
+                id="Option-{{ section_id }}-{{ forloop.index0 }}"
+                data-target="Option-{{ section_id }}-{{ forloop.index0 }}"
+                class="select-select"
+                name="options[{{ option_with_values.name | escape }}]"
+              >
+                {% render 'product-variant-options',
+                  section_id: section_id,
+                  option_with_values: option_with_values,
+                  type: 'dropdown',
+                  in_bundle: true,
+                  unselectable_when_unavailable: true
+                %}
+              </select>
+              <span class="field-button">
+                {% render 'icon-sets-basic', icon: 'caret-down', class: 'caret-icon' %}
+              </span>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+
+      <script type="application/json" data-selected-variant>
+        {{ product.selected_or_first_available_variant | json }}
+      </script>
+    </div>
+  </template>
+</bundle-modal>
+<script src="{{ 'bundle-modal.js' | asset_url }}" defer></script>

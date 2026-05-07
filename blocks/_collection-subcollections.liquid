@@ -1,0 +1,50 @@
+{%- if block.settings.metafield != blank -%}
+  {% liquid
+    assign metafield_space_key = block.settings.metafield | replace: ' ', '' | split: '.'
+    assign metafield_items = collection.metafields[metafield_space_key.first][metafield_space_key.last].value
+  %}
+{%- endif -%}
+<div class="subcollection-list auto-inline-flex column-gap-8 row-gap-4">
+  {%- if metafield_items != blank -%}
+    {%- for item in metafield_items -%}
+      {% render 'subcollection-item', collection: item %}
+    {%- endfor -%}
+  {%- endif -%}
+  {% content_for 'blocks' %}
+</div>
+
+{% schema %}
+{
+  "name": "t:blocks._collection-subcollections.name",
+  "class": "collection-subcollections-block",
+  "settings": [
+    {
+      "type": "text",
+      "id": "metafield",
+      "label": "t:sections.all.metafield.custom.label",
+      "info": "t:sections.all.metafield.custom.info"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_collection-subcollection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._collection-subcollections.presets.name",
+      "blocks": [
+        {
+          "type": "_collection-subcollection"
+        },
+        {
+          "type": "_collection-subcollection"
+        },
+        {
+          "type": "_collection-subcollection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

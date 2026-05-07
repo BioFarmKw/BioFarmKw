@@ -1,0 +1,72 @@
+{% assign keywords = block.settings.keywords | replace: '，', ',' | split: ',' %}
+<div
+  class="shopify-block keywords-block"
+  style="--color-background: {{ block.settings.background_color.red }}, {{ block.settings.background_color.green }}, {{ block.settings.background_color.blue }}; --color-foreground: {{ block.settings.foreground_color.red }}, {{ block.settings.foreground_color.green }}, {{ block.settings.foreground_color.blue }};"
+  {{ block.shopify_attributes }}
+>
+  <div class="keyword-list auto-inline-flex gap-2">
+    {%- for keyword in keywords -%}
+      <span class="keyword-item">
+        {%- if block.settings.show_icon -%}
+          {% render 'icon-sets-basic', icon: block.settings.icon_type %}
+        {%- endif -%}
+        {{- keyword | strip }}
+      </span>
+    {%- endfor -%}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "t:blocks.keywords.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "keywords",
+      "label": "t:sections.all.keywords.list.label",
+      "info": "t:sections.all.keywords.list.info",
+      "default": "durable, lightweight, portable, waterproof, rechargeable"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icon",
+      "label": "t:sections.all.keywords.show_icon.label",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "icon_type",
+      "label": "t:sections.all.keywords.icon_type.label",
+      "options": [
+        {
+          "label": "t:sections.all.keywords.icon_type.options__1.label",
+          "value": "check"
+        },
+        {
+          "label": "t:sections.all.keywords.icon_type.options__2.label",
+          "value": "plus"
+        }
+      ],
+      "default": "check",
+      "visible_if": "{{ block.settings.show_icon == true }}"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.colors.background.label",
+      "default": "#FCFCFC"
+    },
+    {
+      "type": "color",
+      "id": "foreground_color",
+      "label": "t:sections.all.colors.foreground.label",
+      "default": "#000000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks.keywords.presets.name"
+    }
+  ]
+}
+{% endschema %}

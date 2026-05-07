@@ -1,0 +1,220 @@
+{% doc %}
+  Social List
+
+  @description
+  Renders a list of social media links with optional CSS class customization.
+
+  @param {string} section_id - Section Id
+  @param {string} [class] - CSS class to add to the <ul> element (optional).
+
+  @example
+  {% render 'social-list', section_id: section.id, class: 'my-class' %}
+{% enddoc %}
+
+{%- liquid
+  if settings.social_facebook_link != blank
+    assign first_social = 'meta'
+  elsif settings.social_instagram_link != blank
+    assign first_social = 'instagram'
+  elsif settings.social_youtube_link != blank
+    assign first_social = 'youTube'
+  elsif settings.social_tiktok_link != blank
+    assign first_social = 'tiktok'
+  elsif settings.social_twitter_link != blank
+    assign first_social = 'twitter'
+  elsif settings.social_snapchat_link != blank
+    assign first_social = 'snapchat'
+  elsif settings.social_pinterest_link != blank
+    assign first_social = 'pinterest'
+  elsif settings.social_tumblr_link != blank
+    assign first_social = 'tumblr'
+  elsif settings.social_vimeo_link != blank
+    assign first_social = 'vimeo'
+  elsif settings.social_linkedin_link != blank
+    assign first_social = 'linkedIn'
+  elsif settings.social_whatsapp_link != blank
+    assign first_social = 'whatsApp'
+  elsif settings.social_reddit_link != blank
+    assign first_social = 'reddit'
+  elsif settings.social_discord_link != blank
+    assign first_social = 'discord'
+  endif
+-%}
+
+<drop-menu class="social-list{% if class %} {{ class }}{% endif %}">
+  <details class="social-details localization-details details-disclosure">
+    <summary
+      aria-haspopup="true"
+      aria-expanded="false"
+      aria-controls="Social-List-{{ section_id }}"
+    >
+      {%- render 'icon-sets-basic', icon: first_social, class: 'social-icon' -%}
+      {{ 'general.social.follow' | t }}
+      {% render 'icon-sets-basic', icon: 'caret-down', class: 'caret-icon' %}
+    </summary>
+    <div
+      id="Social-List-{{ section_id }}"
+      class="details-disclosure-content color-{{ settings.main_color_scheme }} gradient"
+      tabindex="-1"
+    >
+      <ul class="list-unstyled">
+        {%- if settings.social_facebook_link != blank -%}
+          <li class="list-item">
+            <a
+              href="{{ settings.social_facebook_link }}"
+              class="link focus-inset"
+              target="_blank"
+            >
+              {%- render 'icon-sets-basic', icon: 'meta', class: 'social-icon' -%}
+              Facebook
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if settings.social_instagram_link != blank -%}
+          <li class="list-item">
+            <a
+              href="{{ settings.social_instagram_link }}"
+              class="link focus-inset"
+              target="_blank"
+            >
+              {%- render 'icon-sets-basic', icon: 'instagram', class: 'social-icon' -%}
+              Instagram
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if settings.social_youtube_link != blank -%}
+          <li class="list-item">
+            <a
+              href="{{ settings.social_youtube_link }}"
+              class="link focus-inset"
+              target="_blank"
+            >
+              {%- render 'icon-sets-basic', icon: 'youTube', class: 'social-icon' -%}
+              YouTube
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if settings.social_tiktok_link != blank -%}
+          <li class="list-item">
+            <a
+              href="{{ settings.social_tiktok_link }}"
+              class="link focus-inset"
+              target="_blank"
+            >
+              {%- render 'icon-sets-basic', icon: 'tiktok', class: 'social-icon' -%}
+              TikTok
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if settings.social_twitter_link != blank -%}
+          <li class="list-item">
+            <a
+              href="{{ settings.social_twitter_link }}"
+              class="link focus-inset"
+              target="_blank"
+            >
+              {%- render 'icon-sets-basic', icon: 'twitter', class: 'social-icon' -%}
+              Twitter
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if settings.social_snapchat_link != blank -%}
+          <li class="list-item">
+            <a
+              href="{{ settings.social_snapchat_link }}"
+              class="link focus-inset"
+              target="_blank"
+            >
+              {%- render 'icon-sets-basic', icon: 'snapchat', class: 'social-icon' -%}
+              Snapchat
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if settings.social_pinterest_link != blank -%}
+          <li class="list-item">
+            <a
+              href="{{ settings.social_pinterest_link }}"
+              class="link focus-inset"
+              target="_blank"
+            >
+              {%- render 'icon-sets-basic', icon: 'pinterest', class: 'social-icon' -%}
+              Pinterest
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if settings.social_tumblr_link != blank -%}
+          <li class="list-item">
+            <a
+              href="{{ settings.social_tumblr_link }}"
+              class="link focus-inset"
+              target="_blank"
+            >
+              {%- render 'icon-sets-basic', icon: 'tumblr', class: 'social-icon' -%}
+              Tumblr
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if settings.social_vimeo_link != blank -%}
+          <li class="list-item">
+            <a
+              href="{{ settings.social_vimeo_link }}"
+              class="link focus-inset"
+              target="_blank"
+            >
+              {%- render 'icon-sets-basic', icon: 'vimeo', class: 'social-icon' -%}
+              Vimeo
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if settings.social_linkedin_link != blank -%}
+          <li class="list-item">
+            <a
+              href="{{ settings.social_linkedin_link }}"
+              class="link focus-inset"
+              target="_blank"
+            >
+              {%- render 'icon-sets-basic', icon: 'linkedIn', class: 'social-icon' -%}
+              LinkedIn
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if settings.social_whatsapp_link != blank -%}
+          <li class="list-item">
+            <a
+              href="{{ settings.social_whatsapp_link }}"
+              class="link focus-inset"
+              target="_blank"
+            >
+              {%- render 'icon-sets-basic', icon: 'whatsApp', class: 'social-icon' -%}
+              WhatsApp
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if settings.social_reddit_link != blank -%}
+          <li class="list-item">
+            <a
+              href="{{ settings.social_reddit_link }}"
+              class="link focus-inset"
+              target="_blank"
+            >
+              {%- render 'icon-sets-basic', icon: 'reddit', class: 'social-icon' -%}
+              Reddit
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if settings.social_discord_link != blank -%}
+          <li class="list-item">
+            <a
+              href="{{ settings.social_discord_link }}"
+              class="link focus-inset"
+              target="_blank"
+            >
+              {%- render 'icon-sets-basic', icon: 'discord', class: 'social-icon' -%}
+              Discord
+            </a>
+          </li>
+        {%- endif -%}
+      </ul>
+    </div>
+  </details>
+</drop-menu>

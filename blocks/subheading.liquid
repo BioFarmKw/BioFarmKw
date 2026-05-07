@@ -1,0 +1,21 @@
+{{ block.settings.content }}
+
+{% schema %}
+{
+  "name": "t:blocks.subheading.name",
+  "class": "subheading-block caption",
+  "settings": [
+    {
+      "type": "text",
+      "id": "content",
+      "label": "t:sections.all.text-content.content.label",
+      "default": "Subheading"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks.subheading.presets.name"
+    }
+  ]
+}
+{% endschema %}

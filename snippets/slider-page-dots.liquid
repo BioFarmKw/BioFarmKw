@@ -1,0 +1,23 @@
+{% doc %}
+  Slider Page Dots
+
+  @description
+  Slider page dots component, displayed below the slider to indicate the current slide position.
+
+  @param {string} section_id - Unique identifier for the slider component
+  @param {string} [class] - Custom class name for styling
+  @param {boolean} [auto_rotate] - Whether to auto-rotate slides
+  @param {number} [slide_interval] - Time interval for slide transition in milliseconds
+  @param {boolean} [is_small] - Whether to use a smaller size for the dots
+
+  @example
+  {% render 'slider-page-dots', section_id: 'home-slider', auto_rotate: true, slide_interval: 5000 %}
+{% enddoc %}
+<ul
+  class="{% if class != blank %}{{ class }} {% endif %}slider-page-dots{% if auto_rotate %} has-dot-animation{% endif %}{% if is_small %} dots--small{% endif %} list-unstyled"
+  aria-label="{{ 'general.slider.slide_dots' | t }}"
+  aria-controls="Slider-{{ section_id }}"
+  {% if auto_rotate %}
+    style="--slide-interval: {{ slide_interval | default: 5000 }}ms;"
+  {% endif %}
+></ul>

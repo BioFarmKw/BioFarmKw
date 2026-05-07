@@ -1,0 +1,67 @@
+{% doc %}
+  Countdown
+
+  @description
+  Displays a countdown timer with customizable end time, text, visibility, and colors.
+
+  @param {string} [end_time] - Countdown end time in format 'YYYY-MM-DD HH:MM'
+  @param {string} [end_text] - Text to display when countdown ends
+  @param {boolean} [hide_when_end] - Hide timer when countdown ends
+  @param {boolean} [simple] - Display simplified version
+  @param {string} [timer_background] - Timer background color
+  @param {string} [timer_foreground] - Timer text color
+
+  @example
+  {% render 'countdown', end_time: '2024-05-01 12:00' %}
+{% enddoc %}
+
+{{ 'component-countdown.css' | asset_url | stylesheet_tag }}
+<countdown-timer
+  class="countdown{% if simple %} style--simple{% endif %}"
+  data-endtime="{{ end_time }}"
+  data-shop-timezone="{{ 'now' | date: '%z' }}"
+  {% if hide_when_end %}
+    data-hide-when-end
+  {% endif %}
+  role="timer"
+  aria-live="off"
+  aria-label="{{ 'countdown.activity_countdown' | t: end_time: end_time }}"
+>
+  <div
+    class="countdown-inner aria-hidden"
+    style="--color-timer-background: {{ timer_background }}; --color-timer-foreground: {{ timer_foreground }};"
+  >
+    <div class="countdown-item">
+      <div class="countdown-value">
+        <b class="day">00</b>
+        {% if simple %}{{ 'countdown.d' | t }}{% endif %}
+      </div>
+      {%- unless simple -%}
+        <div class="countdown-unit">{{ 'countdown.days' | t }}</div>
+      {%- endunless -%}
+    </div>
+    <span>:</span>
+    <div class="countdown-item">
+      <div class="countdown-value">
+        <b class="hour">00</b>
+        {% if simple %}{{ 'countdown.h' | t }}{% endif %}
+      </div>
+      {%- unless simple -%}
+        <div class="countdown-unit">{{ 'countdown.hours' | t }}</div>
+      {%- endunless -%}
+    </div>
+    <span>:</span>
+    <div class="countdown-item">
+      <div class="countdown-value">
+        <b class="minute">00</b>
+        {% if simple %}{{ 'countdown.m' | t }}{% endif %}
+      </div>
+      {%- unless simple -%}
+        <div class="countdown-unit">{{ 'countdown.minutes' | t }}</div>
+      {%- endunless -%}
+    </div>
+  </div>
+  <div class="countdown-message hidden">{{ end_text }}</div>
+</countdown-timer>
+
+<script src="{{ 'countdown.js' | asset_url }}" defer="defer"></script>

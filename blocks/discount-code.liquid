@@ -1,0 +1,32 @@
+<div class="discount-code">
+  <span class="code">{{ block.settings.code }}</span>
+  <custom-copy-text
+    class="copy-button"
+    role="button"
+    data-text="{{ block.settings.code }}"
+    data-message="{{ 'general.has_copied' | t }}"
+    tabindex="0"
+  >
+    {% render 'icon-sets-basic', icon: 'copy' %}
+    {{ 'general.copy' | t }}
+  </custom-copy-text>
+</div>
+{% schema %}
+{
+  "name": "t:blocks.discount-code.name",
+  "class": "discount-code-block",
+  "settings": [
+    {
+      "type": "text",
+      "id": "code",
+      "label": "Code",
+      "default": "New user"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks.discount-code.presets.name"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,103 @@
+{% doc %}
+  Price
+
+  @description
+  Renders a product's price, including regular and sale prices, with optional sale badge and compare-at price.
+
+  @param {object} [product_object] - The product object to render the price for (optional)
+  @param {boolean} [use_variant] - Whether to use the selected or first available variant's price (optional)
+  @param {boolean} [show_badge] - Whether to show sale badge
+  @param {string} [badge_type] - The type of badge to show (normal|amount|percentage)
+  @param {boolean} [show_compare_at_price] - Whether to display the compare-at price
+  @param {string} [class] - Additional CSS class to apply to
+
+  @example
+  {% render 'price', product_object: product, use_variant: true, show_badge: true, badge_type: 'normal', show_compare_at_price: true, class: 'custom-price-class' %}
+{% enddoc %}
+
+{%- liquid
+  if use_variant
+    assign target = product_object.selected_or_first_available_variant
+  else
+    assign target = product_object
+  endif
+
+  if show_compare_at_price
+    assign compare_at_price = target.compare_at_price
+  endif
+
+  assign price = target.price
+
+  assign money_price = price | money
+  if settings.currency_code_enabled
+    assign money_price = price | money_with_currency
+  endif
+
+  if target == product_object and product_object.price_varies
+    assign money_price = 'products.product.price.from_price_html' | t: price: money_price
+  endif
+-%}
+
+{%- unless target == blank -%}
+  <div
+    class="{% if class != blank %}{{ class }} {% endif %}price{% if compare_at_price > price and compare_at_price != blank %} price--on-sale{% endif %}"
+    data-value="{{ price }}"
+  >
+    {%- if compare_at_price > price and settings.enable_sale_badge and show_badge -%}
+      <span class="badge sale-badge">{% render 'sale-label', target: target, type: badge_type %}</span>
+    {%- endif -%}
+
+    <div class="price-container">
+      {%- if compare_at_price > price and compare_at_price != blank -%}
+        <span class="visually-hidden">{{ 'products.product.price.sale_price' | t }}</span>
+        <b class="price-item price-item--sale">
+          {{ money_price }}
+        </b>
+        {% comment %} "Same sale price but different original prices" - to avoid user confusion, do not display this case {% endcomment %}
+        {%- unless product_object.price_varies == false and product_object.compare_at_price_varies %}
+          <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+          <s class="price-item price-item--regular">
+            {%- if settings.currency_code_enabled -%}
+              {{ compare_at_price | money_with_currency }}
+            {%- else -%}
+              {{ compare_at_price | money }}
+            {%- endif -%}
+          </s>
+        {%- endunless -%}
+      {%- else -%}
+        <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+        <b class="price-item price-item--regular">
+          {{ money_price }}
+        </b>
+      {%- endif -%}
+      {% comment %} 按照单位价格计算方式 {% endcomment %}
+      {%- unless product_object.selected_or_first_available_variant.unit_price_measurement == blank -%}
+        <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
+        <span class="unit-price price-item">
+          <span>{{- product_object.selected_or_first_available_variant.unit_price | money -}}</span>
+          <span aria-hidden="true">/</span>
+          <span class="visually-hidden">&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span>
+          <span>
+            {%- if product_object.selected_or_first_available_variant.unit_price_measurement.reference_value != 1 -%}
+              {{- product_object.selected_or_first_available_variant.unit_price_measurement.reference_value -}}
+            {%- endif -%}
+            {{ product_object.selected_or_first_available_variant.unit_price_measurement.reference_unit }}
+          </span>
+        </span>
+      {%- endunless -%}
+    </div>
+  </div>
+{%- else -%}
+  <div class="price{% if class %} {{ class }}{% endif %}">
+    <div class="price-container">
+      <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+      <b class="price-item price-item--regular">
+        {%- if settings.currency_code_enabled -%}
+          {{ '1999' | money_with_currency }}
+        {%- else -%}
+          {{ '1999' | money }}
+        {%- endif -%}
+      </b>
+    </div>
+  </div>
+{%- endunless -%}

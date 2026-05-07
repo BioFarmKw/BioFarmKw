@@ -1,0 +1,218 @@
+{{ 'section-promotion-bar.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  .section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
+    margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+      .section-{{ section.id }}-margin {
+        margin-top: {{ section.settings.margin_top }}px;
+        margin-bottom: {{ section.settings.margin_bottom }}px;
+      }
+  }
+{%- endstyle -%}
+<div class="promotion-bar isolate color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-margin">
+  {%- if section.settings.background_image or section.settings.background_image_mobile -%}
+    <div
+      class="background-image{% if section.settings.image_behavior != 'none' %} image--has-behavior behavior--{{ section.settings.image_behavior }}{% if section.settings.image_behavior == 'zoom-in' or section.settings.image_behavior == 'parallax' %} scroll-synergy{% endif %}{% endif %}"
+      style="opacity: {{ section.settings.background_image_opacity }}%;"
+    >
+      {% render 'lazy-image',
+        has_mobile: section.settings.background_image_mobile,
+        image_object: section.settings.background_image
+      %}
+      {% render 'lazy-image', is_mobile: true, image_object: section.settings.background_image_mobile %}
+    </div>
+  {%- endif -%}
+  <div class="section__wrapper promotion-bar__wrapper page-width section-{{ section.id }}-padding">
+    {% content_for 'blocks' %}
+  </div>
+
+  {% render 'section-id-tip', section_id: section.id %}
+</div>
+{% schema %}
+{
+  "name": "t:sections.promotion-bar.name",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.drawer", "custom.popup"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.scheme.label",
+      "default": "scheme-3"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.image.background_image_picker.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "t:sections.all.image.background_image_picker.label"
+    },
+    {
+      "type": "range",
+      "id": "background_image_opacity",
+      "label": "t:sections.all.image.image_opacity.label",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 90
+    },
+    {
+      "type": "select",
+      "id": "image_behavior",
+      "label": "t:sections.all.animation.image_behavior.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.all.animation.image_behavior.options__1.label"
+        },
+        {
+          "value": "fixed",
+          "label": "t:sections.all.animation.image_behavior.options__3.label"
+        },
+        {
+          "value": "zoom-in",
+          "label": "t:sections.all.animation.image_behavior.options__4.label"
+        },
+        {
+          "value": "parallax",
+          "label": "t:sections.all.animation.image_behavior.options__5.label"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.mobile.header_content"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "t:sections.all.image.background_image_picker.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.header_content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top.label",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom.label",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.margin.header_content"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.margin.margin_top.label",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.margin.margin_bottom.label",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_text-group"
+    },
+    {
+      "type": "countdown"
+    },
+    {
+      "type": "discount-code"
+    },
+    {
+      "type": "buttons"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.promotion-bar.presets.name",
+      "category": "t:sections.all.categories.functional_widgets",
+      "blocks": [
+        {
+          "type": "_text-group",
+          "blocks": [
+            {
+              "type": "subheading"
+            },
+            {
+              "type": "heading"
+            },
+            {
+              "type": "description"
+            }
+          ]
+        },
+        {
+          "type": "countdown",
+          "settings": {
+            "simple": false
+          }
+        },
+        {
+          "type": "buttons",
+          "blocks": [
+            {
+              "type": "button",
+              "settings": {
+                "size": "medium"
+              }
+            },
+            {
+              "type": "button",
+              "settings": {
+                "style": "border",
+                "size": "medium"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

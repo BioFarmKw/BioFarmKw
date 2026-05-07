@@ -1,0 +1,77 @@
+{% doc %}
+  Product Media
+
+  @description
+  Renders a single product media item, supporting optional image zoom and video looping.
+
+  @param {object} media - Product media object.
+  @param {string} [image_lightbox_type] - Image zoom type to apply, e.g. 'zoom-hold'.
+  @param {string} [image_zoom_ratio] - Image zoom ratio, default is 1.5.
+  @param {boolean} [enable_video_looping] - Whether to enable video looping.
+
+  @example
+  {% render 'product-media', media: media, image_lightbox_type: 'zoom-hold', enable_video_looping: true %}
+{% enddoc %}
+
+{% capture defer_button %}
+  <div class="media-poster media">
+      {% render 'lazy-image', image_object: media.preview_image %}
+      <button class="media-play-button button button--icon button--large button--float">
+          {%- if media.media_type == 'model' -%}
+              {%- render 'icon-sets-basic', icon: "3d" -%}
+          {%- else -%}
+              {%- render 'icon-sets-basic', icon: "play" -%}
+          {%- endif -%}
+      </button>
+  </div>
+  <template>
+    {%- case media.media_type -%}
+      {%- when 'external_video' -%}
+        {%- assign video_class = 'js-' | append: media.host -%}
+        {%- if media.host == 'youtube' -%}
+          {{ media | external_video_url: autoplay: true, loop: enable_video_looping, playlist: media.external_id | external_video_tag: class: video_class, loading: "lazy" }}
+        {%- else -%}
+          {{ media | external_video_url: autoplay: true, loop: enable_video_looping | external_video_tag: class: video_class, loading: "lazy" }}
+        {%- endif -%}
+      {%- when 'video' -%}
+        {{ media | media_tag: image_size: "2048x", autoplay: true, loop: enable_video_looping, controls: true, preload: "none" }}
+      {%- when 'model' -%}
+        {{ media | media_tag: image_size: "2048x", toggleable: true }}
+    {%- endcase -%}
+  </template>
+{% endcapture %}
+
+{%- if media.media_type == 'image' -%}
+  {% liquid
+    # 兼容之前的命名(zoom和magnify)
+    if image_lightbox_type != 'zoom-hold'
+      assign image_lightbox_type = 'zoom-drag'
+    endif
+  %}
+  <image-{{ image_lightbox_type }}
+    class="product-media-frame"
+    data-scale="{{ image_zoom_ratio | default: 1.5 }}"
+  >
+    {% render 'lazy-image', image_object: media.preview_image %}
+  </image-{{ image_lightbox_type }}>
+{%- elsif media.media_type == 'model' -%}
+  <product-model class="product-media-frame video-model-media deferred-media no-js-hidden">
+    {{ defer_button }}
+  </product-model>
+  <button
+    class="product-xr-button button button--ethereal"
+    type="button"
+    aria-label="{{ 'products.product.xr_button_label' | t }}"
+    data-shopify-xr
+    data-shopify-model3d-id="{{ media.id }}"
+    data-shopify-title="title"
+    data-shopify-xr-hidden
+  >
+    {% render 'icon-sets-basic', icon: '3d' %}
+    {{ 'products.product.xr_button' | t }}
+  </button>
+{%- else -%}
+  <deferred-media class="product-media-frame video-model-media deferred-media no-js-hidden">
+    {{ defer_button }}
+  </deferred-media>
+{%- endif -%}

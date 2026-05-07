@@ -1,0 +1,33 @@
+{% doc %}
+  Slider Navigation Buttons
+
+  @description
+  This snippet adds navigation buttons to a slider component, allowing users to switch between slides.
+
+  @param {string} section_id - The unique identifier for the slider component, used to associate the buttons with the slider.
+  @param {string} [class] - Optional custom class name for styling.
+
+  @example
+  {% render 'slider-nav-buttons', section_id: section.id %}
+{% enddoc %}
+
+<div class="{% if class != blank %}{{ class }} {% endif %}slider-nav-buttons">
+  <button
+    type="button"
+    class="nav-button nav-button--prev button button--icon button--float button--pill"
+    name="previous"
+    aria-label="{{ 'general.slider.previous_slide' | t }}"
+    aria-controls="Slider-{{ section_id }}"
+  >
+    {% render 'icon-sets-basic', icon: 'caret-left' %}
+  </button>
+  <button
+    type="button"
+    class="nav-button nav-button--next button button--icon button--float button--pill"
+    name="next"
+    aria-label="{{ 'general.slider.next_slide' | t }}"
+    aria-controls="Slider-{{ section_id }}"
+  >
+    {% render 'icon-sets-basic', icon: 'caret-right' %}
+  </button>
+</div>

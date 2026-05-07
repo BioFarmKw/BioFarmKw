@@ -1,0 +1,61 @@
+{% liquid
+  assign options = block.settings.options | replace: '，', ',' | split: ','
+%}
+<fieldset class="shopify-block custom-radio-field-block radio-group" {{ block.shopify_attributes }}>
+  <legend class="field-legend">{{ block.settings.name | escape }}</legend>
+  <div class="radio-list">
+    {%- for option in options -%}
+      {% assign stripped_option = option | strip %}
+      <div class="radio">
+        <label>
+          <input
+            type="radio"
+            id="Custom-Radio-Field-{{ section.id }}-{{ block.id }}-{{ forloop.index }}"
+            name="Contact[{{ block.settings.name | escape }}]"
+            value="{{ stripped_option }}"
+            {% if block.settings.default == stripped_option %}
+              checked
+            {% endif %}
+          >
+          <span class="input-face">
+            <span></span>
+          </span>
+          <span>{{ stripped_option }}</span>
+        </label>
+      </div>
+    {%- endfor -%}
+  </div>
+</fieldset>
+
+{% schema %}
+{
+  "name": "t:blocks._custom-radio-field.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "name",
+      "label": "t:blocks._custom-input-field.settings.name.label",
+      "default": "Field name"
+    },
+    {
+      "type": "text",
+      "id": "options",
+      "label": "t:blocks._custom-select-field.settings.options.label",
+      "info": "t:blocks._custom-select-field.settings.options.info",
+      "default": "Option1, Option2, Option3"
+    },
+    {
+      "type": "text",
+      "id": "default",
+      "label": "t:blocks._custom-input-field.settings.default.label",
+      "default": "Option1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._custom-radio-field.presets.name"
+    }
+  ]
+}
+{% endschema %}

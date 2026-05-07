@@ -1,0 +1,45 @@
+{% doc %}
+  Card Page
+
+  @description
+  Renders a card for a page with optional image and text alignment.
+
+  @param {object} card_page - Page object
+  @param {string} [image_ratio] - Image aspect ratio
+  @param {string} [text_alignment] - Text alignment
+  @param {boolean} [show_horizontal] - Whether to use horizontal layout
+  @param {boolean} [truncate_title] - Whether to truncate the title
+
+  @example
+  {% render 'card-page', card_page: page, image_ratio: 'square' %}
+{% enddoc %}
+
+<div class="page-card card{% if show_horizontal %} card--horizontal{% endif %}">
+  <div class="card-media">
+    <a
+      href="{{ card_page.url }}"
+      class="link media media--{{ image_ratio | default: 'square' }}"
+    >
+      <span class="page-letter">{{ card_page.title | slice: 0 }}</span>
+    </a>
+  </div>
+  <div class="card-content text-align--{{ text_alignment | default: 'center' }}">
+    <div class="card-heading">
+      <a class="link link-underline" href="{{ card_page.url }}" aria-label="{{ card_page.title }}">
+        {%- if truncate_title -%}
+          <span class="title-more">{{ card_page.title | truncate: 30 }}</span>
+          <span class="title-less">{{ card_page.title | truncate: 18 }}</span>
+        {%- else -%}
+          {{ card_page.title }}
+        {%- endif -%}
+      </a>
+    </div>
+    <div class="card-description light">
+      {%- if show_horizontal -%}
+        {{ card_page.content | strip_html | truncate: 50 }}
+      {%- else -%}
+        {{ card_page.content | strip_html | truncate: 100 }}
+      {%- endif -%}
+    </div>
+  </div>
+</div>

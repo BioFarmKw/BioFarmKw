@@ -1,0 +1,159 @@
+<autopopup-age-verifier
+  id="Age-Verifier-AutoPopup"
+  class="autopopup-age-verifier autopopup modal"
+  data-force
+  data-section="{{ section.id }}"
+  {% if section.settings.debug_mode %}
+    data-debug-model
+  {% endif %}
+  style="background: {{ section.settings.background_color }}"
+>
+  <div
+    class="modal-overlay{% if section.settings.background_image != blank or section.settings.background_image_mobile != blank %} media{% endif %}"
+    style="opacity: {{ section.settings.background_image_opacity }}%;"
+  >
+    {% render 'lazy-image',
+      has_mobile: section.settings.background_image_mobile,
+      image_object: section.settings.background_image
+    %}
+    {% render 'lazy-image',
+      is_mobile: true,
+      image_object: section.settings.background_image_mobile,
+      widths: '450, 660, 900, 1320'
+    %}
+  </div>
+  <div
+    class="modal-inner color-{{ section.settings.color_scheme }} gradient focus-none"
+    role="dialog"
+    data-trap
+    aria-modal="true"
+    aria-label="{{ "sections.popup_age_verify.modal" | t }}"
+    tabindex="-1"
+  >
+    <div class="modal-content">
+      <div class="age-verifier-question content-group text-align--center">
+        <h3 class="text-content-heading h2">
+          {{ section.settings.heading | escape }}
+        </h3>
+        <div class="text-content-description rte">
+          {{ section.settings.description }}
+        </div>
+        <div class="button-group">
+          <button
+            class="button button--secondary"
+            data-declined
+          >
+            {% render 'icon-sets', icon: 'no' %}
+            {{ 'sections.popup_age_verify.button_no' | t }}
+          </button>
+          <button class="button" data-satisfied>
+            {% render 'icon-sets', icon: 'yes' %}
+            {{ 'sections.popup_age_verify.button_yes' | t }}
+          </button>
+        </div>
+      </div>
+      <div class="age-verifier-declined content-group text-align--center">
+        <h3 class="text-content-heading h2">
+          {{ section.settings.declined_heading | escape }}
+        </h3>
+        <div class="text-content-description rte">
+          {{ section.settings.declined_description }}
+        </div>
+        <div class="button-group">
+          <button class="button button--full-width" data-return>
+            {{ 'sections.popup_age_verify.oops' | t }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</autopopup-age-verifier>
+<script src="{{ 'autopopup-modal.js' | asset_url }}" defer="defer"></script>
+{% schema %}
+{
+  "name": "t:sections.age-verifier-popup.name",
+  "class": "section-modal",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "debug_mode",
+      "label": "t:sections.age-verifier-popup.settings.debug_mode.label",
+      "info": "t:sections.age-verifier-popup.settings.debug_mode.info",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:sections.age-verifier-popup.settings.paragraph_background.content"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.all.colors.background.label",
+      "default": "#F5F5F5"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "t:sections.all.image.background_image_picker.label"
+    },
+    {
+      "type": "range",
+      "id": "background_image_opacity",
+      "label": "t:sections.all.image.image_opacity.label",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 90
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.content.header_content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.scheme.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.all.text-content.heading.label",
+      "default": "Verify your age"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "t:sections.all.text-content.description.label",
+      "default": "<p>Please confirm that you are of legal age to view the content of this store. By entering, you agree that you are over the required age in your country<\/p>"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.age-verifier-popup.settings.paragraph_message.content"
+    },
+    {
+      "type": "text",
+      "id": "declined_heading",
+      "label": "t:sections.age-verifier-popup.settings.declined_heading.label",
+      "default": "Come back when you're older"
+    },
+    {
+      "type": "richtext",
+      "id": "declined_description",
+      "label": "t:sections.age-verifier-popup.settings.declined_description.label",
+      "default": "<p>Sorry, the content of this store can't be seen by a younger audience. Come back when you're older.<\/p>"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.mobile.header_content"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "t:sections.all.image.background_image_picker.label"
+    }
+  ]
+}
+{% endschema %}

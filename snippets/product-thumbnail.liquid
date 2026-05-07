@@ -1,0 +1,140 @@
+{% doc %}
+  Product Thumbnail
+
+  @description
+  Renders a product thumbnail that can trigger a product modal when clicked. Supports image zoom, video looping, and lazy loading.
+
+  @param {object} media - The product media object.
+  @param {string} position - The media position, used for accessibility labeling.
+  @param {string} [media_width] - The width of the media relative to the page, e.g., "0.65".
+  @param {string} [media_ratio] - The aspect ratio of the media, "square" or "portrait".
+  @param {boolean} [enable_video_loop] - Whether to enable video looping (optional).
+  @param {boolean} [enable_video_autoplay] - Whether to autoplay video when visible (optional).
+  @param {string} modal_id - The ID of the product modal triggered on click.
+  @param {string} [media_fit] - The fit method for the media, "contain" or "cover" (optional).
+  @param {boolean} [enable_scale_image] - Whether to allow image zoom (optional).
+  @param {boolean} [enable_magnifier] - Whether to enable magnifier effect on images (optional).
+  @param {string} [image_zoom_ratio] - The zoom ratio for images when using lightbox or magnifier, default is 1.5 (optional).
+  @param {boolean} [lazy] - Whether to lazy load the image (optional).
+
+  @example
+  {% render 'product-thumbnail',
+    media: media,
+    position: forloop.index,
+    enable_video_loop: section.settings.enable_video_looping,
+    enable_video_autoplay: section.settings.enable_video_autoplay,
+    modal_id: section.id
+  %}
+{% enddoc %}
+
+{% capture sizes %}(min-width: {{ settings.page_width }}px) {{ settings.page_width | times: media_width | round }}px, (min-width: 750px) {{ media_width | times: 100 | round }}vw, 100vw{% endcapture %}
+
+{%- capture preview_image -%}
+    {% liquid
+        if lazy
+            assign preload = false
+        else
+            assign preload = true
+        endif
+    %}
+
+    {% render 'lazy-image',
+            image_object: media.preview_image,
+            class: 'product-preview-image',
+            sizes: sizes,
+            widths: '246, 493, 600, 713, 823, 990, 1100, 1206',
+            preload: preload
+    %}
+{%- endcapture -%}
+
+<div class="product-media-container hover-trigger">
+  {%- if media.media_type == 'image' -%}
+    {% liquid
+      if enable_magnifier
+        assign element_tag = 'image-magnifier'
+      else
+        assign element_tag = 'div'
+      endif
+    %}
+    <{{ element_tag }}
+      class="product-media media media--{{ media_ratio | default: 'square' }} media-fit--{{ media_fit }}"
+      {% if enable_magnifier %}
+        data-scale="{{ image_zoom_ratio| default: 1.5 }}"
+      {% endif %}
+    >
+      {{ preview_image }}
+      {%- if enable_scale_image -%}
+        <modal-opener
+          class="product-zoom-button button button--icon button--small button--float button--pill quick-view-hidden animate--fade-in no-js-hidden"
+          data-media-id="{{ media.id }}"
+          role="button"
+          aria-haspopup="dialog"
+          aria-label="{{ 'products.product.media.open_media' | t: index: position }}"
+          aria-controls="ProductModal-{{ modal_id }}"
+          tabindex="0"
+        >
+          {%- render 'icon-sets-basic', icon: 'zoom' -%}
+        </modal-opener>
+      {%- endif -%}
+    </{{ element_tag }}>
+  {%- elsif media.media_type == 'model' -%}
+    <product-model class="product-media video-model-media deferred-media no-js-hidden">
+      <div class="media-poster media media--{{ media_ratio | default: 'square' }} media-fit--{{ media_fit }}">
+        {{ preview_image }}
+        <button
+          class="media-play-button button button--large button--icon button--pill button--float no-js-hidden"
+          aria-label="{{ 'products.product.media.play_video' | t }}"
+        >
+          {%- render 'icon-sets-basic', icon: '3d' -%}
+        </button>
+      </div>
+      <template>
+        {{ media | media_tag: image_size: '2048x', toggleable: true }}
+      </template>
+      <button
+        class="product-xr-button button button--full button--ethereal"
+        type="button"
+        aria-label="{{ 'products.product.xr_button_label' | t }}"
+        data-shopify-xr
+        data-shopify-model3d-id="{{ media.id }}"
+        data-shopify-title="{{ product.title | escape }}"
+        data-shopify-xr-hidden
+      >
+        {% render 'icon-sets-basic', icon: '3d' %}
+        {{ 'products.product.xr_button' | t }}
+      </button>
+    </product-model>
+  {%- else -%}
+    <deferred-media
+      class="product-media video-model-media deferred-media no-js-hidden"
+      {% if enable_video_autoplay %}
+        data-load-when-visible
+      {% endif %}
+    >
+      <div class="media-poster media media--{{ media_ratio | default: 'square' }} media-fit--{{ media_fit }}">
+        {{ preview_image }}
+        <button
+          class="media-play-button button button--large button--icon button--pill button--float no-js-hidden"
+          aria-label="{{ 'products.product.media.play_video' | t }}"
+        >
+          {%- render 'icon-sets-basic', icon: 'play' -%}
+        </button>
+      </div>
+      <template>
+        {%- liquid
+          case media.media_type
+            when 'external_video'
+              assign video_class = 'js-' | append: media.host
+              if media.host == 'youtube'
+                echo media | external_video_url: autoplay: true, loop: enable_video_loop, playlist: media.external_id | external_video_tag: class: video_class, loading: 'lazy'
+              else
+                echo media | external_video_url: autoplay: true, loop: enable_video_loop | external_video_tag: class: video_class, loading: 'lazy'
+              endif
+            when 'video'
+              echo media | media_tag: image_size: '2048x', autoplay: true, loop: enable_video_loop, controls: true, preload: 'none'
+          endcase
+        -%}
+      </template>
+    </deferred-media>
+  {%- endif -%}
+</div>

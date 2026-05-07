@@ -1,0 +1,26 @@
+{% doc %}
+  Placeholder Card
+
+  @description
+  Renders a placeholder card for product, bundle, or article. Useful for skeleton loading or empty states.
+
+  @param {string} [image_ratio] - Image aspect ratio: Portrait|Landscape|Square, default: Square
+  @param {boolean} [show_horizontal] - Whether to show horizontal layout
+  @param {string} [type] - Type: product, bundle-product, article
+
+  @example
+  {% render 'card-placeholder', show_horizontal: true %}
+{% enddoc %}
+
+<div class="{% if type != blank %}{{ type }}-card {% endif %}card card-placeholder{% if show_horizontal %} card--horizontal{% endif %}">
+  {%- if type == 'bundle-product' -%}
+    <span class="bundle-checkbox checkbox placeholder"></span>
+  {%- endif -%}
+  <div class="card-media">
+    <div class="media media--{{ image_ratio | default: 'square' }} placeholder"></div>
+  </div>
+  <div class="card-content">
+    <div class="placeholder"></div>
+    <div class="placeholder"></div>
+  </div>
+</div>

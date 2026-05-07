@@ -1,0 +1,56 @@
+<div
+  class="shopify-block rich-text-block"
+  {{ block.shopify_attributes }}
+>
+  <div
+    class="content-group width--{{ block.settings.content_width }} group--center text-align--{{ block.settings.text_alignment }} text-align-mobile--{{ block.settings.text_alignment_mobile }}"
+  >
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:blocks._rich-text.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "content_width",
+      "label": "t:sections.all.content.content_width.label",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:sections.all.content.content_width.options__1.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.all.content.content_width.options__2.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.all.content.content_width.options__3.label"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "text_alignment",
+      "id": "text_alignment",
+      "label": "t:sections.all.text-alignment.label",
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.mobile.header_content"
+    },
+    {
+      "type": "text_alignment",
+      "id": "text_alignment_mobile",
+      "label": "t:sections.all.text-alignment.label",
+      "default": "center"
+    }
+  ],
+  "blocks": [{ "type": "@theme" }]
+}
+{% endschema %}

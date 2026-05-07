@@ -1,0 +1,404 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "alignment": "left",
+        "padding_top": 16,
+        "padding_bottom": 16,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "badge_list_CCVA3c": {
+          "type": "badge_list",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "size": "medium",
+            "show_vendor": true,
+            "show_type": true,
+            "show_rating": true,
+            "star_size": "small",
+            "target_anchor": "",
+            "enable_rating_preview": true
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_tax": true,
+            "show_sale_badge": true,
+            "sale_badge_type": "percentage"
+          }
+        },
+        "description_nL3RYP": {
+          "type": "description",
+          "settings": {
+            "enable_brief": true,
+            "limit": 60,
+            "limit_description_height": true
+          }
+        },
+        "separator_JtdWy9": {
+          "type": "separator",
+          "settings": {
+            "show_line": true,
+            "margin_top": 16,
+            "margin_bottom": 16
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "auto_dropdown": true,
+            "dropdown_threshold": 10,
+            "enable_first_swatch_image": false,
+            "swatch_size": "medium",
+            "auto_scroll_to_top": false
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "is_selector_standalone": true,
+            "show_dynamic_checkout": true,
+            "show_notify_form": false,
+            "show_gift_card_recipient": true
+          }
+        },
+        "complementary_iArT3d": {
+          "type": "complementary",
+          "settings": {
+            "heading": "Pairs well with",
+            "limit": 5,
+            "items_per_slide": 1,
+            "enable_truncate_title": true,
+            "show_separator_line": true
+          }
+        },
+        "sharing_xaE6C7": {
+          "type": "sharing",
+          "settings": {
+            "style": "border",
+            "show_tooltip": false
+          }
+        }
+      },
+      "block_order": [
+        "badge_list_CCVA3c",
+        "title",
+        "price",
+        "description_nL3RYP",
+        "separator_JtdWy9",
+        "variant_picker",
+        "buy_buttons",
+        "complementary_iArT3d",
+        "sharing_xaE6C7"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "enable_sticky_media": true,
+        "media_position": "left",
+        "media_layout": "thumbnail-left",
+        "media_size": "small",
+        "media_ratio": "portrait",
+        "media_fit": "cover",
+        "image_zoom_type": "zoom-hold",
+        "image_zoom_ratio": 1.5,
+        "enable_slide_smooth": true,
+        "hide_variants": true,
+        "enable_video_autoplay": false,
+        "enable_video_looping": false,
+        "hide_thumbnail_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 12,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "product-anchor-navigation": {
+      "type": "product-anchor-navigation",
+      "blocks": {
+        "item_FnAhW9": {
+          "type": "item",
+          "settings": {
+            "icon": "none",
+            "anchor_name": "Product Details",
+            "anchor_id": "template--24048491692333__product-description"
+          }
+        },
+        "item_jNA4Dp": {
+          "type": "item",
+          "settings": {
+            "icon": "none",
+            "anchor_name": "Related Products",
+            "anchor_id": "template--24048491692333__related-products"
+          }
+        },
+        "item_LkQ8BT": {
+          "type": "item",
+          "settings": {
+            "icon": "none",
+            "anchor_name": "Recently Viewed",
+            "anchor_id": "template--24048491692333__recently_viewed_hPrRd3"
+          }
+        },
+        "item_tDJJ67": {
+          "type": "item",
+          "settings": {
+            "icon": "star",
+            "anchor_name": "Reviews & Ratings",
+            "anchor_id": "anchor_id"
+          }
+        }
+      },
+      "block_order": [
+        "item_FnAhW9",
+        "item_jNA4Dp",
+        "item_LkQ8BT",
+        "item_tDJJ67"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-3",
+        "alignment": "center",
+        "padding_top": 8,
+        "padding_bottom": 8,
+        "margin_top": 0,
+        "margin_bottom": 48
+      }
+    },
+    "product-description": {
+      "type": "product-description",
+      "blocks": {
+        "product_attributes_bxjRNB": {
+          "type": "_product-attributes",
+          "name": "t:blocks._product-attributes.presets.name",
+          "settings": {
+            "icon": "none",
+            "heading": "Product Specifications",
+            "show_category_attributes": true,
+            "default_expand": true
+          },
+          "blocks": {}
+        },
+        "product_documents_rKFP3N": {
+          "type": "_product-documents",
+          "name": "t:blocks._product-documents.presets.name",
+          "settings": {
+            "icon": "none",
+            "heading": "Documents",
+            "metafield": "",
+            "default_expand": false
+          },
+          "blocks": {
+            "product_document_kYmC36": {
+              "type": "_product-document",
+              "settings": {
+                "file_type": "pdf",
+                "file_link": "",
+                "file_name": "User Manual"
+              },
+              "blocks": {}
+            },
+            "product_document_KgJUTx": {
+              "type": "_product-document",
+              "settings": {
+                "file_type": "image",
+                "file_link": "",
+                "file_name": "Specification Sheet"
+              },
+              "blocks": {}
+            },
+            "product_document_B4NdFT": {
+              "type": "_product-document",
+              "settings": {
+                "file_type": "file",
+                "file_link": "",
+                "file_name": "Safety Guide"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_document_kYmC36",
+            "product_document_KgJUTx",
+            "product_document_B4NdFT"
+          ]
+        },
+        "product_richtext_3wykLB": {
+          "type": "_product-richtext",
+          "name": "t:blocks._product-richtext.presets.name",
+          "settings": {
+            "icon": "none",
+            "heading": "Service & Support",
+            "content": "<p><strong>Warranty</strong><br/><br/>This product is backed by a <strong>12-month limited warranty</strong>, covering defects in materials and workmanship under normal use.</p><p><strong>Technical Assistance</strong><br/><br/>Our dedicated support team is available to assist with product setup, operation guidance, and troubleshooting. Contact us via email or phone for prompt service.</p><p><strong>Documentation & Downloads</strong><br/><br/>Access essential resources including the <strong>user manual</strong>, <strong>technical specifications</strong>, and <strong>safety instructions</strong> in our online support center.</p><p><strong>Replacement Parts & Accessories</strong><br/><br/>We offer a full range of <strong>genuine replacement parts</strong>, including batteries, chargers, and compatible accessories to ensure long-term performance.</p><p><strong>Training & Tutorials</strong><br/><br/>Browse our library of <strong>how-to videos and maintenance tips</strong> to get the most out of your cordless drill.</p>",
+            "page": "",
+            "default_expand": false
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "product_attributes_bxjRNB",
+        "product_documents_rKFP3N",
+        "product_richtext_3wykLB"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "padding_top": 16,
+        "padding_bottom": 16,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "blocks": {
+        "section-header": {
+          "type": "_section-header",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "heading_hYpcje": {
+              "type": "heading",
+              "name": "t:blocks.heading.presets.name",
+              "settings": {
+                "content": "Related Products",
+                "type": "2",
+                "size": "small",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "color",
+                "highlight_color": "#ff0000"
+              },
+              "blocks": {}
+            },
+            "description_Y7W67A": {
+              "type": "description",
+              "name": "t:blocks.description.presets.name",
+              "settings": {
+                "content": "<p>You may also like</p>",
+                "color_light": true,
+                "limit_description_height": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": ["heading_hYpcje", "description_Y7W67A"]
+        },
+        "related-products": {
+          "type": "_related-products",
+          "static": true,
+          "settings": {
+            "limit": 8,
+            "slider_on_desktop": true,
+            "show_nav_buttons": true,
+            "show_seek_bar": true,
+            "card_size": "small",
+            "image_ratio": "square",
+            "text_alignment": "center",
+            "show_card_wrapper": false,
+            "color_scheme": "",
+            "slider_on_mobile": true
+          },
+          "blocks": {}
+        }
+      },
+      "settings": {
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "recently_viewed_hPrRd3": {
+      "type": "recently-viewed",
+      "blocks": {
+        "section-header": {
+          "type": "_section-header",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "heading_p4jQwk": {
+              "type": "heading",
+              "settings": {
+                "content": "Recently viewed",
+                "type": "2",
+                "size": "small",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "color",
+                "highlight_color": "#ff0000"
+              },
+              "blocks": {}
+            },
+            "description_TxeY6M": {
+              "type": "description",
+              "settings": {
+                "content": "<p>See what you viewed</p>",
+                "color_light": true,
+                "limit_description_height": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": ["heading_p4jQwk", "description_TxeY6M"]
+        },
+        "recently-viewed": {
+          "type": "_recently-viewed",
+          "static": true,
+          "settings": {
+            "limit": 8,
+            "slider_on_desktop": true,
+            "show_nav_buttons": true,
+            "show_seek_bar": true,
+            "card_size": "small",
+            "image_ratio": "square",
+            "text_alignment": "center",
+            "show_card_wrapper": false,
+            "color_scheme": "",
+            "slider_on_mobile": true
+          },
+          "blocks": {}
+        }
+      },
+      "name": "t:sections.recently-viewed.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "main",
+    "product-anchor-navigation",
+    "product-description",
+    "related-products",
+    "recently_viewed_hPrRd3"
+  ]
+}

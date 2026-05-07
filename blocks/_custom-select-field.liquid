@@ -1,0 +1,70 @@
+{% liquid
+  assign options = block.settings.options | replace: '，', ',' | split: ','
+%}
+<div class="shopify-block custom-select-field-block select">
+  <label class="visually-hidden" for="Custom-Select-Field-{{ section.id }}-{{ block.id }}">
+    {{- block.settings.name | escape -}}
+  </label>
+  <select
+    id="Custom-Select-Field-{{ section.id }}-{{ block.id }}"
+    class="select-select"
+    name="Contact[{{ block.settings.name | escape }}]"
+    {% if block.settings.if_required %}
+      aria-required="true"
+      required
+    {% endif %}
+  >
+    <option disabled>{{ block.settings.name | escape }}</option>
+    {%- for option in options -%}
+      {% assign stripped_option = option | strip %}
+      <option
+        value="{{ stripped_option }}"
+        {% if block.settings.default == stripped_option %}
+          selected
+        {% endif %}
+      >
+        {{ stripped_option }}
+      </option>
+    {%- endfor -%}
+  </select>
+  <span class="field-button">
+    {% render 'icon-sets-basic', icon: 'caret-down', class: 'caret-icon' %}
+  </span>
+</div>
+{% schema %}
+{
+  "name": "t:blocks._custom-select-field.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "name",
+      "label": "t:blocks._custom-input-field.settings.name.label",
+      "default": "Field name"
+    },
+    {
+      "type": "text",
+      "id": "options",
+      "label": "t:blocks._custom-select-field.settings.options.label",
+      "info": "t:blocks._custom-select-field.settings.options.info",
+      "default": "Option1, Option2, Option3"
+    },
+    {
+      "type": "text",
+      "id": "default",
+      "label": "t:blocks._custom-input-field.settings.default.label",
+      "default": "Option1"
+    },
+    {
+      "type": "checkbox",
+      "id": "if_required",
+      "label": "t:blocks._custom-input-field.settings.if_required.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._custom-select-field.presets.name"
+    }
+  ]
+}
+{% endschema %}

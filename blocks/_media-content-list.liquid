@@ -1,0 +1,74 @@
+{% assign slide_interval = block.settings.change_slides_speed | times: 1000.00 %}
+<slider-component
+  class="media-content-list-slider slider"
+  data-slide-desktop
+  data-slide-mobile
+  data-slide-smooth
+  data-draggable
+  data-keep-video
+  {% if block.settings.auto_rotate %}
+    data-autoplay
+    data-looping
+    data-interval="{{ slide_interval }}"
+  {% endif %}
+>
+  <div class="slider-container">
+    <ul
+      id="Slider-{{ section.id }}"
+      class="slider-wrapper gap-8"
+    >
+      {% content_for 'blocks' %}
+    </ul>
+    {%- if block.settings.show_nav_buttons -%}
+      {% render 'slider-nav-buttons', section_id: section.id %}
+    {%- endif -%}
+  </div>
+  {%- if block.settings.show_seek_bar -%}
+    {% render 'slider-seek-bar', section_id: section.id %}
+  {%- endif -%}
+</slider-component>
+
+{% schema %}
+{
+  "name": "t:blocks._media-content-list.name",
+  "class": "media-content-list-block",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_nav_buttons",
+      "label": "t:sections.all.slider.show_nav_buttons.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_seek_bar",
+      "label": "t:sections.all.slider.show_seek_bar.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_rotate",
+      "label": "t:sections.all.slider.auto_rotate.label",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "change_slides_speed",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "t:sections.all.slider.change_slides_speed.label",
+      "default": 3
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_image-content"
+    },
+    {
+      "type": "_video-content"
+    }
+  ]
+}
+{% endschema %}

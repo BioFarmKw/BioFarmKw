@@ -1,0 +1,31 @@
+{% doc %}
+  Cart Bubble
+
+  @description
+  Renders a cart icon with selectable style option.
+
+  @param {string} style - Icon style. Options: Cart | Bag | Basket
+
+  @example
+  {% render 'cart-bubble', style: 'Cart' %}
+{% enddoc %}
+
+<span class="cart-count-bubble bubble-style--{{ style | default: 'cart' }}">
+  {% liquid
+    assign cart_count = cart.item_count
+    if cart_count >= 100
+      assign cart_count = '99+'
+    endif
+  %}
+
+  {%- if style == 'cart' -%}
+    {% render 'icon-sets', icon: 'cart' %}
+  {%- elsif style == 'bag' -%}
+    {% render 'icon-sets', icon: 'bag' %}
+  {%- else -%}
+    {% render 'icon-sets', icon: 'basket' %}
+  {%- endif -%}
+
+  <span class="cart-count" aria-hidden="true">{{ cart_count }}</span>
+  <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart_count }}</span>
+</span>

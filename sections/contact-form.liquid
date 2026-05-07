@@ -1,0 +1,200 @@
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  .section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
+    margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    .section-{{ section.id }}-margin {
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div class="contact-form isolate color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-margin">
+  <div class="section__wrapper contact-form-wrapper page-width{% if section.settings.show_map %} has-map{% endif %} section-{{ section.id }}-padding">
+    <div class="contact-form-main">
+      {% content_for 'block', type: '_contact-form', id: 'contact-form' %}
+      {% content_for 'block', type: '_contact-info', id: 'contact-info' %}
+    </div>
+    {%- if section.settings.show_map -%}
+      <deferred-media class="contact-form-map video-model-media deferred-media" data-load-when-visible>
+        <div class="media-poster media">
+          {% render 'lazy-image',
+            image_object: section.settings.map_image,
+            sizes: '(min-width: 750px) 50vw, 100vw',
+            placeholder: 'lifestyle-1'
+          %}
+        </div>
+
+        {%- if section.settings.map_iframe != blank -%}
+          <template>
+            {{ section.settings.map_iframe }}
+          </template>
+        {%- endif -%}
+      </deferred-media>
+    {%- endif -%}
+  </div>
+
+  {% render 'section-id-tip', section_id: section.id %}
+</div>
+{% schema %}
+{
+  "name": "t:sections.contact-form.name",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.drawer", "custom.popup"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.scheme.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.contact-form.settings.header-map.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_map",
+      "label": "t:sections.contact-form.settings.show_map.label",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "map_image",
+      "label": "t:sections.contact-form.settings.map_image.label",
+      "info": "t:sections.contact-form.settings.map_image.info"
+    },
+    {
+      "type": "html",
+      "id": "map_iframe",
+      "label": "t:sections.contact-form.settings.map_iframe.label",
+      "info": "t:sections.contact-form.settings.map_iframe.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.header_content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top.label",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom.label",
+      "default": 48
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.margin.header_content"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.margin.margin_top.label",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.margin.margin_bottom.label",
+      "default": 88
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_contact-form"
+    },
+    {
+      "type": "_contact-info"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.contact-form.presets.name",
+      "category": "t:sections.all.categories.forms_interaction",
+      "blocks": [
+        {
+          "type": "_contact-form",
+          "static": true,
+          "id": "contact-form"
+        },
+        {
+          "type": "_contact-info",
+          "static": true,
+          "id": "contact-info",
+          "blocks": [
+            {
+              "type": "_icon-text-content",
+              "settings": {
+                "icon": "address",
+                "heading": "Address",
+                "description": "<p>Add some description here</p>"
+              }
+            },
+            {
+              "type": "_icon-text-content",
+              "settings": {
+                "icon": "phone",
+                "heading": "Phone",
+                "description": "<p>(000)1234-5678</p>"
+              }
+            },
+            {
+              "type": "_icon-text-content",
+              "settings": {
+                "icon": "email",
+                "heading": "Email",
+                "description": "<p>support@example.com</p>"
+              }
+            },
+            {
+              "type": "_icon-text-content",
+              "settings": {
+                "icon": "24h",
+                "heading": "Business hours",
+                "description": "<p>Monday to Friday<br\/>From 9 AM to 6 PM<\/p>"
+              }
+            },
+            {
+              "type": "social-list"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,260 @@
+{{ 'section-timeline.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  .section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
+    margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+      .section-{{ section.id }}-margin {
+        margin-top: {{ section.settings.margin_top }}px;
+        margin-bottom: {{ section.settings.margin_bottom }}px;
+      }
+  }
+{%- endstyle -%}
+<div class="section-timeline isolate color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-margin">
+  <div class="section__wrapper timeline__wrapper page-width section-{{ section.id }}-padding">
+    {% content_for 'block', type: '_section-header', id: 'section-header' %}
+    {% content_for 'block', type: '_event-list', id: 'event-list' %}
+  </div>
+
+  {% render 'section-id-tip', section_id: section.id %}
+</div>
+{% schema %}
+{
+  "name": "t:sections.timeline.name",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.drawer", "custom.popup"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.scheme.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.header_content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top.label",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom.label",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.margin.header_content"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.margin.margin_top.label",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.margin.margin_bottom.label",
+      "default": 88
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_section-header"
+    },
+    {
+      "type": "_event-list"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.timeline.presets.name",
+      "category": "t:sections.all.categories.content_info",
+      "blocks": [
+        {
+          "type": "_section-header",
+          "static": true,
+          "id": "section-header",
+          "blocks": [
+            {
+              "type": "heading",
+              "settings": {
+                "content": "Timeline",
+                "size": "medium",
+                "uppercase": true
+              }
+            },
+            {
+              "type": "description"
+            }
+          ]
+        },
+        {
+          "type": "_event-list",
+          "static": true,
+          "id": "event-list",
+          "blocks": [
+            {
+              "type": "_event",
+              "blocks": [
+                {
+                  "type": "subheading",
+                  "settings": {
+                    "content": "2022"
+                  }
+                },
+                {
+                  "type": "heading",
+                  "settings": {
+                    "content": "Company Founded",
+                    "type": "h3"
+                  }
+                },
+                {
+                  "type": "description",
+                  "settings": {
+                    "content": "<p>Our company was officially established, marking the beginning of our journey to deliver innovative solutions and exceptional service.</p>"
+                  }
+                },
+                {
+                  "type": "_image",
+                  "settings": {
+                    "image_ratio": "landscape",
+                    "image_ratio_mobile": "landscape"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "_event",
+              "blocks": [
+                {
+                  "type": "subheading",
+                  "settings": {
+                    "content": "2023"
+                  }
+                },
+                {
+                  "type": "heading",
+                  "settings": {
+                    "content": "First Product Launched",
+                    "type": "h3"
+                  }
+                },
+                {
+                  "type": "description",
+                  "settings": {
+                    "content": "<p>We introduced our first product to the market, setting a new standard in quality and performance for our industry.</p>"
+                  }
+                },
+                {
+                  "type": "_video",
+                  "settings": {
+                    "image_ratio": "landscape",
+                    "image_ratio_mobile": "landscape"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "_event",
+              "blocks": [
+                {
+                  "type": "subheading",
+                  "settings": {
+                    "content": "2024"
+                  }
+                },
+                {
+                  "type": "heading",
+                  "settings": {
+                    "content": "International Expansion",
+                    "type": "h3"
+                  }
+                },
+                {
+                  "type": "description",
+                  "settings": {
+                    "content": "<p>We expanded our business internationally, opening offices in key regions to better serve our global customers.</p>"
+                  }
+                },
+                {
+                  "type": "_image",
+                  "settings": {
+                    "image_ratio": "landscape",
+                    "image_ratio_mobile": "landscape"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "_event",
+              "blocks": [
+                {
+                  "type": "subheading",
+                  "settings": {
+                    "content": "2025"
+                  }
+                },
+                {
+                  "type": "heading",
+                  "settings": {
+                    "content": "Award Recognition",
+                    "type": "h3"
+                  }
+                },
+                {
+                  "type": "description",
+                  "settings": {
+                    "content": "<p>Our company received a prestigious industry award, recognizing our commitment to excellence and customer satisfaction.</p>"
+                  }
+                },
+                {
+                  "type": "_image",
+                  "settings": {
+                    "image_ratio": "landscape",
+                    "image_ratio_mobile": "landscape"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

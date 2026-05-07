@@ -1,0 +1,185 @@
+{% doc %}
+  Buy Buttons
+
+  @description
+  Renders product purchase buttons with optional quantity selector, gift card recipient form, dynamic checkout, notify form, and pre-order support.
+
+  @param {string} section_id - Section ID
+  @param {object} product - Product object
+  @param {string} [product_form_id] - Product form ID
+  @param {boolean} [show_quantity_selector] - Show quantity selector
+  @param {boolean} [is_quantity_selector_standalone] - Display quantity selector as standalone
+  @param {boolean} [show_gift_card_recipient] - Show gift card recipient form
+  @param {boolean} [show_dynamic_checkout] - Show dynamic checkout button
+  @param {boolean} [show_notify_form] - Show back-in-stock notification form
+  @param {boolean} [is_pre_order] - Mark as pre-order
+  @param {boolean} [cant_sell] - Mark as unavailable for sale
+
+  @example
+  {% render 'buy-buttons', section_id: section.id, product: product, product_form_id: product_form_id %}
+{% enddoc %}
+
+{%- if product != blank -%}
+  {%- liquid
+    assign gift_card_recipient_feature_active = false
+    if show_gift_card_recipient and product.gift_card?
+      assign gift_card_recipient_feature_active = true
+    endif
+
+    if gift_card_recipient_feature_active
+      assign show_dynamic_checkout = false
+    endif
+  -%}
+
+  <product-form
+    class="product-form"
+    data-hide-errors="{{ gift_card_recipient_feature_active }}"
+    data-section="{{ section_id }}"
+  >
+    {% comment %} 错误消息提示 {% endcomment %}
+    <div
+      id="Product-Form-Error-Message-{{ section_id }}"
+      class="alert-message alert-error mb-2"
+      role="alert"
+      aria-live="assertive"
+      tabindex="-1"
+      autofocus
+      hidden
+    ></div>
+
+    {%- form 'product',
+      product,
+      id: product_form_id,
+      class: 'form',
+      novalidate: 'novalidate',
+      data-type: 'add-to-cart-form'
+    -%}
+      <input
+        class="product-variant-id"
+        type="hidden"
+        name="id"
+        value="{{ product.selected_or_first_available_variant.id }}"
+        {% if cant_sell %}
+          disabled
+        {% endif %}
+      >
+
+      {% comment %} 礼品卡 {% endcomment %}
+      {%- if gift_card_recipient_feature_active -%}
+        {{ 'component-recipient-form.css' | asset_url | stylesheet_tag }}
+        {%- render 'gift-card-recipient-form', section_id: section_id, product: product, form: form -%}
+        <script src="{{ 'recipient-form.js' | asset_url }}" defer="defer"></script>
+      {%- endif -%}
+
+      <div class="product-form-buttons">
+        {%- capture add_cart_button -%}
+            <button id="Product-Submit-Button-{{ section_id }}"
+                    class="add-cart-button button{% if show_dynamic_checkout %} button--ethereal{% else %} button--primary{% endif %}{% if is_quantity_selector_standalone or show_quantity_selector != true %} button--full{% endif %} has-loading"
+                    type="submit"
+                    name="add"
+                    {% if cant_sell %}
+                        disabled
+                    {% endif %}
+            >
+                  <span class="button-text loading-hidden">
+                    {%- if cant_sell -%}
+                        {{ 'products.product.sold_out' | t }}
+                    {%- elsif is_pre_order -%}
+                      {%- if product.metafields.custom.show_backorder.value == true -%}
+                       {{ 'products.product.backorder' | t }}
+                      {%- else -%}
+                        {{ 'products.product.preorder' | t }}
+                      {%- endif -%}
+                    {%- else -%}
+                        {{ 'products.product.add_to_cart' | t }}
+                    {%- endif -%}
+                  </span>
+                <span class="loading-overlay"></span>
+            </button>
+        {%- endcapture -%}
+
+        {%- if show_quantity_selector -%}
+          <div id="Quantity-Selector-{{ section_id }}" class="quantity-selector">
+            {%- assign cart_qty = cart | item_count_for_variant: product.selected_or_first_available_variant.id -%}
+            <label class="quantity-label" for="Quantity-{{ section_id }}">
+              <b>{{ 'products.product.quantity.label' | t }}:</b>
+              <span class="quantity-in-cart light{% if cart_qty == 0 %} hidden{% endif %}">
+                {{- 'products.product.quantity.in_cart_html' | t: quantity: cart_qty -}}
+              </span>
+            </label>
+            <div class="quantity-input-wrapper{% if is_quantity_selector_standalone %} quantity-selector-standalone{% endif %}">
+              <quantity-input class="quantity" data-url="{{ product.url }}" data-section="{{ section_id }}">
+                <button
+                  class="quantity-button button button--ethereal button--icon button--pill no-js-hidden"
+                  name="minus"
+                  type="button"
+                  aria-label="{{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}"
+                >
+                  {% render 'icon-sets-basic', icon: 'minus' %}
+                </button>
+                <input
+                  id="Quantity-{{ section_id }}"
+                  class="quantity-input"
+                  type="number"
+                  name="quantity"
+                  data-cart-quantity="{{ cart_qty }}"
+                  data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                  min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                  {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
+                    data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                    max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                  {% endif %}
+                  step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
+                  value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                >
+                <button
+                  class="quantity-button button button--ethereal button--icon button--pill no-js-hidden"
+                  name="plus"
+                  type="button"
+                  aria-label="{{- 'products.product.quantity.increase' | t: product: product.title | escape -}}"
+                >
+                  {% render 'icon-sets-basic', icon: 'plus' %}
+                </button>
+              </quantity-input>
+              {{ add_cart_button }}
+            </div>
+          </div>
+        {%- else -%}
+          {{ add_cart_button }}
+        {%- endif -%}
+        {%- if show_dynamic_checkout -%}
+          <div class="dynamic-checkout{% if cant_sell %} hidden{% endif %}">
+            {{ form | payment_button }}
+          </div>
+        {%- endif -%}
+
+        {%- if show_notify_form -%}
+          <modal-opener
+            id="Notify-Email-Button-{{ section_id }}"
+            class="notify-email-button button button--full{% unless cant_sell %} hidden{% endunless %}"
+            role="button"
+            aria-haspopup="dialog"
+            aria-expanded="false"
+            aria-controls="Notify-Email-{{ section_id }}"
+            tabindex="0"
+          >
+            {{ 'products.product.notify_me' | t }}
+          </modal-opener>
+        {%- endif -%}
+      </div>
+    {%- endform -%}
+  </product-form>
+{%- else -%}
+  <div class="product-form">
+    <div class="product-form-buttons">
+      <button
+        class="add-cart-button button button--full button--primary"
+        type="submit"
+        name="add"
+        disabled
+      >
+        {{ 'products.product.sold_out' | t }}
+      </button>
+    </div>
+  </div>
+{%- endif -%}

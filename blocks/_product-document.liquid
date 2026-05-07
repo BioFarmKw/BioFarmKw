@@ -1,0 +1,52 @@
+{% render 'file-item',
+  type: block.settings.file_type,
+  name: block.settings.file_name,
+  link: block.settings.file_link,
+  class: 'shopify-block product-document-block',
+  block: block
+%}
+{% schema %}
+{
+  "name": "t:blocks._product-document.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "file_type",
+      "label": "t:sections.all.file.type.label",
+      "options": [
+        {
+          "value": "pdf",
+          "label": "t:sections.all.file.type.options__1.label"
+        },
+        {
+          "value": "image",
+          "label": "t:sections.all.file.type.options__2.label"
+        },
+        {
+          "value": "file",
+          "label": "t:sections.all.file.type.options__3.label"
+        }
+      ],
+      "default": "pdf"
+    },
+    {
+      "type": "url",
+      "id": "file_link",
+      "label": "t:sections.all.file.link.label",
+      "info": "t:sections.all.file.link.info"
+    },
+    {
+      "type": "text",
+      "id": "file_name",
+      "label": "t:sections.all.file.name.label",
+      "default": "File name"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._product-document.presets.name"
+    }
+  ]
+}
+{% endschema %}

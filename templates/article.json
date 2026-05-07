@@ -1,0 +1,70 @@
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "settings": {
+        "color_scheme": "",
+        "alignment": "left",
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "main-article": {
+      "type": "main-article",
+      "blocks": {
+        "image_text_8f6R7b": {
+          "type": "image_text",
+          "settings": {
+            "image_ratio": "landscape",
+            "heading": "Don’t Miss Out",
+            "description": "<p>Enjoy exclusive savings for a limited time only.</p>",
+            "button_label": "View Details"
+          }
+        },
+        "related_articles_qt8HHC": {
+          "type": "related_articles",
+          "settings": {
+            "title": "Related Articles",
+            "limit": 3,
+            "show_date": true,
+            "show_author": true,
+            "enable_truncate_title": false,
+            "mobile_hide": false
+          }
+        },
+        "related_products_TR6HYe": {
+          "type": "related_products",
+          "settings": {
+            "title": "Related Products",
+            "related_type": "auto",
+            "products": [],
+            "metafield": "",
+            "limit": 3,
+            "enable_truncate_title": false,
+            "mobile_hide": false
+          }
+        }
+      },
+      "block_order": [
+        "image_text_8f6R7b",
+        "related_articles_qt8HHC",
+        "related_products_TR6HYe"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "text_alignment": "center",
+        "enable_share": true,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "main-article"
+  ]
+}

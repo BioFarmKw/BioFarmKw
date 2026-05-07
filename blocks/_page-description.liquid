@@ -1,0 +1,36 @@
+<div
+  class="shopify-block page-description-block text-content-description{% if block.settings.color_light %} light{% endif %}"
+  {{ block.shopify_attributes }}
+>
+  {% assign description_id = 'Expandable-Container-' | append: block.id %}
+  {% render 'limit-height-description',
+    id: description_id,
+    content: page.content,
+    if_limit_height: block.settings.limit_description_height
+  %}
+</div>
+{% schema %}
+{
+  "name": "t:blocks._page-description.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "color_light",
+      "label": "t:sections.all.text-content.text.light.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "limit_description_height",
+      "label": "t:sections.all.text-content.description.limit_height.label",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._page-description.presets.name"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,124 @@
+<li
+  id="Slide-{{ section.id }}-{{ block.id }}"
+  class="shopify-block testimonial-block content-group text-align--center slider-slide grid-item focus-inset"
+  tabindex="0"
+  {{ block.shopify_attributes }}
+>
+  {%- if block.settings.image != blank or block.settings.product != blank -%}
+    <div class="testimonial-image media media--{{ section.settings.image_ratio | default: 'landscape' }}">
+      {% assign image = block.settings.image | default: block.settings.product.featured_image %}
+      {% render 'lazy-image', image_object: image, sizes: '(min-width: 750px) 500px, 100vw', placeholder: 'image' %}
+      {%- if block.settings.product != blank -%}
+        <div class="media-content">
+          <modal-opener
+            class="quick-view-button button button--icon button--pill button--float has-loading"
+            data-product-handle="{{ block.settings.product.handle }}"
+            data-product-url="{{ block.settings.product.url }}"
+            role="button"
+            aria-haspopup="dialog"
+            aria-expanded="false"
+            aria-controls="Product-Quick-View-Drawer"
+            aria-label="{{ 'products.card.quick_view' | t }}"
+            tabindex="0"
+          >
+            <span class="button-text loading-hidden">
+              {% render 'icon-sets-basic', icon: 'buy' %}
+            </span>
+            <span class="loading-overlay"></span>
+          </modal-opener>
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+  <div class="testimonial-content">
+    {{ block.settings.content }}
+  </div>
+  {%- if block.settings.show_rating -%}
+    <div class="testimonial-rating">
+      {% render 'star-rating', rating_value: block.settings.rating, 5 %}
+    </div>
+  {%- endif -%}
+  <div class="testimonial-author">
+    {%- if block.settings.author_avatar != blank -%}
+      <span class="author-avatar media media--square media--circle">
+        {{ block.settings.author_avatar | image_url: width: 200 | image_tag }}
+      </span>
+    {%- endif -%}
+    <small class="author-name">{{ block.settings.author_name | escape }}</small>
+    {%- if block.settings.show_verified -%}
+      {% render 'icon-sets', icon: 'verified' %}
+    {%- endif -%}
+  </div>
+</li>
+{% schema %}
+{
+  "name": "t:blocks._testimonial.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "label": "t:blocks._testimonial.settings.show_rating.label",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "rating",
+      "label": "t:blocks._testimonial.settings.rating.label",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5,
+      "visible_if": "{{ block.settings.show_rating }}"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "content",
+      "label": "t:blocks._testimonial.settings.content.label",
+      "default": "Please share your thoughts about our service here."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.all.image.image_picker.label",
+      "info": "t:blocks._testimonial.settings.image.info"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks._testimonial.settings.header_author.content"
+    },
+    {
+      "type": "text",
+      "id": "author_name",
+      "label": "t:blocks._testimonial.settings.author_name.label",
+      "default": "Author name"
+    },
+    {
+      "type": "image_picker",
+      "id": "author_avatar",
+      "label": "t:blocks._testimonial.settings.author_avatar.label",
+      "info": "t:blocks._testimonial.settings.author_avatar.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_verified",
+      "label": "t:blocks._testimonial.settings.show_verified.label",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.product.header_product.content"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "t:sections.all.product.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._testimonial.presets.name"
+    }
+  ]
+}
+{% endschema %}

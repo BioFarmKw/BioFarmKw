@@ -1,0 +1,69 @@
+<div
+  class="shopify-block images-block images--{{ block.blocks.size | at_most: 5 }} image-angle--{{ block.settings.angle_style }}{% if block.settings.show_image_frame %} show-image-frame{% endif %}"
+  {{ block.shopify_attributes }}
+>
+  {%- for block in block.blocks limit: 5 -%}
+    <div
+      class="image-frame{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+      {% if settings.animations_reveal_on_scroll %}
+        data-cascade
+        style="--animation-order: {{ forloop.index0 }};"
+      {% endif %}
+    >
+      {% render block %}
+    </div>
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:blocks._images.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:blocks._images.settings.paragraph_content.content"
+    },
+    {
+      "type": "select",
+      "id": "angle_style",
+      "label": "t:blocks._images.settings.angle_style.label",
+      "options": [
+        {
+          "value": "clean",
+          "label": "t:blocks._images.settings.angle_style.options__1.label"
+        },
+        {
+          "value": "scattered",
+          "label": "t:blocks._images.settings.angle_style.options__2.label"
+        },
+        {
+          "value": "tilt-left",
+          "label": "t:blocks._images.settings.angle_style.options__3.label"
+        },
+        {
+          "value": "tilt-right",
+          "label": "t:blocks._images.settings.angle_style.options__4.label"
+        }
+      ],
+      "default": "scattered"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image_frame",
+      "label": "t:blocks._images.settings.show_image_frame.label",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Images"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,77 @@
+.predictive-search-main {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  overflow: hidden;
+}
+.predictive-search-main .search-results-wrapper {
+  overflow: hidden;
+}
+.predictive-search-main .search-results-wrapper .predictive-search-results {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+}
+.predictive-search-main .search-results-wrapper .predictive-search-results .tab-panel {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+}
+.predictive-search-main .search-results-wrapper .predictive-search-results .suggestion-searches {
+  margin-block-end: 1rem;
+  max-height: 20rem;
+  overflow: auto;
+}
+.predictive-search-main .search-results-wrapper .predictive-search-results .suggestion-searches .suggestion-title {
+  font-size: 0.75rem;
+  margin-block-end: 1rem;
+}
+.predictive-search-main .search-results-wrapper .predictive-search-results .suggestion-searches .suggestion-list a mark {
+  font-weight: bolder;
+  background-color: transparent;
+  color: inherit;
+}
+.predictive-search-main .search-results-wrapper .predictive-search-results .suggestion-searches .suggestion-list a span {
+  opacity: 0.75;
+}
+.predictive-search-main .search-results-wrapper .predictive-search-results .alert-message {
+  margin-block-end: 1rem;
+}
+.predictive-search-main .search-results-wrapper .tab-panel-tabs {
+  border-block-end: 1px solid rgba(var(--color-foreground), 0.1);
+}
+.predictive-search-main .search-results-wrapper .tab-panel-tabs .tab {
+  padding-block: 0.5rem;
+  padding-inline: 0;
+  font-size: 0.875rem;
+}
+.predictive-search-main .search-results-wrapper .tab-panel-tabs .tab .count {
+  display: inline-block;
+  transform: translateY(-0.5rem);
+  font-size: 0.75rem;
+  opacity: 0.5;
+}
+.predictive-search-main .search-results-wrapper .tab-panel-panels {
+  overflow: auto;
+  padding-block-start: 1rem;
+  padding-block-end: 1rem;
+}
+.predictive-search-main .search-results-wrapper .tab-panel-panels .card:not(:last-child) {
+  margin-block-end: 0.5rem;
+}
+.predictive-search-main .loading-placeholder .tab-placeholder-list {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-block-end: 1rem;
+}
+.predictive-search-main .loading-placeholder .tab-placeholder-list .placeholder {
+  height: 2rem;
+  width: 6rem;
+}
+.predictive-search-main .loading-placeholder .panel-placeholder .placeholder {
+  height: 6rem;
+  margin-block-end: 0.5rem;
+}
+.predictive-search-main .loading-placeholder .panel-placeholder .placeholder:last-child {
+  margin-block-end: 0;
+}

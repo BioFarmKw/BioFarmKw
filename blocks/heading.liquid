@@ -1,0 +1,152 @@
+<h{{ block.settings.type }}
+  class="shopify-block heading-block heading-size--{{ block.settings.size }}{% if block.settings.uppercase %} uppercase{% endif %}{% if block.settings.enable_highlight_text %} has-highlight-text{% endif %}"
+  data-highlight-type="{{ block.settings.highlight_type }}"
+  style="--color-highlight-text: {{ block.settings.highlight_color }};"
+  {{ block.shopify_attributes }}
+>
+  {{ block.settings.content }}
+</h{{ block.settings.type }}>
+
+{% schema %}
+{
+  "name": "t:blocks.heading.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "content",
+      "label": "t:sections.all.text-content.content.label",
+      "default": "Add Heading here"
+    },
+    {
+      "type": "select",
+      "id": "type",
+      "label": "t:sections.all.text-content.heading.type.label",
+      "options": [
+        {
+          "value": "1",
+          "label": "H1"
+        },
+        {
+          "value": "2",
+          "label": "H2"
+        },
+        {
+          "value": "3",
+          "label": "H3"
+        },
+        {
+          "value": "4",
+          "label": "H4"
+        },
+        {
+          "value": "5",
+          "label": "H5"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "select",
+      "id": "size",
+      "options": [
+        {
+          "value": "mini",
+          "label": "t:sections.all.text-content.heading.size.options__5.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.all.text-content.heading.size.options__1.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.all.text-content.heading.size.options__2.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.all.text-content.heading.size.options__3.label"
+        },
+        {
+          "value": "s-large",
+          "label": "t:sections.all.text-content.heading.size.options__4.label"
+        }
+      ],
+      "default": "small",
+      "label": "t:sections.all.text-content.heading.size.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "uppercase",
+      "label": "t:sections.all.text-content.heading.uppercase.label",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.heading.settings.header_highlight.content"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:blocks.heading.settings.paragraph_highlight.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_highlight_text",
+      "label": "t:blocks.heading.settings.enable_highlight_text.label",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "highlight_type",
+      "label": "t:blocks.heading.settings.highlight_type.label",
+      "options": [
+        {
+          "value": "color",
+          "label": "t:blocks.heading.settings.highlight_type.options__1.label"
+        },
+        {
+          "value": "script",
+          "label": "t:blocks.heading.settings.highlight_type.options__9.label"
+        },
+        {
+          "value": "background",
+          "label": "t:blocks.heading.settings.highlight_type.options__2.label"
+        },
+        {
+          "value": "underline",
+          "label": "t:blocks.heading.settings.highlight_type.options__3.label"
+        },
+        {
+          "value": "hollow",
+          "label": "t:blocks.heading.settings.highlight_type.options__4.label"
+        },
+        {
+          "value": "hand-drawn-wave",
+          "label": "t:blocks.heading.settings.highlight_type.options__6.label"
+        },
+        {
+          "value": "hand-drawn-circle",
+          "label": "t:blocks.heading.settings.highlight_type.options__7.label"
+        },
+        {
+          "value": "hand-drawn-underline",
+          "label": "t:blocks.heading.settings.highlight_type.options__8.label"
+        }
+      ],
+      "default": "color",
+      "visible_if": "{{ block.settings.enable_highlight_text }}"
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "t:blocks.heading.settings.highlight_color.label",
+      "default": "#FF0000",
+      "visible_if": "{{ block.settings.enable_highlight_text and block.settings.highlight_type != 'hollow' }}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks.heading.presets.name"
+    }
+  ]
+}
+{% endschema %}

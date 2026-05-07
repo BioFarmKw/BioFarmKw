@@ -1,0 +1,466 @@
+{% doc %}
+  Header Drawer Menu
+
+  @description
+  Renders the third-level menu list in the drawer menu with optional images, icons, bubbles, and custom links.
+
+  @param {string} id - Element ID
+  @param {object} link - Link object
+  @param {boolean} [show_collection_image] - Show collection image
+  @param {object} [icon_settings] - Icon settings
+  @param {object} [bubble_settings] - Bubble settings
+  @param {object} [image_settings] - Image settings
+  @param {object} [image_text_settings] - Image text settings
+  @param {object} [links_settings] - Custom menu links
+  @param {object} [collections_settings] - Featured collections
+
+  @example
+  {% render 'header-drawer-menu', link: link %}
+{% enddoc %}
+
+<ul class="drawer-menu-list first-level-menu list-unstyled">
+  {% assign menu_link = link %}
+  {%- for link in menu_link.links -%}
+    {% liquid
+      assign icon_setting = icon_settings | where: 'target_id', forloop.index | last
+      assign bubble_setting = bubble_settings | where: 'target_id', forloop.index | last
+      assign images = image_settings | where: 'target_id', forloop.index | where: 'hide_on_mobile', false
+      assign image_texts = image_text_settings | where: 'target_id', forloop.index | where: 'hide_on_mobile', false
+      assign custom_links = links_settings | where: 'target_id', forloop.index | where: 'hide_on_mobile', false
+      assign custom_collections = collections_settings | where: 'target_id', forloop.index | where: 'hide_on_mobile', false
+    %}
+
+    {% capture menu_title %}
+        {%- if icon_setting.image != blank and icon_setting != blank -%}
+            <span class="media media--square">
+          {{- icon_setting.image | image_url: width: 200 | image_tag -}}
+        </span>
+        {%- elsif icon_setting.icon != 'none' and icon_setting != blank -%}
+            {% render 'icon-sets', icon: icon_setting.icon %}
+        {%- elsif link.type == 'collection_link' and show_collection_image -%}
+            {% assign first_product = link.object.products | first %}
+            {%- if first_product != blank -%}
+                <span class="media media--square">
+                    {{- first_product.featured_image | image_url: width: 200 | image_tag -}}
+                </span>
+            {%- endif -%}
+        {%- endif -%}
+        {{ link.title }}
+        {%- if bubble_setting != blank -%}
+            <span class="menu-bubble"
+                  style="background: {{ bubble_setting.background_color }}; color: {{ bubble_setting.foreground_color }};"
+            >
+                {%- if bubble_setting.icon != 'none' -%}
+                    {% render 'icon-sets', icon: bubble_setting.icon %}
+                {%- endif -%}
+                    {{ bubble_setting.text }}
+            </span>
+        {%- endif -%}
+    {% endcapture %}
+    <li class="menu-item">
+      {% if link.links == blank
+        and custom_links.size <= 0
+        and images.size <= 0
+        and image_texts.size <= 0
+        and custom_collections.size <= 0
+      %}
+        <a
+          class="menu-link link"
+          href="{{ link.url }}"
+          {% if link.current %}
+            aria-current="page"
+          {% endif %}
+        >
+          {{ menu_title }}
+        </a>
+      {% else %}
+        <details-disclosure>
+          <details class="details-disclosure">
+            <summary
+              class="menu-summary"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="Drawer-Menu-List-{{ id }}-{{ link.handle | capitalize }}"
+            >
+              <a
+                class="menu-link link"
+                {% if link.url != blank and link.url != '/' %}
+                  href="{{ link.url }}"
+                  {% if link.current %}
+                    aria-current="page"
+                  {% endif %}
+                {% else %}
+                  role="link"
+                  aria-disabled="true"
+                {% endif %}
+              >
+                {{ menu_title }}
+              </a>
+              {% render 'icon-sets-basic', icon: 'caret-right', class: 'caret-icon' %}
+            </summary>
+            <div class="secondary-level-menu-wrapper drawer-level-menu-wrapper details-disclosure-content gradient">
+              <div class="drawer-content-header">
+                <div class="drawer-header-title" role="button" onclick="this.closest('details-disclosure').close();">
+                  {% render 'icon-sets-basic', icon: 'caret-left', class: 'caret-icon' %}
+                  <b>{{ link.title }}</b>
+                </div>
+              </div>
+              <ul
+                id="Drawer-Menu-List-{{ id }}-{{ link.handle | capitalize }}"
+                class="drawer-content-list list-unstyled"
+              >
+                {%- for childlink in link.links -%}
+                  <li class="menu-item">
+                    {%- if childlink.links == blank -%}
+                      <a
+                        class="menu-link link"
+                        {% if childlink.url != blank and childlink.url != '/' %}
+                          href="{{ childlink.url }}"
+                        {% else %}
+                          role="link"
+                          aria-disabled="true"
+                        {% endif %}
+                        {% if link.current %}
+                          aria-current="page"
+                        {% endif %}
+                      >
+                        {{- childlink.title -}}
+                      </a>
+                    {%- else -%}
+                      <details-disclosure>
+                        <details class="details-disclosure">
+                          <summary
+                            class="menu-summary"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            aria-controls="Drawer-Menu-List-{{ id }}-{{ link.handle | capitalize }}-{{ childlink.handle | capitalize }}"
+                          >
+                            <a
+                              class="menu-link link"
+                              {% if childlink.url != blank and childlink.url != '/' %}
+                                href="{{ childlink.url }}"
+                                {% if childlink.current %}
+                                  aria-current="page"
+                                {% endif %}
+                              {% else %}
+                                role="link"
+                                aria-disabled="true"
+                              {% endif %}
+                            >
+                              {{ childlink.title }}
+                            </a>
+                            {% render 'icon-sets-basic', icon: 'caret-right', class: 'caret-icon' %}
+                          </summary>
+                          <div class="third-level-menu-wrapper drawer-level-menu-wrapper details-disclosure-content gradient">
+                            <div class="drawer-content-header">
+                              <div
+                                class="drawer-header-title"
+                                role="button"
+                                onclick="this.closest('details-disclosure').close();"
+                              >
+                                {% render 'icon-sets-basic', icon: 'caret-left', class: 'caret-icon' %}
+                                <b>{{ childlink.title }}</b>
+                              </div>
+                            </div>
+                            <ul
+                              id="Drawer-Menu-List-{{ id }}-{{ link.handle | capitalize }}-{{ childlink.handle | capitalize }}"
+                              class="drawer-content-list list-unstyled"
+                            >
+                              {%- for grandchildlink in childlink.links -%}
+                                <li class="menu-item">
+                                  <a
+                                    class="menu-link link"
+                                    {% if grandchildlink.url != blank and grandchildlink.url != '/' %}
+                                      href="{{ grandchildlink.url }}"
+                                    {% else %}
+                                      role="link"
+                                      aria-disabled="true"
+                                    {% endif %}
+                                    {% if grandchildlink.current %}
+                                      aria-current="page"
+                                    {% endif %}
+                                  >
+                                    {{ grandchildlink.title }}
+                                  </a>
+                                </li>
+                              {%- endfor -%}
+                            </ul>
+                          </div>
+                        </details>
+                      </details-disclosure>
+                    {%- endif -%}
+                  </li>
+                {%- endfor -%}
+
+                {% comment %} 自定义菜单 {% endcomment %}
+                {%- for custom_link in custom_links -%}
+                  {% assign menu_heading = custom_link.heading | escape | default: custom_link.menu.title %}
+                  <li class="menu-item menu-links-item">
+                    <details-disclosure>
+                      <details class="details-disclosure">
+                        <summary
+                          class="menu-summary"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                          aria-controls="Drawer-Menu-List-{{ id }}-{{ link.handle | capitalize }}-{{ custom_link.handle | capitalize }}"
+                        >
+                          <a
+                            class="menu-link link"
+                            {% if custom_link.link != blank and custom_link.link != '/' %}
+                              href="{{ custom_link.link }}"
+                              {% if custom_link.open_in_new_tab %}
+                                target="_blank"
+                                rel="noopener nofollow"
+                              {% endif %}
+                            {% else %}
+                              role="link"
+                              aria-disabled="true"
+                            {% endif %}
+                          >
+                            {{ menu_heading }}
+                          </a>
+                          {% render 'icon-sets-basic', icon: 'caret-right', class: 'caret-icon' %}
+                        </summary>
+                        <div class="third-level-menu-wrapper drawer-level-menu-wrapper details-disclosure-content gradient">
+                          <div class="drawer-content-header">
+                            <div
+                              class="drawer-header-title"
+                              role="button"
+                              onclick="this.closest('details-disclosure').close();"
+                            >
+                              {% render 'icon-sets-basic', icon: 'caret-left', class: 'caret-icon' %}
+                              <b>{{ menu_heading }}</b>
+                            </div>
+                          </div>
+                          <ul
+                            id="Drawer-Menu-List-{{ id }}-{{ link.handle | capitalize }}-{{ custom_link.handle | capitalize }}"
+                            class="drawer-content-list list-unstyled"
+                          >
+                            {%- if custom_link.image != blank -%}
+                              <li class="menu-item-image menu-item">
+                                <span class="image-media{% unless custom_link.image_ratio == 'adapt' %} media media--{{ custom_link.image_ratio }}{% endunless %}">
+                                  {% render 'lazy-image',
+                                    image_object: custom_link.image,
+                                    widths: '165, 360, 450, 660, 900, 1320'
+                                  %}
+                                </span>
+                              </li>
+                            {%- endif -%}
+                            {%- for child_link in custom_link.menu.links -%}
+                              <li class="menu-item">
+                                <a
+                                  class="menu-link link"
+                                  {% if child_link.url != blank and child_link.url != '/' %}
+                                    href="{{ child_link.url }}"
+                                  {% else %}
+                                    role="link"
+                                    aria-disabled="true"
+                                  {% endif %}
+                                  {% if child_link.current %}
+                                    aria-current="page"
+                                  {% endif %}
+                                >
+                                  {{ child_link.title }}
+                                </a>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        </div>
+                      </details>
+                    </details-disclosure>
+                  </li>
+                {%- endfor -%}
+
+                {% comment %} 自定义产品系列 {% endcomment %}
+                {%- for custom_collection in custom_collections -%}
+                  {%- for collection in custom_collection.collection_list %}
+                    <li class="menu-item menu-collection-item">
+                      <details-disclosure>
+                        <details class="details-disclosure">
+                          <summary
+                            class="menu-summary"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            aria-controls="Drawer-Menu-List-{{ id }}-{{ link.handle | capitalize }}-{{ collection.handle | capitalize }}"
+                          >
+                            <a
+                              class="menu-link link"
+                              href="{{ collection.url }}"
+                            >
+                              {%- if custom_collection.show_collection_image and collection.featured_image != blank -%}
+                                <span class="media media--square">
+                                  {{ collection.featured_image | image_url: width: 200 | image_tag }}
+                                </span>
+                              {%- endif -%}
+                              {{ collection.title }}
+                            </a>
+                            {% render 'icon-sets-basic', icon: 'caret-right', class: 'caret-icon' %}
+                          </summary>
+                          <div class="third-level-menu-wrapper drawer-level-menu-wrapper details-disclosure-content gradient">
+                            <div class="drawer-content-header">
+                              <div
+                                class="drawer-header-title"
+                                role="button"
+                                onclick="this.closest('details-disclosure').close();"
+                              >
+                                {% render 'icon-sets-basic', icon: 'caret-left', class: 'caret-icon' %}
+                                <b>{{ collection.title }}</b>
+                              </div>
+                            </div>
+                            <div
+                              id="Drawer-Menu-List-{{ id }}-{{ link.handle | capitalize }}-{{ collection.handle | capitalize }}"
+                              class="drawer-content-list"
+                            >
+                              {%- for product in collection.products limit: custom_collection.limit -%}
+                                {% render 'card-product',
+                                  card_product: product,
+                                  image_width: '200px',
+                                  image_width_mobile: '200px',
+                                  show_horizontal: true,
+                                  show_quick_add: true
+                                %}
+                              {%- endfor -%}
+                            </div>
+                          </div>
+                        </details>
+                      </details-disclosure>
+                    </li>
+                  {%- endfor -%}
+                {%- endfor -%}
+
+                {% comment %} 菜单图片 {% endcomment %}
+                {%- for image in images -%}
+                  <li class="menu-item menu-image-item text-align--{{ image.alignment_mobile }}">
+                    <a
+                      class="menu-image-media media media--landscape"
+                      {% if image.link != blank %}
+                        href="{{ image.link }}"
+                        {% if image.open_in_new_tab %}
+                          target="_blank"
+                          rel="noopener nofollow"
+                        {% endif %}
+                      {% else %}
+                        aria-disabled="true"
+                        role="link"
+                      {% endif %}
+                      aria-hidden="true"
+                    >
+                      {% render 'lazy-image',
+                        has_mobile: image.image_mobile,
+                        image_object: image.image,
+                        widths: '165, 360, 450, 660, 900, 1320',
+                        placeholder: 'image'
+                      %}
+                      {% render 'lazy-image',
+                        is_mobile: true,
+                        image_object: image.image_mobile,
+                        widths: '165, 360, 450, 660, 900, 1320'
+                      %}
+
+                      {%- if image.badge_label != blank and id == 'Category' -%}
+                        <div class="media-content position-container position--{{ image.badge_position }} position-mobile--{{ image.badge_position }}">
+                          <span
+                            class="badge"
+                            style="color: {{ image.badge_foreground_color }}; background: {{ image.badge_background_color }};"
+                          >
+                            {%- if image.badge_icon != 'none' -%}
+                              {% render 'icon-sets', icon: image.badge_icon %}
+                            {%- endif -%}
+                            {{- image.badge_label | escape -}}
+                          </span>
+                        </div>
+                      {%- endif -%}
+                    </a>
+                    {%- if image.heading != empty -%}
+                      <a
+                        class="menu-image-link link link-underline"
+                        {% if image.link != blank %}
+                          href="{{ image.link }}"
+                          {% if image.open_in_new_tab %}
+                            target="_blank"
+                            rel="noopener nofollow"
+                          {% endif %}
+                        {% else %}
+                          aria-disabled="true"
+                          role="link"
+                        {% endif %}
+                      >
+                        {{- image.heading | escape -}}
+                        {%- if image.badge_label != blank and id == 'Main-Menu' -%}
+                          <span
+                            class="badge badge-size--small"
+                            style="background: {{ image.badge_background }}; color: {{ image.badge_foreground }};"
+                          >
+                            {%- if image.badge_icon != 'none' -%}
+                              {% render 'icon-sets', icon: image.badge_icon %}
+                            {%- endif -%}
+                            {{- image.badge_label | escape -}}
+                          </span>
+                        {%- endif -%}
+                      </a>
+                    {%- endif -%}
+                    {%- if image.description != empty -%}
+                      <div class="menu-image-description rte light">{{ image.description }}</div>
+                    {%- endif -%}
+                  </li>
+                {%- endfor -%}
+
+                {%- for image_text in image_texts -%}
+                  <li class="menu-item menu-image-text-item">
+                    <div class="image-text-container color-{{ image_text.color_scheme }} gradient">
+                      <div
+                        class="image-text-image media media--landscape"
+                        style="opacity: {{ image_text.image_opacity }}%;"
+                      >
+                        {% render 'lazy-image',
+                          has_mobile: image_text.image_mobile,
+                          image_object: image_text.image,
+                          widths: '165, 360, 450, 660, 900, 1320',
+                          placeholder: 'image'
+                        %}
+                        {% render 'lazy-image',
+                          is_mobile: true,
+                          image_object: image_text.image_mobile,
+                          widths: '165, 360, 450, 660, 900, 1320'
+                        %}
+                      </div>
+                      <div
+                        class="image-text-content position-container position--{{ image_text.position_mobile }} position-mobile--{{ image_text.position_mobile }}"
+                      >
+                        <div
+                          class="content-group group--compact width--small text-align--{{ image_text.text_alignment_mobile }}"
+                        >
+                          {%- if image_text.heading != blank -%}
+                            <div class="text-content-heading font-heading heading-size--{{ image_text.heading_size }}">
+                              {{ image_text.heading | escape }}
+                            </div>
+                          {%- endif -%}
+                          {%- if image_text.description != blank -%}
+                            <div class="text-content-description rte light">{{ image_text.description }}</div>
+                          {%- endif -%}
+                          {%- if image_text.button_label != blank -%}
+                            <a
+                              class="button button--{{ image_text.button_style }} button--{{ image_text.button_size }}"
+                              {% if image_text.button_link != blank %}
+                                href="{{ image_text.button_link }}"
+                              {% else %}
+                                role="link"
+                                aria-disabled="true"
+                              {% endif %}
+                            >
+                              {{ image_text.button_label | escape }}
+                            </a>
+                          {%- endif -%}
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          </details>
+        </details-disclosure>
+      {% endif %}
+    </li>
+  {%- endfor -%}
+</ul>

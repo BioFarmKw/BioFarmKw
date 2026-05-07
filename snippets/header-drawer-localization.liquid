@@ -1,0 +1,137 @@
+{% doc %}
+  Header Drawer Localization
+
+  @description
+  Renders a country selector within the drawer menu.
+
+  @example
+  {% render 'header-drawer-localization' %}
+{% enddoc %}
+
+<ul class="drawer-localization drawer-menu-list first-level-menu list-unstyled">
+  {%- if localization.available_countries.size > 1 -%}
+    <li class="menu-item">
+      <details-disclosure>
+        <details class="details-disclosure">
+          <summary
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="Drawer-Country-List"
+          >
+            <a
+              class="menu-link link"
+              aria-disabled="true"
+              role="link"
+            >
+              {{ localization.country | image_url: width: 60 | image_tag: loading: 'lazy', class: 'country-flag' }}
+              {{- localization.country.name }} |
+              {{ localization.country.currency.iso_code }}
+              {{ localization.country.currency.symbol -}}
+            </a>
+            {% render 'icon-sets-basic', icon: 'caret-right', class: 'caret-icon' %}
+          </summary>
+          <div class="secondary-level-menu-wrapper drawer-level-menu-wrapper details-disclosure-content gradient">
+            <div class="drawer-content-header">
+              <div class="drawer-header-title" role="button" onclick="this.closest('details-disclosure').close();">
+                {% render 'icon-sets-basic', icon: 'caret-left', class: 'caret-icon' %}
+                <b>{{ 'localization.country_or_region' | t }}</b>
+              </div>
+            </div>
+            <link-form class="drawer-content-list link-form d-block">
+              {%- form 'localization', id: 'Country-Localization-Form', class: 'localization-form' -%}
+                <ul
+                  id="Drawer-Country-List"
+                  class="list-unstyled"
+                >
+                  {%- for country in localization.available_countries -%}
+                    <li class="menu-item{% if country.iso_code == localization.country.iso_code %} item-selected{% endif %}">
+                      <a
+                        class="menu-link form-link link"
+                        href="#"
+                        {% if country.iso_code == localization.country.iso_code %}
+                          aria-current="true"
+                        {% endif %}
+                        data-value="{{ country.iso_code }}"
+                      >
+                        {{ country | image_url: width: 60 | image_tag: loading: 'lazy', class: 'country-flag' }}
+                        <span class="country-name">
+                          {{ country.name }} |
+                          {{ country.currency.iso_code }}
+                          {{ country.currency.symbol }}
+                        </span>
+                        {%- if country.iso_code == localization.country.iso_code -%}
+                          {% render 'icon-sets-basic', icon: 'check' %}
+                          <span class="visually-hidden">{{ 'accessibility.selected' | t }}</span>
+                        {%- endif -%}
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+                <input class="link-value" type="hidden" name="country_code" value="{{ localization.country.iso_code }}">
+              {% endform %}
+            </link-form>
+          </div>
+        </details>
+      </details-disclosure>
+    </li>
+  {%- endif -%}
+  {%- if localization.available_languages.size > 1 -%}
+    <li class="menu-item">
+      <details-disclosure>
+        <details class="details-disclosure">
+          <summary
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="Drawer-Language-List"
+          >
+            <a
+              class="menu-link link"
+              aria-disabled="true"
+              role="link"
+            >
+              {% render 'icon-sets-basic', icon: 'language' %}
+              {{ localization.language.endonym_name | capitalize }}
+            </a>
+            {% render 'icon-sets-basic', icon: 'caret-right', class: 'caret-icon' %}
+          </summary>
+          <div class="secondary-level-menu-wrapper drawer-level-menu-wrapper details-disclosure-content gradient">
+            <div class="drawer-content-header">
+              <div class="drawer-header-title" role="button" onclick="this.closest('details-disclosure').close();">
+                {% render 'icon-sets-basic', icon: 'caret-left', class: 'caret-icon' %}
+                <b>{{ 'localization.language' | t }}</b>
+              </div>
+            </div>
+            <link-form class="drawer-content-list link-form d-block">
+              {%- form 'localization', id: 'Language-Localization-Form', class: 'localization-form' -%}
+                <ul
+                  id="Drawer-Language-List"
+                  class="list-unstyled"
+                >
+                  {%- for language in localization.available_languages -%}
+                    <li class="menu-item{% if language.iso_code == localization.language.iso_code %} item-selected{% endif %}">
+                      <a
+                        class="menu-link form-link link"
+                        href="#"
+                        {% if language.iso_code == localization.language.iso_code %}
+                          aria-current="true"
+                        {% endif %}
+                        data-value="{{ language.iso_code }}"
+                      >
+                        <span class="language-name">{{ language.endonym_name | capitalize }}</span>
+                        {%- if language.iso_code == localization.language.iso_code -%}
+                          {% render 'icon-sets-basic', icon: 'check' %}
+                          <span class="visually-hidden">{{ 'accessibility.selected' | t }}</span>
+                        {%- endif -%}
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+                <input class="link-value" type="hidden" name="locale_code" value="{{ localization.language.iso_code }}">
+              {% endform %}
+            </link-form>
+          </div>
+        </details>
+      </details-disclosure>
+    </li>
+  {%- endif -%}
+</ul>

@@ -1,0 +1,179 @@
+{% liquid
+  assign perfect_size_mobile = '14rem'
+  if block.settings.card_size == 'medium'
+    assign min_size = '20rem'
+    assign min_size_mobile = '12rem'
+    assign perfect_size = '22rem'
+  elsif block.settings.card_size == 'large'
+    assign min_size = '24rem'
+    assign min_size_mobile = '14rem'
+    assign perfect_size = '24rem'
+  elsif block.settings.card_size == 'mini'
+    assign min_size = '14rem'
+    assign min_size_mobile = '10rem'
+    assign perfect_size = '16rem'
+  else
+    assign min_size = '15rem'
+    assign min_size_mobile = '10rem'
+    assign perfect_size = '18rem'
+  endif
+%}
+
+<recently-viewed
+  class="shopify-block recently-viewed-block"
+  data-search-url="{{ routes.search_url }}"
+  data-section="{{ section.id }}"
+  data-limit="{{ block.settings.limit }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="products-container">
+    <ul
+      class="placeholder-list{% if block.settings.slider_on_desktop %} placeholder-slider-desktop{% endif %}{% if block.settings.slider_on_mobile %} placeholder-slider-mobile{% endif %} auto-grid list-unstyled"
+      style="--item-min-size: {{ min_size }}; --item-perfect-size: {{ perfect_size }}; --item-min-size-mobile: {{ min_size_mobile }}; --item-perfect-size-mobile: {{ perfect_size_mobile }};"
+    >
+      {%- for i in (1..block.settings.limit) -%}
+        <li class="grid-item">
+          {% render 'card-placeholder', image_ratio: block.settings.image_ratio %}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+
+  {%- if search.performed and search.results.size > 0 -%}
+    <template>
+      {% render 'list-products',
+        products: search.results,
+        section_id: section.id,
+        products_limit: block.settings.limit,
+        slider_on_desktop: block.settings.slider_on_desktop,
+        slider_on_mobile: block.settings.slider_on_mobile,
+        show_seek_bar: block.settings.show_seek_bar,
+        show_nav_buttons: block.settings.show_nav_buttons,
+        color_scheme: block.settings.color_scheme,
+        image_ratio: block.settings.image_ratio,
+        min_size: min_size,
+        perfect_size: perfect_size,
+        min_size_mobile: min_size_mobile,
+        perfect_size_mobile: perfect_size_mobile,
+        text_alignment: block.settings.text_alignment,
+        show_wrapper: block.settings.show_card_wrapper
+      %}
+    </template>
+  {%- endif -%}
+</recently-viewed>
+
+<script src="{{ 'recently-viewed.js' | asset_url }}" defer></script>
+{% schema %}
+{
+  "name": "t:blocks._recently-viewed.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "range",
+      "id": "limit",
+      "min": 5,
+      "max": 30,
+      "step": 1,
+      "default": 8,
+      "label": "t:sections.all.limit.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.layout.header_slider.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "slider_on_desktop",
+      "label": "t:sections.all.slider.enable_desktop_slider.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_nav_buttons",
+      "label": "t:sections.all.slider.show_nav_buttons.label",
+      "default": true,
+      "visible_if": "{{ block.settings.slider_on_desktop }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_seek_bar",
+      "label": "t:sections.all.slider.show_seek_bar.label",
+      "default": true,
+      "visible_if": "{{ block.settings.slider_on_desktop }}"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.card.header_content"
+    },
+    {
+      "type": "select",
+      "id": "card_size",
+      "label": "t:sections.all.card.card_size.label",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:sections.all.card.card_size.options_1.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.all.card.card_size.options_2.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.all.card.card_size.options_3.label"
+        }
+      ],
+      "default": "small"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "t:sections.all.image.image_ratio.label",
+      "options": [
+        {
+          "value": "square",
+          "label": "t:sections.all.image.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.all.image.image_ratio.options__2.label"
+        },
+        {
+          "value": "landscape",
+          "label": "t:sections.all.image.image_ratio.options__3.label"
+        }
+      ],
+      "default": "square"
+    },
+    {
+      "type": "text_alignment",
+      "id": "text_alignment",
+      "label": "t:sections.all.text-alignment.label",
+      "default": "center"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_card_wrapper",
+      "label": "t:sections.all.card.show_card_wrapper.label",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.card.wrapper_color_scheme.label",
+      "default": "scheme-2",
+      "visible_if": "{{ block.settings.show_card_wrapper }}"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.mobile.header_content"
+    },
+    {
+      "type": "checkbox",
+      "id": "slider_on_mobile",
+      "label": "t:sections.all.slider.enable_mobile_slider.label",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

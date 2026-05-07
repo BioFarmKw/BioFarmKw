@@ -1,0 +1,41 @@
+<a
+  class="shopify-block link-block link link-text show-underline"
+  href="{{ block.settings.link }}"
+  {% if block.settings.open_in_new_tab %}
+    target="_blank"
+    rel="noopener nofollow"
+  {% endif %}
+  {{ block.shopify_attributes }}
+>
+  {{- block.settings.text | escape -}}
+</a>
+{% schema %}
+{
+  "name": "t:blocks._link.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "t:sections.all.text-content.text.label",
+      "default": "Link text"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:sections.all.link.url.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_in_new_tab",
+      "label": "t:sections.all.link.open_in_new_tab.label",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._link.presets.name"
+    }
+  ]
+}
+{% endschema %}

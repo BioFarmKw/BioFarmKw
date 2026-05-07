@@ -1,0 +1,220 @@
+{% layout none %}
+
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <script src="{{ 'vendor/qrcode.js' | shopify_asset_url }}" defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="{{ settings.main_color_scheme.settings.background }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    {%- assign formatted_balance = gift_card.balance | money_without_trailing_zeros | strip_html -%}
+
+    <title>{{ 'gift_cards.title' | t: value: formatted_balance, shop: shop.name }}</title>
+
+    <meta name="description" content="{{ 'gift_cards.subtext' | t }}">
+
+    {{ content_for_header }}
+
+    {%- unless settings.type_heading_font.system? and settings.type_body_font.system? -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endunless -%}
+
+    {%- unless settings.type_body_font.system? -%}
+      {% # theme-check-disable %}
+      <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
+      {% # theme-check-enable %}
+      {% liquid
+        assign body_font_thin = settings.type_body_font | font_modify: 'weight', '100'
+        assign body_font_light = settings.type_body_font | font_modify: 'weight', '300'
+        assign body_font_medium = settings.type_body_font | font_modify: 'weight', '500'
+        assign body_font_bold = settings.type_body_font | font_modify: 'weight', '700'
+        assign body_font_extra_bold = settings.type_body_font | font_modify: 'weight', '900'
+        assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
+        assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+      %}
+      {%- style -%}
+        {{ settings.type_body_font | font_face: font_display: 'swap' }}
+        {{ body_font_thin | font_face: font_display: 'swap' }}
+        {{ body_font_light | font_face: font_display: 'swap' }}
+        {{ body_font_medium | font_face: font_display: 'swap' }}
+        {{ body_font_bold | font_face: font_display: 'swap' }}
+        {{ body_font_extra_bold | font_face: font_display: 'swap' }}
+        {{ body_font_italic | font_face: font_display: 'swap' }}
+        {{ body_font_bold_italic | font_face: font_display: 'swap' }}
+      {%- endstyle -%}
+    {%- endunless -%}
+
+    {%- unless settings.type_heading_font.system? -%}
+      {% # theme-check-disable %}
+      <link rel="preload" as="font" href="{{ settings.type_heading_font | font_url }}" type="font/woff2" crossorigin>
+      {% # theme-check-enable %}
+      {% liquid
+        assign heading_font_thin = settings.type_heading_font | font_modify: 'weight', '100'
+        assign heading_font_light = settings.type_heading_font | font_modify: 'weight', '300'
+        assign heading_font_bold = settings.type_heading_font | font_modify: 'weight', '700'
+        assign heading_font_extra_bold = settings.type_heading_font | font_modify: 'weight', '900'
+      %}
+      {%- style -%}
+        {{ settings.type_heading_font | font_face: font_display: 'swap' }}
+        {{ heading_font_thin | font_face: font_display: 'swap' }}
+        {{ heading_font_light | font_face: font_display: 'swap' }}
+        {{ heading_font_bold | font_face: font_display: 'swap' }}
+        {{ heading_font_extra_bold | font_face: font_display: 'swap' }}
+      {%- endstyle -%}
+    {%- endunless -%}
+
+    {%- unless settings.type_decorative_font.system? -%}
+      {% # theme-check-disable %}
+      <link rel="preload" as="font" href="{{ settings.type_decorative_font | font_url }}" type="font/woff2" crossorigin>
+      {% # theme-check-enable %}
+      {% liquid
+        assign decorative_font_thin = settings.type_decorative_font | font_modify: 'weight', '100'
+        assign decorative_font_light = settings.type_decorative_font | font_modify: 'weight', '300'
+        assign decorative_font_bold = settings.type_decorative_font | font_modify: 'weight', '700'
+        assign decorative_font_extra_bold = settings.type_decorative_font | font_modify: 'weight', '900'
+      %}
+      {%- style -%}
+        {{ settings.type_decorative_font | font_face: font_display: 'swap' }}
+        {{ decorative_font_thin | font_face: font_display: 'swap' }}
+        {{ decorative_font_light | font_face: font_display: 'swap' }}
+        {{ decorative_font_bold | font_face: font_display: 'swap' }}
+        {{ decorative_font_extra_bold | font_face: font_display: 'swap' }}
+      {%- endstyle -%}
+    {%- endunless -%}
+
+    {% style %}
+      {% assign scheme_classes = '' %}
+      {%- for scheme in settings.color_schemes -%}
+        {% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
+
+        .color-{{ scheme.id }} {
+        --color-background: {{ scheme.settings.background.red }},{{ scheme.settings.background.green }},{{ scheme.settings.background.blue }};
+        {% if scheme.settings.background_gradient != empty %}
+          --gradient-background: {{ scheme.settings.background_gradient }};
+        {% endif %}
+        --color-foreground: {{ scheme.settings.text.red }},{{ scheme.settings.text.green }},{{ scheme.settings.text.blue }};
+
+        --color-shadow: 0,0,0;
+        --color-light: 255,255,255;
+        --color-button: {{ scheme.settings.button.red }},{{ scheme.settings.button.green }},{{ scheme.settings.button.blue }};
+        --color-button-text: {{ scheme.settings.button_label.red }},{{ scheme.settings.button_label.green }},{{ scheme.settings.button_label.blue }};
+        --color-secondary-button: {{ scheme.settings.secondary_button.red }},{{ scheme.settings.secondary_button.green }},{{ scheme.settings.secondary_button.blue }};
+        --color-secondary-button-text: {{ scheme.settings.secondary_button_label.red }},{{ scheme.settings.secondary_button_label.green }},{{ scheme.settings.secondary_button_label.blue }};
+        --color-outline: {{ scheme.settings.text.red }},{{ scheme.settings.text.green }},{{ scheme.settings.text.blue }};
+        }
+      {%- endfor %}
+
+      {{ scheme_classes | prepend: 'body' }} {
+      color: rgb(var(--color-foreground));
+      background: rgba(var(--color-background), var(--alpha-background));
+      }
+
+      :root {
+      --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+      --font-body-style: {{ settings.type_body_font.style }};
+      --font-body-weight: {{ settings.type_body_font.weight }};
+      --font-body-weight-bold: {{ settings.type_body_font.weight | plus: 300 | at_most: 1000 }};
+      {%- case settings.body_font_spacing -%}
+        {% when 'tight' %}
+          --font-body-letter-spacing: 0.02em;
+        {% when 'loose' %}
+          --font-body-letter-spacing: 0.08em;
+        {% else %}
+          --font-body-letter-spacing: normal;
+      {%- endcase -%}
+
+      --font-heading-family: {{ settings.type_heading_font.family }}, {{ settings.type_heading_font.fallback_families }};
+      --font-heading-style: {{ settings.type_heading_font.style }};
+      --font-heading-weight: {{ settings.type_heading_font.weight }};
+      {%- case settings.heading_font_spacing -%}
+        {% when 'tight' %}
+          --font-heading-letter-spacing: 0.02em;
+        {% when 'loose' %}
+          --font-heading-letter-spacing: 0.08em;
+        {% when 'wide' %}
+          --font-heading-letter-spacing: 0.12em;
+        {% else %}
+          --font-heading-letter-spacing: normal;
+      {%- endcase -%}
+
+      --font-decorative-family: {{ settings.type_decorative_font.family }}, {{ settings.type_decorative_font.fallback_families }};
+      --font-decorative-style: {{ settings.type_decorative_font.style }};
+      {%- case settings.decorative_font_spacing -%}
+        {% when 'tight' %}
+          --font-decorative-letter-spacing: 0.02em;
+        {% when 'loose' %}
+          --font-decorative-letter-spacing: 0.08em;
+        {% when 'wide' %}
+          --font-decorative-letter-spacing: 0.12em;
+        {% else %}
+          --font-decorative-letter-spacing: normal;
+      {%- endcase -%}
+
+      {% if settings.enable_full_width %}
+        --page-width: 100%;
+      {% else %}
+        --page-width: {{ settings.page_width }}px;
+      {% endif %}
+      }
+
+      *,
+      *::before,
+      *::after {
+      box-sizing: inherit;
+      }
+
+      html {
+      box-sizing: border-box;
+      font-size: 16px;
+      height: 100%;
+      -webkit-text-size-adjust: 100%; /* 防止 Safari 和 Chrome 自动调整文本大小 */
+      text-size-adjust: 100%;
+      }
+
+      @media screen and (max-width: 749px) {
+      html{
+      font-size: 14px;
+      }
+      }
+
+      body {
+      display: flex;
+      flex-flow: column;
+      min-height: 100vh;
+      margin: 0;
+      line-height: 1.4;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      font-family: var(--font-body-family);
+      font-style: var(--font-body-style);
+      letter-spacing: var(--font-body-letter-spacing);
+      font-weight: normal;
+      }
+
+      main {
+      flex: 1 1 auto;
+      }
+    {% endstyle %}
+    <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+      if (Shopify.designMode) {
+        document.documentElement.classList.add('shopify-design-mode');
+      }
+    </script>
+
+    {{ 'style.css' | asset_url | stylesheet_tag }}
+  </head>
+
+  <body class="color-{{ settings.main_color_scheme }} gradient">
+    <main id="MainContent" class="focus-none" role="main" tabindex="-1">
+      {% section 'main-gift-card' %}
+    </main>
+  </body>
+</html>

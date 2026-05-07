@@ -1,0 +1,55 @@
+<div class="shopify-block custom-checkbox-field-block checkbox" {{ block.shopify_attributes }}>
+  <label class="field-label">
+    <input
+      type="checkbox"
+      id="Custom-Checkbox-Field-{{ section.id }}-{{ block.id }}"
+      name="Contact[{{ block.settings.name | escape }}]"
+      value="{{ block.settings.name | escape }}"
+      {% if block.settings.if_required %}
+        aria-required="true"
+        required
+      {% endif %}
+      {% if block.settings.default_checked %}
+        checked
+      {% endif %}
+    >
+    <span class="input-face">
+      <span></span>
+    </span>
+    <span>
+      {{- block.settings.name | escape -}}
+      {%- if block.settings.if_required %}*{% endif -%}
+    </span>
+  </label>
+</div>
+
+{% schema %}
+{
+  "name": "t:blocks._custom-checkbox-field.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "name",
+      "label": "t:blocks._custom-input-field.settings.name.label",
+      "default": "Filed name"
+    },
+    {
+      "type": "checkbox",
+      "id": "default_checked",
+      "label": "t:blocks._custom-checkbox-field.settings.default_checked.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "if_required",
+      "label": "t:blocks._custom-input-field.settings.if_required.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._custom-checkbox-field.presets.name"
+    }
+  ]
+}
+{% endschema %}

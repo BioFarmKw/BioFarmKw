@@ -1,0 +1,4566 @@
+{
+  "settings_schema": {
+    "layout": {
+      "name": "Düzen",
+      "settings": {
+        "enable_rtl": {
+          "label": "RTL Etkinleştir",
+          "info": "Arapça veya İbranice gibi diller için düzen yönünü sağdan sola değiştirir."
+        },
+        "rtl_languages": {
+          "label": "RTL destekleyen diller",
+          "info": "[ISO dil kodlarını](https://www.loc.gov/standards/iso639-2/php/code_list.php) virgülle ayırarak girin. Tüm diller için boş bırakın."
+        },
+        "page_width": {
+          "label": "Sayfa genişliği"
+        }
+      }
+    },
+    "transparent_header": {
+      "name": "Şeffaf başlık",
+      "transparent_logo": {
+        "info": "Şeffaf sayfa etkin olduğunda geçerlidir"
+      },
+      "transparent_foreground_color": {
+        "label": "Ön plan rengi"
+      },
+      "header_pages": {
+        "content": "Etkinleştirilen sayfalar"
+      },
+      "enable_transparent_header_index": {
+        "label": "Anasayfa"
+      },
+      "enable_transparent_header_collections": {
+        "label": "Koleksiyonlar"
+      },
+      "transparent_collections_templates": {
+        "label": "Koleksiyon şablonları",
+        "info": "Birden çok şablonu virgülle ayırın. Tüm koleksiyon şablonları için boş bırakın."
+      },
+      "enable_transparent_header_collections_list": {
+        "label": "Koleksiyon listesi"
+      },
+      "enable_transparent_header_search": {
+        "label": "Arama"
+      },
+      "enable_transparent_header_pages": {
+        "label": "Sayfalar"
+      },
+      "transparent_pages_templates": {
+        "label": "Sayfa şablonları",
+        "info": "Birden çok şablonu virgülle ayırın. Tüm sayfa şablonları için boş bırakın."
+      }
+    },
+    "colors": {
+      "name": "Renkler",
+      "settings": {
+        "header_background": {
+          "content": "Arka plan renkleri"
+        },
+        "background": {
+          "label": "Arka plan"
+        },
+        "background_gradient": {
+          "label": "Gradyan arka plan",
+          "info": "Daha dinamik görseller için gradyan arka plan rengi ayarlayın."
+        },
+        "header_text": {
+          "content": "Metin renkleri"
+        },
+        "text": {
+          "label": "Metin"
+        },
+        "sale_price": {
+          "label": "İndirimli fiyat"
+        },
+        "header_button": {
+          "content": "Düğme renkleri"
+        },
+        "button": {
+          "label": "Birincil düğme arka planı"
+        },
+        "button_label": {
+          "label": "Birincil düğme etiketi"
+        },
+        "secondary_button": {
+          "label": "İkincil düğme arka planı"
+        },
+        "secondary_button_label": {
+          "label": "İkincil düğme etiketi"
+        },
+        "header_rating": {
+          "content": "Diğer renkler"
+        },
+        "rating_star": {
+          "label": "Derecelendirme yıldızı"
+        },
+        "header_page_scheme": {
+          "content": "Sayfa renk şeması"
+        },
+        "paragraph_page_scheme": {
+          "content": "Web sitesi sayfalarının genel renk şemasını yapılandırın"
+        },
+        "header_other_colors": {
+          "content": "Diğer renk tanımları"
+        },
+        "color_success": {
+          "label": "Başarı rengi",
+          "info": "Başarılı işlem veya normal durumu belirtir"
+        },
+        "color_error": {
+          "label": "Hata rengi",
+          "info": "Başarısız işlem veya hata mesajını belirtir"
+        },
+        "color_warning": {
+          "label": "Uyarı rengi",
+          "info": "Kullanıcının dikkat etmesi veya işlem yapması gereken durumu belirtir"
+        }
+      }
+    },
+    "typography": {
+      "name": "Tipografi",
+      "settings": {
+        "font_spacing": {
+          "label": "Harf aralığı",
+          "options__1": {
+            "label": "Dar"
+          },
+          "options__2": {
+            "label": "Standart"
+          },
+          "options__3": {
+            "label": "Geniş"
+          },
+          "options__4": {
+            "label": "Çok geniş"
+          }
+        },
+        "header_heading": {
+          "content": "Başlık fontu"
+        },
+        "type_heading_font": {
+          "label": "Font",
+          "info": "Farklı bir font seçmek mağaza hızını etkileyebilir. [Sistem fontları hakkında daha fazla bilgi.](https://help.shopify.com/manual/online-store/os/store-speed/improving-speed#fonts)"
+        },
+        "header_body": {
+          "content": "Gövde fontu"
+        },
+        "type_body_font": {
+          "label": "Font",
+          "info": "Farklı bir font seçmek mağaza hızını etkileyebilir. [Sistem fontları hakkında daha fazla bilgi.](https://help.shopify.com/manual/online-store/os/store-speed/improving-speed#fonts)"
+        },
+        "header_decorative": {
+          "content": "Dekoratif font"
+        },
+        "type_decorative_font": {
+          "label": "Font",
+          "info": "Sanatsal fontlar, yaratıcılığı ve özgünlüğü artırmak için el yazısı veya geleneksel olmayan stillerde seçilmelidir."
+        }
+      }
+    },
+    "icons": {
+      "name": "Simgeler",
+      "settings": {
+        "icon_style": {
+          "label": "Simge stili",
+          "options__1": {
+            "label": "Anahat"
+          },
+          "options__2": {
+            "label": "Dolu"
+          },
+          "options__3": {
+            "label": "Kaydırılmış"
+          }
+        }
+      }
+    },
+    "animations": {
+      "name": "Animasyonlar",
+      "settings": {
+        "animations_reveal_on_scroll": {
+          "label": "Kaydırırken bölümleri göster"
+        },
+        "animations_enable_image_lazy_loading": {
+          "label": "Görüntü tembel yüklemeyi etkinleştir"
+        }
+      }
+    },
+    "cards": {
+      "name": "Ürün kartları",
+      "settings": {
+        "header_media": {
+          "content": "Resim ayarları"
+        },
+        "card_hover_show_secondary_image": {
+          "label": "Üzerine gelince ikinci resmi göster"
+        },
+        "card_hover_effect": {
+          "label": "Resim geçiş efekti",
+          "options__1": {
+            "label": "Kaydır"
+          },
+          "options__2": {
+            "label": "Solma"
+          }
+        },
+        "card_show_vendor": {
+          "label": "Satıcıyı göster"
+        },
+        "card_truncate_title": {
+          "label": "Başlık uzunluğunu sınırla"
+        },
+        "card_enable_quick_buy": {
+          "label": "Hızlı satın almayı etkinleştir"
+        },
+        "card_show_low_stock": {
+          "label": "Düşük stok göster"
+        },
+        "card_low_stock_threshold": {
+          "label": "Düşük stok eşiği",
+          "info": "Düşük stok etiketi gösterilecek stok seviyesi"
+        },
+        "header_color_swatch": {
+          "content": "Renk örneği ayarları"
+        },
+        "card_enable_color_swatch": {
+          "label": "Renk örneğini etkinleştir"
+        },
+        "card_color_swatch_type": {
+          "label": "Renk örneği türü",
+          "options__1": {
+            "label": "Resim"
+          },
+          "options__2": {
+            "label": "Renk"
+          }
+        },
+        "card_round_swatches": {
+          "label": "Yuvarlak numuneler"
+        },
+        "card_active_first_swatch": {
+          "label": "Varsayılan ilk renk örneği",
+          "info": "Hover animasyonu devre dışı kalacaktır"
+        },
+        "header_card_rating": {
+          "content": "Puanlama ayarları"
+        },
+        "card_show_rating": {
+          "label": "Puanı göster"
+        },
+        "enable_rating_preview": {
+          "label": "Önizleme modunu etkinleştir",
+          "info": "Simüle edilmiş puan verilerini göster"
+        }
+      }
+    },
+    "badge": {
+      "name": "Kart rozetleri",
+      "settings": {
+        "header_sale_badge": {
+          "content": "İndirim rozeti ayarları"
+        },
+        "enable_sale_badge": {
+          "label": "İndirim rozetini etkinleştir"
+        },
+        "sale_badge_style": {
+          "label": "İndirim rozeti stili",
+          "options__1": {
+            "label": "Köşe şeridi"
+          },
+          "options__2": {
+            "label": "Rozet"
+          }
+        },
+        "sale_badge_type": {
+          "label": "İndirim rozeti türü",
+          "options__1": {
+            "label": "Metin"
+          },
+          "options__2": {
+            "label": "Tutar"
+          },
+          "options__3": {
+            "label": "Yüzde"
+          }
+        },
+        "header_new_badge": {
+          "content": "Yeni rozet ayarları"
+        },
+        "enable_new_badge": {
+          "label": "Yeni rozeti etkinleştir"
+        },
+        "new_label_basis": {
+          "label": "Yeni rozet temelinde",
+          "options__1": {
+            "label": "Yayınlanma günleri"
+          },
+          "options__2": {
+            "label": "Etiket"
+          }
+        },
+        "new_badge_tag": {
+          "label": "Yeni rozet etiketi",
+          "info": "'Etiket' seçildiğinde etkilidir"
+        },
+        "new_product_days": {
+          "label": "Yeni ürün günleri",
+          "info": "Bir ürünün yeni sayılması için geçen gün sayısını belirler. 'Yayınlanma günleri' seçeneğinde etkilidir. Bu sürede yayımlanan ürünler 'Yeni' olarak işaretlenir.",
+          "options__1": {
+            "label": "7 gün"
+          },
+          "options__2": {
+            "label": "14 gün"
+          },
+          "options__3": {
+            "label": "30 gün"
+          }
+        },
+        "header_preorder_badge": {
+          "content": "Ön sipariş rozet ayarları"
+        },
+        "enable_preorder_badge": {
+          "label": "Ön sipariş rozetini etkinleştir",
+          "info": "Etkinleştirildiğinde, ürün sayfasında ön sipariş butonu da gösterilir (ürün ön sipariş koşullarını sağlıyorsa)"
+        },
+        "header_custom_badge": {
+          "content": "Özel rozet ayarları"
+        },
+        "paragraph_custom_badge": {
+          "content": "Ürünlere _Custom Badge formatında etiket ekleyin"
+        },
+        "enable_custom_badge": {
+          "label": "Özel Rozeti Etkinleştir"
+        }
+      }
+    },
+    "social-media": {
+      "name": "Sosyal medya",
+      "settings": {
+        "header_share": {
+          "content": "Sosyal paylaşım ayarları"
+        },
+        "enable_share_facebook": {
+          "label": "Facebook'ta paylaşmayı etkinleştir"
+        },
+        "enable_share_twitter": {
+          "label": "Twitter'da paylaşmayı etkinleştir"
+        },
+        "enable_share_pinterest": {
+          "label": "Pinterest'te paylaşmayı etkinleştir"
+        },
+        "enable_share_linkedin": {
+          "label": "LinkedIn'de paylaşmayı etkinleştir"
+        },
+        "header_socials": {
+          "content": "Sosyal hesaplarım"
+        },
+        "social_twitter_link": {
+          "label": "Twitter",
+          "info": "https://twitter.com/shopify"
+        },
+        "social_facebook_link": {
+          "label": "Facebook",
+          "info": "https://facebook.com/shopify"
+        },
+        "social_pinterest_link": {
+          "label": "Pinterest",
+          "info": "https://pinterest.com/shopify"
+        },
+        "social_instagram_link": {
+          "label": "Instagram",
+          "info": "https://instagram.com/shopify"
+        },
+        "social_tiktok_link": {
+          "label": "TikTok",
+          "info": "https://tiktok.com/@shopify"
+        },
+        "social_tumblr_link": {
+          "label": "Tumblr",
+          "info": "https://shopify.tumblr.com"
+        },
+        "social_snapchat_link": {
+          "label": "Snapchat",
+          "info": "https://www.snapchat.com/add/shopify"
+        },
+        "social_youtube_link": {
+          "label": "YouTube",
+          "info": "https://www.youtube.com/shopify"
+        },
+        "social_vimeo_link": {
+          "label": "Vimeo",
+          "info": "https://vimeo.com/shopify"
+        },
+        "social_linkedin_link": {
+          "label": "LinkedIn",
+          "info": "https://linkedin.com/shopify"
+        },
+        "social_whatsapp_link": {
+          "label": "WhatsApp",
+          "info": "https://whatsapp.com/shopify"
+        },
+        "social_reddit_link": {
+          "label": "Reddit",
+          "info": "https://reddit.com/shopify"
+        },
+        "social_discord_link": {
+          "label": "Discord",
+          "info": "https://discord.gg/shopify"
+        }
+      }
+    },
+    "search-input": {
+      "name": "Arama davranışı",
+      "settings": {
+        "predictive_search_enabled": {
+          "label": "Arama önerilerini etkinleştir"
+        },
+        "search_popular_keywords": {
+          "label": "Popüler arama anahtar kelimeleri",
+          "info": "Birden fazla anahtar kelimeyi virgülle ayırın"
+        }
+      }
+    },
+    "currency-format": {
+      "name": "Para birimi formatı",
+      "settings": {
+        "content": "Para birimi kodları",
+        "paragraph": "Sepet ve ödeme sayfası fiyatlarında her zaman para birimi kodları gösterilir. Örnek: $1.00 USD.",
+        "currency_code_enabled": {
+          "label": "Para birimi kodunu göster"
+        }
+      }
+    },
+    "cart": {
+      "name": "Sepet ayarları",
+      "settings": {
+        "cart_icon": {
+          "label": "Sepet simgesi",
+          "options__1": {
+            "label": "Sepet"
+          },
+          "options__2": {
+            "label": "Çanta"
+          },
+          "options__3": {
+            "label": "Kutu"
+          }
+        },
+        "cart_type": {
+          "label": "Sepet türü",
+          "drawer": {
+            "label": "Çekmece"
+          },
+          "page": {
+            "label": "Sayfa"
+          }
+        },
+        "show_vendor": {
+          "label": "Satıcıyı göster"
+        },
+        "enable_cart_note": {
+          "label": "Sepet notunu göster"
+        },
+        "enable_cart_shipping_estimate": {
+          "label": "Kargo tahminini göster"
+        },
+        "enable_cart_coupon": {
+          "label": "Sepet kuponunu göster"
+        },
+        "header_free_shipping_progress_bar": {
+          "content": "Ücretsiz kargo ilerleme çubuğu"
+        },
+        "enable_free_shipping_progress_bar": {
+          "label": "Ücretsiz kargo ilerleme çubuğunu etkinleştir"
+        },
+        "paragraph_no_free": {
+          "content": "+ Ücretsiz kargo sağlanmadı"
+        },
+        "paragraph_free": {
+          "content": "+ Ücretsiz kargo sağlandı"
+        },
+        "shipping_text_color": {
+          "label": "Çubuğun yazı rengi"
+        },
+        "shipping_bar_color": {
+          "label": "Çubuğun arka plan rengi"
+        },
+        "free_shipping_threshold": {
+          "label": "Ücretsiz kargo sınırı",
+          "info": "Mağazanın varsayılan para biriminde tam sayı girin; diğer para birimleri için otomatik dönüştürülür."
+        },
+        "enable_free_shipping_confetti": {
+          "label": "Konfeti kutlama efektini etkinleştir",
+          "info": "Sepet ücretsiz kargo miktarına ulaştığında konfeti kutlama efekti tetiklenir"
+        }
+      }
+    },
+    "favicon": {
+      "name": "Favicon",
+      "settings": {
+        "favicon": {
+          "label": "Favicon resmi",
+          "info": "32 x 32 px boyutuna küçültülecektir"
+        }
+      }
+    },
+    "others": {
+      "name": "Diğerleri",
+      "settings": {
+        "enable_browser_tab_flash": {
+          "label": "Tarayıcı sekmesi yanıp sönmesini etkinleştir",
+          "info": "Sayfa etkin değilken dikkat çekmek için tarayıcı sekmesi başlığını değiştirir"
+        },
+        "show_section_id": {
+          "label": "Bölüm kimliğini göster",
+          "info": "Yalnızca düzenleyici modunda görünür"
+        },
+        "enable_festival_effect": {
+          "label": "Festival efektini etkinleştir"
+        },
+        "festival": {
+          "label": "Festival",
+          "options__1": {
+            "label": "Noel"
+          }
+        },
+        "enable_logo_overlay": {
+          "label": "Logo bindirmesini etkinleştir"
+        },
+        "enable_christmas_snow": {
+          "label": "Noel karını etkinleştir"
+        },
+        "christmas_snow_duration": {
+          "label": "Kar süresi"
+        },
+        "enable_footer_overlay": {
+          "label": "Altbilgi bindirmesini etkinleştir"
+        },
+        "cursor_style": {
+          "label": "İmleç stili",
+          "options__1": {
+            "label": "Varsayılan"
+          },
+          "options__2": {
+            "label": "Noel çorabı"
+          },
+          "options__3": {
+            "label": "Noel Baba şapkası"
+          },
+          "options__4": {
+            "label": "Kar tanesi"
+          }
+        },
+        "enable_category_menu_overlay": {
+          "label": "Kategori menüsü bindirmesini etkinleştir"
+        }
+      }
+    }
+  },
+  "blocks": {
+    "_author": {
+      "name": "Yazar",
+      "settings": {
+        "profile_picture": {
+          "label": "Avatar",
+          "info": "70 x 70px .jpg önerilir"
+        },
+        "avatar_size": {
+          "label": "Avatar boyutu",
+          "options__1": {
+            "label": "Küçük"
+          },
+          "options__2": {
+            "label": "Orta"
+          },
+          "options__3": {
+            "label": "Büyük"
+          }
+        },
+        "name": {
+          "label": "İsim"
+        },
+        "role": {
+          "label": "Rol"
+        }
+      },
+      "presets": {
+        "name": "Yazar"
+      }
+    },
+    "_icon-text-content": {
+      "name": "Simge metni",
+      "settings": {
+        "image": {
+          "info": "30 x 30px .jpg önerilir"
+        }
+      },
+      "presets": {
+        "name": "Simge metni"
+      }
+    },
+    "_product-list": {
+      "name": "Ürün listesi",
+      "settings": {
+        "show_view_more": {
+          "label": "Daha fazla göster"
+        },
+        "header_image": {
+          "content": "Koleksiyon resmi ayarları"
+        },
+        "image": {
+          "info": "300 x 400px .jpg önerilir"
+        }
+      }
+    },
+    "_collection": {
+      "name": "Koleksiyon",
+      "settings": {
+        "image": {
+          "info": "300 x 300px .jpg önerilir"
+        }
+      },
+      "presets": {
+        "name": "Koleksiyon"
+      }
+    },
+    "_collection-list": {
+      "name": "Koleksiyon listesi"
+    },
+    "_collection-icons": {
+      "name": "Koleksiyon simge listesi"
+    },
+    "_collection-icon": {
+      "name": "Koleksiyon simgesi",
+      "settings": {
+        "image": {
+          "info": "150 x 150px .jpg önerilir"
+        }
+      },
+      "presets": {
+        "name": "Koleksiyon simgesi"
+      }
+    },
+    "_collection-recommend": {
+      "name": "Koleksiyon önerisi",
+      "settings": {
+        "show_view_more": {
+          "label": "Daha fazla göster",
+          "info": "Ürün listesi limitin üzerindeyse bu bağlantı gösterilir"
+        }
+      }
+    },
+    "_collection-title": {
+      "name": "Koleksiyon başlığı",
+      "presets": {
+        "name": "Koleksiyon başlığı"
+      }
+    },
+    "_collection-description": {
+      "name": "Koleksiyon açıklaması",
+      "presets": {
+        "name": "Koleksiyon açıklaması"
+      }
+    },
+    "_collection-subcollections": {
+      "name": "Alt koleksiyonlar listesi",
+      "presets": {
+        "name": "Alt koleksiyonlar listesi"
+      }
+    },
+    "_collection-subcollection": {
+      "name": "Alt koleksiyon",
+      "settings": {
+        "custom_title": {
+          "label": "Özel başlık"
+        }
+      },
+      "presets": {
+        "name": "Alt koleksiyon"
+      }
+    },
+    "_rich-text": {
+      "name": "İçerik",
+      "presets": {
+        "name": "İçerik"
+      }
+    },
+    "_text-group": {
+      "name": "Metin grubu",
+      "presets": {
+        "name": "Metin grubu"
+      }
+    },
+    "_statistic": {
+      "name": "İstatistik",
+      "settings": {
+        "title": {
+          "label": "Başlık"
+        },
+        "description": {
+          "label": "Açıklama"
+        },
+        "image": {
+          "info": "30 x 30px .jpg önerilir"
+        }
+      },
+      "presets": {
+        "name": "İstatistik"
+      }
+    },
+    "_image": {
+      "name": "Görsel",
+      "settings": {
+        "image": {
+          "info": "400 x 300px .jpg önerilir"
+        },
+        "image_mobile": {
+          "info": "300 x 200px .jpg önerilir"
+        }
+      },
+      "presets": {
+        "name": "Görsel"
+      }
+    },
+    "_images": {
+      "name": "Görsel grubu",
+      "settings": {
+        "paragraph_content": {
+          "content": "En fazla 5 görsel görüntülenebilir"
+        },
+        "angle_style": {
+          "label": "Açı stili",
+          "options__1": {
+            "label": "Temiz"
+          },
+          "options__2": {
+            "label": "Dağınık"
+          },
+          "options__3": {
+            "label": "Sola eğ"
+          },
+          "options__4": {
+            "label": "Sağa eğ"
+          }
+        },
+        "show_image_frame": {
+          "label": "Görsel çerçevesini göster"
+        }
+      },
+      "presets": {
+        "name": "Görseller"
+      }
+    },
+    "_video": {
+      "name": "Video",
+      "settings": {
+        "image": {
+          "info": "400 x 400px .jpg önerilir"
+        },
+        "image_mobile": {
+          "info": "250 x 250px .jpg önerilir"
+        }
+      },
+      "presets": {
+        "name": "Video"
+      }
+    },
+    "_link": {
+      "name": "Bağlantı",
+      "presets": {
+        "name": "Bağlantı"
+      }
+    },
+    "_section-header": {
+      "name": "Bölüm başlığı",
+      "presets": {
+        "name": "Bölüm başlığı"
+      }
+    },
+    "_page-title": {
+      "name": "Sayfa başlığı",
+      "presets": {
+        "name": "Sayfa başlığı"
+      }
+    },
+    "_page-description": {
+      "name": "Sayfa açıklaması",
+      "presets": {
+        "name": "Sayfa açıklaması"
+      }
+    },
+    "_promise-list": {
+      "name": "Taahhüt listesi"
+    },
+    "_promise-item": {
+      "name": "Taahhüt öğesi",
+      "settings": {
+        "image": {
+          "info": "40 x 40px .jpg önerilir"
+        }
+      },
+      "presets": {
+        "name": "Taahhüt öğesi"
+      }
+    },
+    "_quote": {
+      "name": "Alıntı",
+      "presets": {
+        "name": "Alıntı"
+      }
+    },
+    "_carousel-image-slide": {
+      "name": "Resim karusel öğesi",
+      "presets": {
+        "name": "Resim karusel öğesi"
+      }
+    },
+    "_carousel-video-slide": {
+      "name": "Video karusel öğesi",
+      "presets": {
+        "name": "Video karusel öğesi"
+      }
+    },
+    "_featured-blog": {
+      "name": "Blog yazısı listesi",
+      "settings": {
+        "show_view_more": {
+          "label": "Daha fazla göster"
+        },
+        "paragraph_content": {
+          "content": "+ Kaydırıcı öğe ayarları"
+        },
+        "header_article_setting": {
+          "content": "Makale ayarları"
+        }
+      },
+      "presets": {
+        "name": "Blog yazısı listesi"
+      }
+    },
+    "_testimonial": {
+      "name": "Referans",
+      "settings": {
+        "show_rating": {
+          "label": "Değerlendirmeyi göster"
+        },
+        "rating": {
+          "label": "Puan"
+        },
+        "content": {
+          "label": "Referans içeriği"
+        },
+        "header_author": {
+          "content": "Müşteri bilgisi"
+        },
+        "author_name": {
+          "label": "Müşteri adı"
+        },
+        "author_avatar": {
+          "label": "Müşteri avatarı",
+          "info": "30 x 30px .jpg önerilir"
+        },
+        "show_verified": {
+          "label": "Doğrulandı göster"
+        },
+        "header_product": {
+          "content": "İlgili ürün"
+        },
+        "image": {
+          "info": "300 x 300px .jpg önerilir"
+        }
+      },
+      "presets": {
+        "name": "Referans"
+      }
+    },
+    "_testimonial-list": {
+      "name": "Referans listesi"
+    },
+    "_collapsible-content-list": {
+      "name": "Katlanabilir sekme listesi"
+    },
+    "_collapsible-content-item": {
+      "name": "Katlanabilir sekme",
+      "presets": {
+        "name": "Katlanabilir sekme"
+      }
+    },
+    "_contact-form": {
+      "name": "Form",
+      "settings": {
+        "image": {
+          "info": "500 x 300px .jpg önerilir"
+        },
+        "show_form_phone": {
+          "label": "Telefon alanını göster"
+        }
+      },
+      "presets": {
+        "name": "Form"
+      }
+    },
+    "_custom-input-field": {
+      "name": "Özel giriş alanı",
+      "settings": {
+        "type": {
+          "label": "Giriş tipi",
+          "options__1": {
+            "label": "Metin"
+          },
+          "options__2": {
+            "label": "E-posta"
+          },
+          "options__3": {
+            "label": "Sayı"
+          },
+          "options__4": {
+            "label": "Telefon"
+          },
+          "options__5": {
+            "label": "URL"
+          },
+          "options__6": {
+            "label": "Tarih"
+          }
+        },
+        "name": {
+          "label": "Alan adı"
+        },
+        "placeholder": {
+          "label": "Yer tutucu metin",
+          "info": "Alan boş olduğunda gösterilir"
+        },
+        "default": {
+          "label": "Varsayılan değer"
+        },
+        "if_required": {
+          "label": "Zorunlu alan"
+        }
+      },
+      "presets": {
+        "name": "Özel giriş alanı"
+      }
+    },
+    "_custom-select-field": {
+      "name": "Özel seçim alanı",
+      "settings": {
+        "options": {
+          "label": "Seçenekler",
+          "info": "Seçenekleri virgülle ayırarak girin, örn: Seçenek 1, Seçenek 2, Seçenek 3"
+        }
+      },
+      "presets": {
+        "name": "Özel seçim alanı"
+      }
+    },
+    "_custom-checkbox-field": {
+      "name": "Özel onay kutusu alanı",
+      "settings": {
+        "default_checked": {
+          "label": "Varsayılan işaretli"
+        }
+      },
+      "presets": {
+        "name": "Özel onay kutusu alanı"
+      }
+    },
+    "_custom-radio-field": {
+      "name": "Özel radyo alanı",
+      "presets": {
+        "name": "Özel radyo alanı"
+      }
+    },
+    "_contact-info": {
+      "name": "İletişim bilgisi",
+      "presets": {
+        "name": "İletişim bilgisi"
+      }
+    },
+    "_before-after": {
+      "name": "Öncesi & Sonrası afişi",
+      "settings": {
+        "direction": {
+          "label": "Karşılaştırma yönü",
+          "options__1": {
+            "label": "Yatay"
+          },
+          "options__2": {
+            "label": "Dikey"
+          }
+        },
+        "header_before": {
+          "content": "Önceki resim ayarları"
+        },
+        "header_after": {
+          "content": "Sonraki resim ayarları"
+        },
+        "image": {
+          "info": "140 x 140px .jpg önerilir"
+        },
+        "image_mobile": {
+          "info": "300 x 300px .jpg önerilir"
+        },
+        "image_before_mobile": {
+          "label": "Önceki resim"
+        },
+        "image_after_mobile": {
+          "label": "Sonraki resim"
+        }
+      }
+    },
+    "_logo": {
+      "name": "Logo",
+      "settings": {
+        "image": {
+          "info": "140 x 140px .jpg önerilir"
+        }
+      },
+      "presets": {
+        "name": "Logo"
+      }
+    },
+    "_logo-list": {
+      "name": "Logo listesi",
+      "settings": {
+        "enable_gray": {
+          "label": "Griyi etkinleştir"
+        }
+      }
+    },
+    "_media-grid-list": {
+      "name": "Medya ızgara listesi",
+      "settings": {
+        "paragraph_mobile": {
+          "content": "Mobilde otomatik olarak kaydırıcı etkinleştirilir"
+        }
+      }
+    },
+    "_image-grid-item": {
+      "name": "Resim öğesi",
+      "settings": {
+        "image_mobile": {
+          "info": "300 x 400px .jpg önerilir"
+        }
+      },
+      "presets": {
+        "name": "Resim öğesi"
+      }
+    },
+    "_video-grid-item": {
+      "name": "Video öğesi",
+      "presets": {
+        "name": "Video öğesi"
+      }
+    },
+    "_compare-table": {
+      "name": "Karşılaştırma tablosu",
+      "settings": {
+        "show_variant_options": {
+          "label": "Varyant seçeneklerini göster"
+        },
+        "show_weight": {
+          "label": "Ürün ağırlığını göster"
+        },
+        "show_type": {
+          "label": "Ürün türünü göster"
+        },
+        "show_category": {
+          "label": "Ürün kategorisini göster"
+        },
+        "show_vendor": {
+          "label": "Ürün satıcısını göster"
+        }
+      }
+    },
+    "_compare-table-category": {
+      "name": "Kategori metafield satırı",
+      "settings": {
+        "paragraph": {
+          "content": "Kategori metafield'leri Shopify'ın 'shopify' isim alanı altındaki yerleşik metafield'lerdir. Detaylar için bkz. [Kategori metafield'leri](https://help.shopify.com/en/manual/custom-data/metafields/category-metafields)."
+        },
+        "key": {
+          "label": "Özellik anahtarı"
+        },
+        "label": {
+          "label": "Özellik adı",
+          "info": "Özelleştirilebilir özellik adı"
+        }
+      },
+      "presets": {
+        "name": "Kategori metafield satırı"
+      }
+    },
+    "_compare-table-metafield": {
+      "name": "Özel metafield satırı",
+      "settings": {
+        "paragraph": {
+          "content": "Metafield anahtar değerleri Shopify yönetim panelindeki 'Ayarlar' > 'Metafield' alanından ayarlanır ve görüntülenir. Detaylar için bkz. [Özel Metafield'ler](https://help.shopify.com/en/manual/custom-data/metafields)."
+        }
+      },
+      "presets": {
+        "name": "Özel metafield satırı"
+      }
+    },
+    "_compare-table-custom": {
+      "name": "Özel satır",
+      "presets": {
+        "name": "Özel satır"
+      }
+    },
+    "_newsletter": {
+      "name": "Abonelik formu",
+      "presets": {
+        "name": "Abonelik formu"
+      }
+    },
+    "_recently-viewed": {
+      "name": "Son Görülenler Listesi"
+    },
+    "_related-products": {
+      "name": "İlgili Ürünler Listesi"
+    },
+    "_event-list": {
+      "name": "Etkinlik Listesi"
+    },
+    "_event": {
+      "name": "Etkinlik",
+      "presets": {
+        "name": "Etkinlik"
+      }
+    },
+    "_member-list": {
+      "name": "Üye Listesi"
+    },
+    "_flexible-image": {
+      "name": "Esnek Resim",
+      "settings": {
+        "image": {
+          "info": "800 x 700px .jpg önerilir"
+        }
+      },
+      "presets": {
+        "name": "Esnek Resim"
+      }
+    },
+    "_member": {
+      "name": "Üye",
+      "settings": {
+        "name": {
+          "label": "İsim"
+        },
+        "role": {
+          "label": "Rol"
+        },
+        "bio": {
+          "label": "Biyografi"
+        },
+        "image": {
+          "info": "200 x 200px .jpg önerilir"
+        }
+      },
+      "presets": {
+        "name": "Üye"
+      }
+    },
+    "_products-grid": {
+      "name": "Ürün ızgarası",
+      "settings": {
+        "products": {
+          "info": "Gösterilecek ürünleri manuel seçin"
+        }
+      }
+    },
+    "_reading-text": {
+      "name": "Okuma metni",
+      "settings": {
+        "animation": {
+          "label": "Animasyon efekti",
+          "options__1": {
+            "label": "Yüzer şekilde gelir"
+          },
+          "options__2": {
+            "label": "Derinleştir"
+          },
+          "options__3": {
+            "label": "Renk değişimi"
+          },
+          "options__4": {
+            "label": "Kesit"
+          }
+        },
+        "paragraph_color_setting": {
+          "content": "+ Renk değişim efekti ayarları"
+        },
+        "color_before": {
+          "label": "Orijinal renk"
+        },
+        "color_after": {
+          "label": "Efekt rengi"
+        }
+      },
+      "presets": {
+        "name": "Okuma metni"
+      }
+    },
+    "_image-with-text-list": {
+      "name": "Metinli resim listesi"
+    },
+    "_image-with-text": {
+      "name": "Metinli resim",
+      "settings": {
+        "image": {
+          "info": "400 x 400px .jpg önerilir"
+        }
+      },
+      "presets": {
+        "name": "Metinli resim"
+      }
+    },
+    "_collapsible-content-title": {
+      "name": "Katlanabilir başlık",
+      "presets": {
+        "name": "Katlanabilir başlık"
+      }
+    },
+    "_collection-advertise": {
+      "name": "Reklam",
+      "settings": {
+        "image": {
+          "info": "300 x 500px .jpg önerilir"
+        }
+      }
+    },
+    "_compare-table-custom-column": {
+      "name": "Özel sütun",
+      "settings": {
+        "image": {
+          "info": "60 x 60px .jpg önerilir"
+        }
+      },
+      "presets": {
+        "name": "Özel sütun"
+      }
+    },
+    "_custom_liquid": {
+      "name": "Özel liquid",
+      "presets": {
+        "name": "Özel liquid"
+      }
+    },
+    "_product": {
+      "name": "Ürün",
+      "presets": {
+        "name": "Ürün"
+      }
+    },
+    "_product-attributes": {
+      "name": "Ürün özellikleri",
+      "settings": {
+        "show_category_attributes": {
+          "label": "Kategori özelliklerini göster"
+        },
+        "image": {
+          "info": "30 x 30px .jpg önerilir"
+        }
+      },
+      "presets": {
+        "name": "Ürün özellikleri"
+      }
+    },
+    "_product-custom-attribute": {
+      "name": "Özel özellik",
+      "settings": {
+        "attribute_name": {
+          "label": "Özellik adı"
+        },
+        "attribute_value": {
+          "label": "Özellik değeri"
+        }
+      },
+      "presets": {
+        "name": "Özel özellik"
+      }
+    },
+    "_product-highlights": {
+      "name": "Ürün öne çıkanlar listesi",
+      "settings": {
+        "image": {
+          "info": "30 x 30px .jpg önerilir"
+        }
+      },
+      "presets": {
+        "name": "Ürün öne çıkanlar listesi"
+      }
+    },
+    "_product-highlight": {
+      "name": "Ürün öne çıkan",
+      "settings": {
+        "image": {
+          "info": "80 x 80px .jpg önerilir"
+        }
+      },
+      "presets": {
+        "name": "Ürün öne çıkan"
+      }
+    },
+    "_product-documents": {
+      "name": "Ürün dokümanları listesi",
+      "settings": {
+        "image": {
+          "info": "60 x 60px .jpg önerilir"
+        }
+      },
+      "presets": {
+        "name": "Ürün dokümanları listesi"
+      }
+    },
+    "_product-document": {
+      "name": "Ürün dokümanı",
+      "presets": {
+        "name": "Ürün dokümanı"
+      }
+    },
+    "_product-includes": {
+      "name": "Kutunun içindekiler",
+      "settings": {
+        "image": {
+          "info": "30 x 30px .jpg önerilir"
+        }
+      },
+      "presets": {
+        "name": "Kutunun içindekiler"
+      }
+    },
+    "_product-include": {
+      "name": "Kutu öğesi",
+      "settings": {
+        "name": {
+          "label": "Ad"
+        },
+        "price": {
+          "label": "Fiyat"
+        },
+        "image": {
+          "info": "150 x 150px .jpg önerilir"
+        }
+      },
+      "presets": {
+        "name": "Kutu öğesi"
+      }
+    },
+    "_product-richtext": {
+      "name": "Ürün açıklaması",
+      "settings": {
+        "image": {
+          "info": "30 x 30px .jpg önerilir"
+        },
+        "content_image": {
+          "info": "600 x 600px .jpg önerilir"
+        }
+      },
+      "presets": {
+        "name": "Ürün açıklaması"
+      }
+    },
+    "_media-content-list": {
+      "name": "Medya içerik listesi"
+    },
+    "_image-content": {
+      "name": "Resim içeriği",
+      "settings": {
+        "image": {
+          "info": "350 x 500px .jpg önerilir"
+        },
+        "image_mobile": {
+          "info": "300 x 300px .jpg önerilir"
+        }
+      },
+      "presets": {
+        "name": "Resim içeriği"
+      }
+    },
+    "_video-content": {
+      "name": "Video içeriği",
+      "presets": {
+        "name": "Video içeriği"
+      }
+    },
+    "_badge": {
+      "name": "Rozet",
+      "presets": {
+        "name": "Rozet"
+      }
+    },
+    "_image-gallery": {
+      "name": "Resim galerisi",
+      "settings": {
+        "direction": {
+          "label": "Kaydırma yönü",
+          "options__1": {
+            "label": "İleri"
+          },
+          "options__2": {
+            "label": "Geri"
+          }
+        },
+        "enable_staggered": {
+          "label": "Basamaklı efekt etkinleştir"
+        }
+      },
+      "presets": {
+        "name": "Resim galerisi"
+      }
+    },
+    "_store-list": {
+      "name": "Mağaza listesi",
+      "settings": {
+        "paragraph": {
+          "content": "Yan çubuktaki dikey filtrede gösterilir"
+        }
+      }
+    },
+    "_store": {
+      "name": "Mağaza",
+      "settings": {
+        "image_store": {
+          "label": "Mağaza resmi"
+        },
+        "image_map": {
+          "label": "Harita resmi",
+          "info": "1300 x 700px .jpg önerilir"
+        },
+        "image": {
+          "info": "350 x 200px .jpg önerilir"
+        }
+      },
+      "presets": {
+        "name": "Mağaza"
+      }
+    },
+    "heading": {
+      "name": "Başlık",
+      "settings": {
+        "header_highlight": {
+          "content": "Vurgulu metin ayarları"
+        },
+        "paragraph_highlight": {
+          "content": "Animasyonlu vurgu uygulamak için metni *italik* içine alın"
+        },
+        "enable_highlight_text": {
+          "label": "Vurgulu metni etkinleştir"
+        },
+        "highlight_type": {
+          "label": "Vurgu türü",
+          "options__1": {
+            "label": "Metin rengi"
+          },
+          "options__2": {
+            "label": "Arka plan rengi"
+          },
+          "options__3": {
+            "label": "Altı çizili"
+          },
+          "options__4": {
+            "label": "Kesme"
+          },
+          "options__5": {
+            "label": "El çizimi - Onay işareti"
+          },
+          "options__6": {
+            "label": "El çizimi - Dalgalı"
+          },
+          "options__7": {
+            "label": "El çizimi - Daire"
+          },
+          "options__8": {
+            "label": "El çizimi - Altı çizili"
+          },
+          "options__9": {
+            "label": "İtalik"
+          }
+        },
+        "highlight_color": {
+          "label": "Vurgu rengi"
+        }
+      },
+      "presets": {
+        "name": "Başlık"
+      }
+    },
+    "subheading": {
+      "name": "Alt başlık",
+      "presets": {
+        "name": "Alt başlık"
+      }
+    },
+    "description": {
+      "name": "Açıklama",
+      "presets": {
+        "name": "Açıklama"
+      }
+    },
+    "buttons": {
+      "name": "Buton grubu",
+      "presets": {
+        "name": "Buton grubu"
+      }
+    },
+    "button": {
+      "name": "Buton",
+      "presets": {
+        "name": "Buton"
+      }
+    },
+    "button-video": {
+      "name": "Video butonu",
+      "presets": {
+        "name": "Video butonu"
+      }
+    },
+    "icon": {
+      "name": "Simge",
+      "settings": {
+        "image": {
+          "info": "30 x 30px .jpg önerilir"
+        }
+      },
+      "presets": {
+        "name": "Simge"
+      }
+    },
+    "countdown": {
+      "name": "Geri sayım",
+      "settings": {
+        "simple": {
+          "label": "Basitleştirilmiş stil"
+        },
+        "end_time": {
+          "label": "Bitiş zamanı",
+          "info": "Bitiş zamanı formatı: yyyy-aa-gg ss:dd, örn. 2024-05-01 12:25, mağaza saat dilimi ayarları kullanılır, [Mağaza saat dilimini değiştir](/admin/settings/general)"
+        },
+        "end_text": {
+          "label": "Bitiş sonrası mesaj"
+        },
+        "hide_when_end": {
+          "label": "Bitişten sonra geri sayımı gizle"
+        },
+        "timer_background_color": {
+          "label": "Sayaç arka plan rengi"
+        },
+        "timer_foreground_color": {
+          "label": "Sayaç metin rengi"
+        }
+      },
+      "presets": {
+        "name": "Geri sayım"
+      }
+    },
+    "discount-code": {
+      "name": "İndirim kodu",
+      "presets": {
+        "name": "İndirim kodu"
+      }
+    },
+    "spacer": {
+      "name": "Boşluk",
+      "settings": {
+        "show_line": {
+          "label": "Bölücü göster"
+        },
+        "line_width": {
+          "label": "Bölücü genişliği",
+          "options__1": {
+            "label": "Tam"
+          },
+          "options__2": {
+            "label": "Yarım"
+          },
+          "options__3": {
+            "label": "Üçte bir"
+          }
+        }
+      },
+      "presets": {
+        "name": "Boşluk"
+      }
+    },
+    "social-list": {
+      "name": "Sosyal medya listesi",
+      "settings": {
+        "show_tooltip": {
+          "label": "Araç ipucu göster"
+        }
+      },
+      "presets": {
+        "name": "Sosyal medya listesi"
+      }
+    },
+    "statistics": {
+      "name": "Vurgulu istatistik",
+      "settings": {
+        "label": "Kenarlık göster"
+      },
+      "presets": {
+        "name": "Vurgulu istatistik"
+      }
+    },
+    "badges": {
+      "name": "Rozet grubu",
+      "settings": {
+        "shape": {
+          "label": "Şekil",
+          "options__1": {
+            "label": "Kapsül"
+          },
+          "options__2": {
+            "label": "Dikdörtgen"
+          },
+          "options__3": {
+            "label": "Ok"
+          },
+          "options__4": {
+            "label": "Eğik"
+          },
+          "options__5": {
+            "label": "Kenar"
+          }
+        },
+        "size": {
+          "label": "Boyut",
+          "options__1": {
+            "label": "Küçük"
+          },
+          "options__2": {
+            "label": "Orta"
+          },
+          "options__3": {
+            "label": "Büyük"
+          }
+        }
+      },
+      "presets": {
+        "name": "Rozet grubu"
+      }
+    },
+    "icon-text": {
+      "name": "Metinli simge",
+      "settings": {
+        "image": {
+          "info": "30 x 30px .jpg önerilir"
+        }
+      },
+      "presets": {
+        "name": "Metinli simge"
+      }
+    },
+    "follow": {
+      "name": "Bizi takip edin",
+      "settings": {
+        "image": {
+          "info": "60 x 60px .jpg önerilir"
+        }
+      },
+      "presets": {
+        "name": "Bizi takip edin"
+      }
+    },
+    "links": {
+      "name": "Bağlantı grubu",
+      "presets": {
+        "name": "Bağlantı grubu"
+      }
+    },
+    "keywords": {
+      "name": "Anahtar kelimeler",
+      "presets": {
+        "name": "Anahtar kelimeler"
+      }
+    },
+    "spin_text": {
+      "name": "Dönen metin",
+      "presets": {
+        "name": "Dönen metin"
+      }
+    }
+  },
+  "sections": {
+    "all": {
+      "categories": {
+        "product_collection": "Ürün & koleksiyon",
+        "media_layout": "Medya & düzen",
+        "content_info": "İçerik & bilgi",
+        "forms_interaction": "Formlar & etkileşim",
+        "functional_widgets": "Fonksiyonel widget'lar",
+        "team_social_proof": "Ekip & sosyal kanıt",
+        "custom_advanced": "Özel ve gelişmiş"
+      },
+      "layout": {
+        "label": "Düzen",
+        "horizontal": {
+          "label": "Yatay"
+        },
+        "vertical": {
+          "label": "Dikey"
+        },
+        "grid": {
+          "label": "Izgara"
+        },
+        "scroll": {
+          "label": "Kaydır"
+        },
+        "slider": {
+          "label": "Kaydırıcı"
+        },
+        "header_grid": {
+          "content": "Izgara ayarları"
+        },
+        "header_scroll": {
+          "content": "Kaydırma ayarları"
+        },
+        "header_slider": {
+          "content": "Kaydırıcı ayarları"
+        },
+        "enable_full_width": {
+          "label": "Tam genişliği etkinleştir"
+        }
+      },
+      "desktop": {
+        "effect": {
+          "info": "Masaüstü cihazlarda etkili"
+        }
+      },
+      "mobile": {
+        "header_content": "Mobil ayarlar",
+        "hide": {
+          "label": "Mobilde gizle"
+        },
+        "effect": {
+          "info": "Mobil cihazlarda etkili"
+        }
+      },
+      "animation": {
+        "content": "Animasyon",
+        "image_behavior": {
+          "label": "Resim davranışı",
+          "options__1": {
+            "label": "Hiçbiri"
+          },
+          "options__2": {
+            "label": "Ortam"
+          },
+          "options__3": {
+            "label": "Sabit"
+          },
+          "options__4": {
+            "label": "Yakınlaştır"
+          },
+          "options__5": {
+            "label": "Parallax"
+          }
+        },
+        "animation_during": {
+          "label": "Animasyon süresi"
+        }
+      },
+      "padding": {
+        "header_content": "Bölüm dolgu",
+        "padding_top": {
+          "label": "Üst dolgu"
+        },
+        "padding_bottom": {
+          "label": "Alt dolgu"
+        },
+        "padding_left": {
+          "label": "Sol dolgu"
+        },
+        "padding_right": {
+          "label": "Sağ dolgu"
+        }
+      },
+      "margin": {
+        "header_content": "Bölüm kenar boşluğu",
+        "margin_top": {
+          "label": "Üst kenar boşluğu"
+        },
+        "margin_bottom": {
+          "label": "Alt kenar boşluğu"
+        }
+      },
+      "gap": {
+        "label": "Boşluk",
+        "horizontal_gap": {
+          "label": "Yatay boşluk"
+        },
+        "vertical_gap": {
+          "label": "Dikey boşluk"
+        }
+      },
+      "width": {
+        "label": "Genişlik"
+      },
+      "height": {
+        "label": "Yükseklik",
+        "options__1": {
+          "label": "Uyarlanabilir"
+        },
+        "options__2": {
+          "label": "Küçük"
+        },
+        "options__3": {
+          "label": "Orta"
+        },
+        "options__4": {
+          "label": "Büyük"
+        }
+      },
+      "colors": {
+        "enable_scheme": {
+          "label": "Renk şemasını etkinleştir"
+        },
+        "scheme": {
+          "label": "Renk şeması"
+        },
+        "foreground": {
+          "label": "Ön plan rengi"
+        },
+        "background": {
+          "label": "Arka plan rengi"
+        },
+        "enable_custom_color": {
+          "label": "Özel rengi etkinleştir"
+        },
+        "custom_color": {
+          "label": "Özel renk"
+        }
+      },
+      "position": {
+        "label": "Pozisyon",
+        "options__1": {
+          "label": "Üst sol"
+        },
+        "options__2": {
+          "label": "Üst orta"
+        },
+        "options__3": {
+          "label": "Üst sağ"
+        },
+        "options__4": {
+          "label": "Orta sol"
+        },
+        "options__5": {
+          "label": "Orta"
+        },
+        "options__6": {
+          "label": "Orta sağ"
+        },
+        "options__7": {
+          "label": "Alt sol"
+        },
+        "options__8": {
+          "label": "Alt orta"
+        },
+        "options__9": {
+          "label": "Alt sağ"
+        }
+      },
+      "page": {
+        "label": "Sayfa"
+      },
+      "custom_liquid": {
+        "label": "Özel liquid",
+        "info": "Gelişmiş özelleştirmeler oluşturmak için uygulama parçacıkları veya diğer kodları ekleyin. [Daha fazla bilgi](https://shopify.dev/docs/api/liquid)"
+      },
+      "file": {
+        "type": {
+          "label": "Dosya türü",
+          "options__1": {
+            "label": "PDF"
+          },
+          "options__2": {
+            "label": "Resim"
+          },
+          "options__3": {
+            "label": "Diğerleri"
+          }
+        },
+        "name": {
+          "label": "Dosya adı"
+        },
+        "link": {
+          "label": "Dosya bağlantısı",
+          "info": "Bağlantıyı almak için önce dosyayı yükleyin"
+        }
+      },
+      "metafield": {
+        "custom": {
+          "label": "Özel metafield",
+          "info": "Değeri içeren metafield için namespace ve anahtar girin (örn. custom.in_box_items)."
+        }
+      },
+      "text-alignment": {
+        "label": "Hizalama",
+        "options__1": {
+          "label": "Sola hizala"
+        },
+        "options__2": {
+          "label": "Ortaya hizala"
+        },
+        "options__3": {
+          "label": "Sağa hizala"
+        }
+      },
+      "title": {
+        "label": "Başlık",
+        "truncate": {
+          "label": "Başlığı kısalt",
+          "info": "Başlık maksimum uzunluğu aşarsa kısalt"
+        }
+      },
+      "text-content": {
+        "header_content": "Başlık ve açıklama",
+        "heading": {
+          "label": "Başlık",
+          "type": {
+            "label": "Başlık türü"
+          },
+          "size": {
+            "label": "Başlık boyutu",
+            "options__1": {
+              "label": "Küçük"
+            },
+            "options__2": {
+              "label": "Orta"
+            },
+            "options__3": {
+              "label": "Büyük"
+            },
+            "options__4": {
+              "label": "Ekstra büyük"
+            },
+            "options__5": {
+              "label": "Mini"
+            }
+          },
+          "uppercase": {
+            "label": "Başlığı büyük harf yap"
+          },
+          "color": {
+            "label": "Başlık rengi"
+          },
+          "show_heading": {
+            "label": "Başlığı göster"
+          }
+        },
+        "content": {
+          "label": "İçerik"
+        },
+        "text": {
+          "label": "Metin",
+          "size": {
+            "label": "Metin boyutu"
+          },
+          "uppercase": {
+            "label": "Metni büyük harf yap"
+          },
+          "light": {
+            "label": "Hafif göster"
+          }
+        },
+        "sub_heading": {
+          "label": "Alt başlık"
+        },
+        "description": {
+          "label": "Açıklama",
+          "limit_height": {
+            "label": "Açıklama yüksekliğini sınırla"
+          }
+        },
+        "decorative": {
+          "label": "Dekoratif font"
+        },
+        "hollow": {
+          "label": "Boş font"
+        },
+        "show_box": {
+          "label": "Kutu göster"
+        },
+        "box_background_opacity": {
+          "label": "Kutu arka plan opaklığı"
+        },
+        "box_background_blur": {
+          "label": "Kutu arka plan bulanıklığı"
+        }
+      },
+      "content": {
+        "header_content": "İçerik ayarları",
+        "paragraph_content": "+ İçerik ayarları",
+        "content_width": {
+          "label": "İçerik genişliği",
+          "options__1": {
+            "label": "Dar"
+          },
+          "options__2": {
+            "label": "Normal"
+          },
+          "options__3": {
+            "label": "Geniş"
+          },
+          "options__4": {
+            "label": "Tam"
+          }
+        }
+      },
+      "card": {
+        "header_content": "Kart ayarları",
+        "card_size": {
+          "label": "Kart boyutu",
+          "options_1": {
+            "label": "Küçük"
+          },
+          "options_2": {
+            "label": "Orta"
+          },
+          "options_3": {
+            "label": "Büyük"
+          },
+          "options_4": {
+            "label": "Mini"
+          }
+        },
+        "show_card_wrapper": {
+          "label": "Konteyneri göster"
+        },
+        "wrapper_color_scheme": {
+          "label": "Konteyner renk şeması"
+        }
+      },
+      "columns": {
+        "label": "Sütunlar",
+        "options__1": {
+          "label": "1 sütun"
+        },
+        "options__2": {
+          "label": "2 sütun"
+        },
+        "options__3": {
+          "label": "3 sütun"
+        },
+        "options__4": {
+          "label": "4 sütun"
+        },
+        "options__5": {
+          "label": "5 sütun"
+        },
+        "options__6": {
+          "label": "6 sütun"
+        }
+      },
+      "rows": {
+        "label": "Satırlar",
+        "options__1": {
+          "label": "1 satır"
+        },
+        "options__2": {
+          "label": "2 satır"
+        },
+        "options__3": {
+          "label": "3 satır"
+        },
+        "options__4": {
+          "label": "4 satır"
+        }
+      },
+      "banner": {
+        "height": {
+          "label": "Afiş yüksekliği",
+          "options__1": {
+            "label": "Küçük",
+            "info": "1800 x 600px .jpg önerilir"
+          },
+          "options__2": {
+            "label": "Orta",
+            "info": "1800 x 800px .jpg önerilir"
+          },
+          "options__3": {
+            "label": "Büyük",
+            "info": "1800 x 1000px .jpg önerilir"
+          },
+          "options__4": {
+            "label": "Uyarlanabilir"
+          },
+          "options__5": {
+            "label": "Dar",
+            "info": "1800 x 300px .jpg önerilir"
+          }
+        },
+        "height_mobile": {
+          "info": "640 x 960px .jpg önerilir"
+        }
+      },
+      "icon": {
+        "label": "Simge",
+        "groups": {
+          "shop": "Mağaza",
+          "shipping": "Kargo",
+          "order": "Sipariş",
+          "communication": "İletişim",
+          "tech": "Teknoloji",
+          "food_drink": "Yiyecek & İçecek",
+          "clothing": "Giyim",
+          "others": "Diğerleri"
+        },
+        "none": {
+          "label": "Yok"
+        },
+        "cart": {
+          "label": "Sepet"
+        },
+        "wish": {
+          "label": "İstek"
+        },
+        "sale": {
+          "label": "İndirim"
+        },
+        "new": {
+          "label": "Yeni"
+        },
+        "hot": {
+          "label": "Popüler"
+        },
+        "gift": {
+          "label": "Hediye"
+        },
+        "truck": {
+          "label": "Kamyon"
+        },
+        "plane": {
+          "label": "Uçak"
+        },
+        "steamer": {
+          "label": "Buhar"
+        },
+        "track": {
+          "label": "Takip"
+        },
+        "return": {
+          "label": "İade"
+        },
+        "refund": {
+          "label": "Geri ödeme"
+        },
+        "security": {
+          "label": "Güvenlik"
+        },
+        "guarantee": {
+          "label": "Garanti"
+        },
+        "card": {
+          "label": "Kart"
+        },
+        "money": {
+          "label": "Para"
+        },
+        "phone": {
+          "label": "Telefon"
+        },
+        "email": {
+          "label": "E-posta"
+        },
+        "chat": {
+          "label": "Sohbet"
+        },
+        "24h": {
+          "label": "24 saat"
+        },
+        "service": {
+          "label": "Servis"
+        },
+        "question": {
+          "label": "Soru"
+        },
+        "send": {
+          "label": "Gönder"
+        },
+        "wifi": {
+          "label": "WIFI"
+        },
+        "bluetooth": {
+          "label": "Bluetooth"
+        },
+        "camera": {
+          "label": "Kamera"
+        },
+        "mouse": {
+          "label": "Fare"
+        },
+        "ar": {
+          "label": "Artırılmış gerçeklik"
+        },
+        "vr": {
+          "label": "Sanal gerçeklik"
+        },
+        "print": {
+          "label": "Yazdır"
+        },
+        "scan": {
+          "label": "Tarama"
+        },
+        "3d": {
+          "label": "3D"
+        },
+        "apple": {
+          "label": "Elma"
+        },
+        "carrot": {
+          "label": "Havuç"
+        },
+        "lemon": {
+          "label": "Limon"
+        },
+        "burger": {
+          "label": "Burger"
+        },
+        "cake": {
+          "label": "Kek"
+        },
+        "coffee": {
+          "label": "Kahve"
+        },
+        "milk": {
+          "label": "Süt"
+        },
+        "beer": {
+          "label": "Bira"
+        },
+        "icecream": {
+          "label": "Dondurma"
+        },
+        "fork-spoon": {
+          "label": "Çatal ve kaşık"
+        },
+        "diamond": {
+          "label": "Elmas"
+        },
+        "eco-friendly": {
+          "label": "Çevre dostu"
+        },
+        "clock": {
+          "label": "Saat"
+        },
+        "ruler": {
+          "label": "Cetvel"
+        },
+        "eye": {
+          "label": "Göz"
+        },
+        "bell": {
+          "label": "Çan"
+        },
+        "light": {
+          "label": "Işık"
+        },
+        "battery": {
+          "label": "Pil"
+        },
+        "star": {
+          "label": "Yıldız"
+        },
+        "book": {
+          "label": "Kitap"
+        },
+        "dress": {
+          "label": "Elbise"
+        },
+        "pants": {
+          "label": "Pantolon"
+        },
+        "shoe": {
+          "label": "Ayakkabı"
+        },
+        "hat": {
+          "label": "Şapka"
+        },
+        "skirt": {
+          "label": "Etek"
+        },
+        "tops": {
+          "label": "Üstler"
+        },
+        "shorts": {
+          "label": "Şort"
+        },
+        "socks": {
+          "label": "Çorap"
+        },
+        "bag": {
+          "label": "Çanta"
+        },
+        "address": {
+          "label": "Adres"
+        },
+        "record": {
+          "label": "Kayıt"
+        },
+        "quote": {
+          "label": "Alıntı"
+        },
+        "global": {
+          "label": "Küresel"
+        },
+        "thumb": {
+          "label": "Başparmak"
+        },
+        "author": {
+          "label": "Yazar"
+        },
+        "yes": {
+          "label": "Evet"
+        },
+        "no": {
+          "label": "Hayır"
+        },
+        "preorder": {
+          "label": "Ön sipariş"
+        },
+        "calendar": {
+          "label": "Takvim"
+        }
+      },
+      "icon-size": {
+        "label": "Simge boyutu",
+        "options__1": {
+          "label": "Küçük"
+        },
+        "options__2": {
+          "label": "Orta"
+        },
+        "options__3": {
+          "label": "Büyük"
+        },
+        "options__4": {
+          "label": "Çok büyük"
+        }
+      },
+      "keywords": {
+        "list": {
+          "label": "Anahtar kelimeler",
+          "info": "Birden fazla anahtar kelimeyi virgülle ayırın"
+        },
+        "show_icon": {
+          "label": "Simgeyi göster"
+        },
+        "icon_type": {
+          "label": "Simge türü",
+          "options__1": {
+            "label": "Onay"
+          },
+          "options__2": {
+            "label": "Artı"
+          },
+          "options__3": {
+            "label": "İndeks"
+          }
+        }
+      },
+      "media": {
+        "header_content": "Medya ayarları",
+        "info": "Medya düzeni ve görünümünü yapılandırın.",
+        "media_fit": {
+          "label": "Medya sığdırma",
+          "options__1": {
+            "label": "Kapla"
+          },
+          "options__2": {
+            "label": "İçer"
+          }
+        },
+        "media_width": {
+          "label": "Medya genişliği",
+          "options__1": {
+            "label": "Küçük"
+          },
+          "options__2": {
+            "label": "Orta"
+          },
+          "options__3": {
+            "label": "Büyük"
+          }
+        },
+        "media_position": {
+          "label": "Medya konumu",
+          "options__1": {
+            "label": "Sol"
+          },
+          "options__2": {
+            "label": "Sağ"
+          },
+          "options__3": {
+            "label": "Üst"
+          },
+          "options__4": {
+            "label": "Alt"
+          }
+        },
+        "media_size": {
+          "label": "Medya boyutu",
+          "options__1": {
+            "label": "Küçük"
+          },
+          "options__2": {
+            "label": "Orta"
+          },
+          "options__3": {
+            "label": "Büyük"
+          }
+        },
+        "thumbnail_size": {
+          "label": "Küçük resim boyutu"
+        }
+      },
+      "image": {
+        "header_content": "Görüntü ayarları",
+        "image_picker": {
+          "label": "Görüntü"
+        },
+        "show_image": {
+          "label": "Görüntüyü göster"
+        },
+        "header_background_image": "Arka plan görüntüsü ayarları",
+        "background_image_picker": {
+          "label": "Arka plan görüntüsü"
+        },
+        "enable_parallax": {
+          "label": "Paralaksı etkinleştir"
+        },
+        "image_opacity": {
+          "label": "Görüntü saydamlığı"
+        },
+        "image_overlay_opacity": {
+          "label": "Görüntü katmanı saydamlığı"
+        },
+        "image_width": {
+          "label": "Görüntü genişliği",
+          "options__1": {
+            "label": "Küçük"
+          },
+          "options__2": {
+            "label": "Orta"
+          },
+          "options__3": {
+            "label": "Büyük"
+          }
+        },
+        "image_height": {
+          "label": "Görüntü yüksekliği",
+          "options__1": {
+            "label": "Küçük"
+          },
+          "options__2": {
+            "label": "Orta"
+          },
+          "options__3": {
+            "label": "Büyük"
+          },
+          "options__4": {
+            "label": "Uyarlanabilir"
+          }
+        },
+        "image_ratio": {
+          "label": "Görüntü oranı",
+          "options__1": {
+            "label": "Kare (1:1)"
+          },
+          "options__2": {
+            "label": "Dikey (4:5)"
+          },
+          "options__3": {
+            "label": "Yatay (8:5)"
+          },
+          "options__4": {
+            "label": "Panorama (16:9)"
+          },
+          "options__5": {
+            "label": "Dar (20:9)"
+          },
+          "options__6": {
+            "label": "Uyarlanabilir"
+          }
+        },
+        "image_position": {
+          "label": "Görüntü konumu",
+          "options__1": {
+            "label": "Sol"
+          },
+          "options__2": {
+            "label": "Sağ"
+          },
+          "options__3": {
+            "label": "Üst"
+          },
+          "options__4": {
+            "label": "Alt"
+          }
+        },
+        "image_shape": {
+          "label": "Görüntü şekli",
+          "options__1": {
+            "label": "Uyarlanabilir"
+          },
+          "options__2": {
+            "label": "Daire"
+          },
+          "options__3": {
+            "label": "Kare"
+          }
+        },
+        "image_rotate": {
+          "label": "Görüntü döndürme"
+        },
+        "enable_scale_image": {
+          "label": "Görüntü yakınlaştırmayı etkinleştir"
+        },
+        "enable_image_lightbox": {
+          "label": "Görsel lightbox'ı etkinleştir"
+        },
+        "enable_image_magnifier": {
+          "label": "Görsel büyüteçini etkinleştir"
+        },
+        "image_lightbox_type": {
+          "label": "Lightbox türü",
+          "options__1": {
+            "label": "Yakınlaştır ve sürükle"
+          },
+          "options__2": {
+            "label": "Tut ve hareket ettir"
+          }
+        },
+        "image_zoom_ratio": {
+          "label": "Görüntü yakınlaştırma oranı"
+        },
+        "icon_image": {
+          "label": "Simge görseli",
+          "info": "20 x 20px .jpg önerilir"
+        }
+      },
+      "video": {
+        "header_content": "Video ayarları",
+        "video": {
+          "label": "Video",
+          "info": "Yükleme hızı ve deneyimi optimize etmek için 10-15 saniyelik kısa videolar yüklemeniz önerilir."
+        },
+        "video_url": {
+          "label": "Video gömme URL'si",
+          "info": "YouTube veya Vimeo URL'si kullanın"
+        },
+        "enable_controls": {
+          "label": "Video kontrollerini etkinleştir"
+        },
+        "enable_looping": {
+          "label": "Video döngüsünü etkinleştir"
+        },
+        "cover_image": {
+          "label": "Kapak resmi"
+        },
+        "video_opacity": {
+          "label": "Video saydamlığı"
+        },
+        "video_position": {
+          "label": "Video konumu",
+          "options__1": {
+            "label": "Sol üst"
+          },
+          "options__2": {
+            "label": "Sağ üst"
+          },
+          "options__3": {
+            "label": "Sağ alt"
+          },
+          "options__4": {
+            "label": "Sol alt"
+          }
+        }
+      },
+      "seo": {
+        "header_content": "SEO optimizasyonu",
+        "if_as_main_area": {
+          "label": "Ana ilk ekran alanı olarak",
+          "info": "Ana ilk ekran alanı olarak ayarlanırsa, SEO puanı artırmak için optimize edilir. [LCP](https://web.dev/articles/lcp) hakkında daha fazla bilgi edinin"
+        }
+      },
+      "collection": {
+        "label": "Koleksiyon"
+      },
+      "collection-list": {
+        "label": "Koleksiyon listesi"
+      },
+      "link": {
+        "url": {
+          "label": "Bağlantı"
+        },
+        "open_in_new_tab": {
+          "label": "Yeni sekmede aç"
+        }
+      },
+      "link-list": {
+        "label": "Menü"
+      },
+      "social": {
+        "header_content": "Sosyal ayarlar",
+        "avatar": {
+          "label": "Avatar"
+        },
+        "nickname": {
+          "label": "Takma ad"
+        },
+        "username": {
+          "label": "Kullanıcı adı"
+        },
+        "link": {
+          "label": "Sosyal bağlantı"
+        }
+      },
+      "social-list": {
+        "header_content": "Sosyal ayarlar",
+        "show_social": {
+          "label": "Sosyali göster"
+        },
+        "social_style": {
+          "label": "Sosyal stili",
+          "options__1": {
+            "label": "Simge"
+          },
+          "options__2": {
+            "label": "Çerçeve"
+          },
+          "options__3": {
+            "label": "Sarmalanmış"
+          }
+        },
+        "social_type": {
+          "label": "Sosyal tür"
+        },
+        "icon_size": {
+          "label": "Simge boyutu",
+          "options__1": {
+            "label": "Küçük"
+          },
+          "options__2": {
+            "label": "Orta"
+          },
+          "options__3": {
+            "label": "Büyük"
+          }
+        }
+      },
+      "product-list": {
+        "label": "Ürünleri seç"
+      },
+      "product": {
+        "label": "Ürün seç",
+        "header_product": {
+          "content": "İlgili ürün"
+        }
+      },
+      "article": {
+        "show_tags": {
+          "label": "Etiketleri göster"
+        },
+        "show_date": {
+          "label": "Tarihi göster"
+        },
+        "show_author": {
+          "label": "Yazarı göster"
+        },
+        "show_excerpt": {
+          "label": "Özeti göster"
+        },
+        "show_index": {
+          "label": "Dizini göster"
+        }
+      },
+      "blog": {
+        "label": "Blog seç"
+      },
+      "price": {
+        "show_compare_at_price": {
+          "label": "Karşılaştırma fiyatını göster"
+        }
+      },
+      "slider": {
+        "enable_desktop_slider": {
+          "label": "Masaüstünde kaydırıcıyı etkinleştir"
+        },
+        "enable_mobile_slider": {
+          "label": "Mobilde kaydırıcıyı etkinleştir"
+        },
+        "auto_rotate": {
+          "label": "Otomatik oynatmayı etkinleştir"
+        },
+        "slide_type": {
+          "label": "Slayt türü",
+          "options__1": {
+            "label": "Kaydır"
+          },
+          "options__2": {
+            "label": "Solma"
+          },
+          "options__3": {
+            "label": "Yakınlaştır"
+          }
+        },
+        "change_slides_speed": {
+          "label": "Otomatik oynatma aralığı"
+        },
+        "show_nav_buttons": {
+          "label": "Gezinme düğmelerini göster"
+        },
+        "show_page_dots": {
+          "label": "Sayfa noktalarını göster"
+        },
+        "show_seek_bar": {
+          "label": "İlerleme çubuğunu göster"
+        },
+        "enable_slide_smooth": {
+          "label": "Yumuşak kaydırmayı etkinleştir"
+        }
+      },
+      "pagination": {
+        "style": {
+          "label": "Sayfalandırma stili",
+          "options__1": {
+            "label": "Sayfalayıcı"
+          },
+          "options__2": {
+            "label": "Daha fazla yükle"
+          },
+          "options__3": {
+            "label": "Sonsuz yükleme"
+          }
+        }
+      },
+      "tab-panel": {
+        "header": {
+          "content": "Sekme ayarları"
+        },
+        "tab_style": {
+          "label": "Sekme stili",
+          "options__1": {
+            "label": "Alt çizgi"
+          },
+          "options__2": {
+            "label": "Hap"
+          },
+          "options__3": {
+            "label": "Eğik"
+          }
+        },
+        "tab_alignment": {
+          "label": "Sekme hizalaması"
+        },
+        "header_switch": {
+          "content": "Geçiş ayarları"
+        },
+        "enable_auto_switch": {
+          "label": "Otomatik geçişi etkinleştir"
+        },
+        "switch_interval": {
+          "label": "Geçiş aralığı"
+        }
+      },
+      "button": {
+        "header_content": "Düğme ayarları",
+        "button_size": {
+          "label": "Düğme boyutu",
+          "options__1": {
+            "label": "Mini"
+          },
+          "options__2": {
+            "label": "Küçük"
+          },
+          "options__3": {
+            "label": "Orta"
+          },
+          "options__4": {
+            "label": "Büyük"
+          }
+        },
+        "button_label": {
+          "label": "Düğme etiketi",
+          "info": "Düğmeyi gizlemek için boş bırakın"
+        },
+        "button_link": {
+          "label": "Düğme bağlantısı"
+        },
+        "button_style": {
+          "label": "Düğme stili",
+          "options__1": {
+            "label": "Birincil"
+          },
+          "options__2": {
+            "label": "İkincil"
+          },
+          "options__3": {
+            "label": "Çerçeveli"
+          },
+          "options__4": {
+            "label": "Şeffaf"
+          },
+          "options__5": {
+            "label": "Bağlantı"
+          }
+        },
+        "show_arrow": {
+          "label": "Ok göster"
+        }
+      },
+      "newsletter": {
+        "input_style": {
+          "label": "Giriş stili",
+          "options__1": {
+            "label": "Normal"
+          },
+          "options__2": {
+            "label": "Çizgi"
+          },
+          "options__3": {
+            "label": "Ayrı"
+          }
+        },
+        "show_consent_notice": {
+          "label": "Onay bildirimini göster"
+        }
+      },
+      "discount": {
+        "header": {
+          "content": "İndirim ayarları"
+        },
+        "paragraph": {
+          "content": "İndirim bilgilerini indirim ayarlarında yapılandırmanız gerekir.[Daha fazla bilgi](https://webvista-studio.gitbook.io/krank/sections/product-and-collection/shop-the-look#discount-settings)"
+        },
+        "show_discount": {
+          "label": "İndirimi göster"
+        },
+        "discount_percentage": {
+          "label": "İndirim yüzdesi"
+        }
+      },
+      "collapse": {
+        "default_expand": {
+          "label": "Varsayılan olarak genişlet"
+        }
+      },
+      "limit": {
+        "label": "Miktar sınırı"
+      },
+      "recommendation": {
+        "show": {
+          "label": "Önerileri etkinleştir"
+        },
+        "type": {
+          "label": "Öneri türü",
+          "info": "Akıllı öneriler, son gezinme geçmişine dayalı olarak ilgili ürünleri otomatik olarak önerir.",
+          "options__1": {
+            "label": "Akıllı"
+          },
+          "options__2": {
+            "label": "Manuel"
+          }
+        }
+      },
+      "localization": {
+        "header_content": "Bölge ve dil seçimi",
+        "show_country": {
+          "label": "Ülke/bölge seçiciyi göster"
+        },
+        "show_language": {
+          "label": "Dil seçiciyi göster"
+        }
+      },
+      "hotspot": {
+        "show_hotspot": {
+          "label": "Vurgulu noktayı göster"
+        },
+        "vertical_position": {
+          "label": "Dikey konum"
+        },
+        "horizontal_position": {
+          "label": "Yatay konum"
+        }
+      },
+      "store": {
+        "name": {
+          "label": "Ad"
+        },
+        "location": {
+          "label": "Konum"
+        },
+        "phone": {
+          "label": "Telefon"
+        },
+        "hours": {
+          "label": "Çalışma saatleri"
+        },
+        "map": {
+          "label": "Google harita yerleştirme kodu",
+          "info": "<iframe></iframe> biçimini kullanın. Ayrıntılı talimatlar için bkz. [Harita yerleştirme kodu alma](https://help.shopify.com/zh-CN/manual/online-store/themes/theme-structure/pages#add-content)."
+        }
+      }
+    },
+    "apps": {
+      "name": "Uygulamalar",
+      "presets": {
+        "name": "Uygulamalar"
+      }
+    },
+    "custom-liquid": {
+      "name": "Özel liquid",
+      "presets": {
+        "name": "Özel liquid"
+      }
+    },
+    "header": {
+      "name": "Başlık",
+      "settings": {
+        "header_logo": {
+          "content": "Logo ayarları"
+        },
+        "logo_width": {
+          "label": "Logo genişliği"
+        },
+        "logo_position": {
+          "label": "Logo konumu",
+          "options__1": {
+            "label": "Sol"
+          },
+          "options__2": {
+            "label": "Orta"
+          }
+        },
+        "header_info_block": {
+          "content": "Bilgi bloğu ayarları"
+        },
+        "show_info_block": {
+          "label": "Bilgi bloğunu göster"
+        },
+        "sticky_header_type": {
+          "label": "Sabit başlık",
+          "options__1": {
+            "label": "Yok"
+          },
+          "options__2": {
+            "label": "Yukarı kaydırırken"
+          },
+          "options__3": {
+            "label": "Her zaman"
+          },
+          "options__4": {
+            "label": "Logo boyutunu küçült"
+          }
+        },
+        "enable_hover_open": {
+          "label": "Menüyü açmak için hover'a izin ver"
+        },
+        "default_expand_category": {
+          "label": "Varsayılan kategori menüsünü genişlet"
+        },
+        "header_search": {
+          "content": "Arama ayarları"
+        },
+        "show_product_types": {
+          "label": "Ürün türlerini göster"
+        },
+        "menu": {
+          "label": "Ana menü"
+        },
+        "menu_position": {
+          "label": "Menü konumu",
+          "options__1": {
+            "label": "Logo satırı"
+          },
+          "options__2": {
+            "label": "Alt"
+          }
+        },
+        "header_category": {
+          "content": "Kategori menüsü ayarları"
+        },
+        "category_menu": {
+          "label": "Kategori menüsü",
+          "info": "En fazla 10 birinci seviye menü göster"
+        },
+        "show_collection_image": {
+          "label": "Kategori görselini göster",
+          "info": "Kategori ürününün ilk görselini göster"
+        },
+        "show_store_button": {
+          "label": "Mağazalar düğmesini göster"
+        },
+        "show_quick_button": {
+          "label": "Hızlı düğmeyi göster"
+        },
+        "header_other_settings": {
+          "content": "Diğer ayarlar"
+        },
+        "default_open_in_index": {
+          "label": "Ana sayfada varsayılan açma"
+        }
+      },
+      "blocks": {
+        "all": {
+          "menu_type": {
+            "label": "Bağlı menü türü",
+            "options__1": {
+              "label": "Ana menü"
+            },
+            "options__2": {
+              "label": "Kategori menüsü"
+            }
+          },
+          "target_id": {
+            "label": "Bağlı menü sırası",
+            "info": "Bir menüyü bağlamak için bu indeksi kullanın. 1’den başlar, soldan sağa sıralamayı gösterir."
+          },
+          "paragraph_main": {
+            "content": "Ana menüde gösterilir"
+          },
+          "paragraph_category": {
+            "content": "Kategori menüsünde gösterilir"
+          }
+        },
+        "icon": {
+          "name": "Simge"
+        },
+        "bubble": {
+          "name": "Rozet"
+        },
+        "mega_image": {
+          "name": "Mega menü - resim",
+          "settings": {
+            "header_badge_content": "Rozet ayarları",
+            "badge_label": {
+              "label": "Rozet etiketi"
+            },
+            "width": {
+              "label": "Resim genişliği",
+              "options__1": {
+                "label": "%20"
+              },
+              "options__2": {
+                "label": "%40"
+              },
+              "options__3": {
+                "label": "%60"
+              },
+              "options__4": {
+                "label": "%80"
+              },
+              "options__5": {
+                "label": "%100"
+              }
+            },
+            "image_mobile": {
+              "info": "300 x 200px .jpg önerilir"
+            }
+          }
+        },
+        "mega_links": {
+          "name": "Mega menü - özel menü",
+          "settings": {
+            "heading": {
+              "info": "Seçili menü başlığını kullanmak için boş bırakın"
+            },
+            "image": {
+              "info": "320 x 200px .jpg önerilir"
+            }
+          }
+        },
+        "mega_collection": {
+          "name": "Mega menü - koleksiyonlar",
+          "settings": {
+            "limit": {
+              "info": "Her koleksiyonda gösterilen ürün sayısını sınırla"
+            },
+            "show_collection_image": {
+              "label": "Kategori görselini göster"
+            }
+          }
+        },
+        "mega_spacer": {
+          "name": "Mega menü - boşluk"
+        },
+        "mega_image_text": {
+          "name": "Mega menü - görsel ve metin"
+        },
+        "category_image": {
+          "name": "Kategori menüsü - resim",
+          "settings": {
+            "header_size_setting": {
+              "content": "Boyut ayarları"
+            },
+            "paragraph_content": {
+              "content": "Menüdeki tüm bağlı resimler, ilk eklenen resmin boyut ayarlarını takip eder"
+            },
+            "width_percentage": {
+              "info": "Kalan alanın yüzdesi olarak resim genişliği",
+              "options__1": {
+                "label": "%25"
+              },
+              "options__2": {
+                "label": "%50"
+              },
+              "options__3": {
+                "label": "%100"
+              }
+            },
+            "height_percentage": {
+              "info": "Kalan alanın yüzdesi olarak resim yüksekliği",
+              "options__1": {
+                "label": "%50"
+              },
+              "options__2": {
+                "label": "%100"
+              }
+            },
+            "image": {
+              "info": "300 x 200px .jpg önerilir"
+            }
+          }
+        }
+      }
+    },
+    "footer": {
+      "name": "Altbilgi",
+      "settings": {
+        "show_border_top": {
+          "label": "Üst sınırı göster"
+        },
+        "header_background": {
+          "content": "Arka plan ayarları"
+        },
+        "background_image": {
+          "label": "Arka plan resmi"
+        },
+        "header_follow_on_shop": {
+          "content": "Shop'ta takip et",
+          "info": "Müşterilerin mağazanızı Shop uygulamasında takip etmesine izin vermek için Shop Pay etkin olmalıdır. [Daha fazla bilgi](https://help.shopify.com/manual/online-store/themes/customizing-themes/follow-on-shop)"
+        },
+        "enable_follow_on_shop": {
+          "label": "Shop'ta takip etmeyi göster"
+        },
+        "header_trust_badge": {
+          "content": "Shopify güven rozeti"
+        },
+        "show_trust_badge": {
+          "label": "Güven rozetini göster"
+        },
+        "header_localization": {
+          "content": "Dil ve ülke seçici",
+          "info": "Dil eklemek için [Dil ayarlarına](/admin/settings/languages) gidin."
+        },
+        "header_payment": {
+          "content": "Ödeme yöntemleri"
+        },
+        "payment_enable": {
+          "label": "Ödeme ikonlarını göster"
+        },
+        "header_to_top": {
+          "content": "Başa dön butonu"
+        },
+        "show_back_to_top_button": {
+          "label": "Başa dön butonunu göster"
+        },
+        "back_to_top_position": {
+          "label": "Gösterim konumu",
+          "options__1": {
+            "label": "Sol"
+          },
+          "options__2": {
+            "label": "Sağ"
+          }
+        },
+        "show_progress_path": {
+          "label": "İlerleme yolunu göster"
+        },
+        "adapt_mobile_navbar": {
+          "label": "Mobil gezinme çubuğunu uyarlayın",
+          "info": "Çakışmayı önlemek için alt boşluk ekleyin"
+        }
+      },
+      "blocks": {
+        "all": {
+          "header_width": {
+            "content": "Genişlik ayarları"
+          }
+        },
+        "link_list": {
+          "name": "Menü",
+          "settings": {
+            "menu": {
+              "label": "Menü",
+              "info": "Sadece en üst düzey menü öğelerini gösterir."
+            }
+          }
+        },
+        "social": {
+          "name": "Sosyal medya",
+          "settings": {
+            "paragraph": {
+              "content": "Sosyal medya hesaplarınızı göstermek için, bağlantılarını [Tema ayarlarına](/editor?context=theme&category=social%20media) ekleyin."
+            }
+          }
+        },
+        "brand": {
+          "name": "Marka bilgisi",
+          "settings": {
+            "email": {
+              "label": "E-posta"
+            },
+            "phone": {
+              "label": "Telefon"
+            },
+            "introduction": {
+              "label": "Marka tanıtımı"
+            },
+            "apple_download_link": {
+              "label": "Apple uygulama indirme bağlantısı"
+            },
+            "android_download_link": {
+              "label": "Android uygulama indirme bağlantısı"
+            },
+            "image": {
+              "info": "300 x 300px .jpg önerilir"
+            }
+          }
+        },
+        "text": {
+          "name": "Metin"
+        },
+        "image": {
+          "name": "Resim",
+          "settings": {
+            "image": {
+              "info": "100 x 100px .jpg önerilir"
+            }
+          }
+        },
+        "newsletter": {
+          "name": "Bülten"
+        },
+        "spacer": {
+          "name": "Boşluk",
+          "settings": {
+            "show_line": {
+              "label": "Ayırıcıyı göster"
+            }
+          }
+        }
+      }
+    },
+    "drawer": {
+      "name": "Yan çekmeceler"
+    },
+    "popup": {
+      "name": "Açılır pencereler"
+    },
+    "image-banner": {
+      "name": "Resim afişi",
+      "presets": {
+        "name": "Resim afişi"
+      }
+    },
+    "video-banner": {
+      "name": "Video afişi",
+      "presets": {
+        "name": "Video afişi"
+      }
+    },
+    "before-after": {
+      "name": "Öncesi ve sonrası",
+      "presets": {
+        "name": "Öncesi ve sonrası"
+      }
+    },
+    "hotspots-banner": {
+      "name": "Öne çıkan noktalar afişi",
+      "blocks": {
+        "hotspot": {
+          "name": "Öne çıkan nokta"
+        }
+      },
+      "presets": {
+        "name": "Öne çıkan noktalar afişi"
+      }
+    },
+    "feature-highlights": {
+      "name": "Özellik vurguları",
+      "settings": {
+        "image": {
+          "info": "800 x 800px .jpg önerilir"
+        }
+      },
+      "blocks": {
+        "highlight": {
+          "name": "Vurgu"
+        }
+      },
+      "presets": {
+        "name": "Özellik vurguları"
+      }
+    },
+    "trust-promises": {
+      "name": "Güven vaatleri",
+      "presets": {
+        "name": "Güven vaatleri"
+      }
+    },
+    "announcement-bar": {
+      "name": "Duyuru çubuğu",
+      "blocks": {
+        "announcement": {
+          "name": "Duyuru",
+          "settings": {
+            "text": {
+              "label": "Metin"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Duyuru çubuğu"
+      }
+    },
+    "cart-drawer": {
+      "name": "Sepet çekmecesi",
+      "settings": {
+        "paragraph": {
+          "content": "Sepet çekmecesini göstermek için lütfen [Şablon Ayarları](/editor?context=theme&category=cart) sayfasına gidin ve sepet ayarlarında 'Çekmece'yi sepet türü olarak seçin."
+        },
+        "header_empty": {
+          "content": "Boş sepet ayarları"
+        },
+        "header_not_empty": {
+          "content": "Dolu sepet ayarları"
+        },
+        "show_complementary": {
+          "label": "Tamamlayıcıyı göster",
+          "info": "En son eklenen sepet öğesiyle ilgili ürünleri gösterir. Öncelikle öğelere [Tamamlayıcı ürünler](https://webvista-studio.gitbook.io/krank/pages/main-product/complementary-products) ekleyin"
+        }
+      }
+    },
+    "featured-collection": {
+      "name": "Öne çıkan koleksiyon",
+      "presets": {
+        "name": "Öne çıkan koleksiyon"
+      }
+    },
+    "collection-tabs": {
+      "name": "Koleksiyon sekmeleri",
+      "blocks": {
+        "collection_tab": {
+          "name": "Koleksiyon sekmesi"
+        }
+      },
+      "presets": {
+        "name": "Koleksiyon sekmeleri"
+      }
+    },
+    "featured-blog": {
+      "name": "Öne çıkan blog",
+      "presets": {
+        "name": "Öne çıkan blog"
+      }
+    },
+    "media-with-text": {
+      "name": "Medya ile metin",
+      "presets": {
+        "name": "Medya ile metin"
+      }
+    },
+    "image-text-tabs": {
+      "name": "Görsel-metin sekmeleri",
+      "blocks": {
+        "image_text": {
+          "name": "Görsel-metin",
+          "settings": {
+            "image": {
+              "info": "900 x 600px .jpg önerilir"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Görsel-metin sekmeleri"
+      }
+    },
+    "quotes": {
+      "name": "Alıntılar",
+      "presets": {
+        "name": "Alıntılar"
+      }
+    },
+    "rich-text": {
+      "name": "Zengin metin",
+      "presets": {
+        "name": "Zengin metin"
+      }
+    },
+    "newsletter": {
+      "name": "Bülten",
+      "settings": {
+        "header_content": "Yan resim",
+        "side_image_position": {
+          "label": "Yan resim konumu",
+          "options__1": {
+            "label": "Sol"
+          },
+          "options__2": {
+            "label": "Sağ"
+          }
+        },
+        "image": {
+          "info": "600 x 600px .jpg önerilir"
+        }
+      },
+      "presets": {
+        "name": "Bülten"
+      }
+    },
+    "collection-list": {
+      "name": "Koleksiyon listesi",
+      "settings": {
+        "show_product_count": {
+          "label": "Ürün sayısını göster"
+        }
+      },
+      "presets": {
+        "name": "Koleksiyon listesi"
+      }
+    },
+    "collection-icons": {
+      "name": "Koleksiyon simgeleri",
+      "presets": {
+        "name": "Koleksiyon simgeleri"
+      }
+    },
+    "carousel": {
+      "name": "Karusel",
+      "settings": {
+        "image_height": {
+          "info": "Uyarlanabilir yükseklik, en yüksek medyanın yüksekliğiyle eşleşir."
+        },
+        "nav_buttons_position": {
+          "label": "Düğme konumu",
+          "options__1": {
+            "label": "Her iki taraf"
+          },
+          "options__2": {
+            "label": "Alt sağ"
+          }
+        }
+      },
+      "presets": {
+        "name": "Karusel"
+      }
+    },
+    "search-drawer": {
+      "name": "Arama çekmecesi",
+      "settings": {
+        "header_recommendation": {
+          "content": "Öneri ayarları"
+        }
+      }
+    },
+    "seamless-scroll": {
+      "name": "Kesintisiz kaydırma",
+      "settings": {
+        "direction": {
+          "label": "Kaydırma yönü",
+          "options__1": {
+            "label": "Sola"
+          },
+          "options__2": {
+            "label": "Sağa"
+          }
+        },
+        "speed": {
+          "label": "Hız",
+          "info": "Saniyede hareket edilen mesafe, px cinsinden"
+        },
+        "display_border_blur": {
+          "label": "Sınır bulanıklığını göster"
+        },
+        "enable_scroll_synergy": {
+          "label": "Kaydırma sinerjisini etkinleştir"
+        }
+      },
+      "blocks": {
+        "text": {
+          "name": "Metin",
+          "settings": {
+            "content": {
+              "label": "İçerik"
+            },
+            "font_size": {
+              "label": "Yazı tipi boyutu"
+            },
+            "font_weight": {
+              "label": "Yazı kalınlığı",
+              "options__1": {
+                "label": "İnce"
+              },
+              "options__2": {
+                "label": "Hafif"
+              },
+              "options__3": {
+                "label": "Normal"
+              },
+              "options__4": {
+                "label": "Kalın"
+              },
+              "options__5": {
+                "label": "Siyah"
+              },
+              "info": "Yazı kalınlığı seçenekleri seçilen yazı tipi ailesine bağlıdır; bazı yazı tipleri daha az ağırlık destekler"
+            },
+            "header_custom_color": {
+              "content": "Özel renk ayarları"
+            }
+          }
+        },
+        "icon": {
+          "name": "Simge",
+          "settings": {
+            "icon_size": {
+              "label": "Simge boyutu"
+            },
+            "header_custom_color": {
+              "content": "Özel renk ayarları"
+            }
+          }
+        },
+        "image": {
+          "name": "Resim",
+          "settings": {
+            "image": {
+              "info": "100 x 100px .jpg önerilir"
+            }
+          }
+        },
+        "spacer": {
+          "name": "Boşluk",
+          "settings": {
+            "width": {
+              "label": "Boşluk genişliği"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Kesintisiz kaydırma"
+      }
+    },
+    "contact-form": {
+      "name": "İletişim formu",
+      "settings": {
+        "header-map": {
+          "content": "Harita ayarları"
+        },
+        "show_map": {
+          "label": "Haritayı göster"
+        },
+        "map_image": {
+          "label": "Harita resmi",
+          "info": "Harita kodu eklenmemişse, bu resim gösterilir, 800 x 600px .jpg önerilir"
+        },
+        "map_iframe": {
+          "label": "Google harita gömme kodu",
+          "info": "<iframe></iframe> formatını kullanın. Detaylı talimatlar için bkz. [Harita gömme kodu nasıl alınır](https://help.shopify.com/zh-CN/manual/online-store/themes/theme-structure/pages#add-content)."
+        }
+      },
+      "presets": {
+        "name": "İletişim formu"
+      }
+    },
+    "testimonial": {
+      "name": "Referanslar",
+      "presets": {
+        "name": "Referanslar"
+      }
+    },
+    "collapsible-content": {
+      "name": "Katlanabilir içerik",
+      "presets": {
+        "name": "Katlanabilir içerik"
+      }
+    },
+    "shop-the-look": {
+      "name": "Stil ile alışveriş",
+      "settings": {
+        "show_quantity_selector": {
+          "label": "Miktar seçiciyi göster"
+        },
+        "default_selected": {
+          "label": "Varsayılan seçili"
+        },
+        "image": {
+          "info": "1000 x 600px .jpg önerilir"
+        }
+      },
+      "blocks": {
+        "look-spot": {
+          "name": "Bakış noktası"
+        }
+      },
+      "presets": {
+        "name": "Stil ile alışveriş"
+      }
+    },
+    "logo-list": {
+      "name": "Logo listesi",
+      "presets": {
+        "name": "Logo listesi"
+      }
+    },
+    "media-grid": {
+      "name": "Medya ızgarası",
+      "presets": {
+        "name": "Medya ızgarası"
+      }
+    },
+    "campaign-popup": {
+      "name": "Kampanya açılır penceresi",
+      "settings": {
+        "disable_for_holder": {
+          "label": "Giriş yapmış kullanıcılar için devre dışı bırak",
+          "info": "Düzenleme modunda uygulanmaz"
+        },
+        "delay": {
+          "label": "Gecikme süresi",
+          "info": "Düzenleme modunda gecikme uygulanmaz"
+        },
+        "frequency": {
+          "label": "Gösterim sıklığı"
+        },
+        "image": {
+          "info": "Önerilen boyut 360 x 480px, .jpg formatında. Google'ın ara reklam yönergelerine uymak ve SEO'yu geliştirmek için mobilde gösterilmez."
+        },
+        "header_float_button": {
+          "content": "Yüzen düğme ayarları"
+        },
+        "show_button": {
+          "label": "Düğmeyi göster"
+        },
+        "button_position": {
+          "label": "Düğme konumu",
+          "options__1": {
+            "label": "Sol"
+          },
+          "options__2": {
+            "label": "Sağ"
+          }
+        }
+      },
+      "presets": {
+        "name": "Kampanya açılır penceresi"
+      }
+    },
+    "age-verifier-popup": {
+      "name": "Yaş doğrulama açılır penceresi",
+      "settings": {
+        "debug_mode": {
+          "label": "Hata ayıklama modunu etkinleştir",
+          "info": "Yaş doğrulama açılır penceresinin her yenilemede gösterilmesini zorlar, sadece düzenleme amaçlıdır. Mağazayı yayımlarken [Hata Ayıklama Modunu](https://webvista-studio.gitbook.io/krank/popups/age-verification-popup) devre dışı bırakmayı unutmayın."
+        },
+        "paragraph_background": {
+          "content": "Arka plan ayarları"
+        },
+        "paragraph_message": {
+          "content": "+ Reşit olmayan mesajı"
+        },
+        "declined_heading": {
+          "label": "Reddedilen başlık"
+        },
+        "declined_description": {
+          "label": "Reddedilen açıklama"
+        }
+      }
+    },
+    "bottom-nav-bar": {
+      "name": "Mobil gezinme çubuğu",
+      "blocks": {
+        "home": {
+          "name": "Ana sayfa"
+        },
+        "account": {
+          "name": "Kullanıcı merkezi"
+        },
+        "cart": {
+          "name": "Sepet"
+        },
+        "store": {
+          "name": "Mağaza"
+        },
+        "search": {
+          "name": "Arama"
+        },
+        "link": {
+          "name": "Bağlantı",
+          "settings": {
+            "image": {
+              "info": "30 x 30px .jpg önerilir"
+            }
+          }
+        }
+      }
+    },
+    "product-compare-table": {
+      "name": "Ürün karşılaştırma tablosu",
+      "settings": {
+        "header_product": {
+          "content": "Ürün ayarları"
+        }
+      },
+      "presets": {
+        "name": "Ürün karşılaştırma tablosu"
+      }
+    },
+    "custom-section-header": {
+      "name": "Özel bölüm başlığı",
+      "presets": {
+        "name": "Özel bölüm başlığı"
+      }
+    },
+    "stores-drawer": {
+      "name": "Mağaza çekmecesi",
+      "blocks": {
+        "store": {
+          "name": "Mağaza",
+          "settings": {
+            "image": {
+              "info": "400 x 250 px .jpg önerilir"
+            }
+          }
+        }
+      }
+    },
+    "store-list": {
+      "name": "Mağaza listesi",
+      "presets": {
+        "name": "Mağaza listesi"
+      }
+    },
+    "product-quick-view-drawer": {
+      "name": "Hızlı ürün görünümü çekmecesi",
+      "settings": {
+        "product": {
+          "label": "Ürün önizlemesi",
+          "info": "Not: ürün önizlemesi sadece düzen ve stil testi içindir"
+        }
+      }
+    },
+    "recently-viewed": {
+      "name": "Son Görüntülenenler",
+      "presets": {
+        "name": "Son Görüntülenenler"
+      }
+    },
+    "related-products": {
+      "name": "İlgili ürünler"
+    },
+    "visual-tabs": {
+      "name": "Görsel sekmeler",
+      "blocks": {
+        "image": {
+          "name": "Resim",
+          "settings": {
+            "image": {
+              "info": "1600 x 600px .jpg önerilir"
+            },
+            "image_mobile": {
+              "info": "300 x 400px .jpg önerilir"
+            }
+          }
+        },
+        "video": {
+          "name": "Video"
+        }
+      },
+      "presets": {
+        "name": "Görsel sekmeler"
+      }
+    },
+    "embedded-image-heading": {
+      "name": "Gömülü resim başlığı",
+      "presets": {
+        "name": "Gömülü resim başlığı"
+      }
+    },
+    "shop-the-feed": {
+      "name": "Akıştan alışveriş",
+      "settings": {
+        "image": {
+          "info": "60 x 60px .jpg önerilir"
+        }
+      },
+      "blocks": {
+        "image-feed": {
+          "name": "Görsel akışı",
+          "settings": {
+            "image": {
+              "info": "300 x 400px .jpg önerilir"
+            }
+          }
+        },
+        "video-feed": {
+          "name": "Video akışı"
+        }
+      },
+      "presets": {
+        "name": "Akıştan alışveriş"
+      }
+    },
+    "timeline": {
+      "name": "Zaman çizelgesi",
+      "presets": {
+        "name": "Zaman çizelgesi"
+      }
+    },
+    "team": {
+      "name": "Takım",
+      "presets": {
+        "name": "Takım"
+      }
+    },
+    "promotion-bar": {
+      "name": "Tanıtım çubuğu",
+      "presets": {
+        "name": "Tanıtım çubuğu"
+      }
+    },
+    "flexible-images": {
+      "name": "Esnek resimler",
+      "presets": {
+        "name": "Esnek resimler"
+      }
+    },
+    "featured-products-grid": {
+      "name": "Öne çıkan ürünler ızgarası",
+      "presets": {
+        "name": "Öne çıkan ürünler ızgarası"
+      }
+    },
+    "featured-product": {
+      "name": "Öne çıkan ürün",
+      "presets": {
+        "name": "Öne çıkan ürün"
+      }
+    },
+    "reading-text": {
+      "name": "Okuma metni",
+      "presets": {
+        "name": "Okuma metni"
+      }
+    },
+    "press": {
+      "name": "Basın",
+      "blocks": {
+        "review": {
+          "name": "İnceleme"
+        }
+      },
+      "presets": {
+        "name": "Basın"
+      }
+    },
+    "multicolumn": {
+      "name": "Çok sütunlu",
+      "presets": {
+        "name": "Çok sütunlu"
+      }
+    },
+    "breadcrumb": {
+      "name": "İz navigasyonu"
+    },
+    "product-anchor-navigation": {
+      "label": "Çapa navigasyon çubuğu",
+      "blocks": {
+        "item": {
+          "name": "Çapa öğesi",
+          "settings": {
+            "anchor_name": {
+              "label": "Çapa adı"
+            },
+            "anchor_id": {
+              "label": "Çapa kimliği",
+              "info": "Sayfa içi çapa kimliği girin (ör. urun-detaylari)"
+            },
+            "image": {
+              "info": "30 x 30px .jpg önerilir"
+            }
+          }
+        }
+      }
+    },
+    "product-description": {
+      "name": "Ürün açıklaması"
+    },
+    "media-content-list": {
+      "name": "Medya içerik listesi",
+      "presets": {
+        "name": "Medya içerik listesi"
+      }
+    },
+    "gallery-with-text": {
+      "name": "Metinli galeri",
+      "presets": {
+        "name": "Metinli galeri"
+      }
+    },
+    "collage-with-text": {
+      "name": "Metinli kolaj",
+      "presets": {
+        "name": "Metinli kolaj"
+      }
+    },
+    "main-list-collection-banner": {
+      "name": "Koleksiyon liste afişi"
+    },
+    "main-product": {
+      "name": "Ürün bilgisi",
+      "blocks": {
+        "title": {
+          "name": "Başlık",
+          "settings": {
+            "size": {
+              "label": "Yazı boyutu",
+              "options__1": {
+                "label": "Küçük"
+              },
+              "options__2": {
+                "label": "Orta"
+              },
+              "options__3": {
+                "label": "Büyük"
+              }
+            },
+            "header_vendor": {
+              "content": "Ürün satıcısı"
+            },
+            "show_vendor": {
+              "label": "Satıcıyı göster"
+            },
+            "show_type": {
+              "label": "Tipi göster"
+            },
+            "header_rating": {
+              "content": "Ürün değerlendirmesi"
+            },
+            "enable_rating_preview": {
+              "label": "Önizleme modunu etkinleştir",
+              "info": "Simüle edilmiş değerlendirme verilerini göster"
+            },
+            "show_rating": {
+              "label": "Ürün değerlendirmesini göster"
+            },
+            "star_size": {
+              "label": "Yıldız boyutu",
+              "options__1": {
+                "label": "Küçük"
+              },
+              "options__2": {
+                "label": "Orta"
+              },
+              "options__3": {
+                "label": "Büyük"
+              }
+            },
+            "star_color": {
+              "label": "Yıldız rengi"
+            },
+            "target_anchor": {
+              "label": "Hedef çapa id'si",
+              "info": "Çapa id'si ekleyin, örn. #Reviews"
+            }
+          }
+        },
+        "price": {
+          "name": "Fiyat",
+          "settings": {
+            "show_tax": {
+              "label": "Vergi ve kargo bildirimi göster"
+            },
+            "show_sale_badge": {
+              "label": "İndirim/stok dışı rozeti göster"
+            },
+            "sale_badge_type": {
+              "label": "İndirim rozeti türü",
+              "options__1": {
+                "label": "Miktar"
+              },
+              "options__2": {
+                "label": "Yüzde"
+              },
+              "options__3": {
+                "label": "Ücretsiz"
+              }
+            }
+          }
+        },
+        "sku": {
+          "name": "SKU"
+        },
+        "description": {
+          "name": "Ürün açıklaması",
+          "settings": {
+            "enable_brief": {
+              "label": "Kısa açıklamayı göster"
+            },
+            "limit": {
+              "label": "Kısa açıklama karakter limiti"
+            }
+          }
+        },
+        "info_card": {
+          "name": "Bilgi kartı",
+          "settings": {
+            "enable_close": {
+              "label": "Kapat düğmesini etkinleştir",
+              "info": "Kullanıcıların bilgi kartını kapatmasına izin ver"
+            }
+          }
+        },
+        "variant_picker": {
+          "name": "Varyant seçici",
+          "settings": {
+            "header_default_picker": {
+              "content": "Temel seçici"
+            },
+            "picker_type": {
+              "label": "Seçici türü",
+              "options__1": {
+                "label": "Açılır liste"
+              },
+              "options__2": {
+                "label": "Düğme"
+              }
+            },
+            "auto_dropdown": {
+              "label": "Otomatik stil değişikliği",
+              "info": "Seçenek sayısı aşağıdaki eşik değeri aşarsa otomatik olarak açılır liste seçicisine geçer, sayfayı daha temiz tutar"
+            },
+            "dropdown_threshold": {
+              "label": "Açılır liste eşiği"
+            },
+            "header_swatch_picker": {
+              "content": "Renk örneği seçici"
+            },
+            "enable_first_swatch_image": {
+              "label": "Varyant resmini göster",
+              "info": "İlk renk örneği seçeneği için varyant resmini göster"
+            },
+            "swatch_size": {
+              "label": "Seçici boyutu",
+              "options__1": {
+                "label": "Küçük"
+              },
+              "options__2": {
+                "label": "Orta"
+              },
+              "options__3": {
+                "label": "Büyük"
+              }
+            },
+            "round_swatches": {
+              "label": "Yuvarlak numuneler"
+            },
+            "auto_scroll_to_top": {
+              "label": "Otomatik yukarı kaydırma",
+              "info": "Varyant resmi değiştiğinde otomatik olarak sayfanın en üstüne kaydırır."
+            }
+          }
+        },
+        "buy_buttons": {
+          "name": "Satın alma düğmeleri",
+          "settings": {
+            "show_quantity_selector": {
+              "label": "Miktar seçiciyi göster"
+            },
+            "is_selector_standalone": {
+              "label": "Miktar seçiciyi kendi satırında göster",
+              "info": "Ekran dar ise otomatik sarılır"
+            },
+            "show_dynamic_checkout": {
+              "label": "Dinamik ödeme düğmesini göster",
+              "info": "Sepete ekle düğmesinin yanında ödeme düğmesini gösterir"
+            },
+            "show_notify_form": {
+              "label": "Stokta olduğunda bildirim göster",
+              "info": "Ürün stokta olmadığında ve ön sipariş seçeneği yoksa gösterilir"
+            },
+            "show_gift_card_recipient": {
+              "label": "Hediye kartı alıcısı alanını göster",
+              "info": "Alıcının hediye kartını doğrudan alıcıya göndermesine izin verir"
+            }
+          }
+        },
+        "separator": {
+          "name": "Ayırıcı",
+          "settings": {
+            "show_line": {
+              "label": "Çizgiyi göster"
+            },
+            "margin_top": {
+              "label": "Üst boşluk"
+            },
+            "margin_bottom": {
+              "label": "Alt boşluk"
+            }
+          }
+        },
+        "inventory": {
+          "name": "Stok durumu",
+          "settings": {
+            "inventory_threshold": {
+              "label": "Stok eşiği",
+              "info": "Düşük stok uyarısını tetiklemek için eşiği ayarlayın"
+            },
+            "low_stock_alert": {
+              "label": "Düşük stok uyarısı",
+              "info": "[stock] kullanarak mevcut stok miktarını gösterir"
+            },
+            "full_stock_alert": {
+              "label": "Tam stok bildirimi",
+              "info": "[stock] kullanarak mevcut stok miktarını gösterir"
+            },
+            "show_percentage_bar": {
+              "label": "Yüzde çubuğunu göster"
+            },
+            "low_stock_bar_color": {
+              "label": "Düşük stok çubuğu rengi"
+            },
+            "full_stock_bar_color": {
+              "label": "Tam stok çubuğu rengi"
+            }
+          }
+        },
+        "collapsible_tab": {
+          "name": "Katlanabilir sekme",
+          "settings": {
+            "heading": {
+              "label": "Başlık"
+            },
+            "richtext_content": {
+              "label": "İçerik"
+            },
+            "image": {
+              "info": "30 x 30px .jpg önerilir"
+            },
+            "content_image": {
+              "info": "700 x 700px .jpg önerilir"
+            }
+          }
+        },
+        "icon_text": {
+          "name": "Simge ile metin",
+          "settings": {
+            "image": {
+              "info": "30 x 30px .jpg önerilir"
+            }
+          }
+        },
+        "sibling_product": {
+          "name": "Kardeş ürün",
+          "settings": {
+            "paragraph": {
+              "content": "Aynı seriden kardeş ürünleri birlikte göstermek için bağlayın, bkz. [Kardeş ürünler nasıl oluşturulur](https://webvista-studio.gitbook.io/krank/pages/main-product/sibling-products)"
+            },
+            "title": {
+              "label": "Seçenek adı",
+              "info": "ör. Kırmızı, XXL"
+            },
+            "show_price": {
+              "label": "Fiyatı göster"
+            }
+          }
+        },
+        "pickup_availability": {
+          "name": "Teslim alma uygunluğu"
+        },
+        "sharing": {
+          "name": "Paylaşım"
+        },
+        "mini_checkout": {
+          "name": "Mini ödeme"
+        },
+        "countdown": {
+          "name": "Promosyon geri sayımı",
+          "settings": {
+            "header_countdown": {
+              "content": "Geri sayım ayarları"
+            }
+          }
+        },
+        "text": {
+          "name": "Metin",
+          "settings": {
+            "text": {
+              "label": "Metin açıklaması"
+            }
+          }
+        },
+        "popup": {
+          "name": "Popup",
+          "settings": {
+            "image": {
+              "info": "30 x 30px .jpg önerilir"
+            },
+            "content_image": {
+              "info": "600 x 600px .jpg önerilir"
+            },
+            "bind_size_picker": {
+              "label": "Beden seçiciyi bağla"
+            }
+          }
+        },
+        "complementary_products": {
+          "name": "Tamamlayıcı ürünler",
+          "settings": {
+            "paragraph": {
+              "content": "Mevcut ürünle iyi eşleşen ürünleri gösterir."
+            },
+            "show_separator_line": {
+              "label": "Üst ayırıcı çizgisini göster"
+            },
+            "items_per_slide": {
+              "label": "Her slaytta ürün sayısı"
+            }
+          }
+        },
+        "delivery_eta": {
+          "name": "Tahmini teslim süresi",
+          "settings": {
+            "processing_time": {
+              "label": "İşlem süresi"
+            },
+            "time_variance": {
+              "label": "Zaman varyansı"
+            }
+          }
+        },
+        "keyword_list": {
+          "name": "Anahtar kelime listesi"
+        },
+        "add_on": {
+          "name": "Ek ürün",
+          "settings": {
+            "image": {
+              "info": "30 x 30px .jpg önerilir"
+            },
+            "default_selected": {
+              "label": "Varsayılan seçili"
+            },
+            "quantity_sync": {
+              "label": "Adet senkronizasyonu",
+              "info": "Etkinleştirildiğinde, paketlenmiş ürünlerin miktarı ana ürünün miktarı ile senkronize edilir."
+            }
+          }
+        },
+        "payment_security": {
+          "name": "Ödeme güvenliği"
+        },
+        "badge_list": {
+          "name": "Rozet listesi"
+        },
+        "care": {
+          "name": "Bakım",
+          "settings": {
+            "product": {
+              "info": "Önce ilgili garanti ürününü eklemeniz gerekir"
+            }
+          }
+        }
+      },
+      "settings": {
+        "enable_sticky_media": {
+          "label": "Masaüstünde yapışkan medya etkinleştir"
+        },
+        "media_layout": {
+          "label": "Medya düzeni",
+          "options__1": {
+            "label": "Yığın"
+          },
+          "options__2": {
+            "label": "Altında küçük resimlerle kaydırıcı"
+          },
+          "options__3": {
+            "label": "Solunda küçük resimlerle kaydırıcı"
+          },
+          "options__4": {
+            "label": "Sağında küçük resimlerle kaydırıcı"
+          }
+        },
+        "paragraph_amplifier": {
+          "content": "+ Görüntü büyüteci ayarları"
+        },
+        "paragraph_rotation": {
+          "content": "+ Medya kaydırıcı ayarları"
+        },
+        "paragraph_other": {
+          "content": "+ Diğer medya ayarları"
+        },
+        "hide_variants": {
+          "label": "Diğer varyant resimlerini gizle",
+          "info": "Seçilen varyanta uygun resimleri göstermek ve diğerlerini gizlemek için alt özniteliğini kullanarak varyantlara göre resimleri gruplayın. Daha fazla bilgi için [Ürün Sayfası](https://webvista-studio.gitbook.io/krank/pages/main-product/variant-images-group) adresine bakınız."
+        },
+        "enable_video_autoplay": {
+          "label": "Video otomatik oynatmayı etkinleştir"
+        },
+        "enable_video_looping": {
+          "label": "Video döngüsünü etkinleştir"
+        },
+        "hide_thumbnail_mobile": {
+          "label": "Mobilde küçük resimleri gizle",
+          "info": "Medya düzeni kaydırıcı olarak ayarlandığında etkilidir."
+        }
+      }
+    },
+    "main-article": {
+      "name": "Blog yazısı",
+      "settings": {
+        "enable_share": {
+          "label": "Paylaşımı etkinleştir"
+        }
+      },
+      "blocks": {
+        "related_products": {
+          "name": "İlgili ürünler",
+          "settings": {
+            "related_type": {
+              "label": "İlgili tür",
+              "options__1": {
+                "label": "Otomatik"
+              },
+              "options__2": {
+                "label": "Manuel"
+              },
+              "options__3": {
+                "label": "Metafield"
+              }
+            }
+          }
+        },
+        "related_articles": {
+          "name": "İlgili makaleler",
+          "settings": {
+            "paragraph_content": {
+              "content": "İlgili makaleler, aynı etiketlere sahip diğer makaleleri gösterir."
+            }
+          }
+        },
+        "image_text": {
+          "name": "Resim metni",
+          "settings": {
+            "image": {
+              "info": "400 x 250px .jpg önerilir"
+            }
+          }
+        }
+      }
+    },
+    "main-blog": {
+      "name": "Blog yazıları",
+      "settings": {
+        "show_article_count": {
+          "label": "Makale sayısını göster"
+        },
+        "show_tags_filter": {
+          "label": "Etiket filtresini göster"
+        }
+      }
+    },
+    "main-cart": {
+      "name": "Ana sepet"
+    },
+    "main-search-banner": {
+      "name": "Arama bannerı"
+    },
+    "main-search": {
+      "name": "Arama sonuçları",
+      "settings": {
+        "paragraph_card_article": {
+          "content": "+ Makale kartı ayarları"
+        }
+      }
+    },
+    "main-collection-banner": {
+      "name": "Koleksiyon bannerı",
+      "settings": {
+        "show_collection_image": {
+          "label": "Koleksiyon görselini göster"
+        },
+        "default_collection_image": {
+          "label": "Varsayılan görsel",
+          "info": "Koleksiyon resmi yoksa bu görsel kullanılır. 1920 x 600px .jpg önerilir."
+        },
+        "custom_collection_image": {
+          "label": "Özel görsel",
+          "info": "1920 x 600px .jpg önerilir"
+        }
+      }
+    },
+    "main-collection-text-image": {
+      "name": "Koleksiyon metin resmi",
+      "settings": {
+        "show_collection_image": {
+          "label": "Koleksiyon görselini göster"
+        },
+        "default_collection_image": {
+          "label": "Varsayılan görsel",
+          "info": "Koleksiyon resmi yoksa bu görsel kullanılır. 800 x 500px .jpg önerilir."
+        },
+        "custom_collection_image": {
+          "label": "Özel görsel",
+          "info": "800 x 500px .jpg önerilir"
+        }
+      }
+    },
+    "main-collection": {
+      "name": "Koleksiyon",
+      "settings": {
+        "header_filter": {
+          "content": "Filtrele ve sırala"
+        },
+        "enable_sorting": {
+          "label": "Sıralamayı etkinleştir"
+        },
+        "enable_filtering": {
+          "label": "Filtrelemeyi etkinleştir",
+          "info": "Filtreleri Search and Discovery uygulaması ile özelleştirin. [Daha fazla bilgi](https://help.shopify.com/manual/online-store/search-and-discovery/filters)"
+        },
+        "filter_type": {
+          "label": "Filtre düzeni",
+          "options__1": {
+            "label": "Yatay"
+          },
+          "options__2": {
+            "label": "Dikey"
+          },
+          "options__3": {
+            "label": "Çekmece"
+          }
+        },
+        "enable_sticky_filter": {
+          "label": "Yapışkan filtreyi etkinleştir"
+        },
+        "default_expand_facets": {
+          "label": "Varsayılan genişletme",
+          "options__1": {
+            "label": "Hiçbiri"
+          },
+          "options__2": {
+            "label": "İlki genişlet"
+          },
+          "options__3": {
+            "label": "Hepsini genişlet"
+          }
+        },
+        "limit": {
+          "info": "Sayfa başına gösterilecek öğe sayısını ayarlayın"
+        },
+        "header_layout": {
+          "content": "Ürün düzeni"
+        },
+        "enable_layout_switch": {
+          "label": "Düzen değiştiriciyi göster"
+        },
+        "default_layout": {
+          "label": "Varsayılan düzen",
+          "options__1": {
+            "label": "Izgara"
+          },
+          "options__2": {
+            "label": "Liste"
+          }
+        },
+        "show_separate_line": {
+          "label": "Ayrıcı çizgiyi göster"
+        }
+      }
+    },
+    "main-list-collections": {
+      "name": "Koleksiyon listesi sayfası",
+      "settings": {
+        "sort": {
+          "label": "Koleksiyonları sırala:",
+          "options__1": {
+            "label": "Alfabetik, A-Z"
+          },
+          "options__2": {
+            "label": "Alfabetik, Z-A"
+          },
+          "options__3": {
+            "label": "Tarih, yeniden eskiye"
+          },
+          "options__4": {
+            "label": "Tarih, eskiden yeniye"
+          },
+          "options__5": {
+            "label": "Ürün sayısı, yüksekten düşüğe"
+          },
+          "options__6": {
+            "label": "Ürün sayısı, düşükten yükseğe"
+          }
+        },
+        "show_product_count": {
+          "label": "Ürün sayısını göster"
+        }
+      }
+    },
+    "main-page": {
+      "name": "Sayfa"
+    },
+    "main-password": {
+      "name": "Ana parola"
+    },
+    "main-login": {
+      "name": "Ana giriş",
+      "settings": {
+        "shop_login_button": {
+          "label": "Shop ile giriş yapmayı etkinleştir"
+        }
+      }
+    },
+    "main-order": {
+      "name": "Sipariş"
+    },
+    "main-account": {
+      "name": "Hesap",
+      "settings": {
+        "orders_per_page": {
+          "label": "Sayfa başına sipariş sayısı"
+        }
+      }
+    },
+    "main-activate-account": {
+      "name": "Hesap aktivasyonu"
+    },
+    "main-addresses": {
+      "name": "Adresler",
+      "settings": {
+        "addresses_per_page": {
+          "label": "Sayfa başına adres sayısı"
+        }
+      }
+    },
+    "main-register": {
+      "name": "Ana kayıt"
+    },
+    "main-reset-password": {
+      "name": "Şifre sıfırlama"
+    },
+    "main-gift-card": {
+      "name": "Hediye kartı"
+    }
+  }
+}

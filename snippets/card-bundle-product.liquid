@@ -1,0 +1,161 @@
+{% doc %}
+  Card Bundle Product
+
+  @description
+  Displays a bundle product card with image, title, price, and optional features.
+
+  @param {string} section_id - Section ID
+  @param {object} card_product - Product object
+  @param {string} [image_width] - Optimal width for desktop, used for performance
+  @param {string} [image_width_mobile] - Optimal width for mobile, used for performance
+  @param {boolean} [show_quantity_selector] - Show quantity selector
+  @param {boolean} [default_selected] - Set as default selected
+  @param {string} [placeholder_image] - Placeholder image
+  @param {boolean} [show_discount] - Show discount
+  @param {string} [discount_percentage] - Discount percentage
+  @param {boolean} [truncate_title] - Truncate product title
+
+  @example
+  {% render 'card-bundle-product' %}
+{% enddoc %}
+
+{% capture sizes %}(min-width: 750px) calc({{ image_width }} * 1.5), {{ image_width_mobile | default: '100vw' }}{% endcapture %}
+
+{% liquid
+  assign placeholder_image = placeholder_image | default: 'product-1'
+
+  if card_product.has_only_default_variant
+    assign product_image = card_product.featured_media
+  else
+    assign product_image = card_product.selected_or_first_available_variant.image
+  endif
+%}
+<div class="bundle-product-card card card--horizontal">
+  <span class="bundle-checkbox checkbox">
+    <label class="bundle-checkbox-label">
+      <input
+        id="Bundle-Product-Checkbox-{{ section_id }}-{{ card_product.id }}"
+        type="checkbox"
+        name="id"
+        value="{{ card_product.first_available_variant.id }}"
+        {% if card_product.available == false %}
+          disabled
+        {% elsif default_selected %}
+          checked
+        {% endif %}
+      >
+      <span class="input-face"><span></span></span>
+      <span class="visually-hidden">{{ 'bundle.select_item' | t: title: card_product.title }} </span>
+    </label>
+  </span>
+  <div class="card-media">
+    <div class="media media--square media-fit--{{ settings.card_image_fit }}">
+      {% render 'lazy-image',
+        image_object: product_image,
+        class: 'product-card-featured-image',
+        sizes: sizes,
+        widths: '165, 360, 533, 720, 940, 1066',
+        placeholder: placeholder_image
+      %}
+    </div>
+  </div>
+  <div class="card-content">
+    <div class="card-heading">
+      {%- if card_product != blank -%}
+        <a
+          class="link link-underline"
+          href="{{ card_product.url | within: collection }}"
+          aria-label="{{ card_product.title }}"
+        >
+          {%- if truncate_title -%}
+            <span class="title-more">{{ card_product.title | truncate: 30 }}</span>
+            <span class="title-less">{{ card_product.title | truncate: 18 }}</span>
+          {%- else %}
+            {{ card_product.title }}
+          {%- endif -%}
+        </a>
+      {%- else -%}
+        <a class="link link-underline" role="link" aria-disabled="true">{{ 'onboarding.product_title' | t }}</a>
+      {%- endif -%}
+    </div>
+    {%- if card_product.first_available_variant != blank and card_product.has_only_default_variant == false -%}
+      <modal-opener
+        class="product-card-options link link-text light"
+        role="button"
+        aria-haspopup="dialog"
+        aria-expanded="false"
+        aria-controls="Bundle-Modal-{{ section_id }}"
+        aria-label="{{ 'bundle.modal' | t }}"
+        data-product-url="{{ card_product.url }}"
+        data-variant-id="{{ card_product.first_available_variant.id }}"
+        tabindex="0"
+      >
+        {{- card_product.first_available_variant.title | truncate: 30 -}}
+      </modal-opener>
+    {%- endif -%}
+    <div class="card-price">
+      {% render 'discount-price',
+        variant_object: card_product.selected_or_first_available_variant,
+        show_discount: show_discount,
+        discount_percentage: discount_percentage
+      %}
+      {%- if card_product.available == false -%}
+        <span class="badge sold-out-badge">{{ 'products.product.sold_out' | t }}</span>
+      {%- else -%}
+        {%- if show_quantity_selector -%}
+          {%- assign cart_qty = cart | item_count_for_variant: card_product.first_available_variant.id -%}
+          <div class="quantity-selector">
+            <label class="visually-hidden" for="Quantity-{{ section_id }}-{{ card_product.id }}">
+              {{ 'products.product.quantity.label' | t }}:
+            </label>
+            <quantity-input class="quantity" data-url="{{ card_product.url }}" data-section="{{ section_id }}">
+              <button
+                class="quantity-button button button--small button--ethereal button--icon button--pill no-js-hidden"
+                name="minus"
+                type="button"
+                aria-label="{{- 'products.product.quantity.decrease' | t: product: card_product.title | escape -}}"
+              >
+                {% render 'icon-sets-basic', icon: 'minus' %}
+              </button>
+              <input
+                id="Quantity-{{ section_id }}-{{ card_product.id }}"
+                class="quantity-input"
+                type="number"
+                name="quantity"
+                data-product="{{ card_product.id }}"
+                data-cart-quantity="{{ cart_qty }}"
+                data-min="{{ card_product.first_available_variant.quantity_rule.min }}"
+                min="{{ card_product.first_available_variant.quantity_rule.min }}"
+                {% if card_product.first_available_variant.quantity_rule.max != null %}
+                  data-max="{{ card_product.first_available_variant.quantity_rule.max }}"
+                  max="{{ card_product.first_available_variant.quantity_rule.max }}"
+                {% endif %}
+                step="{{ card_product.first_available_variant.quantity_rule.increment }}"
+                value="{{ card_product.first_available_variant.quantity_rule.min }}"
+              >
+              <button
+                class="quantity-button button button--small button--ethereal button--icon button--pill no-js-hidden"
+                name="plus"
+                type="button"
+                aria-label="{{- 'products.product.quantity.increase' | t: product: card_product.title | escape -}}"
+              >
+                {% render 'icon-sets-basic', icon: 'plus' %}
+              </button>
+            </quantity-input>
+          </div>
+        {%- else -%}
+          <input
+            type="hidden"
+            name="quantity"
+            value="1"
+            data-product="{{ card_product.id }}"
+          >
+          <small class="quantity-selector light">
+            x
+            <span class="quantity-count" data-product="{{ card_product.id }}">1</span>
+          </small>
+        {%- endif -%}
+      {% endif %}
+    </div>
+  </div>
+</div>

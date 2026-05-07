@@ -1,0 +1,60 @@
+.hotspots-banner__wrapper {
+  display: block;
+  position: relative;
+}
+.hotspots-banner__wrapper .spots-banner-container {
+  position: relative;
+}
+.hotspots-banner__wrapper .spots-banner-container .spot-button {
+  z-index: 1;
+}
+.hotspots-banner__wrapper .spots-banner-products .spot-product {
+  padding: 0.5rem;
+  padding-inline-end: 1rem;
+  border: 1px solid rgba(var(--color-foreground), 0.1);
+}
+.hotspots-banner__wrapper .spots-banner-products .spot-product .card {
+  padding-block-start: 0;
+}
+.hotspots-banner__wrapper .spots-banner-products .spot-product[aria-hidden=true] {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+.hotspots-banner__wrapper .spots-banner-products .spot-product:not([aria-hidden=true]) {
+  visibility: visible;
+  animation: slideIn 300ms cubic-bezier(0, 0, 0.3, 1);
+}
+@media (prefers-reduced-motion) {
+  .hotspots-banner__wrapper .spots-banner-products .spot-product:not([aria-hidden=true]) {
+    opacity: 1;
+  }
+}
+@media screen and (max-width: 749px) {
+  .hotspots-banner__wrapper .spots-banner-products {
+    margin-block-start: 1rem;
+  }
+}
+@media screen and (min-width: 750px) {
+  .hotspots-banner__wrapper .spots-banner-products {
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .hotspots-banner__wrapper .spots-banner-products .spot-product {
+    position: absolute;
+    z-index: 1;
+    inset-inline-start: var(--left);
+    inset-inline-end: var(--right);
+    inset-block-start: var(--top);
+    inset-block-end: var(--bottom);
+    margin-block: 0;
+    margin-inline: 2rem;
+    box-shadow: 0 0 0.5rem 0 rgba(var(--color-shadow), 0.2);
+  }
+  .hotspots-banner__wrapper .spots-banner-products .spot-product .card {
+    width: 22rem;
+  }
+}

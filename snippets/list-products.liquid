@@ -1,0 +1,187 @@
+{% doc %}
+  List Products
+
+  @description
+  Renders a list of products with optional sliders, card styles, and display settings such as quick add, vendor, rating, and swatches.
+
+  @param {string} section_id - Section Id
+  @param {object} products - Product collection
+  @param {number} [products_limit] - Limit of displayed products, default: 8
+  @param {string} [collection_info] - Collection information
+  @param {string} [card_size] - Card size: small|medium|large
+  @param {string} [min_size] - Minimum item size
+  @param {string} [perfect_size] - Perfect item size
+  @param {string} [min_size_mobile] - Minimum item size on mobile
+  @param {string} [perfect_size_mobile] - Perfect item size on mobile
+  @param {string} [image_ratio] - Product image aspect ratio, portrait|square
+  @param {boolean} [slider_on_desktop] - Enable slider on desktop, default: false
+  @param {boolean} [slider_on_mobile] - Enable slider on mobile
+  @param {boolean} [show_seek_bar] - Show seek bar
+  @param {boolean} [show_nav_buttons] - Show navigation buttons
+  @param {string} [text_alignment] - Text alignment
+  @param {boolean} [show_wrapper] - Show wrapper container
+  @param {boolean} [show_quick_add] - Show quick add button
+  @param {boolean} [truncate_title] - Truncate title length
+  @param {boolean} [show_vendor] - Show vendor
+  @param {boolean} [show_low_stock] - Show low stock notice
+  @param {boolean} [show_rating] - Show rating
+  @param {boolean} [show_swatch] - Show swatch
+  @param {boolean} [show_secondary_image] - Show secondary image
+  @param {string} [color_scheme] - Card color scheme
+  @param {string} [class] - Custom class
+
+  @example
+  {% render 'list-products',
+    products: collection.products,
+    section_id: section.id,
+    products_limit: 10,
+    slider_on_desktop: true,
+    slider_on_mobile: false,
+    show_seek_bar: true,
+    show_nav_buttons: true,
+    color_scheme: 'scheme-1',
+    image_ratio: 'square',
+    card_size: 'medium',
+    text_alignment: 'left',
+    show_wrapper: true
+  %}
+{% enddoc %}
+
+{%- liquid
+  assign products_limit = products_limit | default: 8
+
+  if show_quick_add == null
+    assign show_quick_add = settings.card_enable_quick_buy
+  endif
+
+  if show_swatch == null
+    assign show_swatch = settings.card_enable_color_swatch
+  endif
+
+  if show_vendor == null
+    assign show_vendor = settings.card_show_vendor
+  endif
+
+  if show_rating == null
+    assign show_rating = settings.card_show_rating
+  endif
+
+  if truncate_title == null
+    assign truncate_title = settings.card_truncate_title
+  endif
+
+  if show_low_stock == null
+    assign show_low_stock = settings.card_show_low_stock
+  endif
+
+  if show_secondary_image == null
+    assign show_secondary_image = settings.card_hover_show_secondary_image
+  endif
+
+  if card_size != blank and min_size == blank and perfect_size == blank and min_size_mobile == blank and perfect_size_mobile == blank
+    assign perfect_size_mobile = '14rem'
+    if card_size == 'medium'
+      assign min_size = '20rem'
+      assign min_size_mobile = '12rem'
+      assign perfect_size = '22rem'
+    elsif card_size == 'large'
+      assign min_size = '24rem'
+      assign min_size_mobile = '14rem'
+      assign perfect_size = '24rem'
+    elsif card_size == 'mini'
+      assign min_size = '14rem'
+      assign min_size_mobile = '10rem'
+      assign perfect_size = '16rem'
+    else
+      assign min_size = '15rem'
+      assign min_size_mobile = '10rem'
+      assign perfect_size = '18rem'
+    endif
+  endif
+-%}
+
+<slider-component
+  class="product-list-component slider{% if class != blank %} {{ class }}{% endif %}"
+  {% if slider_on_desktop %}
+    data-slide-desktop
+  {% endif %}
+  {% if slider_on_mobile %}
+    data-slide-mobile
+  {% endif %}
+  data-slide-smooth
+  data-draggable
+>
+  <div class="slider-container">
+    <ul
+      id="Slider-{{ section_id }}"
+      class="product-list slider-wrapper slider--center auto-grid"
+      style="--item-min-size: {{ min_size }}; --item-perfect-size: {{ perfect_size }}; --item-min-size-mobile: {{ min_size_mobile }};  --item-perfect-size-mobile: {{ perfect_size_mobile }};"
+    >
+      {%- if collection_info != blank -%}
+        <li
+          id="Slide-{{ section_id }}-0"
+          class="collection-info-item slider-slide grid-item focus-inset"
+          tabindex="0"
+        >
+          {{ collection_info }}
+        </li>
+      {%- endif -%}
+      {%- for product in products limit: products_limit -%}
+        <li
+          id="Slide-{{ section_id }}-{{ forloop.index }}"
+          class="slider-slide grid-item focus-inset"
+          tabindex="0"
+          data-product-id="{{ product.id }}"
+        >
+          {% liquid
+            assign index = forloop.index0 | modulo: 6 | plus: 1
+            assign placeholder_image = 'product-' | append: index
+          %}
+          {% render 'card-product',
+            card_product: product,
+            placeholder_image: placeholder_image,
+            show_vendor: show_vendor,
+            show_low_stock: show_low_stock,
+            show_rating: show_rating,
+            show_compare_at_price: true,
+            show_badge: true,
+            show_quick_add: show_quick_add,
+            enable_add_to_cart: true,
+            show_swatch: show_swatch,
+            show_secondary_image: show_secondary_image,
+            image_ratio: image_ratio,
+            image_width: perfect_size,
+            image_width_mobile: perfect_size_mobile,
+            color_scheme: color_scheme,
+            text_alignment: text_alignment,
+            show_wrapper: show_wrapper,
+            truncate_title: truncate_title
+          %}
+        </li>
+      {%- else -%}
+        {%- for i in (1..products_limit) -%}
+          <li id="Slide-{{ section_id }}-{{ forloop.index }}" class="slider-slide grid-item focus-inset" tabindex="0">
+            {% liquid
+              assign index = forloop.index0 | modulo: 6 | plus: 1
+              assign placeholder_image = 'product-' | append: index
+            %}
+            {% render 'card-product',
+              image_ratio: image_ratio,
+              show_vendor: show_vendor,
+              placeholder_image: placeholder_image,
+              text_alignment: text_alignment,
+              show_wrapper: show_wrapper,
+              color_scheme: color_scheme
+            %}
+          </li>
+        {%- endfor -%}
+      {%- endfor -%}
+    </ul>
+    {%- if show_nav_buttons -%}
+      {% render 'slider-nav-buttons', section_id: section_id %}
+    {%- endif -%}
+  </div>
+  {%- if show_seek_bar -%}
+    {% render 'slider-seek-bar', section_id: section_id %}
+  {%- endif -%}
+</slider-component>

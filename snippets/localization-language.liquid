@@ -1,0 +1,55 @@
+{% doc %}
+  Localization Language
+
+  @description
+  Renders a language selection dropdown, allowing users to choose their preferred language.
+
+  @param {string} section_id - Section Id
+
+  @example
+  {% render 'localization-language', section_id: section.id %}
+{% enddoc %}
+
+<drop-menu>
+  <details class="localization-language-details localization-details details-disclosure">
+    <summary
+      aria-haspopup="true"
+      aria-expanded="false"
+      aria-controls="Localization-Language-List-{{ section_id }}"
+    >
+      {% render 'icon-sets-basic', icon: 'language' %}
+      {{ localization.language.endonym_name | capitalize }}
+      {% render 'icon-sets-basic', icon: 'caret-down', class: 'caret-icon' %}
+    </summary>
+    <div class="details-disclosure-content color-{{ settings.main_color_scheme }} gradient" tabindex="-1">
+      <link-form class="link-form d-block">
+        {%- form 'localization', id: 'Language-Localization-Form', class: 'localization-form' -%}
+          <ul
+            id="Localization-Language-List-{{ section_id }}"
+            class="list-unstyled"
+          >
+            {%- for language in localization.available_languages -%}
+              <li class="list-item">
+                <a
+                  class="form-link link"
+                  href="#"
+                  {% if language.iso_code == localization.language.iso_code %}
+                    aria-current="true"
+                  {% endif %}
+                  data-value="{{ language.iso_code }}"
+                >
+                  {{ language.endonym_name | capitalize }}
+                  {%- if language.iso_code == localization.language.iso_code -%}
+                    {% render 'icon-sets-basic', icon: 'check' %}
+                    <span class="visually-hidden">{{ 'accessibility.selected' | t }}</span>
+                  {%- endif -%}
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+          <input class="link-value" type="hidden" name="locale_code" value="{{ localization.language.iso_code }}">
+        {% endform %}
+      </link-form>
+    </div>
+  </details>
+</drop-menu>

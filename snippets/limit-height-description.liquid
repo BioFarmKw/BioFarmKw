@@ -1,0 +1,48 @@
+{% doc %}
+  Limit Height Description
+
+  @description
+  Displays rich text content with optional collapsible/expandable functionality and height limitation.
+
+  @param {string} id - Unique container ID (required)
+  @param {string} content - Rich text content to display (required)
+  @param {boolean} [if_limit_height] - Whether to enable height limitation (optional, default: true)
+  @param {string} [limit_height] - The height limit value (optional, default: "5rem")
+
+  @example
+  {% render 'limit-height-description',
+    id: 'product-desc-1',
+    content: product.description,
+    if_limit_height: true,
+    limit_height: '8rem'
+  %}
+{% enddoc %}
+
+<expandable-container
+  id="{{ id }}"
+  {% if if_limit_height %}
+    data-limit-height
+    style="--limit-height: {{ limit_height | default: '5rem' }};"
+  {% endif %}
+>
+  <div class="content-main rte">
+    {{ content }}
+  </div>
+  {%- if if_limit_height -%}
+    <div class="expand-button-wrapper">
+      <button
+        type="button"
+        class="expand-button button--clear link link-text show-underline"
+        aria-controls="{{ id }}"
+        aria-expanded="false"
+      >
+        <span class="read-more-text">
+          {{ 'general.read_more' | t }}
+        </span>
+        <span class="read-less-text hidden">
+          {{ 'general.read_less' | t }}
+        </span>
+      </button>
+    </div>
+  {%- endif -%}
+</expandable-container>

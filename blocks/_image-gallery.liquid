@@ -1,0 +1,103 @@
+<div
+  class="shopify-block image-gallery-block{% if block.settings.enable_staggered %} has-staggered-effect{% endif %}"
+  {{ block.shopify_attributes }}
+>
+  <scroll-seamless
+    data-vertical
+    data-direction="up"
+    data-speed="{{ block.settings.speed }}"
+    role="marquee"
+    aria-label="scrolling marquee"
+  >
+    <div class="scroll-container">
+      <ul
+        class="image-list scroll-list list-unstyled"
+      >
+        {%- for block in block.blocks -%}
+          <li class="scroll-item">{% render block %}</li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </scroll-seamless>
+
+  {% liquid
+    if block.settings.direction == 'normal'
+      assign secondary_blocks = block.blocks | reverse
+      assign direction = 'up'
+      assign speed = block.settings.speed | plus: 20
+    else
+      assign secondary_blocks = block.blocks
+      assign direction = 'down'
+      assign speed = block.settings.speed
+    endif
+  %}
+  <scroll-seamless
+    data-vertical
+    data-direction="{{ direction }}"
+    data-speed="{{ speed }}"
+    role="marquee"
+    aria-label="scrolling marquee"
+  >
+    <div class="scroll-container">
+      <ul
+        class="image-list scroll-list list-unstyled"
+      >
+        {%- for block in secondary_blocks -%}
+          <li class="scroll-item">{% render block %}</li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </scroll-seamless>
+</div>
+
+{% schema %}
+{
+  "name": "t:blocks._image-gallery.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "t:blocks._image-gallery.settings.direction.label",
+      "options": [
+        {
+          "value": "normal",
+          "label": "t:blocks._image-gallery.settings.direction.options__1.label"
+        },
+        {
+          "value": "reverse",
+          "label": "t:blocks._image-gallery.settings.direction.options__2.label"
+        }
+      ],
+      "default": "normal"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "t:sections.seamless-scroll.settings.speed.label",
+      "info": "t:sections.seamless-scroll.settings.speed.info",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_staggered",
+      "label": "t:blocks._image-gallery.settings.enable_staggered.label",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._image-gallery.presets.name"
+    }
+  ]
+}
+{% endschema %}

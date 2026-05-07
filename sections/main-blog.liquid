@@ -1,0 +1,345 @@
+{{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  .section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
+    margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    .section-{{ section.id }}-margin {
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="main-blog isolate color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-margin">
+  <div class="section__wrapper main-blog__wrapper page-width section-{{ section.id }}-padding">
+    <div class="main-blog-header content-group text-align--{{ section.settings.text_alignment }}">
+      <h1 class="blog-title text-content-heading heading-block heading-size--{{ section.settings.heading_size }}{% if section.settings.heading_uppercase %} uppercase{% endif %}">
+        {{ blog.title | escape }}
+      </h1>
+      {%- if section.settings.show_article_count -%}
+        <div id="Blog-Found" class="blog-found-info light">
+          {{ 'blogs.total_found' | t: total: blog.articles_count }}
+        </div>
+      {%- endif -%}
+      {%- if blog.articles_count > 0 and section.settings.show_tags_filter -%}
+        <scrollable-content-viewer class="scrollable-content" data-draggable>
+          <blog-tags
+            class="blog-tags scrollable-content-wrapper justify-content-{{ section.settings.text_alignment }}"
+            data-section="{{ section.id }}"
+          >
+            <a
+              href="{{ blog.url }}"
+              class="blog-tag scrollable-content-item link"
+              {% if current_tags == blank %}
+                aria-current="page"
+              {% endif %}
+            >
+              {{ 'blogs.all_count' | t: count: blog.articles_count }}
+            </a>
+            {%- for tag in blog.all_tags -%}
+              <a
+                href="{{ blog.url }}/tagged/{{ tag | handleize }}"
+                class="blog-tag scrollable-content-item link"
+                {% if current_tags contains tag %}
+                  aria-current="page"
+                {% endif %}
+              >
+                {{ tag }}
+              </a>
+            {%- endfor -%}
+          </blog-tags>
+        </scrollable-content-viewer>
+      {%- endif -%}
+    </div>
+    <div id="Blog-Content" class="main-blog-content">
+      {%- if blog.articles.size > 0 -%}
+        {%- liquid
+          assign perfect_size_mobile = '18rem'
+          case section.settings.card_size
+            when 'small'
+              assign min_size = '16rem'
+              assign min_size_mobile = '10rem'
+              assign perfect_size = '18.75rem'
+            when 'medium'
+              assign min_size = '20rem'
+              assign min_size_mobile = '12rem'
+              assign perfect_size = '22rem'
+            when 'large'
+              assign min_size = '24rem'
+              assign min_size_mobile = '14rem'
+              assign perfect_size = '24rem'
+          endcase
+        -%}
+        {%- paginate blog.articles by section.settings.limit -%}
+          <div id="Paginate-Content" class="paginate-content" data-section="{{ section.id }}">
+            <ul
+              class="content-list auto-grid list-unstyled"
+              style="--item-min-size: {{ min_size }}; --item-perfect-size: {{ perfect_size }}; --item-min-size-mobile: {{ min_size_mobile }};  --item-perfect-size-mobile: {{ perfect_size_mobile }};"
+            >
+              {%- for article in blog.articles -%}
+                <li class="grid-item focus-inset" tabindex="0">
+                  {%- render 'card-article',
+                    card_article: article,
+                    image_ratio: section.settings.image_ratio,
+                    image_width: perfect_size,
+                    image_width_mobile: perfect_size_mobile,
+                    show_tags: section.settings.show_tags,
+                    show_excerpt: section.settings.show_excerpt,
+                    show_author: section.settings.show_author,
+                    show_date: section.settings.show_date,
+                    show_wrapper: section.settings.show_card_wrapper,
+                    color_scheme: section.settings.card_color_scheme
+                  -%}
+                </li>
+              {%- endfor -%}
+            </ul>
+            {% render 'pagination', type: section.settings.pagination_style, paginate: paginate %}
+          </div>
+        {%- endpaginate -%}
+      {%- else -%}
+        <div id="Paginate-Content" class="paginate-content--empty" data-section="{{ section.id }}">
+          {% render 'empty-results-svg' %}
+          <div class="empty-title">
+            {{ 'general.empty' | t -}}
+          </div>
+          <a href="{{ routes.all_products_collection_url }}" class="button">
+            {{ 'general.continue_shopping' | t }}
+            {% render 'icon-sets-basic', icon: 'right' %}
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+<script src="{{ 'blog-tags.js' | asset_url }}" defer></script>
+{% schema %}
+{
+  "name": "t:sections.main-blog.name",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.scheme.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text_alignment",
+      "id": "text_alignment",
+      "label": "t:sections.all.text-alignment.label",
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "t:sections.all.text-content.heading.size.label",
+      "options": [
+        {
+          "label": "t:sections.all.text-content.heading.size.options__1.label",
+          "value": "small"
+        },
+        {
+          "label": "t:sections.all.text-content.heading.size.options__2.label",
+          "value": "medium"
+        },
+        {
+          "label": "t:sections.all.text-content.heading.size.options__3.label",
+          "value": "large"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "checkbox",
+      "id": "heading_uppercase",
+      "label": "t:sections.all.text-content.heading.uppercase.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_article_count",
+      "label": "t:sections.main-blog.settings.show_article_count.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tags_filter",
+      "label": "t:sections.main-blog.settings.show_tags_filter.label",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.content.header_content"
+    },
+    {
+      "type": "select",
+      "id": "pagination_style",
+      "label": "t:sections.all.pagination.style.label",
+      "options": [
+        {
+          "label": "t:sections.all.pagination.style.options__1.label",
+          "value": "paginator"
+        },
+        {
+          "label": "t:sections.all.pagination.style.options__2.label",
+          "value": "more"
+        },
+        {
+          "label": "t:sections.all.pagination.style.options__3.label",
+          "value": "infinite"
+        }
+      ],
+      "default": "paginator"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "min": 5,
+      "max": 30,
+      "step": 1,
+      "default": 12,
+      "label": "t:sections.all.limit.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.card.header_content"
+    },
+    {
+      "type": "select",
+      "id": "card_size",
+      "label": "t:sections.all.card.card_size.label",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:sections.all.card.card_size.options_1.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.all.card.card_size.options_2.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.all.card.card_size.options_3.label"
+        }
+      ],
+      "default": "small"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "square",
+          "label": "t:sections.all.image.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.all.image.image_ratio.options__2.label"
+        },
+        {
+          "value": "landscape",
+          "label": "t:sections.all.image.image_ratio.options__3.label"
+        }
+      ],
+      "default": "landscape",
+      "label": "t:sections.all.image.image_ratio.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_card_wrapper",
+      "label": "t:sections.all.card.show_card_wrapper.label",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "card_color_scheme",
+      "label": "t:sections.all.card.wrapper_color_scheme.label",
+      "default": "scheme-2",
+      "visible_if": "{{ section.settings.show_card_wrapper }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tags",
+      "label": "t:sections.all.article.show_tags.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "default": true,
+      "label": "t:sections.all.article.show_date.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "default": true,
+      "label": "t:sections.all.article.show_author.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_excerpt",
+      "label": "t:sections.all.article.show_excerpt.label",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.header_content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top.label",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom.label",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.margin.header_content"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.margin.margin_top.label",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.margin.margin_bottom.label",
+      "default": 88
+    }
+  ]
+}
+{% endschema %}

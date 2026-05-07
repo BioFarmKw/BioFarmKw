@@ -1,0 +1,166 @@
+<div
+  class="shopify-block before-after-block"
+  {{ block.shopify_attributes }}
+>
+  <image-comparison
+    class="before-after-main image-height--{{ block.settings.image_height }}"
+    {% if block.settings.direction == 'vertical' %}
+      data-vertical
+    {% endif %}
+    dir="ltr"
+    style="--change-ratio: 20%;"
+  >
+    <div class="after-item">
+      <span class="image-heading font-heading" style="color: {{ block.settings.heading_after_color }}">
+        {{ block.settings.heading_after | escape }}
+      </span>
+      <div class="media">
+        {% render 'lazy-image',
+          has_mobile: block.settings.image_after_mobile,
+          image_object: block.settings.image_after,
+          placeholder: 'lifestyle-1'
+        %}
+
+        {% render 'lazy-image',
+          is_mobile: true,
+          image_object: block.settings.image_after_mobile,
+          widths: '450, 660, 900'
+        %}
+      </div>
+    </div>
+    <div class="before-item">
+      <span class="image-heading font-heading" style="color: {{ block.settings.heading_before_color }}">
+        {{ block.settings.heading_before | escape }}
+      </span>
+      <div class="media">
+        {% render 'lazy-image',
+          has_mobile: block.settings.image_before_mobile,
+          image_object: block.settings.image_before,
+          placeholder: 'lifestyle-1'
+        %}
+
+        {% render 'lazy-image',
+          is_mobile: true,
+          image_object: block.settings.image_before_mobile,
+          widths: '450, 660, 900'
+        %}
+      </div>
+    </div>
+    <button
+      class="drag-button button button--icon button--small button--pill button--ambient button--shadow"
+      aria-label="{{ 'accessibility.drag_button' | t }}"
+    >
+      {%- if block.settings.direction == 'vertical' -%}
+        {% render 'icon-sets-basic', icon: 'drag-vertical' %}
+      {%- else -%}
+        {% render 'icon-sets-basic', icon: 'drag' %}
+      {%- endif -%}
+    </button>
+  </image-comparison>
+</div>
+
+<script src="{{ 'image-comparison.js' | asset_url }}" defer></script>
+{% schema %}
+{
+  "name": "t:blocks._before-after.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "image_height",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:sections.all.banner.height.options__1.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.all.banner.height.options__2.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.all.banner.height.options__3.label"
+        }
+      ],
+      "default": "medium",
+      "label": "t:sections.all.banner.height.label"
+    },
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "t:blocks._before-after.settings.direction.label",
+      "options": [
+        {
+          "label": "t:blocks._before-after.settings.direction.options__1.label",
+          "value": "horizontal"
+        },
+        {
+          "label": "t:blocks._before-after.settings.direction.options__2.label",
+          "value": "vertical"
+        }
+      ],
+      "default": "horizontal"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks._before-after.settings.header_before.content"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_before",
+      "label": "t:sections.all.image.image_picker.label",
+      "info": "t:blocks._before-after.settings.image.info"
+    },
+    {
+      "type": "text",
+      "id": "heading_before",
+      "label": "t:sections.all.text-content.heading.label",
+      "default": "Before heading"
+    },
+    {
+      "type": "color",
+      "id": "heading_before_color",
+      "label": "t:sections.all.text-content.heading.color.label",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks._before-after.settings.header_after.content"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_after",
+      "label": "t:sections.all.image.image_picker.label",
+      "info": "t:blocks._before-after.settings.image.info"
+    },
+    {
+      "type": "text",
+      "id": "heading_after",
+      "label": "t:sections.all.text-content.heading.label",
+      "default": "After heading"
+    },
+    {
+      "type": "color",
+      "id": "heading_after_color",
+      "label": "t:sections.all.text-content.heading.color.label",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.mobile.header_content"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_before_mobile",
+      "label": "t:blocks._before-after.settings.image_before_mobile.label",
+      "info": "t:blocks._before-after.settings.image_mobile.info"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_after_mobile",
+      "label": "t:blocks._before-after.settings.image_after_mobile.label",
+      "info": "t:blocks._before-after.settings.image_mobile.info"
+    }
+  ]
+}
+{% endschema %}

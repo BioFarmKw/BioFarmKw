@@ -1,0 +1,214 @@
+{{ 'section-login-register.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  .section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
+    margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    .section-{{ section.id }}-margin {
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div class="main-register isolate color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-margin">
+  <div class="section__wrapper main-register__wrapper login-register__wrapper page-width section-{{ section.id }}-padding">
+    <div class="main-content">
+      <div class="register-wrapper content-wrapper">
+        <div class="content-title content-group">
+          <h1 class="content-heading text-content-heading h0">{{ 'customer.register.title' | t }}</h1>
+          <div class="content-description text-content-description light">
+            {{ 'customer.register.subtext' | t }}
+          </div>
+        </div>
+        {%- form 'create_customer', novalidate: 'novalidate' -%}
+          {%- if form.errors -%}
+            <div class="alert-message alert-error mb-2" role="alert" autofocus tabindex="-1">
+              <ul class="message-list">
+                {%- for field in form.errors -%}
+                  {%- if field == 'form' -%}
+                    <li id="Register-Form-Error">
+                      {{ form.errors.messages[field] | join: '; ' }}
+                    </li>
+                  {%- else -%}
+                    <li id="Register-Form-{{ field | capitalize }}-Error">
+                      {{ form.errors.translated_fields[field] | capitalize }}-
+                      {{- form.errors.messages[field] | join: '; ' }}
+                    </li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
+          <div class="form-fields">
+            <div class="field-line-group">
+              <div class="field">
+                <input
+                  id="Register-Form-FirstName"
+                  class="field-input"
+                  type="text"
+                  name="customer[first_name]"
+                  {% if form.first_name %}
+                    value="{{ form.first_name }}"
+                  {% endif %}
+                  {% if form.errors contains 'first_name' %}
+                    aria-invalid="true"
+                    aria-describedby="Register-Form-first_name-Error"
+                    autofocus
+                  {% endif %}
+                  autocomplete="given-name"
+                  placeholder="{{ 'customer.register.first_name' | t }}"
+                >
+                <label for="Register-Form-FirstName" class="field-label">
+                  {{ 'customer.register.first_name' | t }}
+                </label>
+              </div>
+              <div class="field">
+                <input
+                  id="Register-Form-LastName"
+                  class="field-input"
+                  type="text"
+                  name="customer[last_name]"
+                  {% if form.last_name %}
+                    value="{{ form.last_name }}"
+                  {% endif %}
+                  {% if form.errors contains 'last_name' %}
+                    aria-invalid="true"
+                    aria-describedby="Register-Form-last_name-Error"
+                    autofocus
+                  {% endif %}
+                  autocomplete="family-name"
+                  placeholder="{{ 'customer.register.last_name' | t }}"
+                >
+                <label for="Register-Form-LastName" class="field-label">
+                  {{ 'customer.register.last_name' | t }}
+                </label>
+              </div>
+            </div>
+            <div class="field{% if form.errors contains 'email' %} field-error{% endif %}">
+              <input
+                id="Register-Form-Email"
+                class="field-input"
+                type="email"
+                name="customer[email]"
+                {% if form.email %}
+                  value="{{ form.email }}"
+                {% endif %}
+                {% if form.errors contains 'email' %}
+                  aria-invalid="true"
+                  aria-describedby="Register-Form-email-Error"
+                  autofocus
+                {% endif %}
+                spellcheck="false"
+                autocapitalize="off"
+                autocomplete="email"
+                pattern=".+@.+\.[a-zA-Z]{2,}$"
+                title="{{ 'newsletter.valid_email' | t }}"
+                placeholder="{{ 'customer.register.email' | t }}"
+              >
+              <label for="Register-Form-Email" class="field-label">
+                {{ 'customer.register.email' | t }}
+              </label>
+            </div>
+            <div class="field{% if form.errors contains 'password' %} field-error{% endif %}">
+              <input
+                id="Register-Form-Password"
+                class="field-input"
+                type="password"
+                name="customer[password]"
+                aria-required="true"
+                {% if form.errors contains 'password' %}
+                  aria-invalid="true"
+                  aria-describedby="Register-Form-password-Error"
+                {% endif %}
+                placeholder="{{ 'customer.register.password' | t }}"
+              >
+              <label for="Register-Form-Password" class="field-label">
+                {{ 'customer.register.password' | t }}
+              </label>
+            </div>
+          </div>
+          <div class="button-group">
+            <button type="submit" class="register-button button">
+              {{ 'customer.register.submit' | t }}
+            </button>
+            <a href="{{ routes.account_login_url }}" class="login-button button button--border">
+              {{- 'customer.log_in' | t -}}
+            </a>
+          </div>
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-register.name",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.scheme.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.header_content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top.label",
+      "default": 140
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom.label",
+      "default": 140
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.margin.header_content"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.margin.margin_top.label",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.margin.margin_bottom.label",
+      "default": 88
+    }
+  ]
+}
+{% endschema %}

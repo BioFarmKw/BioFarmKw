@@ -1,0 +1,143 @@
+{% doc %}
+  Header Drawer
+
+  @description
+  Renders the header drawer for navigation, supporting categories, links, and optional store button.
+
+  @param {object} [blocks] - The blocks to render inside the drawer
+  @param {object} [category_menu] - Category menu object
+  @param {object} [menu] - Main menu object
+  @param {boolean} [default_expand_category] - Whether categories are expanded by default
+  @param {boolean} [show_collection_image] - Whether to show collection images
+  @param {boolean} [show_social] - Whether to display social icons
+  @param {string} [social_style] - Style for social icons ('icon' or 'border' or 'wrapper')
+  @param {boolean} [show_store_button] - Whether to display the store button
+  @param {boolean} [show_quick_button] - Whether to display a quick access button
+  @param {string} [button_label] - Label for the store button
+  @param {string} [button_link] - Link for the store button
+
+  @example
+  {% render 'header-drawer', blocks: section.blocks, category_menu: section.settings.category_menu, menu: menu, default_expand_category: true, show_collection_image: true, show_store_button: true, button_label: 'Shop Now', button_link: '/collections/all' %}
+{% enddoc %}
+
+{% liquid
+  assign category_icon_settings = blocks | where: 'type', 'icon' | map: 'settings' | where: 'menu_type', 'category'
+  assign category_bubble_settings = blocks | where: 'type', 'bubble' | map: 'settings' | where: 'menu_type', 'category'
+  assign category_image_settings = blocks | where: 'type', 'category_image' | map: 'settings'
+
+  assign main_icon_settings = blocks | where: 'type', 'icon' | map: 'settings' | where: 'menu_type', 'main'
+  assign main_bubble_settings = blocks | where: 'type', 'bubble' | map: 'settings' | where: 'menu_type', 'main'
+  assign main_image_settings = blocks | where: 'type', 'mega_image' | map: 'settings'
+  assign main_image_text_settings = blocks | where: 'type', 'mega_image_text' | map: 'settings'
+  assign main_links_settings = blocks | where: 'type', 'mega_links' | map: 'settings'
+  assign main_collections_settings = blocks | where: 'type', 'mega_collection' | map: 'settings'
+%}
+<menu-drawer class="header-menu-drawer">
+  <details class="details-disclosure">
+    <summary
+      class="header-icon icon-wrap"
+      aria-haspopup="true"
+      aria-expanded="false"
+      aria-controls="Menu-Drawer"
+    >
+      <span class="icon-hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </summary>
+    <div
+      id="Menu-Drawer"
+      class="header-menu-drawer-content details-disclosure-content color-scheme-1 gradient"
+      tabindex="-1"
+    >
+      <nav class="main-drawer-nav">
+        {%- if category_menu != blank -%}
+          <details-disclosure class="drawer-menu-category">
+            <details
+              class="details-disclosure"
+              {% if default_expand_category %}
+                open
+              {% endif %}
+            >
+              <summary
+                class="menu-summary"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-controls="Drawer-Menu-List-Category"
+              >
+                {% render 'icon-sets', icon: 'menu' %}
+                <b>{{ category_menu.title }}</b>
+                {% render 'icon-sets-basic', icon: 'caret-down', class: 'caret-icon' %}
+              </summary>
+              <div class="details-category-content details-disclosure-content gradient">
+                {% render 'header-drawer-menu',
+                  id: 'Category',
+                  show_collection_image: show_collection_image,
+                  link: category_menu,
+                  icon_settings: category_icon_settings,
+                  bubble_settings: category_bubble_settings,
+                  image_settings: category_image_settings
+                %}
+              </div>
+            </details>
+          </details-disclosure>
+        {%- endif -%}
+
+        {%- if menu != blank -%}
+          {% render 'header-drawer-menu',
+            id: 'Main-Menu',
+            link: menu,
+            icon_settings: main_icon_settings,
+            bubble_settings: main_bubble_settings,
+            image_settings: main_image_settings,
+            image_text_settings: main_image_text_settings,
+            links_settings: main_links_settings,
+            collections_settings: main_collections_settings
+          %}
+        {%- endif -%}
+
+        {%- if localization.available_countries.size > 1 or localization.available_languages.size > 1 -%}
+          {% render 'header-drawer-localization' %}
+        {%- endif -%}
+      </nav>
+      <div class="menu-drawer-utility">
+        {%- if show_social -%}
+          {% render 'social-icons', style: social_style %}
+        {%- endif -%}
+
+        {%- if show_quick_button or show_store_button -%}
+          <div class="menu-drawer-buttons">
+            {%- if show_store_button -%}
+              <modal-opener
+                class="header-store-button button button--border"
+                role="button"
+                aria-haspopup="dialog"
+                aria-expanded="false"
+                aria-controls="Stores-Drawer"
+                tabindex="0"
+              >
+                {% render 'icon-sets', icon: 'store' %}
+                {{ 'general.store.find_store' | t }}
+              </modal-opener>
+            {%- endif -%}
+            {%- if show_quick_button -%}
+              <a
+                class="button"
+                {% if button_link != blank %}
+                  href="{{ button_link }}"
+                {% else %}
+                  role="link"
+                  aria-disabled="true"
+                {% endif %}
+              >
+                {{ button_label | escape }}
+              </a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </details>
+</menu-drawer>

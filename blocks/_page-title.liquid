@@ -1,0 +1,61 @@
+<h{{ block.settings.type }}
+  class="shopify-block page-title-block heading-block text-content-heading heading-size--{{ block.settings.heading_size }}{% if block.settings.heading_uppercase %} uppercase{% endif %}"
+  {{ block.shopify_attributes }}
+>
+  {{ page.title }}
+</h{{ block.settings.type }}>
+{% schema %}
+{
+  "name": "t:blocks._page-title.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "type",
+      "label": "t:sections.all.text-content.heading.type.label",
+      "options": [
+        {
+          "value": "1",
+          "label": "H1"
+        },
+        {
+          "value": "2",
+          "label": "H2"
+        }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:sections.all.text-content.heading.size.options__1.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.all.text-content.heading.size.options__2.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.all.text-content.heading.size.options__3.label"
+        }
+      ],
+      "default": "small",
+      "label": "t:sections.all.text-content.heading.size.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "heading_uppercase",
+      "label": "t:sections.all.text-content.heading.uppercase.label",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._page-title.presets.name"
+    }
+  ]
+}
+{% endschema %}

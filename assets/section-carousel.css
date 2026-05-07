@@ -1,0 +1,116 @@
+.carousel__wrapper .slider-wrapper .slider-slide .banner-media {
+  height: 100%;
+}
+
+.carousel__wrapper .slider-wrapper .slider-slide .banner-media img {
+  transform: scale(1.1);
+  transition: transform 1200ms cubic-bezier(0, 0, 0.3, 1);
+}
+
+.carousel__wrapper .slider-wrapper .slider-slide .banner-box {
+  visibility: hidden;
+  opacity: 0.01;
+}
+
+.carousel__wrapper .slider-wrapper .slider-slide .has-highlight-text[data-highlight-type=background] em.loaded,
+.carousel__wrapper .slider-wrapper .slider-slide .has-highlight-text[data-highlight-type=underline] em.loaded {
+  animation-name: none;
+}
+
+.carousel__wrapper .slider-wrapper .slider-slide .has-highlight-text[data-highlight-type=hollow] em {
+  transition-delay: 500ms;
+}
+
+.carousel__wrapper .slider-wrapper .slider-slide .has-highlight-text[data-highlight-type=hollow] em.loaded {
+  color: inherit;
+  -webkit-text-stroke: 0;
+}
+
+.carousel__wrapper .slider-wrapper .slider-slide .has-highlight-text[data-highlight-type=hand-drawn-wave] em.loaded .hand-drawn-svg path,
+.carousel__wrapper .slider-wrapper .slider-slide .has-highlight-text[data-highlight-type=hand-drawn-circle] em.loaded .hand-drawn-svg path,
+.carousel__wrapper .slider-wrapper .slider-slide .has-highlight-text[data-highlight-type=hand-drawn-underline] em.loaded .hand-drawn-svg path {
+  animation-name: none;
+}
+
+.carousel__wrapper .slider-wrapper .slider-slide.active .banner-box {
+  visibility: visible;
+  animation: slideIn 500ms 300ms cubic-bezier(0, 0, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel__wrapper .slider-wrapper .slider-slide.active .banner-box {
+    opacity: 1;
+  }
+}
+
+.carousel__wrapper .slider-wrapper .slider-slide.active .has-highlight-text[data-highlight-type=color] em.loaded {
+  animation-name: fadeIn;
+  animation-delay: 500ms;
+}
+
+.carousel__wrapper .slider-wrapper .slider-slide.active .has-highlight-text[data-highlight-type=background] em.loaded,
+.carousel__wrapper .slider-wrapper .slider-slide.active .has-highlight-text[data-highlight-type=underline] em.loaded {
+  animation-name: bgSizeX;
+  animation-delay: 500ms;
+}
+
+.carousel__wrapper .slider-wrapper .slider-slide.active .has-highlight-text[data-highlight-type=hollow] em.loaded {
+  color: transparent;
+  -webkit-text-stroke: 1px rgb(var(--color-foreground));
+}
+
+.carousel__wrapper .slider-wrapper .slider-slide.active .has-highlight-text[data-highlight-type=hand-drawn-wave] em.loaded .hand-drawn-svg path,
+.carousel__wrapper .slider-wrapper .slider-slide.active .has-highlight-text[data-highlight-type=hand-drawn-circle] em.loaded .hand-drawn-svg path,
+.carousel__wrapper .slider-wrapper .slider-slide.active .has-highlight-text[data-highlight-type=hand-drawn-underline] em.loaded .hand-drawn-svg path {
+  animation-name: handDrawnLine;
+  animation-delay: 500ms;
+}
+
+.carousel__wrapper .slider-wrapper.slider-change--fade .slider-slide.active .banner-media img,
+.carousel__wrapper .slider-wrapper.slider-change--fade .slider-slide.active .banner-media video {
+  animation: carouselFadeIn 1200ms cubic-bezier(0, 0, 0.3, 1) forwards;
+}
+
+.carousel__wrapper .slider-wrapper.slider-change--zoom .slider-slide.active .banner-media img,
+.carousel__wrapper .slider-wrapper.slider-change--zoom .slider-slide.active .banner-media video {
+  animation: carouselZoomIn 1200ms cubic-bezier(0, 0, 0.3, 1) forwards;
+}
+
+.carousel__wrapper .slider-nav-buttons.nav-buttons-position--bottom-right {
+  inset-block-start: auto !important;
+  inset-block-end: 0 !important;
+  height: auto !important;
+  padding: 1rem 2rem !important;
+  justify-content: flex-end !important;
+  gap: 1rem !important;
+}
+
+.carousel__wrapper .slider-page-dots {
+  --color-dots: var(--color-light) !important;
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-end: 0;
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes carouselFadeIn {
+    0% {
+      opacity: 0.2;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes carouselZoomIn {
+    0% {
+      transform: scale(1);
+    }
+
+    100% {
+      transform: scale(1.15);
+    }
+  }
+}

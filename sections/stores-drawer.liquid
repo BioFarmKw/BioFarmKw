@@ -1,0 +1,178 @@
+{{ 'stores-drawer.css' | asset_url | stylesheet_tag }}
+<drawer-component
+  id="Stores-Drawer"
+  class="stores-drawer drawer modal"
+  data-section="{{ section.id }}"
+>
+  <div class="modal-overlay"></div>
+  <div
+    class="modal-inner color-{{ section.settings.color_scheme }} gradient focus-none"
+    role="dialog"
+    data-trap
+    aria-modal="true"
+    aria-label="{{ 'general.store.drawer' | t }}"
+    tabindex="-1"
+  >
+    <div class="drawer-handle"></div>
+    <div class="drawer-header">
+      <button
+        class="drawer-close-button button button--small button--icon button--air small-hide"
+        onclick="this.closest('.modal').hide()"
+        aria-label="{{ 'accessibility.close' | t }}"
+      >
+        {% render 'icon-sets-basic', icon: 'close' %}
+      </button>
+      <b class="drawer-title font-heading">{{ 'general.store.find_store' | t }}</b>
+    </div>
+    <div class="drawer-content">
+      <ul class="store-list list-unstyled">
+        {%- for block in section.blocks -%}
+          <li class="store-item">
+            {%- if block.settings.image != blank -%}
+              <div class="store-image media media--landscape">
+                {% render 'lazy-image', image_object: block.settings.image, sizes: '(min-width: 750px) 800px, 100vw' %}
+              </div>
+            {%- endif -%}
+            <div class="store-info">
+              <div class="store-name h4">{{ block.settings.name | escape }}</div>
+              {%- if block.settings.description != blank -%}
+                <div class="store-description rte light">
+                  {{ block.settings.description }}
+                </div>
+              {%- endif -%}
+              {%- if block.settings.location != blank -%}
+                <div class="store-location">
+                  {{ block.settings.location | escape }}
+                  {% liquid
+                    assign base_url = 'https://www.google.com/maps/dir/?api=1&destination='
+                    assign encoded_address = block.settings.location | url_encode
+                    assign map_url = base_url | append: encoded_address
+                  %}
+                  <a
+                    class="navigate-button button button--mini button--icon button--pill"
+                    href="{{ map_url }}"
+                    target="_blank"
+                  >
+                    {%- render 'icon-sets-basic', icon: 'top-right' -%}
+                    <span class="visually-hidden">{{ 'accessibility.navigate' | t }}</span>
+                  </a>
+                </div>
+              {%- endif -%}
+              {%- if block.settings.phone != blank -%}
+                <div class="store-phone">
+                  {% render 'icon-sets', icon: 'phone' %}
+                  <a class="link link-text show-underline" href="tel:{{ block.settings.phone | escape }}">
+                    {{ block.settings.phone | escape }}
+                  </a>
+                </div>
+              {%- endif -%}
+              {%- if block.settings.hours != blank -%}
+                <div class="store-hours">
+                  {% render 'icon-sets', icon: 'clock' %}
+                  <span class="link link-text">{{ block.settings.hours | escape }}</span>
+                </div>
+              {%- endif -%}
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+      {%- if section.settings.button_label != blank -%}
+        <a
+          role="button"
+          class="view-all-button button button--full"
+          {% if section.settings.button_link != blank %}
+            href="{{ section.settings.button_link }}"
+          {% else %}
+            role="link"
+            aria-disabled="true"
+          {% endif %}
+        >
+          {{ section.settings.button_label | escape }}
+          {%- if section.settings.show_arrow -%}
+            {% render 'icon-sets-basic', icon: 'right', class: 'caret-icon' %}
+          {%- endif -%}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</drawer-component>
+{% schema %}
+{
+  "name": "t:sections.stores-drawer.name",
+  "tag": "div",
+  "class": "section-drawer",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.scheme.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.button.header_content"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:sections.all.button.button_label.label",
+      "info": "t:sections.all.button.button_label.info"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:sections.all.button.button_link.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrow",
+      "label": "t:sections.all.button.show_arrow.label",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "store",
+      "name": "t:sections.stores-drawer.blocks.store.name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.all.image.image_picker.label",
+          "info": "t:sections.stores-drawer.blocks.store.settings.image.info"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "t:sections.all.store.name.label",
+          "default": "Store name"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "t:sections.all.text-content.description.label",
+          "default": "<p>Add a description about your store</p>"
+        },
+        {
+          "type": "text",
+          "id": "location",
+          "label": "t:sections.all.store.location.label",
+          "default": "11102 Lakewood Blvd, Downey, CA 90241"
+        },
+        {
+          "type": "text",
+          "id": "phone",
+          "label": "t:sections.all.store.phone.label",
+          "default": "(000) 123-4567"
+        },
+        {
+          "type": "text",
+          "id": "hours",
+          "label": "t:sections.all.store.hours.label",
+          "default": "Mon-Fri: 9am - 5pm"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,32 @@
+{% doc %}
+  Product Subcollection Item
+
+  @description
+  Displays a product collection name as a link, typically used in a subcollection list on collection pages.
+
+  @param {object} collection - The product collection object.
+  @param {string} [title] - Custom title. If not provided, the collection's title will be used.
+  @param {string} [class] - Custom CSS class name.
+  @param {object} [block] - Optional block object.
+
+  @example
+  {% render 'subcollection-item', collection: collections['frontpage'] %}
+{% enddoc %}
+
+<a
+  class="{% if class != blank %}{{class}} {% endif %}subcollection-item link hover-trigger"
+  {% if collection != blank %}
+    href="{{ collection.url }}"
+  {% else %}
+    role="link"
+    aria-disabled="true"
+  {% endif %}
+  {% if block != blank %}
+    {{ block.shopify_attributes }}
+  {% endif %}
+>
+  <b class="collection-title animate--light">
+    {{- title | default: collection.title -}}
+  </b>
+  <span class="collection-count light">{{ collection.products_count | default: 0 }}</span>
+</a>

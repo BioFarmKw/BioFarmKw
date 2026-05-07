@@ -1,0 +1,66 @@
+{%- doc -%}
+  Product Badge
+
+  @description
+  Renders a list of badges for a product, such as sale or promotional badges.
+
+  @param {object} product - The product object
+  @param {boolean} [show_sale_badge] - Whether to display the sale badge (optional)
+
+  @example
+  {% render 'product-badges', product: product, show_sale_badge: true %}
+{%- enddoc -%}
+
+{%- if product != blank -%}
+  {%- if product.variants.first.inventory_quantity <= 0
+    and product.variants.first.inventory_policy == 'continue'
+    and product.variants.first.requires_shipping
+    and product.variants.first.inventory_management == 'shopify'
+    and settings.enable_preorder_badge
+  -%}
+    <span class="badge preorder-badge">
+      {%- if product.metafields.custom.show_backorder.value == true -%}
+        {{ 'products.product.backorder' | t }}
+      {%- else -%}
+        {{ 'products.product.preorder' | t }}
+      {%- endif -%}
+    </span>
+  {%- endif -%}
+
+  {%- if product.compare_at_price > product.price and product.available and show_sale_badge -%}
+    <span class="badge sale-badge">{{ 'products.product.on_sale' | t }}</span>
+  {%- endif -%}
+
+  {%- liquid
+    assign if_new = false
+    if settings.enable_new_badge
+      if settings.new_label_basis == 'tag'
+        if product.tags contains settings.new_badge_tag and settings.new_badge_tag != blank
+          assign if_new = true
+        endif
+      else
+        assign current_date = 'now' | date: '%s'
+        assign product_published_at = product.published_at | date: '%s'
+        assign product_age_in_days = current_date | minus: product_published_at | divided_by: 86400
+        assign diff_days = product_age_in_days | minus: settings.new_product_days
+        if diff_days <= 0
+          assign if_new = true
+        endif
+      endif
+    endif
+  -%}
+
+  {%- if if_new -%}
+    <span class="badge new-badge">{{ 'products.product.new' | t }}</span>
+  {%- endif -%}
+
+  {%- if product.tags != blank and settings.enable_custom_badge -%}
+    {%- for tag in product.tags -%}
+      {%- assign first_char = tag | slice: 0 -%}
+      {%- if first_char == '_' and tag != '_' -%}
+        {%- assign badge_name = tag | replace: '_', ' ' | strip -%}
+        <span class="badge custom-badge">{{ badge_name }}</span>
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endif -%}

@@ -1,0 +1,24 @@
+.embedded-image-heading__wrapper {
+  text-align: center;
+}
+.embedded-image-heading__wrapper > * {
+  display: inline;
+  vertical-align: middle;
+  padding-inline-start: 0.5rem;
+  padding-inline-end: 0.5rem;
+}
+.embedded-image-heading__wrapper .embedded-image {
+  width: var(--image-width, 8rem);
+}
+.embedded-image-heading__wrapper .embedded-heading {
+  font-size: var(--heading-size, 2rem);
+  line-height: 2;
+}
+@media screen and (max-width: 749px) {
+  .embedded-image-heading__wrapper .embedded-image {
+    width: var(--image-width-mobile, 4rem);
+  }
+  .embedded-image-heading__wrapper .embedded-heading {
+    font-size: var(--heading-size-mobile, 2rem);
+  }
+}

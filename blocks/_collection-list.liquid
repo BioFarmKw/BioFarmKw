@@ -1,0 +1,99 @@
+{%- liquid
+  assign perfect_size_mobile = '14rem'
+  if section.settings.card_size == 'medium'
+    assign min_size = '20rem'
+    assign min_size_mobile = '12rem'
+    assign perfect_size = '22rem'
+  elsif section.settings.card_size == 'large'
+    assign min_size = '24rem'
+    assign min_size_mobile = '14rem'
+    assign perfect_size = '24rem'
+  else
+    assign min_size = '16rem'
+    assign min_size_mobile = '10rem'
+    assign perfect_size = '18.75rem'
+  endif
+-%}
+
+<slider-component
+  class="collection-list-slider slider"
+  {% if block.settings.slider_on_desktop %}
+    data-slide-desktop
+  {% endif %}
+  {% if block.settings.slider_on_mobile %}
+    data-slide-mobile
+  {% endif %}
+  data-slide-smooth
+  data-draggable
+>
+  <div class="slider-container">
+    <ul
+      id="Slider-{{ section.id }}"
+      class="slider-wrapper auto-grid"
+      style="--item-min-size: {{ min_size }}; --item-perfect-size: {{ perfect_size }}; --item-min-size-mobile: {{ min_size_mobile }};  --item-perfect-size-mobile: {{ perfect_size_mobile }};"
+    >
+      {%- for block in block.blocks -%}
+        <li
+          id="Slide-{{ section.id }}-{{ block.id }}"
+          class="slider-slide grid-item focus-inset"
+          tabindex="0"
+        >
+          {% render block %}
+        </li>
+      {%- endfor -%}
+    </ul>
+    {%- if block.settings.show_nav_buttons -%}
+      {% render 'slider-nav-buttons', section_id: section.id %}
+    {%- endif -%}
+  </div>
+  {%- if block.settings.show_seek_bar -%}
+    {% render 'slider-seek-bar', section_id: section.id %}
+  {%- endif -%}
+</slider-component>
+{% schema %}
+{
+  "name": "t:blocks._collection-list.name",
+  "class": "collection-list-block",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.layout.header_slider.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "slider_on_desktop",
+      "label": "t:sections.all.slider.enable_desktop_slider.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_nav_buttons",
+      "label": "t:sections.all.slider.show_nav_buttons.label",
+      "default": true,
+      "visible_if": "{{ block.settings.slider_on_desktop }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_seek_bar",
+      "label": "t:sections.all.slider.show_seek_bar.label",
+      "default": true,
+      "visible_if": "{{ block.settings.slider_on_desktop }}"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.mobile.header_content"
+    },
+    {
+      "type": "checkbox",
+      "id": "slider_on_mobile",
+      "label": "t:sections.all.slider.enable_mobile_slider.label",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_collection"
+    }
+  ]
+}
+{% endschema %}

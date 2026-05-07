@@ -1,0 +1,20 @@
+{% doc %}
+  Icon Sets
+
+  @description
+  Renders a base icon with support for multiple styles, with an optional custom CSS class.
+
+  @param {string} icon - Icon name
+  @param {string} [class] - Custom class
+
+  @example
+  {% render "icon-sets", icon: "icon-name", class: "custom-class" %}
+{% enddoc %}
+
+{%- if settings.icon_style == 'solid' -%}
+  {% render 'icon-sets-solid', icon: icon, class: class %}
+{%- elsif settings.icon_style == 'outline' -%}
+  {% render 'icon-sets-outline', icon: icon, class: class %}
+{%- else -%}
+  {% render 'icon-sets-offset', icon: icon, class: class %}
+{%- endif -%}

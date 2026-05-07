@@ -1,0 +1,697 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "page_title_c7jkXe": {
+          "type": "_page-title",
+          "name": "t:blocks._page-title.presets.name",
+          "settings": {
+            "type": "1",
+            "heading_size": "small",
+            "heading_uppercase": false
+          },
+          "blocks": {}
+        },
+        "page_description_qiHbbf": {
+          "type": "_page-description",
+          "name": "t:blocks._page-description.presets.name",
+          "settings": {
+            "color_light": false,
+            "limit_description_height": false
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "page_title_c7jkXe",
+        "page_description_qiHbbf"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "content_width": "medium",
+        "text_alignment": "center",
+        "background_image_opacity": 10,
+        "image_behavior": "none",
+        "text_alignment_mobile": "center",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "alignment": "left",
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "collage_with_text_TbLcaV": {
+      "type": "collage-with-text",
+      "blocks": {
+        "images": {
+          "type": "_images",
+          "static": true,
+          "settings": {
+            "angle_style": "scattered",
+            "show_image_frame": true
+          },
+          "blocks": {
+            "image_acxXmT": {
+              "type": "_image",
+              "settings": {
+                "image_ratio": "adapt",
+                "image_ratio_mobile": "adapt"
+              },
+              "blocks": {}
+            },
+            "image_4LB8Fa": {
+              "type": "_image",
+              "settings": {
+                "image_ratio": "adapt",
+                "image_ratio_mobile": "adapt"
+              },
+              "blocks": {}
+            },
+            "image_UKEhtT": {
+              "type": "_image",
+              "settings": {
+                "image_ratio": "adapt",
+                "image_ratio_mobile": "adapt"
+              },
+              "blocks": {}
+            },
+            "image_dAM4XX": {
+              "type": "_image",
+              "settings": {
+                "image_ratio": "adapt",
+                "image_ratio_mobile": "adapt"
+              },
+              "blocks": {}
+            },
+            "image_qzQBCw": {
+              "type": "_image",
+              "settings": {
+                "image_ratio": "adapt",
+                "image_ratio_mobile": "adapt"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "image_acxXmT",
+            "image_4LB8Fa",
+            "image_UKEhtT",
+            "image_dAM4XX",
+            "image_qzQBCw"
+          ]
+        },
+        "rich-text": {
+          "type": "_rich-text",
+          "static": true,
+          "settings": {
+            "content_width": "small",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center"
+          },
+          "blocks": {
+            "icon_btnWit": {
+              "type": "icon",
+              "name": "t:blocks.icon.presets.name",
+              "settings": {
+                "size": "small",
+                "icon": "gift"
+              },
+              "blocks": {}
+            },
+            "heading_yQ8hRp": {
+              "type": "heading",
+              "settings": {
+                "content": "Living with Green",
+                "type": "2",
+                "size": "small",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "color",
+                "highlight_color": "#ff0000"
+              },
+              "blocks": {}
+            },
+            "description_bHEhmd": {
+              "type": "description",
+              "settings": {
+                "content": "<p>Florona was born from a simple belief — that nature adds calm and beauty to daily life. Through indoor plants and handmade ceramics, we share the essence of mindful living.</p><p></p>",
+                "color_light": false,
+                "limit_description_height": false
+              },
+              "blocks": {}
+            },
+            "spacer_xygkgh": {
+              "type": "spacer",
+              "name": "t:blocks.spacer.name",
+              "settings": {
+                "height": 4,
+                "show_line": false,
+                "line_width": "half"
+              },
+              "blocks": {}
+            },
+            "buttons_MHAB4B": {
+              "type": "buttons",
+              "settings": {},
+              "blocks": {
+                "button_iCjDWM": {
+                  "type": "button",
+                  "settings": {
+                    "style": "primary",
+                    "size": "medium",
+                    "icon": "none",
+                    "button_label": "Discover More",
+                    "button_link": "",
+                    "open_in_new_tab": false,
+                    "show_arrow": true
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "button_iCjDWM"
+              ]
+            }
+          },
+          "block_order": [
+            "icon_btnWit",
+            "heading_yQ8hRp",
+            "description_bHEhmd",
+            "spacer_xygkgh",
+            "buttons_MHAB4B"
+          ]
+        }
+      },
+      "name": "t:sections.collage-with-text.presets.name",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "image_width": "small",
+        "image_position": "left",
+        "image_position_mobile": "top",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "timeline_m6MBV7": {
+      "type": "timeline",
+      "blocks": {
+        "section-header": {
+          "type": "_section-header",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "heading_wPeyhd": {
+              "type": "heading",
+              "settings": {
+                "content": "Timeline",
+                "type": "2",
+                "size": "small",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "color",
+                "highlight_color": "#ff0000"
+              },
+              "blocks": {}
+            },
+            "description_treDWR": {
+              "type": "description",
+              "settings": {
+                "content": "<p>Add some description here</p>",
+                "color_light": false,
+                "limit_description_height": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_wPeyhd",
+            "description_treDWR"
+          ]
+        },
+        "event-list": {
+          "type": "_event-list",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "event_qcCgrR": {
+              "type": "_event",
+              "settings": {},
+              "blocks": {
+                "subheading_xpyRw3": {
+                  "type": "subheading",
+                  "settings": {
+                    "content": "2022"
+                  },
+                  "blocks": {}
+                },
+                "heading_9nereL": {
+                  "type": "heading",
+                  "settings": {
+                    "content": "A Seed of Calm",
+                    "type": "3",
+                    "size": "small",
+                    "uppercase": false,
+                    "enable_highlight_text": true,
+                    "highlight_type": "color",
+                    "highlight_color": "#ff0000"
+                  },
+                  "blocks": {}
+                },
+                "description_7PJCGX": {
+                  "type": "description",
+                  "settings": {
+                    "content": "<p>Flonora was founded with the belief that plants bring quiet beauty into everyday life.</p>",
+                    "color_light": false,
+                    "limit_description_height": false
+                  },
+                  "blocks": {}
+                },
+                "image_mFfFCP": {
+                  "type": "_image",
+                  "settings": {
+                    "image_ratio": "adapt",
+                    "image_ratio_mobile": "landscape"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "subheading_xpyRw3",
+                "heading_9nereL",
+                "description_7PJCGX",
+                "image_mFfFCP"
+              ]
+            },
+            "event_jyUbCj": {
+              "type": "_event",
+              "settings": {},
+              "blocks": {
+                "subheading_YM4EUK": {
+                  "type": "subheading",
+                  "settings": {
+                    "content": "2023"
+                  },
+                  "blocks": {}
+                },
+                "heading_UcAcUx": {
+                  "type": "heading",
+                  "settings": {
+                    "content": "Growing Roots",
+                    "type": "3",
+                    "size": "small",
+                    "uppercase": false,
+                    "enable_highlight_text": true,
+                    "highlight_type": "color",
+                    "highlight_color": "#ff0000"
+                  },
+                  "blocks": {}
+                },
+                "description_RA6KPH": {
+                  "type": "description",
+                  "settings": {
+                    "content": "<p>We introduced our first handcrafted ceramic planters, blending artistry with functionality.</p>",
+                    "color_light": false,
+                    "limit_description_height": false
+                  },
+                  "blocks": {}
+                },
+                "image_qYPpf3": {
+                  "type": "_image",
+                  "name": "t:blocks._image.presets.name",
+                  "settings": {
+                    "image_ratio": "adapt",
+                    "image_ratio_mobile": "square"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "subheading_YM4EUK",
+                "heading_UcAcUx",
+                "description_RA6KPH",
+                "image_qYPpf3"
+              ]
+            },
+            "event_VGRnYf": {
+              "type": "_event",
+              "settings": {},
+              "blocks": {
+                "subheading_JbgkDA": {
+                  "type": "subheading",
+                  "settings": {
+                    "content": "2024"
+                  },
+                  "blocks": {}
+                },
+                "heading_3ECwXp": {
+                  "type": "heading",
+                  "settings": {
+                    "content": "Flourishing Together",
+                    "type": "3",
+                    "size": "small",
+                    "uppercase": false,
+                    "enable_highlight_text": true,
+                    "highlight_type": "color",
+                    "highlight_color": "#ff0000"
+                  },
+                  "blocks": {}
+                },
+                "description_VqJQeB": {
+                  "type": "description",
+                  "settings": {
+                    "content": "<p>Partnerships with local artisans and growers expanded our collection with mindful living pieces.</p>",
+                    "color_light": false,
+                    "limit_description_height": false
+                  },
+                  "blocks": {}
+                },
+                "image_NcCxxJ": {
+                  "type": "_image",
+                  "settings": {
+                    "image_ratio": "adapt",
+                    "image_ratio_mobile": "landscape"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "subheading_JbgkDA",
+                "heading_3ECwXp",
+                "description_VqJQeB",
+                "image_NcCxxJ"
+              ]
+            },
+            "event_XMWfCb": {
+              "type": "_event",
+              "settings": {},
+              "blocks": {
+                "subheading_bBacMp": {
+                  "type": "subheading",
+                  "settings": {
+                    "content": "2025"
+                  },
+                  "blocks": {}
+                },
+                "heading_QfU7qX": {
+                  "type": "heading",
+                  "settings": {
+                    "content": "Beyond the Home",
+                    "type": "3",
+                    "size": "small",
+                    "uppercase": false,
+                    "enable_highlight_text": true,
+                    "highlight_type": "color",
+                    "highlight_color": "#ff0000"
+                  },
+                  "blocks": {}
+                },
+                "description_YpEiba": {
+                  "type": "description",
+                  "settings": {
+                    "content": "<p>Flonora launched curated lifestyle décor, extending nature’s presence into new spaces.</p>",
+                    "color_light": false,
+                    "limit_description_height": false
+                  },
+                  "blocks": {}
+                },
+                "image_p67yQB": {
+                  "type": "_image",
+                  "settings": {
+                    "image_ratio": "adapt",
+                    "image_ratio_mobile": "landscape"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "subheading_bBacMp",
+                "heading_QfU7qX",
+                "description_YpEiba",
+                "image_p67yQB"
+              ]
+            },
+            "event_jtPWYf": {
+              "type": "_event",
+              "settings": {},
+              "blocks": {
+                "subheading_GGg6tL": {
+                  "type": "subheading",
+                  "settings": {
+                    "content": "2025"
+                  },
+                  "blocks": {}
+                },
+                "heading_GUeAyA": {
+                  "type": "heading",
+                  "settings": {
+                    "content": "Living with Intention",
+                    "type": "3",
+                    "size": "small",
+                    "uppercase": false,
+                    "enable_highlight_text": true,
+                    "highlight_type": "color",
+                    "highlight_color": "#ff0000"
+                  },
+                  "blocks": {}
+                },
+                "description_GJK4bA": {
+                  "type": "description",
+                  "settings": {
+                    "content": "<p>Our journey continues—crafting timeless objects that nurture balance, beauty, and serenity.</p>",
+                    "color_light": false,
+                    "limit_description_height": false
+                  },
+                  "blocks": {}
+                },
+                "image_YV3Naa": {
+                  "type": "_image",
+                  "settings": {
+                    "image_ratio": "adapt",
+                    "image_ratio_mobile": "landscape"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "subheading_GGg6tL",
+                "heading_GUeAyA",
+                "description_GJK4bA",
+                "image_YV3Naa"
+              ]
+            }
+          },
+          "block_order": [
+            "event_qcCgrR",
+            "event_jyUbCj",
+            "event_VGRnYf",
+            "event_XMWfCb",
+            "event_jtPWYf"
+          ]
+        }
+      },
+      "name": "t:sections.timeline.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "newsletter_hqXadX": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_yNk3Kn": {
+          "type": "heading",
+          "settings": {
+            "content": "<em>Join Our Newsletter</em>",
+            "type": "2",
+            "size": "large",
+            "uppercase": false,
+            "enable_highlight_text": true,
+            "highlight_type": "script",
+            "highlight_color": "#ff0000"
+          },
+          "blocks": {}
+        },
+        "description_CjNDhk": {
+          "type": "description",
+          "settings": {
+            "content": "<p>Enjoy special offers and seasonal updates.</p>",
+            "color_light": false,
+            "limit_description_height": false
+          },
+          "blocks": {}
+        },
+        "spacer_dGXGKG": {
+          "type": "spacer",
+          "settings": {
+            "height": 8,
+            "show_line": false,
+            "line_width": "half"
+          },
+          "blocks": {}
+        },
+        "newsletter_6PtXLi": {
+          "type": "_newsletter",
+          "settings": {
+            "input_style": "line",
+            "show_consent_notice": true
+          },
+          "blocks": {}
+        },
+        "social_list_nhqBVz": {
+          "type": "social-list",
+          "settings": {
+            "style": "border",
+            "size": "small",
+            "show_tooltip": false
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading_yNk3Kn",
+        "description_CjNDhk",
+        "spacer_dGXGKG",
+        "newsletter_6PtXLi",
+        "social_list_nhqBVz"
+      ],
+      "name": "t:sections.newsletter.presets.name",
+      "settings": {
+        "color_scheme": "scheme-4",
+        "content_width": "medium",
+        "text_alignment": "center",
+        "background_image_opacity": 15,
+        "image_behavior": "none",
+        "side_image_position": "left",
+        "side_image_width": "small",
+        "text_alignment_mobile": "center",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "margin_top": 0,
+        "margin_bottom": 88
+      }
+    },
+    "trust_promises_gi4x7e": {
+      "type": "trust-promises",
+      "blocks": {
+        "section-header": {
+          "type": "_section-header",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "heading_WtMV8i": {
+              "type": "heading",
+              "settings": {
+                "content": "<em>Why</em> Choose Us",
+                "type": "2",
+                "size": "small",
+                "uppercase": false,
+                "enable_highlight_text": true,
+                "highlight_type": "underline",
+                "highlight_color": "#676432"
+              },
+              "blocks": {}
+            },
+            "description_ygqpYC": {
+              "type": "description",
+              "settings": {
+                "content": "<p>Quality and care you can always trust</p>",
+                "color_light": false,
+                "limit_description_height": true
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_WtMV8i",
+            "description_ygqpYC"
+          ]
+        },
+        "promise-list": {
+          "type": "_promise-list",
+          "static": true,
+          "settings": {
+            "columns": 4,
+            "icon_size": "s-large",
+            "show_wrapper": false,
+            "slider_on_mobile": true
+          },
+          "blocks": {
+            "promise_item_kmDHGh": {
+              "type": "_promise-item",
+              "settings": {
+                "icon": "truck",
+                "heading": "Free Shipping",
+                "description": "<p>Free Delivery Over $50</p>"
+              },
+              "blocks": {}
+            },
+            "promise_item_LjHjYg": {
+              "type": "_promise-item",
+              "settings": {
+                "icon": "return",
+                "heading": "Easy Returns",
+                "description": "<p>30-Day Free Returns</p>"
+              },
+              "blocks": {}
+            },
+            "promise_item_mdwDxU": {
+              "type": "_promise-item",
+              "settings": {
+                "icon": "security",
+                "heading": "Secure Payment",
+                "description": "<p>100% Secure Checkout</p>"
+              },
+              "blocks": {}
+            },
+            "promise_item_KCb3ki": {
+              "type": "_promise-item",
+              "settings": {
+                "icon": "guarantee",
+                "heading": "Quality Guarantee",
+                "description": "<p>2-Year Warranty Included</p>"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "promise_item_kmDHGh",
+            "promise_item_LjHjYg",
+            "promise_item_mdwDxU",
+            "promise_item_KCb3ki"
+          ]
+        }
+      },
+      "settings": {
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 48
+      }
+    }
+  },
+  "order": [
+    "main",
+    "breadcrumb",
+    "collage_with_text_TbLcaV",
+    "timeline_m6MBV7",
+    "newsletter_hqXadX",
+    "trust_promises_gi4x7e"
+  ]
+}

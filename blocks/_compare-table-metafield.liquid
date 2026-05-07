@@ -1,0 +1,118 @@
+{%- if block.settings.key != blank -%}
+  {% liquid
+    assign metafield_space_key = block.settings.key | replace: ' ', '' | split: '.'
+    assign key = metafield_space_key.last
+
+    assign product_list = section.settings.product_list
+    if product_list != blank
+      assign product_count = product_list.count
+    else
+      assign product_count = 5
+    endif
+  %}
+
+  {%- if key != blank -%}
+    <tr class="field-name-tr medium-hide large-up-hide" aria-hidden="true">
+      <td colspan="{{ product_count }}">
+        <div>
+          <b>
+            {{ block.settings.label | escape }}
+          </b>
+        </div>
+      </td>
+    </tr>
+    <tr class="shopify-block compare-table-metefield-block table-row" {{ block.shopify_attributes }}>
+      <td class="field-name-td small-hide">
+        <b> {{ block.settings.label | escape }}</b>
+      </td>
+      {%- for product in section.settings.product_list -%}
+        <td class="field-value-td">
+          {% assign allowed_types = 'single_line_text_field,number_integer,number_decimal,date,date_time,boolean,color,weight,volume,dimension,rating,money'
+            | split: ','
+          %}
+          {%- if allowed_types contains product.metafields.custom[key].type
+            and product.metafields.custom[key] != null
+            and product.metafields.custom[key] != empty
+          -%}
+            {%- case product.metafields.custom[key].type -%}
+              {%- when 'boolean' -%}
+                {%- if product.metafields.custom[key] == true -%}
+                  {% render 'icon-sets-basic', icon: 'check' %}
+                  <span class="visually-hidden">yes</span>
+                {%- else -%}
+                  {% render 'icon-sets-basic', icon: 'close' %}
+                  <span class="visually-hidden">no</span>
+                {%- endif -%}
+              {%- when 'color' -%}
+                <span
+                  class="custom-color"
+                  style="background: {{ product.metafields.custom[key] }}"
+                  aria-label="{{ product.metafields.custom[key] }}"
+                ></span>
+              {%- when 'rating' -%}
+                {% render 'star-rating',
+                  rating_value: product.metafields.custom[key].value.rating,
+                  max_value: product.metafields.custom[key].value.scale_max,
+                  size: 'small',
+                  show_score: true
+                %}
+              {%- when 'date' -%}
+                {{ product.metafields.custom[key].value | date: format: 'abbreviated_date' }}
+              {%- when 'date_time' -%}
+                {{ product.metafields.custom[key].value | date: format: 'date_at_time' }}
+              {%- when 'weight', 'volume', 'dimension' -%}
+                {{ product.metafields.custom[key].value }}
+                {{ product.metafields.custom[key].unit }}
+              {%- when 'money' -%}
+                {%- if settings.currency_code_enabled -%}
+                  {{ product.metafields.custom[key].value | money_with_currency }}
+                {%- else -%}
+                  {{ product.metafields.custom[key].value | money }}
+                {%- endif -%}
+              {%- else -%}
+                {{ product.metafields.custom[key].value }}
+            {%- endcase -%}
+          {%- else -%}
+            -
+            <span class="visually-hidden">no</span>
+          {%- endif -%}
+        </td>
+      {%- else -%}
+        {%- for i in (1..5) -%}
+          <td class="field-value-td">
+            -
+            <span class="visually-hidden">no</span>
+          </td>
+        {%- endfor -%}
+      {%- endfor -%}
+    </tr>
+  {%- endif -%}
+{%- endif -%}
+{% schema %}
+{
+  "name": "t:blocks._compare-table-metafield.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:blocks._compare-table-metafield.settings.paragraph.content"
+    },
+    {
+      "type": "text",
+      "id": "key",
+      "label": "t:blocks._compare-table-category.settings.key.label"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "t:blocks._compare-table-category.settings.label.label",
+      "default": "Attribute label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks._compare-table-metafield.presets.name"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,73 @@
+<scrollable-content-viewer
+  class="shopify-block statistics-block scrollable-content{% if block.settings.show_border %} statistics--with-border{% endif %}"
+  data-draggable
+  {{ block.shopify_attributes }}
+>
+  <ul class="statistic-list scrollable-content-wrapper grid-desktop gap-desktop-8 columns-desktop--{{ block.settings.columns }} list-unstyled">
+    {% content_for 'blocks' %}
+  </ul>
+</scrollable-content-viewer>
+{% schema %}
+{
+  "name": "t:blocks.statistics.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "t:sections.all.columns.label",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "show_border",
+      "label": "t:blocks.statistics.settings.label",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.mobile.header_content"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "t:sections.all.columns.label",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:sections.all.columns.options__1.label"
+        },
+        {
+          "value": "2",
+          "label": "t:sections.all.columns.options__2.label"
+        }
+      ],
+      "default": "2"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_statistic"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks.statistics.presets.name",
+      "blocks": [
+        {
+          "type": "_statistic"
+        },
+        {
+          "type": "_statistic"
+        },
+        {
+          "type": "_statistic"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

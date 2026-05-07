@@ -1,0 +1,212 @@
+{% doc %}
+  Header Menu
+
+  @description
+  Renders a header menu with automatic type detection (link or dropdown), optional hover behavior, custom class, and supports section blocks.
+
+  @param {string} section_id - Section Id
+  @param {object} [menu] - Array of menu
+  @param {object} [blocks] - Section blocks
+  @param {boolean} [enable_hover_open] - Enable hover to open menu
+  @param {string} [class] - Custom CSS class
+
+  @example
+  {% render 'header-menu' %}
+{% enddoc %}
+
+<nav class="header-menu-nav{% if class != blank %} {{ class }}{% endif %}">
+  <ul class="menu-list list-unstyled">
+    {%- for link in menu.links -%}
+      {% liquid
+        assign icon_setting = blocks | where: 'type', 'icon' | map: 'settings' | where: 'menu_type', 'main' | where: 'target_id', forloop.index | last
+        assign bubble_setting = blocks | where: 'type', 'bubble' | map: 'settings' | where: 'menu_type', 'main' | where: 'target_id', forloop.index | last
+
+        assign mega_ids_string = ''
+        assign menu_index = forloop.index
+        for block in blocks
+          if block.settings.target_id == menu_index
+            if block.type contains 'mega_'
+              unless mega_ids_string == ''
+                assign mega_ids_string = mega_ids_string | append: ','
+              endunless
+              assign mega_ids_string = mega_ids_string | append: forloop.index
+            endif
+          endif
+        endfor
+
+        assign mega_ids = mega_ids_string | split: ','
+      %}
+
+      <li class="menu-item header-menu-first-level">
+        {%- unless link.links == blank and mega_ids == empty -%}
+          <drop-menu
+            class="first-level-drop"
+            {% if enable_hover_open %}
+              data-hover-open
+              data-delay-close
+            {% endif %}
+          >
+            <details
+              class="details-header-menu{% if mega_ids != empty %} details-header-mega-menu{% endif %} details-disclosure"
+              {% if mega_ids == empty %}
+                data-constrain
+              {% endif %}
+            >
+              <summary
+                class="first-level-summary"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-controls="Menu-{{ link.handle | capitalize }}"
+              >
+                <a
+                  class="link{%- if link.child_active or link.url != '/' and link.current %} header-active-menu-item{% endif %}"
+                  {% if link.url != blank and link.url != '/' %}
+                    href="{{ link.url }}"
+                    {% if link.current %}
+                      aria-current="page"
+                    {% endif %}
+                  {% else %}
+                    role="link"
+                    aria-disabled="true"
+                  {% endif %}
+                >
+                  {%- if icon_setting != blank -%}
+                    {%- if icon_setting.image != blank -%}
+                      <span class="media media--square">
+                        {{- icon_setting.image | image_url: width: 200 | image_tag -}}
+                      </span>
+                    {%- elsif icon_setting.icon != 'none' -%}
+                      {% render 'icon-sets', icon: icon_setting.icon %}
+                    {%- endif -%}
+                  {%- endif -%}
+                  {{- link.title | escape -}}
+                  {%- if bubble_setting != blank -%}
+                    <span
+                      class="menu-bubble"
+                      style="background: {{ bubble_setting.background_color }}; color: {{ bubble_setting.foreground_color }};"
+                    >
+                      {%- if bubble_setting.icon != 'none' -%}
+                        {% render 'icon-sets', icon: bubble_setting.icon %}
+                      {%- endif -%}
+                      {{ bubble_setting.text }}
+                    </span>
+                  {%- endif -%}
+                </a>
+                {% render 'icon-sets-basic', icon: 'caret-down', class: 'caret-icon' %}
+              </summary>
+              {%- if mega_ids != empty -%}
+                {% render 'mega-menu', section_id: section_id, blocks: blocks, link: link, mega_ids: mega_ids %}
+              {%- else -%}
+                <ul
+                  id="Menu-{{ link.handle | capitalize }}"
+                  class="header-second-menu-list header-submenu-list details-disclosure-content color-{{ settings.main_color_scheme }} gradient list-unstyled"
+                  aria-label="Submenu for {{ link.title | escape }}"
+                  tabindex="-1"
+                  {% comment %} tabindex="-1" 是为了打开菜单后，防止菜单容器因为失去焦点而关闭 {% endcomment %}
+                >
+                  {%- for childlink in link.links -%}
+                    <li class="menu-item header-menu-second-level">
+                      {%- if childlink.links == blank -%}
+                        <a
+                          class="second-level-link link link-text"
+                          href="{{ childlink.url }}"
+                          {% if childlink.current %}
+                            aria-current="page"
+                          {% endif %}
+                        >
+                          {{- childlink.title | escape -}}
+                        </a>
+                      {%- else -%}
+                        <drop-menu
+                          class="second-level-drop"
+                          {% if enable_hover_open %}
+                            data-hover-open
+                            data-delay-close
+                          {% endif %}
+                        >
+                          <details class="details-header-submenu details-disclosure" data-constrain>
+                            <summary
+                              class="second-level-summary"
+                              aria-haspopup="true"
+                              aria-expanded="false"
+                              aria-controls="Menu-{{ link.handle | capitalize }}-{{ childlink.handle | capitalize }}"
+                            >
+                              <a
+                                class="link"
+                                {% if childlink.url != blank and childlink.url != '/' %}
+                                  href="{{ childlink.url }}"
+                                  {% if childlink.current %}
+                                    aria-current="page"
+                                  {% endif %}
+                                {% else %}
+                                  role="link"
+                                  aria-disabled="true"
+                                {% endif %}
+                              >
+                                {{- childlink.title | escape -}}
+                              </a>
+                              {% render 'icon-sets-basic', icon: 'caret-right', class: 'caret-icon' %}
+                            </summary>
+                            <ul
+                              id="Menu-{{ link.handle | capitalize }}-{{ childlink.handle | capitalize }}"
+                              class="header-third-menu-list header-submenu-list details-disclosure-content color-{{ settings.main_color_scheme }} gradient list-unstyled"
+                              aria-label="Submenu for {{ childlink.title | escape }}"
+                            >
+                              {%- for grandchildlink in childlink.links -%}
+                                <li class="menu-item header-menu-third-level">
+                                  <a
+                                    class="third-level-link link link-text"
+                                    href="{{ grandchildlink.url }}"
+                                    {% if grandchildlink.current %}
+                                      aria-current="page"
+                                    {% endif %}
+                                  >
+                                    {{ grandchildlink.title | escape }}
+                                  </a>
+                                </li>
+                              {%- endfor -%}
+                            </ul>
+                          </details>
+                        </drop-menu>
+                      {%- endif -%}
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </details>
+          </drop-menu>
+        {%- else -%}
+          <a
+            class="first-level-link link"
+            href="{{ link.url }}"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            {%- if icon_setting != blank -%}
+              {%- if icon_setting.image != blank -%}
+                <span class="media media--square">
+                  {{- icon_setting.image | image_url: width: 200 | image_tag -}}
+                </span>
+              {%- elsif icon_setting.icon != 'none' -%}
+                {% render 'icon-sets', icon: icon_setting.icon %}
+              {%- endif -%}
+            {%- endif -%}
+            {{- link.title | escape -}}
+            {%- if bubble_setting != blank -%}
+              <span
+                class="menu-bubble"
+                style="background: {{ bubble_setting.background_color }}; color: {{ bubble_setting.foreground_color }};"
+              >
+                {%- if bubble_setting.icon != 'none' -%}
+                  {% render 'icon-sets', icon: bubble_setting.icon %}
+                {%- endif -%}
+                {{ bubble_setting.text }}
+              </span>
+            {%- endif -%}
+          </a>
+        {%- endunless -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>

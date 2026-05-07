@@ -1,0 +1,13 @@
+.product-xr-button[data-shopify-xr-hidden] {
+  visibility: hidden;
+}
+
+.shopify-design-mode .product-xr-button[data-shopify-xr-hidden] {
+  display: none;
+}
+
+@media screen and (min-width: 750px) {
+  .product-xr-button[data-shopify-xr-hidden] {
+    display: none;
+  }
+}

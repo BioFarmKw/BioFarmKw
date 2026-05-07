@@ -1,0 +1,65 @@
+{% render 'social-icons',
+  show_tooltip: block.settings.show_tooltip,
+  style: block.settings.style,
+  size: block.settings.size
+%}
+
+{% schema %}
+{
+  "name": "t:blocks.social-list.name",
+  "class": "social-list-block",
+  "settings": [
+    {
+      "type": "select",
+      "id": "style",
+      "label": "t:sections.all.social-list.social_style.label",
+      "options": [
+        {
+          "label": "t:sections.all.social-list.social_style.options__1.label",
+          "value": "icon"
+        },
+        {
+          "label": "t:sections.all.social-list.social_style.options__2.label",
+          "value": "border"
+        },
+        {
+          "label": "t:sections.all.social-list.social_style.options__3.label",
+          "value": "wrapper"
+        }
+      ],
+      "default": "icon"
+    },
+    {
+      "type": "select",
+      "id": "size",
+      "label": "t:sections.all.social-list.icon_size.label",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:sections.all.social-list.icon_size.options__1.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.all.social-list.icon_size.options__2.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.all.social-list.icon_size.options__3.label"
+        }
+      ],
+      "default": "small"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tooltip",
+      "label": "t:blocks.social-list.settings.show_tooltip.label",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks.social-list.presets.name"
+    }
+  ]
+}
+{% endschema %}

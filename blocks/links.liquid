@@ -1,0 +1,31 @@
+<div class="link-list auto-inline-flex gap-4">
+  {% content_for 'blocks' %}
+</div>
+
+{% schema %}
+{
+  "name": "t:blocks.links.name",
+  "class": "links-block",
+  "blocks": [
+    {
+      "type": "_link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:blocks.links.presets.name",
+      "blocks": [
+        {
+          "type": "_link"
+        },
+        {
+          "type": "_link"
+        },
+        {
+          "type": "_link"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
