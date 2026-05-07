@@ -9458,3 +9458,12 @@ scroll-seamless.border-gradient-alpha:after {
     grid-template-columns: 1fr;
   }
 }
+
+/* Force identical styling for all top-level navbar links */
+.header-menu-first-level .first-level-link,
+.header-menu-first-level .first-level-summary a {
+  font-family: var(--font-heading-family) !important;
+  font-size: 1.6rem !important;
+  font-weight: 500 !important;
+  letter-spacing: normal !important;
+}
