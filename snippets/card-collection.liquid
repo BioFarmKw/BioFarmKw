@@ -39,6 +39,30 @@
 %}
 {% capture sizes %}(min-width: 750px) calc({{ image_width }} * 1.5), {{ image_width_mobile | default: '100vw' }}{% endcapture %}
 
+<style>
+  .collection-card, .card-content { overflow: visible !important; }
+  .collection-card .caret-down-icon { display: none; }
+  .collection-card:hover .caret-right-icon { display: none; }
+  .collection-card:hover .caret-down-icon { display: inline-block; }
+  .collection-products-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgb(var(--color-background));
+    border: 1px solid rgba(var(--color-foreground), 0.1);
+    padding: 15px;
+    z-index: 10;
+    min-width: 180px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: left;
+    border-radius: 4px;
+  }
+  .collection-card:hover .collection-products-dropdown { display: block; }
+  .collection-products-dropdown li { margin-bottom: 8px; }
+  .collection-products-dropdown li:last-child { margin-bottom: 0; }
+</style>
 <div class="collection-card card{% if is_text_only %} card--text-only{% endif %}{% if show_horizontal %} card--horizontal{% endif %}{% if show_wrapper %} card--wrapped{% if color_scheme != blank %} color-{{ color_scheme }} gradient{% endif %}{% endif %}">
   {%- unless is_text_only -%}
   <div class="card-media">
@@ -63,7 +87,7 @@
   <div class="card-content text-align--{{ text_alignment | default: 'center' }}">
     <div class="card-heading">
       <a
-        class="link link-underline"
+        class="link"
         {% if card_collection.url != null %}
           href="{{ card_collection.url }}"
         {% else %}
@@ -83,7 +107,17 @@
           {{ 'onboarding.collection_title' | t }}
         {%- endif -%}
       </a>
-      {% render 'icon-sets-basic', icon: 'caret-right', class: 'caret-icon' %}
+      {% render 'icon-sets-basic', icon: 'caret-right', class: 'caret-icon caret-right-icon' %}
+      {% render 'icon-sets-basic', icon: 'caret-down', class: 'caret-icon caret-down-icon' %}
+      {%- if card_collection.products.size > 0 -%}
+        <div class="collection-products-dropdown">
+          <ul class="list-unstyled">
+            {%- for product in card_collection.products limit: 5 -%}
+              <li><a href="{{ product.url }}" class="link link-text">{{ product.title }}</a></li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endif -%}
     </div>
     {%- if show_product_count -%}
       <div class="collection-product-count">
