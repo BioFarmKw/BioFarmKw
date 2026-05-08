@@ -216,6 +216,19 @@
       {% endif %}
       }
 
+      @font-face {
+        font-family: 'The Sans Arabic';
+        src: url('{{ "TheSansArabic-Light.ttf" | asset_url }}') format('truetype');
+        font-style: normal;
+        font-display: swap;
+      }
+
+      html[lang="ar"], html[dir="rtl"] {
+        --font-body-family: 'The Sans Arabic', 'TheSansArabic', {{ settings.type_body_font.fallback_families }};
+        --font-heading-family: 'The Sans Arabic', 'TheSansArabic', {{ settings.type_heading_font.fallback_families }};
+        --font-decorative-family: 'The Sans Arabic', 'TheSansArabic', {{ settings.type_decorative_font.fallback_families }};
+      }
+
       *,
       *::before,
       *::after {
