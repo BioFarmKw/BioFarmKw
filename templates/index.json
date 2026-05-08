@@ -1123,6 +1123,7 @@
         "spacer_YAq4EP",
         "buttons_PXXE8X"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-2",
         "background_image_opacity": 0,
