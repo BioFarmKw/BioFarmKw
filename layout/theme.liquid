@@ -224,9 +224,36 @@
       }
 
       html[lang="ar"], html[dir="rtl"] {
-        --font-body-family: 'The Sans Arabic', 'TheSansArabic', {{ settings.type_body_font.fallback_families }};
-        --font-heading-family: 'The Sans Arabic', 'TheSansArabic', {{ settings.type_heading_font.fallback_families }};
-        --font-decorative-family: 'The Sans Arabic', 'TheSansArabic', {{ settings.type_decorative_font.fallback_families }};
+        --font-body-family: 'The Sans Arabic', 'TheSansArabic', sans-serif !important;
+        --font-heading-family: 'The Sans Arabic', 'TheSansArabic', sans-serif !important;
+        --font-decorative-family: 'The Sans Arabic', 'TheSansArabic', sans-serif !important;
+      }
+
+      /* Prevent navbar from breaking into two lines in Arabic */
+      html[lang="ar"] .header-menu-nav .menu-list,
+      html[dir="rtl"] .header-menu-nav .menu-list {
+        flex-wrap: nowrap !important;
+        gap: 0.8rem !important;
+      }
+
+      /* Scale down header links slightly to fit in Arabic */
+      html[lang="ar"] .header-menu-first-level .first-level-link,
+      html[lang="ar"] .header-menu-first-level .first-level-summary a,
+      html[dir="rtl"] .header-menu-first-level .first-level-link,
+      html[dir="rtl"] .header-menu-first-level .first-level-summary a {
+        font-size: 1.4rem !important;
+      }
+      
+      /* Force the font on form elements and buttons which sometimes resist inheritance */
+      html[lang="ar"] button, 
+      html[lang="ar"] input, 
+      html[lang="ar"] select, 
+      html[lang="ar"] textarea,
+      html[dir="rtl"] button, 
+      html[dir="rtl"] input, 
+      html[dir="rtl"] select, 
+      html[dir="rtl"] textarea {
+        font-family: 'The Sans Arabic', 'TheSansArabic', sans-serif !important;
       }
 
       *,
