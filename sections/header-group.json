@@ -589,7 +589,7 @@
         "show_store_button": true,
         "show_quick_button": true,
         "button_label": "Help Center",
-        "button_link": "",
+        "button_link": "shopify://pages/contact",
         "logo_width_mobile": 100,
         "default_expand_category": false,
         "show_social_mobile": true,
