@@ -80,7 +80,7 @@
       "settings": {
         "color_scheme": "",
         "button_label": "View All Stores",
-        "button_link": "",
+        "button_link": "shopify://collections",
         "show_arrow": true
       }
     },
