@@ -18,28 +18,38 @@
   padding-block-start: 1rem;
   margin-block-start: 2rem;
   border-block-start: 1px solid rgba(var(--color-foreground), 0.1);
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
 }
 .shop-the-look__wrapper .shop-the-look-products .bundle-total {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  flex-wrap: nowrap !important;
 }
 .shop-the-look__wrapper .shop-the-look-products .bundle-total .total-price {
-  display: inline-flex;
-  align-items: center;
+  display: inline-flex !important;
+  align-items: center !important;
   gap: 0.5rem;
+  flex-wrap: nowrap !important;
 }
 .shop-the-look__wrapper .shop-the-look-products .bundle-total .price,
 .shop-the-look__wrapper .shop-the-look-products .bundle-total .original {
   font-size: 1.5rem;
+  white-space: nowrap !important;
 }
 .shop-the-look__wrapper .shop-the-look-products .bundle-discount-notice {
   font-size: 0.875rem;
   text-align: end;
   margin-block-start: 0.5rem;
+  width: 100% !important;
 }
 .shop-the-look__wrapper .shop-the-look-products .bundle-submit-button {
   margin-block-start: 1rem;
+  width: 100% !important;
 }
 .shop-the-look__wrapper.has-active .bundle-item:not(.active) {
   opacity: 0.2;
