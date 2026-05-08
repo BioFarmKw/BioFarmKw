@@ -9423,11 +9423,20 @@ scroll-seamless.border-gradient-alpha:after {
 }
 
 .catalog-grid a {
-  text-decoration: none;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
   color: rgb(var(--color-foreground));
   display: block;
   padding: 0.6rem 0;
   transition: opacity 0.3s;
+}
+
+.catalog-grid a u,
+.catalog-grid a span {
+  text-decoration: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
 }
 
 .catalog-grid a:hover {
