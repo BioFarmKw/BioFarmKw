@@ -466,7 +466,7 @@
   {%- if id == 'Main-Menu' -%}
     <li class="menu-item">
       <a class="menu-link link" href="/cart">
-        Fill Your Basket
+        {% if request.locale.iso_code == 'ar' %}املأ سلتك{% else %}Fill Your Basket{% endif %}
       </a>
     </li>
   {%- endif -%}

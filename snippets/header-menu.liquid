@@ -210,7 +210,7 @@
     {%- endfor -%}
     <li class="menu-item header-menu-first-level">
       <a class="first-level-link link" href="/cart">
-        Fill Your Basket
+        {% if request.locale.iso_code == 'ar' %}املأ سلتك{% else %}Fill Your Basket{% endif %}
       </a>
     </li>
   </ul>
