@@ -717,9 +717,9 @@
           "type": "title",
           "settings": {
             "size": "medium",
-            "show_vendor": true,
+            "show_vendor": false,
             "show_type": true,
-            "show_rating": true,
+            "show_rating": false,
             "star_size": "small",
             "target_anchor": "",
             "enable_rating_preview": false
