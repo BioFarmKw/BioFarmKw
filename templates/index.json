@@ -2257,7 +2257,7 @@
           "type": "video-feed",
           "settings": {
             "video": "shopify://files/videos/SecondProductVideo.mp4",
-            "description": "<p><br/>Fresh green leafy plant showcased with vibrant natural color and healthy growth, highlighting its purity and farm-fresh quality. Perfect for organic gardening, healthy meals, and adding natural freshness to your lifestyle.<br/><br/></p>",
+            "description": "<p><br/>There is growing concern regarding agricultural products due to lack of oversight on quality standards and health regulations. Issues include pesticide residues, chemical fertilizers, hormones, and unsafe farming practices.<br/><br/><br/></p>",
             "product": "bird-of-paradise"
           }
         },
@@ -2298,6 +2298,7 @@
         "display_border_blur": false,
         "enable_scroll_synergy": false,
         "social_type": "instagram",
+        "social_avatar": "shopify://shop_images/BioFarm_transparent.png",
         "social_nickname": "BioFarmKw",
         "social_username": "BioFarmKw",
         "social_link": "https://www.instagram.com/biofarmku",
