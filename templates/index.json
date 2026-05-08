@@ -1320,8 +1320,8 @@
         "look_spot_wK8KTq": {
           "type": "look-spot",
           "settings": {
-            "horizontal_position": 61,
-            "vertical_position": 72,
+            "horizontal_position": 0,
+            "vertical_position": 6,
             "product": "chinese-cabbage-red-hybrid"
           }
         }
@@ -1331,6 +1331,7 @@
         "look_spot_qCPiXi",
         "look_spot_wK8KTq"
       ],
+      "custom_css": [],
       "name": "t:sections.shop-the-look.presets.name",
       "settings": {
         "color_scheme": "",
