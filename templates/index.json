@@ -717,9 +717,9 @@
           "type": "title",
           "settings": {
             "size": "medium",
-            "show_vendor": true,
+            "show_vendor": false,
             "show_type": true,
-            "show_rating": true,
+            "show_rating": false,
             "star_size": "small",
             "target_anchor": "",
             "enable_rating_preview": false
@@ -1123,6 +1123,7 @@
         "spacer_YAq4EP",
         "buttons_PXXE8X"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-2",
         "background_image_opacity": 0,
@@ -1319,8 +1320,8 @@
         "look_spot_wK8KTq": {
           "type": "look-spot",
           "settings": {
-            "horizontal_position": 61,
-            "vertical_position": 72,
+            "horizontal_position": 0,
+            "vertical_position": 6,
             "product": "chinese-cabbage-red-hybrid"
           }
         }
@@ -1330,6 +1331,7 @@
         "look_spot_qCPiXi",
         "look_spot_wK8KTq"
       ],
+      "custom_css": [],
       "name": "t:sections.shop-the-look.presets.name",
       "settings": {
         "color_scheme": "",
@@ -2155,6 +2157,7 @@
           ]
         }
       },
+      "disabled": true,
       "name": "t:sections.logo-list.presets.name",
       "settings": {
         "color_scheme": "scheme-1",
@@ -2196,6 +2199,7 @@
           "blocks": {
             "link_JKTrDV": {
               "type": "_link",
+              "disabled": true,
               "settings": {
                 "text": "Farm documentation",
                 "link": "",
