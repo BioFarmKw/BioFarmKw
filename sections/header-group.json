@@ -88,6 +88,19 @@
             "hide_on_mobile": false
           }
         },
+        "mega_links_fish_01": {
+          "type": "mega_links",
+          "settings": {
+            "target_id": 2,
+            "image_ratio": "square",
+            "heading": "Fish",
+            "link": "shopify://collections/fish-1",
+            "open_in_new_tab": false,
+            "menu": "",
+            "alignment": "left",
+            "hide_on_mobile": false
+          }
+        },
         "mega_links_XfXJiY": {
           "type": "mega_links",
           "settings": {
@@ -290,19 +303,6 @@
             "image_ratio": "adapt",
             "heading": "Aromatic Medicinal Leaf Extracts",
             "link": "shopify://collections/aromatic-medicinal-herbs",
-            "open_in_new_tab": false,
-            "menu": "",
-            "alignment": "left",
-            "hide_on_mobile": false
-          }
-        },
-        "mega_links_fish_01": {
-          "type": "mega_links",
-          "settings": {
-            "target_id": 2,
-            "image_ratio": "square",
-            "heading": "Fish",
-            "link": "shopify://collections/fish-1",
             "open_in_new_tab": false,
             "menu": "",
             "alignment": "left",
@@ -536,6 +536,7 @@
       },
       "block_order": [
         "mega_collection_9meaij",
+        "mega_links_fish_01",
         "mega_links_XfXJiY",
         "mega_links_t74NMy",
         "mega_links_8ewBU6",
@@ -552,7 +553,6 @@
         "mega_links_8AcfCz",
         "mega_links_7bAQDY",
         "mega_links_A4qcMw",
-        "mega_links_fish_01",
         "mega_links_UE4a7F",
         "mega_image_T3FmTk",
         "mega_image_4AptLT",
