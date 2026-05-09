@@ -201,7 +201,7 @@
               "type": "heading",
               "settings": {
                 "content": "Your food is safe with us... natural products",
-                "type": "1",
+                "type": "2",
                 "size": "medium",
                 "uppercase": false,
                 "enable_highlight_text": true,
