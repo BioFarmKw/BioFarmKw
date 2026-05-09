@@ -1079,7 +1079,7 @@
             "text": "Let us introduce you to Biofarm.. It is more than just a marketing platform.. It represents a new standard in bio-agricultural engineering, striving to bring its products to the natural pattern of organic and healthy production by returning to nature and reading its engineering that God created for us, to reach healthy and safe food.Biofarm operates as a biodynamic farm with multiple systems (aquaponics, hydroponics, and sandponic systems), all utilizing organic inputs and biodynamic controls to ensure clean and healthy products.",
             "size": "small",
             "uppercase": false,
-            "animation": "float-in",
+            "animation": "darken",
             "color_before": "#16bf00",
             "color_after": "#ffffff"
           },
