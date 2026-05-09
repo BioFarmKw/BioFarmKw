@@ -1320,8 +1320,8 @@
         "look_spot_wK8KTq": {
           "type": "look-spot",
           "settings": {
-            "horizontal_position": 0,
-            "vertical_position": 6,
+            "horizontal_position": 44,
+            "vertical_position": 61,
             "product": "large-fish"
           }
         }
