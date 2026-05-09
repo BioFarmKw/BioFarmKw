@@ -514,7 +514,7 @@
           "type": "_product-list",
           "static": true,
           "settings": {
-            "collection": "toppicks",
+            "collection": "toppicksprod",
             "limit": 10,
             "show_collection_image": false,
             "collection_color_scheme": "",
@@ -1306,7 +1306,7 @@
           "settings": {
             "horizontal_position": 22,
             "vertical_position": 70,
-            "product": "rectangular-purple-cabbage"
+            "product": "small-fish"
           }
         },
         "look_spot_qCPiXi": {
@@ -1314,7 +1314,7 @@
           "settings": {
             "horizontal_position": 50,
             "vertical_position": 50,
-            "product": "large-fish"
+            "product": "medium-fish"
           }
         },
         "look_spot_wK8KTq": {
@@ -1322,7 +1322,7 @@
           "settings": {
             "horizontal_position": 0,
             "vertical_position": 6,
-            "product": "chinese-cabbage-red-hybrid"
+            "product": "large-fish"
           }
         }
       },
@@ -1335,7 +1335,7 @@
       "name": "t:sections.shop-the-look.presets.name",
       "settings": {
         "color_scheme": "",
-        "image": "shopify://shop_images/cabbage.png",
+        "image": "shopify://shop_images/Fish_size_comparison_infographic.png",
         "image_ratio": "adapt",
         "image_position": "left",
         "show_quantity_selector": true,
