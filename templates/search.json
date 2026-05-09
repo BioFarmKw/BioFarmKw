@@ -117,7 +117,7 @@
           "type": "_product-list",
           "static": true,
           "settings": {
-            "collection": "toppicks",
+            "collection": "toppicksprod",
             "limit": 5,
             "show_collection_image": false,
             "collection_color_scheme": "",
