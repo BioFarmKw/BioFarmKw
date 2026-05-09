@@ -144,7 +144,7 @@
         "color_scheme": "",
         "show_map": true,
         "map_image": "shopify://shop_images/BioFarm_transparent.png",
-        "map_iframe": "<iframe src=\"https://www.google.com/maps?q=28.578419,48.13387&amp;hl=en&amp;z=17&amp;output=embed\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\">\n</iframe>",
+        "map_iframe": "<iframe src=\"https://www.google.com/maps?q=28.578419,48.133870&amp;output=embed\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\">\n</iframe>",
         "padding_top": 48,
         "padding_bottom": 48,
         "margin_top": 0,
