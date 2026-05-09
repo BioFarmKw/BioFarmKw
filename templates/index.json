@@ -243,6 +243,7 @@
         },
         "carousel_image_slide_dEga6c": {
           "type": "_carousel-image-slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/shared_image.jpg",
             "image_opacity": 100,
