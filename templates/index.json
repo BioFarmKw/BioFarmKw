@@ -678,7 +678,7 @@
                     "size": "medium",
                     "icon": "none",
                     "button_label": "Shop Now",
-                    "button_link": "shopify://collections",
+                    "button_link": "shopify://pages/product-catalog",
                     "open_in_new_tab": false,
                     "show_arrow": true
                   },
