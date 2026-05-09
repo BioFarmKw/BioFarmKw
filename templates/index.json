@@ -1078,7 +1078,7 @@
           "settings": {
             "text": "Let us introduce you to Biofarm.. It is more than just a marketing platform.. It represents a new standard in bio-agricultural engineering, striving to bring its products to the natural pattern of organic and healthy production by returning to nature and reading its engineering that God created for us, to reach healthy and safe food.Biofarm operates as a biodynamic farm with multiple systems (aquaponics, hydroponics, and sandponic systems), all utilizing organic inputs and biodynamic controls to ensure clean and healthy products.",
             "size": "small",
-            "uppercase": false,
+            "uppercase": true,
             "animation": "darken",
             "color_before": "#16bf00",
             "color_after": "#ffffff"
@@ -1123,6 +1123,7 @@
         "spacer_YAq4EP",
         "buttons_PXXE8X"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-2",
         "background_image_opacity": 0,
@@ -1303,24 +1304,24 @@
         "look_spot_Kpa6bT": {
           "type": "look-spot",
           "settings": {
-            "horizontal_position": 36,
-            "vertical_position": 70,
+            "horizontal_position": 6,
+            "vertical_position": 50,
             "product": "small-fish"
           }
         },
         "look_spot_qCPiXi": {
           "type": "look-spot",
           "settings": {
-            "horizontal_position": 50,
-            "vertical_position": 57,
+            "horizontal_position": 32,
+            "vertical_position": 45,
             "product": "medium-fish"
           }
         },
         "look_spot_wK8KTq": {
           "type": "look-spot",
           "settings": {
-            "horizontal_position": 16,
-            "vertical_position": 59,
+            "horizontal_position": 67,
+            "vertical_position": 47,
             "product": "large-fish"
           }
         }
