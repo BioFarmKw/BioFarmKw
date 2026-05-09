@@ -1359,6 +1359,7 @@
           "blocks": {
             "icon_cWjKYz": {
               "type": "icon",
+              "disabled": true,
               "settings": {
                 "size": "medium",
                 "icon": "quote"
