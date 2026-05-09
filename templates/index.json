@@ -139,8 +139,8 @@
               "type": "heading",
               "settings": {
                 "content": "Returning to nature by simulating it with the aquaponics system",
-                "type": "1",
-                "size": "small",
+                "type": "2",
+                "size": "medium",
                 "uppercase": false,
                 "enable_highlight_text": true,
                 "highlight_type": "script",
