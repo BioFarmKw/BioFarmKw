@@ -1335,7 +1335,7 @@
       "name": "t:sections.shop-the-look.presets.name",
       "settings": {
         "color_scheme": "",
-        "image": "shopify://shop_images/FishMixedImages.png",
+        "image": "shopify://shop_images/FishMixedImages_b00ee67c-f6b0-463a-8adf-d76beb7d4c4d.png",
         "image_ratio": "adapt",
         "image_position": "left",
         "show_quantity_selector": true,
