@@ -1304,7 +1304,7 @@
         "look_spot_Kpa6bT": {
           "type": "look-spot",
           "settings": {
-            "horizontal_position": 22,
+            "horizontal_position": 36,
             "vertical_position": 70,
             "product": "small-fish"
           }
@@ -1312,7 +1312,7 @@
         "look_spot_qCPiXi": {
           "type": "look-spot",
           "settings": {
-            "horizontal_position": 50,
+            "horizontal_position": 72,
             "vertical_position": 57,
             "product": "medium-fish"
           }
@@ -1320,8 +1320,8 @@
         "look_spot_wK8KTq": {
           "type": "look-spot",
           "settings": {
-            "horizontal_position": 44,
-            "vertical_position": 61,
+            "horizontal_position": 16,
+            "vertical_position": 59,
             "product": "large-fish"
           }
         }
