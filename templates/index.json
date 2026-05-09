@@ -1304,24 +1304,24 @@
         "look_spot_Kpa6bT": {
           "type": "look-spot",
           "settings": {
-            "horizontal_position": 6,
-            "vertical_position": 50,
+            "horizontal_position": 22,
+            "vertical_position": 55,
             "product": "small-fish"
           }
         },
         "look_spot_qCPiXi": {
           "type": "look-spot",
           "settings": {
-            "horizontal_position": 32,
-            "vertical_position": 45,
+            "horizontal_position": 45,
+            "vertical_position": 55,
             "product": "medium-fish"
           }
         },
         "look_spot_wK8KTq": {
           "type": "look-spot",
           "settings": {
-            "horizontal_position": 67,
-            "vertical_position": 47,
+            "horizontal_position": 70,
+            "vertical_position": 55,
             "product": "large-fish"
           }
         }
@@ -1335,7 +1335,7 @@
       "name": "t:sections.shop-the-look.presets.name",
       "settings": {
         "color_scheme": "",
-        "image": "shopify://shop_images/Fish_size_comparison_infographic.png",
+        "image": "shopify://shop_images/FishMixedImages.png",
         "image_ratio": "adapt",
         "image_position": "left",
         "show_quantity_selector": true,
