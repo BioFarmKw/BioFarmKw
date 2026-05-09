@@ -1312,7 +1312,7 @@
         "look_spot_qCPiXi": {
           "type": "look-spot",
           "settings": {
-            "horizontal_position": 72,
+            "horizontal_position": 50,
             "vertical_position": 57,
             "product": "medium-fish"
           }
