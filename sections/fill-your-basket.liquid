@@ -1,218 +1,447 @@
-{% comment %}
-  Fill Your Basket - Two Modes:
-  1. Fish Bundle (10 KD for 5 KG)
-  2. Vegetable Bundle (9 KD Fixed Price)
-{% endcomment %}
-
-<style>
-  .fill-basket-section { padding: 0; font-family: inherit; }
-  .fill-basket-header { text-align: center; margin-bottom: 20px; }
-  .fill-basket-grid { display: flex; flex-direction: column; gap: 20px; }
-  .basket-card { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-  
-  /* Progress Bar */
-  .weight-progress { margin-bottom: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px; text-align: center; border: 2px solid #2196F3; }
-  .weight-progress.veg { border-color: #4CAF50; }
-  .weight-progress h4 { margin: 0 0 10px 0; color: #2196F3; }
-  .weight-progress.veg h4 { color: #4CAF50; }
-  .progress-bar-bg { height: 12px; background: #e0e0e0; border-radius: 6px; overflow: hidden; }
-  .progress-bar-fill { height: 100%; background: #2196F3; width: 0%; transition: width 0.3s ease; }
-  .progress-bar-fill.veg { background: #4CAF50; }
-
-  /* Options */
-  .fish-option, .veg-option { display: flex; align-items: center; justify-content: space-between; padding: 15px; border: 1px solid #eee; border-radius: 8px; margin-bottom: 10px; }
-  .fish-title, .veg-title { font-weight: bold; font-size: 15px; }
-  .fish-qty-control, .veg-qty-control { display: flex; align-items: center; gap: 8px; }
-  .fish-qty-control input, .veg-qty-control input { width: 60px; padding: 5px; border: 1px solid #ddd; border-radius: 4px; text-align: center; }
-
-  .basket-summary { margin-top: 20px; padding: 20px; background: #fdfdfd; border-radius: 12px; border: 1px solid #eee; text-align: center; }
-  .subtotal-display { font-size: 24px; font-weight: bold; margin-bottom: 15px; }
-  .add-to-basket-btn { width: 100%; padding: 15px; background: #333; color: #fff; border: none; border-radius: 30px; font-size: 18px; font-weight: bold; cursor: pointer; }
-  .add-to-basket-btn:disabled { background: #ccc; cursor: not-allowed; }
-  .error-message { color: #f44336; margin-top: 10px; font-size: 14px; display: none; }
-</style>
-
-<!-- FISH MODAL (10 KD / 5 KG) -->
-<modal-dialog id="Fish-Basket-Modal" class="modal">
-  <div class="modal-overlay"></div>
-  <div class="modal-inner gradient focus-none" role="dialog" aria-modal="true" tabindex="-1">
-    <button class="modal-close-button button button--icon" onclick="this.closest('.modal').hide()">{% render 'icon-sets-basic', icon: 'close' %}</button>
-    <div class="modal-content" style="max-height: 90vh; overflow-y: auto; padding: 20px;">
-      <div class="fill-basket-section">
-        <div class="fill-basket-header"><h2>Build Your Fish Basket</h2></div>
-        <div class="fill-basket-grid">
-          <div class="weight-progress">
-            <h4 id="fishProgressText">Select 5 KG of Fish</h4>
-            <div class="progress-bar-bg"><div id="fishProgressBar" class="progress-bar-fill"></div></div>
-            <div style="margin-top: 10px; font-weight: bold;">Total Weight: <span id="fishWeightDisplay">0</span> / 5 KG</div>
-          </div>
-          <div class="basket-card">
-            <h3>Fresh Fish Selection (10 KD Bundle)</h3>
-            <input type="hidden" id="fishBasketProductId" value="{{ all_products[section.settings.vegetable_product].variants.first.id }}">
-            <div class="fish-options">
-              {% for i in (1..4) %}
-                {% capture key %}fish_{% if i == 1 %}small{% elsif i == 2 %}small_medium{% elsif i == 3 %}medium{% else %}large{% endif %}{% endcapture %}
-                {% assign prod = all_products[section.settings[key]] %}
-                <div class="fish-option">
-                  <span class="fish-title">{{ prod.title | default: key | replace: '_', ' ' | capitalize }}</span>
-                  <div class="fish-qty-control">
-                    <input type="number" class="fish-qty-input" data-category="{{ prod.title }}" min="0" value="0">
-                    <span>KG</span>
-                  </div>
-                </div>
-              {% endfor %}
-            </div>
-          </div>
-        </div>
-        <div class="basket-summary">
-          <div class="subtotal-display">Price: <span id="fishSubtotal">0.000 KD</span></div>
-          <button class="add-to-basket-btn" id="addFishBtn" disabled>Select 5 KG</button>
-          <div id="fishError" class="error-message"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</modal-dialog>
-
-<!-- VEGETABLE MODAL (9 KD FIXED PRICE) -->
-<modal-dialog id="Veg-Basket-Modal" class="modal">
-  <div class="modal-overlay"></div>
-  <div class="modal-inner gradient focus-none" role="dialog" aria-modal="true" tabindex="-1">
-    <button class="modal-close-button button button--icon" onclick="this.closest('.modal').hide()">{% render 'icon-sets-basic', icon: 'close' %}</button>
-    <div class="modal-content" style="max-height: 90vh; overflow-y: auto; padding: 20px;">
-      <div class="fill-basket-section">
-        <div class="fill-basket-header"><h2>Build Your Vegetable Basket</h2></div>
-        <div class="fill-basket-grid">
-          <div class="weight-progress veg">
-            <h4 id="vegProgressText">Pick your items for 9 KD</h4>
-            <div class="progress-bar-bg"><div id="vegProgressBar" class="progress-bar-fill veg" style="width: 100%;"></div></div>
-          </div>
-          <div class="basket-card">
-            <h3>Vegetable Categories</h3>
-            <input type="hidden" id="vegBasketProductId" value="{{ all_products[section.settings.veg_basket_product].variants.first.id }}">
-            <div class="veg-options">
-              {% for block in section.blocks %}
-                {% if block.type == 'vegetable_category' %}
-                  <div class="veg-option">
-                    <span class="veg-title">{{ block.settings.title }}</span>
-                    <div class="veg-qty-control">
-                      <input type="number" class="veg-qty-input" data-category="{{ block.settings.title }}" min="0" value="0">
-                      <span>Qty</span>
-                    </div>
-                  </div>
-                {% endif %}
-              {% endfor %}
-            </div>
-          </div>
-        </div>
-        <div class="basket-summary">
-          <div class="subtotal-display">Price: <span id="vegSubtotal">9.000 KD</span></div>
-          <button class="add-to-basket-btn" id="addVegBtn">Proceed to Payment</button>
-          <div id="vegError" class="error-message"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</modal-dialog>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // --- FISH LOGIC ---
-    const fishInputs = document.querySelectorAll('.fish-qty-input');
-    const fishSubtotal = document.getElementById('fishSubtotal');
-    const addFishBtn = document.getElementById('addFishBtn');
-    const fishWeightDisplay = document.getElementById('fishWeightDisplay');
-    const fishProgressBar = document.getElementById('fishProgressBar');
-    const fishProgressText = document.getElementById('fishProgressText');
-
-    function updateFishUI() {
-      let weight = 0;
-      fishInputs.forEach(i => weight += parseInt(i.value) || 0);
-      fishWeightDisplay.textContent = weight;
-      fishProgressBar.style.width = Math.min((weight/5)*100, 100) + '%';
-      
-      if (weight === 5) {
-        fishSubtotal.textContent = "10.000 KD";
-        addFishBtn.disabled = false;
-        addFishBtn.textContent = "Proceed to Payment";
-        fishProgressText.textContent = "Basket Complete!";
-        fishProgressBar.style.background = "#4CAF50";
-      } else {
-        fishSubtotal.textContent = "0.000 KD";
-        addFishBtn.disabled = true;
-        addFishBtn.textContent = weight > 5 ? "Exceeds 5 KG" : `Select ${5 - weight} KG More`;
-        fishProgressText.textContent = weight > 5 ? "Please reduce weight" : "Building Your Basket...";
-        fishProgressBar.style.background = weight > 5 ? "#f44336" : "#2196F3";
-      }
-    }
-    fishInputs.forEach(i => i.addEventListener('input', updateFishUI));
-
-    addFishBtn.addEventListener('click', () => handleAdd('fish'));
-
-    // --- VEG LOGIC ---
-    const vegInputs = document.querySelectorAll('.veg-qty-input');
-    const addVegBtn = document.getElementById('addVegBtn');
-    
-    function updateVegUI() {
-      let count = 0;
-      vegInputs.forEach(i => count += parseInt(i.value) || 0);
-      addVegBtn.disabled = count === 0;
-      addVegBtn.textContent = count === 0 ? "Select Items" : "Proceed to Payment";
-    }
-    vegInputs.forEach(i => i.addEventListener('input', updateVegUI));
-
-    addVegBtn.addEventListener('click', () => handleAdd('veg'));
-
-    // --- COMMON ADD FUNCTION ---
-    function handleAdd(type) {
-      const isFish = type === 'fish';
-      const inputs = isFish ? fishInputs : vegInputs;
-      const btn = isFish ? addFishBtn : addVegBtn;
-      const error = isFish ? document.getElementById('fishError') : document.getElementById('vegError');
-      const vId = document.getElementById(isFish ? 'fishBasketProductId' : 'vegBasketProductId').value;
-
-      if (!vId) { error.textContent = "Product not assigned in Editor."; error.style.display='block'; return; }
-
-      let selections = [];
-      inputs.forEach(i => {
-        let q = parseInt(i.value) || 0;
-        if (q > 0) selections.push(`${q}${isFish ? 'KG' : ''} ${i.dataset.category}`);
-      });
-
-      btn.disabled = true; btn.textContent = "Adding...";
-      fetch('/cart/add.js', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ items: [{ id: vId, quantity: 1, properties: { 'Basket Selections': selections.join(', '), '_is_basket': 'true' } }] })
-      })
-      .then(r => r.ok ? window.location.href='/checkout' : r.json().then(e => { throw e }))
-      .catch(e => { btn.disabled = false; btn.textContent = "Error, Try Again"; });
-    }
-  });
-</script>
-
 {% schema %}
 {
   "name": "Fill Your Basket",
   "settings": [
-    { "type": "text", "id": "title", "label": "Section Title", "default": "Fill Your Basket" },
-    { "type": "header", "content": "Fish Bundle (10 KD / 5 KG)" },
-    { "type": "product", "id": "vegetable_product", "label": "Fish Basket Product (10 KD)" },
-    { "type": "product", "id": "fish_small", "label": "Small Fish" },
-    { "type": "product", "id": "fish_small_medium", "label": "Small Medium Fish" },
-    { "type": "product", "id": "fish_medium", "label": "Medium Fish" },
-    { "type": "product", "id": "fish_large", "label": "Large Fish" },
-    { "type": "header", "content": "Vegetable Bundle (9 KD Fixed)" },
-    { "type": "product", "id": "veg_basket_product", "label": "Veg Basket Product (9 KD)" }
-  ],
-  "blocks": [
     {
-      "type": "vegetable_category",
-      "name": "Vegetable Category",
-      "settings": [
-        { "type": "text", "id": "title", "label": "Category Name" }
-      ]
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Fill Your Basket"
+    },
+    {
+      "type": "header",
+      "content": "Vegetable Basket"
+    },
+    {
+      "type": "product",
+      "id": "vegetable_product",
+      "label": "Vegetable Product (Fixed 9.500 KD)"
+    },
+    {
+      "type": "header",
+      "content": "Fish Categories"
+    },
+    {
+      "type": "product",
+      "id": "fish_small",
+      "label": "Small Fish (1.5 KD/kg)"
+    },
+    {
+      "type": "product",
+      "id": "fish_small_medium",
+      "label": "Small Medium Fish (1.750 KD/kg)"
+    },
+    {
+      "type": "product",
+      "id": "fish_medium",
+      "label": "Medium Fish (2 KD/kg)"
+    },
+    {
+      "type": "product",
+      "id": "fish_large",
+      "label": "Large Fish (2.5 KD/kg)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fill Your Basket"
     }
   ]
 }
 {% endschema %}
+
+<style>
+  .fill-basket-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: inherit;
+  }
+  .fill-basket-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .fill-basket-header h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--color-foreground, #333);
+  }
+  .fill-basket-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  @media(min-width: 768px) {
+    .fill-basket-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .basket-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+  }
+  .basket-card h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #222;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+  }
+  
+  /* Vegetable Toggle */
+  .veg-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .veg-toggle.active {
+    border-color: #4CAF50;
+    background-color: #f1f8e9;
+  }
+  .veg-toggle input {
+    display: none;
+  }
+  .veg-price {
+    font-weight: bold;
+    color: #4CAF50;
+    font-size: 18px;
+  }
+
+  /* Fish Selection */
+  .fish-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .fish-option:hover {
+    background: #f9f9f9;
+  }
+  .fish-option input[type="radio"] {
+    margin-right: 10px;
+    accent-color: #2196F3;
+  }
+  .fish-details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .fish-title {
+    font-weight: bold;
+    font-size: 16px;
+  }
+  .fish-weight {
+    font-size: 12px;
+    color: #666;
+  }
+  .fish-price {
+    font-weight: bold;
+    color: #2196F3;
+  }
+
+  .qty-selector {
+    margin-top: 20px;
+  }
+  .qty-selector label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  .qty-input-group {
+    display: flex;
+    align-items: center;
+  }
+  .qty-input-group input {
+    width: 80px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 16px;
+  }
+  .qty-unit {
+    margin-left: 10px;
+    font-weight: bold;
+    color: #555;
+  }
+
+  /* Summary Section */
+  .basket-summary {
+    grid-column: 1 / -1;
+    background: #fafafa;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    border: 1px solid #eee;
+  }
+  .subtotal-display {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  .add-to-basket-btn {
+    background-color: #222;
+    color: #fff;
+    border: none;
+    padding: 15px 40px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .add-to-basket-btn:hover {
+    background-color: #4CAF50;
+    transform: translateY(-2px);
+  }
+  .add-to-basket-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  .error-message {
+    color: #d32f2f;
+    margin-top: 10px;
+    font-size: 14px;
+    display: none;
+  }
+
+</style>
+
+<div class="fill-basket-section" id="Fill-Basket-{{ section.id }}">
+  <div class="fill-basket-header">
+    <h2>{{ section.settings.title | escape }}</h2>
+  </div>
+
+  <div class="fill-basket-grid">
+    <!-- Vegetables -->
+    <div class="basket-card">
+      <h3>Vegetable Basket</h3>
+      <label class="veg-toggle" id="vegToggleLabel">
+        <span>Assorted Fresh Vegetables</span>
+        <span class="veg-price">9.500 KD</span>
+        <input type="checkbox" id="vegCheckbox" 
+          data-variant-id="{{ section.settings.vegetable_product.first_available_variant.id }}" 
+          data-price="9.5">
+      </label>
+    </div>
+
+    <!-- Fish -->
+    <div class="basket-card">
+      <h3>Fish Selection</h3>
+      
+      {% assign fish_small = section.settings.fish_small %}
+      {% assign fish_sm_med = section.settings.fish_small_medium %}
+      {% assign fish_medium = section.settings.fish_medium %}
+      {% assign fish_large = section.settings.fish_large %}
+
+      <div class="fish-options">
+        <label class="fish-option">
+          <input type="radio" name="fish_category" value="{{ fish_small.first_available_variant.id }}" data-price="1.5">
+          <div class="fish-details">
+            <span class="fish-title">Small Fish</span>
+            <span class="fish-weight">500g - 600g</span>
+          </div>
+          <span class="fish-price">1.500 KD / kg</span>
+        </label>
+
+        <label class="fish-option">
+          <input type="radio" name="fish_category" value="{{ fish_sm_med.first_available_variant.id }}" data-price="1.75">
+          <div class="fish-details">
+            <span class="fish-title">Small Medium Fish</span>
+            <span class="fish-weight">650g - 750g</span>
+          </div>
+          <span class="fish-price">1.750 KD / kg</span>
+        </label>
+
+        <label class="fish-option">
+          <input type="radio" name="fish_category" value="{{ fish_medium.first_available_variant.id }}" data-price="2.0">
+          <div class="fish-details">
+            <span class="fish-title">Medium Fish</span>
+            <span class="fish-weight">800g - 2000g</span>
+          </div>
+          <span class="fish-price">2.000 KD / kg</span>
+        </label>
+
+        <label class="fish-option">
+          <input type="radio" name="fish_category" value="{{ fish_large.first_available_variant.id }}" data-price="2.5">
+          <div class="fish-details">
+            <span class="fish-title">Large Fish</span>
+            <span class="fish-weight">Above 2000g</span>
+          </div>
+          <span class="fish-price">2.500 KD / kg</span>
+        </label>
+      </div>
+
+      <div class="qty-selector">
+        <label for="fishQty">Quantity Required (Minimum 5 KG)</label>
+        <div class="qty-input-group">
+          <input type="number" id="fishQty" min="0" step="1" value="0">
+          <span class="qty-unit">KG</span>
+        </div>
+        <div id="fishQtyError" class="error-message">Minimum fish order must be 5 KG.</div>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="basket-summary">
+      <div class="subtotal-display">
+        Subtotal: <span id="basketSubtotal">0.000 KD</span>
+      </div>
+      <button class="add-to-basket-btn" id="addToBasketBtn">Add to Basket</button>
+      <div id="basketError" class="error-message"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const vegCheckbox = document.getElementById('vegCheckbox');
+    const vegToggleLabel = document.getElementById('vegToggleLabel');
+    const fishRadios = document.querySelectorAll('input[name="fish_category"]');
+    const fishQtyInput = document.getElementById('fishQty');
+    const subtotalDisplay = document.getElementById('basketSubtotal');
+    const addToBasketBtn = document.getElementById('addToBasketBtn');
+    const fishQtyError = document.getElementById('fishQtyError');
+    const basketError = document.getElementById('basketError');
+
+    function calculateSubtotal() {
+      let total = 0;
+      
+      // Veg
+      if (vegCheckbox.checked) {
+        total += parseFloat(vegCheckbox.dataset.price || 0);
+        vegToggleLabel.classList.add('active');
+      } else {
+        vegToggleLabel.classList.remove('active');
+      }
+
+      // Fish
+      let fishPrice = 0;
+      fishRadios.forEach(radio => {
+        if (radio.checked) {
+          fishPrice = parseFloat(radio.dataset.price || 0);
+        }
+      });
+      
+      let qty = parseInt(fishQtyInput.value) || 0;
+      total += (fishPrice * qty);
+
+      subtotalDisplay.textContent = total.toFixed(3) + ' KD';
+      
+      // Validation UI
+      if (qty > 0 && qty < 5) {
+        fishQtyError.style.display = 'block';
+        addToBasketBtn.disabled = true;
+      } else {
+        fishQtyError.style.display = 'none';
+        addToBasketBtn.disabled = false;
+      }
+    }
+
+    vegCheckbox.addEventListener('change', calculateSubtotal);
+    fishRadios.forEach(radio => radio.addEventListener('change', calculateSubtotal));
+    fishQtyInput.addEventListener('input', calculateSubtotal);
+
+    addToBasketBtn.addEventListener('click', function() {
+      let items = [];
+      let fishQty = parseInt(fishQtyInput.value) || 0;
+      
+      if (fishQty > 0 && fishQty < 5) {
+        fishQtyError.style.display = 'block';
+        return;
+      }
+
+      if (vegCheckbox.checked) {
+        const vegId = vegCheckbox.dataset.variantId;
+        if (vegId) {
+          items.push({
+            id: vegId,
+            quantity: 1
+          });
+        }
+      }
+
+      if (fishQty >= 5) {
+        let selectedFishId = null;
+        fishRadios.forEach(radio => {
+          if (radio.checked) selectedFishId = radio.value;
+        });
+
+        if (selectedFishId) {
+          items.push({
+            id: selectedFishId,
+            quantity: fishQty,
+            properties: {
+              '_is_fish': 'true' // Hidden property for cart validation
+            }
+          });
+        } else {
+          basketError.textContent = "Please select a fish category.";
+          basketError.style.display = 'block';
+          return;
+        }
+      }
+
+      if (items.length === 0) {
+        basketError.textContent = "Please select items to add to your basket.";
+        basketError.style.display = 'block';
+        return;
+      }
+
+      basketError.style.display = 'none';
+      addToBasketBtn.disabled = true;
+      addToBasketBtn.textContent = "Adding...";
+
+      // AJAX Add to Cart
+      fetch(window.Shopify.routes.root + 'cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ items: items })
+      })
+      .then(response => {
+        if (response.ok) {
+          // Success: trigger cart update
+          addToBasketBtn.textContent = "Added to Basket!";
+          setTimeout(() => {
+            addToBasketBtn.textContent = "Add to Basket";
+            addToBasketBtn.disabled = false;
+          }, 2000);
+          
+          // Refresh page or trigger theme drawer update
+          if (window.location.pathname !== '/cart') {
+             window.location.href = '/cart'; // Fallback to cart page
+          } else {
+             location.reload();
+          }
+        } else {
+          return response.json().then(err => { throw err; });
+        }
+      })
+      .catch(error => {
+        console.error('Error adding to cart:', error);
+        basketError.textContent = "An error occurred while adding to cart. Ensure products are set up in Theme Editor.";
+        basketError.style.display = 'block';
+        addToBasketBtn.disabled = false;
+        addToBasketBtn.textContent = "Add to Basket";
+      });
+    });
+  });
+</script>
