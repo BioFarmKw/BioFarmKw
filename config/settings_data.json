@@ -68,11 +68,11 @@
         "type": "fill-your-basket",
         "settings": {
           "title": "Fill Your Basket",
-          "vegetable_product": "small-fish",
+          "vegetable_product": "medium-fish",
           "fish_small": "small-fish",
-          "fish_small_medium": "",
-          "fish_medium": "",
-          "fish_large": ""
+          "fish_small_medium": "small-fish",
+          "fish_medium": "medium-fish",
+          "fish_large": "large-fish"
         }
       }
     },
