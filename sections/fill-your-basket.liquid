@@ -266,15 +266,15 @@
   </div>
 
   <div class="fill-basket-grid">
-    <!-- Vegetables -->
+    <!-- Left Column (Formerly Vegetables) -->
     <div class="basket-card">
-      <h3>Vegetable Basket</h3>
+      <h3>Fish Basket</h3>
       <label class="veg-toggle" id="vegToggleLabel">
-        <span>Assorted Fresh Vegetables</span>
-        <span class="veg-price">9.500 KD</span>
+        <span>Fresh Fish</span>
+        <span class="veg-price">10.000 KD</span>
         <input type="checkbox" id="vegCheckbox" 
           data-variant-id="{{ section.settings.vegetable_product.first_available_variant.id }}" 
-          data-price="9.5">
+          data-price="10.0">
       </label>
     </div>
 
@@ -374,10 +374,10 @@
       let summaryItems = [];
       let totalFishWeight = 0;
       
-      // Veg
+      // Left Column Fish
       if (vegCheckbox.checked) {
         total += parseFloat(vegCheckbox.dataset.price || 0);
-        summaryItems.push("Vegetable Basket");
+        summaryItems.push("Fresh Fish (Fixed)");
         vegToggleLabel.classList.add('active');
       } else {
         vegToggleLabel.classList.remove('active');
@@ -428,35 +428,44 @@
     addToBasketBtn.addEventListener('click', function() {
       let items = [];
       let totalFishWeight = 0;
+      let missingProduct = false;
 
-      // Veg
+      // Left Column Fish (Fixed Price)
       if (vegCheckbox.checked) {
-        const vegId = vegCheckbox.dataset.variantId;
-        if (vegId) {
+        const vId = vegCheckbox.dataset.variantId;
+        if (vId && vId !== "") {
           items.push({
-            id: vegId,
+            id: vId,
             quantity: 1
           });
+        } else {
+          missingProduct = true;
         }
       }
 
-      // Fish Loop
+      // Right Column Fish (By Weight)
       fishQtyInputs.forEach(input => {
         let qty = parseInt(input.value) || 0;
         if (qty > 0) {
           totalFishWeight += qty;
-          items.push({
-            id: input.dataset.variantId,
-            quantity: qty,
-            properties: {
-              '_is_fish': 'true'
-            }
-          });
+          const vId = input.dataset.variantId;
+          if (vId && vId !== "") {
+            items.push({
+              id: vId,
+              quantity: qty,
+              properties: {
+                '_is_fish': 'true'
+              }
+            });
+          } else {
+            missingProduct = true;
+          }
         }
       });
 
-      if (totalFishWeight > 0 && totalFishWeight < 5) {
-        fishQtyError.style.display = 'block';
+      if (missingProduct) {
+        basketError.textContent = "Error: Please go to the Theme Editor (Online Store > Customize) and assign products to all fields in the 'Fill Your Basket' section.";
+        basketError.style.display = 'block';
         return;
       }
 
@@ -489,10 +498,10 @@
       })
       .catch(error => {
         console.error('Error adding to cart:', error);
-        basketError.textContent = "An error occurred while adding to cart. Ensure products are set up in Theme Editor.";
+        basketError.textContent = "An error occurred. Make sure all fish categories have products assigned in the Theme Editor.";
         basketError.style.display = 'block';
         addToBasketBtn.disabled = false;
-        addToBasketBtn.textContent = "Add to Basket";
+        addToBasketBtn.textContent = "Proceed to Payment";
       });
     });
   });
