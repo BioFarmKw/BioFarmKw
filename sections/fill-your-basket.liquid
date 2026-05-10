@@ -273,7 +273,7 @@
         <span>Fresh Fish</span>
         <span class="veg-price">10.000 KD</span>
         <input type="checkbox" id="vegCheckbox" 
-          data-variant-id="{{ section.settings.vegetable_product.first_available_variant.id }}" 
+          data-variant-id="{{ section.settings.vegetable_product.variants.first.id }}" 
           data-price="10.0">
       </label>
     </div>
@@ -295,7 +295,7 @@
           </div>
           <div class="fish-price">1.500 KD / kg</div>
           <div class="fish-qty-control">
-            <input type="number" class="fish-qty-input" data-category="Fresh Small Fish" data-variant-id="{{ fish_small.first_available_variant.id }}" data-price="1.5" min="0" step="1" value="0">
+            <input type="number" class="fish-qty-input" data-category="Fresh Small Fish" data-variant-id="{{ fish_small.variants.first.id }}" data-price="1.5" min="0" step="1" value="0">
             <span>KG</span>
           </div>
         </div>
@@ -307,7 +307,7 @@
           </div>
           <div class="fish-price">1.750 KD / kg</div>
           <div class="fish-qty-control">
-            <input type="number" class="fish-qty-input" data-category="Fresh Small Medium Fish" data-variant-id="{{ fish_sm_med.first_available_variant.id }}" data-price="1.75" min="0" step="1" value="0">
+            <input type="number" class="fish-qty-input" data-category="Fresh Small Medium Fish" data-variant-id="{{ fish_sm_med.variants.first.id }}" data-price="1.75" min="0" step="1" value="0">
             <span>KG</span>
           </div>
         </div>
@@ -319,7 +319,7 @@
           </div>
           <div class="fish-price">2.000 KD / kg</div>
           <div class="fish-qty-control">
-            <input type="number" class="fish-qty-input" data-category="Fresh Medium Fish" data-variant-id="{{ fish_medium.first_available_variant.id }}" data-price="2.0" min="0" step="1" value="0">
+            <input type="number" class="fish-qty-input" data-category="Fresh Medium Fish" data-variant-id="{{ fish_medium.variants.first.id }}" data-price="2.0" min="0" step="1" value="0">
             <span>KG</span>
           </div>
         </div>
@@ -331,7 +331,7 @@
           </div>
           <div class="fish-price">2.500 KD / kg</div>
           <div class="fish-qty-control">
-            <input type="number" class="fish-qty-input" data-category="Fresh Large Fish" data-variant-id="{{ fish_large.first_available_variant.id }}" data-price="2.5" min="0" step="1" value="0">
+            <input type="number" class="fish-qty-input" data-category="Fresh Large Fish" data-variant-id="{{ fish_large.variants.first.id }}" data-price="2.5" min="0" step="1" value="0">
             <span>KG</span>
           </div>
         </div>
@@ -373,12 +373,14 @@
       let total = 0;
       let summaryItems = [];
       let totalFishWeight = 0;
+      let missingSelection = false;
       
       // Left Column Fish
       if (vegCheckbox.checked) {
         total += parseFloat(vegCheckbox.dataset.price || 0);
         summaryItems.push("Fresh Fish (Fixed)");
         vegToggleLabel.classList.add('active');
+        if (!vegCheckbox.dataset.variantId) missingSelection = true;
       } else {
         vegToggleLabel.classList.remove('active');
       }
@@ -391,6 +393,7 @@
           total += (price * qty);
           totalFishWeight += qty;
           summaryItems.push(`${qty} KG ${input.dataset.category}`);
+          if (!input.dataset.variantId) missingSelection = true;
         }
       });
 
@@ -405,8 +408,15 @@
         fishQtyError.style.display = 'block';
         addToBasketBtn.disabled = true;
         addToBasketBtn.textContent = "Min. 5 KG Fish Required";
+      } else if (missingSelection) {
+        fishQtyError.style.display = 'none';
+        addToBasketBtn.disabled = true;
+        addToBasketBtn.textContent = "Assign Products in Editor";
+        basketError.textContent = "Error: One or more selected items are not assigned in the Theme Editor.";
+        basketError.style.display = 'block';
       } else {
         fishQtyError.style.display = 'none';
+        basketError.style.display = 'none';
         
         // Check if total matches minimum requirement (10 KD)
         if (total >= 10) {
