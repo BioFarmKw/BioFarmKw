@@ -1,653 +1,662 @@
 {% comment %}
-  Fill Your Basket - Premium Redesign
-  - Vegetable Basket: 9.500 KD Fixed Limit (Value-based progress)
+  Fill Your Basket - Category + Product Two-Panel Redesign
+  - Vegetable Basket: Categories panel → Products panel → 9.500 KD limit → Checkout
   - Fish Basket: 5 KG Minimum (Weight-based progress)
 {% endcomment %}
 
 <style>
-  :root {
-    --veg-green: #4CAF50;
-    --fish-blue: #2196F3;
-    --ui-white: #ffffff;
-    --ui-border: #f0f0f0;
-    --ui-text-bold: #222222;
-    --ui-text-soft: #666666;
-    --ui-bg-soft: #fbfbfb;
+  /* ===== SHARED VARS ===== */
+  .fyb-modal .modal-inner {
+    max-width: 860px;
+    width: 96vw;
+    border-radius: 24px;
   }
-
-  .fill-basket-section {
+  .fyb-modal .modal-content {
     padding: 0;
-    font-family: inherit;
-    background: var(--ui-white);
-  }
-
-  .veg-basket-layout {
-    display: flex;
-    gap: 20px;
-    margin-top: 20px;
-    min-height: 400px;
-  }
-
-  .veg-categories-sidebar {
-    width: 200px;
-    border-right: 1px solid var(--ui-border);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding-right: 15px;
-  }
-
-  .veg-category-item {
-    padding: 12px 15px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: 600;
-    color: var(--ui-text-soft);
-    transition: all 0.2s;
-    background: var(--ui-bg-soft);
-    border: 1px solid transparent;
-  }
-
-  .veg-category-item:hover, .veg-category-item.active {
-    background: var(--veg-green);
-    color: white;
-    border-color: var(--veg-green);
-  }
-
-  .veg-products-display {
-    flex: 1;
-  }
-
-  .category-products-group {
-    display: none;
-    flex-direction: column;
-    gap: 15px;
-    animation: fadeIn 0.3s ease;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(5px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @media screen and (max-width: 768px) {
-    .veg-basket-layout {
-      flex-direction: column;
-    }
-    .veg-categories-sidebar {
-      width: 100%;
-      border-right: none;
-      border-bottom: 1px solid var(--ui-border);
-      flex-direction: row;
-      overflow-x: auto;
-      padding-bottom: 15px;
-      padding-right: 0;
-    }
-    .veg-category-item {
-      white-space: nowrap;
-    }
-  }
-
-  /* Progress Bar UI */
-  .basket-progress-card {
-    background: var(--ui-white);
-    border: 1px solid var(--ui-border);
-    border-radius: 20px;
-    padding: 25px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-  }
-
-  .progress-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-  }
-
-  .progress-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--ui-text-bold);
-  }
-
-  .progress-value {
-    font-size: 16px;
-    font-weight: 600;
-  }
-
-  .progress-bar-container {
-    height: 12px;
-    background: #eeeeee;
-    border-radius: 10px;
+    max-height: 92vh;
     overflow: hidden;
-    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
   }
 
-  .progress-bar-fill {
+  /* ===== HEADER ===== */
+  .fyb-header {
+    padding: 22px 28px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    flex-shrink: 0;
+  }
+  .fyb-header h2 {
+    margin: 0 0 14px;
+    font-size: 20px;
+    font-weight: 800;
+    color: #1a1a1a;
+  }
+
+  /* ===== PROGRESS ===== */
+  .fyb-progress-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .fyb-progress-bar-wrap {
+    flex: 1;
+    height: 10px;
+    background: #eeeeee;
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .fyb-progress-fill {
     height: 100%;
     width: 0%;
-    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s;
+    background: #4CAF50;
+    border-radius: 99px;
+    transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
   }
-
-  .progress-status-text {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--ui-text-soft);
-    text-align: center;
-  }
-
-  /* List of Items */
-  .item-list-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .basket-item-card {
-    background: var(--ui-white);
-    border: 1px solid var(--ui-border);
-    border-radius: 16px;
-    padding: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: transform 0.2s, border-color 0.2s;
-  }
-
-  .basket-item-card:hover {
-    border-color: #ddd;
-  }
-
-  .item-info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .item-title {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--ui-text-bold);
-  }
-
-  .item-subtitle {
-    font-size: 12px;
-    color: var(--ui-text-soft);
-    font-weight: 500;
-  }
-
-  .item-price-tag {
+  .fyb-progress-label {
     font-size: 14px;
     font-weight: 700;
-    color: var(--ui-text-bold);
+    color: #333;
+    white-space: nowrap;
+  }
+  .fyb-progress-status {
+    font-size: 12px;
+    color: #888;
+    margin-top: 6px;
   }
 
-  /* Quantity Selector Premium */
-  .qty-selector-premium {
+  /* ===== TWO-PANEL BODY ===== */
+  .fyb-body {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  /* ===== LEFT: CATEGORIES ===== */
+  .fyb-categories {
+    width: 210px;
+    flex-shrink: 0;
+    border-right: 1px solid #f0f0f0;
+    overflow-y: auto;
+    padding: 12px 0;
+    background: #fafafa;
+  }
+  .fyb-cat-item {
     display: flex;
     align-items: center;
-    background: var(--ui-bg-soft);
-    border-radius: 12px;
-    padding: 4px;
-    gap: 8px;
-    border: 1px solid #eee;
+    gap: 10px;
+    padding: 11px 18px;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    transition: all 0.18s;
+    font-size: 14px;
+    font-weight: 500;
+    color: #444;
+  }
+  .fyb-cat-item:hover,
+  .fyb-cat-item.active {
+    background: #f0faf1;
+    border-left-color: #4CAF50;
+    color: #2e7d32;
+    font-weight: 700;
+  }
+  .fyb-cat-icon {
+    font-size: 20px;
+    line-height: 1;
   }
 
-  .qty-btn {
-    width: 32px;
-    height: 32px;
+  /* ===== RIGHT: PRODUCTS ===== */
+  .fyb-products-wrap {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 20px;
+  }
+  .fyb-products-panel {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    animation: fybFadeIn 0.2s ease;
+  }
+  .fyb-products-panel.active {
+    display: flex;
+  }
+  @keyframes fybFadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .fyb-product-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1px solid #f0f0f0;
+    background: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .fyb-product-row:hover {
+    border-color: #c8e6c9;
+    box-shadow: 0 2px 10px rgba(76,175,80,0.08);
+  }
+  .fyb-product-img {
+    width: 52px;
+    height: 52px;
     border-radius: 10px;
-    border: none;
-    background: var(--ui-white);
-    color: var(--ui-text-bold);
-    font-size: 20px;
+    object-fit: cover;
+    background: #f5f5f5;
+    flex-shrink: 0;
+  }
+  .fyb-product-img-placeholder {
+    width: 52px;
+    height: 52px;
+    border-radius: 10px;
+    background: #f0faf1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+  .fyb-product-info {
+    flex: 1;
+    min-width: 0;
+  }
+  .fyb-product-name {
+    font-size: 14px;
     font-weight: 600;
+    color: #1a1a1a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .fyb-product-price {
+    font-size: 13px;
+    color: #4CAF50;
+    font-weight: 700;
+    margin-top: 2px;
+  }
+
+  /* Qty Controls */
+  .fyb-qty {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #f5f5f5;
+    border-radius: 10px;
+    padding: 3px;
+    flex-shrink: 0;
+  }
+  .fyb-qty-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    border: none;
+    background: #fff;
+    font-size: 18px;
+    font-weight: 700;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    transition: all 0.2s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    transition: all 0.15s;
+    color: #222;
+    line-height: 1;
   }
-
-  .qty-btn:hover {
-    background: #f0f0f0;
-  }
-
-  .qty-btn:active {
-    transform: scale(0.9);
-  }
-
-  .qty-btn:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-    background: #e0e0e0;
-  }
-
-  .qty-display {
-    width: 30px;
+  .fyb-qty-btn:hover { background: #e8f5e9; color: #2e7d32; }
+  .fyb-qty-btn:active { transform: scale(0.88); }
+  .fyb-qty-btn:disabled { opacity: 0.3; cursor: not-allowed; background: #eee; }
+  .fyb-qty-val {
+    min-width: 24px;
     text-align: center;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
-    color: var(--ui-text-bold);
+    color: #1a1a1a;
   }
 
-  /* Summary & CTA */
-  .basket-footer {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid var(--ui-border);
-    text-align: center;
+  /* ===== FOOTER ===== */
+  .fyb-footer {
+    padding: 16px 28px;
+    border-top: 1px solid #f0f0f0;
+    flex-shrink: 0;
+    background: #fff;
   }
-
-  .footer-subtotal {
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--ui-text-bold);
-    margin-bottom: 20px;
+  .fyb-footer-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
   }
-
-  .cta-button-premium {
+  .fyb-selected-items {
+    font-size: 12px;
+    color: #888;
+    flex: 1;
+  }
+  .fyb-selected-items span {
+    display: inline-block;
+    background: #e8f5e9;
+    color: #2e7d32;
+    border-radius: 20px;
+    padding: 2px 10px;
+    margin: 2px 3px 2px 0;
+    font-weight: 600;
+    font-size: 12px;
+  }
+  .fyb-checkout-btn {
     width: 100%;
-    padding: 18px;
-    background: #222;
+    padding: 16px;
+    background: #1a1a1a;
     color: #fff;
     border: none;
     border-radius: 40px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
-    text-transform: uppercase;
     letter-spacing: 0.5px;
     cursor: pointer;
     transition: all 0.3s;
+    text-transform: uppercase;
   }
-
-  .cta-button-premium:disabled {
+  .fyb-checkout-btn:not(:disabled):hover {
+    background: #2e7d32;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(46,125,50,0.3);
+  }
+  .fyb-checkout-btn:disabled {
     background: #d0d0d0;
     cursor: not-allowed;
   }
-
-  .cta-button-premium.ready-to-checkout {
+  .fyb-checkout-btn.complete {
     background: #2e7d32;
-    box-shadow: 0 0 15px rgba(46, 125, 50, 0.4);
+    animation: fybPulse 0.5s ease;
   }
-
-  .footer-links {
-    margin-top: 15px;
+  @keyframes fybPulse {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
   }
-
-  .footer-link {
-    color: var(--ui-text-soft);
+  .fyb-cats-link {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 13px;
+    color: #888;
     text-decoration: underline;
-    font-size: 14px;
-    font-weight: 500;
     cursor: pointer;
   }
-
-  .error-toast {
+  .fyb-error {
     background: #fff5f5;
     color: #c53030;
-    padding: 12px;
+    padding: 10px 14px;
     border-radius: 10px;
     font-size: 13px;
     font-weight: 600;
-    margin-top: 15px;
+    margin-top: 10px;
     border: 1px solid #feb2b2;
     display: none;
   }
+
+  /* ===== FISH MODAL (simple list) ===== */
+  .fyb-fish-body {
+    padding: 20px 28px;
+    overflow-y: auto;
+    flex: 1;
+  }
+  .fyb-fish-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid #f5f5f5;
+  }
+  .fyb-fish-item:last-child { border-bottom: none; }
+  .fyb-fish-info { flex: 1; }
+  .fyb-fish-title { font-size: 15px; font-weight: 600; color: #1a1a1a; }
+  .fyb-fish-sub { font-size: 12px; color: #999; margin-top: 2px; }
+
+  @media (max-width: 600px) {
+    .fyb-categories { width: 120px; }
+    .fyb-cat-item { padding: 10px 10px; font-size: 12px; }
+    .fyb-cat-icon { font-size: 16px; }
+    .fyb-modal .modal-inner { border-radius: 16px; }
+  }
 </style>
 
-<!-- FISH MODAL -->
-<modal-dialog id="Fish-Basket-Modal" class="modal">
+<!-- ===== FISH MODAL ===== -->
+<modal-dialog id="Fish-Basket-Modal" class="modal fyb-modal">
   <div class="modal-overlay"></div>
   <div class="modal-inner gradient focus-none" role="dialog" aria-modal="true" tabindex="-1">
     <button class="modal-close-button button button--icon" onclick="this.closest('.modal').hide()">{% render 'icon-sets-basic', icon: 'close' %}</button>
-    <div class="modal-content" style="max-height: 90vh; overflow-y: auto; padding: 25px;">
-      <div class="fill-basket-section">
-        <div class="fill-basket-header"><h2>Build Your Fish Basket</h2></div>
-        
-        <!-- Progress Card -->
-        <div class="basket-progress-card">
-          <div class="progress-header">
-            <span class="progress-title">Fish Weight</span>
-            <span class="progress-value"><span id="fishWeightCurrent">0</span> / 5 KG</span>
+    <div class="modal-content">
+      <div class="fyb-header">
+        <h2>🐟 Build Your Fish Basket</h2>
+        <div class="fyb-progress-row">
+          <div class="fyb-progress-bar-wrap" style="--fill-color:#2196F3;">
+            <div id="fishProgressFill" class="fyb-progress-fill" style="background:#2196F3;"></div>
           </div>
-          <div class="progress-bar-container">
-            <div id="fishProgressBar" class="progress-bar-fill" style="background: var(--fish-blue);"></div>
-          </div>
-          <div class="progress-status-text" id="fishStatusText">Select minimum 5 KG fish</div>
+          <span class="fyb-progress-label"><span id="fishWeightCurrent">0</span> / 5 KG</span>
         </div>
+        <div class="fyb-progress-status" id="fishStatusText">Select minimum 5 KG fish</div>
+      </div>
 
-        <!-- Fish Items -->
-        <div class="item-list-container">
-          {% assign fish_cats = "small,small_medium,medium,large" | split: "," %}
-          {% for cat in fish_cats %}
-            {% capture key %}fish_{{ cat }}{% endcapture %}
-            {% assign prod = all_products[section.settings[key]] %}
-            {% case cat %}
-              {% when 'small' %}{% assign weight = "500g – 600g" %}{% assign price = 1.500 %}
-              {% when 'small_medium' %}{% assign weight = "650g – 750g" %}{% assign price = 1.750 %}
-              {% when 'medium' %}{% assign weight = "800g – 2000g" %}{% assign price = 2.000 %}
-              {% when 'large' %}{% assign weight = "2000g+" %}{% assign price = 2.500 %}
-            {% endcase %}
-            
-            <div class="basket-item-card">
-              <div class="item-info">
-                <span class="item-title">{{ prod.title | default: cat | replace: '_', ' ' | capitalize }}</span>
-                <span class="item-subtitle">{{ weight }} • {{ price | parseFloat | number_with_delimiter: precision: 3 }} KD / KG</span>
-              </div>
-              <div class="qty-selector-premium">
-                <button class="qty-btn" data-action="minus" data-type="fish">-</button>
-                <div class="qty-display" data-cat="{{ cat }}" data-price="{{ price }}" data-vid="{{ prod.variants.first.id }}">0</div>
-                <button class="qty-btn" data-action="plus" data-type="fish">+</button>
-              </div>
+      <div class="fyb-fish-body">
+        {% assign fish_cats = "small,small_medium,medium,large" | split: "," %}
+        {% for cat in fish_cats %}
+          {% capture key %}fish_{{ cat }}{% endcapture %}
+          {% assign prod = all_products[section.settings[key]] %}
+          {% case cat %}
+            {% when 'small' %}{% assign weight_label = "500g – 600g" %}{% assign fish_price = 1.500 %}
+            {% when 'small_medium' %}{% assign weight_label = "650g – 750g" %}{% assign fish_price = 1.750 %}
+            {% when 'medium' %}{% assign weight_label = "800g – 2000g" %}{% assign fish_price = 2.000 %}
+            {% when 'large' %}{% assign weight_label = "2000g+" %}{% assign fish_price = 2.500 %}
+          {% endcase %}
+          <div class="fyb-fish-item">
+            <div class="fyb-fish-info">
+              <div class="fyb-fish-title">{{ prod.title | default: cat | replace: '_', ' ' | capitalize }}</div>
+              <div class="fyb-fish-sub">{{ weight_label }} • {{ fish_price }} KD / KG</div>
             </div>
-          {% endfor %}
-        </div>
+            <div class="fyb-qty">
+              <button class="fyb-qty-btn" data-action="minus" data-basket="fish">−</button>
+              <span class="fyb-qty-val" data-cat="{{ cat }}" data-price="{{ fish_price }}" data-vid="{{ prod.variants.first.id }}" data-basket="fish">0</span>
+              <button class="fyb-qty-btn" data-action="plus" data-basket="fish">+</button>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
 
-        <div class="basket-footer">
-          <div class="footer-subtotal">Subtotal: <span id="fishSubtotal">0.000</span> KD</div>
-          <button class="cta-button-premium" id="fishCheckoutBtn" disabled>Select Minimum 5 KG Fish</button>
-          <div class="error-toast" id="fishErrorToast"></div>
+      <div class="fyb-footer">
+        <div class="fyb-footer-summary">
+          <div>Subtotal: <strong><span id="fishSubtotal">0.000</span> KD</strong></div>
         </div>
+        <button class="fyb-checkout-btn" id="fishCheckoutBtn" disabled>Select Minimum 5 KG Fish</button>
+        <div class="fyb-error" id="fishErrorToast"></div>
       </div>
     </div>
   </div>
 </modal-dialog>
 
-<!-- VEGETABLE MODAL -->
-<modal-dialog id="Veg-Basket-Modal" class="modal">
+<!-- ===== VEGETABLE MODAL ===== -->
+<modal-dialog id="Veg-Basket-Modal" class="modal fyb-modal">
   <div class="modal-overlay"></div>
   <div class="modal-inner gradient focus-none" role="dialog" aria-modal="true" tabindex="-1">
     <button class="modal-close-button button button--icon" onclick="this.closest('.modal').hide()">{% render 'icon-sets-basic', icon: 'close' %}</button>
-    <div class="modal-content" style="max-height: 90vh; overflow-y: auto; padding: 25px;">
-      <div class="fill-basket-section">
-        <div class="fill-basket-header"><h2>Build Your Vegetable Basket</h2></div>
+    <div class="modal-content">
 
-        <!-- Progress Card -->
-        <div class="basket-progress-card">
-          <div class="progress-header">
-            <span class="progress-title">Basket Value</span>
-            <span class="progress-value"><span id="vegValueCurrent">0.000</span> / 9.500 KD</span>
+      <!-- Header + Progress -->
+      <div class="fyb-header">
+        <h2>🥦 Build Your Vegetable Basket</h2>
+        <div class="fyb-progress-row">
+          <div class="fyb-progress-bar-wrap">
+            <div id="vegProgressFill" class="fyb-progress-fill"></div>
           </div>
-          <div class="progress-bar-container">
-            <div id="vegProgressBar" class="progress-bar-fill" style="background: var(--veg-green);"></div>
-          </div>
-          <div class="progress-status-text" id="vegStatusText">Please complete your 9.500 KD vegetable basket</div>
+          <span class="fyb-progress-label"><span id="vegValueCurrent">0.000</span> / 9.500 KD</span>
         </div>
+        <div class="fyb-progress-status" id="vegStatusText">Please complete your 9.500 KD vegetable basket</div>
+      </div>
 
-        <!-- Vegetable Items Grouped by Category -->
-        <div class="veg-basket-layout">
-          {% assign veg_categories = "" %}
+      <!-- Two Panel Body -->
+      <div class="fyb-body">
+
+        <!-- LEFT: Categories -->
+        <div class="fyb-categories" id="vegCategoryList">
+          {% assign cat_index = 0 %}
           {% for block in section.blocks %}
-            {% if block.type == 'vegetable_item' %}
-              {% assign cat = block.settings.category | default: "General" %}
-              {% unless veg_categories contains cat %}
-                {% assign veg_categories = veg_categories | append: cat | append: "|" %}
-              {% endunless %}
+            {% if block.type == 'vegetable_category' %}
+              <div class="fyb-cat-item{% if cat_index == 0 %} active{% endif %}"
+                   data-cat-id="{{ block.id }}"
+                   onmouseenter="fybShowCategory('{{ block.id }}')"
+                   onclick="fybShowCategory('{{ block.id }}')">
+                <span class="fyb-cat-icon">{{ block.settings.icon | default: '🥬' }}</span>
+                <span>{{ block.settings.name }}</span>
+              </div>
+              {% assign cat_index = cat_index | plus: 1 %}
             {% endif %}
           {% endfor %}
-          {% assign veg_categories = veg_categories | split: "|" %}
+        </div>
 
-          <div class="veg-categories-sidebar">
-            {% for cat in veg_categories %}
-              {% if cat != blank %}
-                <div class="veg-category-item {% if forloop.first %}active{% endif %}" data-category="{{ cat | handle }}">
-                  {{ cat }}
-                </div>
-              {% endif %}
-            {% endfor %}
-          </div>
-
-          <div class="veg-products-display">
-            {% for cat in veg_categories %}
-              {% if cat != blank %}
-                <div class="category-products-group" id="cat-{{ cat | handle }}" {% if forloop.first %}style="display: flex;"{% endif %}>
-                  {% for block in section.blocks %}
-                    {% if block.type == 'vegetable_item' %}
-                      {% assign block_cat = block.settings.category | default: "General" %}
-                      {% if block_cat == cat %}
-                        {% assign prod = all_products[block.settings.product] %}
-                        <div class="basket-item-card">
-                          <div class="item-info">
-                            <span class="item-title">{{ prod.title | default: block.settings.name }}</span>
-                            <span class="item-price-tag">{{ block.settings.price | number_with_delimiter: precision: 3 }} KD</span>
-                          </div>
-                          <div class="qty-selector-premium">
-                            <button class="qty-btn" data-action="minus" data-type="veg">-</button>
-                            <div class="qty-display" data-cat="{{ block.id }}" data-price="{{ block.settings.price }}" data-vid="{{ prod.variants.first.id }}">0</div>
-                            <button class="qty-btn" data-action="plus" data-type="veg">+</button>
-                          </div>
-                        </div>
-                      {% endif %}
+        <!-- RIGHT: Products per category -->
+        <div class="fyb-products-wrap" id="vegProductsWrap">
+          {% assign cat_index = 0 %}
+          {% for block in section.blocks %}
+            {% if block.type == 'vegetable_category' %}
+              {% assign cat_collection = collections[block.settings.collection] %}
+              <div class="fyb-products-panel{% if cat_index == 0 %} active{% endif %}" id="fyb-panel-{{ block.id }}">
+                {% for prod in cat_collection.products limit: 20 %}
+                  {% assign prod_price_cents = prod.price %}
+                  {% assign prod_price = prod_price_cents | divided_by: 1000.0 %}
+                  <div class="fyb-product-row">
+                    {% if prod.featured_image %}
+                      <img class="fyb-product-img"
+                           src="{{ prod.featured_image | image_url: width: 100 }}"
+                           alt="{{ prod.title | escape }}"
+                           loading="lazy">
+                    {% else %}
+                      <div class="fyb-product-img-placeholder">{{ block.settings.icon | default: '🥬' }}</div>
                     {% endif %}
-                  {% endfor %}
-                </div>
-              {% endif %}
-            {% endfor %}
-          </div>
+                    <div class="fyb-product-info">
+                      <div class="fyb-product-name">{{ prod.title }}</div>
+                      <div class="fyb-product-price">{{ prod_price | round: 3 }} KD</div>
+                    </div>
+                    <div class="fyb-qty">
+                      <button class="fyb-qty-btn" data-action="minus" data-basket="veg">−</button>
+                      <span class="fyb-qty-val"
+                            data-price="{{ prod_price | round: 3 }}"
+                            data-vid="{{ prod.variants.first.id }}"
+                            data-name="{{ prod.title | escape }}"
+                            data-basket="veg">0</span>
+                      <button class="fyb-qty-btn" data-action="plus" data-basket="veg">+</button>
+                    </div>
+                  </div>
+                {% else %}
+                  <p style="color:#999;font-size:14px;padding:20px 0;">No products found in this category.</p>
+                {% endfor %}
+              </div>
+              {% assign cat_index = cat_index | plus: 1 %}
+            {% endif %}
+          {% endfor %}
         </div>
 
-        <div class="basket-footer">
-          <div class="footer-subtotal">Price: 9.500 KD</div>
-          <button class="cta-button-premium" id="vegCheckoutBtn" style="display: none;">Proceed to Payment</button>
-          <div class="error-toast" id="vegErrorToast"></div>
-          <div class="footer-links">
-            <a class="footer-link" href="{{ routes.all_products_collection_url }}">Vegetable Categories</a>
-          </div>
+      </div><!-- end .fyb-body -->
+
+      <!-- Footer -->
+      <div class="fyb-footer">
+        <div class="fyb-footer-summary">
+          <div class="fyb-selected-items" id="vegSelectedSummary">No items selected yet</div>
         </div>
+        <button class="fyb-checkout-btn" id="vegCheckoutBtn" disabled>
+          Please complete your 9.500 KD vegetable basket
+        </button>
+        <a class="fyb-cats-link" href="{{ routes.all_products_collection_url }}">Browse All Vegetable Categories →</a>
+        <div class="fyb-error" id="vegErrorToast"></div>
       </div>
-    </div>
+
+    </div><!-- end .modal-content -->
   </div>
 </modal-dialog>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // --- UTILS ---
-    const formatPrice = (p) => p.toFixed(3);
-    
-    // Category Hover Logic
-    const initCategories = () => {
-      const items = document.querySelectorAll('.veg-category-item');
-      items.forEach(item => {
-        const show = () => {
-          items.forEach(i => i.classList.remove('active'));
-          item.classList.add('active');
-          const catId = item.dataset.category;
-          document.querySelectorAll('.category-products-group').forEach(g => g.style.display = 'none');
-          const activeGroup = document.getElementById(`cat-${catId}`);
-          if (activeGroup) activeGroup.style.display = 'flex';
-        };
-        item.addEventListener('mouseenter', show);
-        item.addEventListener('click', show);
-      });
-    };
-    initCategories();
+(function() {
+  /* ---- Category switcher ---- */
+  window.fybShowCategory = function(catId) {
+    document.querySelectorAll('.fyb-cat-item').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.fyb-products-panel').forEach(el => el.classList.remove('active'));
+    const catEl = document.querySelector('.fyb-cat-item[data-cat-id="' + catId + '"]');
+    const panelEl = document.getElementById('fyb-panel-' + catId);
+    if (catEl) catEl.classList.add('active');
+    if (panelEl) panelEl.classList.add('active');
+  };
 
-    const getCartTotal = async () => {
-      const r = await fetch('/cart.js');
-      const cart = await r.json();
-      return cart.total_price / 1000; // Assuming KD uses 1000 sub-units or is direct
-    };
+  /* ---- Quantity buttons ---- */
+  function attachQtyListeners() {
+    document.querySelectorAll('.fyb-qty-btn').forEach(btn => {
+      if (btn._fybBound) return;
+      btn._fybBound = true;
+      btn.addEventListener('click', function() {
+        const basket = this.dataset.basket;
+        const valEl  = this.parentElement.querySelector('.fyb-qty-val');
+        let   val    = parseInt(valEl.textContent) || 0;
+        const isPlus = this.dataset.action === 'plus';
 
-    // --- LOGIC ---
-    const handleQty = (e) => {
-      const btn = e.currentTarget;
-      const display = btn.parentElement.querySelector('.qty-display');
-      let val = parseInt(display.textContent);
-      const isPlus = btn.dataset.action === 'plus';
-      const type = btn.dataset.type;
-
-      if (isPlus) {
-        // Veg limit check
-        if (type === 'veg') {
-          const price = parseFloat(display.dataset.price);
-          let currentTotal = 0;
-          document.querySelectorAll('.qty-display[data-type="veg"]').forEach(d => {
-             currentTotal += parseInt(d.textContent) * parseFloat(d.dataset.price);
-          });
-          if (currentTotal + price > 9.5001) return; // Strict limit
+        if (isPlus) {
+          if (basket === 'veg') {
+            const price = parseFloat(valEl.dataset.price);
+            let currentTotal = 0;
+            document.querySelectorAll('.fyb-qty-val[data-basket="veg"]').forEach(d => {
+              currentTotal += (parseInt(d.textContent) || 0) * parseFloat(d.dataset.price);
+            });
+            if (currentTotal + price > 9.5001) return; // strict limit
+          }
+          val++;
+        } else {
+          if (val > 0) val--;
         }
-        val++;
-      } else {
-        if (val > 0) val--;
-      }
-      display.textContent = val;
-      
-      if (type === 'fish') updateFish();
-      else updateVeg();
-    };
 
-    document.querySelectorAll('.qty-btn').forEach(b => {
-      // Add type to qty display for easy selection
-      const type = b.dataset.type;
-      b.parentElement.querySelector('.qty-display').dataset.type = type;
-      b.addEventListener('click', handleQty);
+        valEl.textContent = val;
+        if (basket === 'veg') updateVeg();
+        else updateFish();
+      });
+    });
+  }
+
+  /* ---- Veg Update ---- */
+  function updateVeg() {
+    let total = 0;
+    const selections = [];
+
+    document.querySelectorAll('.fyb-qty-val[data-basket="veg"]').forEach(d => {
+      const q = parseInt(d.textContent) || 0;
+      const p = parseFloat(d.dataset.price);
+      total += q * p;
+      if (q > 0) selections.push({ name: d.dataset.name, qty: q, price: p, vid: d.dataset.vid });
     });
 
-    // --- FISH UPDATE ---
-    const updateFish = () => {
-      let weight = 0;
-      let price = 0;
-      let selections = [];
-      document.querySelectorAll('.qty-display[data-type="fish"]').forEach(d => {
-        let q = parseInt(d.textContent);
-        if (q > 0) {
-          weight += q;
-          price += q * parseFloat(d.dataset.price);
-          selections.push(`${q} KG ${d.dataset.cat}`);
-        }
-      });
+    // Progress bar
+    const pct = Math.min((total / 9.5) * 100, 100);
+    document.getElementById('vegProgressFill').style.width = pct + '%';
+    document.getElementById('vegValueCurrent').textContent = total.toFixed(3);
 
-      document.getElementById('fishWeightCurrent').textContent = weight;
-      document.getElementById('fishSubtotal').textContent = formatPrice(price);
-      const fill = (weight / 5) * 100;
-      document.getElementById('fishProgressBar').style.width = Math.min(fill, 100) + '%';
-      
-      const btn = document.getElementById('fishCheckoutBtn');
-      const status = document.getElementById('fishStatusText');
-      
-      if (weight >= 5) {
-        btn.disabled = false;
-        btn.textContent = "Proceed to Payment";
-        status.textContent = "Minimum weight reached!";
-        document.getElementById('fishProgressBar').style.background = "var(--fish-blue)";
-      } else {
-        btn.disabled = true;
-        btn.textContent = "Select minimum 5 KG fish";
-        status.textContent = "Select minimum 5 KG fish";
-        document.getElementById('fishProgressBar').style.background = "#2196F3";
-      }
-    };
+    // Disable + buttons that would exceed limit
+    document.querySelectorAll('.fyb-qty-btn[data-basket="veg"][data-action="plus"]').forEach(btn => {
+      const price = parseFloat(btn.parentElement.querySelector('.fyb-qty-val').dataset.price);
+      btn.disabled = (total + price > 9.5001);
+    });
 
-    // --- VEG UPDATE ---
-    const updateVeg = () => {
-      let totalValue = 0;
-      document.querySelectorAll('.qty-display[data-type="veg"]').forEach(d => {
-        totalValue += parseInt(d.textContent) * parseFloat(d.dataset.price);
-      });
+    // Summary chips
+    const summaryEl = document.getElementById('vegSelectedSummary');
+    if (selections.length === 0) {
+      summaryEl.textContent = 'No items selected yet';
+    } else {
+      summaryEl.innerHTML = selections.map(s =>
+        `<span>${s.qty}× ${s.name}</span>`
+      ).join('');
+    }
 
-      document.getElementById('vegValueCurrent').textContent = formatPrice(totalValue);
-      const fill = (totalValue / 9.5) * 100;
-      document.getElementById('vegProgressBar').style.width = Math.min(fill, 100) + '%';
-      
-      const btn = document.getElementById('vegCheckoutBtn');
-      const status = document.getElementById('vegStatusText');
-      
-      // Disable plus buttons if limit reached or adding would exceed limit
-      document.querySelectorAll('.qty-btn[data-action="plus"][data-type="veg"]').forEach(b => {
-        const display = b.parentElement.querySelector('.qty-display');
-        const price = parseFloat(display.dataset.price);
-        if (totalValue + price > 9.5001) {
-          b.disabled = true;
-        } else {
-          b.disabled = false;
-        }
-      });
+    const btn = document.getElementById('vegCheckoutBtn');
+    const status = document.getElementById('vegStatusText');
+    const isComplete = Math.abs(total - 9.5) < 0.001;
 
-      if (Math.abs(totalValue - 9.5) < 0.001) {
-        btn.style.display = 'block'; // Make visible
-        btn.disabled = false;
-        btn.textContent = "Proceed to Payment";
-        btn.classList.add('ready-to-checkout');
-        status.textContent = "Basket Complete! (9.500 / 9.500 KD)";
-        document.getElementById('vegProgressBar').style.background = "#2e7d32"; // Darker green
-        
-        // Pulse animation for the button
-        btn.animate([
-          { transform: 'scale(1)' },
-          { transform: 'scale(1.05)' },
-          { transform: 'scale(1)' }
-        ], { duration: 1000, iterations: Infinity });
-      } else {
-        btn.style.display = 'none'; // Hide until limit reached
-        btn.disabled = true;
-        btn.classList.remove('ready-to-checkout');
-        status.textContent = "Please complete your 9.500 KD vegetable basket";
-        document.getElementById('vegProgressBar').style.background = "var(--veg-green)";
-      }
-    };
-
-    // --- CHECKOUT LOGIC ---
-    const handleCheckout = async (type) => {
-      const isFish = type === 'fish';
-      const btn = document.getElementById(isFish ? 'fishCheckoutBtn' : 'vegCheckoutBtn');
-      const errorToast = document.getElementById(isFish ? 'fishErrorToast' : 'vegErrorToast');
-      
+    if (isComplete) {
+      btn.disabled = false;
+      btn.textContent = '✓ Proceed to Payment';
+      btn.classList.add('complete');
+      status.textContent = '🎉 Basket complete! Ready for checkout.';
+      status.style.color = '#2e7d32';
+    } else {
       btn.disabled = true;
-      btn.textContent = "Verifying...";
-      errorToast.style.display = 'none';
+      btn.textContent = 'Please complete your 9.500 KD vegetable basket';
+      btn.classList.remove('complete');
+      status.textContent = 'Please complete your 9.500 KD vegetable basket';
+      status.style.color = '#888';
+    }
+  }
 
-      try {
-        // Calculate items to add
-        let itemsToAdd = [];
-        let totalWeight = 0;
-        let totalVal = 0;
-        let selections = [];
-        
-        document.querySelectorAll(`.qty-display[data-type="${type}"]`).forEach(d => {
-          let q = parseInt(d.textContent);
-          if (q > 0) {
-            itemsToAdd.push({ id: d.dataset.vid, quantity: q, properties: { '_basket_type': type } });
-            totalWeight += q;
-            totalVal += q * parseFloat(d.dataset.price);
-            selections.push(`${q} ${isFish ? 'KG' : ''} ${d.dataset.cat}`);
-          }
-        });
+  /* ---- Fish Update ---- */
+  function updateFish() {
+    let weight = 0, subtotal = 0;
 
-        // Final Fish Validation
-        if (isFish) {
-          if (totalWeight < 5) throw "Minimum fish order is 5 KG";
-          
-          // Check Cart Total (Current + Potential)
-          const cartTotal = await getCartTotal();
-          if (cartTotal + totalVal < 10) throw "Cart total must be at least 10 KD";
-        }
+    document.querySelectorAll('.fyb-qty-val[data-basket="fish"]').forEach(d => {
+      const q = parseInt(d.textContent) || 0;
+      weight   += q;
+      subtotal += q * parseFloat(d.dataset.price);
+    });
 
-        // Add to Cart
-        const response = await fetch('/cart/add.js', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ items: itemsToAdd })
-        });
-        
-        if (response.ok) {
-          window.location.href = '/checkout';
-        } else {
-          throw "Failed to add items. Check product assignment.";
-        }
-      } catch (err) {
-        errorToast.textContent = err;
-        errorToast.style.display = 'block';
-        btn.disabled = false;
-        btn.textContent = "Proceed to Payment";
+    document.getElementById('fishWeightCurrent').textContent = weight;
+    document.getElementById('fishSubtotal').textContent = subtotal.toFixed(3);
+    document.getElementById('fishProgressFill').style.width = Math.min((weight / 5) * 100, 100) + '%';
+
+    const btn    = document.getElementById('fishCheckoutBtn');
+    const status = document.getElementById('fishStatusText');
+    if (weight >= 5) {
+      btn.disabled     = false;
+      btn.textContent  = '✓ Proceed to Payment';
+      status.textContent = '✅ Minimum weight reached!';
+    } else {
+      btn.disabled     = true;
+      btn.textContent  = 'Select Minimum 5 KG Fish';
+      status.textContent = 'Select minimum 5 KG fish';
+    }
+  }
+
+  /* ---- Checkout ---- */
+  async function handleCheckout(type) {
+    const isVeg   = type === 'veg';
+    const btn     = document.getElementById(isVeg ? 'vegCheckoutBtn' : 'fishCheckoutBtn');
+    const errEl   = document.getElementById(isVeg ? 'vegErrorToast' : 'fishErrorToast');
+    const origTxt = btn.textContent;
+
+    btn.disabled    = true;
+    btn.textContent = 'Adding to cart…';
+    errEl.style.display = 'none';
+
+    try {
+      let items = [];
+      document.querySelectorAll(`.fyb-qty-val[data-basket="${type}"]`).forEach(d => {
+        const q = parseInt(d.textContent) || 0;
+        if (q > 0) items.push({ id: parseInt(d.dataset.vid), quantity: q });
+      });
+
+      if (items.length === 0) throw 'Please select at least one item.';
+
+      // Fish: check total weight
+      if (!isVeg) {
+        const totalKg = items.reduce((s, i) => s + i.quantity, 0);
+        if (totalKg < 5) throw 'Minimum fish order is 5 KG.';
       }
-    };
 
-    document.getElementById('fishCheckoutBtn').addEventListener('click', () => handleCheckout('fish'));
+      const resp = await fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items })
+      });
+
+      if (!resp.ok) {
+        const err = await resp.json();
+        throw err.description || 'Failed to add items. Please check product assignments.';
+      }
+
+      btn.textContent = '✓ Going to checkout…';
+      window.location.href = '/checkout';
+
+    } catch(err) {
+      errEl.textContent = typeof err === 'string' ? err : JSON.stringify(err);
+      errEl.style.display = 'block';
+      btn.disabled    = false;
+      btn.textContent = origTxt;
+    }
+  }
+
+  /* ---- Init ---- */
+  document.addEventListener('DOMContentLoaded', function() {
+    attachQtyListeners();
+
+    // Re-attach when modal opens (Shopify modal may re-render)
+    document.addEventListener('modal:open', attachQtyListeners);
+
     document.getElementById('vegCheckoutBtn').addEventListener('click', () => handleCheckout('veg'));
+    document.getElementById('fishCheckoutBtn').addEventListener('click', () => handleCheckout('fish'));
   });
+})();
 </script>
 
 {% schema %}
@@ -655,24 +664,22 @@
   "name": "Fill Your Basket",
   "settings": [
     { "type": "header", "content": "Fish Products" },
-    { "type": "product", "id": "fish_small", "label": "Small Fish Product" },
-    { "type": "product", "id": "fish_small_medium", "label": "Small Medium Fish Product" },
-    { "type": "product", "id": "fish_medium", "label": "Medium Fish Product" },
-    { "type": "product", "id": "fish_large", "label": "Large Fish Product" },
-    { "type": "header", "content": "Vegetable Basket Settings" },
-    { "type": "product", "id": "veg_bundle_product", "label": "Main Veg Bundle Product (if any)" }
+    { "type": "product", "id": "fish_small", "label": "Small Fish (500–600g)" },
+    { "type": "product", "id": "fish_small_medium", "label": "Small-Medium Fish (650–750g)" },
+    { "type": "product", "id": "fish_medium", "label": "Medium Fish (800g–2kg)" },
+    { "type": "product", "id": "fish_large", "label": "Large Fish (2kg+)" }
   ],
   "blocks": [
     {
-      "type": "vegetable_item",
-      "name": "Vegetable Item",
+      "type": "vegetable_category",
+      "name": "Vegetable Category",
       "settings": [
-        { "type": "text", "id": "category", "label": "Category (e.g. Leafy Greens)", "default": "General" },
-        { "type": "text", "id": "name", "label": "Display Name" },
-        { "type": "product", "id": "product", "label": "Product" },
-        { "type": "number", "id": "price", "label": "Price (KD)", "default": 1 }
+        { "type": "text",       "id": "name",       "label": "Category Name",  "default": "Kale" },
+        { "type": "text",       "id": "icon",       "label": "Emoji Icon",     "default": "🥬" },
+        { "type": "collection", "id": "collection", "label": "Collection" }
       ]
     }
-  ]
+  ],
+  "presets": [{ "name": "Fill Your Basket" }]
 }
 {% endschema %}

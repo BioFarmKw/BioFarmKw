@@ -67,52 +67,78 @@
       "fill-your-basket": {
         "type": "fill-your-basket",
         "settings": {
-          "title": "Fill Your Basket",
-          "veg_bundle_product": "vegetable-basket",
           "fish_small": "small-fish",
           "fish_small_medium": "small-fish",
           "fish_medium": "medium-fish",
           "fish_large": "large-fish"
         },
         "blocks": {
-          "veg_1": {
-            "type": "vegetable_item",
+          "cat_kale": {
+            "type": "vegetable_category",
             "settings": {
-              "category": "Leafy Greens",
-              "name": "Fresh Kale",
-              "product": "kale",
-              "price": 1.5
+              "name": "Kale",
+              "icon": "🥬",
+              "collection": "kale"
             }
           },
-          "veg_2": {
-            "type": "vegetable_item",
+          "cat_tomato": {
+            "type": "vegetable_category",
             "settings": {
-              "category": "Salad Essentials",
-              "name": "Organic Tomatoes",
-              "product": "tomato",
-              "price": 2.0
+              "name": "Tomatoes",
+              "icon": "🍅",
+              "collection": "tomato"
             }
           },
-          "veg_3": {
-            "type": "vegetable_item",
+          "cat_carrot": {
+            "type": "vegetable_category",
             "settings": {
-              "category": "Root Vegetables",
               "name": "Carrots",
-              "product": "carrot",
-              "price": 1.25
+              "icon": "🥕",
+              "collection": "carrot"
             }
           },
-          "veg_4": {
-            "type": "vegetable_item",
+          "cat_pepper": {
+            "type": "vegetable_category",
             "settings": {
-              "category": "Peppers",
-              "name": "Green Peppers",
-              "product": "pepper",
-              "price": 1.75
+              "name": "Peppers",
+              "icon": "🫑",
+              "collection": "pepper"
+            }
+          },
+          "cat_spinach": {
+            "type": "vegetable_category",
+            "settings": {
+              "name": "Spinach",
+              "icon": "🌿",
+              "collection": "spinach"
+            }
+          },
+          "cat_cabbage": {
+            "type": "vegetable_category",
+            "settings": {
+              "name": "Cabbage",
+              "icon": "🥦",
+              "collection": "cabbage"
+            }
+          },
+          "cat_lettuce": {
+            "type": "vegetable_category",
+            "settings": {
+              "name": "Lettuce",
+              "icon": "🥗",
+              "collection": "lettuce"
+            }
+          },
+          "cat_radish": {
+            "type": "vegetable_category",
+            "settings": {
+              "name": "Radish",
+              "icon": "🫚",
+              "collection": "radish"
             }
           }
         },
-        "block_order": ["veg_1", "veg_2", "veg_3", "veg_4"]
+        "block_order": ["cat_kale","cat_tomato","cat_carrot","cat_pepper","cat_spinach","cat_cabbage","cat_lettuce","cat_radish"]
       }
     },
     "content_for_index": [],
