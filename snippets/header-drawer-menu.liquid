@@ -465,7 +465,7 @@
   {%- endfor -%}
   {%- if id == 'Main-Menu' -%}
     <li class="menu-item">
-      <a class="menu-link link" href="{{ routes.cart_url }}">
+      <a class="menu-link link" href="#" onclick="event.preventDefault(); document.getElementById('Fill-Basket-Modal') && document.getElementById('Fill-Basket-Modal').show(this)">
         {% if request.locale.iso_code == 'ar' %}املأ سلتك{% else %}Fill Your Basket{% endif %}
       </a>
     </li>

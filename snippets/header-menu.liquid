@@ -209,7 +209,7 @@
       </li>
     {%- endfor -%}
     <li class="menu-item header-menu-first-level">
-      <a class="first-level-link link" href="{{ routes.cart_url }}">
+      <a class="first-level-link link" href="#" onclick="event.preventDefault(); document.getElementById('Fill-Basket-Modal') && document.getElementById('Fill-Basket-Modal').show(this)">
         {% if request.locale.iso_code == 'ar' %}املأ سلتك{% else %}Fill Your Basket{% endif %}
       </a>
     </li>

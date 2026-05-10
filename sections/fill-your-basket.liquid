@@ -223,7 +223,15 @@
 
 </style>
 
-<div class="fill-basket-section" id="Fill-Basket-{{ section.id }}">
+<modal-dialog id="Fill-Basket-Modal" class="modal">
+  <div class="modal-overlay"></div>
+  <div class="modal-inner gradient focus-none" role="dialog" data-trap aria-modal="true" tabindex="-1">
+    <button class="modal-close-button button button--icon button--pill button--float" onclick="this.closest('.modal').hide()">
+      {% render 'icon-sets-basic', icon: 'close' %}
+    </button>
+    <div class="modal-content" style="max-height: 90vh; overflow-y: auto; padding: 20px;">
+      
+      <div class="fill-basket-section" id="Fill-Basket-{{ section.id }}">
   <div class="fill-basket-header">
     <h2>{{ section.settings.title | escape }}</h2>
   </div>
@@ -308,6 +316,8 @@
     </div>
   </div>
 </div>
+  </div>
+</modal-dialog>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
