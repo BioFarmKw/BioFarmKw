@@ -468,7 +468,7 @@
       <details-disclosure>
         <details class="details-disclosure">
           <summary class="menu-summary" aria-haspopup="true" aria-expanded="false" aria-controls="Drawer-Menu-Fill-Basket">
-            <a class="menu-link link" href="#" onclick="event.preventDefault(); document.getElementById('Fill-Basket-Modal') && document.getElementById('Fill-Basket-Modal').show(this)">
+            <a class="menu-link link" href="#" onclick="event.preventDefault(); document.getElementById('Fish-Basket-Modal') && document.getElementById('Fish-Basket-Modal').show(this)">
               {% if request.locale.iso_code == 'ar' %}املأ سلتك{% else %}Fill Your Basket{% endif %}
             </a>
             {% render 'icon-sets-basic', icon: 'caret-right', class: 'caret-icon' %}
@@ -482,12 +482,12 @@
             </div>
             <ul id="Drawer-Menu-Fill-Basket" class="drawer-content-list list-unstyled">
               <li class="menu-item">
-                <a class="menu-link link" href="#" onclick="event.preventDefault(); document.getElementById('Fill-Basket-Modal') && document.getElementById('Fill-Basket-Modal').show(this)">
+                <a class="menu-link link" href="#" onclick="event.preventDefault(); document.getElementById('Veg-Basket-Modal') && document.getElementById('Veg-Basket-Modal').show(this)">
                   {% if request.locale.iso_code == 'ar' %}خضروات{% else %}Vegetables{% endif %}
                 </a>
               </li>
               <li class="menu-item">
-                <a class="menu-link link" href="#" onclick="event.preventDefault(); document.getElementById('Fill-Basket-Modal') && document.getElementById('Fill-Basket-Modal').show(this)">
+                <a class="menu-link link" href="#" onclick="event.preventDefault(); document.getElementById('Fish-Basket-Modal') && document.getElementById('Fish-Basket-Modal').show(this)">
                   {% if request.locale.iso_code == 'ar' %}أسماك{% else %}Fish{% endif %}
                 </a>
               </li>

@@ -1,213 +1,114 @@
 {% comment %}
-  Fill Your Basket - Fish Bundle Builder
-  10 KD for exactly 5 KG of Fish.
+  Fill Your Basket - Two Modes:
+  1. Fish Bundle (10 KD for 5 KG)
+  2. Vegetable Bundle (9 KD Fixed Price)
 {% endcomment %}
 
 <style>
-  .fill-basket-section {
-    padding: 0;
-    font-family: inherit;
-  }
-  .fill-basket-header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  .fill-basket-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .basket-card {
-    background: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  }
-  .weight-progress {
-    margin-bottom: 20px;
-    padding: 15px;
-    background: #f8f9fa;
-    border-radius: 8px;
-    text-align: center;
-    border: 2px solid #2196F3;
-  }
-  .weight-progress h4 {
-    margin: 0 0 10px 0;
-    color: #2196F3;
-  }
-  .progress-bar-bg {
-    height: 12px;
-    background: #e0e0e0;
-    border-radius: 6px;
-    overflow: hidden;
-  }
-  .progress-bar-fill {
-    height: 100%;
-    background: #2196F3;
-    width: 0%;
-    transition: width 0.3s ease;
-  }
-  .fish-option {
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    margin-bottom: 15px;
-  }
-  .fish-details {
-    margin-bottom: 10px;
-  }
-  .fish-title {
-    display: block;
-    font-weight: bold;
-    font-size: 16px;
-  }
-  .fish-weight {
-    font-size: 12px;
-    color: #666;
-  }
-  .fish-qty-control {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .fish-qty-control input {
-    width: 80px;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    text-align: center;
-    font-size: 16px;
-  }
-  .basket-summary {
-    margin-top: 30px;
-    padding: 20px;
-    background: #fdfdfd;
-    border-radius: 12px;
-    border: 1px solid #eee;
-    text-align: center;
-  }
-  .subtotal-display {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 15px;
-  }
-  .add-to-basket-btn {
-    width: 100%;
-    padding: 15px;
-    background: #333;
-    color: #fff;
-    border: none;
-    border-radius: 30px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-  .add-to-basket-btn:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-  }
-  .error-message {
-    color: #f44336;
-    margin-top: 10px;
-    font-size: 14px;
-    display: none;
-  }
+  .fill-basket-section { padding: 0; font-family: inherit; }
+  .fill-basket-header { text-align: center; margin-bottom: 20px; }
+  .fill-basket-grid { display: flex; flex-direction: column; gap: 20px; }
+  .basket-card { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+  
+  /* Progress Bar */
+  .weight-progress { margin-bottom: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px; text-align: center; border: 2px solid #2196F3; }
+  .weight-progress.veg { border-color: #4CAF50; }
+  .weight-progress h4 { margin: 0 0 10px 0; color: #2196F3; }
+  .weight-progress.veg h4 { color: #4CAF50; }
+  .progress-bar-bg { height: 12px; background: #e0e0e0; border-radius: 6px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: #2196F3; width: 0%; transition: width 0.3s ease; }
+  .progress-bar-fill.veg { background: #4CAF50; }
+
+  /* Options */
+  .fish-option, .veg-option { display: flex; align-items: center; justify-content: space-between; padding: 15px; border: 1px solid #eee; border-radius: 8px; margin-bottom: 10px; }
+  .fish-title, .veg-title { font-weight: bold; font-size: 15px; }
+  .fish-qty-control, .veg-qty-control { display: flex; align-items: center; gap: 8px; }
+  .fish-qty-control input, .veg-qty-control input { width: 60px; padding: 5px; border: 1px solid #ddd; border-radius: 4px; text-align: center; }
+
+  .basket-summary { margin-top: 20px; padding: 20px; background: #fdfdfd; border-radius: 12px; border: 1px solid #eee; text-align: center; }
+  .subtotal-display { font-size: 24px; font-weight: bold; margin-bottom: 15px; }
+  .add-to-basket-btn { width: 100%; padding: 15px; background: #333; color: #fff; border: none; border-radius: 30px; font-size: 18px; font-weight: bold; cursor: pointer; }
+  .add-to-basket-btn:disabled { background: #ccc; cursor: not-allowed; }
+  .error-message { color: #f44336; margin-top: 10px; font-size: 14px; display: none; }
 </style>
 
-<modal-dialog id="Fill-Basket-Modal" class="modal">
+<!-- FISH MODAL (10 KD / 5 KG) -->
+<modal-dialog id="Fish-Basket-Modal" class="modal">
   <div class="modal-overlay"></div>
-  <div class="modal-inner gradient focus-none" role="dialog" data-trap aria-modal="true" tabindex="-1">
-    <button class="modal-close-button button button--icon button--pill button--float" onclick="this.closest('.modal').hide()">
-      {% render 'icon-sets-basic', icon: 'close' %}
-    </button>
+  <div class="modal-inner gradient focus-none" role="dialog" aria-modal="true" tabindex="-1">
+    <button class="modal-close-button button button--icon" onclick="this.closest('.modal').hide()">{% render 'icon-sets-basic', icon: 'close' %}</button>
     <div class="modal-content" style="max-height: 90vh; overflow-y: auto; padding: 20px;">
-      
       <div class="fill-basket-section">
-        <div class="fill-basket-header">
-          <h2>{{ section.settings.title | escape }}</h2>
-        </div>
-
+        <div class="fill-basket-header"><h2>Build Your Fish Basket</h2></div>
         <div class="fill-basket-grid">
-          <!-- Progress Bar -->
           <div class="weight-progress">
-            <h4 id="progressText">Select 5 KG of Fish</h4>
-            <div class="progress-bar-bg">
-              <div id="progressBar" class="progress-bar-fill"></div>
-            </div>
-            <div style="margin-top: 10px; font-weight: bold;">
-              Total Weight: <span id="currentWeightDisplay">0</span> / 5 KG
-            </div>
+            <h4 id="fishProgressText">Select 5 KG of Fish</h4>
+            <div class="progress-bar-bg"><div id="fishProgressBar" class="progress-bar-fill"></div></div>
+            <div style="margin-top: 10px; font-weight: bold;">Total Weight: <span id="fishWeightDisplay">0</span> / 5 KG</div>
           </div>
-
-          <!-- Fish Options -->
           <div class="basket-card">
-            <h3>Build Your 10 KD Fish Basket</h3>
-            
-            {% assign fish_small = all_products[section.settings.fish_small] %}
-            {% assign fish_sm_med = all_products[section.settings.fish_small_medium] %}
-            {% assign fish_medium = all_products[section.settings.fish_medium] %}
-            {% assign fish_large = all_products[section.settings.fish_large] %}
-            {% assign basket_product = all_products[section.settings.vegetable_product] %}
-
-            <input type="hidden" id="basketProductId" value="{{ basket_product.variants.first.id }}">
-
+            <h3>Fresh Fish Selection (10 KD Bundle)</h3>
+            <input type="hidden" id="fishBasketProductId" value="{{ all_products[section.settings.vegetable_product].variants.first.id }}">
             <div class="fish-options">
-              <div class="fish-option">
-                <div class="fish-details">
-                  <span class="fish-title">Fresh Small Fish</span>
-                  <span class="fish-weight">500g - 600g</span>
+              {% for i in (1..4) %}
+                {% capture key %}fish_{% if i == 1 %}small{% elsif i == 2 %}small_medium{% elsif i == 3 %}medium{% else %}large{% endif %}{% endcapture %}
+                {% assign prod = all_products[section.settings[key]] %}
+                <div class="fish-option">
+                  <span class="fish-title">{{ prod.title | default: key | replace: '_', ' ' | capitalize }}</span>
+                  <div class="fish-qty-control">
+                    <input type="number" class="fish-qty-input" data-category="{{ prod.title }}" min="0" value="0">
+                    <span>KG</span>
+                  </div>
                 </div>
-                <div class="fish-qty-control">
-                  <input type="number" class="fish-qty-input" data-category="Small Fish" min="0" max="5" step="1" value="0">
-                  <span>KG</span>
-                </div>
-              </div>
-
-              <div class="fish-option">
-                <div class="fish-details">
-                  <span class="fish-title">Fresh Small Medium Fish</span>
-                  <span class="fish-weight">650g - 750g</span>
-                </div>
-                <div class="fish-qty-control">
-                  <input type="number" class="fish-qty-input" data-category="Small Medium Fish" min="0" max="5" step="1" value="0">
-                  <span>KG</span>
-                </div>
-              </div>
-
-              <div class="fish-option">
-                <div class="fish-details">
-                  <span class="fish-title">Fresh Medium Fish</span>
-                  <span class="fish-weight">800g - 2000g</span>
-                </div>
-                <div class="fish-qty-control">
-                  <input type="number" class="fish-qty-input" data-category="Medium Fish" min="0" max="5" step="1" value="0">
-                  <span>KG</span>
-                </div>
-              </div>
-
-              <div class="fish-option">
-                <div class="fish-details">
-                  <span class="fish-title">Fresh Large Fish</span>
-                  <span class="fish-weight">Above 2000g</span>
-                </div>
-                <div class="fish-qty-control">
-                  <input type="number" class="fish-qty-input" data-category="Large Fish" min="0" max="5" step="1" value="0">
-                  <span>KG</span>
-                </div>
-              </div>
+              {% endfor %}
             </div>
           </div>
         </div>
-
         <div class="basket-summary">
-          <div class="subtotal-display">
-            Price: <span id="basketSubtotal">0.000 KD</span>
+          <div class="subtotal-display">Price: <span id="fishSubtotal">0.000 KD</span></div>
+          <button class="add-to-basket-btn" id="addFishBtn" disabled>Select 5 KG</button>
+          <div id="fishError" class="error-message"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</modal-dialog>
+
+<!-- VEGETABLE MODAL (9 KD FIXED PRICE) -->
+<modal-dialog id="Veg-Basket-Modal" class="modal">
+  <div class="modal-overlay"></div>
+  <div class="modal-inner gradient focus-none" role="dialog" aria-modal="true" tabindex="-1">
+    <button class="modal-close-button button button--icon" onclick="this.closest('.modal').hide()">{% render 'icon-sets-basic', icon: 'close' %}</button>
+    <div class="modal-content" style="max-height: 90vh; overflow-y: auto; padding: 20px;">
+      <div class="fill-basket-section">
+        <div class="fill-basket-header"><h2>Build Your Vegetable Basket</h2></div>
+        <div class="fill-basket-grid">
+          <div class="weight-progress veg">
+            <h4 id="vegProgressText">Pick your items for 9 KD</h4>
+            <div class="progress-bar-bg"><div id="vegProgressBar" class="progress-bar-fill veg" style="width: 100%;"></div></div>
           </div>
-          <button class="add-to-basket-btn" id="addToBasketBtn" disabled>Select 5 KG of Fish</button>
-          <div id="basketError" class="error-message"></div>
+          <div class="basket-card">
+            <h3>Vegetable Categories</h3>
+            <input type="hidden" id="vegBasketProductId" value="{{ all_products[section.settings.veg_basket_product].variants.first.id }}">
+            <div class="veg-options">
+              {% for block in section.blocks %}
+                {% if block.type == 'vegetable_category' %}
+                  <div class="veg-option">
+                    <span class="veg-title">{{ block.settings.title }}</span>
+                    <div class="veg-qty-control">
+                      <input type="number" class="veg-qty-input" data-category="{{ block.settings.title }}" min="0" value="0">
+                      <span>Qty</span>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="basket-summary">
+          <div class="subtotal-display">Price: <span id="vegSubtotal">9.000 KD</span></div>
+          <button class="add-to-basket-btn" id="addVegBtn">Proceed to Payment</button>
+          <div id="vegError" class="error-message"></div>
         </div>
       </div>
     </div>
@@ -216,110 +117,77 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const fishQtyInputs = document.querySelectorAll('.fish-qty-input');
-    const subtotalDisplay = document.getElementById('basketSubtotal');
-    const addToBasketBtn = document.getElementById('addToBasketBtn');
-    const basketError = document.getElementById('basketError');
-    const progressBar = document.getElementById('progressBar');
-    const progressText = document.getElementById('progressText');
-    const currentWeightDisplay = document.getElementById('currentWeightDisplay');
-    const basketProductId = document.getElementById('basketProductId');
+    // --- FISH LOGIC ---
+    const fishInputs = document.querySelectorAll('.fish-qty-input');
+    const fishSubtotal = document.getElementById('fishSubtotal');
+    const addFishBtn = document.getElementById('addFishBtn');
+    const fishWeightDisplay = document.getElementById('fishWeightDisplay');
+    const fishProgressBar = document.getElementById('fishProgressBar');
+    const fishProgressText = document.getElementById('fishProgressText');
 
-    function updateUI() {
-      let totalFishWeight = 0;
-      fishQtyInputs.forEach(input => {
-        totalFishWeight += parseInt(input.value) || 0;
-      });
-
-      const variantId = basketProductId.value;
-      let productMissing = !variantId || variantId === "";
-
-      currentWeightDisplay.textContent = totalFishWeight;
-      let progressPercent = (totalFishWeight / 5) * 100;
-      progressBar.style.width = Math.min(progressPercent, 100) + '%';
-
-      if (totalFishWeight === 5) {
-        subtotalDisplay.textContent = "10.000 KD";
-        if (productMissing) {
-          addToBasketBtn.disabled = true;
-          addToBasketBtn.textContent = "Assign Product in Editor";
-          basketError.textContent = "Error: Please assign a 10 KD 'Fish Basket' product in the Theme Editor.";
-          basketError.style.display = 'block';
-        } else {
-          addToBasketBtn.disabled = false;
-          addToBasketBtn.textContent = "Proceed to Payment";
-          progressText.textContent = "Basket Complete!";
-          progressBar.style.background = "#4CAF50";
-          basketError.style.display = 'none';
-        }
-      } else if (totalFishWeight > 5) {
-        subtotalDisplay.textContent = "0.000 KD";
-        addToBasketBtn.disabled = true;
-        addToBasketBtn.textContent = "Exceeds 5 KG Limit";
-        progressText.textContent = "Please reduce weight";
-        progressBar.style.background = "#f44336";
-        basketError.textContent = "Maximum limit is 5 KG.";
-        basketError.style.display = 'block';
+    function updateFishUI() {
+      let weight = 0;
+      fishInputs.forEach(i => weight += parseInt(i.value) || 0);
+      fishWeightDisplay.textContent = weight;
+      fishProgressBar.style.width = Math.min((weight/5)*100, 100) + '%';
+      
+      if (weight === 5) {
+        fishSubtotal.textContent = "10.000 KD";
+        addFishBtn.disabled = false;
+        addFishBtn.textContent = "Proceed to Payment";
+        fishProgressText.textContent = "Basket Complete!";
+        fishProgressBar.style.background = "#4CAF50";
       } else {
-        subtotalDisplay.textContent = "0.000 KD";
-        addToBasketBtn.disabled = true;
-        addToBasketBtn.textContent = `Select ${5 - totalFishWeight} KG More`;
-        progressText.textContent = "Building Your Basket...";
-        progressBar.style.background = "#2196F3";
-        basketError.style.display = 'none';
+        fishSubtotal.textContent = "0.000 KD";
+        addFishBtn.disabled = true;
+        addFishBtn.textContent = weight > 5 ? "Exceeds 5 KG" : `Select ${5 - weight} KG More`;
+        fishProgressText.textContent = weight > 5 ? "Please reduce weight" : "Building Your Basket...";
+        fishProgressBar.style.background = weight > 5 ? "#f44336" : "#2196F3";
       }
     }
+    fishInputs.forEach(i => i.addEventListener('input', updateFishUI));
 
-    fishQtyInputs.forEach(input => input.addEventListener('input', updateUI));
+    addFishBtn.addEventListener('click', () => handleAdd('fish'));
 
-    addToBasketBtn.addEventListener('click', function() {
+    // --- VEG LOGIC ---
+    const vegInputs = document.querySelectorAll('.veg-qty-input');
+    const addVegBtn = document.getElementById('addVegBtn');
+    
+    function updateVegUI() {
+      let count = 0;
+      vegInputs.forEach(i => count += parseInt(i.value) || 0);
+      addVegBtn.disabled = count === 0;
+      addVegBtn.textContent = count === 0 ? "Select Items" : "Proceed to Payment";
+    }
+    vegInputs.forEach(i => i.addEventListener('input', updateVegUI));
+
+    addVegBtn.addEventListener('click', () => handleAdd('veg'));
+
+    // --- COMMON ADD FUNCTION ---
+    function handleAdd(type) {
+      const isFish = type === 'fish';
+      const inputs = isFish ? fishInputs : vegInputs;
+      const btn = isFish ? addFishBtn : addVegBtn;
+      const error = isFish ? document.getElementById('fishError') : document.getElementById('vegError');
+      const vId = document.getElementById(isFish ? 'fishBasketProductId' : 'vegBasketProductId').value;
+
+      if (!vId) { error.textContent = "Product not assigned in Editor."; error.style.display='block'; return; }
+
       let selections = [];
-      fishQtyInputs.forEach(input => {
-        let qty = parseInt(input.value) || 0;
-        if (qty > 0) {
-          selections.push(`${qty} KG ${input.dataset.category}`);
-        }
+      inputs.forEach(i => {
+        let q = parseInt(i.value) || 0;
+        if (q > 0) selections.push(`${q}${isFish ? 'KG' : ''} ${i.dataset.category}`);
       });
 
-      const variantId = basketProductId.value;
-      if (!variantId) {
-        basketError.textContent = "Error: Product not assigned in Theme Editor.";
-        basketError.style.display = 'block';
-        return;
-      }
-
-      let items = [{
-        id: variantId,
-        quantity: 1,
-        properties: {
-          'Basket Selections': selections.join(', '),
-          '_is_fish': 'true'
-        }
-      }];
-
-      addToBasketBtn.disabled = true;
-      addToBasketBtn.textContent = "Adding...";
-
-      fetch(window.Shopify.routes.root + 'cart/add.js', {
+      btn.disabled = true; btn.textContent = "Adding...";
+      fetch('/cart/add.js', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ items: items })
+        body: JSON.stringify({ items: [{ id: vId, quantity: 1, properties: { 'Basket Selections': selections.join(', '), '_is_basket': 'true' } }] })
       })
-      .then(response => {
-        if (response.ok) {
-          window.location.href = '/checkout';
-        } else {
-          return response.json().then(err => { throw err; });
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        basketError.textContent = "Error adding to cart.";
-        basketError.style.display = 'block';
-        addToBasketBtn.disabled = false;
-        addToBasketBtn.textContent = "Proceed to Payment";
-      });
-    });
+      .then(r => r.ok ? window.location.href='/checkout' : r.json().then(e => { throw e }))
+      .catch(e => { btn.disabled = false; btn.textContent = "Error, Try Again"; });
+    }
   });
 </script>
 
@@ -327,49 +195,23 @@
 {
   "name": "Fill Your Basket",
   "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Section Title",
-      "default": "Fill Your Basket"
-    },
-    {
-      "type": "header",
-      "content": "Basket Product (Fixed 10 KD)"
-    },
-    {
-      "type": "product",
-      "id": "vegetable_product",
-      "label": "Fish Basket Product (Must be 10 KD)"
-    },
-    {
-      "type": "header",
-      "content": "Fish Categories (Weight-based)"
-    },
-    {
-      "type": "product",
-      "id": "fish_small",
-      "label": "Small Fish"
-    },
-    {
-      "type": "product",
-      "id": "fish_small_medium",
-      "label": "Small Medium Fish"
-    },
-    {
-      "type": "product",
-      "id": "fish_medium",
-      "label": "Medium Fish"
-    },
-    {
-      "type": "product",
-      "id": "fish_large",
-      "label": "Large Fish"
-    }
+    { "type": "text", "id": "title", "label": "Section Title", "default": "Fill Your Basket" },
+    { "type": "header", "content": "Fish Bundle (10 KD / 5 KG)" },
+    { "type": "product", "id": "vegetable_product", "label": "Fish Basket Product (10 KD)" },
+    { "type": "product", "id": "fish_small", "label": "Small Fish" },
+    { "type": "product", "id": "fish_small_medium", "label": "Small Medium Fish" },
+    { "type": "product", "id": "fish_medium", "label": "Medium Fish" },
+    { "type": "product", "id": "fish_large", "label": "Large Fish" },
+    { "type": "header", "content": "Vegetable Bundle (9 KD Fixed)" },
+    { "type": "product", "id": "veg_basket_product", "label": "Veg Basket Product (9 KD)" }
   ],
-  "presets": [
+  "blocks": [
     {
-      "name": "Fill Your Basket"
+      "type": "vegetable_category",
+      "name": "Vegetable Category",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Category Name" }
+      ]
     }
   ]
 }

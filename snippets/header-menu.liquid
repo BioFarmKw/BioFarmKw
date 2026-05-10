@@ -223,7 +223,7 @@
             aria-expanded="false"
             aria-controls="Menu-Fill-Basket"
           >
-            <a class="link" href="#" onclick="event.preventDefault(); document.getElementById('Fill-Basket-Modal') && document.getElementById('Fill-Basket-Modal').show(this)">
+            <a class="link" href="#" onclick="event.preventDefault(); document.getElementById('Fish-Basket-Modal') && document.getElementById('Fish-Basket-Modal').show(this)">
               {% if request.locale.iso_code == 'ar' %}املأ سلتك{% else %}Fill Your Basket{% endif %}
             </a>
             {% render 'icon-sets-basic', icon: 'caret-down', class: 'caret-icon' %}
@@ -234,12 +234,12 @@
             tabindex="-1"
           >
             <li class="menu-item header-menu-second-level">
-              <a class="second-level-link link link-text" href="#" onclick="event.preventDefault(); document.getElementById('Fill-Basket-Modal') && document.getElementById('Fill-Basket-Modal').show(this)">
+              <a class="second-level-link link link-text" href="#" onclick="event.preventDefault(); document.getElementById('Veg-Basket-Modal') && document.getElementById('Veg-Basket-Modal').show(this)">
                 {% if request.locale.iso_code == 'ar' %}خضروات{% else %}Vegetables{% endif %}
               </a>
             </li>
             <li class="menu-item header-menu-second-level">
-              <a class="second-level-link link link-text" href="#" onclick="event.preventDefault(); document.getElementById('Fill-Basket-Modal') && document.getElementById('Fill-Basket-Modal').show(this)">
+              <a class="second-level-link link link-text" href="#" onclick="event.preventDefault(); document.getElementById('Fish-Basket-Modal') && document.getElementById('Fish-Basket-Modal').show(this)">
                 {% if request.locale.iso_code == 'ar' %}أسماك{% else %}Fish{% endif %}
               </a>
             </li>
