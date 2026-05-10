@@ -221,6 +221,21 @@
     display: none;
   }
 
+  .basket-summary-details {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px dashed #ccc;
+    text-align: left;
+  }
+  .summary-line {
+    margin-bottom: 5px;
+    font-size: 15px;
+  }
+  .summary-line strong {
+    color: #555;
+  }
 </style>
 
 <modal-dialog id="Fill-Basket-Modal" class="modal">
@@ -308,6 +323,10 @@
 
     <!-- Summary -->
     <div class="basket-summary">
+      <div id="basketSummaryDetails" class="basket-summary-details">
+        <div class="summary-line"><strong>Total Fish Weight:</strong> <span id="summaryWeight">0</span> KG</div>
+        <div class="summary-line"><strong>Selected Items:</strong> <span id="summaryItems">None</span></div>
+      </div>
       <div class="subtotal-display">
         Subtotal: <span id="basketSubtotal">0.000 KD</span>
       </div>
@@ -332,10 +351,13 @@
 
     function calculateSubtotal() {
       let total = 0;
+      let summaryItems = [];
+      let totalFishWeight = 0;
       
       // Veg
       if (vegCheckbox.checked) {
         total += parseFloat(vegCheckbox.dataset.price || 0);
+        summaryItems.push("Vegetable Basket");
         vegToggleLabel.classList.add('active');
       } else {
         vegToggleLabel.classList.remove('active');
@@ -343,24 +365,48 @@
 
       // Fish
       let fishPrice = 0;
+      let fishCategoryName = "";
       fishRadios.forEach(radio => {
         if (radio.checked) {
           fishPrice = parseFloat(radio.dataset.price || 0);
+          fishCategoryName = radio.closest('.fish-option').querySelector('.fish-title').textContent;
         }
       });
       
       let qty = parseInt(fishQtyInput.value) || 0;
-      total += (fishPrice * qty);
+      totalFishWeight = qty;
+      if (qty > 0) {
+        total += (fishPrice * qty);
+        if (fishCategoryName) {
+           summaryItems.push(`${qty} KG ${fishCategoryName}`);
+        }
+      }
 
       subtotalDisplay.textContent = total.toFixed(3) + ' KD';
+      
+      // Update Summary UI
+      document.getElementById('summaryWeight').textContent = totalFishWeight;
+      document.getElementById('summaryItems').textContent = summaryItems.length > 0 ? summaryItems.join(', ') : "None";
       
       // Validation UI
       if (qty > 0 && qty < 5) {
         fishQtyError.style.display = 'block';
         addToBasketBtn.disabled = true;
+        addToBasketBtn.textContent = "Add to Basket";
       } else {
         fishQtyError.style.display = 'none';
-        addToBasketBtn.disabled = false;
+        
+        // Check if total matches minimum requirement (10 KD)
+        if (total >= 10) {
+          addToBasketBtn.disabled = false;
+          addToBasketBtn.textContent = "Proceed to Payment";
+        } else if (total > 0) {
+          addToBasketBtn.disabled = true;
+          addToBasketBtn.textContent = "Min. 10 KD Required";
+        } else {
+          addToBasketBtn.disabled = false;
+          addToBasketBtn.textContent = "Add to Basket";
+        }
       }
     }
 
@@ -428,19 +474,9 @@
       })
       .then(response => {
         if (response.ok) {
-          // Success: trigger cart update
-          addToBasketBtn.textContent = "Added to Basket!";
-          setTimeout(() => {
-            addToBasketBtn.textContent = "Add to Basket";
-            addToBasketBtn.disabled = false;
-          }, 2000);
-          
-          // Refresh page or trigger theme drawer update
-          if (window.location.pathname !== '/cart') {
-             window.location.href = '/cart'; // Fallback to cart page
-          } else {
-             location.reload();
-          }
+          // Success: redirect to checkout
+          addToBasketBtn.textContent = "Redirecting...";
+          window.location.href = '/checkout';
         } else {
           return response.json().then(err => { throw err; });
         }
