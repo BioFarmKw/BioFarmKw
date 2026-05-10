@@ -9347,7 +9347,7 @@ scroll-seamless.border-gradient-alpha:after {
 .header-menu-nav .menu-list .header-second-menu-list {
   --animation-name: slideIn;
   inset-block-start: 100%;
-  margin-block-start: 0.5rem;
+  margin-block-start: 0;
 }
 
 .header-menu-nav .menu-list .header-second-menu-list .header-menu-second-level {
