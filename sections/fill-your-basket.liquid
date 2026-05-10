@@ -324,7 +324,7 @@
           <button class="cta-button-premium" id="vegCheckoutBtn" disabled>Build Your Basket</button>
           <div class="error-toast" id="vegErrorToast"></div>
           <div class="footer-links">
-            <a class="footer-link" href="/collections/all">Vegetable Categories</a>
+            <a class="footer-link" href="https://biofarmkw.com/en/collections/all">Vegetable Categories</a>
           </div>
         </div>
       </div>
@@ -406,8 +406,8 @@
         document.getElementById('fishProgressBar').style.background = "var(--fish-blue)";
       } else {
         btn.disabled = true;
-        btn.textContent = "Select Minimum 5 KG Fish";
-        status.textContent = `Select ${5 - weight} KG more`;
+        btn.textContent = "Select minimum 5 KG fish";
+        status.textContent = "Select minimum 5 KG fish";
         document.getElementById('fishProgressBar').style.background = "#2196F3";
       }
     };
@@ -433,8 +433,8 @@
         document.getElementById('vegProgressBar').style.background = "var(--veg-green)";
       } else {
         btn.disabled = true;
-        btn.textContent = totalValue > 9.5 ? "Exceeds Limit" : "Build Your Basket";
-        status.textContent = `Need ${formatPrice(9.5 - totalValue)} KD more`;
+        btn.textContent = "Build Your Basket";
+        status.textContent = "Please complete your 9.500 KD vegetable basket";
         document.getElementById('vegProgressBar').style.background = "var(--veg-green)";
       }
     };
