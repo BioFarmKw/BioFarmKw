@@ -223,7 +223,7 @@
             aria-expanded="false"
             aria-controls="Menu-Fill-Basket"
           >
-            <a class="link" href="#" onclick="event.preventDefault(); document.getElementById('Fish-Basket-Modal') && document.getElementById('Fish-Basket-Modal').show(this)">
+            <a class="link" href="#">
               {% if request.locale.iso_code == 'ar' %}املأ سلتك{% else %}Fill Your Basket{% endif %}
             </a>
             {% render 'icon-sets-basic', icon: 'caret-down', class: 'caret-icon' %}

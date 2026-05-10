@@ -68,12 +68,47 @@
         "type": "fill-your-basket",
         "settings": {
           "title": "Fill Your Basket",
-          "vegetable_product": "medium-fish",
+          "veg_bundle_product": "vegetable-basket",
           "fish_small": "small-fish",
           "fish_small_medium": "small-fish",
           "fish_medium": "medium-fish",
           "fish_large": "large-fish"
-        }
+        },
+        "blocks": {
+          "veg_1": {
+            "type": "vegetable_item",
+            "settings": {
+              "name": "Fresh Kale",
+              "product": "kale",
+              "price": 1.5
+            }
+          },
+          "veg_2": {
+            "type": "vegetable_item",
+            "settings": {
+              "name": "Organic Tomatoes",
+              "product": "tomato",
+              "price": 2.0
+            }
+          },
+          "veg_3": {
+            "type": "vegetable_item",
+            "settings": {
+              "name": "Carrots",
+              "product": "carrot",
+              "price": 1.25
+            }
+          },
+          "veg_4": {
+            "type": "vegetable_item",
+            "settings": {
+              "name": "Green Peppers",
+              "product": "pepper",
+              "price": 1.75
+            }
+          }
+        },
+        "block_order": ["veg_1", "veg_2", "veg_3", "veg_4"]
       }
     },
     "content_for_index": [],
