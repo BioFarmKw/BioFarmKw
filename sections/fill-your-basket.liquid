@@ -272,8 +272,9 @@
       <label class="veg-toggle" id="vegToggleLabel">
         <span>Fresh Fish</span>
         <span class="veg-price">10.000 KD</span>
+        {% assign veg_prod = all_products[section.settings.vegetable_product] %}
         <input type="checkbox" id="vegCheckbox" 
-          data-variant-id="{{ section.settings.vegetable_product.variants.first.id }}" 
+          data-variant-id="{{ veg_prod.variants.first.id }}" 
           data-price="10.0">
       </label>
     </div>
@@ -282,10 +283,10 @@
     <div class="basket-card">
       <h3>Fish Basket</h3>
       
-      {% assign fish_small = section.settings.fish_small %}
-      {% assign fish_sm_med = section.settings.fish_small_medium %}
-      {% assign fish_medium = section.settings.fish_medium %}
-      {% assign fish_large = section.settings.fish_large %}
+      {% assign fish_small = all_products[section.settings.fish_small] %}
+      {% assign fish_sm_med = all_products[section.settings.fish_small_medium] %}
+      {% assign fish_medium = all_products[section.settings.fish_medium] %}
+      {% assign fish_large = all_products[section.settings.fish_large] %}
 
       <div class="fish-options">
         <div class="fish-option">
