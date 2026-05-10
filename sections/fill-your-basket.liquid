@@ -152,6 +152,12 @@
     transform: scale(0.9);
   }
 
+  .qty-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    background: #e0e0e0;
+  }
+
   .qty-display {
     width: 30px;
     text-align: center;
@@ -324,7 +330,7 @@
           <button class="cta-button-premium" id="vegCheckoutBtn" disabled>Build Your Basket</button>
           <div class="error-toast" id="vegErrorToast"></div>
           <div class="footer-links">
-            <a class="footer-link" href="https://biofarmkw.com/en/collections/all">Vegetable Categories</a>
+            <a class="footer-link" href="{{ routes.all_products_collection_url }}">Vegetable Categories</a>
           </div>
         </div>
       </div>
@@ -358,7 +364,7 @@
           document.querySelectorAll('.qty-display[data-type="veg"]').forEach(d => {
              currentTotal += parseInt(d.textContent) * parseFloat(d.dataset.price);
           });
-          if (currentTotal + price > 9.501) return; // Allow for tiny floating point
+          if (currentTotal + price > 9.5001) return; // Strict limit
         }
         val++;
       } else {
@@ -426,10 +432,21 @@
       const btn = document.getElementById('vegCheckoutBtn');
       const status = document.getElementById('vegStatusText');
       
+      // Disable plus buttons if limit reached or adding would exceed limit
+      document.querySelectorAll('.qty-btn[data-action="plus"][data-type="veg"]').forEach(b => {
+        const display = b.parentElement.querySelector('.qty-display');
+        const price = parseFloat(display.dataset.price);
+        if (totalValue + price > 9.5001) {
+          b.disabled = true;
+        } else {
+          b.disabled = false;
+        }
+      });
+
       if (Math.abs(totalValue - 9.5) < 0.001) {
         btn.disabled = false;
         btn.textContent = "Proceed to Payment";
-        status.textContent = "Basket Complete!";
+        status.textContent = "Basket Complete! (9.500 / 9.500 KD)";
         document.getElementById('vegProgressBar').style.background = "var(--veg-green)";
       } else {
         btn.disabled = true;
