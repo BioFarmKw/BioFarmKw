@@ -78,6 +78,7 @@
           "veg_1": {
             "type": "vegetable_item",
             "settings": {
+              "category": "Leafy Greens",
               "name": "Fresh Kale",
               "product": "kale",
               "price": 1.5
@@ -86,6 +87,7 @@
           "veg_2": {
             "type": "vegetable_item",
             "settings": {
+              "category": "Salad Essentials",
               "name": "Organic Tomatoes",
               "product": "tomato",
               "price": 2.0
@@ -94,6 +96,7 @@
           "veg_3": {
             "type": "vegetable_item",
             "settings": {
+              "category": "Root Vegetables",
               "name": "Carrots",
               "product": "carrot",
               "price": 1.25
@@ -102,6 +105,7 @@
           "veg_4": {
             "type": "vegetable_item",
             "settings": {
+              "category": "Peppers",
               "name": "Green Peppers",
               "product": "pepper",
               "price": 1.75
