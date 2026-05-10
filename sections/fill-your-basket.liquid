@@ -231,17 +231,27 @@
         totalFishWeight += parseInt(input.value) || 0;
       });
 
+      const variantId = basketProductId.value;
+      let productMissing = !variantId || variantId === "";
+
       currentWeightDisplay.textContent = totalFishWeight;
       let progressPercent = (totalFishWeight / 5) * 100;
       progressBar.style.width = Math.min(progressPercent, 100) + '%';
 
       if (totalFishWeight === 5) {
         subtotalDisplay.textContent = "10.000 KD";
-        addToBasketBtn.disabled = false;
-        addToBasketBtn.textContent = "Proceed to Payment";
-        progressText.textContent = "Basket Complete!";
-        progressBar.style.background = "#4CAF50";
-        basketError.style.display = 'none';
+        if (productMissing) {
+          addToBasketBtn.disabled = true;
+          addToBasketBtn.textContent = "Assign Product in Editor";
+          basketError.textContent = "Error: Please assign a 10 KD 'Fish Basket' product in the Theme Editor.";
+          basketError.style.display = 'block';
+        } else {
+          addToBasketBtn.disabled = false;
+          addToBasketBtn.textContent = "Proceed to Payment";
+          progressText.textContent = "Basket Complete!";
+          progressBar.style.background = "#4CAF50";
+          basketError.style.display = 'none';
+        }
       } else if (totalFishWeight > 5) {
         subtotalDisplay.textContent = "0.000 KD";
         addToBasketBtn.disabled = true;
