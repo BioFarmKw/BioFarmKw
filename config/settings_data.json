@@ -63,6 +63,19 @@
     "favicon": "shopify://shop_images/favicon.svg",
     "enable_browser_tab_flash": false,
     "show_section_id": false,
+    "sections": {
+      "fill-your-basket": {
+        "type": "fill-your-basket",
+        "settings": {
+          "title": "Fill Your Basket",
+          "vegetable_product": "small-fish",
+          "fish_small": "small-fish",
+          "fish_small_medium": "",
+          "fish_medium": "",
+          "fish_large": ""
+        }
+      }
+    },
     "content_for_index": [],
     "blocks": {
       "7609861849053656801": {
