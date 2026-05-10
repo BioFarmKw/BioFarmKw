@@ -431,7 +431,7 @@
 
         <div class="basket-footer">
           <div class="footer-subtotal">Price: 9.500 KD</div>
-          <button class="cta-button-premium" id="vegCheckoutBtn" disabled>Build Your Basket</button>
+          <button class="cta-button-premium" id="vegCheckoutBtn" style="display: none;">Proceed to Payment</button>
           <div class="error-toast" id="vegErrorToast"></div>
           <div class="footer-links">
             <a class="footer-link" href="{{ routes.all_products_collection_url }}">Vegetable Categories</a>
@@ -567,8 +567,9 @@
       });
 
       if (Math.abs(totalValue - 9.5) < 0.001) {
+        btn.style.display = 'block'; // Make visible
         btn.disabled = false;
-        btn.textContent = "Proceed to Payment Now";
+        btn.textContent = "Proceed to Payment";
         btn.classList.add('ready-to-checkout');
         status.textContent = "Basket Complete! (9.500 / 9.500 KD)";
         document.getElementById('vegProgressBar').style.background = "#2e7d32"; // Darker green
@@ -580,8 +581,8 @@
           { transform: 'scale(1)' }
         ], { duration: 1000, iterations: Infinity });
       } else {
+        btn.style.display = 'none'; // Hide until limit reached
         btn.disabled = true;
-        btn.textContent = "Build Your Basket";
         btn.classList.remove('ready-to-checkout');
         status.textContent = "Please complete your 9.500 KD vegetable basket";
         document.getElementById('vegProgressBar').style.background = "var(--veg-green)";
