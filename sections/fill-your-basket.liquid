@@ -280,7 +280,7 @@
 
     <!-- Fish -->
     <div class="basket-card">
-      <h3>Fish Selection</h3>
+      <h3>Fish Basket</h3>
       
       {% assign fish_small = section.settings.fish_small %}
       {% assign fish_sm_med = section.settings.fish_small_medium %}
@@ -290,48 +290,48 @@
       <div class="fish-options">
         <div class="fish-option">
           <div class="fish-details">
-            <span class="fish-title">Small Fish</span>
+            <span class="fish-title">Fresh Small Fish</span>
             <span class="fish-weight">500g - 600g</span>
           </div>
           <div class="fish-price">1.500 KD / kg</div>
           <div class="fish-qty-control">
-            <input type="number" class="fish-qty-input" data-category="Small Fish" data-variant-id="{{ fish_small.first_available_variant.id }}" data-price="1.5" min="0" step="1" value="0">
+            <input type="number" class="fish-qty-input" data-category="Fresh Small Fish" data-variant-id="{{ fish_small.first_available_variant.id }}" data-price="1.5" min="0" step="1" value="0">
             <span>KG</span>
           </div>
         </div>
 
         <div class="fish-option">
           <div class="fish-details">
-            <span class="fish-title">Small Medium Fish</span>
+            <span class="fish-title">Fresh Small Medium Fish</span>
             <span class="fish-weight">650g - 750g</span>
           </div>
           <div class="fish-price">1.750 KD / kg</div>
           <div class="fish-qty-control">
-            <input type="number" class="fish-qty-input" data-category="Small Medium" data-variant-id="{{ fish_sm_med.first_available_variant.id }}" data-price="1.75" min="0" step="1" value="0">
+            <input type="number" class="fish-qty-input" data-category="Fresh Small Medium Fish" data-variant-id="{{ fish_sm_med.first_available_variant.id }}" data-price="1.75" min="0" step="1" value="0">
             <span>KG</span>
           </div>
         </div>
 
         <div class="fish-option">
           <div class="fish-details">
-            <span class="fish-title">Medium Fish</span>
+            <span class="fish-title">Fresh Medium Fish</span>
             <span class="fish-weight">800g - 2000g</span>
           </div>
           <div class="fish-price">2.000 KD / kg</div>
           <div class="fish-qty-control">
-            <input type="number" class="fish-qty-input" data-category="Medium Fish" data-variant-id="{{ fish_medium.first_available_variant.id }}" data-price="2.0" min="0" step="1" value="0">
+            <input type="number" class="fish-qty-input" data-category="Fresh Medium Fish" data-variant-id="{{ fish_medium.first_available_variant.id }}" data-price="2.0" min="0" step="1" value="0">
             <span>KG</span>
           </div>
         </div>
 
         <div class="fish-option">
           <div class="fish-details">
-            <span class="fish-title">Large Fish</span>
+            <span class="fish-title">Fresh Large Fish</span>
             <span class="fish-weight">Above 2000g</span>
           </div>
           <div class="fish-price">2.500 KD / kg</div>
           <div class="fish-qty-control">
-            <input type="number" class="fish-qty-input" data-category="Large Fish" data-variant-id="{{ fish_large.first_available_variant.id }}" data-price="2.5" min="0" step="1" value="0">
+            <input type="number" class="fish-qty-input" data-category="Fresh Large Fish" data-variant-id="{{ fish_large.first_available_variant.id }}" data-price="2.5" min="0" step="1" value="0">
             <span>KG</span>
           </div>
         </div>
@@ -427,13 +427,9 @@
 
     addToBasketBtn.addEventListener('click', function() {
       let items = [];
-      let fishQty = parseInt(fishQtyInput.value) || 0;
-      
-      if (fishQty > 0 && fishQty < 5) {
-        fishQtyError.style.display = 'block';
-        return;
-      }
+      let totalFishWeight = 0;
 
+      // Veg
       if (vegCheckbox.checked) {
         const vegId = vegCheckbox.dataset.variantId;
         if (vegId) {
@@ -445,7 +441,6 @@
       }
 
       // Fish Loop
-      let totalFishWeight = 0;
       fishQtyInputs.forEach(input => {
         let qty = parseInt(input.value) || 0;
         if (qty > 0) {
