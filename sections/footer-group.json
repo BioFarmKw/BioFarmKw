@@ -87,7 +87,7 @@
         "back_to_top_position": "right",
         "show_progress_path": true,
         "adapt_mobile_navbar": true,
-        "padding_top": 64,
+        "padding_top": 32,
         "padding_bottom": 0,
         "margin_top": 0
       }

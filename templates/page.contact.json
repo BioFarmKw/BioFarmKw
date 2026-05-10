@@ -142,9 +142,9 @@
       "name": "t:sections.contact-form.presets.name",
       "settings": {
         "color_scheme": "",
-        "show_map": false,
+        "show_map": true,
         "map_image": "shopify://shop_images/BioFarm_transparent.png",
-        "map_iframe": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.0655227428865!2d-118.26470770321045!3d34.0421903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c7dd26eebe95%3A0xf885a5788571b2ad!2sFlorist%20TheFlow!5e0!3m2!1szh-CN!2sus!4v1757217768105!5m2!1szh-CN!2sus\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
+        "map_iframe": "<iframe src=\"https://www.google.com/maps?q=28.578419,48.13387&amp;hl=en&amp;z=17&amp;output=embed\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\">\n</iframe>\n\n<div style=\"text-align:center; margin-top:10px; font-size:24px; font-weight:bold;\">\n  BioFarmKw\n</div>",
         "padding_top": 48,
         "padding_bottom": 48,
         "margin_top": 0,

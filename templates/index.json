@@ -35,7 +35,7 @@
               "settings": {
                 "content": "We bring the cultures of the world, with their diverse products, to your fingertips.",
                 "type": "2",
-                "size": "small",
+                "size": "medium",
                 "uppercase": false,
                 "enable_highlight_text": true,
                 "highlight_type": "underline",
@@ -139,8 +139,8 @@
               "type": "heading",
               "settings": {
                 "content": "Returning to nature by simulating it with the aquaponics system",
-                "type": "1",
-                "size": "small",
+                "type": "2",
+                "size": "medium",
                 "uppercase": false,
                 "enable_highlight_text": true,
                 "highlight_type": "script",
@@ -201,7 +201,7 @@
               "type": "heading",
               "settings": {
                 "content": "Your food is safe with us... natural products",
-                "type": "1",
+                "type": "2",
                 "size": "medium",
                 "uppercase": false,
                 "enable_highlight_text": true,
@@ -495,7 +495,7 @@
             "heading_Ybyrhb": {
               "type": "heading",
               "settings": {
-                "content": "Best choices",
+                "content": "Best Choices",
                 "type": "2",
                 "size": "large",
                 "uppercase": false,
@@ -678,7 +678,7 @@
                     "size": "medium",
                     "icon": "none",
                     "button_label": "Shop Now",
-                    "button_link": "shopify://collections",
+                    "button_link": "shopify://pages/product-catalog",
                     "open_in_new_tab": false,
                     "show_arrow": true
                   },
@@ -1305,24 +1305,24 @@
           "type": "look-spot",
           "settings": {
             "horizontal_position": 22,
-            "vertical_position": 70,
-            "product": "rectangular-purple-cabbage"
+            "vertical_position": 55,
+            "product": "small-fish"
           }
         },
         "look_spot_qCPiXi": {
           "type": "look-spot",
           "settings": {
-            "horizontal_position": 50,
-            "vertical_position": 50,
-            "product": "large-fish"
+            "horizontal_position": 45,
+            "vertical_position": 55,
+            "product": "medium-fish"
           }
         },
         "look_spot_wK8KTq": {
           "type": "look-spot",
           "settings": {
-            "horizontal_position": 0,
-            "vertical_position": 6,
-            "product": "chinese-cabbage-red-hybrid"
+            "horizontal_position": 70,
+            "vertical_position": 55,
+            "product": "large-fish"
           }
         }
       },
@@ -1335,13 +1335,13 @@
       "name": "t:sections.shop-the-look.presets.name",
       "settings": {
         "color_scheme": "",
-        "image": "shopify://shop_images/cabbage.png",
+        "image": "shopify://shop_images/FishMixedImages_b00ee67c-f6b0-463a-8adf-d76beb7d4c4d.png",
         "image_ratio": "adapt",
         "image_position": "left",
         "show_quantity_selector": true,
         "default_selected": true,
         "enable_truncate_title": false,
-        "show_discount": true,
+        "show_discount": false,
         "discount_percentage": 5,
         "padding_top": 0,
         "padding_bottom": 0,
@@ -2301,7 +2301,7 @@
         "social_avatar": "shopify://shop_images/BioFarm_transparent.png",
         "social_nickname": "BioFarmKw",
         "social_username": "BioFarmKw",
-        "social_link": "https://www.instagram.com/biofarmku",
+        "social_link": "https://www.instagram.com/biofarmkw",
         "columns_mobile": "2",
         "padding_top": 0,
         "padding_bottom": 0,
