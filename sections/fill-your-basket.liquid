@@ -280,6 +280,18 @@
     background: #2e7d32;
     animation: fybPulse 0.5s ease;
   }
+  .fyb-checkout-btn.near-complete {
+    background: linear-gradient(135deg, #e65c00, #f9a825);
+    color: #fff;
+    cursor: not-allowed;
+    animation: fybNearPulse 1.4s ease-in-out infinite;
+    box-shadow: 0 0 0 0 rgba(249,168,37,0.6);
+  }
+  @keyframes fybNearPulse {
+    0%   { box-shadow: 0 0 0 0 rgba(249,168,37,0.55); }
+    60%  { box-shadow: 0 0 0 10px rgba(249,168,37,0); }
+    100% { box-shadow: 0 0 0 0 rgba(249,168,37,0); }
+  }
   @keyframes fybPulse {
     0%,100% { transform: scale(1); }
     50% { transform: scale(1.02); }
@@ -562,18 +574,27 @@
 
     const btn = document.getElementById('vegCheckoutBtn');
     const status = document.getElementById('vegStatusText');
-    const isComplete = Math.abs(total - 9.5) < 0.001;
+    const isComplete   = Math.abs(total - 9.5) < 0.001;
+    const isNearDone   = total >= 9.0 && !isComplete;
 
     if (isComplete) {
       btn.disabled = false;
       btn.textContent = '✓ Proceed to Payment';
       btn.classList.add('complete');
+      btn.classList.remove('near-complete');
       status.textContent = '🎉 Basket complete! Ready for checkout.';
       status.style.color = '#2e7d32';
+    } else if (isNearDone) {
+      btn.disabled = true;
+      btn.textContent = `🔥 Almost there! Add ${(9.5 - total).toFixed(3)} KD more`;
+      btn.classList.add('near-complete');
+      btn.classList.remove('complete');
+      status.textContent = `⚡ You're so close — just ${(9.5 - total).toFixed(3)} KD away!`;
+      status.style.color = '#e65c00';
     } else {
       btn.disabled = true;
       btn.textContent = 'Please complete your 9.500 KD vegetable basket';
-      btn.classList.remove('complete');
+      btn.classList.remove('complete', 'near-complete');
       status.textContent = 'Please complete your 9.500 KD vegetable basket';
       status.style.color = '#888';
     }
