@@ -354,14 +354,14 @@
           {% capture key %}fish_{{ cat }}{% endcapture %}
           {% assign prod = all_products[section.settings[key]] %}
           {% case cat %}
-            {% when 'small' %}{% assign weight_label = "500g – 600g" %}{% assign fish_price = 1.500 %}
-            {% when 'small_medium' %}{% assign weight_label = "650g – 750g" %}{% assign fish_price = 1.750 %}
-            {% when 'medium' %}{% assign weight_label = "800g – 2000g" %}{% assign fish_price = 2.000 %}
-            {% when 'large' %}{% assign weight_label = "2000g+" %}{% assign fish_price = 2.500 %}
+            {% when 'small' %}{% assign weight_label = "500g – 600g" %}{% assign fish_price = 1.500 %}{% assign fish_camel_name = "small" %}
+            {% when 'small_medium' %}{% assign weight_label = "650g – 750g" %}{% assign fish_price = 1.750 %}{% assign fish_camel_name = "smallMedium" %}
+            {% when 'medium' %}{% assign weight_label = "800g – 2000g" %}{% assign fish_price = 2.000 %}{% assign fish_camel_name = "medium" %}
+            {% when 'large' %}{% assign weight_label = "2000g+" %}{% assign fish_price = 2.500 %}{% assign fish_camel_name = "large" %}
           {% endcase %}
           <div class="fyb-fish-item">
             <div class="fyb-fish-info">
-              <div class="fyb-fish-title">{{ prod.title | default: cat | replace: '_', ' ' | capitalize }}</div>
+              <div class="fyb-fish-title">{{ prod.title | default: fish_camel_name }}</div>
               <div class="fyb-fish-sub">{{ weight_label }} • {{ fish_price }} KD / KG</div>
             </div>
             <div class="fyb-qty">
