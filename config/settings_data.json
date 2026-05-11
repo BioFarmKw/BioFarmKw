@@ -67,6 +67,127 @@
       "fill-your-basket": {
         "type": "fill-your-basket",
         "blocks": {
+          "vegetable_category_WyTLDh": {
+            "type": "vegetable_category",
+            "settings": {
+              "name": "Aromatic Medicinal Leaf Extracts",
+              "icon": "🌺",
+              "collection": "aromatic-medicinal-herbs"
+            }
+          },
+          "vegetable_category_mXWCdB": {
+            "type": "vegetable_category",
+            "settings": {
+              "name": "permanent Papers",
+              "icon": "📄",
+              "collection": "permanent-papers"
+            }
+          },
+          "vegetable_category_dgkYH4": {
+            "type": "vegetable_category",
+            "settings": {
+              "name": "Spinach Leaves",
+              "icon": "🌿",
+              "collection": "spinach"
+            }
+          },
+          "vegetable_category_ctH9jH": {
+            "type": "vegetable_category",
+            "settings": {
+              "name": "Lettuce",
+              "icon": "🥬",
+              "collection": "lettuce"
+            }
+          },
+          "vegetable_category_wtnmUX": {
+            "type": "vegetable_category",
+            "settings": {
+              "name": "Dried Leafy Greens",
+              "icon": "🍃",
+              "collection": "dried-leafy-greens"
+            }
+          },
+          "vegetable_category_H6gemr": {
+            "type": "vegetable_category",
+            "disabled": true,
+            "settings": {
+              "name": "Papper",
+              "icon": "🫑",
+              "collection": ""
+            }
+          },
+          "vegetable_category_fNYYYy": {
+            "type": "vegetable_category",
+            "settings": {
+              "name": "Radish",
+              "icon": "🌰",
+              "collection": "radish"
+            }
+          },
+          "vegetable_category_tnLmjB": {
+            "type": "vegetable_category",
+            "settings": {
+              "name": "Beetroot",
+              "icon": "🫚",
+              "collection": "beetroot"
+            }
+          },
+          "vegetable_category_A6dqiX": {
+            "type": "vegetable_category",
+            "settings": {
+              "name": "Tomato",
+              "icon": "🍅",
+              "collection": "tomato"
+            }
+          },
+          "vegetable_category_LE7MmP": {
+            "type": "vegetable_category",
+            "settings": {
+              "name": "Lettuce Leaves",
+              "icon": "🥬",
+              "collection": "lettuce-leaves"
+            }
+          },
+          "vegetable_category_rFi4Uk": {
+            "type": "vegetable_category",
+            "settings": {
+              "name": "Carrot",
+              "icon": "🥕",
+              "collection": "carrot"
+            }
+          },
+          "vegetable_category_Vghhkf": {
+            "type": "vegetable_category",
+            "settings": {
+              "name": "Salad Mix",
+              "icon": "🥗",
+              "collection": "salad-mix"
+            }
+          },
+          "vegetable_category_HfTJBq": {
+            "type": "vegetable_category",
+            "settings": {
+              "name": "Celery",
+              "icon": "🌱",
+              "collection": "celery"
+            }
+          },
+          "vegetable_category_Dqjdwe": {
+            "type": "vegetable_category",
+            "settings": {
+              "name": "Cabbage",
+              "icon": "🥦",
+              "collection": "cabbage"
+            }
+          },
+          "vegetable_category_TjQEDD": {
+            "type": "vegetable_category",
+            "settings": {
+              "name": "Mustard Leaves",
+              "icon": "🌿",
+              "collection": "mustards"
+            }
+          },
           "vegetable_category_q4cABW": {
             "type": "vegetable_category",
             "settings": {
@@ -77,6 +198,21 @@
           }
         },
         "block_order": [
+          "vegetable_category_WyTLDh",
+          "vegetable_category_mXWCdB",
+          "vegetable_category_dgkYH4",
+          "vegetable_category_ctH9jH",
+          "vegetable_category_wtnmUX",
+          "vegetable_category_H6gemr",
+          "vegetable_category_fNYYYy",
+          "vegetable_category_tnLmjB",
+          "vegetable_category_A6dqiX",
+          "vegetable_category_LE7MmP",
+          "vegetable_category_rFi4Uk",
+          "vegetable_category_Vghhkf",
+          "vegetable_category_HfTJBq",
+          "vegetable_category_Dqjdwe",
+          "vegetable_category_TjQEDD",
           "vegetable_category_q4cABW"
         ],
         "settings": {
