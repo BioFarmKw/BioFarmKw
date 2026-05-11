@@ -432,7 +432,7 @@
               <div class="fyb-products-panel{% if cat_index == 0 %} active{% endif %}" id="fyb-panel-{{ block.id }}">
                 {% for prod in cat_collection.products limit: 20 %}
                   {% assign prod_price_cents = prod.price %}
-                  {% assign prod_price = prod_price_cents | divided_by: 1000.0 %}
+                  {% assign prod_price = prod_price_cents | divided_by: 100.0 %}
                   <div class="fyb-product-row">
                     {% if prod.featured_image %}
                       <img class="fyb-product-img"
