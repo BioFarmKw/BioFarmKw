@@ -67,6 +67,14 @@
       "fill-your-basket": {
         "type": "fill-your-basket",
         "blocks": {
+          "vegetable_category_dAWDxa": {
+            "type": "vegetable_category",
+            "settings": {
+              "name": "Betterroot",
+              "icon": "",
+              "collection": "beetroot"
+            }
+          },
           "cat_kale": {
             "type": "vegetable_category",
             "settings": {
@@ -133,6 +141,7 @@
           }
         },
         "block_order": [
+          "vegetable_category_dAWDxa",
           "cat_kale",
           "cat_tomato",
           "cat_carrot",
