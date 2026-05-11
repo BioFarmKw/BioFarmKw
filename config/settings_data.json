@@ -67,89 +67,17 @@
       "fill-your-basket": {
         "type": "fill-your-basket",
         "blocks": {
-          "vegetable_category_dAWDxa": {
+          "vegetable_category_q4cABW": {
             "type": "vegetable_category",
             "settings": {
-              "name": "Betterroot",
-              "icon": "",
-              "collection": "beetroot"
-            }
-          },
-          "cat_kale": {
-            "type": "vegetable_category",
-            "settings": {
-              "name": "Kale",
+              "name": "Kale Leaves",
               "icon": "🥬",
               "collection": "kale"
-            }
-          },
-          "cat_tomato": {
-            "type": "vegetable_category",
-            "settings": {
-              "name": "Tomatoes",
-              "icon": "🍅",
-              "collection": "tomato"
-            }
-          },
-          "cat_carrot": {
-            "type": "vegetable_category",
-            "settings": {
-              "name": "Carrots",
-              "icon": "🥕",
-              "collection": "carrot"
-            }
-          },
-          "cat_pepper": {
-            "type": "vegetable_category",
-            "settings": {
-              "name": "Peppers",
-              "icon": "🫑",
-              "collection": "pepper"
-            }
-          },
-          "cat_spinach": {
-            "type": "vegetable_category",
-            "settings": {
-              "name": "Spinach",
-              "icon": "🌿",
-              "collection": "spinach"
-            }
-          },
-          "cat_cabbage": {
-            "type": "vegetable_category",
-            "settings": {
-              "name": "Cabbage",
-              "icon": "🥦",
-              "collection": "cabbage"
-            }
-          },
-          "cat_lettuce": {
-            "type": "vegetable_category",
-            "settings": {
-              "name": "Lettuce",
-              "icon": "🥗",
-              "collection": "lettuce"
-            }
-          },
-          "cat_radish": {
-            "type": "vegetable_category",
-            "settings": {
-              "name": "Radish",
-              "icon": "🫚",
-              "collection": "radish"
             }
           }
         },
         "block_order": [
-          "vegetable_category_dAWDxa",
-          "cat_kale",
-          "cat_tomato",
-          "cat_carrot",
-          "cat_pepper",
-          "cat_spinach",
-          "cat_cabbage",
-          "cat_lettuce",
-          "cat_radish"
+          "vegetable_category_q4cABW"
         ],
         "settings": {
           "fish_small": "small-tilapia-fish",
