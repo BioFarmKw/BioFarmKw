@@ -437,9 +437,9 @@
           <div class="fyb-clean-toggle-label">🔪 Cleaning Service</div>
           <div class="fyb-clean-toggle">
             <button class="fyb-clean-btn active-uncleaned" id="fishCleanNo" onclick="fybSetCleaning(false)">Without Cleaned</button>
-            <button class="fyb-clean-btn" id="fishCleanYes" onclick="fybSetCleaning(true)">✓ Cleaned  <small style="font-weight:500;opacity:0.85">(+0.500 KD)</small></button>
+            <button class="fyb-clean-btn" id="fishCleanYes" onclick="fybSetCleaning(true)">✓ Cleaned  <small style="font-weight:500;opacity:0.85">(+0.250 KD)</small></button>
           </div>
-          <div class="fyb-clean-fee" id="fishCleanFeeNote">+ 0.500 KD cleaning fee included</div>
+          <div class="fyb-clean-fee" id="fishCleanFeeNote">+ 0.250 KD cleaning fee included</div>
         </div>
         <div class="fyb-footer-summary">
           <div>Subtotal: <strong><span id="fishSubtotal">0.000</span> KD</strong></div>
@@ -679,7 +679,7 @@
       subtotal += q * parseFloat(d.dataset.price);
     });
 
-    if (fishCleaningSelected) subtotal += 0.500;
+    if (fishCleaningSelected) subtotal += 0.250;
 
     document.getElementById('fishWeightCurrent').textContent = weight;
     document.getElementById('fishSubtotal').textContent = subtotal.toFixed(3);
