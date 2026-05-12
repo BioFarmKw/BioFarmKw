@@ -445,6 +445,9 @@
                 {% for prod in cat_collection.products limit: 20 %}
                   {% assign prod_price_cents = prod.price %}
                   {% assign prod_price = prod_price_cents | divided_by: 100.0 %}
+                  {% assign _price_parts = prod_price | round: 3 | append: '' | split: '.' %}
+                  {% assign _price_dec   = _price_parts[1] | append: '000' | slice: 0, 3 %}
+                  {% assign prod_price_display = _price_parts[0] | append: '.' | append: _price_dec %}
                   <div class="fyb-product-row">
                     {% if prod.featured_image %}
                       <img class="fyb-product-img"
@@ -456,7 +459,7 @@
                     {% endif %}
                     <div class="fyb-product-info">
                       <div class="fyb-product-name">{{ prod.title }}</div>
-                      <div class="fyb-product-price">{{ prod_price | round: 3 }} KD</div>
+                      <div class="fyb-product-price">{{ prod_price_display }} KD</div>
                     </div>
                     <div class="fyb-qty">
                       <button class="fyb-qty-btn" data-action="minus" data-basket="veg">−</button>
