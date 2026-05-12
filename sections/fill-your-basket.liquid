@@ -577,14 +577,6 @@
         const isPlus = this.dataset.action === 'plus';
 
         if (isPlus) {
-          if (basket === 'veg') {
-            const price = parseFloat(valEl.dataset.price);
-            let currentTotal = 0;
-            document.querySelectorAll('.fyb-qty-val[data-basket="veg"]').forEach(d => {
-              currentTotal += (parseInt(d.textContent) || 0) * parseFloat(d.dataset.price);
-            });
-            if (currentTotal + price > 9.5001) return; // strict limit
-          }
           val++;
         } else {
           if (val > 0) val--;
@@ -614,10 +606,9 @@
     document.getElementById('vegProgressFill').style.width = pct + '%';
     document.getElementById('vegValueCurrent').textContent = total.toFixed(3);
 
-    // Disable + buttons that would exceed limit
+    // Disable + buttons (Removed strict limit, all buttons enabled)
     document.querySelectorAll('.fyb-qty-btn[data-basket="veg"][data-action="plus"]').forEach(btn => {
-      const price = parseFloat(btn.parentElement.querySelector('.fyb-qty-val').dataset.price);
-      btn.disabled = (total + price > 9.5001);
+      btn.disabled = false;
     });
 
     // Summary chips
@@ -632,15 +623,15 @@
 
     const btn = document.getElementById('vegCheckoutBtn');
     const status = document.getElementById('vegStatusText');
-    const isComplete   = Math.abs(total - 9.5) < 0.001;
-    const isNearDone   = total >= 9.5 && !isComplete;
+    const isComplete   = total >= 9.4995;
+    const isNearDone   = total > 9.0 && total < 9.5;
 
     if (isComplete) {
       btn.disabled = false;
       btn.textContent = '✓ Proceed to Payment';
       btn.classList.add('complete');
       btn.classList.remove('near-complete');
-      status.textContent = '🎉 Basket complete! Ready for checkout.';
+      status.textContent = '🎉 Minimum reached! Ready for checkout.';
       status.style.color = '#2e7d32';
     } else if (isNearDone) {
       btn.disabled = true;
@@ -651,9 +642,9 @@
       status.style.color = '#e65c00';
     } else {
       btn.disabled = true;
-      btn.textContent = 'Please complete your 9.500 KD vegetable basket';
+      btn.textContent = selections.length > 0 ? `Add ${(9.5 - total).toFixed(3)} KD more` : 'Select 9.500 KD worth of vegetables';
       btn.classList.remove('complete', 'near-complete');
-      status.textContent = 'Please complete your 9.500 KD vegetable basket';
+      status.textContent = selections.length > 0 ? `Please add ${(9.5 - total).toFixed(3)} KD more` : 'Please complete your 9.500 KD vegetable basket';
       status.style.color = '#888';
     }
   }
