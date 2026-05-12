@@ -335,6 +335,52 @@
   .fyb-fish-title { font-size: 15px; font-weight: 600; color: #1a1a1a; }
   .fyb-fish-sub { font-size: 12px; color: #999; margin-top: 2px; }
 
+  /* ===== FISH CLEANING TOGGLE ===== */
+  .fyb-clean-toggle {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .fyb-clean-toggle-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 8px;
+  }
+  .fyb-clean-btn {
+    flex: 1;
+    padding: 10px 0;
+    border-radius: 40px;
+    border: 2px solid #e0e0e0;
+    background: #f7f7f7;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #555;
+  }
+  .fyb-clean-btn:hover {
+    border-color: #2196F3;
+    color: #2196F3;
+  }
+  .fyb-clean-btn.active-cleaned {
+    background: #e3f2fd;
+    border-color: #2196F3;
+    color: #1565c0;
+  }
+  .fyb-clean-btn.active-uncleaned {
+    background: #f5f5f5;
+    border-color: #bdbdbd;
+    color: #444;
+  }
+  .fyb-clean-fee {
+    font-size: 12px;
+    color: #1565c0;
+    margin-top: 4px;
+    font-weight: 600;
+    display: none;
+  }
+
   @media (max-width: 600px) {
     .fyb-categories { width: 120px; }
     .fyb-cat-item { padding: 10px 10px; font-size: 12px; }
@@ -386,6 +432,15 @@
       </div>
 
       <div class="fyb-footer">
+        <!-- Cleaning option toggle -->
+        <div style="margin-bottom:4px;">
+          <div class="fyb-clean-toggle-label">🔪 Cleaning Service</div>
+          <div class="fyb-clean-toggle">
+            <button class="fyb-clean-btn active-uncleaned" id="fishCleanNo" onclick="fybSetCleaning(false)">Without Cleaned</button>
+            <button class="fyb-clean-btn" id="fishCleanYes" onclick="fybSetCleaning(true)">✓ Cleaned  <small style="font-weight:500;opacity:0.85">(+0.500 KD)</small></button>
+          </div>
+          <div class="fyb-clean-fee" id="fishCleanFeeNote">+ 0.500 KD cleaning fee included</div>
+        </div>
         <div class="fyb-footer-summary">
           <div>Subtotal: <strong><span id="fishSubtotal">0.000</span> KD</strong></div>
         </div>
@@ -603,6 +658,17 @@
     }
   }
 
+  /* ---- Fish Cleaning Toggle ---- */
+  let fishCleaningSelected = false;
+
+  window.fybSetCleaning = function(cleaned) {
+    fishCleaningSelected = cleaned;
+    document.getElementById('fishCleanYes').className = 'fyb-clean-btn' + (cleaned ? ' active-cleaned' : '');
+    document.getElementById('fishCleanNo').className  = 'fyb-clean-btn' + (!cleaned ? ' active-uncleaned' : '');
+    document.getElementById('fishCleanFeeNote').style.display = cleaned ? 'block' : 'none';
+    updateFish();
+  };
+
   /* ---- Fish Update ---- */
   function updateFish() {
     let weight = 0, subtotal = 0;
@@ -612,6 +678,8 @@
       weight   += q;
       subtotal += q * parseFloat(d.dataset.price);
     });
+
+    if (fishCleaningSelected) subtotal += 0.500;
 
     document.getElementById('fishWeightCurrent').textContent = weight;
     document.getElementById('fishSubtotal').textContent = subtotal.toFixed(3);
