@@ -633,7 +633,7 @@
     const btn = document.getElementById('vegCheckoutBtn');
     const status = document.getElementById('vegStatusText');
     const isComplete   = Math.abs(total - 9.5) < 0.001;
-    const isNearDone   = total >= 9.0 && !isComplete;
+    const isNearDone   = total >= 9.5 && !isComplete;
 
     if (isComplete) {
       btn.disabled = false;
