@@ -2255,6 +2255,7 @@
         },
         "video_feed_J9pPzg": {
           "type": "video-feed",
+          "disabled": true,
           "settings": {
             "video": "shopify://files/videos/SecondProductVideo.mp4",
             "description": "<p><br/>There is growing concern regarding agricultural products due to lack of oversight on quality standards and health regulations. Issues include pesticide residues, chemical fertilizers, hormones, and unsafe farming practices.<br/><br/><br/></p>",
