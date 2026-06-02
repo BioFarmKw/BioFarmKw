@@ -216,9 +216,9 @@
           "vegetable_category_q4cABW"
         ],
         "settings": {
-          "fish_small": "small-tilapia-fish",
-          "fish_small_medium": "small-fish",
-          "fish_medium": "medium-fish",
+          "fish_small": "small-talapia-fish",
+          "fish_small_medium": "small-tilapia-fish",
+          "fish_medium": "small-medium-fish",
           "fish_large": "large-fish"
         }
       }
