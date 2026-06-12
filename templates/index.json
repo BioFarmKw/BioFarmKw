@@ -484,6 +484,16 @@
         "margin_bottom": 88
       }
     },
+    "basket_links": {
+      "type": "basket-links",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "margin_top": 0,
+        "margin_bottom": 24
+      }
+    },
     "featured_collection_FTFzn3": {
       "type": "featured-collection",
       "blocks": {
@@ -2371,6 +2381,7 @@
   "order": [
     "carousel_t7iURU",
     "trust_promises_VAfttF",
+    "basket_links",
     "featured_collection_FTFzn3",
     "collage_with_text_yJwTDR",
     "featured_product_XQnDkc",

@@ -208,44 +208,5 @@
         {%- endunless -%}
       </li>
     {%- endfor -%}
-    <li class="menu-item header-menu-first-level">
-      <drop-menu
-        class="first-level-drop"
-        {% if enable_hover_open %}
-          data-hover-open
-          data-delay-close
-        {% endif %}
-      >
-        <details class="details-header-menu details-disclosure" data-constrain>
-          <summary
-            class="first-level-summary"
-            aria-haspopup="true"
-            aria-expanded="false"
-            aria-controls="Menu-Fill-Basket"
-          >
-            <a class="link" href="#">
-              {% if request.locale.iso_code == 'ar' %}املأ سلتك{% else %}Fill Your Basket{% endif %}
-            </a>
-            {% render 'icon-sets-basic', icon: 'caret-down', class: 'caret-icon' %}
-          </summary>
-          <ul
-            id="Menu-Fill-Basket"
-            class="header-second-menu-list header-submenu-list details-disclosure-content color-{{ settings.main_color_scheme }} gradient list-unstyled"
-            tabindex="-1"
-          >
-            <li class="menu-item header-menu-second-level">
-              <a class="second-level-link link link-text" href="#" onclick="event.preventDefault(); document.getElementById('Veg-Basket-Modal') && document.getElementById('Veg-Basket-Modal').show(this)">
-                {% if request.locale.iso_code == 'ar' %}سلة خضروات{% else %}Vegetable Basket{% endif %}
-              </a>
-            </li>
-            <li class="menu-item header-menu-second-level">
-              <a class="second-level-link link link-text" href="#" onclick="event.preventDefault(); document.getElementById('Fish-Basket-Modal') && document.getElementById('Fish-Basket-Modal').show(this)">
-                {% if request.locale.iso_code == 'ar' %}سلة أسماك{% else %}Fish Basket{% endif %}
-              </a>
-            </li>
-          </ul>
-        </details>
-      </drop-menu>
-    </li>
   </ul>
 </nav>
