@@ -70,6 +70,9 @@
     font-weight: 700;
     color: #333;
     white-space: nowrap;
+    direction: ltr !important;
+    display: inline-block;
+    unicode-bidi: isolate;
   }
   .fyb-progress-status {
     font-size: 11px;
@@ -116,6 +119,25 @@
   .fyb-cat-icon {
     font-size: 20px;
     line-height: 1;
+  }
+
+  /* RTL desktop overrides for sidebar layout */
+  html[dir="rtl"] .fyb-categories,
+  html[lang="ar"] .fyb-categories {
+    border-right: none;
+    border-left: 1px solid #f0f0f0;
+  }
+  html[dir="rtl"] .fyb-cat-item,
+  html[lang="ar"] .fyb-cat-item {
+    border-left: none;
+    border-right: 3px solid transparent;
+  }
+  html[dir="rtl"] .fyb-cat-item.active,
+  html[dir="rtl"] .fyb-cat-item:hover,
+  html[lang="ar"] .fyb-cat-item.active,
+  html[lang="ar"] .fyb-cat-item:hover {
+    border-left-color: transparent;
+    border-right-color: #4CAF50;
   }
 
   /* ===== RIGHT: PRODUCTS ===== */
@@ -506,9 +528,100 @@
   }
 
   @media (max-width: 600px) {
-    .fyb-categories { width: 120px; }
-    .fyb-cat-item { padding: 10px 10px; font-size: 12px; }
-    .fyb-cat-icon { font-size: 16px; }
+    .fyb-body {
+      flex-direction: column;
+    }
+    .fyb-categories {
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      overflow-x: auto;
+      overflow-y: hidden;
+      white-space: nowrap;
+      padding: 6px 12px;
+      border-right: none;
+      border-bottom: 1px solid #f0f0f0;
+      background: #fafafa;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; /* Hide Firefox scrollbar */
+      gap: 8px;
+    }
+    .fyb-categories::-webkit-scrollbar {
+      display: none; /* Hide Chrome/Safari scrollbar */
+    }
+    .fyb-cat-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-left: none;
+      border-bottom: 3px solid transparent;
+      border-radius: 8px 8px 0 0;
+      font-size: 13px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .fyb-cat-item:hover,
+    .fyb-cat-item.active {
+      border-left-color: transparent;
+      border-bottom-color: #4CAF50;
+      background: #f0faf1;
+    }
+    .fyb-cat-icon {
+      font-size: 16px;
+    }
+    
+    .fyb-products-wrap {
+      padding: 12px 16px;
+    }
+    
+    /* Optimize product layout on mobile to prevent overlapping */
+    .fyb-product-row {
+      padding: 10px 12px;
+      gap: 10px;
+    }
+    .fyb-product-img,
+    .fyb-product-img-placeholder {
+      width: 48px;
+      height: 48px;
+      font-size: 20px;
+    }
+    .fyb-product-name {
+      font-size: 13px;
+    }
+    .fyb-product-price {
+      font-size: 12px;
+    }
+    .fyb-qty {
+      gap: 4px;
+      padding: 2px;
+    }
+    .fyb-qty-btn {
+      width: 28px;
+      height: 28px;
+      font-size: 16px;
+    }
+    .fyb-qty-val {
+      font-size: 13px;
+      min-width: 16px;
+    }
+
+    /* Fish Modal mobile spacing optimizations */
+    .fyb-fish-body {
+      padding: 8px 16px;
+    }
+    .fyb-fish-item {
+      padding: 10px 12px;
+      gap: 10px;
+    }
+    .fyb-fish-title {
+      font-size: 13px;
+    }
+    .fyb-fish-sub {
+      font-size: 11px;
+    }
+
     .fyb-modal .modal-inner { 
       border-radius: 16px; 
       height: 95vh;
@@ -516,8 +629,30 @@
     }
     .fyb-header { padding: 10px 16px 8px; }
     .fyb-header h2 { font-size: 16px; margin: 0 0 6px; }
-    .fyb-fish-body { padding: 8px 16px; }
     .fyb-footer { padding: 8px 16px 10px; }
+
+    /* Narrow viewport overrides to prevent overlaps */
+    @media (max-width: 400px) {
+      .fyb-option-btn {
+        font-size: 10px;
+        padding: 6px 4px;
+      }
+      .fyb-clean-btn {
+        font-size: 10px;
+        padding: 6px 2px;
+      }
+    }
+    @media (max-width: 480px) {
+      .fyb-style-btn {
+        padding: 8px 6px;
+      }
+      .fyb-style-title {
+        font-size: 11px;
+      }
+      .fyb-style-desc {
+        font-size: 9px;
+      }
+    }
   }
 </style>
 
