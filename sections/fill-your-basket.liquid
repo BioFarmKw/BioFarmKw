@@ -386,6 +386,61 @@
     display: none;
   }
 
+  /* ===== CLEANING SUB-DROPDOWNS ===== */
+  .fyb-clean-dropdowns {
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+    animation: fybFadeIn 0.25s ease;
+  }
+  .fyb-clean-dropdowns.visible {
+    display: grid;
+  }
+  .fyb-clean-dropdown-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .fyb-clean-dropdown-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #1565c0;
+  }
+  .fyb-clean-select {
+    width: 100%;
+    padding: 9px 12px;
+    border-radius: 10px;
+    border: 1.5px solid #bbdefb;
+    background: #f0f7ff;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a1a1a;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%231565c0' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 30px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .fyb-clean-select:focus {
+    border-color: #2196F3;
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.15);
+  }
+  .fyb-clean-select:hover {
+    border-color: #2196F3;
+  }
+  @media (max-width: 500px) {
+    .fyb-clean-dropdowns {
+      grid-template-columns: 1fr;
+    }
+  }
+
   /* Segmented Option Control */
   .fyb-option-selector {
     display: flex;
@@ -492,6 +547,32 @@
             <button class="fyb-clean-btn" id="fishCleanYes" onclick="fybSetCleaning(true)">✓ Cleaned  <small style="font-weight:500;opacity:0.85">(+0.250 KD/KG)</small></button>
           </div>
           <div class="fyb-clean-fee" id="fishCleanFeeNote">+ 0.250 KD × <span id="fishCleanKgDisplay">0</span> KG = <span id="fishCleanFeeTotal">0.000</span> KD cleaning fee</div>
+
+          <!-- Cleaning Style Sub-Dropdowns (shown only when Cleaned is selected) -->
+          <div class="fyb-clean-dropdowns" id="fishCleanDropdowns">
+            <div class="fyb-clean-dropdown-group">
+              <label class="fyb-clean-dropdown-label">🔥 For Grill</label>
+              <select class="fyb-clean-select" id="fishCleanGrillSelect">
+                <option value="">-- Select option --</option>
+                <option value="whole_grilled">Whole (Keep intact)</option>
+                <option value="butterfly_cut">Butterfly Cut</option>
+                <option value="scored">Scored (Cross-cuts)</option>
+                <option value="fillet_grill">Fillet for Grill</option>
+                <option value="marinated_grill">Ready to Grill (Marinated)</option>
+              </select>
+            </div>
+            <div class="fyb-clean-dropdown-group">
+              <label class="fyb-clean-dropdown-label">🍽️ Others</label>
+              <select class="fyb-clean-select" id="fishCleanOthersSelect">
+                <option value="">-- Select option --</option>
+                <option value="fillet">Fillet</option>
+                <option value="steak_cut">Steak Cut</option>
+                <option value="cubed">Cubed</option>
+                <option value="minced">Minced</option>
+                <option value="whole_cleaned">Whole (Cleaned only)</option>
+              </select>
+            </div>
+          </div>
         </div>
         <div class="fyb-footer-summary">
           <div>Subtotal: <strong><span id="fishSubtotal">0.000</span> KD</strong></div>
@@ -709,6 +790,22 @@
     document.getElementById('fishCleanYes').className = 'fyb-clean-btn' + (cleaned ? ' active-cleaned' : '');
     document.getElementById('fishCleanNo').className  = 'fyb-clean-btn' + (!cleaned ? ' active-uncleaned' : '');
     document.getElementById('fishCleanFeeNote').style.display = cleaned ? 'block' : 'none';
+
+    // Show / hide cleaning style dropdowns
+    const dropdownsEl = document.getElementById('fishCleanDropdowns');
+    if (dropdownsEl) {
+      if (cleaned) {
+        dropdownsEl.classList.add('visible');
+      } else {
+        dropdownsEl.classList.remove('visible');
+        // Reset dropdowns when cleaning is deselected
+        const grillSel = document.getElementById('fishCleanGrillSelect');
+        const otherSel = document.getElementById('fishCleanOthersSelect');
+        if (grillSel) grillSel.value = '';
+        if (otherSel) otherSel.value = '';
+      }
+    }
+
     updateFish();
   };
 
@@ -815,6 +912,27 @@
             ? `الحد الأدنى لطلب الأسماك هو ${fishWeightLimitTarget} كجم.` 
             : `Minimum fish order is ${fishWeightLimitTarget} KG.`;
         }
+      }
+
+      // Gather cleaning style selections for fish
+      let fishNote = '';
+      if (!isVeg && fishCleaningSelected) {
+        const grillVal  = (document.getElementById('fishCleanGrillSelect')  || {}).value || '';
+        const othersVal = (document.getElementById('fishCleanOthersSelect') || {}).value || '';
+        const grillLabels  = { whole_grilled:'Whole (Keep intact)', butterfly_cut:'Butterfly Cut', scored:'Scored (Cross-cuts)', fillet_grill:'Fillet for Grill', marinated_grill:'Ready to Grill (Marinated)' };
+        const othersLabels = { fillet:'Fillet', steak_cut:'Steak Cut', cubed:'Cubed', minced:'Minced', whole_cleaned:'Whole (Cleaned only)' };
+        const parts = ['Cleaned'];
+        if (grillVal)  parts.push('Grill: '  + (grillLabels[grillVal]   || grillVal));
+        if (othersVal) parts.push('Others: ' + (othersLabels[othersVal] || othersVal));
+        fishNote = parts.join(' | ');
+      }
+
+      // Attach cleaning note as line item property on every fish item
+      if (!isVeg && fishNote) {
+        items = items.map(item => ({
+          ...item,
+          properties: { 'Cleaning Style': fishNote }
+        }));
       }
 
       const resp = await fetch('/cart/add.js', {
