@@ -399,16 +399,19 @@
   }
   .fyb-style-btn {
     flex: 1;
-    padding: 7px 10px;
-    border-radius: 40px;
+    padding: 10px 12px;
+    border-radius: 16px;
     border: 2px solid #bbdefb;
     background: #f0f7ff;
-    font-size: 12px;
-    font-weight: 700;
     color: #1565c0;
     cursor: pointer;
     transition: all 0.2s;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
   }
   .fyb-style-btn:hover {
     border-color: #2196F3;
@@ -419,6 +422,18 @@
     border-color: #2196F3;
     color: #fff;
     box-shadow: 0 4px 12px rgba(33,150,243,0.25);
+  }
+  .fyb-style-title {
+    font-size: 13px;
+    font-weight: 700;
+    display: block;
+  }
+  .fyb-style-desc {
+    font-size: 10px;
+    font-weight: 500;
+    opacity: 0.85;
+    display: block;
+    line-height: 1.25;
   }
 
   /* Segmented Option Control */
@@ -534,8 +549,14 @@
 
           <!-- Cleaning Style Choice (shown only when Cleaned is selected) -->
           <div class="fyb-clean-style" id="fishCleanStyleRow">
-            <button type="button" class="fyb-style-btn" id="fishStyleGrill" onclick="fybSetCleanStyle('grill')">🔥 For Grill</button>
-            <button type="button" class="fyb-style-btn" id="fishStyleOthers" onclick="fybSetCleanStyle('others')">🍽️ Others</button>
+            <button type="button" class="fyb-style-btn" id="fishStyleGrill" onclick="fybSetCleanStyle('grill')">
+              <span class="fyb-style-title">🔥 {% if request.locale.iso_code == 'ar' %}للشق{% else %}For Grill{% endif %}</span>
+              <span class="fyb-style-desc">{% if request.locale.iso_code == 'ar' %}قص من الأمام{% else %}Cut from Front{% endif %}</span>
+            </button>
+            <button type="button" class="fyb-style-btn" id="fishStyleOthers" onclick="fybSetCleanStyle('others')">
+              <span class="fyb-style-title">🍽️ {% if request.locale.iso_code == 'ar' %}خيارات أخرى{% else %}Others{% endif %}</span>
+              <span class="fyb-style-desc">{% if request.locale.iso_code == 'ar' %}قص من الأسفل، إزالة القشور والأشواك{% else %}Cut from Bottom, Remove Crusts & Thorns{% endif %}</span>
+            </button>
           </div>
         </div>
         <div class="fyb-footer-summary">
