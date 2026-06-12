@@ -9,8 +9,8 @@
   .fyb-modal .modal-inner {
     max-width: 860px;
     width: 96vw;
-    height: 85vh;
-    max-height: 680px;
+    height: 90vh;
+    max-height: 780px;
     border-radius: 24px;
     position: relative;
     display: flex;
@@ -34,13 +34,13 @@
 
   /* ===== HEADER ===== */
   .fyb-header {
-    padding: 22px 28px 16px;
+    padding: 14px 24px 10px;
     border-bottom: 1px solid #f0f0f0;
     flex-shrink: 0;
   }
   .fyb-header h2 {
-    margin: 0 0 14px;
-    font-size: 20px;
+    margin: 0 0 8px;
+    font-size: 18px;
     font-weight: 800;
     color: #1a1a1a;
   }
@@ -53,7 +53,7 @@
   }
   .fyb-progress-bar-wrap {
     flex: 1;
-    height: 10px;
+    height: 8px;
     background: #eeeeee;
     border-radius: 99px;
     overflow: hidden;
@@ -66,15 +66,15 @@
     transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
   }
   .fyb-progress-label {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     color: #333;
     white-space: nowrap;
   }
   .fyb-progress-status {
-    font-size: 12px;
+    font-size: 11px;
     color: #888;
-    margin-top: 6px;
+    margin-top: 3px;
   }
 
   /* ===== TWO-PANEL BODY ===== */
@@ -230,7 +230,7 @@
 
   /* ===== FOOTER ===== */
   .fyb-footer {
-    padding: 16px 28px;
+    padding: 10px 24px 12px;
     border-top: 1px solid #f0f0f0;
     flex-shrink: 0;
     background: #fff;
@@ -239,9 +239,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
   }
   .fyb-selected-items {
     font-size: 12px;
@@ -260,12 +260,12 @@
   }
   .fyb-checkout-btn {
     width: 100%;
-    padding: 16px;
+    padding: 12px;
     background: #1a1a1a;
     color: #fff;
     border: none;
     border-radius: 40px;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
     letter-spacing: 0.5px;
     cursor: pointer;
@@ -324,41 +324,42 @@
 
   /* ===== FISH MODAL (simple list) ===== */
   .fyb-fish-body {
-    padding: 20px 28px;
+    padding: 10px 24px;
     overflow-y: auto;
     flex: 1;
+    min-height: 0;
   }
   .fyb-fish-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 0;
+    padding: 10px 0;
     border-bottom: 1px solid #f5f5f5;
   }
   .fyb-fish-item:last-child { border-bottom: none; }
   .fyb-fish-info { flex: 1; }
-  .fyb-fish-title { font-size: 15px; font-weight: 600; color: #1a1a1a; }
-  .fyb-fish-sub { font-size: 12px; color: #999; margin-top: 2px; }
+  .fyb-fish-title { font-size: 14px; font-weight: 600; color: #1a1a1a; }
+  .fyb-fish-sub { font-size: 11px; color: #999; margin-top: 1px; }
 
   /* ===== FISH CLEANING TOGGLE ===== */
   .fyb-clean-toggle {
     display: flex;
-    gap: 8px;
-    margin-bottom: 14px;
+    gap: 6px;
+    margin-bottom: 6px;
   }
   .fyb-clean-toggle-label {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     color: #555;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
   }
   .fyb-clean-btn {
     flex: 1;
-    padding: 10px 0;
+    padding: 7px 0;
     border-radius: 40px;
     border: 2px solid #e0e0e0;
     background: #f7f7f7;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.2s;
@@ -389,8 +390,8 @@
   /* ===== CLEANING STYLE CHOICE (For Grill / Others) ===== */
   .fyb-clean-style {
     display: none;
-    gap: 8px;
-    margin-top: 10px;
+    gap: 6px;
+    margin-top: 6px;
     animation: fybFadeIn 0.25s ease;
   }
   .fyb-clean-style.visible {
@@ -398,11 +399,11 @@
   }
   .fyb-style-btn {
     flex: 1;
-    padding: 10px 12px;
+    padding: 7px 10px;
     border-radius: 40px;
     border: 2px solid #bbdefb;
     background: #f0f7ff;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     color: #1565c0;
     cursor: pointer;
@@ -425,18 +426,18 @@
     display: flex;
     background: #f5f5f5;
     border-radius: 30px;
-    padding: 4px;
-    margin-top: 14px;
-    gap: 4px;
+    padding: 3px;
+    margin-top: 8px;
+    gap: 3px;
     border: 1px solid #e0e0e0;
   }
   .fyb-option-btn {
     flex: 1;
     border: none;
     background: transparent;
-    padding: 10px 16px;
+    padding: 7px 12px;
     border-radius: 26px;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -458,9 +459,13 @@
     .fyb-cat-icon { font-size: 16px; }
     .fyb-modal .modal-inner { 
       border-radius: 16px; 
-      height: 90vh;
-      max-height: 540px;
+      height: 95vh;
+      max-height: 700px;
     }
+    .fyb-header { padding: 10px 16px 8px; }
+    .fyb-header h2 { font-size: 16px; margin: 0 0 6px; }
+    .fyb-fish-body { padding: 8px 16px; }
+    .fyb-footer { padding: 8px 16px 10px; }
   }
 </style>
 
@@ -483,7 +488,7 @@
           </button>
         </div>
 
-        <div class="fyb-progress-row" style="margin-top: 14px;">
+        <div class="fyb-progress-row" style="margin-top: 8px;">
           <div class="fyb-progress-bar-wrap" style="--fill-color:#2196F3;">
             <div id="fishProgressFill" class="fyb-progress-fill" style="background:#2196F3;"></div>
           </div>
