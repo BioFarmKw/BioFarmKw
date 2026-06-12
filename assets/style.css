@@ -9404,9 +9404,23 @@ scroll-seamless.border-gradient-alpha:after {
 
 .template-page-product-catalog .main-page-title,
 .template-page-product-catalog .page-title,
+.template-page-product-catalog .page-title-block,
 .page-product-catalog .main-page-title,
-.page-product-catalog .page-title {
+.page-product-catalog .page-title,
+.page-product-catalog .page-title-block {
   display: none !important;
+}
+
+.template-page-product-catalog .page-description-block,
+.page-product-catalog .page-description-block,
+.template-page-product-catalog .page-description-block .rte,
+.page-product-catalog .page-description-block .rte,
+.template-page-product-catalog .page-description-block .rte > *:first-child,
+.page-product-catalog .page-description-block .rte > *:first-child,
+.template-page-product-catalog .catalog-grid,
+.page-product-catalog .catalog-grid {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 
 .catalog-grid {
