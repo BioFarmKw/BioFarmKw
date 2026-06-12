@@ -11,9 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
       .then(response => response.json())
       .then(cart => {
         let totalFishQty = 0;
-        let cartTotalKD = cart.total_price / 1000; // Shopify returns price in cents, if currency is KD, it might be 1000 fils = 1 KD. 
-        // Wait, standard Shopify handles 3 decimal places for KWD as x1000. So 10000 = 10 KD.
-        // Let's assume cart.total_price / 1000 for KWD. Or just use cart.total_price. If the minimum is 10 KD, it's 10 * 1000 = 10000 in Shopify cents.
+        let cartTotalKD = cart.total_price / 100; // Shopify returns KWD price in cents (100 multiplier). So 20.55 KD is returned as 2055.
         
         let hasFish = false;
 
@@ -40,10 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
           isValid = false;
         }
 
-        // Shopify typically stores KWD in 3 decimal places, so 10 KD is 10000. 
-        // Some themes format it. Let's use 10000 as the threshold.
-        // If the currency isn't strictly 1000 multiplier, this might be an issue. Let's assume standard Shopify setup for KWD (1 KWD = 1000 fils).
-        if (cart.items.length > 0 && cart.total_price < 10000) {
+        // Check 10 KD minimum cart value logic
+        if (cart.items.length > 0 && cartTotalKD < 10.0) {
           errorMessages.push("Minimum cart value must be 10 KD to proceed.");
           isValid = false;
         }
