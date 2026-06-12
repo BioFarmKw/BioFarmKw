@@ -182,6 +182,13 @@
     border: 1px solid rgba(33, 150, 243, 0.25);
   }
 
+  @media screen and (max-width: 480px) {
+    .basket-badge {
+      font-size: 9px;
+      padding: 4px 10px;
+    }
+  }
+
   /* Card Text */
   .basket-card-body {
     flex-grow: 1;
@@ -260,7 +267,7 @@
               <span class="basket-emoji-item">🥦</span>
             </div>
             <div class="basket-badge basket-badge--veg">
-              {% if request.locale.iso_code == 'ar' %}الحد الأدنى 9.500 د.ك{% else %}Min. 9.500 KD{% endif %}
+              {% if request.locale.iso_code == 'ar' %}الحد الأدنى 9.500 د.ك للتوصيل المجاني{% else %}Min. 9.500 KD For Free Delivery{% endif %}
             </div>
           </div>
           <div class="basket-card-body">
@@ -298,7 +305,7 @@
               <span class="basket-emoji-item">🐟</span>
             </div>
             <div class="basket-badge basket-badge--fish">
-              {% if request.locale.iso_code == 'ar' %}الحد الأدنى 5 كجم{% else %}Min. 5 KG{% endif %}
+              {% if request.locale.iso_code == 'ar' %}الحد الأدنى 5 كجم للتوصيل المجاني{% else %}Min. 5 KG Free Delivery{% endif %}
             </div>
           </div>
           <div class="basket-card-body">
