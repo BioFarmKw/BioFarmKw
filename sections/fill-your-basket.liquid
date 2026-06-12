@@ -190,6 +190,30 @@
     margin-top: 2px;
   }
 
+  /* Product Detail Links */
+  .fyb-product-main-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    text-decoration: none;
+    color: inherit;
+    min-width: 0;
+  }
+  .fyb-product-main-link:hover .fyb-product-name {
+    text-decoration: underline;
+    color: #4CAF50;
+  }
+  .fyb-product-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+  }
+  .fyb-product-link:hover {
+    text-decoration: underline;
+    color: #2196F3;
+  }
+
   /* Qty Controls */
   .fyb-qty {
     display: flex;
@@ -525,7 +549,13 @@
           {% endcase %}
           <div class="fyb-fish-item">
             <div class="fyb-fish-info">
-              <div class="fyb-fish-title">{{ prod.title | default: fish_camel_name }}</div>
+              {%- if prod != blank -%}
+                <a href="{{ prod.url }}" target="_blank" class="fyb-product-link">
+                  <div class="fyb-fish-title">{{ prod.title | default: fish_camel_name }}</div>
+                </a>
+              {%- else -%}
+                <div class="fyb-fish-title">{{ prod.title | default: fish_camel_name }}</div>
+              {%- endif -%}
               <div class="fyb-fish-sub">{{ weight_label }} • {{ fish_price }} KD / KG</div>
             </div>
             <div class="fyb-qty">
@@ -622,6 +652,9 @@
                   {% assign _price_dec   = _price_parts[1] | append: '000' | slice: 0, 3 %}
                   {% assign prod_price_display = _price_parts[0] | append: '.' | append: _price_dec %}
                   <div class="fyb-product-row">
+                    {% if prod != blank %}
+                      <a href="{{ prod.url }}" target="_blank" class="fyb-product-main-link">
+                    {% endif %}
                     {% if prod.featured_image %}
                       <img class="fyb-product-img"
                            src="{{ prod.featured_image | image_url: width: 100 }}"
@@ -634,6 +667,9 @@
                       <div class="fyb-product-name">{{ prod.title }}</div>
                       <div class="fyb-product-price">{{ prod_price_display }} KD</div>
                     </div>
+                    {% if prod != blank %}
+                      </a>
+                    {% endif %}
                     <div class="fyb-qty">
                       <button class="fyb-qty-btn" data-action="minus" data-basket="veg">−</button>
                       <span class="fyb-qty-val"
