@@ -381,6 +381,38 @@
     display: none;
   }
 
+  /* Segmented Option Control */
+  .fyb-option-selector {
+    display: flex;
+    background: #f5f5f5;
+    border-radius: 30px;
+    padding: 4px;
+    margin-top: 14px;
+    gap: 4px;
+    border: 1px solid #e0e0e0;
+  }
+  .fyb-option-btn {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 10px 16px;
+    border-radius: 26px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #666;
+    text-align: center;
+  }
+  .fyb-option-btn:hover {
+    color: #333;
+  }
+  .fyb-option-btn.active {
+    background: #ffffff;
+    color: #1565c0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
   @media (max-width: 600px) {
     .fyb-categories { width: 120px; }
     .fyb-cat-item { padding: 10px 10px; font-size: 12px; }
@@ -396,14 +428,25 @@
     <button class="modal-close-button button button--icon" onclick="this.closest('.modal').hide()">{% render 'icon-sets-basic', icon: 'close' %}</button>
     <div class="modal-content">
       <div class="fyb-header">
-        <h2>🐟 Build Your Fish Basket</h2>
-        <div class="fyb-progress-row">
+        <h2>🐟 {% if request.locale.iso_code == 'ar' %}سلة الأسماك{% else %}Build Your Fish Basket{% endif %}</h2>
+        
+        <!-- Segmented Option Control -->
+        <div class="fyb-option-selector">
+          <button type="button" class="fyb-option-btn active" id="fishLimit5Btn" onclick="fybSetFishLimit(5)">
+            {% if request.locale.iso_code == 'ar' %}الخيار 1: الحد الأدنى 5 كجم{% else %}Option 1: Minimum 5 KG{% endif %}
+          </button>
+          <button type="button" class="fyb-option-btn" id="fishLimit10Btn" onclick="fybSetFishLimit(10)">
+            {% if request.locale.iso_code == 'ar' %}الخيار 2: الحد الأدنى 10 كجم{% else %}Option 2: Minimum 10 KG{% endif %}
+          </button>
+        </div>
+
+        <div class="fyb-progress-row" style="margin-top: 14px;">
           <div class="fyb-progress-bar-wrap" style="--fill-color:#2196F3;">
             <div id="fishProgressFill" class="fyb-progress-fill" style="background:#2196F3;"></div>
           </div>
-          <span class="fyb-progress-label"><span id="fishWeightCurrent">0</span> / 5 KG</span>
+          <span class="fyb-progress-label"><span id="fishWeightCurrent">0</span> / <span id="fishWeightTarget">5</span> KG</span>
         </div>
-        <div class="fyb-progress-status" id="fishStatusText">Select minimum 5 KG fish</div>
+        <div class="fyb-progress-status" id="fishStatusText">{% if request.locale.iso_code == 'ar' %}اختر الحد الأدنى 5 كجم من الأسماك{% else %}Select minimum 5 KG fish{% endif %}</div>
       </div>
 
       <div class="fyb-fish-body">
@@ -660,6 +703,33 @@
     updateFish();
   };
 
+  /* ---- Fish Limit Selector ---- */
+  let fishWeightLimitTarget = 5;
+
+  window.fybSetFishLimit = function(limit) {
+    fishWeightLimitTarget = limit;
+    
+    // Toggle active class on option buttons
+    const btn5 = document.getElementById('fishLimit5Btn');
+    const btn10 = document.getElementById('fishLimit10Btn');
+    if (btn5) {
+      if (limit === 5) btn5.classList.add('active');
+      else btn5.classList.remove('active');
+    }
+    if (btn10) {
+      if (limit === 10) btn10.classList.add('active');
+      else btn10.classList.remove('active');
+    }
+    
+    // Update target weight display label
+    const targetLabel = document.getElementById('fishWeightTarget');
+    if (targetLabel) {
+      targetLabel.textContent = limit;
+    }
+    
+    updateFish();
+  };
+
   /* ---- Fish Update ---- */
   function updateFish() {
     let weight = 0, subtotal = 0;
@@ -682,18 +752,27 @@
 
     document.getElementById('fishWeightCurrent').textContent = weight;
     document.getElementById('fishSubtotal').textContent = subtotal.toFixed(3);
-    document.getElementById('fishProgressFill').style.width = Math.min((weight / 5) * 100, 100) + '%';
+    document.getElementById('fishProgressFill').style.width = Math.min((weight / fishWeightLimitTarget) * 100, 100) + '%';
 
     const btn    = document.getElementById('fishCheckoutBtn');
     const status = document.getElementById('fishStatusText');
-    if (weight >= 5) {
+    
+    const isAr = (document.documentElement.lang === 'ar' || document.documentElement.dir === 'rtl');
+    
+    if (weight >= fishWeightLimitTarget) {
       btn.disabled     = false;
-      btn.textContent  = '✓ Proceed to Payment';
-      status.textContent = '✅ Minimum weight reached!';
+      btn.textContent  = isAr ? '✓ المتابعة إلى الدفع' : '✓ Proceed to Payment';
+      status.textContent = isAr ? '✅ تم الوصول إلى الحد الأدنى للوزن!' : '✅ Minimum weight reached!';
+      status.style.color = '#2e7d32';
     } else {
       btn.disabled     = true;
-      btn.textContent  = 'Select Minimum 5 KG Fish';
-      status.textContent = 'Select minimum 5 KG fish';
+      btn.textContent  = isAr 
+        ? `اختر الحد الأدنى ${fishWeightLimitTarget} كجم أسماك` 
+        : `Select Minimum ${fishWeightLimitTarget} KG Fish`;
+      status.textContent = isAr 
+        ? `اختر الحد الأدنى ${fishWeightLimitTarget} كجم أسماك` 
+        : `Select minimum ${fishWeightLimitTarget} KG fish`;
+      status.style.color = '#888';
     }
   }
 
@@ -717,10 +796,16 @@
 
       if (items.length === 0) throw 'Please select at least one item.';
 
+      const isAr = (document.documentElement.lang === 'ar' || document.documentElement.dir === 'rtl');
+
       // Fish: check total weight
       if (!isVeg) {
         const totalKg = items.reduce((s, i) => s + i.quantity, 0);
-        if (totalKg < 5) throw 'Minimum fish order is 5 KG.';
+        if (totalKg < fishWeightLimitTarget) {
+          throw isAr 
+            ? `الحد الأدنى لطلب الأسماك هو ${fishWeightLimitTarget} كجم.` 
+            : `Minimum fish order is ${fishWeightLimitTarget} KG.`;
+        }
       }
 
       const resp = await fetch('/cart/add.js', {
