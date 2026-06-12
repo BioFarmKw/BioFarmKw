@@ -9,8 +9,12 @@
   .fyb-modal .modal-inner {
     max-width: 860px;
     width: 96vw;
+    height: 85vh;
+    max-height: 680px;
     border-radius: 24px;
     position: relative;
+    display: flex;
+    flex-direction: column;
   }
   .fyb-modal .modal-close-button {
     position: absolute;
@@ -21,10 +25,11 @@
   }
   .fyb-modal .modal-content {
     padding: 0;
-    max-height: 92vh;
+    height: 100%;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    flex: 1;
   }
 
   /* ===== HEADER ===== */
@@ -417,7 +422,11 @@
     .fyb-categories { width: 120px; }
     .fyb-cat-item { padding: 10px 10px; font-size: 12px; }
     .fyb-cat-icon { font-size: 16px; }
-    .fyb-modal .modal-inner { border-radius: 16px; }
+    .fyb-modal .modal-inner { 
+      border-radius: 16px; 
+      height: 90vh;
+      max-height: 540px;
+    }
   }
 </style>
 
