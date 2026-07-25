@@ -44,6 +44,7 @@ if (!customElements.get("reading-text")) {
        */
       splitText() {
         const text = this.textContent;
+        const isRTL = /[\u0590-\u08FF\uFB1D-\uFDFD\uFE70-\uFEFC]/.test(text);
         // 使用正则表达式按单词和空格分割
         const segments = text.match(/\S+|\s/g) || [];
 
@@ -51,15 +52,19 @@ if (!customElements.get("reading-text")) {
           <style>
             :host {
               display: inline-block;
+              font-family: inherit;
+              ${isRTL ? "direction: rtl;" : ""}
             }
             
             [part="word"] {
               display: inline-block;
               white-space: nowrap;
+              font-family: inherit;
             }
             
             [part="letter"] {
               display: inline-block;
+              font-family: inherit;
               transition: all 100ms linear;
               ${
                 this.animation === "hollow"
@@ -77,8 +82,15 @@ if (!customElements.get("reading-text")) {
               } else if (segment.match(/^\s$/)) {
                 // 处理其他空白字符（制表符等）
                 return `<span part="letter">${segment}</span>`;
+              } else if (isRTL) {
+                // RTL (Arabic/Hebrew) Text: keep words intact to preserve connected cursive script
+                return `
+                  <span part="word">
+                    <span part="letter">${segment}</span>
+                  </span>
+                `;
               } else {
-                // 处理单词
+                // LTR Text: split word into individual letters
                 return `
                   <span part="word">
                     ${segment
@@ -97,42 +109,56 @@ if (!customElements.get("reading-text")) {
       setupScrollAnimation() {
         if (!this.textHasSplited) return;
 
-        // 获取所有字母元素
+        // 获取所有字母/单词元素
         const letters = Array.from(
           this.shadowRoot.querySelectorAll('[part="letter"]'),
         );
 
+        if (letters.length === 0) return;
+
         const windowHeight = window.innerHeight;
         const triggerPoint = windowHeight * 0.2; // 距离底部20%的位置
+        let lastProgress = -1;
 
         // 监听滚动
         const scrollHandler = () => {
           const rect = this.getBoundingClientRect();
-          if (rect.top <= 0 || rect.top >= windowHeight) return;
+          let progress;
 
-          // 元素底部进入视口到顶部到达触发点的进度 (0-1)
-          let progress = Math.min(
-            1,
-            Math.max(
-              0,
-              (windowHeight - rect.top - triggerPoint) /
-                (windowHeight - triggerPoint),
-            ),
-          );
+          if (rect.top <= 0) {
+            progress = 1;
+          } else if (rect.top >= windowHeight) {
+            progress = 0;
+          } else {
+            // 元素底部进入视口到顶部到达触发点的进度 (0-1)
+            progress = Math.min(
+              1,
+              Math.max(
+                0,
+                (windowHeight - rect.top - triggerPoint) /
+                  (windowHeight - triggerPoint),
+              ),
+            );
+          }
 
           // 滚动到页面最底部
           if (
             progress < 1 &&
             window.innerHeight + window.scrollY >=
-              document.documentElement.scrollHeight
-          )
+              document.documentElement.scrollHeight - 10
+          ) {
             progress = 1;
+          }
+
+          if (progress === lastProgress) return;
+          lastProgress = progress;
 
           // 根据进度显示字母
           letters.forEach((letter, index) => {
+            const divisor = index === 0 ? 1 : index;
             const letterProgress = Math.min(
               1,
-              Math.max(0, (progress * letters.length) / index),
+              Math.max(0, (progress * letters.length) / divisor),
             );
 
             const rate = letterProgress > 0.8 ? letterProgress.toFixed(2) : 0;
