@@ -486,6 +486,7 @@
     },
     "basket_links": {
       "type": "basket-links",
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-1",
         "padding_top": 36,
