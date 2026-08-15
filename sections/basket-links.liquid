@@ -32,6 +32,471 @@
       grid-template-columns: 1fr 1fr;
       gap: 30px;
     }
+    .basket-links-grid--single {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Premium Card Design */
+  .basket-card {
+    position: relative;
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 240px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 8px 25px -10px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    text-decoration: none;
+  }
+
+  .basket-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    transition: opacity 0.4s ease;
+  }
+
+  /* Colors for Vegetable Basket */
+  .basket-card--veg {
+    background-color: #f3fcf4;
+    border-color: rgba(76, 175, 80, 0.15);
+  }
+  .basket-card--veg::before {
+    background: linear-gradient(135deg, rgba(243, 252, 244, 0.95) 0%, rgba(232, 245, 233, 0.85) 100%);
+  }
+
+  /* Colors for Fish Basket */
+  .basket-card--fish {
+    background-color: #f1f8fe;
+    border-color: rgba(33, 150, 243, 0.15);
+  }
+  .basket-card--fish::before {
+    background: linear-gradient(135deg, rgba(241, 248, 254, 0.95) 0%, rgba(227, 242, 253, 0.85) 100%);
+  }
+
+  /* Hover Effects */
+  .basket-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 35px -15px rgba(0, 0, 0, 0.12);
+  }
+
+  .basket-card--veg:hover {
+    border-color: rgba(76, 175, 80, 0.35);
+  }
+
+  .basket-card--fish:hover {
+    border-color: rgba(33, 150, 243, 0.35);
+  }
+
+  /* Card Content Wrapper */
+  .basket-card-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+  }
+
+  /* Card Header with Icon and Badge */
+  .basket-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .basket-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.03);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+  }
+
+  .basket-card:hover .basket-icon-wrapper {
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  .basket-emoji-base {
+    font-size: 32px;
+    line-height: 1;
+    z-index: 1;
+  }
+
+  .basket-emoji-item {
+    position: absolute;
+    font-size: 16px;
+    z-index: 2;
+    line-height: 1;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+  }
+
+  .basket-card:hover .basket-emoji-item {
+    transform: translate(-50%, -6px) scale(1.1);
+  }
+
+  .basket-icon-wrapper--veg {
+    background-color: #e8f5e9;
+    border: 1px solid rgba(76, 175, 80, 0.2);
+    color: #2e7d32;
+  }
+
+  .basket-icon-wrapper--fish {
+    background-color: #e3f2fd;
+    border: 1px solid rgba(33, 150, 243, 0.2);
+    color: #1565c0;
+  }
+
+  .basket-badge {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 6px 14px;
+    border-radius: 30px;
+  }
+
+  .basket-badge--veg {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid rgba(76, 175, 80, 0.25);
+  }
+
+  .basket-badge--fish {
+    background-color: #e3f2fd;
+    color: #1565c0;
+    border: 1px solid rgba(33, 150, 243, 0.25);
+  }
+
+  @media screen and (max-width: 480px) {
+    .basket-badge {
+      font-size: 9px;
+      padding: 4px 10px;
+    }
+  }
+
+  /* Card Text */
+  .basket-card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .basket-card-title {
+    font-size: 22px;
+    font-weight: 800;
+    margin: 0;
+    color: #1a1a1a;
+  }
+
+  .basket-card-desc {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555;
+    margin: 0;
+  }
+
+  /* Card Action Footer */
+  .basket-card-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+    font-weight: 700;
+    font-size: 14px;
+    transition: gap 0.3s ease;
+  }
+
+  .basket-card-footer--veg {
+    color: #2e7d32;
+  }
+
+  .basket-card-footer--fish {
+    color: #1565c0;
+  }
+
+  .basket-card:hover .basket-card-footer {
+    gap: 14px;
+  }
+
+  .basket-arrow-icon {
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+  }
+
+  .basket-card:hover .basket-arrow-icon {
+    transform: translateX(4px);
+  }
+
+  @media screen and (max-width: 749px) {
+    .basket-card {
+      padding: 20px;
+      min-height: 200px;
+    }
+    .basket-card-title {
+      font-size: 18px;
+    }
+    .basket-card-desc {
+      font-size: 13px;
+    }
+    .basket-icon-wrapper {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+    }
+    .basket-emoji-base {
+      font-size: 24px;
+    }
+    .basket-emoji-item {
+      font-size: 12px;
+      top: 8px;
+    }
+  }
+
+  /* RTL overrides for Arabic */
+  html[dir="rtl"] .basket-arrow-icon,
+  html[lang="ar"] .basket-arrow-icon {
+    transform: rotate(180deg);
+  }
+  html[dir="rtl"] .basket-card:hover .basket-arrow-icon,
+  html[lang="ar"] .basket-card:hover .basket-arrow-icon {
+    transform: rotate(180deg) translateX(4px);
+  }
+{%- endstyle -%}
+
+{%- assign show_veg = section.settings.show_veg_basket -%}
+{%- assign show_fish = section.settings.show_fish_basket -%}
+
+{%- assign visible_count = 0 -%}
+{%- if show_veg -%}{%- assign visible_count = visible_count | plus: 1 -%}{%- endif -%}
+{%- if show_fish -%}{%- assign visible_count = visible_count | plus: 1 -%}{%- endif -%}
+
+{%- if visible_count > 0 -%}
+<div class="basket-links section-{{ section.id }}-margin color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="basket-links-grid{% if visible_count == 1 %} basket-links-grid--single{% endif %}">
+      {%- if show_veg -%}
+        <!-- Vegetable Basket Card -->
+        <div class="basket-card basket-card--veg" onclick="event.preventDefault(); document.getElementById('Veg-Basket-Modal') && document.getElementById('Veg-Basket-Modal').show(this)">
+          <div class="basket-card-content">
+            <div class="basket-card-header">
+              <div class="basket-icon-wrapper basket-icon-wrapper--veg">
+                <span class="basket-emoji-base">🧺</span>
+                <span class="basket-emoji-item">🥦</span>
+              </div>
+              <div class="basket-badge basket-badge--veg">
+                {% if request.locale.iso_code == 'ar' %}الحد الأدنى 9.500 د.ك للتوصيل المجاني{% else %}Min. 9.500 KD For Free Delivery{% endif %}
+              </div>
+            </div>
+            <div class="basket-card-body">
+              <h3 class="basket-card-title">
+                {% if request.locale.iso_code == 'ar' %}سلة خضروات{% else %}Vegetable Basket{% endif %}
+              </h3>
+              <p class="basket-card-desc">
+                {% if request.locale.iso_code == 'ar' %}
+                  اختر الخضروات الورقية العضوية الطازجة والأعشاب المزروعة محلياً في نظام الاستزراع المائي الخالي من المبيدات.
+                {% else %}
+                  Select fresh, organic leafy greens and herbs grown locally in our pesticide-free aquaponic farming system.
+                {% endif %}
+              </p>
+            </div>
+            <div class="basket-card-footer basket-card-footer--veg">
+              <span>
+                {% if request.locale.iso_code == 'ar' %}املأ سلتك{% else %}Fill Your Basket{% endif %}
+              </span>
+              <span class="basket-arrow-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- if show_fish -%}
+        <!-- Fish Basket Card -->
+        <div class="basket-card basket-card--fish" onclick="event.preventDefault(); document.getElementById('Fish-Basket-Modal') && document.getElementById('Fish-Basket-Modal').show(this)">
+          <div class="basket-card-content">
+            <div class="basket-card-header">
+              <div class="basket-icon-wrapper basket-icon-wrapper--fish">
+                <span class="basket-emoji-base">🧺</span>
+                <span class="basket-emoji-item">🐟</span>
+              </div>
+              <div class="basket-badge basket-badge--fish">
+                {% if request.locale.iso_code == 'ar' %}الحد الأدنى 5 كجم للتوصيل المجاني{% else %}Min. 5 KG Free Delivery{% endif %}
+              </div>
+            </div>
+            <div class="basket-card-body">
+              <h3 class="basket-card-title">
+                {% if request.locale.iso_code == 'ar' %}سلة أسماك{% else %}Fish Basket{% endif %}
+              </h3>
+              <p class="basket-card-desc">
+                {% if request.locale.iso_code == 'ar' %}
+                  نقدم لكم حاليًا سمك البلطي الطازج عالي الجودة، المربى بتقنية الزراعة المائية العضوية. يُحصد مباشرةً عند طلبكم، ويصلكم خلال ساعتين تقريبًا، مبردًا ومنظفًا حسب رغبتكم، وجاهزًا للطهي..<br><br>يمكنك تقديم طلبك وفقًا للخيارات الأربعة التالية بناءً على حجم ووزن السمك
+                {% else %}
+                  We currently offer fresh, high-quality tilapia raised using organic aquaponics. Harvested directly upon your order, it arrives within approximately two hours, chilled and cleaned to your specifications, ready for cooking.<br><br>Place your order according to the following four options based on fish size and weight:
+                {% endif %}
+              </p>
+            </div>
+            <div class="basket-card-footer basket-card-footer--fish">
+              <span>
+                {% if request.locale.iso_code == 'ar' %}املأ سلتك{% else %}Fill Your Basket{% endif %}
+              </span>
+              <span class="basket-arrow-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Basket Links",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.drawer", "custom.popup"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_veg_basket",
+      "label": "Show Vegetable Basket",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_fish_basket",
+      "label": "Show Fish Basket",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Section Margin"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top margin",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom margin",
+      "default": 24
+    }
+  ],
+  "presets": [
+    {
+      "name": "Basket Links"
+    }
+  ]
+}
+{% endschema %}
+
+{% comment %} ---------------------------------------------------------------------------- {% endcomment %}
+
+{% comment %} {%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  .section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
+    margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    .section-{{ section.id }}-margin {
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+
+  /* Basket Links Container */
+  .basket-links-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    width: 100%;
+  }
+
+  @media screen and (min-width: 750px) {
+    .basket-links-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
   }
 
   /* Premium Card Design */
@@ -431,4 +896,4 @@
     }
   ]
 }
-{% endschema %}
+{% endschema %} {% endcomment %}
