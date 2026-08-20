@@ -2168,6 +2168,7 @@
           ]
         }
       },
+      "disabled": true,
       "name": "t:sections.logo-list.presets.name",
       "settings": {
         "color_scheme": "scheme-1",
