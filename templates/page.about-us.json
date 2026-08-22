@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -28,11 +37,12 @@
         "page_description_qiHbbf"
       ],
       "settings": {
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
         "content_width": "medium",
         "text_alignment": "center",
-        "background_image_opacity": 10,
-        "image_behavior": "none",
+        "background_image": "shopify://shop_images/IMG_20260319_172110_6c79aa04-8a28-4cf1-bbce-fba4a6fb89bd.jpg",
+        "background_image_opacity": 100,
+        "image_behavior": "fixed",
         "text_alignment_mobile": "center",
         "padding_top": 48,
         "padding_bottom": 48,
