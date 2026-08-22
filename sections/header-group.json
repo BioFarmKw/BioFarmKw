@@ -569,7 +569,7 @@
         "color_scheme": "scheme-3",
         "menu": "main-menu",
         "menu_position": "logo-line",
-        "show_country": false,
+        "show_country": true,
         "show_language": true,
         "logo": "shopify://shop_images/White_logo-removebg-preview.png",
         "logo_width": 200,
