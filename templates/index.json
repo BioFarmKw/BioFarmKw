@@ -82,7 +82,7 @@
                     "size": "medium",
                     "icon": "cart",
                     "button_label": "Shop Now",
-                    "button_link": "shopify://pages/product-catalog",
+                    "button_link": "shopify://pages/product-catalog-page",
                     "open_in_new_tab": false,
                     "show_arrow": false
                   },
@@ -166,7 +166,7 @@
                 "size": "medium",
                 "icon": "none",
                 "button_label": "Shop Now",
-                "button_link": "shopify://pages/product-catalog",
+                "button_link": "shopify://pages/product-catalog-page",
                 "open_in_new_tab": false,
                 "show_arrow": true
               },
@@ -228,7 +228,7 @@
                 "size": "medium",
                 "icon": "none",
                 "button_label": "Shop Now",
-                "button_link": "shopify://pages/product-catalog",
+                "button_link": "shopify://pages/product-catalog-page",
                 "open_in_new_tab": false,
                 "show_arrow": true
               },
@@ -691,7 +691,7 @@
                     "size": "medium",
                     "icon": "none",
                     "button_label": "Shop Now",
-                    "button_link": "shopify://pages/product-catalog",
+                    "button_link": "shopify://pages/product-catalog-page",
                     "open_in_new_tab": false,
                     "show_arrow": true
                   },
@@ -1210,7 +1210,7 @@
                     "size": "medium",
                     "icon": "none",
                     "button_label": "Discover More",
-                    "button_link": "shopify://pages/product-catalog",
+                    "button_link": "shopify://pages/product-catalog-page",
                     "open_in_new_tab": false,
                     "show_arrow": false
                   },
