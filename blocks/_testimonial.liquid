@@ -35,7 +35,7 @@
   </div>
   {%- if block.settings.show_rating -%}
     <div class="testimonial-rating">
-      {% render 'star-rating', rating_value: block.settings.rating, 5 %}
+      {% render 'star-rating', rating_value: block.settings.rating %}
     </div>
   {%- endif -%}
   <div class="testimonial-author">
@@ -122,3 +122,13 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'star-rating', rating_value: block.settings.rating, 5 %}"
+  to: "{% render 'star-rating', rating_value: block.settings.rating %}"
+  position: 1627..1690
+{% endcomment %}
